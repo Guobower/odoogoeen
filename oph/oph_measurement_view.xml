@@ -1,0 +1,690 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+
+
+        <!-- MEASUREMENT VIEWS-->
+        <!-- TREE VIEW MEASUREMENT-->
+        <record model="ir.ui.view" id="measurement_tree_view_id">
+            <field name="name">measurement.tree</field>
+            <field name="model">oph.measurement</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <tree string="Type">
+                    <field name="name" invisible="1"/>
+                    <field name="partner_id"/>
+                    <field name="meeting_id" invisible="1"/>
+                    <field name="chief_complaint" invisible="1"/>
+                    <field name="motive" invisible="1"/>
+                    <field name="date"/>
+                    <field name="iop_od" invisible="not context.get('measurement_type', False) == 'tono'"/>
+                    <!-- C'est possible car on une méthode _get_measurement_type dans l'objet oph.measurement
+                        qui crée la clef measurement_type-->
+                    <field name="iop_os" invisible="not context.get('measurement_type', False) == 'tono'"/>
+                    <field name="comment_iop" invisible="not context.get('measurement_type', False) == 'tono'"/>
+                    <field name="k1_od" invisible="not context.get('measurement_type', False) == 'ker'"/>
+                    <field name="k2_od" invisible="not context.get('measurement_type', False) == 'ker'"/>
+                    <field name="va_type" invisible="not context.get('measurement_type', False) == 'ref'"/>
+                    <field name="va_od" invisible="not context.get('measurement_type', False) == 'ref'"/>
+                    <!--<field name="va_od" invisible="context.get('measurement_type', False) in ['cp']"/>-->
+                    <field name="sph_od" invisible="not context.get('measurement_type', False) == 'ref'"/>
+                    <field name="cyl_od" invisible="not context.get('measurement_type', False) == 'ref'"/>
+                    <field name="axis_od" invisible="not context.get('measurement_type', False) == 'ref'"/>
+                    <field name="nv_od" invisible="not context.get('measurement_type', False) == 'ref'"/>
+                    <field name="add_od" invisible="not context.get('measurement_type', False) == 'ref'"/>
+                    <field name="va_os" invisible="not context.get('measurement_type', False) == 'ref'"/>
+                    <field name="sph_os" invisible="not context.get('measurement_type', False) == 'ref'"/>
+                    <field name="cyl_os" invisible="not context.get('measurement_type', False) == 'ref'"/>
+                    <field name="axis_os" invisible="not context.get('measurement_type', False) == 'ref'"/>
+                    <field name="nv_os" invisible="not context.get('measurement_type', False) == 'ref'"/>
+                    <field name="add_os" invisible="not context.get('measurement_type', False) == 'ref'"/>
+                    <field name="as_od" invisible="not context.get('measurement_type', False) == 'sle'"/>
+                    <field name="as_os" invisible="not context.get('measurement_type', False) == 'sle'"/>
+                    <field name="ps_od" invisible="not context.get('measurement_type', False) == 'sle'"/>
+                    <field name="ps_os" invisible="not context.get('measurement_type', False) == 'sle'"/>
+                    <field name="conclusion" invisible="not context.get('measurement_type', False)
+                        == 'conc'"/>
+                    <field name="conclusion_od" invisible="not context.get('measurement_type', False)
+                        == 'conc'"/>
+                    <field name="conclusion_os" invisible="not context.get('measurement_type', False)
+                        == 'conc'"/>
+                    <field name="type_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- FORM VIEW MEASUREMENT -->
+        <record model="ir.ui.view" id="measurement_form_view_id">
+            <field name="name">measurement.form</field>
+            <field name="model">oph.measurement</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <form string="Type" version="7.0">
+                    <group colspan="2">
+                        <separator string="Infos" colspan="2"/>
+                        <field name="name" class="oe_inline"/>
+                        <field name="chief_complaint" class="oe_inline"/>
+                        <field name="partner_id" class="oe_inline"/>
+                        <field name="type_id" class="oe_inline"/>
+                        <field name="meeting_id" class="oe_inline"/>
+                        <field name="date" class="oe_inline"/>
+                    </group>
+                    <group colspan="2" col="4">
+                        <group colspan="4" col="4">
+                            <separator string="OD" colspan="2"/>
+                            <separator string="OG" colspan="2"/>
+                            <field name="va_od" class="oe_inline" colspan="2"/>
+                            <field name="va_os" class="oe_inline" colspan="2"/>
+                            <field name="as_od" class="oe_inline" colspan="2"/>
+                            <field name="as_os" class="oe_inline" colspan="2"/>
+                            <field name="ps_od" class="oe_inline" colspan="2"/>
+                            <field name="ps_os" class="oe_inline" colspan="2"/>
+                            <field name="iop_od" class="oe_inline" colspan="2"/>
+                            <field name="iop_os" class="oe_inline" colspan="2"/>
+                            <field name="comment_iop" class="oe_inline" colspan="2"/>
+                        </group>
+                    </group>
+                </form>
+            </field>
+        </record>
+        <!-- END VIEW -->
+
+
+        <!-- ACTION TO BE TRIGGER BY A BUTTON IN THE FORM VIEW OF CRM.MEETING (EG OPH.AGENDA)-->
+        <record model="ir.actions.act_window" id="measurement_history_action_id">
+            <field name="name">measurement.history</field>
+            <field name="res_model">oph.measurement</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="measurement_tree_view_id"/>
+        </record>
+        
+        
+        
+        <!-- VIEW MEASUREMENT TYPE-->
+        <!-- TREE VIEW MEASUREMENT TYPE -->
+        <record model="ir.ui.view" id="measurement_type_tree_view_id">
+            <field name="name">measurement.type.tree</field>
+            <field name="model">oph.measurement.type</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <tree string="Type">
+                    <field name="name"/>
+                    <field name="code"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- FORM VIEW MEASUREMENT TYPE -->
+        <record model="ir.ui.view" id="measurement_type_form_view_id">
+            <field name="name">measurement.type.form</field>
+            <field name="model">oph.measurement.type</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <form string="Type">
+                    <field name="name"/>
+                    <field name="code"/>
+                </form>
+            </field>
+        </record>
+        <!-- END VIEW MEASUREMENT TYPE-->
+
+        <!-- VIEW TODOLIST TAG -->
+        <!-- TREE VIEW TODOLIST TAG -->
+        <record model="ir.ui.view" id="todolist_tag_tree_view_id">
+            <field name="name">todolist.tag.tree</field>
+            <field name="model">oph.todolist.tag</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <tree string="Todolist Tag">
+                    <field name="name"/>
+                    <field name="default"/>
+                </tree>
+            </field>
+        </record>
+        <!-- FORM VIEW TODOLIST TAG -->
+        <record model="ir.ui.view" id="todolist_tag_form_view_id">
+            <field name="name">todolist.tag.form</field>
+            <field name="model">oph.todolist.tag</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <form string="Todolist Tag" version="7.0">
+                    <group>
+                        <field name="name"/>
+                        <field name="default" on_change="onchange_set_default(context)"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+        <!-- END TODOLIST TAG VIEW -->
+
+        <!-- VIEW VA TECH-->
+        <!-- TREE VIEW VA TECH-->
+        <record model="ir.ui.view" id="va_tech_tree_view_id">
+            <field name="name">va.tech.tree</field>
+            <field name="model">oph.va.tech</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <tree string="Type">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+        <!-- FORM VIEW VA TECH -->
+        <record model="ir.ui.view" id="va_tech_form_view_id">
+            <field name="name">va.tech.form</field>
+            <field name="model">oph.va.tech</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <form string="Type">
+                    <field name="name"/>
+                </form>
+            </field>
+        </record>
+        <!-- END VA TECH-->
+
+        <!-- TREE VIEW ANESTHESIA -->
+        <record model="ir.ui.view" id="anesthesia_type_tree_view_id">
+            <field name="name">anesthesia.type.tree</field>
+            <field name="model">oph.anesthesia.type</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <tree string="Type">
+                    <field name="name"/>
+                    <field name="code"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- FORM VIEW ANESTHESIA TYPE -->
+        <record model="ir.ui.view" id="anesthesia_type_form_view_id">
+            <field name="name">anesthesia.type.form</field>
+            <field name="model">oph.anesthesia.type</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <form string="Type">
+                    <field name="name"/>
+                    <field name="code"/>
+                </form>
+            </field>
+        </record>
+        <!-- END ANESTHESIA TYPE VIEWS-->
+
+        <!-- IOL VIEWS -->
+        <!-- TREE VIEW IOL -->
+        <record model="ir.ui.view" id="iol_type_tree_view_id">
+            <field name="name">iol.type.tree</field>
+            <field name="model">oph.iol.type</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <tree string="Type">
+                    <field name="name"/>
+                    <field name="manufactor"/>
+                    <field name="comment"/>
+                    <field name="constant"/>
+                </tree>
+            </field>
+        </record>
+        <!-- FORM VIEW IOL -->
+        <record model="ir.ui.view" id="iol_type_form_view_id">
+            <field name="name">iol.type.form</field>
+            <field name="model">oph.iol.type</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <form string="Type">
+                    <field name="name"/>
+                    <field name="manufactor"/>
+                    <field name="constant"/>
+                    <field name="comment"/>
+                </form>
+            </field>
+        </record>
+        <!--END IOL VIEWS -->
+
+        <!-- INPATIENT TYPE -->
+        <!-- TREE INPATIENT TYPE -->
+        <record model="ir.ui.view" id="inpatient_type_tree_view_id">
+            <field name="name">inpatient.type.tree</field>
+            <field name="model">oph.inpatient.type</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <tree string="Type">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="comment"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- FORM VIEW INPATIENT TYPE -->
+        <record model="ir.ui.view" id="inpatient_type_form_view_id">
+            <field name="name">inpatient.type.form</field>
+            <field name="model">oph.inpatient.type</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <form string="Type">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="comment"/>
+                </form>
+            </field>
+        </record>
+        <!-- END VIEW INPATIENT TYPE -->
+
+        <!-- PROCEDURE.TYPE -->
+        <!-- FORM VIEW PROCEDURE.TYPE -->
+        <record model="ir.ui.view" id="procedure_type_form_view_id">
+            <field name="name">procedure.type.form</field>
+            <field name="model">oph.procedure.type</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <form string="Type">
+                    <field name="name" required="1"/>
+                    <field name="code"/>
+                    <field name="duration"/>
+                    <field name="dilatation" required="1"/>
+                    <field name="iol_status"/>
+                    <field name="comment"/>
+                </form>
+            </field>
+        </record>
+        <!-- END FORM VIEW PROCEDURE.TYPE -->
+
+        <!-- TREE OPH.PROCEDURE.TYPE -->
+        <record model="ir.ui.view" id="procedure_type_tree_view_id">
+            <field name="name">procedure.type.tree</field>
+            <field name="model">oph.procedure.type</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <tree string="Type">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="duration"/>
+                    <field name="dilatation"/>
+                    <field name="iol_status"/>
+                    <field name="comment"/>
+                </tree>
+            </field>
+        </record>
+        <!-- END TREE VIEW PROCEDURE.TYPE -->
+        
+        <!-- OPH.REQUEST -->
+        <!-- FORM OPH.REQUEST -->
+        <record model="ir.ui.view" id="request_form_view_id">
+            <field name="name">request.form</field>
+            <field name="model">oph.request</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <form string="Type" version="7.0">
+                    <header>
+                        <button name="request_open" states="draft" string="Validate" class="oe_highlight" type="object"/>
+                        <button name="request_close" states="drat,open" class="oe_highlight" string="Close Request" type="object"/>
+                        <button name="request_cancel" states="draft,open" string="Cancel Request" type="object"/>
+                        <field name="state" widget="statusbar" nolabel="1" statusbar_visible="draft,open,close,cancel" statusbar_colors='{"draft":"blue","open":"blue"}'/>
+                    </header>
+                    <sheet string="Request">
+                        <group>
+                            <field name="name" class="oe_inline"/>
+                            <field string="Customer" name="partner_id" context="{'search_default_customer':1, 'show_address': 1}" on_change="on_change_oph_partner(partner_id,date_request)"
+                                options='{"always_reload": True}'
+                                domain="[('customer', '=', True)]"/>
+                            <field name="referent_id" class="oe_inline"/>
+                            <field name="comment" class="oe_inline"/>
+                            <field name="date_request" class="oe_inline"/>
+                            <field name="priority_id" string="Priority" class="oe_inline" required="1"/>
+                        </group>
+                        <notebook colspan="4">
+                            <page string="Accord Lines">
+                               <field name="request_line_ids" nolabel="1" widget="one2many_list">
+                                    <tree string="Accord Lines" editable="bottom">
+                                        <field name="sequence"/> <!-- widget="handle"/ je pensais que cela allait faire une séquence automatique et bien non-->
+                                        <field name="product_id"/>
+                                        <field name="name" invisible="1"/>
+                                        <field name="comment"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!--END FORM OPH.ACCORD-->
+        
+        <!-- ACTION TO BE TRIGGERED BY THE BUTTON REQUEST IN THE CRM_MEETING FORM VIEW -->
+        <record model="ir.actions.act_window" id="request_maker_action_id">
+                <field name="name">request.factory</field>
+                <field name="res_model">oph.request</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="request_form_view_id"/>
+        </record>
+
+
+        <!-- TREE OPH.REQUEST-->
+        <record id="request_tree_view_id" model="ir.ui.view">
+            <field name="name">oph.request.tree</field>
+            <field name="model">oph.request</field>
+            <field name="arch" type="xml">
+                <tree string="Accord">
+                    <field name="partner_id"/>
+                    <field name="date_request"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        <!--END TREE OPH.REQUEST-->
+        
+
+        <!-- VIEW TODO LIST-->
+        <!-- TREE VIEW -->
+        <record model="ir.ui.view" id="todolist_tree_view_id">
+            <field name="name">todolist.tree</field>
+            <field name="model">oph.todolist</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <tree string="Type">
+                    <field name="partner_id"/>
+                    <field name="name"/>
+                    <field name="date"/>
+                    <field name="meeting_id"/>
+                    <field name="state"/>
+                    <field name="tag_id"/>
+                    <field name="comment"/>
+                    <button string="Set to Open" name="statechange_open" states="draft" icon="gtk-go-forward"
+                        type="object"/>
+                    <button string="Set to Close" name="statechange_close" states="open" icon="gtk-close"
+                        type="object"/>
+                </tree>
+            </field>
+        </record>
+        <!-- FORM VIEW -->
+        <record model="ir.ui.view" id="todolist_form_view_id">
+            <field name="name">todolist.form</field>
+            <field name="model">oph.todolist</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <form string="Type">
+                    <field name="name" required="1"/>
+                    <field name="partner_id"/>
+                    <field name="meeting_id"/>
+                    <field name="date"/>
+                    <field name="state"/>
+                    <field name="tag_id"/>
+                    <field name="comment"/>
+                </form>
+            </field>
+        </record>
+        <!-- END VIEW TODOLIST -->
+        
+        <!-- VIEWS HONORIFIC -->
+        <!-- TREE VIEW -->
+        <record model="ir.ui.view" id="honorific_tree_view_id">
+            <field name="name">honorific.tree</field>
+            <field name="model">oph.honorific</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <tree string="Honorific">
+                    <field name="partner_id"/>
+                    <field name="user_id"/>
+                    <field name="honorific"/>
+                </tree>
+            </field>
+        </record>
+        <!-- FORM VIEW -->
+        <record model="ir.ui.view" id="honorific_form_view_id">
+            <field name="name">honorific.form</field>
+            <field name="model">oph.honorific</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <form string="Honorific">
+                    <field name="partner_id"/>
+                    <field name="user_id"/>
+                    <field name="honorific"/>
+                </form>
+            </field>
+        </record>
+        
+
+        <!-- ACTIONS / MENUITEM -->
+        <!-- MENUITEM -->
+        <menuitem name="Ophthalmology" icon="terp-project" id="main_oph_id" />
+        <menuitem name="Configuration" parent="main_oph_id" id="config_oph_id" sequence ="50"/>
+        <menuitem name="Measurement" id="config_measurement_id" parent="config_oph_id" sequence="10"/>
+        <menuitem name="Surgery" id="config_surgery_id" parent="config_oph_id" sequence="20"/>
+        <!-- sequence plus c'est haut plus c'est bas dans le menu-->
+        <!-- END MENUITEM -->
+        
+        <!-- CONFIG-MEASUREMENT-->
+        <!-- MEASUREMENT TYPE -->
+        <record model="ir.actions.act_window" id="measurement_type_action_id">
+            <field name="name">Measurement Type</field>
+            <field name="res_model">oph.measurement.type</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="measurement_type_tree_view_id"/>
+        </record>
+
+        <menuitem parent="config_measurement_id" id="measurement_type_menu_id" sequence ="10" action="measurement_type_action_id"/>
+
+        <!-- VA TECH -->
+        <record model="ir.actions.act_window" id="va_tech_action_id">
+            <field name="name">VA tech</field>
+            <field name="res_model">oph.va.tech</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="va_tech_tree_view_id"/>
+        </record>
+
+        <menuitem parent="config_measurement_id" id="va_tech_menu_id" sequence ="60" action="va_tech_action_id"/>
+
+        <!-- CONFIG - SURGERY -->
+        <!-- ANESTHESIA TYPE -->
+        <record model="ir.actions.act_window" id="anesthesia_type_action_id">
+            <field name="name">Anesthesia Type</field>
+            <field name="res_model">oph.anesthesia.type</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="anesthesia_type_tree_view_id"/>
+        </record>
+
+        <menuitem parent="config_surgery_id" id="anesthesia_type_menu_id" sequence ="20" action="anesthesia_type_action_id"/>
+
+        <!-- IOL TYPE -->
+        <record model="ir.actions.act_window" id="iol_type_action_id">
+            <field name="name">IOL Type</field>
+            <field name="res_model">oph.iol.type</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="iol_type_tree_view_id"/>
+        </record>
+
+        <menuitem parent="config_surgery_id" id="iol_type_menu_id" sequence ="30" action="iol_type_action_id"/>
+
+        <!-- INPATIENT TYPE -->
+        <record model="ir.actions.act_window" id="inpatient_type_action_id">
+            <field name="name">Inpatient Type</field>
+            <field name="res_model">oph.inpatient.type</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="inpatient_type_tree_view_id"/>
+        </record>
+
+        <menuitem parent="config_surgery_id" id="inpatient_type_menu_id" sequence ="40" action="inpatient_type_action_id"/>
+
+        <!-- PROCEDURE TYPE -->
+        <record model="ir.actions.act_window" id="procedure_type_action_id">
+            <field name="name">Procedure Type</field>
+            <field name="res_model">oph.procedure.type</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="procedure_type_tree_view_id"/>
+        </record>
+
+        <menuitem parent="config_surgery_id" id="procedure_type_menu_id" sequence ="50" action="procedure_type_action_id"/>
+
+        
+        <!-- CONCLUSION TAG -->
+        <record model="ir.actions.act_window" id="todolist_tag_action_id">
+            <field name="name">Todolist Tag</field>
+            <field name="res_model">oph.todolist.tag</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="todolist_tag_tree_view_id"/>
+        </record>
+        <menuitem parent="config_oph_id" id="todolist_tag_menu_id" sequence ="70" action="todolist_tag_action_id"/>
+
+        <!-- END ACTIONS / MENUITEM -->
+
+
+        <!-- TODO -->
+        <menuitem name="Ophthalmology" parent="main_oph_id" id="ophthalmology_oph_id" sequence="10"/>
+
+        
+
+        
+
+        <!-- ACTION / MENU -->
+        <!-- TODOLIST -->
+        <record model="ir.actions.act_window" id="todolist_action_id">
+            <field name="name">Todolist</field>
+            <field name="res_model">oph.todolist</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="todolist_tree_view_id"/>
+        </record>
+
+        <menuitem parent="ophthalmology_oph_id" id="todolist_menu_id" sequence ="40" action="todolist_action_id"/>
+
+        <!-- OPH.REQUEST -->
+        <record model="ir.actions.act_window" id="request_action_id">
+            <field name="name">Request</field>
+            <field name="res_model">oph.request</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="request_tree_view_id"/>
+        </record>
+
+        <menuitem parent="ophthalmology_oph_id" id="request_menu_id" sequence ="30" action="request_action_id"/>
+
+
+        <!-- HONORIFIC -->
+        <record model="ir.actions.act_window" id="honorific_action_id">
+            <field name="name">honorific</field>
+            <field name="res_model">oph.honorific</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="honorific_tree_view_id"/>
+        </record>
+
+        <menuitem parent="config_oph_id" id="honorific_menu_id" sequence ="30" action="honorific_action_id"/>
+
+
+
+        <!-- SEARCH VIEW FOR MEASUREMENT -->
+        <!--  search view  -->
+        <record id="view_measurement_search_id" model="ir.ui.view">
+            <field name="name">oph.measurement.select</field>
+            <field name="model">oph.measurement</field>
+            <field name="arch" type="xml">
+                <search string = "Search Measurement">
+                    <field name="name"/>
+                    <field name="partner_id"/>
+                    <!--<field name="type_id"/>-->
+                    <field name="meeting_id"/>
+                    <field name="va_type"/>
+
+                    <filter name="type_tono" string="Tonometry" domain="[('type_id.code', '=', 'tono')]"
+                        context="{'measurement_type': 'tono'}"/>
+                    <!-- allowing to get context 'measurement_type' value and hide the columns of the
+                        tree view see tree view-->
+
+                    <filter name="type_ref" string="Refraction" domain="[('type_id.code', '=', 'ref')]"
+                        context="{'measurement_type': 'ref'}"/>
+
+
+                    <filter name="va_type" string="CP" domain="[('va_type', '=', 'Rx')]" context="{'measurement_type':
+                        'ref'}"/>
+
+                    <filter name="type_sle" string="SLE" domain="[('type_id.code', '=', 'sle')]" context="{'measurement_type':
+                        'sle'}"/>
+
+                    <filter name="type_ker" string="Keratometry" domain="[('type_id.code', '=', 'ker')]"
+                        context="{'measurement_type': 'ker'}"/>
+
+                    <filter name="type_conc" string="Conclusion" domain="[('type_id.code', '=', 'conc')]"
+                        context="{'measurement_type': 'conc'}"/>
+
+                    <group expand="0" string="Group_By...">
+                        <filter string="Partner" icon="terp-partner" domain="[]" context="{'group_by':'partner_id'}"/>
+                        <filter string="Type" icon="terp-partner" domain="[]" context="{'group_by':'type_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <!--SEARCH VIEW FOR TODOLIST -->
+        <record id="view_todolist_search_id" model="ir.ui.view">
+            <field name="name">oph.tpdlist.select</field>
+            <field name="model">oph.todolist</field>
+            <field name="arch" type="xml">
+                <search string = "Search Todolist">
+                    <field name="name"/>
+                    <field name="partner_id"/>
+                    <field name="state"/>
+                    <field name="meeting_id"/>
+                    <field name="tag_id"/>
+                    <filter name="draft" string="Draft" domain="[('state','=','draft')]" help="Draft todolist"/>
+
+                    <filter name="open" string="Open" domain="[('state','=','open')]" help="open todolist"/>
+                    <filter name="close" string="Close" domain="[('state','=','close')]" help="close todolist"/>
+                    <group expand="0" string="Group_By...">
+                        <filter string="Partner" icon="terp-partner" domain="[]" context="{'group_by':'partner_id'}"/>
+                        <filter string="State" icon="terp-partner" domain="[]" context="{'group_by':'state'}"/>
+                        <filter string="Priority" icon="terp-partner" domain="[]" context="{'group_by':'tag_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+    <!--SEARCH VIEW FOR REQUEST -->
+     <record id="view_request_search_id" model="ir.ui.view">
+            <field name="name">oph.request.select</field>
+            <field name="model">oph.request</field>
+            <field name="arch" type="xml">
+                <search string = "Search Request">
+                    <field name="name"/>
+                    <field name="state"/>
+                    <field name="date_request"/>
+                    <field name="company_id"/>
+                    <filter name="draft" string="Draft" domain="[('state','=','draft')]" help="Draft Request"/>
+                    <filter name="open" string="Open" domain="[('state','=','open')]" help="Open and Sended Request"/>
+                    <filter name="close" string="Close" domain="[('state','=','close')]" help="Close Request"/>
+                    <filter name="cancelled" string="Cancelled" domain="[('stat','=','cancel')]" help="Cancelled Request"/>
+                    <group expand="0" string="Group_By...">
+                        <filter string="Priority" icon="terp-partner" domain="[]" context="{'group_by':'priority_id'}"/>
+                        <filter string="Partner" icon="terp-partner" domain="[]" context="{'group_by':'partner_id'}"/>
+                        <filter string="State" icon="terp-partner" domain="[]" context="{'group_by':'state'}"/>
+                        <filter string="Company" icon="terp-partner" domain="[]" context="{'group_by':'company_id'}"/>
+                        <filter string="Referent" icon="terp-partner" domain="[]" context="{'group_by':'referent_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+        <!-- END SEARCH VIEW FOR REQUEST -->
+
+        <record model="ir.actions.act_window" id="measurement_action_id">
+            <field name="name">Measurement</field>
+            <field name="res_model">oph.measurement</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="measurement_tree_view_id"/>
+            <field name="search_view_id" ref="view_measurement_search_id"/>
+        </record>
+
+        <menuitem parent="ophthalmology_oph_id" id="measurement_menu_id" sequence ="10" action="measurement_action_id"/>
+
+
+    </data>
+</openerp>

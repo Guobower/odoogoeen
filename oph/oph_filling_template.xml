@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!-- FILLING TEMPLATE VIEWS-->
+        <!-- TREE VIEW FILLING TEMPLATE-->
+        <record model="ir.ui.view" id="filling_template_tree_view_id">
+            <field name="name">filling.template.tree</field>
+            <field name="model">oph.filling.template</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <tree string="Type">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="as_od"/>
+                    <field name="as_os"/>
+                    <field name="ps_od"/>
+                    <field name="ps_os"/>
+                </tree>
+            </field>
+        </record>
+        <!-- FORM VIEW FILLING TEMPLATE-->
+        <record model="ir.ui.view" id="filling_template_form_view_id">
+            <field name="name"> filling.template.form</field>
+            <field name="model">oph.filling.template</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <form string="Filling Template" version="7.0">
+                    <group>
+                        <field name="name"/>
+                        <field name="code"/>
+                    </group>
+
+                    <group>
+                        <field name="as_od"/>
+                        <field name="as_os"/>
+                        <separator colspan="4"/>
+                        <field name="ps_od"/>
+                        <field name="ps_os"/>
+                    </group>
+                    <group>
+                        <field name="comment"/>
+                    </group>
+
+
+                </form>
+            </field>
+        </record>
+        <!-- END VIEW -->
+
+        <!-- ACTIONS / MENUITEM -->
+        <!-- FILLING TEMPLATE ACTION -->
+        <record model="ir.actions.act_window" id="filling_template_action_id">
+            <field name="name">Filling Template</field>
+            <field name="res_model">oph.filling.template</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="filling_template_tree_view_id"/>
+        </record>
+
+        <!-- FILLING TEMPLATE MENU-->
+        <menuitem parent="config_oph_id" id="filling_template_menu_id" sequence ="70" action="filling_template_action_id"/>
+
+        <!-- SEARCH VIEW FILLING TEMPLATE -->
+        <!--  search view  -->
+        <record id="view_filling_template_search_id" model="ir.ui.view">
+            <field name="name">oph.filling.template.select</field>
+            <field name="model">oph.filling.template</field>
+            <field name="arch" type="xml">
+                <search string = "Search Filling Template">
+                    <field name="name"/>
+                    <field name="code"/>
+                </search>
+            </field>
+        </record>
+
+        <!--INHERIT FROM CRM.MEETING VIEW -->
+        <record model="ir.ui.view" id="crm_meeting_form_w_template_id">
+            <field name="name">crm.meeting.w.template</field>
+            <field name="model">crm.meeting</field>
+            <!--<field name="inherit_id" ref="base_calendar.view_crm_meeting_form"/>-->
+            <field name="inherit_id" ref="oph.agenda_oph_form_view_id1"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//field[@name='sle_ids']/tree/field[@name='ps_os']" position="after">
+                    <field name="filling_template_id" on_change="on_change_template_id(filling_template_id)"/>
+                </xpath>
+
+            </field>
+        </record>
+
+
+    </data>
+</openerp>

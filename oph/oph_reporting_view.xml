@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!-- REPORTING VIEWS-->
+        <!-- TREE VIEW REPORTING-->
+        <record model="ir.ui.view" id="reporting_tree_view_id">
+            <field name="name">reporting.tree</field>
+            <field name="model">oph.reporting</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <tree string="Reporting" colors="red:state=='open';blue:state=='draft';grey:state=='close'">
+                    <field name="name"/>
+                    <field name="partner_id"/>
+                    <field name="meeting_id"/>
+                    <field name="date"/>
+                    <field name="dictate_wpatient"/>
+                    <field name="receiver_id"/>
+                    <field name="cc_ids" invisible="1"/>
+                    <field name="template_ids"/>
+                    <field name="template_id"/>
+                    <field name="state"/>
+                    <button string="Set to Open" name="statechange_open" states="draft" icon="gtk-go-forward" type="object"/>
+                    <button string="Set to Close" name="statechange_close" states="draft,open" icon="gtk-close" type="object"/>
+                </tree>
+            </field>
+        </record>
+        
+        <!-- FORM VIEW REPORTING-->
+        <record model="ir.ui.view" id="reporting_form_view_id">
+            <field name="name">reporting.form</field>
+            <field name="model">oph.reporting</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <form string="Reporting" version="7.0">
+                    <header>
+                        <button name="statechange_open" string="Open" type="object" states="draft" class="oe_highlight"/>
+                        <button name="statechange_close" string="Close" type="object" states="draft,open" class="oe_highlight"/>
+                        <button string="LogConsultation" name="%(logconsultation_act)d" type="action" context="{'search_default_partner_id':partner_id'}"/>
+                        <button name="get_default_body_text" string="Template" type="object"/>
+                        <field name="state" widget="statusbar" nolabel="1" statusbar_visible="draft,open,close" statusbar_colors='{"draft":"blue","open":"red","close":"blue"}'/>
+                    </header>
+                    <sheet string="Attr name de la sheet">
+                    <group>
+                        <field name="type" class="oe_inline"/>
+                        <field name="name" class="oe_inline"/>
+                        <field name="partner_id" class="oe_inline"/>
+                        <field name="meeting_id" class="oe_inline"/>
+                        <field name="date" invisible="0"/>
+                    </group>
+                    <separator colspan="2"/>
+                    <group>
+                        <field name="receiver_partner"  attrs="{'invisible':['|','|',('receiver_id','=',True),('type','=','ORR'),('type','=','IVT')]}"/>
+                        <field name="receiver_id" class="oe_inline" attrs="{'invisible':['|','|',('receiver_partner','=',True),('type','=','ORR'),('type','=','IVT')]}" on_change="on_change_receiver(receiver_id,context)"/>
+                        <!--marche pas-->
+                        <field name="dictate_wpatient" attrs="{'invisible':['|',('type','=','ORR'),('type','=','IVT')]}"/>
+                        <field name="cc_ids" attrs="{'invisible':['|',('type','=','ORR'),('type','=','IVT')]}"/>
+                        <field name="honorific" attrs="{'invisible':['|',('type','=','ORR'),('type','=','IVT')]}"/>
+                        <field name="cc_partner" attrs="{'invisible':['|',('type','=','ORR'),('type','=','IVT')]}"/>
+                    </group>
+                    <separator colspan="2"/>
+                    <group attrs="{'invisible':[('type','!=','ORR'),('type','!=','IVT'),('type','!=','OCT'),('type','!=','Laser')]}">
+                        <field name="header_id" class="oe_inline" />
+                        <field name="indication_id" class="oe_inline"/>
+                        <field name="ods" class="oe_inline"/>
+                    </group>
+                    <separator colspan="2"/>
+                    <group attrs="{'invisible':[('type','=','DIAB')]}">
+                        <field name="template_ids"/>
+                        <field name="template_id"/>
+                        <field name="text_body"/>
+                    </group>
+                    <separator colspan="2"/>
+                    <group attrs="{'invisible':[('type','!=','Laser')]}">
+                        <field name="lens" class="oe_inline"/>
+                        <field name="impact_size" class="oe_inline"/>
+                        <field name="impact_number" class="oe_inline"/>
+                        <field name="laser_power" class="oe_inline"/>
+                    </group>
+                    <separator colspan="2"/>
+                    <group attrs="{'invisible':[('type','!=','OCT')]}">
+                        <field name="retinal_thickness_od" class="oe_inline"/>
+                        <field name="retinal_thickness_os" class="oe_inline"/>
+                    </group>
+                    <separator colspan="2"/>
+                    <group attrs="{'invisible':[('type','!=','DIAB')]}">
+                        <field name="HbA1c" class="oe_inline"/>
+                        <field name="quand" class="oe_inline"/>
+                        <field name="next_meeting" class="oe_inline"/>
+                    </group>
+                    <separator colspan="2"/>
+                    <group>
+                        <field name="iol_type" class="oe_inline" attrs="{'invisible':[('type','!=','ORR')]}"/>
+                        <field name="iol_power" class="oe_inline" attrs="{'invisible':[('type','!=','ORR')]}"/>
+                    </group>
+                    <group>
+                        <field name="bv" class="oe_inline" attrs="{'invisible':[('type','!=','ORR')]}"/>
+                        <field name="sutureless" class="oe_inline" attrs="{'invisible':[('type','!=','ORR')]}"/>
+                        <field name="air_bubble" class="oe_inline" attrs="{'invisible':[('type','!=','ORR')]}"/>
+                    </group>
+                    <group>
+                        <field name="var1" attrs="{'invisible':[('type','!=','ORR')]}"/>
+                        <field name="var2" attrs="{'invisible':[('type','!=','ORR')]}"/>
+                        <field name="var3" attrs="{'invisible':[('type','!=','ORR')]}"/>
+                    </group>
+                    <group>
+                        <field name="var4" attrs="{'invisible':[('type','!=','ORR')]}"/>
+                        <field name="var5" attrs="{'invisible':[('type','!=','ORR')]}"/>
+                        <field name="var6" attrs="{'invisible':[('type','!=','ORR')]}"/>
+                        <field name="var7" attrs="{'invisible':[('type','!=','ORR')]}"/>
+                    </group>
+                    <group>
+                        <field name="molecule_ids" attrs="{'invisible':[('type','!=','IVT')]}"/>
+                    </group>
+                    <group attrs="{'invisible':[('type','!=','ORR')]}">
+                        <field name="gauge_id" class="oe_inline"/>
+                        <field name="post_op_treatement" class="oe_inline"/>
+                        <field name="positionnement" class="oe_inline"/>
+                    </group>
+                    <!-- 
+                    J'enleve car la coloration de la statusbar ne marche pas avec 
+                    <group>
+                        <field name="state" class="oe_inline" invisible="1"/>
+                    </group>
+                    -->
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!-- END VIEW -->
+
+        <!-- REPORTING TEMPLATE VIEWS-->
+        <!-- TREE VIEW REPORTING TEMPLATE-->
+        <record model="ir.ui.view" id="reporting_template_tree_view_id">
+            <field name="name">reporting.template.tree</field>
+            <field name="model">oph.reporting.template</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <tree string="Reporting Template">
+                    <field name="name"/>
+                    <field name="text_body"/>
+                    <field name="type"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- FORM VIEW REPORTING TEMPLATE-->
+        <record model="ir.ui.view" id="reporting_template_form_view_id">
+            <field name="name">reporting.template.form</field>
+            <field name="model">oph.reporting.template</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <form string="Reporting Template" version="7.0">
+                    <group>
+                        <field name="active"/>
+                        <field name="name"/>
+                        <field name="short_name"/>
+                        <field name="text_body"/>
+                        <field name="type"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+        <!-- END VIEW -->
+
+        <!-- VIEWS OPH.INDICATION-->
+        <!--FORM VIEW OPH.INDICATION -->
+        <record model="ir.ui.view" id="indication_form_view_id">
+            <field name="name">indication.form</field>
+            <field name="model">oph.indication</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <form string="OR Indication" version="7.0">
+                    <group>
+                        <field name="name"/>
+                        <field name="ivt"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+        <!--TREE VIEW OPH.INDICATION-->
+        <record model="ir.ui.view" id="indication_tree_view_id">
+            <field name="name">indication.tree</field>
+            <field name="model">oph.indication</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <tree string="Indication">
+                    <field name="name"/>
+                    <field name="ivt"/>
+                </tree>
+            </field>
+        </record>
+        <!-- END VIEW -->
+
+        <!-- VIEWS OPH.GAUGE-->
+        <!--FORM VIEW OPH.GAUGE -->
+        <record model="ir.ui.view" id="gauge_form_view_id">
+            <field name="name">gauge.form</field>
+            <field name="model">oph.gauge</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <form string="V3V gauge size" version="7.0">
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+        <!--TREE VIEW OPH.GAUGE-->
+        <record model="ir.ui.view" id="gauge_tree_view_id">
+            <field name="name">gauge.tree</field>
+            <field name="model">oph.gauge</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <tree string="V3V gauge size">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+        <!-- END VIEW -->
+
+        <!-- ACTIONS / MENUITEM -->
+        <menuitem name="Reporting" icon="terp-project" id="main_reporting_id"/>
+        <menuitem name="Reporting" icon="terp-project" parent="main_reporting_id" id="menu_reporting_id"
+            sequence="50"/>
+        <menuitem name="Configuration" icon="terp-project" parent="main_reporting_id" id="config_reporting_id"
+            sequence="60"/>
+        <menuitem name="Indication" icon="terp-project" parent="config_reporting_id" id="config_indication_id"
+            sequence="70"/>
+        <!-- sequence plus c'est haut plus c'est bas dans le menu-->
+
+        <!-- END MENUITEM -->
+
+        <!-- REPORTING ACTION -->
+        <record model="ir.actions.act_window" id="reporting_action_id">
+            <field name="name">Reporting</field>
+            <field name="res_model">oph.reporting</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="reporting_tree_view_id"/>
+        </record>
+
+        <menuitem parent="menu_reporting_id" id="reporting_menu_id" sequence ="10" action="reporting_action_id"/>
+
+        <!-- REPORTING TEMPLATE ACTION -->
+        <record model="ir.actions.act_window" id="reporting_template_action_id">
+            <field name="name">Reporting Template Action</field>
+            <field name="res_model">oph.reporting.template</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="reporting_template_tree_view_id"/>
+        </record>
+
+        <menuitem name="Reporting Template" parent="config_reporting_id" id="reporting_template_menu_id"
+            sequence ="20" action="reporting_template_action_id"/>
+
+
+        <!-- INDICATION ACTION -->
+        <record model="ir.actions.act_window" id="indication_action_id">
+            <field name="name">Indication Action</field>
+            <field name="res_model">oph.indication</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="indication_tree_view_id"/>
+        </record>
+
+        <menuitem name="Indication" parent="config_indication_id" id="config_indication_menu_id"
+            sequence ="20" action="indication_action_id"/>
+
+        <!-- GAUGE ACTION -->
+        <record model="ir.actions.act_window" id="gauge_action_id">
+            <field name="name">Gauge Action</field>
+            <field name="res_model">oph.gauge</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="gauge_tree_view_id"/>
+        </record>
+
+        <menuitem name="Gauge" parent="config_reporting_id" id="config_gauge_menu_id"
+            sequence ="30" action="gauge_action_id"/>
+
+        <!-- ACTION TO BE TRIGGER BY A BUTTON IN THE ONGLET REPORTING OF CRM.MEETING FORM -->
+        <record model="ir.actions.act_window" id="to_reporting_action_id">
+            <field name="name">to.reporting</field>
+            <field name="res_model">oph.reporting</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="target">current</field>
+            <field name="view_id" ref="reporting_form_view_id"/>
+        </record>
+
+        <!-- SEARCH VIEW FOR REPORTING -->
+        <record id="view_reporting_search_id" model="ir.ui.view">
+            <field name="name">oph.reporting.select</field>
+            <field name="model">oph.reporting</field>
+            <field name="arch" type="xml">
+                <search string = "Search Reporting">
+                    <field name="name"/>
+                    <field name="partner_id"/>
+                    <field name="meeting_id"/>
+                    <field name="template_ids"/>
+                    <filter icon="terp-go-today" string="Draft" domain="[('state','=','draft')]" help="Reporting in Draft state"/>
+                    <filter name="state" string="Open" icon="terp_camera_test" domain="[('state','=','open')]"/>
+                    <filter icon="terp-go-today" string="Close" domain="[('state','=','close')]" help="Reporting in Close state."/>
+                    <filter icon="terp-go-today" string="Today" domain="[('date','&lt;=',time.strftime('%%Y-%%m-%%d 23:59:59')),('date','&gt;=',time.strftime('%%Y-%%m-%%d 00:00:00'))]" help="Orders processed Today or planned for Today"/>
+                    <group expand="0" string="Group By...">
+                        <filter string="Type" icon="terp-partner" domain="[]" context="{'group_by':'type'}"/>
+                        <filter string="Partner" icon="terp-partner" domain="[]" context="{'group_by':'partner_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <!--SEARCH VIEW FOR REPORTING TEMPLATE-->
+        <record id="view_reporting_template_search_id" model="ir.ui.view">
+            <field name="name">oph.reporting.template.select</field>
+            <field name="model">oph.reporting.template</field>
+            <field name="arch" type="xml">
+                <search string = "Search Reporting Template">
+                    <field name="name"/>
+                    <field name="type"/>
+                    <filter name="active" icon="terp_camera_test" string="Inactive" domain="[('active','=',False)]"/>
+                    <filter name="header_id" string="Header" domain="[('type','=','H')]" help="First section of your report"/>
+                    <filter name="history" string="History" domain="[('type','=','His')]" help="History, Status of your patient"/>
+                    <filter name="Exam" string="Exam" domain="[('type','=','Ex')]" help="Non Slit Lamp examination section"/>
+                    <filter name="ASsection" string="Anterior Segment Section" domain="[('type','=','ASS')]"
+                        help="Anterior segment section"/>
+                    <filter name="PSsection" string="Posterior Segment Section" domain="[('type','=','PSS')]"
+                        help="Posterior segment section"/>
+                    <filter name="Conclusion" string="Conclusion Section" domain="[('type','=','CS')]"
+                        help="Conclusion section"/>
+                    <group expand="0" string="Group By...">
+                        <filter string="Type" icon="terp-partner" domain="[]" context="{'group_by':'type'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+
+    </data>
+</openerp>
