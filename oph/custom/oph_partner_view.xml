@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!-- CUSTOM FORM FOR RES.PARTNER -->
+        <record model="ir.ui.view" id="oph_view_partner_form">
+            <field name="name">oph.partner.form.inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <field name="name" position="after">
+                    <field name="firstname" on_change="onchange_name(firstname, name, dob, context)" class="oe_inline oe_edit_only" placeholder="firstname"/>
+                    <field name="fullname"/>
+                    <field name="carte" class="oe_inline" invisible="1"/>
+                </field>
+
+                <field name="name" position="attributes">
+                    <attribute name="on_change">onchange_name(firstname, name, dob, context)</attribute>
+                    <attribute name="class">oe_edit_only</attribute> <!-- pas l'impression que cela marche -->
+                </field>
+
+                <field name="title" position="attributes">
+                    <attribute name="widget">selection</attribute><!-- pour éliminer "create et modifier"-->
+                    <!--
+                    
+                    <attribute name="required"></attribute>
+                    
+                    -->
+                </field>
+
+                <field name="street2" position="after">
+                    <field name="PO_box" placeholder="PO box"/>
+                </field>
+
+                <!--<field name="state_id" position="replace"/>-->  
+                <field name="state_id" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </field>
+
+                <field name="title" position="after">
+                    <field name="gender" attrs="{'required':['|',('customer','=',True),('colleague','=',True),('is_company','=',False)],'invisible':[('is_company','=',True)]}"/>
+                    <field name="dob" attrs="{'required':[('customer','=',True),('is_company','=',False)],'invisible':['|',('colleague','=',True),('is_company','=',True)]}" on_change="onchange_name(firstname, name, dob, context)"/>
+                    <field name="age" attrs="{'invisible':['|',('colleague','=',True),('is_company','=',True)]}"/>
+                    <field name="amgid" attrs="{'invisible':['|',('colleague','=',True),('is_company','=',True)]}"/>
+                    <field name="cafatid" attrs="{'invisible':['|',('colleague','=',True),('is_company','=',True)]}"/>
+                </field>
+
+                <!-- Affiche le button "log consultation" pour afficher les mesearements d'un patient
+                    -->
+                <!-- l'idée étant d'être centré patient ie à partir d'un patient module sales afficher/modifier/insérer
+                    ses measurements-->
+                <!-- cela fonctionne pas trop mal. J'ai bien l'affiche de la vue que je souhaite -->
+                <!-- sauf que je ne peux pas faire de modifications d'enregistrement car le boutton
+                    "save" ne s'affiche pas -->
+
+                <xpath expr="//div[@name='buttons']" postion="after">
+                    <button string="LogConsultation" name="%(logconsultation_act)d" type="action" context="{'search_default_partner_id':active_id}"/>
+                    <button string="Reports" name="%(oph.reporting_action_id)d" type="action" context="{'default_partner_id': active_id, 'search_default_partner_id': active_id}"/>
+                    <button string="TODO List" name="%(todolist_action_id)d" type="action" context="{'search_default_partner_id':
+                        active_id}"/>
+                    <button string="LogBlocLine" name="%(logblocline_action_id)d" type="action" context="{'search_default_partner_id':
+                        active_id}"/>
+                </xpath>
+
+                <xpath expr="//page[@string='Sales &amp; Purchases']/group/group/field[@name='supplier']"
+                    position="after">
+                    <field name="colleague"/>
+                    <field name="trusted"/>
+                </xpath>
+
+                <page string="History" position="after">
+                    <page string="Relations">
+                        <field name="partner_ids" colspan="4" nolabel="1" context="{'form_view_ref':'oph.oph_view_partner_form','tree_view_ref':'oph.oph_view_partner_tree_colleague','colleague':True}"/>
+                    </page>
+                    <page string="Trusted">
+                            <field name="trusted_partner_ids" widget="many2many" context="{'trusted':True}">
+                                <tree string="Trusties">
+                                    <field name="fullname"/>
+                                    <field name="phone"/>
+                                    <field name="mobile"/>
+                                </tree> 
+                            </field>
+                    </page>
+                    <page string="Comment Secured" groups="oph.oph_group_id">
+                        <field name="comment_secure"/>
+                    </page>
+                </page>
+
+            </field>
+        </record>
+        <!-- END CUSTOM VIEW FORM FOR RES.PARTNER -->
+        
+        <!-- 
+        
+        CUSTOM TREE VIEW FOR CUSTOMERS 
+        <record model="ir.ui.view" id="oph_view_partner_tree">
+            <field name="name">oph.partner.tree.inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_tree"/>
+            <field name="arch" type="xml">
+                <field name="name" position="after">
+                    <field name="comment_secure" groups="oph.oph_group_id"/>
+                </field>
+            </field>
+        </record>
+        -->
+
+        <!-- CUSTOM KANBAN VIEW FOR RES.PARTNER -->
+        <!-- <record mode="ir.ui.view" id="oph_view_partner_kanban"> <field name="name">oph.partner.kanban.inherit</field>
+            <field name="model">res.partner</field> <field name="inherit_id" ref="base.res_partner_kanban_view"/>
+            <field name="arch" type="xml"> <field name="mobile" position="after">
+            <field name="age"/> </field> </field> </record> -->
+
+        <!-- MARCHE PAS CUSTOM SEARCH VIEW FOR RES.PARTNER -->
+
+        <record model="ir.ui.view" id="oph_res_partner_search">
+            <field name="name">oph.res.partner.search</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_res_partner_filter"/>
+            <field name="arch" type="xml">
+                <filter string="Customers" position="after">
+                    <filter string="Colleague" name='colleague' domain="[('colleague', '=', True)]" help="Partners
+                        that are colleague" />
+                    <filter string="Trusted" name="trusted" domain="[('trusted','=',True)]" help="Trusted by others patients"/>
+                </filter>
+            </field>
+        </record>
+        <!-- END CUSTOM SEARCH VIEW FOR RES.PARTNER -->
+
+        <!-- pour récupérer dans le context le partner_id lors d'un clic sur le bouton meeting
+            de la form view res.partner-->
+        <record model="ir.ui.view" id="res_partner_view_buttons">
+            <field name="name">res.partner.view.buttons</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="crm.res_partner_view_buttons" />
+            <field name="priority" eval="11"/>
+            <field name="arch" type="xml">
+                <button name="%(base_calendar.action_crm_meeting)d" position="attributes">
+                    <attribute name="context">
+                        {'search_default_partner_id': False, 'default_partner_id' : active_id, 'search_default_partner_ids':
+                            False, 'default_partner_ids' : [active_id]}
+                    </attribute>
+                </button>
+            </field>
+        </record>
+
+    </data>
+</openerp>

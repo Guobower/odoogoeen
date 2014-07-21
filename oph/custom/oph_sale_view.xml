@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!--FORM VIEW SALE ORDER-->
+        <record id="view_order_form_confirm" model="ir.ui.view">
+            <field name="name">sale.order.form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="partner_id" position="after">
+                        <field name="origin" invisible="1"/>
+                    </field>
+                    <xpath expr="//button[@string='Confirm Sale']" position="after">
+                        <button name="action_button_confirm_to_invoice" states="draft" string="Confirm Sale &amp; Create Invoice" type="object" groups="base.group_user"/>
+                    </xpath>
+                    <xpath expr="//group/field[@name='date_order']" position="after">
+                        <field name="date_acte"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+        
+        <!-- TREE VIEW SALE.ORDER -->
+        <record id="view_sale_order_tree" model="ir.ui.view">
+            <field name="name">sale.order.tree</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_quotation_tree"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="state" position="after">
+                        <field name="origin"/>
+                    </field>
+                </data>
+            </field>
+        </record>
+    
+
+        <!-- SEARCH VIEW SALE ORDER-->
+        <record model="ir.ui.view" id="oph_sale_order_search">
+            <field name="name">oph.sale.order.search</field>
+            <field name="inherit_id" ref="sale.view_sales_order_filter"/>
+            <field name="model">sale.order</field>
+            <field name="arch" type="xml">
+                <xpath expr="//search/filter[@icon='terp-mail-message-new']" position="before">
+                    <filter name="origin" string="OR" domain="[('origin','=','OR')]"/>
+                    <filter name="origin" string="Office" domain="[('origin','=','Office')]"/>
+                </xpath>        
+            </field>
+        </record>
+
+    </data>
+</openerp>
