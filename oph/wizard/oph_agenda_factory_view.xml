@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="agenda_factory_view" model="ir.ui.view">
+            <field name="name">Agenda Factory View</field>
+            <field name="model">agenda.factory</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="X_agenda_Factory">
+                    <field name="name"/>
+                    <field name="date" attrs="{'invisible':[('ampm','=',False)],'required':['|','|',('ampm','=','afternoon'),('ampm','=','morning'),('ampm','=','daylong')]}"/>
+                    <field name="start_dt" attrs="{'invisible': [('ampm','!=',False)]}"/>
+                    <field name="stop_dt" attrs="{'invisible': [('ampm','!=',False)]}"/>
+                    <field name="step"/>
+                    <field name="ampm" required="True"/>
+                    <field name="day_on" attrs="{'invisible': [('ampm','!=','daylong')]}"/>
+                    <field name="day_off" attrs="{'invisible': [('ampm','!=','daylong')]}"/>
+                    <field name="start_h" on_change="onchange_start(start_h)" attrs="{'invisible':[('ampm','=',False)]}"/>
+                    <field name="end_h" on_change="onchange_end(end_h)" attrs="{'invisible':[('ampm','=',False)]}"/>
+                    <field name="state"/>
+                    <button string="Cancel" special="cancel" icon="gtk-cancel"/>
+                    <button name="create_slot" string="create slots"  type="object" icon="gtk-ok"/>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_agenda_factory" model="ir.actions.act_window">
+            <field name="name">Agenda Factory Action</field>
+            <field name="res_model">agenda.factory</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem name="Agenda Factory" id="menu_agenda_factory" action="action_agenda_factory"
+            parent="mail.mail_my_stuff" sequence="14"/>
+    </data>
+</openerp>

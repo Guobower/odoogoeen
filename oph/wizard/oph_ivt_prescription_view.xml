@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+    <!--  IVT prescription Wizard -->
+
+        <record id="view_ivt_prescription_wizard" model="ir.ui.view">
+            <field name="name">Run IVT Prescription</field>
+            <field name="model">oph.ivt.prescription</field>
+            <!--<field name="type">form</field>-->
+            <field name="arch" type="xml">
+                <form string="IVT Prescription" version="7.0">
+                    <group>
+                        <field name="molecule"/>
+                        <field name="date"/>
+                        <field name="indication"/>
+                        <!--
+                        
+                        <field name="molecule"/>
+                        <field name="molecule1"/>
+                        -->
+                        <!-- others fields -->
+                     </group>
+                     <footer>
+                        <button name="print_ivt_prescription" string="Print IVT Prescription" class="oe_highlight" type="object"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+       <!-- ne permet pas de recuperer les active_ids car active_id n'est pas défini dans la vue view_ivt_prescription_wizard-->
+        <record id="action_oph_ivt_prescription" model="ir.actions.act_window">
+            <field name="name">Oph IVT Prescription</field>
+            <field name="res_model">oph.ivt.prescription</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_ivt_prescription_wizard"/>
+            <!--<field name="context">{'active_ids':active_id}</field>-->
+            <!--<field name="context">{'active_ids':[active_id]}</field>-->
+            <field name="target">new</field>
+        </record>
+
+<!-- Action qui va permettre d'afficher le bouton "Run Etat Factory" dans la tree view de account.invoice -->        
+<act_window name="Run IVT Prescription"
+        res_model="oph.ivt.prescription"
+        src_model="oph.bloc.agenda.line"
+        view_mode="form"
+        target="new"
+        key2="client_action_multi"
+        id="action_ivt_prescription"/>
+
+    </data>
+</openerp>

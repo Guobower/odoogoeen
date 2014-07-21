@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+
+        <record id="oph_group_id" model="res.groups">
+            <field name="name">Doctors</field>
+            <field name="comment">The group for the doctors</field>
+        </record>
+
+        <record id="sec_group_id" model="res.groups">
+            <field name="name">Secretary</field>
+            <field name="comment">The group for the secretaries</field>
+        </record>
+
+        <record id="OR_group_id" model="res.groups">
+            <field name="name">Operating Room Portal</field>
+            <field name="comment">The group for the operating room</field>
+        </record>
+
+    </data>
+</openerp>

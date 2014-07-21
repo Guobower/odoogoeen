@@ -1,0 +1,27 @@
+<openerp>
+    <data>
+        <record id="oph_crm_meeting_draft_view" model="ir.ui.view">
+            <field name="name">oph.crm.meeting.draft.form</field>
+            <field name="model">oph.crm.meeting.draft</field>
+            <field name="arch" type="xml">
+                <form string="Set To Draft Rendez Vous" version="7.0">
+                    <p class="oe_grey">
+                        Once set to draft crm.meetings it will enable Delete.
+                    </p>
+                    <footer>
+                        <button string="Draft" name="crm_meeting_draft" type="object" default_focus="1" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <act_window id="action_oph_crm_meeting_draft" 
+            multi="True"
+            key2="client_action_multi" name="Set To Draft"
+            res_model="oph.crm.meeting.draft" src_model="crm.meeting"
+            view_mode="form" target="new" view_type="form"/>
+
+    </data>
+</openerp>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!-- Ressource oph.formula.prescription wizard -->
+        <!-- Form View-->
+        <record id="view_formula_prescription_wizard_id" model="ir.ui.view">
+            <field name="name">Formula Prescription</field>
+            <field name="model">oph.formula.prescription</field>
+            <!--<field name="type">form</field>-->
+            <field name="arch" type="xml">
+                <form string="Formula Prescription" version="7.0">
+                    <group>
+                        <field name="name"/>
+                        <field name="date"/>
+                        <field name="template"/>
+                    </group>
+                    <footer>
+                        <button name="print_formula" string="Print Prescription" class="oe_highlight" type="object"/>
+                        
+                         or
+                         
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <!-- ACTION -->
+        <record id="action_oph_formula_prescription" model="ir.actions.act_window">
+            <field name="name">Oph Formula Prescription</field>
+            <field name="res_model">oph.formula.prescription</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_formula_prescription_wizard_id"/>
+            <!--<field name="context">{'active_ids':active_id}</field>-->
+            <!--<field name="context">{'active_ids':[active_id]}</field>-->
+            <field name="target">new</field>
+        </record>
+        <!-- Action qui va permettre d'afficher le bouton "Formula prescription" dans la form
+            view view de crm.meeting -->
+        <act_window name="Formula Prescription" res_model="oph.formula.prescription" src_model="crm.meeting"
+            view_mode="form" target="new" key2="client_action_multi" id="action_formula_prescription"/>
+    </data>
+</openerp>

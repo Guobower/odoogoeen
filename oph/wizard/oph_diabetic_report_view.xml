@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!-- Ressource oph.diabetic.report wizard -->
+        <!-- Form View-->
+        <record id="view_diabetic_report_id" model="ir.ui.view">
+            <field name="name">Diabetic Report</field>
+            <field name="model">oph.diabetic.report</field>
+            <!--<field name="type">form</field>-->
+            <field name="arch" type="xml">
+                <form string="Formula Prescription" version="7.0">
+                    <group>
+                        <field name="name"/>
+                        <field name="date"/>
+                        <field name="hba1c"/>
+                        <field name="receiver"/>
+                    </group>
+                    <footer>
+                        <button name="print_report" string="Print Diabetic Report" class="oe_highlight" type="object"/>
+                        
+                        or  
+                        
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <!-- ACTION -->
+        <record id="action_diabetic_report" model="ir.actions.act_window">
+            <field name="name">Oph Diabetic Report</field>
+            <field name="res_model">oph.diabetic.report</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_diabetic_report_id"/>
+            <!--<field name="context">{'active_ids':active_id}</field>-->
+            <!--<field name="context">{'active_ids':[active_id]}</field>-->
+            <field name="target">new</field>
+        </record>
+        <!-- Action qui va permettre d'afficher le bouton "Formula prescription" dans la form
+            view view de crm.meeting -->
+        <act_window name="Diabetic Report" res_model="oph.diabetic.report" src_model="crm.meeting"
+            view_mode="form" target="new" key2="client_action_multi" id="action_diabetic_report"/>
+    </data>
+</openerp>

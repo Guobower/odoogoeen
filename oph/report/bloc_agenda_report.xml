@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- -->
+<openerp>
+    <data noupdate="0">
+        <!-- noupdate pour ne pas écraser ce fichier par des modufications faites dans le
+            client-->
+
+        <!-- OR PLANNING -->
+        <record model="ir.actions.report.xml" id="agenda_bloc_report_id">
+            <!-- mandatory -->
+            <field name="name">Bloc Agenda Report</field>
+            <field name="type">ir.actions.report.xml</field>
+            <field name="model">oph.bloc.agenda</field>
+            <field name="report_name">Bloc.Agenda.Report</field>
+            <field name="report_type">aeroo</field>
+            <field name="auto">TRUE</field>
+            <!-- optionals -->
+            <field name="report_rml">oph/report/odt/oph_bloc_agenda/Agenda_Bloc_Report.odt</field>
+            <field name="parser_state">loc</field>
+            <field name="parser_loc">oph/report/parser.py</field>
+            <!-- parser state = default, loc, def-->
+            <field name="tml_source">file</field>
+            <!--  choix database, file, parser de template source-->
+            <field name="in_format">oo-odt</field>
+            <!-- choix de template Mime-type dans configuration-Technical-aero-report-Reports-->
+            <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
+            <field name="styles_mode">specified</field>
+            <field name="stylesheet_id" ref="stt_planningOR_id"/>
+            <!-- choix du format d'edition/impression -->
+        </record>
+        <!-- declaration du button -->
+        <record model="ir.values" id="value_agenda_bloc_report_id">
+            <field name="name">Bloc.Agenda.Report</field>
+            <!-- ATTENTION name == name="report_name" du rapport que je veux imprimer avec ce
+                bouton-->
+            <field name="key">action</field>
+            <field name="key2">client_print_multi</field>
+            <field name="model">oph.bloc.agenda</field>
+            <!-- ATTENTION name == name="model" du rapport que je veux imprimer avec ce bouton-->
+            <field name="object">TRUE</field>
+            <!-- c'est comme ça -->
+            <field name="value" eval="'ir.actions.report.xml,' + str(ref('oph.agenda_bloc_report_id'))"/>
+        </record>
+
+        <!-- CHECKLIST BLOC-->
+        <record model="ir.actions.report.xml" id="checklist_bloc_agenda_id">
+            <!-- mandatory -->
+            <field name="name">Check List Block Agenda</field>
+            <field name="type">ir.actions.report.xml</field>
+            <field name="model">oph.bloc.agenda</field>
+            <field name="report_name">Checklist.Bloc.Agenda</field>
+            <field name="report_type">aeroo</field>
+            <field name="auto">TRUE</field>
+            <!-- optionals -->
+            <field name="report_rml">oph/report/odt/oph_bloc_agenda/Check_List_Bloc.odt</field>
+            <field name="parser_state">loc</field>
+            <field name="parser_loc">oph/report/parser.py</field>
+            <!-- parser state = default, loc, def-->
+            <field name="tml_source">file</field>
+            <!--  choix database, file, parser de template source-->
+            <field name="in_format">oo-odt</field>
+            <!-- choix de template Mime-type dans configuration-Technical-aero-report-Reports-->
+            <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
+            <!-- choix du format d'edition/impression -->
+        </record>
+        <!-- declaration du button -->
+        <record model="ir.values" id="value_checklist_bloc_agenda_id">
+            <field name="name">Checklist.Bloc.Agenda</field>
+            <!-- ATTENTION name == name="report_name" du rapport que je veux imprimer avec ce
+                bouton-->
+            <field name="key">action</field>
+            <field name="key2">client_print_multi</field>
+            <field name="model">oph.bloc.agenda</field>
+            <!-- ATTENTION name == name="model" du rapport que je veux imprimer avec ce bouton-->
+            <field name="object">TRUE</field>
+            <!-- c'est comme ça -->
+            <field name="value" eval="'ir.actions.report.xml,' + str(ref('oph.checklist_bloc_agenda_id'))"/>
+        </record>
+        
+        <!-- FICHE DE LIASON BDC -->
+        <record model="ir.actions.report.xml" id="fiche_liaison_bdc_id">
+            <field name="name">Fiche Liaison BDC</field>
+            <field name="type">ir.actions.report.xml</field>
+            <field name="model">oph.bloc.agenda.line</field>
+            <field name="report_name">Fiche.Liaison.BDC</field>
+            <field name="report_type">aeroo</field>
+            <field name="auto">True</field>
+            <field name="report_rml">oph/report/odt/oph_bloc_agenda/Fiche_Liaison_BDC.odt</field>
+            <field name="parser_state">loc</field>
+            <field name="parser_loc">oph/report/parser.py</field>
+            <field name="tml_source">file</field>
+            <field name="in_format">oo-odt</field>
+            <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
+            <field name="styles_mode">specified</field>
+            <field name="stylesheet_id" ref="stt_liaisonBDC_id"/>
+            <field name="attachment">'LiaisonBDC'+'_'+object.partner_id.fullname+'_'+object.bloc_agenda_id.name+'.odt'</field>
+        </record>
+        <!--button-->
+        <record model="ir.values" id="value_fiche_liaison_bdc_id">
+            <field name="name">Fiche.Liaison.BDC</field>
+            <field name="key">action</field>
+            <field name="key2">client_print_multi</field>
+            <field name="model">oph.bloc.agenda.line</field>
+            <field name="object">TRUE</field>
+            <field name="value" eval="'ir.actions.report.xml,' + str(ref('oph.fiche_liaison_bdc_id'))"/>
+        </record>
+
+        <!-- FICHE DE LIASON PO IMMEDIAT -->
+         <record model="ir.actions.report.xml" id="fiche_liaison_po_id">
+            <field name="name">Fiche Liaison PO</field>
+            <field name="type">ir.actions.report.xml</field>
+            <field name="model">oph.bloc.agenda.line</field>
+            <field name="report_name">Fiche.Liaison.PO</field>
+            <field name="report_type">aeroo</field>
+            <field name="auto">True</field>
+            <field name="report_rml">oph/report/odt/oph_bloc_agenda/Fiche_Liaison_PO.odt</field>
+            <field name="parser_state">loc</field>
+            <field name="parser_loc">oph/report/parser.py</field>
+            <field name="tml_source">file</field>
+            <field name="in_format">oo-odt</field>
+            <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
+            <!--
+            <field name="styles_mode">specified</field>
+            <field name="stylesheet_id" ref="stt_liaisonBDC_id"/>
+            -->
+            <field name="attachment">'LiaisonPO'+'_'+object.partner_id.fullname+'_'+object.bloc_agenda_id.name+'.odt'</field>
+        </record>
+        <!--button-->
+        <record model="ir.values" id="value_fiche_liaison_po_id">
+            <field name="name">Fiche.Liaison.PO</field>
+            <field name="key">action</field>
+            <field name="key2">client_print_multi</field>
+            <field name="model">oph.bloc.agenda.line</field>
+            <field name="object">TRUE</field>
+            <field name="value" eval="'ir.actions.report.xml,' + str(ref('oph.fiche_liaison_po_id'))"/>
+        </record>
+        
+        <!-- ORDO OR -->
+         <record model="ir.actions.report.xml" id="prescription_or_id">
+            <field name="name">Precription OR</field>
+            <field name="type">ir.actions.report.xml</field>
+            <field name="model">oph.bloc.agenda.line</field>
+            <field name="report_name">Precription.OR</field>
+            <field name="report_type">aeroo</field>
+            <field name="auto">True</field>
+            <field name="report_rml">oph/report/odt/oph_bloc_agenda/Prescription_OR.odt</field>
+            <field name="parser_state">loc</field>
+            <field name="parser_loc">oph/report/parser.py</field>
+            <field name="tml_source">file</field>
+            <field name="in_format">oo-odt</field>
+            <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
+            <field name="styles_mode">specified</field>
+            <field name="stylesheet_id" ref="stt_ordo_id"/>
+            <field name="attachment">'PresOR'+'_'+object.partner_id.fullname+'_'+object.bloc_agenda_id.name+'.odt'</field>
+        </record>
+        <!--button-->
+        <record model="ir.values" id="value_prescription_or_id">
+            <field name="name">Precription.OR</field>
+            <field name="key">action</field>
+            <field name="key2">client_print_multi</field>
+            <field name="model">oph.bloc.agenda.line</field>
+            <field name="object">TRUE</field>
+            <field name="value" eval="'ir.actions.report.xml,' + str(ref('oph.prescription_or_id'))"/>
+        </record>
+        <!-- END ORDO OR -->
+ 
+        <!--  CARDIO REPORTING -->
+        <record model="ir.actions.report.xml" id="cardio_report_id">
+            <field name="name">Cardio Reporting</field>
+            <field name="type">ir.actions.report.xml</field>
+            <field name="model">oph.bloc.agenda.line</field>
+            <field name="report_name">cardio.reporting</field>
+            <field name="report_type">aeroo</field>
+            <field name="auto">TRUE</field>
+            <field name="report_rml">oph/report/odt/Cardio_Reporting.odt</field>
+            <field name="parser_state">loc</field>
+            <field name="parser_loc">oph/report/parser.py</field>
+            <field name="tml_source">file</field>
+            <!--  choix database, file, parser de template source-->
+            <field name="in_format">oo-odt</field>
+            <!-- choix de template Mime-type dans configuration-Technical-aero-report-Reports-->
+            <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
+            <field name="styles_mode">specified</field>
+            <field name="stylesheet_id" ref="stt_courrier_id"/>
+        </record>
+        <!-- button -->
+        <record model="ir.values" id="value_cardio_report_id">
+            <field name="name">cardio.reporting</field>
+            <field name="key">action</field>
+            <field name="key2">client_print_multi</field>
+            <field name="model">oph.bloc.agenda.line</field>
+            <field name="object">TRUE</field>
+            <field name="value" eval="'ir.actions.report.xml,' + str(ref('oph.cardio_report_id'))"/>
+        </record>
+        <!--END CARDIO REPORTING-->
+        
+        <!-- CR HOSPITALISATION -->
+        <record model="ir.actions.report.xml" id="hospit_report_id">
+            <field name="name">Hospit Reporting</field>
+            <field name="type">ir.actions.report.xml</field>
+            <field name="model">oph.bloc.agenda.line</field>
+            <field name="report_name">hospit.reporting</field>
+            <field name="report_type">aeroo</field>
+            <field name="auto">TRUE</field>
+            <field name="report_rml">oph/report/odt/oph_bloc_agenda/CR_hospit.odt</field>
+            <field name="parser_state">loc</field>
+            <field name="parser_loc">oph/report/parser.py</field>
+            <field name="tml_source">file</field>
+            <!--  choix database, file, parser de template source-->
+            <field name="in_format">oo-odt</field>
+            <!-- choix de template Mime-type dans configuration-Technical-aero-report-Reports-->
+            <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
+            <field name="attachment">'CR_Hospit'+'_'+object.partner_id.fullname+'_'+object.bloc_agenda_id.name+'.odt'</field>
+        </record>
+            <!-- button -->
+        <record model="ir.values" id="value_hospit_report_id">
+            <field name="name">hospit.reporting</field>
+            <field name="key">action</field>
+            <field name="key2">client_print_multi</field>
+            <field name="model">oph.bloc.agenda.line</field>
+            <field name="object">TRUE</field>
+            <field name="value" eval="'ir.actions.report.xml,' + str(ref('oph.hospit_report_id'))"/>
+        </record>
+        <!-- END CR HOSPITALISATION -->
+        
+    </data>
+</openerp>
+
+
+
+<!-- -->
