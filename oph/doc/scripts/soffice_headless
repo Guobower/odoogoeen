@@ -1,0 +1,60 @@
+#!/bin/bash
+
+### BEGIN INIT INFOS
+# openoffice.org headless server script
+#
+# chkconfig: 2345 80 30
+# description: headless openoffice server script
+# processname: openoffice
+#
+# Author: Vic Vijayakumar
+# Modified by Federico Ch. Tomasczik
+# Modified by Laurent FRANCOIS 
+#
+# $ sudo cp soffice_headless.sh /etc/init.d
+# sudo chmod 755 /etc/init.d/soffice_headless.sh
+# sudo chown root: /etc/init.d/soffice_headless.sh
+# $ sudo chmod 0755 /etc/init.d/soffice_headless.sh
+# $ sudo update-rc.d soffice_headless.sh defaults
+# $ sudo /etc/init.d/soffice_headless.sh start
+# Go to Settings->Customization->Aeroo Reports->Configure OpenOffice.org connection. Click Connect. It should display that connection was successfull and PDF convertion is working.
+# ou en ligne de commande telnet loclahost 8100 
+### END INIT INFOS
+
+PATH=/bin:/sbin:/usr/bin
+
+# Specify path to executable
+OOo_HOME=/usr/bin
+SOFFICE_PATH=$OOo_HOME/soffice
+
+# pidfile
+PIDFILE=/var/run/openoffice-server.pid
+
+set -e
+case "${1}" in
+		start)
+				if [ -f $PIDFILE ]; then
+				echo “soffice headless server has already started.”
+				sleep 5
+				exit
+				fi
+echo “Starting LibreOffice headless server”
+$SOFFICE_PATH --nologo --nofirststartwizard --headless --norestore --invisible "--accept=socket,host=localhost,port=8100,tcpNoDelay=1;urp;" & > /dev/null 2>&1
+touch $PIDFILE
+;;
+		stop)
+			if [ -f $PIDFILE ]; then
+			echo “Stopping LibreOffice headless server.”	
+			killall -9 soffice && killall -9 soffice.bin
+			rm -f $PIDFILE
+			exit
+			fi
+			echo “LibreOffice headless server is not running.”
+			exit
+			;;
+		*)
+			echo “Usage: $0 {start|stop}”
+			exit 1
+esac
+
+exit 0

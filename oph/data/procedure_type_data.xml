@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!-- PROCEDURE TYPE -->
+
+        <record model="oph.procedure.type" id="procedure_pkeicp">
+            <field name="name">Phakoémulsification et implantation de chambre postérieure</field>
+            <field name="code">PKE+ICP</field>
+            <field name="dilatation">yes</field>
+            <field name="iol_status" eval="True"/>
+            <field name="duration">45</field>
+            <field name="comment">un commentaire</field>
+        </record>
+
+        <record model="oph.procedure.type" id="procedure_impsec">
+            <field name="name">Implantation secondaire</field>
+            <field name="code">IMPSEC</field>
+            <field name="dilatation">yes</field>
+            <field name="iol_status" eval="True"/>
+            <field name="duration">45</field>
+            <field name="comment">un commentaire</field>
+        </record>
+
+        <record model="oph.procedure.type" id="procedure_ivt">
+            <field name="name">Injection intravitréenne</field>
+            <field name="code">IVT</field>
+            <field name="dilatation">no</field>
+            <field name="iol_status" eval="False"/>
+            <field name="duration">15</field>
+            <field name="comment">un commentaire</field>
+        </record>
+
+        <record model="oph.procedure.type" id="procedure_v3vop">
+            <field name="name">V3V 25G à visée optique</field>
+            <field name="code">V3V25G</field>
+            <field name="dilatation">yes</field>
+            <field name="iol_status" eval="False"/>
+            <field name="duration">90</field>
+            <field name="comment">Pack Total Plus 25G/BIOM</field>
+        </record>
+
+        <record model="oph.procedure.type" id="procedure_st">
+            <field name="name">Injection sous ténonienne</field>
+            <field name="code">ST</field>
+            <field name="dilatation">no</field>
+            <field name="iol_status" eval="False"/>
+            <field name="duration">15</field>
+            <field name="comment">Pas de commentaire</field>
+        </record>
+
+        <record model="oph.procedure.type" id="procedure_v3v">
+            <field name="name">V3V+EL+GAZ ou HS</field>
+            <field name="code">V3VELGAZHS</field>
+            <field name="dilatation">yes</field>
+            <field name="iol_status" eval="False"/>
+            <field name="duration">120</field>
+            <field name="comment">Pack Total Plus / BIOM</field>
+        </record>
+
+        <record model="oph.procedure.type" id="procedure_cryoapp">
+            <field name="name">Cryoapplication</field>
+            <field name="code">CRYOAP</field>
+            <field name="dilatation">yes</field>
+            <field name="iol_status" eval="False"/>
+            <field name="duration">90</field>
+            <field name="comment">Cryode</field>
+        </record>
+
+        <record model="oph.procedure.type" id="procedure_cryoind">
+            <field name="name">Cryo-indentation</field>
+            <field name="code">CRYOIND</field>
+            <field name="dilatation">yes</field>
+            <field name="iol_status" eval="False"/>
+            <field name="duration">90</field>
+            <field name="comment">Loupe Volk Superfield décontamination et lampe à fente</field>
+        </record>
+        
+        <record model="oph.procedure.type" id="procedure_tm">
+            <field name="name">V3V + PM + GAZ</field>
+            <field name="code">TM</field>
+            <field name="dilatation">yes</field>
+            <field name="iol_status" eval="False"/>
+            <field name="duration">90</field>
+            <field name="comment">Pack Total Plus 25G/BIOM + Infracyanine</field>
+        </record>
+        
+        <record model="oph.procedure.type" id="procedure_ablahs">
+            <field name="name">V3V + PM + Ablation huile de silicone</field>
+            <field name="code">ABLAHS</field>
+            <field name="dilatation">yes</field>
+            <field name="iol_status" eval="False"/>
+            <field name="duration">90</field>
+            <field name="comment">Pack Total Plus 25G/BIOM</field>
+        </record>
+        
+        <record model="oph.procedure.type" id="procedure_ablahs">
+            <field name="name">V3V + CERCLAGE + EL + HS ou GAZ</field>
+            <field name="code">V3VCERC</field>
+            <field name="dilatation">yes</field>
+            <field name="iol_status" eval="False"/>
+            <field name="duration">90</field>
+            <field name="comment">Pack Total Plus 23G/BIOM</field>
+        </record>
+        
+        <record model="oph.procedure.type" id="procedure_cycloaffai">
+            <field name="name">CYCLO CRYO AFFAIBLISSEMENT</field>
+            <field name="code">CYCLOAFF</field>
+            <field name="dilatation">no</field>
+            <field name="iol_status" eval="False"/>
+            <field name="duration">60</field>
+            <field name="comment">Boite rétine et cryode</field>
+        </record>
+    </data>
+</openerp>

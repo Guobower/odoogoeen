@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!-- OPH AGENDA -->
+
+        <record model="oph.measurement.type" id="type_tono">
+            <field name="code">tono</field>
+            <field name="name">Tonometry</field>
+        </record>
+
+        <record model="oph.measurement.type" id="type_ref">
+            <field name="code">ref</field>
+            <field name="name">Refraction</field>
+        </record>
+
+        <record model="oph.measurement.type" id="type_sle">
+            <field name="code">sle</field>
+            <field name="name">Slit Lamp Examination</field>
+        </record>
+
+        <record model="oph.measurement.type" id="type_ker">
+            <field name="code">ker</field>
+            <field name="name">Keratometry</field>
+        </record>
+
+        <record model="oph.measurement.type" id="type_va">
+            <field name="code">va</field>
+            <field name="name">Visual Acuity</field>
+        </record>
+
+        <record model="oph.measurement.type" id="type_conc">
+            <field name="code">conc</field>
+            <field name="name">Conclusion</field>
+        </record>
+        
+        <record model="oph.measurement.type" id="type_misc">
+            <field name="code">misc</field>
+            <field name="name">Miscellaneous</field>
+        </record>
+
+        <!-- ressource : oph.todolist.tag -->
+        <record model="oph.todolist.tag" id="tag0">
+            <field name="name">Low</field>
+        </record>
+        <record model="oph.todolist.tag" id="tag1">
+            <field name="name">Normal</field>
+            <field name="default">True</field>
+        </record>
+        <record model="oph.todolist.tag" id="tag2">
+            <field name="name">High</field>
+        </record>
+    </data>
+</openerp>

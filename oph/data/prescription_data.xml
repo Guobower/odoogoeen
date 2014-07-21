@@ -1,0 +1,1390 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="0">
+
+        <!-- Resource: oph.inn-->
+        <record id="inn0" model="oph.inn">
+            <field name="name">timolol</field>
+            <field name="ods_needed">True</field>
+        </record>
+        <record id="tim0" model="oph.brandname">
+            <field name="brandname_id" ref="inn0"/>
+            <field name="name">TIMOLOL SDZ 0,10% COLLYRE FL 5ML</field>
+            <field name="ods_needed">True</field>
+        </record>
+        <record id="tim1" model="oph.brandname">
+            <field name="brandname_id" ref="inn0"/>
+            <field name="name">TIMOLOL ALC 0,50% COLLYRE FL 5ML</field>
+            <field name="ods_needed">True</field>
+        </record>
+        <record id="tim2" model="oph.brandname">
+            <field name="brandname_id" ref="inn0"/>
+            <field name="name">TIMOLOL SDZ 0,25% COLLYRE FL 5ML</field>
+            <field name="ods_needed">True</field>
+        </record>
+        <record id="timop0" model="oph.brandname">
+            <field name="brandname_id" ref="inn0"/>
+            <field name="name">TIMOPTOL 0,25% COLLYRE FL 3ML</field>
+            <field name="ods_needed">True</field>
+        </record>
+        <record id="timop1" model="oph.brandname">
+            <field name="brandname_id" ref="inn0"/>
+            <field name="name">TIMOPTOL 0,50% COLLYRE FL 3ML</field>
+            <field name="ods_needed">True</field>
+        </record>
+        <record id="timop2" model="oph.brandname">
+            <field name="brandname_id" ref="inn0"/>
+            <field name="name">TIMOPTOL LP 0,25% COLLYRE FL 2,5ML</field>
+            <field name="ods_needed">True</field>
+        </record>
+        <record id="timop3" model="oph.brandname">
+            <field name="brandname_id" ref="inn0"/>
+            <field name="name">TIMOPTOL LP 0,50% COLLYRE FL 2,5ML</field>
+            <field name="ods_needed">True</field>
+        </record>
+
+        <record id="inn1" model="oph.inn">
+            <field name="name">Carmelose</field>
+        </record>
+        <record id="cell0" model="oph.brandname">
+            <field name="brandname_id" ref="inn1"/>
+            <field name="name">CELLUVISC 1% COLLYRE UNIDOSE 0,4ML</field>
+            <field name="ods_needed">True</field>
+        </record>
+
+        <record id="div0" model="oph.brandname">
+            <field name="name">SOLUTE ISOTONIQUE</field>
+        </record>
+
+        <record id="div1" model="oph.brandname">
+            <field name="name">COMPRESSES NON STÉRILES NON TISSÉES 7.5 x 7.5</field>
+        </record>
+
+        <record id="inn2" model="oph.inn">
+            <field name="name">Dexaméthasone + Tobramycine</field>
+        </record>
+        <record id="tob0" model="oph.brandname">
+            <field name="brandname_id" ref="inn2"/>
+            <field name="name">TOBRADEX COLLYRE FL 5ML</field>
+            <field name="ods_needed">True</field>
+        </record>
+
+        <record id="inn3" model="oph.inn">
+            <field name="name">ketorolac trometamol</field>
+        </record>
+        <record id="acu0" model="oph.brandname">
+            <field name="brandname_id" ref="inn3"/>
+            <field name="name">ACULAR 0,5% COLLYRE FL 5ML</field>
+            <field name="ods_needed">True</field>
+        </record>
+        <record id="inn4" model="oph.inn">
+            <field name="name">loratadine</field>
+        </record>
+        <record id="cla0" model="oph.brandname">
+            <field name="brandname_id" ref="inn4"/>
+            <field name="name">CLARITYNE 10MG CPR</field>
+        </record>
+        <record id="inn5" model="oph.inn">
+            <field name="name">HYDROXYZINE DICHLORHYDRATE</field>
+        </record>
+        <record id="ata0" model="oph.brandname">
+            <field name="brandname_id" ref="inn4"/>
+            <field name="name">ATARAX 25MG CPR</field>
+        </record>
+        <record id="inn6" model="oph.inn">
+            <field name="name">VALACICLOVIR CHLORHYDRATE</field>
+        </record>
+        <record id="val0" model="oph.brandname">
+            <field name="brandname_id" ref="inn6"/>
+            <field name="name">VALACICLOVIR 500MG CPR</field>
+        </record>
+
+        <record id="inn4" model="oph.inn">
+            <field name="name">tobramycine</field>
+        </record>
+        <record id="tob1" model="oph.brandname">
+            <field name="brandname_id" ref="inn4"/>
+            <field name="name">TOBREX 0,3% COLLYRE FL 5ML</field>
+            <field name="ods_needed">True</field>
+        </record>
+        <record id="tob2" model="oph.brandname">
+            <field name="brandname_id" ref="inn4"/>
+            <field name="name">TOBREX 0,3% POMMADE OPH TB 5G</field>
+            <field name="ods_needed">True</field>
+        </record>
+
+        <record id="inn5" model="oph.inn">
+            <field name="name">ciprofloxacine</field>
+        </record>
+        <record id="cil0" model="oph.brandname">
+            <field name="brandname_id" ref="inn5"/>
+            <field name="name">CILOXAN 0,3% POMMADE OPH TB 3,5G</field>
+            <field name="ods_needed">True</field>
+        </record>
+        <record id="cil1" model="oph.brandname">
+            <field name="brandname_id" ref="inn5"/>
+            <field name="name">CILOXAN 0,3% COLLYRE FL 5ML</field>
+            <field name="ods_needed">True</field>
+        </record>
+
+        <record id="inn6" model="oph.inn">
+            <field name="name">dexamethasone+ oxytetracycline</field>
+        </record>
+        <record id="ster0" model="oph.brandname">
+            <field name="brandname_id" ref="inn6"/>
+            <field name="name">STERDEX POMMADE OPH UNIDOSE</field>
+            <field name="ods_needed">True</field>
+        </record>
+
+        <record id="inn7" model="oph.inn">
+            <field name="name">pilocarpine</field>
+        </record>
+        <record id="pil0" model="oph.brandname">
+            <field name="brandname_id" ref="inn7"/>
+            <field name="name">PILOCARPINE FAURE 2% COLLYRE UNIDOSE</field>
+            <field name="ods_needed">True</field>
+        </record>
+        <record id="pil1" model="oph.brandname">
+            <field name="brandname_id" ref="inn7"/>
+            <field name="name">PILOCARPINE FAURE 1% COLLYRE UNIDOSE</field>
+            <field name="ods_needed">True</field>
+        </record>
+        <record id="pil2" model="oph.brandname">
+            <field name="brandname_id" ref="inn7"/>
+            <field name="name">ISOPTO PILOCARPINE 2% COLLYRE 10ML</field>
+            <field name="ods_needed">True</field>
+        </record>
+        <record id="pil3" model="oph.brandname">
+            <field name="brandname_id" ref="inn7"/>
+            <field name="name">ISOPTO PILOCARPINE 1% COLLYRE 10ML</field>
+            <field name="ods_needed">True</field>
+        </record>
+        <record id="pil4" model="oph.brandname">
+            <field name="brandname_id" ref="inn7"/>
+            <field name="name">ISOPTO PILOCARPINE 0,5% COLLYRE 10ML</field>
+            <field name="ods_needed">True</field>
+        </record>
+
+        <record id="inn8" model="oph.inn">
+            <field name="name">latanoprost + timolol</field>
+        </record>
+        <record id="xal0" model="oph.brandname">
+            <field name="brandname_id" ref="inn8"/>
+            <field name="name">XALACOM COLLYRE FL 2,5ML</field>
+            <field name="ods_needed">True</field>
+        </record>
+
+        <record id="inn9" model="oph.inn">
+            <field name="name">acétozolamide</field>
+        </record>
+        <record id="diam0" model="oph.brandname">
+            <field name="brandname_id" ref="inn8"/>
+            <field name="name">DIAMOX 250MG CPR</field>
+        </record>
+        <record id="diam1" model="oph.brandname">
+            <field name="brandname_id" ref="inn9"/>
+            <field name="name">DIAMOX 500MG PDR INJ</field>
+        </record>
+
+        <record id="inn10" model="oph.inn">
+            <field name="name">POTASSIUM CHLORURE</field>
+        </record>
+        <record id="difk0" model="oph.brandname">
+            <field name="brandname_id" ref="inn10"/>
+            <field name="name">DIFFU-K 600MG GELULE</field>
+        </record>
+        <record id="inn11" model="oph.inn">
+            <field name="name">brinzolamide</field>
+        </record>
+        <record id="brin0" model="oph.brandname">
+            <field name="brandname_id" ref="inn11"/>
+            <field name="name">AZOPT 10MG/ML COLLYRE FL 5ML</field>
+            <field name="ods_needed">True</field>
+        </record>
+        <record id="inn12" model="oph.inn">
+            <field name="name">ranibizumab</field>
+            <field name="ivt">True</field>
+        </record>
+        <record id="ranib0" model="oph.brandname">
+            <field name="brandname_id" ref="inn12"/>
+            <field name="name">LUCENTIS 10MG/ML SOL INJ FL 0,23ML</field>
+            <field name="ivt">True</field>
+        </record>
+        <record id="comp0" model="oph.brandname">
+            <field name="name">COMPRESSES NON TISSÉES 7.5x7.5</field>
+        </record>
+        <record id="spara0" model="oph.brandname">
+            <field name="name">URGOPORE 1.25cm</field>
+        </record>
+        <record id="soliso0" model="oph.brandname">
+            <field name="name">SOLUTÉ ISOTONIQUE UNIDOSE</field>
+        </record>
+        <record id="inn13" model="oph.inn">
+            <field name="name">Tropicamide</field>
+        </record>
+        <record id="myd0" model="oph.brandname">
+            <field name="brandname_id" ref="inn13"/>
+            <field name="name">MYDRIATICUM 0,5% COLLYRE FL 10ML</field>
+            <field name="ods_needed">True</field>
+        </record>
+        <record id="myd1" model="oph.brandname">
+            <field name="brandname_id" ref="inn13"/>
+            <field name="name">MYDRIATICUM 2MG/0,4ML COLLYRE UNIDOS</field>
+            <field name="ods_needed">True</field>
+        </record>
+        <record id="inn14" model="oph.inn">
+            <field name="name">Retinol</field>
+        </record>
+        <record id="vita0" model="oph.brandname">
+            <field name="brandname_id" ref="inn14"/>
+            <field name="name">VITAMINE A POMMADE OPH</field>
+            <field name="ods_needed">True</field>
+        </record>
+        
+        <record id="inn15" model="oph.inn">
+            <field name="name">latanoprost</field>
+        </record>
+        <record id="xala0" model="oph.brandname">
+            <field name="brandname_id" ref="inn15"/>
+            <field name="name">XALATAN 0,005% COLLYRE FL 2,5ML</field>
+            <field name="ods_needed">True</field>
+        </record>
+        
+        <record id="inn16" model="oph.inn">
+            <field name="name">ciprofloxacine</field>
+        </record>
+        <record id="cil0" model="oph.brandname">
+            <field name="brandname_id" ref="inn16"/>
+            <field name="name">CILOXAN 0,3% COLLYRE FL 5ML</field>
+            <field name="ods_needed">True</field>
+        </record>
+        <record id="cil1" model="oph.brandname">
+            <field name="brandname_id" ref="inn16"/>
+            <field name="name">CILOXAN 0,3% POMMADE OPH TB 3,5G</field>
+            <field name="ods_needed">True</field>
+        </record>
+        <record id="inn16" model="oph.inn">
+            <field name="name">brinzolamide + timolol</field>
+        </record>
+        <record id="aza0" model="oph.brandname">
+            <field name="brandname_id" ref="inn16"/>
+            <field name="name">AZARGA COLLYRE FL 5ML</field>
+            <field name="ods_needed">True</field>
+        </record>
+        <record id="inn17" model="oph.inn">
+            <field name="name">atropine</field>
+        </record>
+        <record id="at0" model="oph.brandname">
+            <field name="brandname_id" ref="inn17"/>
+            <field name="name">ATROPINE ALC 0,3% COLLYRE FL 10ML</field>
+            <field name="ods_needed">True</field>
+        </record>
+        <record id="at1" model="oph.brandname">
+            <field name="brandname_id" ref="inn17"/>
+            <field name="name">ATROPINE ALC 0,5% COLLYRE FL 10ML</field>
+            <field name="ods_needed">True</field>
+        </record>
+        <record id="at2" model="oph.brandname">
+            <field name="brandname_id" ref="inn17"/>
+            <field name="name">ATROPINE ALC 1% COLLYRE FL 10ML</field>
+            <field name="ods_needed">True</field>
+        </record>
+        <record id="inn18" model="oph.inn">
+            <field name="name">travoprost</field>
+        </record>
+        <record id="trava0" model="oph.brandname">
+            <field name="brandname_id" ref="inn18"/>
+            <field name="name">TRAVATAN 0,004% COLLYRE FL 2,5ML</field>
+            <field name="ods_needed">True</field>
+        </record>
+        <record id="inn19" model="oph.inn">
+            <field name="name">hypromellose</field>
+        </record>
+        <record id="arte0" model="oph.brandname">
+            <field name="brandname_id" ref="inn19"/>
+            <field name="name">ARTELAC 1,6MG/0,5ML COLLYRE UNIDOSE</field>
+            <field name="ods_needed">True</field>
+        </record>
+        <record id="inn20" model="oph.inn">
+            <field name="name">carbomere 980 NF</field>
+        </record>
+        <record id="lacri0" model="oph.brandname">
+            <field name="brandname_id" ref="inn18"/>
+            <field name="name">LACRIFLUID 0,13% COLLYRE UNIDOSE</field>
+            <field name="ods_needed">True</field>
+        </record>
+        <record id="lacri1" model="oph.brandname">
+            <field name="brandname_id" ref="inn20"/>
+            <field name="name">LACRIFLUID 0,13% COLLYRE FL 10G</field>
+            <field name="ods_needed">True</field>
+        </record>
+        <record id="inn21" model="oph.inn">
+            <field name="name">dorzolamide + timolol</field>
+        </record>
+        <record id="coso0" model="oph.brandname">
+            <field name="brandname_id" ref="inn21"/>
+            <field name="name">COSOPT COLLYRE FL 5ML</field>
+            <field name="ods_needed">True</field>
+        </record>
+        <record id="coso1" model="oph.brandname">
+            <field name="brandname_id" ref="inn21"/>
+            <field name="name">COSOPT COLLYRE UNIDOSE 0,2ML</field>
+           <field name="ods_needed">True</field> 
+        </record>
+        <record id="inn22" model="oph.inn">
+            <field name="name">dexamethasone</field>
+        </record>
+        <record id="dexa0" model="oph.brandname">
+            <field name="brandname_id" ref="inn22"/>
+            <field name="name">DEXAFREE 1MG/ML COLLYRE 0,4ML</field>
+            <field name="ods_needed">True</field>
+        </record>
+        <record id="inn23" model="oph.inn">
+            <field name="name">cyclopentolate</field>
+        </record>
+        <record id="inn24" model="oph.inn">
+            <field name="name">aflibercept</field>
+            <field name="ivt">True</field>
+        </record>
+        <record id="eylea0" model="oph.brandname">
+            <field name="brandname_id" ref="inn24"/>
+            <field name="name">EYLEA 40MG/ML SOL INJ FL 0,1ML</field>
+            <field name="ivt">True</field>
+        </record>
+        <record id="skia0" model="oph.brandname">
+            <field name="brandname_id" ref="inn23"/>
+            <field name="name">SKIACOL 0,5% COLLYRE UNIDOSE 0,5ML</field>
+            <field name="ods_needed">True</field>
+        </record>
+
+        <!-- Pathology -->
+        <!-- Conjonctivite -->
+        <record id="path0" model="oph.pathology">
+            <field name="name">Conjonctivite</field>
+        </record>
+        <record id="path0_line0" model="oph.medication.line.template">
+            <field name="pathology_id" ref="path0"/>
+            <field name="name">ID0</field>
+            <field name="brandname_id" ref="cell0"/>
+            <field name="poso">1 gtte 6 fois par jour</field>
+            <field name="duration">pour 3 semaines</field>
+        </record>
+        <record id="path0_line1" model="oph.medication.line.template">
+            <field name="pathology_id" ref="path0"/>
+            <field name="name">ID1</field>
+            <field name="brandname_id" ref="div0"/>
+            <field name="poso">2 fois par jour</field>
+            <field name="duration">pour 15 jours</field>
+        </record>
+
+        <!-- Post op PKE -->
+        <record id="path1" model="oph.pathology">
+            <field name="name">Post OP cataracte</field>
+        </record>
+        <record id="path1_line0" model="oph.medication.line.template">
+            <field name="pathology_id" ref="path1"/>
+            <field name="name">ID0</field>
+            <field name="brandname_id" ref="myd0"/>
+            <field name="poso">1 gtte matin et soir</field>
+            <field name="duration">pour 7 jours</field>
+        </record>
+        <record id="path1_line1" model="oph.medication.line.template">
+            <field name="pathology_id" ref="path1"/>
+            <field name="name">ID2</field>
+            <field name="brandname_id" ref="tob0"/>
+            <field name="poso">1 gtte 3 fois par jour</field>
+            <field name="duration">pour 1 mois</field>
+        </record>
+        <record id="path1_line2" model="oph.medication.line.template">
+            <field name="pathology_id" ref="path1"/>
+            <field name="name">ID3</field>
+            <field name="brandname_id" ref="acu0"/>
+            <field name="poso">1 gtte 4 fois par jour</field>
+            <field name="duration">pour 1 mois</field>
+        </record>
+        <record id="path1_line3" model="oph.medication.line.template">
+            <field name="pathology_id" ref="path1"/>
+            <field name="name">ID4</field>
+            <field name="brandname_id" ref="comp0"/>
+            <field name="poso">50U</field>
+        </record>
+        <record id="path1_line4" model="oph.medication.line.template">
+            <field name="pathology_id" ref="path1"/>
+            <field name="name">ID4</field>
+            <field name="brandname_id" ref="spara0"/>
+            <field name="poso">1 rouleau</field>
+        </record>
+        <record id="path1_line5" model="oph.medication.line.template">
+            <field name="pathology_id" ref="path1"/>
+            <field name="name">ID4</field>
+            <field name="brandname_id" ref="soliso0"/>
+            <field name="poso">Lavage oculaire, matin et soir si sécrétions.</field>
+        </record>
+
+        <!-- Préparation antiallergique -->
+        <record id="path2" model="oph.pathology">
+            <field name="name">Préparation anti allergique</field>
+        </record>
+        <record id="path2_line0" model="oph.medication.line.template">
+            <field name="pathology_id" ref="path2"/>
+            <field name="name">ID4</field>
+            <field name="brandname_id" ref="cla0"/>
+            <field name="poso">1cp par jour</field>
+            <field name="duration">la veille et le jour de l'angiographie</field>
+        </record>
+        <record id="path2_line1" model="oph.medication.line.template">
+            <field name="pathology_id" ref="path2"/>
+            <field name="name">ID5</field>
+            <field name="brandname_id" ref="ata0"/>
+            <field name="poso">1cp</field>
+            <field name="duration">le jour de l'examen</field>
+        </record>
+
+        <!--CHALAZION-->
+        <record id="path3" model="oph.pathology">
+            <field name="name">Chalazion</field>
+        </record>
+        <record id="path3_line0" model="oph.medication.line.template">
+            <field name="pathology_id" ref="path3"/>
+            <field name="brandname_id" ref="ster0"/>
+            <field name="poso">1 application 3 fois par jour sur le chalazion et sur l'oeil avec massage du chalazion pendant 5 minutes</field>
+            <field name="duration">pour 2 mois</field>
+        </record>
+
+        <!-- Acute Retinal Necrosis -->
+        <record id="path4" model="oph.pathology">
+            <field name="name">Acute Retinal Necrosis</field>
+        </record>
+        <record id="path4_line0" model="oph.medication.line.template">
+            <field name="pathology_id" ref="path2"/>
+            <field name="name">ID6</field>
+            <field name="brandname_id" ref="cla0"/>
+            <field name="poso">1g 3 fois par jour pour 10 jours</field>
+            <field name="duration">puis 500mg 3 fois par jour pour 3 mois</field>
+        </record>
+
+        <!-- Post IVT -->
+        <record id="path5" model="oph.pathology">
+            <field name="name">Post IVT</field>
+        </record>
+        <record id="path5_line0" model="oph.medication.line.template">
+            <field name="pathology_id" ref="path5"/>
+            <field name="name">ID7</field>
+            <field name="brandname_id" ref="cil0"/>
+            <field name="poso">1 gtte 4 fois par jour</field>
+            <field name="duration">pour 5 jours</field>
+        </record>
+
+        <!-- GFA -->
+        <record id="path6" model="oph.pathology">
+            <field name="name">GFA</field>
+        </record>
+        <record id="path6_line0" model="oph.medication.line.template">
+            <field name="pathology_id" ref="path6"/>
+            <field name="name">ID6</field>
+            <field name="brandname_id" ref="pil0"/>
+            <field name="poso">1 gtte toutes les 5 minutes pendant 15 minutes puis une goutte toutes les heures</field>
+            <field name="duration">pendant 3 heures</field>
+        </record>
+        <record id="path6_line1" model="oph.medication.line.template">
+            <field name="pathology_id" ref="path6"/>
+            <field name="name">ID6</field>
+            <field name="brandname_id" ref="xal0"/>
+            <field name="poso">1 gtte toutes les 5 minutes pendant 15 minutes puis une goutte toutes les heures</field>
+            <field name="duration">pendant 3 heures</field>
+        </record>
+        <record id="path6_line2" model="oph.medication.line.template">
+            <field name="pathology_id" ref="path6"/>
+            <field name="name">ID6</field>
+            <field name="brandname_id" ref="diam0"/>
+            <field name="poso">1 cp matin, midi et soir</field>
+            <field name="duration">pour 3 jours</field>
+        </record>
+        <record id="path6_line3" model="oph.medication.line.template">
+            <field name="pathology_id" ref="path6"/>
+            <field name="name">ID6</field>
+            <field name="brandname_id" ref="difk0"/>
+            <field name="poso">1 cp par jour</field>
+            <field name="duration">pour 3 jours</field>
+        </record>
+
+        <!-- POST CAPS -->
+        <record id="path7" model="oph.pathology">
+            <field name="name">POST CAPSULOTOMIE</field>
+        </record>
+        <record id="path7_line0" model="oph.medication.line.template">
+            <field name="pathology_id" ref="path7"/>
+            <field name="name">ID7</field>
+            <field name="brandname_id" ref="timop1"/>
+            <field name="poso">1 gtte matin et soir</field>
+            <field name="duration">pendant 5 jours</field>
+        </record>
+        <record id="path7_line1" model="oph.medication.line.template">
+            <field name="pathology_id" ref="path7"/>
+            <field name="name">ID8</field>
+            <field name="brandname_id" ref="acu0"/>
+            <field name="poso">1 gtte 6 fois par jour</field>
+            <field name="duration">pendant 5 jours</field>
+        </record>
+        
+        <!-- KERATITE HERPETIQUE -->
+        <record id="path8" model="oph.pathology">
+            <field name="name">Keratite Herpétique</field>
+        </record>
+        <record id="path8_line0" model="oph.medication.line.template">
+            <field name="pathology_id" ref="path8"/>
+            <field name="name">ID0</field>
+            <field name="brandname_id" ref="val0"/>
+            <field name="poso">2 comprimés par jour en une ou deux prise</field>
+            <field name="duration">pour 5 jours</field>
+        </record>
+        <record id="path8_line1" model="oph.medication.line.template">
+            <field name="pathology_id" ref="path8"/>
+            <field name="name">ID1</field>
+            <field name="brandname_id" ref="cell0"/>
+            <field name="poso">1 gtte 6 fois par jour
+            </field>
+            <field name="duration">pour 1 mois</field>
+        </record>
+        <record id="path8_line2" model="oph.medication.line.template">
+            <field name="pathology_id" ref="path8"/>
+            <field name="name">ID2</field>
+            <field name="brandname_id" ref="vita0"/>
+            <field name="poso">1 application le soir au coucher
+            </field>
+            <field name="duration">pour 1 mois</field>
+        </record>
+
+        <!-- LIMAILLE-->
+        <record id="path9" model="oph.pathology">
+            <field name="name">Limaille</field>
+            <field name="comment">Nouvelle consultation ophtalmologique si pas d'amélioration d'ici 48 heures. Document original à conserver par le patient. </field>
+        </record>
+        <record id="path9_line0" model="oph.medication.line.template">
+            <field name="pathology_id" ref="path9"/>
+            <field name="name">ID0</field>
+            <field name="brandname_id" ref="cell0"/>
+            <field name="poso">1 gtte 6 fois par jour</field>
+            <field name="duration">pour 5 jours</field>
+        </record>
+
+        <!-- Post SP -->
+        <record id="path10" model="oph.pathology">
+            <field name="name">Post segment postérieur</field>
+        </record>
+        <record id="path10_line0" model="oph.medication.line.template">
+            <field name="pathology_id" ref="path10"/>
+            <field name="name">ID0</field>
+            <field name="brandname_id" ref="myd0"/>
+            <field name="poso">1 gtte matin et soir</field>
+            <field name="duration">pour 5 jours</field>
+        </record>
+        <record id="path10_line1" model="oph.medication.line.template">
+            <field name="pathology_id" ref="path10"/>
+            <field name="name">ID1</field>
+            <field name="brandname_id" ref="tob0"/>
+            <field name="poso">1 gtte 3 fois par jour</field>
+            <field name="duration">pour 1 mois</field>
+        </record>
+        <record id="path10_line2" model="oph.medication.line.template">
+            <field name="pathology_id" ref="path10"/>
+            <field name="name">ID2</field>
+            <field name="brandname_id" ref="ster0"/>
+            <field name="poso">1 application le soir au coucher</field>
+            <field name="duration">pour 15 jours</field>
+        </record>
+        <record id="path10_line3" model="oph.medication.line.template">
+            <field name="pathology_id" ref="path10"/>
+            <field name="name">ID3</field>
+            <field name="brandname_id" ref="xal0"/>
+            <field name="poso">1 gtte matin et soir</field>
+            <field name="duration">pour 10 jours</field>
+        </record>
+        <record id="path10_line4" model="oph.medication.line.template">
+            <field name="pathology_id" ref="path10"/>
+            <field name="name">ID4</field>
+            <field name="brandname_id" ref="diam0"/>
+            <field name="poso">1 cp matin, midi et soir</field>
+            <field name="duration">pour 5 jours</field>
+        </record>
+        <record id="path10_line5" model="oph.medication.line.template">
+            <field name="pathology_id" ref="path10"/>
+            <field name="name">ID5</field>
+            <field name="brandname_id" ref="difk0"/>
+            <field name="poso">1 cp par jour</field>
+            <field name="duration">pour 5 jours</field>
+        </record>
+        <record id="path10_line6" model="oph.medication.line.template">
+            <field name="pathology_id" ref="path10"/>
+            <field name="name">ID6</field>
+            <field name="brandname_id" ref="comp0"/>
+            <field name="poso">50U</field>
+        </record>
+        <record id="path10_line6" model="oph.medication.line.template">
+            <field name="pathology_id" ref="path10"/>
+            <field name="name">ID7</field>
+            <field name="brandname_id" ref="soliso0"/>
+            <field name="poso">Lavage oculaire, matin et soir si sécrétions.</field>
+        </record>
+
+        <!-- Sd SEC -->
+        <record id="path11" model="oph.pathology">
+            <field name="name">Sd Sec</field>
+            <field name="ods">ods</field>
+        </record>
+        <record id="path11_line0" model="oph.medication.line.template">
+            <field name="pathology_id" ref="path11"/>
+            <field name="name">ID0</field>
+            <field name="brandname_id" ref="cell0"/>
+            <field name="poso">1 gtte 6 fois par jour</field>
+            <field name="duration">pour 6 mois</field>
+        </record>
+
+        <!-- Sd SEC et Vit A -->        
+        <record id="path12" model="oph.pathology">
+            <field name="name">Sd Sec - Vit A</field>
+            <field name="ods">ods</field>
+        </record>
+        <record id="path12_line0" model="oph.medication.line.template">
+            <field name="pathology_id" ref="path12"/>
+            <field name="name">ID0</field>
+            <field name="brandname_id" ref="cell0"/>
+            <field name="poso">1 gtte 6 fois par jour
+            </field>
+            <field name="duration">pour 6 mois</field>
+        </record>
+        <record id="path12_line1" model="oph.medication.line.template">
+            <field name="pathology_id" ref="path12"/>
+            <field name="name">ID1</field>
+            <field name="brandname_id" ref="vita0"/>
+            <field name="poso">1 application le soir au coucher
+            </field>
+            <field name="duration">pour 6 mois</field>
+        </record>
+        
+        <!-- Protocole refraction enfant -->
+        <record id="path13" model="oph.pathology">
+            <field name="name">Child cyloplegia</field>
+            <field name="comment">Less 2 years old</field>
+        </record>
+         <record id="path13_line0" model="oph.medication.line.template">
+            <field name="pathology_id" ref="path13"/>
+            <field name="name">ID1</field>
+            <field name="brandname_id" ref="at0"/>
+            <field name="comment">1 goutte dans chaque oeil les 3 soirs qui précèdent l'examen et toutes les 5 minutes pendant 1/4 d'heure, 3/4 heure avant la consultation.</field>
+        </record>
+        <record id="path14" model="oph.pathology">
+            <field name="name">Child cyloplegia</field>
+            <field name="comment">2-5 years old</field>
+        </record>
+         <record id="path14_line0" model="oph.medication.line.template">
+            <field name="pathology_id" ref="path14"/>
+            <field name="name">ID1</field>
+            <field name="brandname_id" ref="at1"/>
+            <field name="comment">1 goutte dans chaque oeil les 3 soirs qui précèdent l'examen et toutes les 5 minutes pendant 1/4 d'heure, 3/4 heure avant la consultation.</field>
+        </record>
+        <record id="path15" model="oph.pathology">
+            <field name="name">Child cyloplegia</field>
+            <field name="comment">more than 5 years old</field>
+        </record>
+        <record id="path15_line0" model="oph.medication.line.template">
+            <field name="pathology_id" ref="path15"/>
+            <field name="name">ID1</field>
+            <field name="brandname_id" ref="at2"/>
+            <field name="comment">1 goutte dans chaque oeil les 3 soirs qui précèdent l'examen et toutes les 5 minutes pendant 1/4 d'heure, 3/4 heure avant la consultation.</field>
+        </record>
+        <!-- Protocole Cycloplegia adult -->
+        <record id="path16" model="oph.pathology">
+            <field name="name">Adult cyloplegia</field>
+        </record>
+        <record id="path16_line0" model="oph.medication.line.template">
+            <field name="pathology_id" ref="path16"/>
+            <field name="name">ID0</field>
+            <field name="brandname_id" ref="skia0"/>
+            <field name="comment">Instiller une goutte de chaque collyre dans chaque oeil à 0,5,1,15 minute et nouvel examen ophtalmologique à la 45ème minute. Pensez à prévoir un délai de 45 minutes par rapport à l'heure de votre rendez vous ophtalmologique.</field>
+        </record>
+        <record id="path16_line1" model="oph.medication.line.template">
+            <field name="pathology_id" ref="path16"/>
+            <field name="name">ID0</field>
+            <field name="brandname_id" ref="myd0"/>
+            <field name="comment">Instiller une goutte de chaque collyre dans chaque oeil à 0,5,1,15 minute et nouvel examen ophtalmologique à la 45ème minute. Pensez à prévoir un délai de 45 minutes par rapport à l'heure de votre rendez vous ophtalmologique.</field>
+        </record>
+        <!--  Protocole moebomite -->
+        <record id="path17" model="oph.pathology">
+            <field name="name">Moebomite Sans Sterdex</field>
+        </record>
+        <record id="path17_line0" model="oph.medication.line.template">
+            <field name="pathology_id" ref="path17"/>
+            <field name="name">ID0</field>
+            <field name="comment">
+            SOINS DE PAUPIERE. 
+            Eau chaude et gant de toilette
+            Attention à ne pas se bruler les paupières
+            pendant 20 minutes montre en main
+            puis massage des paupières du haut vers le bas en paupière supérieure et du bas vers le haut en paupière inférieure.
+            
+            2X par jour
+            pour 2 mois 
+            il est important de poursuivre les soins de paupière même si la symptomatologie s'améliore.
+            </field>
+
+        </record>
+        <!-- Ressource: oph.exam-->
+        <record id="ex0" model="oph.exam">
+            <field name="name">NFS</field>
+            <field name="code">NFS</field>
+            <field name="type_id">Bio</field>
+        </record>
+        <record id="ex1" model="oph.exam">
+            <field name="name">Plaquette</field>
+            <field name="code">Plaquette</field>
+            <field name="type_id">Bio</field>
+        </record>
+        <record id="ex2" model="oph.exam">
+            <field name="name">Vitesse de sédimentation</field>
+            <field name="code">VS</field>
+            <field name="type_id">Bio</field>
+        </record>
+        <record id="ex3" model="oph.exam">
+            <field name="name">C Reactive Proteine</field>
+            <field name="code">CRP</field>
+            <field name="type_id">Bio</field>
+        </record>
+        <record id="ex4" model="oph.exam">
+            <field name="name">TP, TCA</field>
+            <field name="code">TPTCA</field>
+            <field name="type_id">Bio</field>
+        </record>
+        <record id="ex5" model="oph.exam">
+            <field name="name">IRM cérébrale et orbitaire</field>
+            <field name="code">IRM</field>
+            <field name="type_id">Rx</field>
+        </record>
+        <record id="ex6" model="oph.exam">
+            <field name="name">TDM cérébrale et orbitaire</field>
+            <field name="code">TDM</field>
+            <field name="type_id">Rx</field>
+        </record>
+        <record id="ex7" model="oph.exam">
+            <field name="name">Echo-Doppler des Troncs SupraAortiques</field>
+            <field name="code">EchoTSA</field>
+            <field name="type_id">Rx</field>
+        </record>
+        <record id="ex8" model="oph.exam">
+            <field name="name">Champ visuel par la méthode de confrontation</field>
+            <field name="code">CVConf</field>
+        </record>
+        <record id="ex9" model="oph.exam">
+            <field name="name">Périmétrie automatisée</field>
+            <field name="code">CVA</field>
+        </record>
+        <record id="ex10" model="oph.exam">
+            <field name="name">Angiographie à la Fluorescéine</field>
+            <field name="code">AFF</field>
+        </record>
+        <record id="ex11" model="oph.exam">
+            <field name="name">Electrorétinogramme</field>
+            <field name="code">ERG </field>
+        </record>
+        <record id="ex12" model="oph.exam">
+            <field name="name">Hémoglobine Glyquée</field>
+            <field name="code">HbA1c</field>
+            <field name="type_id">Bio</field>
+        </record>
+        <record id="ex13" model="oph.exam">
+            <field name="name">Electrophorès des protéines sanguines</field>
+            <field name="code">EPP</field>
+            <field name="type_id">Bio</field>
+        </record>
+        <record id="ex14" model="oph.exam">
+            <field name="name">BétaHCg qualitative</field>
+            <field name="code">BHCg</field>
+            <field name="type_id">Bio</field>
+        </record>
+        <record id="ex15" model="oph.exam">
+            <field name="name">Créatininémie</field>
+            <field name="code">CREA</field>
+            <field name="type_id">Bio</field>
+        </record>
+        <record id="ex16" model="oph.exam">
+            <field name="name">Ionogramme sanguin</field>
+            <field name="code">IONO</field>
+            <field name="type_id">Bio</field>
+        </record>
+        <record id="ex17" model="oph.exam">
+            <field name="name">ASAT/ALAT</field>
+            <field name="code">ASATALAT</field>
+            <field name="code">HEP</field>
+            <field name="type_id">Bio</field>
+        </record>
+        <record id="ex18" model="oph.exam">
+            <field name="name">Fibrinogène</field>
+            <field name="code">Fib</field>
+            <field name="type_id">Bio</field>
+        </record>
+        <record id="ex19" model="oph.exam">
+            <field name="name">Créatininémie</field>
+            <field name="code">Creat</field>
+            <field name="type_id">Bio</field>
+        </record>
+        <record id="ex20" model="oph.exam">
+            <field name="code">FIB</field>
+            <field name="type_id">Bio</field>
+        </record>
+        <record id="ex21" model="oph.exam">
+            <field name="name">Serologie HIV</field>
+            <field name="code">HIV</field>
+            <field name="type_id">Bio</field>
+        </record>
+        <record id="ex22" model="oph.exam">
+            <field name="name">Serologie HSV</field>
+            <field name="code">HSV</field>
+            <field name="type_id">Bio</field>
+        </record>
+        <record id="ex23" model="oph.exam">
+            <field name="name">Serologie Toxoplasmose</field>
+            <field name="code">TOXO</field>
+            <field name="type_id">Bio</field>
+        </record>
+        <record id="ex24" model="oph.exam">
+            <field name="name">serologie Toxocarose</field>
+            <field name="code">TOXOCA</field>
+            <field name="type_id">Bio</field>
+        </record>
+        <record id="ex25" model="oph.exam">
+            <field name="name">C3</field>
+            <field name="code">C3</field>
+            <field name="type_id">Bio</field>
+        </record>
+        <record id="ex26" model="oph.exam">
+            <field name="name">C4</field>
+            <field name="code">C4</field>
+            <field name="type_id">Bio</field>
+        </record>
+        <record id="ex27" model="oph.exam">
+            <field name="name">CH50</field>
+            <field name="code">CH50</field>
+            <field name="type_id">Bio</field>
+        </record>
+        <record id="ex28" model="oph.exam">
+            <field name="name">Anticorps anti-ADN</field>
+            <field name="code">ANTIDNA</field>
+            <field name="type_id">Bio</field>
+        </record>
+        <record id="ex29" model="oph.exam">
+            <field name="name">?</field>
+            <field name="code">?</field>
+            <field name="type_id">Bio</field>
+        </record>
+        <record id="ex30" model="oph.exam">
+            <field name="name">Cholesterol total-HDL-LDL-Triglycéride</field>
+            <field name="code">LIP</field>
+            <field name="type_id">Bio</field>
+        </record>
+        <record id="ex31" model="oph.exam">
+            <field name="name">Anticorps antiphospholipide</field>
+            <field name="code">ANTILIP</field>
+            <field name="type_id">Bio</field>
+        </record>
+        <record id="ex32" model="oph.exam">
+            <field name="name">Enzyme de conversion de l'angiotensine</field>
+            <field name="code">ACE</field>
+            <field name="type_id">Bio</field>
+        </record>
+        <record id="ex33" model="oph.exam">
+            <field name="name">HLAB27</field>
+            <field name="code">HLAB27</field>
+            <field name="type_id">Bio</field>
+        </record>
+        <record id="ex34" model="oph.exam">
+            <field name="name">TP</field>
+            <field name="code">TP</field>
+            <field name="type_id">Bio</field>
+        </record>
+        <record id="ex35" model="oph.exam">
+            <field name="name">TCA</field>
+            <field name="code">TCA</field>
+            <field name="type_id">Bio</field>
+        </record>
+        <record id="ex36" model="oph.exam">
+            <field name="name">Protéine C</field>
+            <field name="code">PC</field>
+            <field name="type_id">Bio</field>
+        </record>
+        <record id="ex37" model="oph.exam">
+            <field name="name">Protéine S</field>
+            <field name="code">PS</field>
+            <field name="type_id">Bio</field>
+        </record>
+        <record id="ex38" model="oph.exam">
+            <field name="name">Anticorps anticardiolipines</field>
+            <field name="code">aCLl</field>
+            <field name="type_id">Bio</field>
+        </record>
+        <record id="ex39" model="oph.exam">
+            <field name="name">Anticorps anti-noyaux</field>
+            <field name="code">anti-ECT</field>
+            <field name="type_id">Bio</field>
+        </record>
+        <record id="ex40" model="oph.exam">
+            <field name="name">Recherche mutation prothrombine</field>
+            <field name="code">Pm</field>
+            <field name="type_id">Bio</field>
+        </record>
+        <record id="ex41" model="oph.exam">
+            <field name="name">TPHA/VDRL</field>
+            <field name="code">SYPH</field>
+            <field name="type_id">Bio</field>
+        </record>
+        <record id="ex42" model="oph.exam">
+            <field name="name">PCR maladie des griffes du Chat</field>
+            <field name="code">BART</field>
+            <field name="comment">Bartonela Henseale</field>
+            <field name="type_id">Bio</field>
+        </record>
+        <record id="ex43" model="oph.exam">
+            <field name="name">Bilan calcique</field>
+            <field name="code">Ca</field>
+            <field name="type_id">Bio</field>
+        </record>
+        <record id="ex44" model="oph.exam">
+            <field name="name">Sérologie maladie de Lyme</field>
+            <field name="code">LYME</field>
+            <field name="type_id">Bio</field>
+        </record>
+        <record id="ex45" model="oph.exam">
+            <field name="name">Bilirubine totale, libre et conjuguée</field>
+            <field name="code">BILI</field>
+            <field name="type_id">Bio</field>
+        </record>
+        <record id="ex46" model="oph.exam">
+            <field name="name">Gamma GT</field>
+            <field name="code">GGT</field>
+            <field name="type_id">Bio</field>
+        </record>
+        <record id="ex47" model="oph.exam">
+            <field name="name">Phophatase alcaline</field>
+            <field name="code">Pa</field>
+            <field name="type_id">Bio</field>
+        </record>
+        <record id="ex48" model="oph.exam">
+            <field name="name">IRM VEINEUSE</field>
+            <field name="code">IRM VEINEUSE</field>
+            <field name="comment"></field>
+            <field name="type_id">Rx</field>
+        </record>
+        <record id="ex49" model="oph.exam">
+            <field name="name">?</field>
+            <field name="code">?</field>
+            <field name="type_id">Bio</field>
+        </record>
+        <record id="ex50" model="oph.exam">
+            <field name="name">?</field>
+            <field name="code">?</field>
+            <field name="type_id">Bio</field>
+        
+        </record>
+
+        <!--protocole-->
+        <!-- Bilan preop -->
+        <record id="pro0" model="oph.protocole">
+            <field name="name">Bilan pré-opératoire</field>
+        </record>
+        <record id="pro0_line0" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro0"/>
+            <field name="name">PR0</field>
+            <field name="exam_id" ref="ex0"/>
+        </record>
+        <record id="pro0_line1" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro0"/>
+            <field name="name">PR1</field>
+            <field name="exam_id" ref="ex4"/>
+        </record>
+        <record id="pro0_line2" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro0"/>
+            <field name="name">PR2</field>
+            <field name="exam_id" ref="ex15"/>
+        </record>
+
+        <!-- Bilan OVCR >60ans-->
+        <record id="pro1" model="oph.protocole">
+            <field name="name">Bilan OVCR/OBVR >60ans</field>
+        </record>
+        <record id="pro1_line0" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro1"/>
+            <field name="name">PR0</field>
+            <field name="exam_id" ref="ex0"/>
+        </record>
+        <record id="pro1_line1" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro1"/>
+            <field name="name">PR1</field>
+            <field name="exam_id" ref="ex2"/>
+        </record>
+        <record id="pro1_line2" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro1"/>
+            <field name="name">PR1</field>
+            <field name="exam_id" ref="ex3"/>
+        </record>
+        <record id="pro1_line3" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro1"/>
+            <field name="name">PR1</field>
+            <field name="exam_id" ref="ex17"/>
+        </record>
+        <record id="pro1_line4" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro1"/>
+            <field name="name">PR1</field>
+            <field name="exam_id" ref="ex13"/>
+        </record>
+        <record id="pro1_line5" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro1"/>
+            <field name="name">PR1</field>
+            <field name="exam_id" ref="ex15"/>
+        </record>
+        <record id="pro1_line6" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro1"/>
+            <field name="name">PR1</field>
+            <field name="exam_id" ref="ex14"/>
+        </record>
+        <record id="pro1_line7" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro1"/>
+            <field name="name">PR1</field>
+            <field name="exam_id" ref="ex27"/>
+        </record>
+
+        <!-- Bilan uvéite -->
+        <record id="pro2" model="oph.protocole">
+            <field name="name">Bilan Uvéite</field>
+        </record>
+        <record id="pro2_line0" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro2"/>
+            <field name="name">PR0</field>
+            <field name="exam_id" ref="ex0"/>
+        </record>
+        <record id="pro2_line1" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro2"/>
+            <field name="name">PR1</field>
+            <field name="exam_id" ref="ex2"/>
+        </record>
+        <record id="pro2_line2" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro2"/>
+            <field name="name">PR2</field>
+            <field name="exam_id" ref="ex3"/>
+        </record>
+        <record id="pro2_line3" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro2"/>
+            <field name="name">PR3</field>
+            <field name="exam_id" ref="ex17"/>
+        </record>
+        <record id="pro2_line4" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro2"/>
+            <field name="name">PR4</field>
+            <field name="exam_id" ref="ex13"/>
+        </record>
+        <record id="pro2_line5" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro2"/>
+            <field name="name">PR5</field>
+            <field name="exam_id" ref="ex15"/>
+        </record>
+        <record id="pro2_line6" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro2"/>
+            <field name="name">PR6</field>
+            <field name="exam_id" ref="ex14"/>
+        </record>
+        <record id="pro2_line7" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro2"/>
+            <field name="name">PR7</field>
+            <field name="exam_id" ref="ex29"/>
+        </record>
+        <record id="pro2_line8" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro2"/>
+            <field name="name">PR8</field>
+            <field name="exam_id" ref="ex33"/>
+        </record>
+        <record id="pro2_line9" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro2"/>
+            <field name="name">PR9</field>
+            <field name="exam_id" ref="ex25"/>
+        </record>
+        <record id="pro2_line10" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro2"/>
+            <field name="name">PR10</field>
+            <field name="exam_id" ref="ex26"/>
+        </record>
+        <record id="pro2_line11" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro2"/>
+            <field name="name">PR11</field>
+            <field name="exam_id" ref="ex27"/>
+        </record>
+        <record id="pro2_line12" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro2"/>
+            <field name="name">PR12</field>
+            <field name="exam_id" ref="ex31"/>
+        </record>
+        <record id="pro2_line13" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro2"/>
+            <field name="name">PR13</field>
+            <field name="exam_id" ref="ex28"/>
+        </record>
+
+        <!-- Bilan rétinite -->
+        <record id="pro3" model="oph.protocole">
+            <field name="name">Bilan rétinite</field>
+        </record>
+
+        <!-- Bilan neurorétinite -->
+        <record id="pro4" model="oph.protocole">
+            <field name="name">Bilan neurorétinite</field>
+        </record>
+        <record id="pro4_line0" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro4"/>
+            <field name="name">PR0</field>
+            <field name="exam_id" ref="ex0"/>
+        </record>
+        <record id="pro4_line1" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro4"/>
+            <field name="name">PR1</field>
+            <field name="exam_id" ref="ex2"/>
+        </record>
+        <record id="pro4_line2" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro4"/>
+            <field name="name">PR1</field>
+            <field name="exam_id" ref="ex3"/>
+        </record>
+        <record id="pro4_line3" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro4"/>
+            <field name="name">PR2</field>
+            <field name="exam_id" ref="ex17"/>
+        </record>
+        <record id="pro4_line4" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro4"/>
+            <field name="name">PR3</field>
+            <field name="exam_id" ref="ex13"/>
+        </record>
+        <record id="pro4_line5" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro4"/>
+            <field name="name">PR4</field>
+            <field name="exam_id" ref="ex15"/>
+        </record>
+        <record id="pro4_line6" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro4"/>
+            <field name="name">PR5</field>
+            <field name="exam_id" ref="ex14"/>
+        </record>
+        <record id="pro4_line7" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro4"/>
+            <field name="name">PR6</field>
+            <field name="exam_id" ref="ex21"/>
+        </record>
+        <record id="pro4_line8" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro4"/>
+            <field name="name">PR7</field>
+            <field name="exam_id" ref="ex44"/>
+        </record>
+        <record id="pro4_line9" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro4"/>
+            <field name="name">PR8</field>
+            <field name="exam_id" ref="ex23"/>
+        </record>
+        <record id="pro4_line10" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro4"/>
+            <field name="name">PR9</field>
+            <field name="exam_id" ref="ex42"/>
+        </record>
+        <record id="pro4_line11" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro4"/>
+            <field name="name">PR10</field>
+            <field name="exam_id" ref="ex41"/>
+        </record>
+        <record id="pro4_line12" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro4"/>
+            <field name="name">PR11</field>
+            <field name="exam_id" ref="ex32"/>
+        </record>
+        <record id="pro4_line13" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro4"/>
+            <field name="name">PR12</field>
+            <field name="exam_id" ref="ex43"/>
+        </record> 
+
+        <!-- Bilan OVCR <60ans -->
+        <record id="pro5" model="oph.protocole">
+            <field name="name">Bilan OVCR </field>
+        </record>
+
+        <!-- Bilan OACR >60ans -->
+        <record id="pro6" model="oph.protocole">
+            <field name="name">Bilan OACR/OBAR >60ans</field>
+        </record>
+
+        <!-- Bilan initial traitement anti-toxo -->
+        <record id="pro3" model="oph.protocole">
+            <field name="name">Bilan initial traitement antitoxo</field>
+        </record>
+        <record id="pro3_line0" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro3"/>
+            <field name="name">PR1</field>
+            <field name="exam_id" ref="ex0"/>
+        </record>
+        <record id="pro3_line1" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro3"/>
+            <field name="name">PR2</field>
+            <field name="exam_id" ref="ex1"/>
+        </record>
+        <record id="pro3_line2" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro3"/>
+            <field name="name">PR3</field>
+            <field name="exam_id" ref="ex16"/>
+        </record>
+        <record id="pro3_line3" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro3"/>
+            <field name="name">PR4</field>
+            <field name="exam_id" ref="ex14"/>
+        </record>
+        <record id="pro3_line4" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro3"/>
+            <field name="name">PR4</field>
+            <field name="exam_id" ref="ex15"/>
+        </record>
+
+        <!-- Bilan OP -->
+        <record id="pro7" model="oph.protocole">
+            <field name="name">Bilan OP</field>
+        </record>
+        <record id="pro7_line0" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro7"/>
+            <field name="name">PR0</field>
+            <field name="exam_id" ref="ex0"/>
+        </record>
+        <record id="pro7_line1" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro7"/>
+            <field name="name">PR1</field>
+            <field name="exam_id" ref="ex2"/>
+        </record>
+        <record id="pro7_line2" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro7"/>
+            <field name="name">PR2</field>
+            <field name="exam_id" ref="ex3"/>
+        </record>
+        <record id="pro7_line3" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro7"/>
+            <field name="name">PR3</field>
+            <field name="exam_id" ref="ex17"/>
+        </record>
+        <record id="pro7_line4" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro7"/>
+            <field name="name">PR4</field>
+            <field name="exam_id" ref="ex13"/>
+        </record>
+        <record id="pro7_line5" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro7"/>
+            <field name="name">PR5</field>
+            <field name="exam_id" ref="ex15"/>
+        </record>
+        <record id="pro7_line6" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro7"/>
+            <field name="name">PR6</field>
+            <field name="exam_id" ref="ex14"/>
+        </record>
+        <record id="pro7_line7" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro7"/>
+            <field name="name">PR7</field>
+            <field name="exam_id" ref="ex29"/>
+        </record>
+        <record id="pro7_line8" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro7"/>
+            <field name="name">PR8</field>
+            <field name="exam_id" ref="ex16"/>
+        </record>
+        <record id="pro7_line9" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro7"/>
+            <field name="name">PR9</field>
+            <field name="exam_id" ref="ex36"/>
+        </record>
+        <record id="pro7_line10" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro7"/>
+            <field name="name">PR10</field>
+            <field name="exam_id" ref="ex25"/>
+        </record>
+        <record id="pro7_line11" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro7"/>
+            <field name="name">PR11</field>
+            <field name="exam_id" ref="ex38"/>
+        </record>
+
+        <!-- Bilan extension mélanome -->
+        <record id="pro8" model="oph.protocole">
+            <field name="name">Bilan extension mélanome</field>
+        </record>
+        <record id="pro8_line0" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro8"/>
+            <field name="name">PR1</field>
+            <field name="exam_id" ref="ex45"/>
+        </record>
+        <record id="pro8_line1" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro8"/>
+            <field name="name">PR2</field>
+            <field name="exam_id" ref="ex17"/>
+        </record>
+        <record id="pro8_line2" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro8"/>
+            <field name="name">PR3</field>
+            <field name="exam_id" ref="ex46"/>
+        </record>
+        <record id="pro8_line3" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro8"/>
+            <field name="name">PR1</field>
+            <field name="exam_id" ref="ex47"/>
+        </record>
+
+        <!-- ? -->
+        <record id="pro9" model="oph.protocole">
+            <field name="name">IRM</field>
+        </record>
+        <record id="pro9_line0" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro9"/>
+            <field name="name">PR3</field>
+            <field name="exam_id" ref="ex5"/>
+            <field name="comment">avec coupe sur le nerf optique</field>
+        </record>
+        <record id="pro9_line1" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro9"/>
+            <field name="name">PR4</field>
+            <field name="exam_id" ref="ex48"/>
+        </record>
+        <!-- ? -->
+        <record id="pro10" model="oph.protocole">
+            <field name="name">?</field>
+        </record>
+        <!-- ? -->
+        <record id="pro11" model="oph.protocole">
+            <field name="name">?</field>
+        </record>
+        <!-- ? -->
+        <record id="pro12" model="oph.protocole">
+            <field name="name">?</field>
+        </record>
+        <!-- ? -->
+        <record id="pro13" model="oph.protocole">
+            <field name="name">?</field>
+        </record>
+
+        <!-- ? -->
+        <record id="pro14" model="oph.protocole">
+            <field name="name">?</field>
+        </record>
+        <!-- ? -->
+        <record id="pro15" model="oph.protocole">
+            <field name="name">?</field>
+        </record>
+        <!-- ? -->
+        <record id="pro16" model="oph.protocole">
+            <field name="name">?</field>
+        </record>
+        <!-- ? -->
+        <record id="pro17" model="oph.protocole">
+            <field name="name">?</field>
+        </record>
+
+
+    </data>
+</openerp>

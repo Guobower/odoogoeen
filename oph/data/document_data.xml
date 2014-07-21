@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<openerp>
+    <data noupdate="1">
+        <record model="document.directory" id="dir_imaging">
+            <field name="name">Imaging</field>
+            <field name="user_id" eval="False"/>
+            <field name="ressource_id">0</field>
+            <field name="parent_id" ref="document.dir_partner"/>
+        </record>
+
+        <record model="document.directory" id="dir_biology">
+            <field name="name">Biology</field>
+            <field name="user_id" eval="False"/>
+            <field name="ressource_id">0</field>
+            <field name="parent_id" ref="document.dir_partner"/>
+        </record>
+
+        <record model="document.directory" id="dir_incoming">
+            <field name="name">Incoming</field>
+            <field name="user_id" eval="False"/>
+            <field name="ressource_id">0</field>
+            <field name="parent_id" ref="document.dir_partner"/>
+        </record>
+
+        <record model="document.directory" id="dir_visualfield">
+            <field name="name">Visual Field</field>
+            <field name="user_id" eval="False"/>
+            <field name="ressource_id">0</field>
+            <field name="parent_id" ref="document.dir_partner"/>
+        </record>
+
+        <record model="document.directory" id="dir_cardiology">
+            <field name="name">Cardiology</field>
+            <field name="user_id" eval="False"/>
+            <field name="ressource_id">0</field>
+            <field name="parent_id" ref="document.dir_partner"/>
+        </record>
+        
+        <record model="document.directory" id="dir_cardiology">
+            <field name="name">Compte Rendu Operatoire</field>
+            <field name="user_id" eval="False"/>
+            <field name="ressource_id">0</field>
+            <field name="parent_id" ref="document.dir_partner"/>
+        </record>
+
+        <record model="document.directory" id="dir_others">
+            <field name="name">Others</field>
+            <field name="user_id" eval="False"/>
+            <field name="ressource_id">0</field>
+            <field name="parent_id" ref="document.dir_partner"/>
+        </record>
+
+        <record model="document.directory" id="dir_Rx_prescription">
+            <field name="name">Rx Prescription</field>
+            <field name="user_id" eval="False"/>
+            <field name="ressource_id">0</field>
+            <field name="parent_id" ref="document.dir_partner"/>
+        </record>
+
+        <record model="document.directory" id="dir_OCT">
+            <field name="name">OCT</field>
+            <field name="user_id" eval="False"/>
+            <field name="ressource_id">0</field>
+            <field name="parent_id" ref="document.dir_partner"/>
+        </record>
+        
+        <record model="document.directory" id="dir_AF">
+            <field name="name">AF</field>
+            <field name="user_id" eval="False"/>
+            <field name="ressource_id">0</field>
+            <field name="parent_id" ref="document.dir_partner"/>
+        </record>
+
+        <record model="document.directory" id="dir_medication">
+            <field name="name">Medication Prescription</field>
+            <field name="user_id" eval="False"/>
+            <field name="ressource_id">0</field>
+            <field name="parent_id" ref="document.dir_partner"/>
+        </record>
+
+        <record model="document.directory" id="dir_outgoing">
+            <field name="name">Outgoing</field>
+            <field name="user_id" eval="False"/>
+            <field name="ressource_id">0</field>
+            <field name="parent_id" ref="document.dir_partner"/>
+        </record>
+    </data>
+</openerp>

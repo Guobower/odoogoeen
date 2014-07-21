@@ -1,0 +1,76 @@
+Faire une nouvelle form view pour la refraction qui 
+presente les choses plus comme sur la console 
+du refracteur 
+
+OD        S OG
+Sph       C   Sph
+Cyl       A   Cyl
+Add       Add ADd
+
+----------------------
+
+Dans le module oph_agenda
+Faire un wizard
+Qui permet de fixer le RDV PO et le crée 
+et imprime la fiche de liaison PO de la BDC
+----
+Dans le module measurement rota
+
+TO, AV, Sph Cyl, Axe OD et OS
+M_OD, M_OS
+---
+Faire un bouton dans la vue tree de l'onglet rapport dans 
+crm_meeting qui nous envoie directement sur la vue form de ce rapport
+---
+Mettre l'entete dans la fiche de liaison BDC
+pour cela refaire le header pour la stylesheet
+base64 etc...
+---
+voir la reading prescription pose probleme.
+Quand je force la création de la ligne refraction prescription
+le champ utilisé par ce rapport n'est pas calculé.
+---
+Comment on traduit des infos dans un data xml?
+---
+faire une liste de prix pour les exoTM sud qui ne fait rien
+----
+Faire les TM
+avec switch
+----
+produits nord 
+caps KC40 
+laser mac KC 60
+laser PPR KC 60
+iridectomie laser KC40
+---
+formule de politesse dans oct report si adressez au patient:
+Comme vous le verrez sur les clichés et pas comme tu le verras....
+-------
+
+
+--------
+
+Il semblerait que l'odt pour capsulotomy a disparu.
+Le refaire ou le retrouver et courriger tu trouvera ! S
+----
+completer les procédures dans oph.bloc.agenda.line
+pourquoi ne pas lier ces procédures avec un template pour le report
+A voir.
+----
+Qand je fais un factory crm.meeting les crm.meeting on comme responsable moi.
+Je veux que qd un autre user change le patient on ait cet utilisateur comme responsable
+----
+probleme de la signature quand c'est la secrétaire qui tape.
+-------
+mettre en place given_date pour avoir la date de remise du rendez vous.
+Ca marche c'est déclenché par un onchange sur le partner_id.
+Mais si on touche au champ partner_id sans changer le partner_id c'est aussi modifié.
+
+----
+adresse dans la fenetre.
+Ce qui pourrait m'aider c'est que qd test est false 
+alors il n'y a pas création d'une ligne blanche qui prend de la place
+c'est le cas qd je fais les if test dans un cadre.
+Qu'en est-il dans un tableau
+
+

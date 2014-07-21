@@ -1,0 +1,16 @@
+Pas de possibilité de filtre par name dans Accounting -- customer invoice
+------
+
+------
+
+-----
+Knowledge 
+Pas moyen de filtrer par partner.
+------
+Comment faire une recherche entre 2 dates?
+Pour l'instant j'ai un ou < ou > et ca ne va pas.
+------
+Probleme de gestion des modifications des reports 
+bcp de manoeuvre d'ou risque d'erreur +++
+faire demo.
+------

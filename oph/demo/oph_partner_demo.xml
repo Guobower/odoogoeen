@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="0">
+
+        <!-- [[[[[ DEMO CASES ]]]]] -->
+
+        <!--  Resource: res.partner.category   -->
+
+        <record id="res_partner_category_0" model="res.partner.category">
+            <field name="name">Partner</field>
+        </record>
+        <record id="res_partner_category_1" model="res.partner.category">
+            <field name="name">Supplier</field>
+        </record>
+        <record id="res_partner_category_2" model="res.partner.category">
+            <field name="name">Correspondant</field>
+        </record>
+        <record id="res_partner_category_3" model="res.partner.category">
+            <field name="name">Employee</field>
+        </record>
+
+
+        <!--  Resource: res.partner  -->
+
+        <record id="res_partner_1" model="res.partner">
+            <field name="firstname">Remi</field>
+            <field name="name">CAKAKIE</field>
+            <field name="fullname">CAKAKIE, Remi</field>
+            <field name="supplier">1</field>
+            <field eval="0" name="customer"/>
+            <field name="is_company">0</field>
+            <field name="city">Noumea</field>
+            <field name="zip">98800</field>
+            <field name="country_id" ref="base.tw"/>
+            <field name="street">31 Hong Kong street</field>
+            <field name="email">info@asustek.com</field>
+            <field name="phone">(+886) (02) 4162 2023</field>
+            <field name="website">www.asustek.com</field>
+            <field name="gender">M</field>
+            <field name="dob">2008-12-26</field>
+            <field name="function">Retraite</field>
+        </record>
+        <record id="res_partner_2" model="res.partner">
+            <field name="firstname">Jean Marie</field>
+            <field name="name">GREKE</field>
+            <field name="fullname">GREKE, Jean Marie</field>
+            <field name="is_company">0</field>
+            <field name="city">Dumbea</field>
+            <field name="zip">98000</field>
+            <field name="country_id" ref="base.be"/>
+            <field name="street">69 rue de Namur</field>
+            <field name="email">info@agrolait.com</field>
+            <field name="phone">+32 10 588 558</field>
+            <field name="website">www.agrolait.com</field>
+            <field name="gender">M</field>
+            <field name="dob">2012-12-30</field>
+            <field name="function">Secretaire</field>
+        </record>
+        <record id="res_partner_3" model="res.partner">
+            <field name="firstname">Irene</field>
+            <field name="name">KIBALA</field>
+            <field name="fullname">KIBALA, Irene</field>
+            <field name="is_company">0</field>
+            <field name="city">Dumbea</field>
+            <field name="zip">98000</field>
+            <field name="country_id" ref="base.be"/>
+            <field name="street">26 rue du Vieux Port</field>
+            <field name="email">info@canl.nc</field>
+            <field name="phone">+32 10 588 558</field>
+            <field name="website">www.agrolait.com</field>
+            <field name="gender">F</field>
+            <field name="dob">1945-12-15</field>
+        </record>
+        <record id="res_partner_4" model="res.partner">
+            <field name="firstname">Vino</field>
+            <field name="name">RATAFIA</field>
+            <field name="fullname">RATAFIA, Vino</field>
+            <field name="supplier">1</field>
+            <field name="is_company">0</field>
+            <field name="city">Paita</field>
+            <field name="zip">98000</field>
+            <field model="res.country" name="country_id" search="[('name','=','China')]"/>
+            <field name="country_id" ref="base.cn"/>
+            <field name="street">52 Chop Suey street</field>
+            <field name="email">info@chinaexport.com</field>
+            <field name="phone">+86 21 6484 5671</field>
+            <field name="website">www.chinaexport.com/</field>
+            <field name="gender">M</field>
+            <field name="dob">1965-12-22</field>
+        </record>
+
+        <record id="res_partner_5" model="res.partner">
+            <field name="firstname">Jerome</field>
+            <field name="name">LIBANTOU</field>
+            <field name="fullname">LIBANTOU, Jerome</field>
+            <field eval="0" name="customer"/>
+            <field eval="1" name="supplier"/>
+            <field name="is_company">0</field>
+            <field name="city">Kone</field>
+            <field name="zip">98000</field>
+            <field name="country_id" ref="base.us"/>
+            <field model="res.country.state" name="state_id" search="[('code','ilike','ca')]"/>
+            <field name="street">3661 Station Street</field>
+            <field name="email">info@deltapc.com</field>
+            <field name="phone">+1 510 340 2385</field>
+            <field name="website">www.distribpc.com/</field>
+            <field name="gender">M</field>
+            <field name="dob">1958-12-29</field>
+        </record>
+
+        <record id="res_partner_6" model="res.partner">
+            <field name="firstname">Jean</field>
+            <field name="fullname">KAGALOU, Jean</field>
+            <field name="name">KAGALOU</field>
+            <field name="is_company">0</field>
+            <field eval="0" name="customer"/>
+            <field name="country_id" ref="base.us"/>
+            <field model="res.country.state" name="state_id" search="[('code','ilike','il')]"/>
+            <field name="zip">60610</field>
+            <field name="city">Chicago</field>
+            <field name="email">epic@tech.info</field>
+            <field name="phone">+1 312 349 2324</field>
+            <field name="website">www.epic-tech.info//</field>
+            <field name="gender">M</field>
+            <field name="dob">1924-12-30</field>
+        </record>
+
+        <record id="res_partner_7" model="res.partner">
+            <field name="firstname">Caroline</field>
+            <field name="fullname">MAGATOU, Caroline</field>
+            <field name="name">MAGATOU</field>
+            <field name="is_company">0</field>
+            <field eval="0" name="customer"/>
+            <field name="country_id" ref="base.us"/>
+            <field model="res.country.state" name="state_id" search="[('code','ilike','il')]"/>
+            <field name="zip">
+            </field>
+            <field name="city">KONE</field>
+            <field name="email">epic@tech.info</field>
+            <field name="phone">+1 312 349 2324</field>
+            <field name="website">www.epic-tech.info//</field>
+            <field name="gender">F</field>
+            <field name="dob">1959-12-24</field>
+        </record>
+
+
+
+
+    </data>
+</openerp>
+

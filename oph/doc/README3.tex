@@ -1,0 +1,3035 @@
+%%% README3.tex --- 
+
+%% Author: francois.oph@gmail.com
+%% Version: $Id: README.tex,v 0.0 2012/07/06 01:45:24 lfs Exp$
+
+
+\documentclass[12pt,a4paper]{article}
+%%\usepackage[debugshow,final]{graphics}
+\usepackage[T1]{fontenc}
+\usepackage[frenchb]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{lmodern}
+\usepackage{color}
+\usepackage{fancyvrb}
+\usepackage[scaled=0.92]{helvet}
+\usepackage{alltt}
+\usepackage[landscape]{geometry}
+\usepackage{lastpage}
+\newcommand\codeHighlight[1]{\textcolor[rgb]{1,0,0}{\textbf{#1}}}
+\usepackage{pdftexcmds}
+\usepackage{minted}
+%%\cfoot{\thepage\ sur \pageref{LastPage}}
+%%\revision$Header: /home/lfs/openerp-oph/README.tex,v 0.0 2012/07/06 01:45:24 lfs Exp$
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+%% ------------
+% \fancyhf{} % clear all header and footer fields
+% \fancyfoot[R]{\footnotesize Page \thepage\ of 2}
+% \renewcommand{\headrulewidth}{0pt}
+% \renewcommand{\footrulewidth}{0pt}
+%% ------------
+\usepackage{graphicx}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\tableofcontents
+
+\section{Raccourcis Emacs}
+\label{sec:racemacs}
+
+Passer à la ligne suivante avec l’indentation correcte : C-o
+On peut utiliser ce raccourci dans la ligne et cela ne casse pas la ligne en cours ou à la fin/début de la ligne. Un return n’assure pas une
+indentation correcte. Monter/Descendre une ligne : M-Up M-Down
+Monte/Descend toute la ligne quelque soit la position du curseur.
+Besoin d’une calculatrice : M-c q
+C-y to yank dans le buffer.
+Super-C : copier
+Super-X : cut
+Super-V : coller
+Dupliquer une ligne (ou que soit le curseur dans la ligne) : C-c y (yank)
+Dupliquer et commenter la source : C-c c
+Sélection une ligne entiére : C-c l
+Il faut que le curseur soit dans la ligne qui nous intéresse.
+Afficher les modifications : M-highlight-changes-mode
+
+
+
+%%%%##########################################################################
+
+\section{SVN configuration}
+
+
+
+
+%%%%##########################################################################
+
+\cfoot{\thepage\ of \pageref{LastPage}}
+
+Remote host: \textcolor{blue}{zotac}
+
+Le \textcolor{red}{repository} est sur zotac. On le crée sur zotac, une fois pour toute.
+
+\begin{verbatim}
+# svnadmin create --fs-type fsfs /var/svn-repos
+#ls /var/svn-repos
+conf  db  format  hooks  locks  README.txt
+#svnlook tree /var/svn-repos
+/
+mkdir /var/svn-repos/dav
+mkdir -p /tmpdir/oph-erp-project/{trunk,branches,tags}
+# cd /tmpdir/
+root@zotac:/tmpdir# tree
+\end{verbatim}
+
+$\rightarrow oph-erp-project\\
+    \hookrightarrow branches\\
+    \hookrightarrow tags\\
+    \hookrightarrow trunk\\$
+
+
+Import du layout dans le  \textcolor{red}{repository}
+
+\begin{verbatim}
+svn import . file:///var/svn-repos/ -m 'Initial repository layout import'
+Adding         oph-erp-project
+Adding         oph-erp-project/tags
+Adding         oph-erp-project/trunk
+Adding         oph-erp-project/branches
+
+Committed revision 1.
+
+svnlook tree /var/svn-repos/
+/
+ oph-erp-project/
+  trunk/
+  branches/
+  tags/
+\end{verbatim}
+
+\begin{verbatim}
+groupadd subversion
+adduser un_user subversion
+\end{verbatim}
+
+
+\begin{verbatim}
+ls /var/svn-repos/
+conf  dav  db  format  hooks  locks  README.txt
+\end{verbatim}
+
+Import de /opt/openerp/server
+
+svn import /opt/openerp/server file:///var/svn-repos/oph-erp-project
+
+
+
+
+svn commit -m 'message de commit'
+ca marche! quels sont les droits sur le zotac repository
+
+sur le client 
+mkdir workcopy
+cd workcopy
+svn co http://zotac/svn/oph-erp-project/trunk
+ls 
+trunk
+
+
+svn commit -m 'first commit'
+Password for 'Default' GNOME keyring: 
+svn: Commit failed (details follow):
+svn: Can't open file '/var/svn-repos/db/txn-current-lock': Permission denied
+
+\begin{verbatim}
+chown -R www-data:subversion /var/svn-repos/*
+chmod -R 770 /var/svn-repos/*
+\end{verbatim}
+
+\begin{verbatim}
+trunk  svn commit -m 'first commit'
+svn: Commit failed (details follow):
+svn: Can't make directory '/var/svn-repos/dav/activities.d': Permission denied
+\end{verbatim}
+
+\begin{verbatim}
+svn import /opt/openerp/server/ 
+        file:///var/svn-repos/oph-erp-project/trunk 
+        -m 'Initial import of server'
+\end{verbatim}
+
+\subsection{Checkout}
+\label{sec:checkout}
+
+Comment récuperer le projet dans le repository et le mettre dans une copie de travail? 
+
+\begin{verbatim}
+cd /home/lfs/openerp-oph/workcopy
+svn checkout [-r N] http://zotac/svn/oph-erp-project/trunk
+\end{verbatim}
+
+Ce n'est pas workcopy qui est la workcopy mais workcopy/trunk\\
+
+\subsection{Commit}
+\label{sec:commit}
+\begin{verbatim}
+cd ~/opener-oph/workcopy/trunk
+svn commit -m 'initial commit'
+Sending        bin/addons/oph_consult/oph_consult.py
+Transmitting file data .
+Committed revision 3.
+\end{verbatim}
+
+
+\subsection{Export}
+\label{sec:export}
+
+J'ai fait des modifications dans le code je voudrais voir ce que cela donne dans openerp. 
+\begin{itemize}
+\item Faire un commit
+\item Faire un export cf ci-dessous. L'export se fait à partir du server
+\end{itemize}
+%On exporte le directory oph qui correspond à notre module:
+
+\begin{verbatim}
+mkdir /opt/openerp/server/bin/addons/oph
+svn export --force 
+        file:///var/svn-repos/oph-erp-project/trunk/bin/addons/oph/ \
+œ        /opt/openerp/server/bin/addons/oph/
+
+A    /opt/openerp/server/bin/addons/oph
+A    /opt/openerp/server/bin/addons/oph/oph_consult.py
+A    /opt/openerp/server/bin/addons/oph/images
+A    /opt/openerp/server/bin/addons/oph/images/accounting.png
+A    /opt/openerp/server/bin/addons/oph/images/accounting-hover.png
+A    /opt/openerp/server/bin/addons/oph/__init__.py
+A    /opt/openerp/server/bin/addons/oph/__openerp__.py
+A    /opt/openerp/server/bin/addons/oph/consultation_view.xml
+Exported revision 3.
+\end{verbatim}
+
+\subsubsection{Export d'une révision particulière}
+\label{sec:export_rev}
+
+Si je veux exporter une révision particulière?
+
+\begin{verbatim}
+
+svn export --force \codeHighlight{-r 2} \
+
+        file:///var/svn-repos/oph-erp-project/trunk/bin/addons/oph_consult/ \
+
+        /opt/openerp/server/bin/addons/oph_consult/
+
+A    /opt/openerp/server/bin/addons/oph_consult
+A    /opt/openerp/server/bin/addons/oph_consult/images
+A    /opt/openerp/server/bin/addons/oph_consult/images/accounting.png
+A    /opt/openerp/server/bin/addons/oph_consult/images/accounting-hover.png
+A    /opt/openerp/server/bin/addons/oph_consult/__init__.py
+A    /opt/openerp/server/bin/addons/oph_consult/__openerp__.py
+A    /opt/openerp/server/bin/addons/oph_consult/consultation_view.xml
+A    /opt/openerp/server/bin/addons/oph_consult/oph_consult.py
+Exported revision 2.
+\end{verbatim}
+
+\subsection{Status}
+\label{sec:status}
+
+\section{installation des dépendances python}
+\label{sec:deppython}
+
+installer 
+aptitude install python-unittest2 python-mock mais il y en a d'autres.
+
+
+aptitude install python-dateutil python-docutils python-feedparser python-gdata \
+python-jinja2 python-ldap python-libxslt1 python-lxml python-mako python-mock python-openid \
+python-psycopg2 python-psutil python-pybabel python-pychart python-pydot python-pyparsing \
+python-reportlab python-simplejson python-tz python-unittest2 python-vatnumber python-vobject \
+python-webdav python-werkzeug python-xlwt python-yaml python-zsi python-uno
+\section{Eclipse}
+\label{sec:eclipse}
+
+\subsection{Comment créer un projet openerp}
+\label{sec:create_project}
+
+\begin{verbatim}
+cd ~
+mkdir -p oph_openerp/{extra-addons, src}
+cd oph_openerp
+bzr branch lp:~openerp/openobject-addons/7.0/ addons
+bzr branch lp:~openerp/openobject-server/7.0/ server
+bzr branch lp:~openerp/openerp-web/7.0/ web
+cd extra-addons
+bzr branch lp:~mathieu-julius/aeroo/openerp7.0.x/ aeroo
+mkdir oph
+cd oph
+bzr branch lp:~francois-oph/oph/7.0 oph
+
+\end{verbatim}
+
+J'ai récupéré les sources à partir de launchpad.
+Il faut maintenant créer le projet dans Eclipse. 
+
+\subsection{Création d'un role pour openerp}
+\label{sec:role}
+
+Pour que openerp puisse communiquer avec la base de donnée il faut créer un role du nom de l'utilisateur qui lance openerp.
+
+\begin{verbatim}
+su
+su - postgres
+createuser --createdb --username postgres --no-createrole --no-superuser --pwprompt lfs
+Enter password for new role: ********
+Enter it again: ********
+\end{verbatim}
+
+\subsection{Création du projet dans eclipse}
+\label{sec:createproject}
+File - New- Project - Pydev +- PyDev Project - Next
+Name : ce qu'on veut
+Décocher use default
+Project browse et selection du projet (eg oph\_openerp)
+Clic here to configure an interpreter not listed
+
+Si message d'erreur demandant d'importer le projet. rm .project et .pydevproject
+\subsection{Run configuration}
+\label{sec:runconfig}
+Run - Run Configuration - Python Run
+Main Module: \${workspace\_loc:oph\_openerp/server/openerp-server}
+
+Onglet argument
+--addons-path openobject-addons, openerp-web/addons,extra-addons/aeroo, extra-addons/oph
+
+
+\subsection{Lorsque qu'il manque pleins de choses dans le menu "Run"}
+\label{sec:run_without}
+
+En haut à droite l'icon en forme de fénètre avec une petite croix jaune et un crosillon dedans 'Open perspective' -> Other -> pydev
+\subsection{Installation de aeroolib}
+\label{sec:aeroolibinstall}
+
+\begin{verbatim}
+cd ~
+bzr branch lp:aeroolib
+cd aeroolib/aeroolib
+su
+python ./setup.py install
+\end{verbatim}
+
+\subsection{A faire en fin de session}
+\label{sec:finsession}
+
+\begin{verbatim}
+cd ~/oph_openerp/extra-addons/oph/oph
+bzr add 
+bzr commit
+bzr push
+\end{verbatim}
+
+\subsection{Mise à jour d'une branche déjà présente localement}
+\label{sec:miseajour}
+
+\begin{verbatim}
+cd oph_openerp/openobject-addons
+bzr pull
+
+cd oph_openerp/openobject-server
+bzr pull
+
+cd oph_opnerp/openerp-web
+bzr pull
+\end{verbatim}
+
+\subsection{Comment récupérer une version d'un fichier}
+\label{sec:version}
+
+\subsection{Comment revenir en arriere sur un fichier}
+\label{sec:comeback}
+
+\begin{verbatim}
+bzr revert custom/oph_view.xml.
+\end{verbatim}
+
+
+Va récuperer le fichier de début de la version en cours.
+
+\subsection{Comment faire un diff entre sa dernière révision et la dernière révision d'une autre branche?}
+\label{sec:difffrombranh2branche}
+
+\begin{verbatim}
+bzr diff -r branch:lp:~mathieu-julius/oph/7.0-2013-07-01
+\end{verbatim}
+
+Et pour avoir une vue simplifiée:
+\begin{verbatim}
+bzr st branch:lp:~mathieu-julius/oph/7.0-2013-07-01
+\end{verbatim}
+st c'est pour status
+
+\subsubsection{Et pour avoir un diff en couleur}
+\label{sec:diffcolor}
+
+Installer le paquet: aptitude install bzrtools, puis
+\begin{verbatim}
+bzr cdiff -r branch:lp:~mathieu-julius/oph/7.0-2013-07-01
+\end{verbatim}
+
+Mieux:
+\begin{verbatim}
+bzr qdiff
+\end{verbatim}
+
+\subsection{Comment accepter un merge avec une autre branche?}
+\label{sec:mergebranch}
+
+Tout est expliqué dans l'interface web sur le site de launchpad. 
+
+\subsection{Comment connaitre ses branches}
+\label{sec:my_branches}
+
+\begin{verbatim}
+    https://code.launchpad.net/people/+me
+\end{verbatim}
+A mettre littéralement dans le url. C'est magique ça marche.
+
+\subsection{Comment effacer une branche?}
+\label{sec:branch_delete}
+\begin{verbatim}
+    https://code.launchpad.net/people/+me
+\end{verbatim}
+clic sur la branche. Et icone 'delete'
+
+\subsection{Comment créer une nouvelle branche}
+\label{sec:create_branch}
+
+bzr pull lp:~francois-oph/oph/name\_branch
+
+J'ai choisi dev comme branch\_name
+
+\subsection{Comment utiliser Latex dans eclipse}
+\label{sec:eclipse_latex}
+installer les packages de : http://texlipse.sourceforge.net/
+
+\section{Configuration du server}
+\label{sec:conf_server}
+Il faut configurer apache2 sur le serveur dans le /etc/apache2/\textcolor{green}{mods-available/davsvn.conf}
+
+Attention à \textcolor{red}{<Location /svn>} qui fait que l'on accede au repository avec http://zotac/svn et pas http://zotac/var/svn-repos/oph-erp-project.... C'est une sorte de raccourci
+
+
+
+\framebox[1.1\width]{Comment encadre du texte}
+
+\section{PGadmin}
+\label{sec:pgadmin_remote}
+
+\begin{alltt}
+name:unnom
+host:zotac
+port: 5432
+username: openerp
+password: openerp
+\end{alltt}
+
+Il y a plusieurs roles pour les voir :
+\begin{verbatim}
+su postgres
+psql
+SELECT rolname FROM pg\_roles;
+\end{verbatim}
+
+
+\subsection{Comment changer le password d'un role?}
+\label{sec:chpass}
+
+Cela peut etre interessant quand on arrive plus à se connecter avec pgadmin.
+ALTER rolename PASSWORD 'a string';
+
+ou 
+\begin{verbatim}
+su postgres
+psql
+\password postgres
+Saisissez le nouveau mot de passe :
+Saisissez-le à nouveau :
+\end{verbatim}
+\subsection{Comment retrouver le nom des databases?}
+\label{sec:databas_name}
+
+\begin{verbatim}
+su postgres
+pgsql 
+SELECT datname FROM pg_database;
+\end{verbatim}
+
+\subsection{Comment vérifier que postgresql est en route}
+\label{sec:postgresql}
+
+invoke-rc.d postgresql status
+Running clusters: 9.1/main 
+
+lsof -i :5432
+COMMAND   PID     USER   FD   TYPE DEVICE SIZE/OFF NODE NAME
+postgres 2585 postgres    3u  IPv4   8037      0t0  TCP localhost:postgresql (LISTEN)
+
+\subsection{Comment changer de database?}
+\label{sec:ch_database}
+\begin{verbatim}
+\c nom\_database
+\end{verbatim}
+\subsection{Comment obtenir la liste des tables?}
+\label{sec:table_list}
+\begin{verbatim}
+\d
+\end{verbatim}
+\subsection{Comment changer de role?}
+\label{sec:role}
+
+
+\section{Editer du code en remote avec emacs}
+\label{sec:emacs-remote}
+
+C-x C-f /root@zotac:/opt/openerp/server/bin/addons \\
+Il arrive que cela bloque sur nouvelle demande de mot de passe. En allant dans /opt/openerp/server/bin/addons/oph on trouve un fichier oph\_flymake qu'il suffit d'enlever pour régler le probleme.
+
+\section{Comment imprimer du code en coloration syntaxique}
+\label{sec:print_color}
+
+
+\begin{verbatim}
+aptitude install python-pygments
+su
+easy_intall pygments
+\end{verbatim}
+
+
+\begin{verbatim}
+\usepackage{minted}
+\begin{document}
+
+
+\begin{minted}[linenos=true,fontsize=\scriptsize]{xml}
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+      <record model="ir.actions.act_window" id="action_menu_consultation">
+        <field name="consultation">o_consultation</field>
+        <field name="res_model">o_consultation</field>
+      </record>
+    </data>
+</openerp>
+
+\end{minted}
+\end{verbatim}
+
+\subsection{Imprimer coloration syntaxique python}
+\label{sec:python}
+
+\begin{verbatim}
+$pygmentize  -O full,style=emacs  -o test.html oph-consult.py
+\end{verbatim}
+Ça marche aussi très bien avec du xml.
+
+\section{Commentaire dans un XML}
+\label{sec:comment_xml}
+
+\subsection{commentaire}
+\label{sec:comment}
+
+\begin{verbatim}
+<!-- Ceci est un commentaire  -->
+\end{verbatim}
+
+\subsection{Comment retirer du code xml temporairement?}
+\label{sec:retirercode}
+
+\begin{verbatim}
+<!--
+<record model="ir.actions.actwindow" id="actionmenumesure">
+<field name="mesure">mesure</field>
+<field name="res_model">mesure</field>
+</record>
+-->
+\end{verbatim}
+
+\section{Chercher une string dans les fichier d'un directory}
+\label{sec:search_string}
+
+\begin{verbatim}
+cd /path/to/look/for
+grep -H -r 'fields.many2many' ./ | cut -d: -f1 (plus rapide)
+ou
+find ./ -type f -print0 | xargs -0 grep -i fields.many2many
+\end{verbatim}
+
+\section{Deboggage}
+\label{sec:deboggage}
+
+\subsection{Utilisation de pdb}
+\label{sec:pdb}
+
+Dans le code là où on a un problème on met:
+import pdb
+pdb.set\_trace()
+
+Le code va s'arréter là en mode console (pdb).
+\begin{description}
+\item[?]  pour avoir les fonctions.  On accés à toutes les variables.
+\item[where]   est une commande intéressante q pour quitter n (next) pour avancer pas à pas
+\item[continue] pour poursuivre l'execution du code p variable print la valeur de la
+  variable
+\item[q] crash le program
+\item[l] list par defaut 11 lignes de codes. La ligne que l'on va exécuter est pointé par un ->
+\item[args] pour avoir la liste de arguments
+\item[p] p args pour avoir l'argument args. 
+\end{description}
+
+\subsection{Comment afficher le nom de la méthode }
+\label{sec:stack}
+import inspect
+print "PASSING through", inspect.stack()[0][3]
+
+\section{Object, Fields}
+\label{sec:obj,field}
+
+\subsection{Fields}
+\label{sec:fields}
+
+Les paramêtres optionnels:
+\begin{description}
+
+\item [string] Le nom du champ comme il doit apparaitre sur un label ou un entête de colonne. Si on met des caractéres non ASCII utiliser \textcolor{blue}{string=u'Testé'}
+\item[help] Description de la facon d'utiliser le champ. Plus long et plus descriptif que \textsl{string}
+\item[ondelete]
+  \begin{itemize}
+  \item restrict
+  \item no action
+  \item cascade
+  \item set null
+  \item set default
+  \end{itemize}
+\item[readonly] \textsl{True} si l'utilisateur ne peut éditer le champ.
+\item[required] \textsl{True} si le champ doit avoir une valeur avant de pouvoir être sauvegardé.
+\item[size] taille du champ dans la database
+\item[states] Permet de surcharger d'autres paramêtres pour des états spécifiques. Accepte un dictionnaire. e.g. \textit{states={‘posted’:[(‘readonly’,True)]}}
+\item[translate]
+\item[change\_default] oui ou non l'utilisateur peut définir des valeurs par défaut sur d'autres champs dépendant de la valeur de ce champ(???)Ces valeurs par défauts doivent être définies dans la table \textsl{ir.values}.
+\end{description}
+Il y a des paramêtres optionnels qui sont spécifiques de certains types de fields.
+\begin{description}
+\item[context]
+\item[domain] default value:[]
+\item[invisible] cache la valeur du champ dans les forms. Par examle password
+\item[relation]
+\item[select] 
+\end{description}
+
+\subsection{boolean}
+\label{sec:bool}
+
+fields.boolean('Field Name' [, Optional Parameters]),\\
+Le paramètre \textcolor{red}{digits} ne marche pas 
+
+\section{Héritage}
+\label{sec:inherit}
+
+\subsection{class inheritance}
+\label{sec:inheritance}
+
+\begin{verbatim}
+class custom_material(osv.osv):
+        _name = 'parent.material'
+        _inherit = 'parent.material'
+        _columns = {
+                'manuf_warranty': fields.boolean('Manufacturer warranty?'),
+        }
+        _defaults = {
+                'manuf_warranty': lambda *a: False,
+       }
+custom_material()
+\end{verbatim}
+
+
+\framebox[1.1\width]{\_name == \_inherit}
+
+
+
+La class custom\_materiel va ajouter le nouveau champ manuf\_warranty à l'objet parent.material. Les nouvelles instances de cette class seront visibles par les views et tree de la superclass parent.material.
+
+\subsection{Héritage par prototyping}
+\label{sec:prototype}
+
+\begin{verbatim}
+class other_material(osv.osv):
+        _name = 'other.material'
+        _inherit = 'parent.material'
+        _columns = {
+                'manuf_warranty': fields.boolean('Manufacturer warranty?'),
+        }
+        _defaults = {
+                'manuf_warranty': lambda *a: False,
+       }
+other_material()
+\end{verbatim}
+
+
+\framebox[1.1\width]{\_name != \_inherit} \\
+
+
+Il y a création de la table other.material qui aura tous les champs de spécifiés dans parent.material et aussi le nouveau champ manuf\_warranty.
+
+Les nouvelles instances de cette class ne seront pas visibles par les tree et views de la superclass parent.material.
+
+Je pense que l'on est pas obligé dans cet héritage de mettre le \_name.
+
+\subsection{Héritage par délégation}
+\label{sec:delegation}
+TODO je n'ai pas compris
+
+
+\subsection{Peut on écraser les valeurs d’un champ fields.selection avec un héritage.}
+ 
+Peut-on changer les valeurs par défaut d’un ’fields.selection’ dans un objet hérité ?
+j’ai fait un héritage par class inheritance \_inherit == \_name
+je réécrit le state
+
+\subsection{Héritage de vue}
+\label{sec:inherit_view}
+
+\subsubsection{Héritage de search view}
+\label{sec:inherit_search_view}
+
+For example add a filer name ='Patel' and add a 'group by' name.
+
+\begin{verbatim}
+         <record id="inherit_view_crm_case_leads_filter" model="ir.ui.view">
+            <field name="name">CRM - Leads Search </field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.view_crm_case_leads_filter" />
+            <field name="arch" type="xml">
+
+               <!-- add your filtre at the end -->
+                <xpath expr="filter[@string='Assigned to My Team(s)']"
+                    position="after">
+                     <filter string="My Filtre "
+                            domain="[('name', '=', 'Patel')]" />
+                </xpath>
+
+               <!-- add your group at the end -->
+                <xpath expr="//filter[@string='Creation']"
+                    position="after">
+                    <filter string="My Groupe" domain="[]" context="{'group_by':'name'}"/>
+                </xpath>                                    
+                </field>
+            </record>
+\end{verbatim}
+
+
+
+\section{Les relations one2many, many2many, many2one}
+\label{sec:relations}
+
+\subsection{one2one}
+\label{sec:one2one}
+
+Deprecated il faut utiliser une many2one
+
+\subsection{one2many}
+\label{sec:one2m}
+
+Une personne peut avoir plusieurs properties.
+
+\begin{verbatim}
+class dev_person(osv.osv):
+        _name = 'dev.person'
+        _description = 'Person'
+        -columns = {
+                'name' : fields.char('Person Name', char(64), requires=True),
+                'property_ids' : fields.one2many('dev.property', 'property_id, `'Properties'),
+
+class dev_property(osv.osv):
+        _name = 'dev.property'
+        _description = 'Property'
+        _columns = {
+                'name' : fields.char('Property Name', char=64, required=True),
+                'property_id' : fieds.many2one('dev.person', 'Person Name', select=True),
+        }
+\end{verbatim}
+
+select=True : crée un index sur la clef étrangère.
+
+De facon plus génériques. Soit la classe A qui a une relation one2many avec la class B.
+\footnotesize{
+\begin{verbatim}
+class A(osv.osv):
+        _name = '$A._name'
+        _columns = {
+                'name' = fields.char('$A.name, char=65),
+                '$B_ids' = fields.one2many('$B._name, '$B_id'=='$B.name.fields.many2one, '$B.name.label'),
+
+class B(osv.osv):
+        _name = '$B._name'
+        _columns = {
+                'name' = fields.char('$B.name', char=65),
+      '$B.name.fields.many2one') == '$B_id' = fields.many2one('$A._name', '$A.field.name.label', select=True),
+                }
+\end{verbatim}
+}
+
+\begin{verbatim}
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+<record model="ir.actions.act_window" id="action_dev_person_form">
+<field name="name">dev_person</field>
+<field name="res_model">dev.person</field>
+</record>
+
+<record model="ir.actions.act_window" id="action_dev_property_form">
+<field name="name">dev_property</field>
+<field name="res_model">dev.property</field>
+</record>
+
+<menuitem name="Dev" icon="terp-project" id="dev_menu" />
+<menuitem name="Person" parent="dev_menu" id="dev_menu_person" action="action_dev_person_form" />
+<menuitem name="Property" parent="dev_menu" id="dev_menu_property" action="action_dev_property_form" />
+
+</data>
+</openerp>
+\end{verbatim}
+
+\subsection{many2one}
+\label{sec:many2one}
+Associe cet objet a un parent par ce field. Par example le departement auquel appartient un employé. Plusieurs employés appartiennent à un département.
+
+fields.many2one('other.object.name', 'Field name', optional parameter)
+
+\subsubsection{optional parameters}
+\label{sec:optional_par}
+\begin{description}
+\item[ondelete] définit ce qui se passe lorsque la ressource vers laquelle pointe ce field est supprimé
+  \begin{itemize}
+    \item Default value: 'set null'
+    \item Autres valeurs possibles: "cascade", "set null", "restrict", "no action", "set default"
+  \end{itemize}
+
+\end{description}
+
+
+\subsection{many2many}
+\label{sec:m2m}
+\begin{verbatim}
+class A(osv.osv):
+        _name = '$A._name'
+        _columns = {
+                'name' = fields.char('$A.name, char=65),
+                '$B_ids' = fields.many2many(
+                                                '$B._name,
+                                                '$Aname'_$Bname_rel',
+                                                '$Aname_id',
+                                                '$Bname_id',
+                                                'Nom du champ'),
+\end{verbatim}
+
+Explication:
+
+\$Aname\_\$Bname\_rel est le nom de la table intermédiaire qui va être crée par le système.
+
+Elle aura pour champ \$Aname\_id et \$Bname\_id
+
+Il n'est pas nécessaire de définir tout cela ailleurs. Le système le fait pour toi. A CONFIRMER.
+
+\subsection{Bidirectionnel. Comment le rendre bidirectionnel?}
+\label{sec:bidirectionnel}
+
+Crée un champ dans l'autre object. Pour cela on fait de l'héritage de class.
+
+\begin{verbatim}
+class B_child(osv.osv):
+        _name = pas la peine de la mettre. C'est de l'héritage de class
+        _inherit = '$B._name'
+        _columns = {
+                '$Bblabla_ids' :  fields.many2many(
+                                                        '$A._name',
+                                                        '$Aname_$Bname_rel' (c'est le relation object)
+                                                        '$Aname_id',
+                                                        '$Bname_id',
+                                                        '$B Field Name')
+\end{verbatim}
+
+\section{Nom des champs}
+\label{sec:nomchamp}
+
+Il ne faut pas donner au champ des noms en x\_blabla
+
+\section{Convention de nommage}
+\label{sec:nommage}
+
+\begin{tabular}{|l|l|}
+\hline
+  nom des modules & minuscules avec \_. Si le module dépend d'autres modules on peut écrire dependson1\_depondson2\_name. Pas de point (.)\\
+\hline
+nom des objects & minuscules  nom\_du\_module.name1.name2.name3 \\
+\hline
+fields & minuscules \\
+&{\parbox{0.9\textwidth}{
+\begin{itemize}
+\item fields.one2many: 'blabla\_ids
+\item fields.many2many: 'blabla\_ids'
+\item fields.many2one: 'blabla\_id'
+\item Moyen mnemotechnique si apres 2 c'est many alors \_ids si apres 2 c'est one alors \_id
+\end{itemize} }}\\
+\hline
+\end{tabular}
+
+5 champs sont créés par le système automatiquement.
+
+\subsection{Wizard et convention de nommage}
+% \label{sec:conventionnomage}
+
+Il semble qu’il y ait des convention de nommage sur les noms de fichiers dans la définition de wizard : <NomModule>\_<NomFichier>.py et <NomModule>\_<NomFichier>\_view.xml
+
+\section{Les method ORM}
+\label{sec:orm_methods}
+
+\subsection{create}
+\label{sec:create}
+
+\subsubsection{Signature}
+\label{sec:sig_create}
+
+create(cr,user,vals,context=None)
+\begin{description}
+\item[cr] database cursor
+\item[user (integer)] current user id
+\item[vals (dictionnary)] valeur des fields pour le nouveau record eg('field\_name1':value1, field\_name2:value2...)
+\item[context] optionnel
+\end{description}
+
+\subsubsection{return}
+\label{sec:return_create}
+
+id du nouveau record créé.
+
+\subsection{write}
+\label{sec:write_method}
+Update un record existant en fonction de ids, avec les valeurs de vals.
+
+\subsubsection{Signature}
+\label{sec:write_sig}
+write(cr,uid,ids,vals,context=None)
+\begin{description}
+\item[cr] database cursor
+\item[user(integer)] current user id
+\item[ids] ids des records à upgrader
+\item[vals(dictionnary)] vals à utiliser pour updater eg ('field\_name1':new\_value1, field\_name2:new\_value2...)
+\item[context] optionnel
+\end{description}
+
+\subsubsection{return}
+\label{sec:ret_write}
+
+True
+
+\subsection{Différence entre write et create}
+\label{sec:diff_write_create}
+
+write c'est pour des records déjà existants et create c'est pour créer de nouveaux records.
+
+\subsection{search}
+\label{sec:search}
+
+\subsubsection{signature}
+\label{sec:signature}
+search(cr, uid, args, offset=0, limit=None, order=None, context=None, count=False)
+
+\begin{description}
+\item[cr] database cursor
+\item[uid] current user id
+\item[args] list de tuples : \[('field_name', 'operator', value), ...\]. list vide pour avoir tous les records.
+\end{description}
+
+\subsubsection{return}
+\label{sec:return}
+id or list of ids of records matching the criteria
+
+\subsection{browse}
+\label{sec:browse_method}
+Fetch records as objects allowing to use dot notation to browse fields and relations
+\subsubsection{signature}
+\label{sec:browse_sig}
+
+browse(cr, uid, select, context=None, list\_class=None, fields\_process=None)
+
+\begin{description}
+\item[cr] database cursor
+\item[uid] current user id
+\item[select] id or list of ids
+\item[context] context arguments
+\end{description}
+
+\subsubsection{return}
+\label{sec:browse_return}
+
+un record ou une liste de records
+
+\subsection{read}
+\label{sec:read_method}
+Read records with given ids with the given fields
+\subsubsection{signature}
+\label{sec:read_sig}
+
+ read(cr, user, ids, fields=None, context=None, load='\_classic\_read')¶
+\begin{description}
+\item[cr] database cursor
+\item[uid] current user id
+\item[ids] id ou list d'ids des records à lire
+\item[fields(list)] liste optionnelle des noms de champs à retourner eg [field\_name, field\_name2,..]
+\item[context] optionnel dictionnaire context
+\end{description}
+
+\subsubsection{return}
+\label{sec:read_return}
+
+Retourne list de dictionnaire (un dictionnaire par record demandé) avec les valeurs des champs demandés.
+
+\section{unlink}
+\label{sec:unlink}
+
+\subsection{Comment faire pour ne pas pouvoir supprimer certains records en fonction de leur state?}
+\label{sec:unlink_by_state}
+\begin{minted}{python}
+def unlink(self, cr, uid, ids, context=None):
+        if context is None:
+            context = {}
+        """Allows to delete sales order lines in draft,cancel states"""
+        for rec in self.browse(cr, uid, ids, context=context):
+            if rec.state not in ['draft', 'cancel']:
+                raise osv.except_osv(_('Invalid Action!'), _('Cannot delete a sales order line which is in state \'%s\'.') %(rec.state,))
+        return super(sale_order_line, self).unlink(cr, uid, ids, context=context)
+\end{minted}
+fichier sale.py ligne 979.
+
+\section{name\_get()}
+\label{sec:name_get}
+
+On peut avoir a surcharger cette méthode qui donne l'affichage du record
+
+\section{name\_search()}
+\label{sec:get_name}
+Méthode qui indique  comment est fait la recherche d'un record.
+
+
+\section{Syntaxe du xml pour les forms view}
+\label{sec:form_view}
+
+\subsection{Affichage des labels des champs}
+\label{sec:labels_7.0}
+
+Si on met la syntaxe:
+<form string="Storage Media" version="7.0">
+alors il faut mettre les <field name=''unnom''/>
+dans des <group> sinon les labels ne s'affiche pas. 
+
+\subsection{label for}
+\label{sec:labelfor}
+
+<label for=''date\_start'' string=''Date Range''/>
+<label for=''code'' class=''oe\_edit\_only'' string=''Account Code and Name'' attrs=''{'invisible':['value','=','balance']}''/>
+Quand est ce qu'on utilise label for
+A quoi cela sert exactement
+J'ai pas trouvé d'autre class que oe\_edit\_only
+\subsection{separator}
+\label{sec:separator}
+
+<separator/> à l'intérieur d'un <group></group> ca met un peu d'espace vertical.
+pour mettre un label au dessus d'un group: <group string="Mon Label"></group>
+
+\subsection{class="oe\_inline"}
+\label{sec:oe_inline}
+
+cela permet de reduire la taille horizontal de l'input box mais je ne sais pas de combien.
+
+\subsection{class="oe\_highlight"}
+\label{sec:highlight}
+
+Cela permet d'avoir un bouton en rouge qui passe en gris une fois que l'on a appuyé dessus.
+je l'ai vu utilisé pour les boutons de transition d'état.
+\subsection{widget status bar }
+\label{sec:statusbar}
+
+eg : oph\_agenda\_view.xml, oph\_bloc\_agenda.xml form view pour les bloc.agenda.line.
+
+La status bar s'affiche mais il n'y a pas de coloration si dans la vue il y le champ state.
+Le mettre en invisible ne suffit pas. Il faut vraiment le supprimer. 
+
+\subsection{group}
+\label{sec:group_form}
+<group></group> on crée un container qui a deux colonnes
+<field name="lab1"> ---> utilise deux colonnes 1 pour le label et 1 pour l'input box. 
+<field name="lab2">
+Les champs seront donc mis les uns au dessus des autres. 
+
+Je comprends pas le role de colspan. 
+
+
+%%--
+ \section{Comment masquer (ou pas) certains champs d’une form view en fonction de valeurs d’une autre field dans cette meme form?}
+
+exemple de knowledge-Config-document-management-storage Media
+
+\begin{minted}[linenos=true,fontsize=\scriptsize]{xml}
+<?xml version="1.0"?>
+    <form string="Storage Media">
+        <group colspan="4" col="6">
+            <field name="name" select="1" colspan="4"/>
+            <field name="type"/>
+            <newline/>
+            <field name="user_ID's"/>
+            <field name="online"/>
+            <field name="readonly"/>
+        </group>
+        <group colspan="2" attrs="{'invisible':[('type','in',['db', 'db64'])]}">
+            <field name="path"/>
+        </group>
+    </form>
+\end{minted}
+
+
+
+On voit que le group field ’path’ ne sera pas visible suivant les valeurs de certains champs dans la vue. Il faut rafraichir l’affichage
+pour le voir.
+
+Si 'type' appartient à l'objet de la view ca marche mais maintenant si on veut faire sur une valeur d'un champ many2one?
+\section{Héritage de vue}
+\label{sec:view_inherit}
+
+J'ai crée une class par héritage afin de créer un lien one2many avec un autre objet.
+\begin{verbatim}
+class res_partner(osv.osv):
+    _inherit = "res.partner"
+    _columns = {
+        'consultation_ids' : fields.one2many('oph.consultation', 'partner_id', 'Consulations'),
+                }
+res_partner()
+\end{verbatim}
+Pas mettre le \_name.\\
+Je rajoute le champ consultation\_ids.\\
+Ensuite comment afficher les consultations dans le form de res.partner?\\
+Il faut récupérer l'id XML de la form qui nous intéresse. Pour cela, on regarde dans openerp, quand on est sur la form qui nous intéresse, à droite ``manage view'' et on recherche dans la colonne 'XML id'. Dans notre exemple, on trouve: base.view\_partner\_form.
+\begin{Verbatim}[commandchars=\\\{\}]
+<record model="ir.ui.view" id="view_partner_form">
+    <field name="name">res.partner.form.inherit</field>
+    <field name="model">res.partner</field>
+    <field name="inherit_id" \codeHighlight{ref="base.view_partner_form"}/>
+    <field name="arch" type="xml">
+        <notebook position="replace">
+            <page string="Consultations">
+                <field name="consultation_ids" colspan="4" nolabel="1"/>
+            </page>
+        </notebook>
+    </field>
+</record>
+\end{Verbatim}
+
+rajout de champ dans un objet: restart server et update module.OK. Mais modification d'un champ existant ca ne suffit pas. Il faut récréer une base.\\
+Modification d'un .xml un update du module suffit. Pas besoin de faire un restart du serveur.\\
+oph\_consultation.py ne marche pas et consultation.py ne marche pas. pourquoi?\\Une erreur dans le code python ne sera pas forcément vue dans le log de openerp-server.\\
+Si on enleve le module alors les champs restent dans les tables.\\
+
+\section{Les onglets}
+\label{sec:onglets}
+
+Comment mettre en place des onglets?
+\begin{verbatim}
+<notebook colspan='4'>
+<page name='un titre d'onglet'>
+...
+</page>
+</notebook>
+\end{verbatim}
+<notebook> est le conteneur à onglet. Et les onglets sont définis par <page>
+
+\section{Quand un module dépend d’autres modules}
+\label{sec:depends}
+
+C’est à mettre dans le fichier \_\_openerp.py\_\_ [...] "depends" : ["base","account"], [...]
+On sait qu’elles sont les modules à charger en dépendance en regardant les héritages de class. Il faut que les objets parents soient chargés avant en dépendance donc.
+
+\section{Comment géré les dates avec le module arrow}
+\label{sec:arrow}
+
+\subsection{Installation de arrow}
+\label{sec:install}
+
+#pip install arrow
+
+\subsection{import}
+\label{sec:import}
+
+import arrow
+
+\subsection{}
+arrow.now() object arrow en local time
+arrow.now().to('UTC') converti et donne l'objet arrow en UTC = l'heure en UTC et aware of UTC
+
+
+\subsection{Que récupere-t-on dans avec un read qd le fields est un datetime}
+\label{sec:datetime}
+
+
+\begin{verbatim}
+ res = self.read(cr, uid, ids, [ 'start', 'stop',], context = None)
+ res
+[{ 'stop': '2013-12-26 11:39:31', 'start': '2013-12-25 11:39:25', }]
+\end{verbatim}
+
+
+On récupère une string formattée 'YY-MM-DD hh:mm:ss' est en UTC mais ne sait pas que c'est en UTC.
+Dans la database les datetime sont stockés en UTC et unware of UTC.
+
+On va donc devoir créer un arrow, faire des computations sur ces arrows
+
+\subsection{string to arrow}
+\label{sec:string2arrow}
+\begin{verbatim}
+arrow.get('string date', 'string format')
+arrow.get('2013-05-05 12:30:45', 'YYYY-MM-DD HH:mm:ss')
+ou
+fmt = 'YYYY-MM-DD HH:mm:ss' (HH pas hh)
+arrow.get('2013-05-05 12:30:45',fmt). On obtient un arrow qui est aware TZ et en UTC.
+\end{verbatim}
+
+Maintenant on a des arrow que faut-il mettre dans le write ou le create:
+\begin{itemize}
+\item une string au bon format:'YYYY-MM-DD HH:mm:ss'
+\item en UTC ou pas. je pense en UTC. 
+\end{itemize}
+
+
+\subsection{arrow to string}
+\label{sec:arrow2string}
+
+an\_arrow\_obj.format(fmt) et on obtient une string.
+
+
+Comment s'assurer que dans une string time : HH:mm:ss sont bien tous renseignés.
+
+\noindent Si 08 alors convertir en 08:00:00.\\*
+Si 9 alors convertir en 09:00:00.\\*
+Si 09:30 alors convertir en 09:30:00.\\*
+Si 9:45 alors convertir en 09:45:00.\\*
+
+Il faut d'abord sortir les HH, mm, ss et travailler sur chaque élement et reconstituer la chaine. 
+
+res = '08:30:00'.split(':') $\rightarrow$ ['08','30','00']
+
+
+res = '8'.split(':') $\rightarrow$ ['8']
+
+Passer tous les élements de la liste en 08,09 si nécessaire
+
+\begin{minted}{python}
+f='0{0}' 
+
+def foo(x): 
+    if len(x)<2: 
+       return f.format(*x) 
+       else:return x
+    
+    
+ res= map(foo,['8','1'])
+ou res = map(foo,time.split(':'))
+\end{minted}
+
+Ensuite on compléte si nécessaire pour avoir bien les heures les minutes et les secondes:
+
+\begin{minted}{python}
+def complete(x): 
+   while len(x)<3: 
+      x.append('00') 
+   return x
+
+res = complete(map(foo,time.split(':')))
+
+\end{minted}
+
+Pour info:
+\begin{minted}{python}
+f = '{0}{1}-{2}{3}-{4}{5}-{6}{7}-{8}{9}' 
+ch = '0616453620'
+print(f.format(*ch))
+\end{minted}
+
+\subsection{Comment rentrer le timestamp now}
+\label{sec:now}
+
+Si l'on veut enregistre le timestamp now dans un champ datetime (fields.datetime(..))
+\begin{minted}{python}
+fmt = 'YYYY-MM-DD HH:mm:ss'
+'value':{'given_date':arrow.now().to('UTC').format(fmt)}}
+\end{minted}
+
+\subsection{Les intervalles de temps avec arrow}
+\label{sec:inter}
+
+Par exemple comment obtenir la date dans un an.
+
+\section{Time}
+\label{sec:time}
+
+\subsection{String 2 python date object: strptime}
+\label{sec:string2datetime}
+
+\begin{minted}{python}
+from datetime import datetime
+date_str= '24/12/2013 5:03:29 PM'
+date_obj=datetime.strptime(date_str, '%m/%d/%Y %H:%M:%S %p')
+\end{minted}
+
+On utilise la méthode datetime.strptime du module datetime. Cette méthode prend 2 arguments:
+\begin{enumerate}
+\item La string
+\item Une autre string qui donne le format de la premiere string. Cette string de format est importante.
+\end{enumerate}
+
+
+\subsection{datetime object 2 string: strftime}
+\label{sec:datetime2str}
+
+On utilise la méthode datetime.strftime du module datetime. Là c'est plus simple. On l'applique sur le l'objet datetime et on met en parametre une string de formatage qui nous donnera la facon dont oon veut voir s'afficher la date.  
+\begin{minted}{python}
+dtobj.strftime("%A blabla %a et aussi %Y")
+'Tuesday blabla Tue et aussi 2013'
+\end{minted}
+
+\begin{tabular}[l]{lll}
+\%A&pour avoir le jour de la semaine dans la langue locale du systeme&\\
+\%a&pour avoir le jour de la semaine mais abrégé dans la langue locale du systeme &\\ 
+\%B&la même chose mais pour le mois&\\
+\%b&la même chose mais pour le mois&\\
+\end{tabular}
+
+il y en a pleins d'autres : http://docs.python.org/2/library/datetime.html\#strftime-and-strptime-behavior
+
+Je n'ai pas trouvé de moyen mnémotechnique pour retenir le nom de ces deux méthodes: strftime et strptime 
+
+Dans openerp les datetimes sont sous forme de string en local time. Donc dans le .py il faut les récupérer puis les convertir en objet datetime mais qui est au courant de la time zone $\rightarrow$ faire les manipulation sur les datetime object avec les méthodes de python adaptées aux dates $\rightarrow$ convertir à nouveau en string pour insérer dans la database. Est ce que ces strings doivent être en UTC?  
+
+Ce qui donne: 
+\begin{enumerate}
+\item import pytz , frome datetime import datetime
+\item récupérer le timezone : local\_tz=local\_tz=pytz.timezone(context.get('tz','Pacific/Noumea'))
+\item On récupère une string de la forme str='Y-m-d H:M:S' de la vue. La string est en UTC. C'est toujours le même format(?)
+\item On définit une chaine de formattage: fmt = '\%Y-\%m-\%d \%H:\%M:\%S'. C'est toujours la même(?)
+\item On crée un datetime object aware de la timezone: aware = pytz.utc.localize(datetime.strptime(str,fmt))
+\item On le convertit en datetime utc avec : utc\_dt=aware.astimezone(pytz.utc)
+\item On le manipule en utc object 
+\item On le convertit en chaine UTC avec : utc\_dt.strftime(fmt)
+\end{enumerate}
+
+\section{Time et durée}
+\label{sec:time}
+\begin{verbatim}
+from datetime import datetime
+from dateutil.relativedelta import relativedelta
+\end{verbatim}
+datetime(année, mois, jour,[heure, minute, second,microsecond, tzinfo])\\
+
+\begin{minted}{python}
+>>> datetime.today()
+datetime.datetime(2012, 8, 9, 21, 21, 2, 871315)
+
+>>> datetime.now()
+datetime.datetime(2012, 8, 9, 21, 23, 30, 129927)
+>>> type(datetime.now())
+<type 'datetime.datetime'>
+
+>>> date.today()
+datetime.date(2012, 8, 9)
+
+>>> date.now()
+Traceback (most recent call last):
+  File "<pyshell#29>", line 1, in <module>
+    date.now()
+AttributeError: type object 'datetime.date' has no attribute 'now'
+\end{minted}
+
+\section{Comment rentrer des dates?}
+\label{renterdate}
+
+\subsection{ Comment rentrer la date de saisie dans un champ “datetime” ?}
+\label{sec:defaultnow}
+
+
+\begin{minted}{python}
+import time
+[...]
+def case_close(self, cr, uid, ids, *args):
+    self.write(cr, uid, ids, {’state’: ’done’,’date_closed’:
+    time.strftime('%Y-%m-%d %H:%M:%S'),})
+    return True
+\end{minted}
+A vérifier dans la vraie vie.
+
+\subsection{ Comment rentrer par défaut la date du jour dans un champ "date" ?}
+\label{sec:defaultnowdate}
+
+\begin{verbatim}
+import time
+_defaults = {
+"date": lambda *a: time.strftime(’%Y-%m-%d’),
+}
+\end{verbatim}
+
+
+\subsection{Calculer l'age }
+\label{sec:age}
+
+
+\begin{verbatim}
+>>> mybirthday=datetime(1965,07,15)
+>>> relativedelta(datetime.now(), mybirthday)
+relativedelta(years=+47, days=+25, hours=+21, minutes=+29, seconds=+33, microseconds=+140004)
+\end{verbatim}
+
+\subsubsection{comment récupérer l'age en années?}
+\label{sec:years}
+
+\textcolor{blue}{relativedelta(years=+47, days=+25, hours=+21, minutes=+29, seconds=+33, microseconds=+140004).years} est l'age en années
+
+\subsection{Comment calculer la durée quand on a 2 dates}
+\label{sec:duree}
+
+Attention relativedelta ne marche que pour les datetime et date et pas les times (h,m,s).\\
+
+\begin{verbatim}
+>>> fin=datetime(2012,8,8,13,45)
+>>> debut=datetime(2012,8,8,13)
+>>> relativedelta(fin, debut)
+relativedelta(minutes=+45)
+\end{verbatim}
+
+Ne pas confondre relativedelta avec timedelta qui lui est obtenu avec datetime1 - datetime2.\\
+
+Comme passer d'un objet relativedelta à une string hh--mm--ss? TODO \\
+
+
+
+
+\subsection{Comment mettre la date en valeur par défaut?}
+\label{sec:datedefault}
+
+Pour la date:
+
+"date": lambda *a: time.strftime(’%Y-%m-%d’),
+
+Pour un timestamp:
+
+\begin{verbatim}
+"date": lambda *a: time.strftime(’%Y-%m-%d’ %T),
+%T - current time, equal to %H:%M:%S
+\end{verbatim}
+
+Tester :
+
+\begin{verbatim}
+from datetime import datetime
+"date": lambda *a: datetime.now().strftime(’%Y-%m-%d’) CA A L’AIR OK
+\end{verbatim}
+
+et
+
+\begin{verbatim}
+"date": lambda *a: datetime.now().strftime(’%Y-%m-%d %T’)
+datetime.now().strftime("%w") affiche un numero :ex 3 pour mercredi.
+\end{verbatim}
+
+
+
+
+
+
+\section{Fabrique de l'agenda}
+\label{sec:agendafactory}
+
+
+\begin{verbatim}
+from datetime import datetime, timedelta 
+
+debut = datetime(2012,8,8,13) #13h
+fin = datetime(2012,8,8,17) #17h 
+STEP = 15 
+step = timedelta(minutes=STEP)
+
+  while(debut<=fin): 
+    debut+=step 
+    print "debut", debut-step, "fin", debut 
+....:
+\end{verbatim}
+
+\begin{verbatim}
+debut 2012-08-08 13:00:00 fin 2012-08-08 13:15:00
+debut 2012-08-08 13:15:00 fin 2012-08-08 13:30:00
+debut 2012-08-08 14:00:00 fin 2012-08-08 14:15:00
+debut 2012-08-08 14:15:00 fin 2012-08-08 14:30:00
+[...]
+debut 2012-08-08 16:45:00 fin 2012-08-08 17:00:00
+debut 2012-08-08 17:00:00 fin 2012-08-08 17:15:00
+\end{verbatim}
+
+Il faut obtenir une liste ou un tuple avec les datetime de début de créneaux et une liste ou tuple avec les fins de créneaux de la forme
+starts=[datetime1,datetime2,datetime3...] ends=[datetime1,datetime2,datetime3...]
+
+Dans le wizard on récupère start et stop sous forme  de string. step est un integer. 
+Maintenant comment on utilise create avec ces données? Comment on les transforme en un type qui va s'insérer dans la table?
+Est ce qu'il faut les convertir? si oui dans quel type et comment?
+Je pense que l'on a pas besoin de les convertir en string car \textcolor{blue}{self.pool.get('crm.meeting').create(cr, uid, {'date':'2013-10-06 04:31:07', 'date\_deadline':'2013-10-06 07:31:07'}, context = None)}
+ca va très bien. Par contre qu'en est-il au niveau du timezone. Ca fait effectivement un changement de temps mais lequel. C'est à dire que je ne lis pas 2013-10-06 04:31:07 dans le client.
+J'ai l'impression qu'il n'y a rien à faire.
+
+
+\subsection{ Fabrique de l’agenda par 1/2 journée}
+\label{sec:halfday}
+
+
+Variables :
+\begin{itemize}
+\item date
+\item 1/2 journée : matin ou apres midi ou les 2
+\item step
+\end{itemize}
+
+Constantes :
+\begin{itemize}
+\item heure de début et de fin pour chaque demi journée
+\end{itemize}
+
+fabrique à début de crénaux qui utilise la date et le step pour faire les crénaux.
+
+
+
+\subsection{les resultats de read pour les fields de type datetime}
+\label{sec:read}
+
+Si start est un datetime:
+
+\begin{verbatim}
+res = self.read(cr, uid, ids, [’start’, ’stop’, ’step’], context = context)
+res = res[0]
+\end{verbatim}
+
+res['start'] retourne une string qu’il faut à nouveau transformer si l’on veut l’utiliser en datetime
+%%--
+\section{Travail sur les timezone}
+\label{sec:timezone}
+
+Voila le code pour récupérer le jour de la seamaine (lundi, mardi, \ldots
+\begin{minted}{python}
+from openerp.osv import fields, osv
+from openerp.tools.translate import _
+import time
+from datetime import datetime, timedelta, date  # A tester voir si c'est OK.
+from mx import DateTime
+import numpy as np
+import pytz
+
+def _get_wdandmonth(self, cr, uid, ids, field_name, arg, context = {}):
+        """
+        will get the week day in text (eg: friday, saturday,...)
+        and month 'eg: junuary, february,....)
+        """
+        res = {}
+        if context is None:
+            context = {}
+        fmt = '%Y-%m-%d %H:%M:%S'  # set format. Adapted to the format of stored dates in postgresql
+        local_tz = pytz.timezone(context.get('tz', 'Pacific/Noumea'))  # get tz from context
+        records = self.browse(cr, uid, ids, context)
+        for record in records:
+            wd = datetime.strptime(record.start_date, fmt,)  # convert string date from database to datetime py object
+            wd = pytz.UTC.localize(wd)  # make aware datetime object needed for astimezone()
+            wd = wd.astimezone(local_tz)  # convert UTC time to local time
+            res[record.id] = wd.strftime("%A") + ' ' + wd.strftime("%d") + ' ' + wd.strftime("%B")
+        return res
+\end{minted}
+
+%%--
+\section{Comment utiliser on\_change sur les datetime pour obtenir la date, le time, le jour de la semaine}
+\label{sec:onchangedate}
+
+
+
+bar=datetime(2012,09,12,8,8,30)
+bar.strftime(’%Y’) $\rightarrow$   string
+bar.strftime(’%H :%M’)  $\rightarrow$  string
+
+debut = datetime.strptime(res["start"], "%Y-%m-%d %H:%M:%S")
+
+\subsection{Comment obtenir le jour de la semaine}
+
+\begin{verbatim}
+foo=datetime(2012,9,12)
+foo.strftime(’%w’) #retourne 0, 1, 2, ...
+
+wd=dict(zip((’0’,’1’,’2’,’3’,’4’,’5’,’6’),(’dimanche’,’lundi’,’mardi’,’mercredi’,’jeudi’,’vendredi’,’samedi’))
+
+wd[foo.strftime(%w)] #retourne le jour de la semaine
+\end{verbatim}
+
+C'est trop compliqué.
+
+
+\begin{verbatim}
+bar="2012-12-12 10:20:00"
+format = "%Y-%m-%d %H:%M:%S"
+foo=datetime.strptime(bar,format)
+foo.strftime("%A")
+’Wednesday’
+\end{verbatim}
+
+
+Pour avoir le jour de la semaine et le mois en francais on peut faire
+
+
+\begin{verbatim}
+from locale import setlocale, LC_TIME
+setlocale(LC_TIME, ’fr_FR.UTF-8’)
+foo
+datetime.datetime(2012, 12, 12, 10, 20)
+foo.strftime("%A")
+Out[47]: ’mercredi’
+foo.strftime("%B")
+Out[48]: ’d\xc3\xa9cembre’
+print foo.strftime(’%B’)
+décembre
+\end{verbatim}
+
+En console j’ai un petit probleme avec l’affichage en UTF-8
+pour le mois \%B
+pour le jour de la semaine \%A
+pour l’heure et les minutes \%H :\%H
+
+Dans openerp, avec ce setlocale j’ai un message d’erreur :\_setlocale(category, locale) Error : unsupported locale setting.
+
+Si je télécharge la langue fr ça ne marche pas non plus. En fait il faut :
+
+\begin{itemize}
+\item mettre en place les locales sur le systeme
+\item dpkg-reconfigure locale
+\item choisir fr\_FR.UTF-8
+\item  Pas la peine de télécharger Administration-Translation-Load an official Translation.
+\end{itemize}
+
+
+
+
+
+\begin{verbatim}
+def onchange_name(self, cr, uid, ids, x_firstname, x_lastname):
+"""Will put fullname = lastname, firstname
+in field name of table res.partner
+"""
+if x_lastname:
+fullname = (x_lastname.upper() if x_lastname else ’’) + (", " + x_firstname.capitalize()if x_firstname else "")
+return {’value’: {
+’x_lastname’: (x_lastname.upper() if x_lastname else ’’),
+’x_firstname’: (x_firstname.capitalize() if x_firstname else ’’),
+’name’: fullname
+}}
+\end{verbatim}
+
+
+\subsection{Format date en interne}
+\label{sec:interdateformat}
+
+
+time data ’2012-10-11 19 :31 :22’ does not match format
+
+
+
+
+
+\section{Comment faire pour ne pas avoir à passer par une view form quand on veut créer/modifier un nouvel enregistrement?}
+\label{sec:editable}
+
+
+quand on veut créer un record
+<tree string="Phone Calls" colors="grey :state in (’cancel’,’done’) ;blue :state in (’pending’,)" \textcolor{red}{editable="top"}>
+
+L'inconvénient c'est que ça fait les modifs pour tous les champs dans tree.
+
+\section{Comment créer les selections pour les spheres, cylindres, axis?}
+\label{sec:sel_sph}
+
+Je veux créer les selections qui sont de la forme (('k1','v1'),('k2','v2'),...). 
+Le mieux c'est de créer un tuple avec les keys , puis un tuple avec les values 
+puis on zip les deux res=zip(tubledekeys, tupledevalues)
+pour créer le tuple de key pour les spheres et les cylindre il nous faut les bornes et le pas. 
+range n'est pas adapté car c'est pour les integer. 
+pour les float on peut utiliser
+\begin{verbatim}
+from scipy import arange
+SPH_START=-10
+fin=10
+step=0.25
+res=arange(debut,fin,step)
+res=res.tolist()
+res=zip(res,res)
+
+\end{verbatim}
+
+Comment on peut utiliser une table qui pourra etre renseigné par l'utilisateur pour définir ces selections?
+
+
+%% ---
+\section{ onchange, attribute on\_change}
+\label{sec:onchange}
+
+\subsection{Comment cela fonctionne? La syntaxe}
+\label{sec:syntax_onchange}
+
+Dans l’objet on va mettre par exemple :
+
+\begin{verbatim}
+def onchange_dates(self, cr, uid, ids, start_date, duration=False, end_date=False, allday=False, context=None)
+\end{verbatim}
+
+ \textcolor{red}{self, cr, uid, id (ou ids)} sont obligatoires. Attention ne pas oublier  \textcolor{red}{ids} sinon il y aura des problèmes.
+
+Et dans la view on aura :
+
+\begin{itemize}
+\item  <field name='allday' on\_change='onchange\_dates(date,False,False,allday)'/>
+\item  <field name='date' string='Start Date' required='1' on\_change='onchange\_dates(date,duration,False,allday)' />
+\item  <field name='date\_deadline' string='End Date' required='1' on\_change="onchange\_dates(date,False,date\_deadline)'/>
+\end{itemize}
+
+Dans la vue on ne met que les champs autres self, cr, uid, ids que l'on a mit dans la méthode définit dans l'objet. On peut mettre ou pas context.
+
+\begin{minted}{python}
+def on_change_template(self, cr, uid, ids, template_id, context=None):
+
+def on_change_partner_id(self, cr, uid, ids,partner_id, name, context={}):  
+\end{minted}
+
+\begin{minted}[linenos=true,fontsize=\scriptsize]{xml}
+<field name="template_id" on_change="on_change_template(template_id,context)" \\
+domain="[('type','=','template')]" \\
+attrs="{'invisible': [('type','in',['view', 'normal','template'])]}" \\
+context="{'default_type' : 'template'}"/> 
+
+<field name="partner_id" on_change="on_change_partner_id(partner_id, name)"/> 
+\end{minted}
+
+Vu autrement:
+
+\begin{minted}[linenos=true,fontsize=\scriptsize]{xml}
+<field name="field_name" on_change="on_change_method_name(other_field'_1_', ..., other_field'_n_,context)"/>
+\end{minted}
+
+Dans la class de l'objet associé à la view:
+\begin{minted}{python}
+def on_change_method_name(self, cr, uid, ids, parameter1, parameter2,...,context=None):
+   res={}
+   res['field_name1'] = valeur_computed
+   res['field_name2'] = valeur_computed
+   return res
+\end{minted}
+
+
+Ou encore:
+\begin{minted}{python}
+def on_change_method_name(self, cr, uid, ids, parameter1, parameter2,...,context=None):
+   values = {}
+   ...
+   values = {
+            'field_name1' : computed value,
+            'field_name2' : computed value,
+            ...
+            'field_namen' : computed value,
+            }
+   return {'value': values}
+\end{minted}
+
+Ou encore:
+\begin{minted}{python}
+def on_change_method_name(self, cr, uid, ids, parameter1, parameter2,...,context=None):
+   res = {'values': {}}
+   ...
+   res['values'] = {
+                   'field_name1' : computed value,
+                   'field_name2' : computed value,
+                   ...
+                   'field_nameN' : computed value,
+                   }
+   return res
+\end{minted}
+Pensez à faire un update sur le module si modifications des views avec mise en place des on\_change
+%%--
+\subsection{Avec warning}
+\label{sec:warning}
+Si on veut ajouter un warning, ce warning est non bloquant:
+\begin{minted}{python}
+def on_change_method_name(self, cr, uid, ids, parameter1, parameter2,...,context=None):
+   res={}
+   res['field_name1'] = valeur_computed
+   res['field_name2'] = valeur_computed
+   warning = {}
+   if (something wrong):
+      warning = {
+                'title': _('Warning for ....'),
+                'message':_('Ceci est le message')
+                }
+      return {'value':res.get('value',{}), 'warning:warning}
+   else:
+      return res
+\end{minted}
+le 'title' s'affiche comme titre de la boite et le 'message' s'affiche à coté du panneau danger.
+%%--
+\subsection{Si la class python contient déjà une method on\_change}
+\label{sec:override}
+
+On peut la surcharger.
+\begin{minted}{python}
+class myproject_myclass(osv.osv):
+   _inherit='parent.parentclass'
+   def on_change_method_name(self, cr, uid, ids, parameter1, parameter2, ...,context=None):
+   #on appelle la method parent on_change
+   res = super(myproject_myclass, self).onchange_method_name(cr,uid,ids, parameter1, parameter2,...,context)
+   #child
+   res['field_name1']=valeur_computed
+   res['field_name2']=valeur_computed
+   return res
+\end{minted}
+
+
+\section{Form /Tree view}
+\label{sec:views}
+
+si on écrit : 
+\begin{minted}[linenos=true,fontsize=\scriptsize]{xml}
+  <form string='prout' version='7.0'> 
+    <field name='descrition'/> 
+    <field name='code'/> 
+</form>
+\end{minted}
+
+
+Alors les label des boites de controles ne sont pas affichés. 
+
+
+
+\section{Se former sur psycopg2}
+\label{psycopg2}
+
+\begin{verbatim}
+In [1]: import psycopg2
+In [2]: conn=psycopg2.connect("dbname=choo user=lfs")
+In [3]: cur=conn.cursor()
+In [9]: cur.execute("SELECT * FROM oph_iol_type;")
+In [10]: cur.fetchall()
+Out[10]: 
+Out[10]: 
+[(1,
+  1,
+  datetime.datetime(2013, 5, 27, 10, 59, 31, 154784),
+  datetime.datetime(2013, 5, 27, 10, 59, 31, 154784),
+  1,
+  None,
+  Decimal('117.00'),
+  'SN60WF',
+  'ALCON'),
+ (2,
+  1,
+  datetime.datetime(2013, 5, 27, 10, 59, 31, 154784),
+  datetime.datetime(2013, 5, 27, 10, 59, 31, 154784),
+  1,
+  None,
+  None,
+  'MA50BM',
+  'ALCON'),
+ (3,
+  1,
+  datetime.datetime(2013, 5, 27, 10, 59, 31, 154784),
+  datetime.datetime(2013, 5, 27, 10, 59, 31, 154784),
+  1,
+  None,
+  None,
+  'MA60AC',
+  'ALCON')]
+\end{verbatim}
+
+cur.fetchall() on obtient une liste de tuble. Chaque tuple correspond à un record. 
+
+
+\subsection{Insertion de valeurs}
+\label{sec:insertion}
+
+
+\begin{verbatim}
+In [11]: SQL="""INSERT INTO oph_iol_type (name, manufactor) VALUES (%s,%s);"""
+In [12]: cur.execute(SQL,('IMPLANT PROOT', 'LABO CACA',))
+In [14]: conn.commit()
+\end{verbatim}
+
+La fonction commit() s'appelle sur la connection: conn et pas sur le cursor cur.
+
+Les valeurs à insérer sont données sous forme d'un tuble. Il est souhaitable de s'habituer à mettre une virgule à la fin du dernier élèment du tuble. 
+
+On peut utiliser le placeholder \%(name). L'utilisation de ce placeholder permet de mettre les valeurs dans n'importe quel ordre et on peut utiliser la même valeur pour plusieurs placeholders. 
+
+Les vlaues sont données à l'aide d'un dictionnaire et non pas d'un tuple.
+
+Le nom  du placeholder \%(name) n'est pas forcémenet le nom d'un colonne de la table. On met ce que l'on veut comme nom. Il faut juste le retrouver dans les values: 
+
+
+\begin{verbatim}
+In [20]: import datetime
+In [23]: SQL = """INSERT INTO oph_iol_type (name, create_date,write_date) VALUES (%(name)s,%(date)s,%(date)s)"""
+In [28]: cur.execute(SQL, {'name':'DO PROOT IMPLANT', 'date':datetime.datetime(2012,11,11)})
+In [30]: conn.commit()
+\end{verbatim}
+
+
+\section{Comprendre la requete dans la fonction name\_search}
+\label{sec:namesearch}
+
+
+\begin{verbatim}
+In [37]: name = 'proot'
+In [38]: search_name = '%%%s%%' % name                                                    
+In [39]: search_name
+Out[39]: '%proot%' 
+
+
+In [47]: foo='%%%s%' % 'bonjour'
+---------------------------------------------------------------------------
+ValueError                                Traceback (most recent call last)
+<ipython-input-47-6cfaaa607ef4> in <module>()
+----> 1 foo='%%%s%' % 'bonjour'
+
+ValueError: incomplete format
+
+In [48]: foo='%%%s%%' % 'bonjour'
+
+In [49]: foo
+Out[49]: '%bonjour%'
+\end{verbatim}
+
+Je ne comprends pas pourquoi il faut tous ces \%\%\%
+
+
+\begin{verbatim}
+foo='%(artist)s - %(album)s'
+
+In [58]: foo
+Out[58]: '%(artist)s - %(album)s'
+
+In [59]: foo % {'artist':'Bowie', 'album':'un album'}
+Out[59]: 'Bowie - un album'
+
+In [60]: foo
+Out[60]: '%(artist)s - %(album)s'
+\end{verbatim}
+
+\begin{verbatim}
+In [61]: bar = '%s'
+
+In [62]: bar
+Out[62]: '%s'
+
+In [63]: bar % 'hello'
+Out[63]: 'hello'
+\end{verbatim}
+
+
+Essayons d'obtenir: '\%hello'. Il parait logique de mettre un \%  en plus et en tête. Mais
+\begin{verbatim}
+In [64]: bar = '%%s'
+
+In [65]: bar
+Out[65]: '%%s'
+
+In [66]: bar % 'hello'
+---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+<ipython-input-66-c443f5d79867> in <module>()
+----> 1 bar % 'hello'
+
+TypeError: not all arguments converted during string formatting
+\end{verbatim}
+
+J'ai peut être trouvé l'explication.
+
+2 \% sont interprétés comme un literal \%. Dons si je veux mettre un \% il faut le doubler. Donc \%\%\%s\%\% correspond à \%s\%. Les deux premiers sont pour le premier \%. Le troisieme joue son role de placeholder et les deux derniers sont pour le dernier \%.  
+
+\begin{verbatim}
+In [69]: bar = '%%%s'
+In [70]: bar % 'hello'
+Out[70]: '%hello'
+\end{verbatim}
+
+\section{COALESCE}
+\label{sec:coalesce}
+
+La fonction COALESCE retourne le premier de ses arguments qui n'est pas null. 
+Elle est svt utilisée pour retourner une valeur par defaut quand la valeur est nulle quand on veut récupérer des données pour les afficher. Par exemple:
+
+SELECT COALESCE(description, short\_description,'(none)')...
+
+Les arguments à droite du premier argument non null ne sont pas évalués.
+
+Pour info c'est équivalent à NVL et IFNULL utilisées dans d'autres databases
+
+\section{Syntaxe d'une SQL query}
+\label{sec:sqlquery}
+
+\begin{verbatim}
+cr.execute("""SELECT ...
+              FROM ...
+              LEFT JOIN ...
+              ON ...
+              WHERE ...=%s
+          """, (uid,)
+          )
+\end{verbatim}
+
+
+\section{Comment faire pour avoir l'entete uniquement sur la premiere page ?TODO}
+\label{sec:first_page_header}
+
+Pour les headers on utilise les stylesheet.
+Libreoffice New document F11 - icone page style - double clic 'first page'
+Menu :Insert - Header  All Default et First  Page sont décochés. Coché 'first page'.
+Faire son entete et voilà
+En fait j'ai l'impression que cela ne marche pas
+Il faut aussi le prévoir dans le report aeroo: F11- double clic sur le style first page.
+
+Pas encore testé pour les footers.
+
+
+\section{Comment créer une série de nombre flottant?}
+\label{sec:serie}
+
+Comment faire pour créer une série : -10 -9.5 -9 -8.5 ... en ayant comme variable START, STOP, STEP?C'est utile pour les selections pour les puissances des sphères,cylindres et autres.  
+\begin{minted}{python}
+def seq(start, stop, step=1):
+    n = int(round((stop - start)/float(step)))
+    if n > 1:
+        return([start + step*i for i in range(n+1)])
+    else:
+        return([])
+\end{minted}
+
+\section{Comment mettre en place des fichiers de configuration}
+\label{sec:configfile}
+
+\subsection{avec des décorators}
+\label{sec:decorator}
+\begin{minted}{python}
+# -*- coding: utf-8 -*-
+def constant(f):
+    def fset(self, value):
+        raise SyntaxError
+    def fget(self):
+        return f()
+    return property(fget, fset)
+
+class _Const(object):
+    @constant
+    def START_SPH():
+        return -20
+    @constant
+    def STOP_SPH():
+        return 20
+    @constant
+    def STEP_SPH():
+        return 0.25
+\end{minted}
+Ensuite cela s'utilise de la facon suivante:
+\begin{minted}{python}
+import settings
+settings.CONST.START_SPH
+\end{minted}
+
+\subsection{Utilisation de configparser}
+\label{sec:configparser}
+
+Je me demande si cela ne serait pas plus élégant.http://python.developpez.com/faq/?page=ConfigParser
+
+
+\section{les groups et les users dans openerp}
+\label{sec:group}
+
+1 user appartient à 1 ou plusieurs groups. 
+Les groups vont déterminer:
+\begin{enumerate}
+\item la visibilité de chq menu
+\item l'accessibilité à chaque table de la Database
+\end{enumerate}
+
+Les users accèdent à l'application. Par défaut un nouvel user accède à rien. Plus un user appartient à des groupes plus il a de droits pour effectuer des actions. Les groupes définissent les droits d'accés pour les différentes ressources. Un groupe peut hériter de tous les droits d'un autre groupe.
+
+\subsection{Les droits (Right)}
+\label{sec:right}
+
+Les régles de sécurité sont attachés aux groupe. Chaque regle est des types suivants:
+\begin{itemize}
+\item access right sont des droits globaux pour un objet
+\item record rules sont des filtres d'accés par record. Quand on accède à un object les records sont filtrés sur la base de cette règle. Une record rule limite l'accés à certains record qu'un groupe peut accéder.
+\item regle de transition de workflow
+\item fields acces rights
+\end{itemize}
+On peut définir des règles qui sont globales elles s'appliquent à tous les users, sans dicernement du groupe auquel il appartient. 
+
+
+Il faut créer un dossier security avec dans ce dossier: un fichier ir.model.access.csv et un <nom du module>\_security.xml. Ne pas oublier de les mettre dans le \_\_openerp\_\_.py.
+
+\subsection{Les groupes}
+\label{sec:groups}
+
+Ils sont enregistres dans l'objet res.groups. 
+Champ intéressants de cet objet res.groups: 
+\begin{itemize}
+\item name
+\item users many2many vers res.users. c'est là qu'on met les users du groupe. 
+\item full\_name function qui est une concaténation entre le nom de l'application et le nom du groupe.
+\end{itemize}
+
+\subsubsection{Comment utiliser le xml pour les groupes}
+\label{sec:xml_groupe}
+
+\begin{minted}[linenos=true,fontsize=\scriptsize]{xml}
+<record id="group_account_invoice" model="res.groups">
+<field name="name">Invoicing &amp; Payments</field>
+<field name="category_id" ref="base.module_category_accounting_and_finance"/> 
+<field name="users" eval="[(4, ref('base.user_root'))]"/> base.user_root est l'id dans le record xml qui definit le user Admin: <record model="res.users" id="base.user_root">
+<field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+\end{minted}
+\subsection{Les record rules}
+\label{sec:record_rule}
+
+Les record rules sont stockés dans la table ir.rule. 
+Setting-Security-Record Rule au niveau du client.
+
+Si on ne définit pas de group alors la record rule est dite globale et s'applique à tous les users.
+
+\subsection{Structure xml pour les record rules}
+\label{sec:record_rules}
+\begin{description}
+  \item[<record model="ir.rule" id="ir\_values\_default\_rule">]  pas de probleme particulier. ir.rule est l'objet qui va enregistrer le record
+\item[<field name="name">Defaults: alter personal values only<\/field>]
+  \item[<field name="model\_id" ref="model\_ir\_values"/>]  la syntaxe est model\_nom\_du\_model
+\item[<field name="domain\_force">[('key','=','default'),('user\_id','=',user.id)]</field>] je ne comprend pas
+  \item[<field name="perm\_read" eval="False"/>] Par défaut si on ne met pas cela alors c'est eval=''True''
+\end{description}
+
+les autres champs :
+
+\begin{minted}[linenos=true,fontsize=\scriptsize]{xml}
+<field eval="0" name="perm_unlink"/>
+        <field eval="0" name="perm_write"/>
+        <field eval="1" name="perm_read"/>
+        <field eval="0" name="perm_create"/>
+\end{minted}           
+
+Pour mettre des groupes dans les ir.rules:
+<field eval="[(6,0,[ref('base.group\_user')])]" name="groups"/>
+             
+\subsection{structure de id.model.access.csv}
+\label{sec:struct_csv}
+
+\begin{description}
+\item[id] access\_<class name of the object underscore notation (\_)group\_id\_name>
+\item[name] <name of the object \_ notation espace group id> mais on peut mettre ce que l'on veut à vérifier
+\item[model\_id:id] model\_<modulename.class name underscore notation> 
+\item[group\_id:id] <nom du module eg:oph>.<id du group tel qu'il est définit dans le fichier <nom\_du\_module>\_security.xml
+\end{description}
+
+D'autres exemples:
+\begin{description}
+\item[id] access\_ir\_attachment\_all. Un nom qui doit etre unique
+\item[name] ir\_attachement all. Un nom qui doit etre unique. On peut metrre des espaces
+\item[model\_id:id] model\_ir\_attachment. La syntaxe est model\_nom\_du\_model
+\item[group\_id:id] on met l'id du record xml qui a créé le group. On peut laisser vide voir ci dessous
+\end{description}
+Si un access rule n'a pas de group alors la règle s'applique à tous les groups. Donc si on veut empéécher l'accés à un objet à tous les user, on peut créer une règle:
+\begin{itemize}
+\item Definit pour l'objet
+\item lée à aucun group
+\item les 4 accés ne sont pas cochés ou sont à 0.
+\end{itemize}
+
+
+\subsection{Structure du fichier <nom\_module\_security.xml>}
+\label{sec:securtity.xml}
+
+\begin{minted}[linenos=true,fontsize=\scriptsize]{xml}
+<record model="res.groups" id="group_system">
+            <field name="name">Settings</field>
+            <field name="implied_ids" eval="[(4, ref('group_erp_manager'))]"/>
+            <field name="comment">Ceci sera le commentaire</field>
+            <field name="users" eval="[(4, ref('base.user_root'))]"/>
+</record>
+\end{minted}
+
+Je ne comprends pas le champs implied\_ids,  eval et users,
+
+Je n'ai pas mis de regle pour l'acces au model\_oph\_bloc\_agenda et model\_oph\_bloc\_agenda\_line et les menus bloc agenda et bloc agenda line ne sont pas affichés. Je rajoute deux lignes à ir.model.access.csv pour ces deux modules et les menus sont visibles. 
+
+\subsection{Comment on donne accés aux menus - Menu access rights}
+\label{sec:menu_access}
+
+Déteremine qui peut accéder à tel ou tel menu. Mais pas ce que l'on peut y faire. 
+
+Au niveau client: on crée le user le group. Puis setting-technical-user interface-menu item. Filtrer sur le menu qui nous intéresse par le champ menu. Et dans la form view de ce menu on peut rajouter des groups. . Mais ce n'est pas très costaud au niveau de la sécurité. Mieux vaut mettre ne place des access right to object.
+On peut mettre dans 
+
+<menuitem id="menu\_finance\_bank\_and\_cash" name="Bank and Cash" parent="menu\_finance" sequence="4"
+            groups="group\_account\_user,group\_account\_manager"/>
+
+Mais moi cela me pose probleme car je n'ai pas defini ce menuitem dans mon module.
+
+
+\subsection{Comment ajouter un nouvel user?}
+\label{sec:new_user}
+
+Il faut renseigner l'adresse mail  du nouvel user. 
+Si on veut se connecter soit même en tant que ce nouvel user: il y aurait un lien d'activation qu'il faudrait copier/coller dans la barre d'url du browser. Jamais trouvé ce lien.
+Mais clic 'More' - Change Password et roulez. 
+
+\subsection{Comment faire pour qu'un user ait accés au menu setting}
+\label{sec:menu_setting}
+
+Rajouter le user au group: Administration / settings
+
+
+\section{Menu et Action}
+\label{sec:menu}
+
+https://doc.openerp.com/v6.1/developer/03\_modules\_4/
+\section{Menuitem}
+\label{menuitem}
+On sait sur le client ou on veut mettre notre nouveau item. Pour cela dans le
+record <menuitem il faut mettre l'attribut parent\_id avec la bonne valeur. Pour
+la trouver on peut une rechercher avec 2 possibilités:
+
+
+\subsection{ Comment ordonner les items du menus dans la colonne de gauche?}
+\label{sec:itemorder}
+Les menus (dans la colonne de gauche) s’ordonnent avec l’attribut sequence. Plus le nombre est haut plus le menu est en bas. Si pas
+d’attribut sequence il s’ordonne par ordre de création.
+
+%--
+\section{Les pricelist}
+\label{sec:princelit}
+
+Setting - Users - Users - Technical setting - cochez technical features Rafraichir  et sales pricelist
+
+Allez dans Sales sous Configuration est apparu le menu Pricelists. 
+\begin{itemize}
+\item Pricelists
+\item Pricelist Versions
+\item Price Types
+\end{itemize}
+
+J'ai eu a updater le module oph pour voir apparaitre tout cela.
+
+Dans la form sale - customer. On a un onglet Sale et purchases avec le champ  Sale pricelist  qui va nous etre tres utile c'est que l'on mettra la prise en charge pour avoir le bon prix. On y met un record de l'object product.pricelist.
+
+Il me semble qu'il faut le module Sales Management (quotations, Sales Orders, Invoicing) nom technique: 
+
+\subsection{Pricelist: object product.pricelist}
+\label{sec:pricelist_obj}
+
+le premier menu est l'object product.pricelist. Il  a peu de champs
+\begin{itemize}
+\item name
+\item active: bool (to hide if necessary)
+\item pricelist type : selection
+\item A cette pricelist on peut ajouter des pricelist version. C'est le champ version\_id one2many vers product.pricelist.version
+\end{itemize}
+
+\subsection{pricelist version: object product.pricelist.version}
+\label{sec:pricelist_version}
+
+\begin{itemize}
+\item name
+\item pricelist\_id: many2one vers product.pricelist
+\item date de début et de fin
+\item items\_id: one2many vers product.pricelist.item. C'est dans cet objet que sont définis les régles de calcule pour le prix. 
+\end{itemize}
+je ne cromprends pas a quoi sert ces pricelist.version.
+
+\subsection{En bref}
+\label{sec:bref}
+
+Résumé pour faire sans comprendre.
+
+Creer une nouvelle Sales-configuration-Pricelists-Pricelists 
+Name : AMG SUD
+add an item
+Pricelist versions : AMG SUD 
+Add an item 
+name : AMG SUD
+product on laisse vide cela s'appliquera à tous les produits.
+product category: All products / Clinique
+price computation
+based on : Public Price
+New price -- -0.1 --
+%--
+\section{Workflow}
+\label{sec:workflow}
+
+
+Pour voir le schema du workflow.
+en mode debug
+Setting - Technical - Workflows - Workflows.
+On en selectionne un dans la tree view et on clic sur l'icone fleche croisée en haut à droite
+Diagram view
+
+Maitenant si on veut savoir ou en en dans les différentes étapes du diagramme
+
+\section{Quels sont les icons disponibles?}
+\label{sec:icons}
+
+\subsection{la liste}
+\label{sec:list}
+
+On y verra pas leur aspect graphic mais juste leurs noms:
+server/openerp/tools/misc.py line no 605
+
+Le mieux c'est d'aller avec gwenview sur oph\_openerp/openerp-web/addons/web/static/src/img/icons. Là on a l'aspect graphique. Ils sont pas terrible ces icons.
+
+\section{Report Aeroo}
+\label{sec:aeroo_report}
+
+
+\subsection{Comment faire pour que le report aeroo créé soit enregistré en attachment?}
+\label{sec:report2attachment}
+Settings - Technical - Aeroo - Report - Selection du report qui t'intéresse, dans sa form view Attachments Save as Attachment Prefix mettre : (object.state in ('open','paid')) and ('AT'+(object.number or '').replace('/','')+'.pdf'). J'ai pas bien compris mais bon. En plus il y le +'.pdf' mais si c'est pas un pdf on fait comment? Donc TODO.
+
+
+\subsection{Comment faire pour que les attachment ne soient pas stockés en database (sous forme binaire) mais dans le système de fichier}
+\label{sec:attachment}
+
+Par défault tous les documents sont stockés dans des tables ir\_attachement sous forme binaire 
+Setting - Technical - Parameters - System Parameters - Create 
+\begin{description}
+\item[Key] ir\_attachment.location
+\item[Value] file:///filestore
+\end{description}
+
+Cela permet de stocker les documents dans le systeme de fichier sous :
+ ~/oph\_openerp/openobject-server/openerp/filestore/oph1311/
+
+oph1311 correspond au nom de la base de donnée. 
+
+Qu'est ce qui se passe si on crée une nouvelle base de données.
+
+
+Est-ce que l'on peut faire un ir\_config\_paramater\_date.xml avec un record
+
+\begin{minted}[linenos=true,fontsize=\scriptsize]{xml}
+ <record id="location_id" model="ir.config_parameter">
+    <field name="key"> ir_attachment.location</field>
+    <field name="value">file:///filestore</field>
+</record>
+\end{minted}
+
+\subsection{document\_ftp}
+\label{sec:document_ftp}
+
+Si on modifie le nom de la database par exemple en faisant un restore le chemin ftp n'est plus le bon donc il faut faire un update sur le module document\_ftp.
+
+Comment on fait pour que les documents généré par print ou more soit automatiquement stocké? TODO
+\subsection{Comment insérer les données de la database dans le report?}
+\label{sec:field}
+
+Dans un document libre office : 
+insert - field - others - Input Field - dans la box reference <o.nom\_du\_champ> - insert - dans la pop qui s'affiche dans la partie inférieur 
+on met le label qui s'affiche dans le modele de report. 
+
+\subsection{Comment mettre des conditions?}
+\label{sec:conditions}
+
+Comment conditionner ce qui va s'afficher dans le report à la valeur d'un champ. 
+Par exemple si sexe du partner est Male alors imprimer Monsieur
+
+<if test=''o.partner\_id.gender=='M'''>Monsieur</if>
+On est pas obligé de mettre dans un tableau. 
+Si on met dans un tableau on peut mettre tout le statement dans une seule cellule.
+
+on peut nester un if test dans un for loop voir le refraction\_report.
+
+\subsection{when}
+\label{sec:when}
+
+
+\begin{verbatim}
+<choose>
+<when test="objects[0].customer">
+This text is being printed when partner is a customer.
+</when>
+<when test="objects[0].supplier">
+This text is being printed when partner is a supplier.
+</when>
+<otherwise>
+This text is being printed in all the other occasions.
+</otherwise>
+</choose>
+\end{verbatim}
+
+A tester peut etre avec les vous et les tu?
+
+\subsection{Comment faire pour supprimer les blank lines générés par les <if>}
+\label{sec:if_blank_line}
+
+
+J'ai un report aeroo de la forme (en PJ)
+
+\begin{verbatim}
+ligne1 blabla.
+ligne2 blabla.
+<if test="o.boolean_fields == True"> alors d'accord </if>
+ligne4 blabla.
+ligne5 blabla.
+
+Ca marche tres bien sauf que dans le rendu cela laisse une ligne 
+blanche quand la condition n'est pas remplie. 
+Et c'est moche dans mes reports.
+
+ligne1 blabla.
+ligne2 blabla. 
+			<=== blank ligne
+ligne4 blabla.
+ligne5 blabla.
+\end{verbatim}
+Il y a un trick pour contourner ce problème?
+Oui il faut mettre le <endif> à la ligne suivante.
+bon et bien cela ne marche pas tres bien. 
+ 
+On peut utiliser CR ou SHIFT ENTER
+
+\subsection{Dans une selection on met la clef ou la valeur pour le test?}
+\label{sec:key_value}
+
+Mettre la clef eg: fields.selection([('M', 'Male'), ('F', 'Female')], 'Gender',),
+mettre 'M'. 
+<if test="o.gender == 'M'"> blabla</if>
+
+\subsubsection{Tester l'existance d'une valeur pour un champ?}
+\label{sec:exist}
+
+Si le champ est rempli l'imprimer sinon ne rien faire.
+<if test=''o.fields\_name> blabla </if>
+
+Ca marche sauf que cela imprime une ligne blanche si le test est false.
+
+\subsubsection{Comment faire pour imprimer la valeur et pas la clef d'un fields.selection dans un aeroo report}
+\label{sec:value_selection_aeroo}
+
+<get\_selection\_item(o,"state")>
+First parameter is the object, like o or objects[0], or you loop obj name (item for ex.)
+Second is the name (string) of the fields.selection element
+
+Testé ça marche tres bien.
+
+\subsubsection{la fonction date\_report() dans les reports}
+\label{sec:date_report}
+
+Il faut un fichier parser.py. 
+et le definir dans le xml voir :
+
+Et aussi il faut mettre <formatLang(date\_report(), date=True)>. Mais cela ne marche pas tres bien.
+
+pour info on passe dans les différentes méthode du parser que si elles sont appelés dans le report. 
+
+\subsubsection{formattage des dates dans les aeroo reports}
+\label{sec:format_date_aeroo}
+Setting - Language - 
+Language - format date 
+<formatLang(unedate, date=True) mais cela ne marche pas toujours. 
+
+\subsubsection{Comment afficher uniquement le time d'un champ datetime dans un report aeroo?}
+\label{sec:only_time}
+TODO
+
+\subsubsection{Comment afficher la date du jour?}
+\label{sec:today}
+<time.strftime("\%d.\%m.\%Y", time.localtime())>
+Ca ne marche pas car cela renvoie le temps en UTC.
+
+Si on utilise le champ date de libre office. Aller dans 
+Tools / Option / Language Setting/ Languages / Default Languages for document : French (France) Save document.
+
+On peut utiliser : <formatLang(o.date,date=True)> et <formatLang(o.date,date\_time=True)[11:16]> (qui donne HH:MM) mais ce n'est pas très humanisé.
+
+Voir la méthode only\_time du parser.
+
+\subsubsection{For loop dans un aeroo report}
+\label{sec:for_loop}
+
+<for each='line in o.line\_ids'>
+Ne pas oublier de fermer </for>
+
+\subsubsection{Imprimer la signature du user dans les report aeroo?}
+\label{sec:signature_aeroo}
+
+Attention, il ne faut pas utiliser quelque chose du genre :<o.user\_id.signature> mais il faut mettre <user.signature>
+<o.user\_id.signature marche mais met la signature du responsable du record qui n'est pas forcément le médecin
+\subsubsection{Comment imprimer la somme d'un champ}
+\label{sec:sum}
+
+<sum\_field(objects,"amount\_total")> eg pour l'objet account.invoice
+o à la place d'objects ne marche pas.  
+
+
+\section{Comment faire pour empécher la suppression de certains records en fonction de leur state?}
+\label{sec:unlink_by_state}
+
+\begin{minted}{python}
+def unlink(self, cr, uid, ids, context=None):
+        if context is None:
+            context = {}
+        """Allows to delete sales order lines in draft,cancel states"""
+        for rec in self.browse(cr, uid, ids, context=context):
+            if rec.state not in ['draft', 'cancel']:
+                raise osv.except_osv(_('Invalid Action!'), _('Cannot delete a sales order line which is in state \'%s\'.') %(rec.state,))
+        return super(sale_order_line, self).unlink(cr, uid, ids, context=context)
+\end{minted}
+
+\section{Comment avec un boutton dans une vue d'object ouvrir une vue d'un autre object?}
+\label{sec:open_view}
+
+\begin{minted}{python}
+  
+\end{minted}
+
+
+Le code:
+
+\begin{verbatim}
+meeting = self.browse(cr, uid, ids[0], context = context)  # comment if you don't want to open a quotation view
+        print "IN STATECHANGE OUT"
+        print "browse meeting return: %s" % meeting
+        print "meeting.partner_id:%s" % meeting.partner_id
+        print "meeting.partner_id.id:%s" % meeting.partner_id.id
+        print "meeting.partner_id.property_product_pricelist: %s" % meeting.partner_id.property_product_pricelist
+        print "meeting.partner_id.property_product_pricelist.id: %s" % meeting.partner_id.property_product_pricelist.id
+\end{verbatim}
+
+retourne:
+
+
+\begin{verbatim}
+IN STATECHANGE OUT
+meeting : browse_record(crm.meeting, 12)
+meeting.partner_id:browse_record(res.partner, 5)
+meeting.partner_id.id:5
+meeting.partner_id.property_product_pricelist: browse_record(product.pricelist, 2)
+meeting.partner_id.property_product_pricelist.id: 2
+\end{verbatim}
+
+Cela marche bien la bonne price list est récupérée dans la liste. Mais pouf elle disparait pour etre remplacée par la liste par défault. 
+
+
+\section{Champ selection(fields.selection)}
+\label{sec:selection_fields}
+
+\subsection{Avec une fonction}
+\label{sec:fonction}
+\begin{minted}{python}
+def _out_format_get(self, cr, uid, context=None):
+        if context is None:
+            context = {}
+        if context.get('report_action_id', None) is None:
+            return []
+        obj = self.pool.get('report.mimetypes')
+        in_format = self.pool.get('ir.actions.report.xml').read(cr, uid, context['report_action_id'], ['in_format'], context=context)['in_format']
+        ids = obj.search(cr, uid, [('compatible_types','=',in_format)], context=context)
+        res = obj.read(cr, uid, ids, ['name'], context=context)
+        return [(r['id'], r['name']) for r in res]
+
+    _columns = {
+        'out_format': fields.selection(_out_format_get, 'Output format', required=True),
+        'copies': fields.integer('Number of copies', required=True),
+
+    }
+\end{minted}
+'a\_name':fields.selection(\_a\_name\_get, 'A name')
+et la fonction a comme signature: \_a\_name\_get(self, cr,uid, context=None)
+elle retour une liste de tuple [('key', 'value'), ....]
+
+On peut créer un champ selection avec derriere une table plutot que du code en dure.
+Cette table on n'est pas obligé d'en créer une vue. On peut la peupler avec data.xml.
+Voir le code de product.pricelist /addons/product/pricelist.py ligne 83 et suivantes
+
+On ne peut pas créer au niveau de la vue qui appelle la selection de nouveaux items pour la selection contrairement à une many2one. 
+
+Par contre on ayant codé une vue pour la table contenant les éléments de la selection le end user peut paramétre les élements disponibles dans la selection. a confirmer.
+
+
+
+Sur la search view je ne sais pas quel est l'intéret.
+
+
+
+\begin{minted}{python}
+class product_pricelist(osv.osv):
+    def _pricelist_type_get(self, cr, uid, context=None):
+        pricelist_type_obj = self.pool.get('product.pricelist.type')
+        pricelist_type_ids = pricelist_type_obj.search(cr, uid, [], order='name')
+        pricelist_types = pricelist_type_obj.read(cr, uid, pricelist_type_ids, ['key','name'], context=context)
+
+        res = []
+
+        for type in pricelist_types:
+            res.append((type['key'],type['name']))
+
+        return res
+
+    _name = "product.pricelist"
+    _description = "Pricelist"
+    _order = 'name'
+    _columns = {
+        'name': fields.char('Pricelist Name',size=64, required=True, translate=True),
+        'active': fields.boolean('Active', help="If unchecked, it will allow you to hide the pricelist without removing it."),
+        'type': fields.selection(_pricelist_type_get, 'Pricelist Type', required=True),
+        'version_id': fields.one2many('product.pricelist.version', 'pricelist_id', 'Pricelist Versions'),
+        'currency_id': fields.many2one('res.currency', 'Currency', required=True),
+        'company_id': fields.many2one('res.company', 'Company'),
+    }
+\end{minted}
+
+\section{Comment on remplit les data.xml avec des relations one2many?}
+\label{sec:data_one2many}
+le one:
+
+<record id="list0" model="product.pricelist">
+     <field name="name">Public Pricelist</field>
+     <field name="type">sale</field>
+</record>
+
+le many: 
+
+<record id="ver0" model="product.pricelist.version">
+    <field name="pricelist\_id" ref="list0"/>
+    <field name="name">Default Public Pricelist Version</field>
+</record>
+
+
+\section{Calcul sur les formules de lunettes}
+\label{sec:calcule}
+
+J'ai choisi le systeme de selection pour la formule de lunettes donc en base de données c'est stocké en str. 
+
+
+\begin{verbatim}
+from decimal import *
+
+add='0.25'
+In [5]: Decimal(add)
+Out[5]: Decimal('0.25')
+
+In [6]: sph='-6.25'
+
+In [7]: Decimal(sph)+Decimal(add)
+Out[7]: Decimal('-6.00')
+
+In [8]: str(Decimal(sph)+Decimal(add))
+Out[8]: '-6.00'
+\end{verbatim}
+
+
+Attention au D majuscule. 
+
+\section{Prefix Operator}
+\label{sec:prefix_op}
+
+OR(|) 2 operators: ['|', A, B]
+
+[liste de tuple] [(tuple1),(tuple2), ...]
+
+tuple1=('field name','=', 'value')
+
+operateur logique : \& AND , | OR, ! NOT  
+
+\begin{enumerate}
+\item ['|','|', A, B, C] $\Longrightarrow$ ['|', (A OR B), C] $\Longrightarrow$ [(A OR B) OR C]
+\item ['|', A, '|', B, C] $\Longrightarrow$ ['|', A, (B OR C)] $\Longrightarrow$ [ A OR (B OR C)]
+\end{enumerate}
+
+\section{AND-OR tricks}
+\label{sec:andor}
+
+0, '', [], (), {}, and None est False.
+tout le reste est True
+
+Si tout est vrai AND retourne la dernière valeur
+Si tout est faux AND retourne la première valeur
+OR retourne la première valeur TRUE et ignore le reste
+Si toutes les valeurs sont False OR retourne la derniere valeur.
+
+1 and a or b 1 $\rightarrow$ retourne a 
+
+0 and a or b 2 $\leftarrow$ retourne b 
+
+
+
+\section{Portal}
+\label{sec:portal}
+
+\subsection{Comment mettre en place un user pour le portal?}
+\label{sec:portal_user}
+
+Setting - users - users - create - onglet access right - tout décocher sauf portal.
+
+pour info j'ai comme module portal installé : portal, portal\_crm, portal\_sale, portal\_stock
+
+Il faut créer des droits dans ir.model.access.csv:
+\begin{verbatim}
+portal_bloc_agenda,portal_bloc_agenda,model_oph_bloc_agenda,portal.group_portal,1,0,0,0
+portal_bloc_agenda_line,portal_bloc_agenda_line,model_oph_bloc_agenda_line,portal.group_portal,1,0,0,0
+\end{verbatim}
+
+Il faut créer une vue pour ce que l'on veut montrer eg:
+
+\begin{minted}[linenos=true,fontsize=\scriptsize]{xml}
+<!-- PORTAL -->
+        <record model="ir.actions.act_window" id="action_agenda_portal_view">
+            <field name="name">Agenda Portal</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">oph.bloc.agenda</field>
+            <field name="view_mode">tree,calendar,form</field>
+            <field name="help">There are no public portal.</field>
+        </record>
+
+        <menuitem name="X Agenda Portal" id="portal_agenda_menu" parent="portal.portal_company"
+            action="action_agenda_portal_view" sequence="30"/>
+\end{minted}
+
+\section{Webkit}
+\label{sec:webkit}
+
+
+\subsection{Installation de webkit}
+\label{sec:install_webkit}
+
+
+aptitude search wkhtmltopdf. On s'assure que ce paquet n'est pas intallé.
+On installe les dépendances. 
+
+Installation du module report\_webkit dans le client openerp.
+
+Installation de http://code.google.com/p/wkhtmltopdf/ : wkhtmltopdf-0.11.0\_rc1-static-amd64.tar.bz2.
+
+Extraction : 
+\begin{verbatim}
+su
+cd /usr/share 
+mkdir openerp
+cd openerp
+tar xvjf /home/lfs/Download/wkhtmltopdf
+\end{verbatim}
+
+dans le client 
+setting-Technical-Parameters-System Parameters
+key :‘webkit\_path’
+path : /usr/share/openerp/wkhtmltopdf On met l'executable path
+
+\subsection{Création d'un rapport webkit}
+\label{sec:webkit_report_create}
+
+Settings - Technical - Action  Report Create
+
+champ service name ? dot name notation ce qu'on veut mais unique
+report file  eg : oph/report/mako/test\_premier.mako
+
+\subsection{les autres modules webkit pour aider à comprendre}
+\label{sec:webkit_module}
+
+\begin{verbatim}
+cd oph_openerp/extra-addons
+bzr branch lp:webkit-utils  
+bzr branch lp:~openerp-community/openerp-extra/7.0-report\_webkit\_sample
+\end{verbatim}
+
+marche pas 
+
+bzr branch lp:sale-reports donne des exemples mais trop compliqués pour commencer.
+
+dans eclipse ne pas oublier de modifier le run configuration pour rajouter ces chemins sinon les modules ne sont pas vus par openerp client.
+
+
+\section{multicompany}
+\label{sec:mulicompany}
+
+Setting - Configuration - General Settings  Options cocher manage multiple companies. 
+
+setting - Users - Users - Usability - cocher Multi Companies
+
+Ce qui va faire apparaitre le menu -Setting-Companies-Company's Structure
+
+Créer la(les) nouvelles compagnies. 
+
+Créer les users en mettant les allowed companies
+
+Setting -Configuration - Accounting : Select company. This company has its own charts of account
+default company currency
+
+\subsection{Comment on rajoute un user dans une company.}
+\label{sec:adduser_company}
+
+Onglet access right - Allowed Company
+
+\subsection{Installer les charts of account}
+\label{sec:charts}
+
+Settings - Configuration - Accounting 
+select company : la nouvelle company
+select le chart of account
+
+default sale tax EXO-0 ou vider le champ
+default purchase tax : IMPORT-0 ou vider le champ
+
+
+\section{Commment activer un nouveau user}
+\label{sec:active_user}
+
+Dans Setting-Users-Users-More-Change password
+
+\section{Comment faire pour que les invoices utilisent le compte 706 prestation de service.}
+\label{sec:service}
+
+Il faut le configurer pour chaque company car il semblerait qu'il y ait des categories de produit par company.
+
+Admin lui ajouter les company dans l'onglet allowed company
+
+Admin - preferences - choisir la company
+
+Sales - Configuration - Products - Products categories All Product / Clinique : modidier la champ : Income account
+bien vérifier que c'est le bon compte 706xxx pour la bonne company.
+All Product / Surgery 706 001
+
+
+Créer un compte 706 001 pour la chirurgie et l'affecter aux actes de chirurgie
+
+\subsection{Comment créer un compte 706 001 pour la chirurgie}
+\label{sec:706001}
+
+Sales - Configuration - Account
+
+account code : 706 001
+account name : Prestations de services chirurgie
+parent: 70 pour savoir si on a bien chosit un compte de la bonne company clic sur le drapeau à droite de l'input box
+internal type : regular
+account type : income 
+company: choisir chirurgie. 
+default taxes: supprimer
+Dans le formulaire de création de l'account il y a le champ "default tax" qu'il faut vider pour éviter d'avoir une valeur de taxe qui s'affiche dans l'invoice line quand on fait une invoice line.
+
+
+
+
+\section{Comment allow cancelling entries dans les journals?}
+\label{sec:cancelling_entries}
+
+Il faut installer le module account\_cancel.
+
+\section{user et multicompany}
+\label{sec:user_multicompany}
+
+Un user peut etre dans plusieurs company. 
+il faut mettre les company allowed dans l'onglet acces right de la form user 
+Il faut cocher usability - Multi Companies qui permet d'avoir une selection des companies sous preferences. 
+
+\section{Shop}
+\label{sec:shop}
+
+il faut créer une shop 
+admin settings - user- access right -manage multiple location and wharehouse
+qui fait apparaitre me ùenu SAles - configuration - shop 
+Ajouter une shop une wharehouse name idem name company pour le cabinet goeen.
+
+laurent frnacois manage multiple location and wharehouse
+
+Mais cela ne regle pas le probleme il y a toujours un probleme au moment de mettre une ligne dans la quotation. 
+
+l'erreur est lancée par la méthode \_get\_default\_shop de l'object sale\_order du fichier sale.py.
+qui cherche le shop\_id qui pointe vers la table sale.shop.
+
+
+Qd dans general setting je coche manage multi company j'ai le module stock qui se charge. 
+
+
+\section{Configuration finale}
+\label{sec:final_config}
+
+Creation d'une database
+Setting - Users - Users - Administrator - preferences : time zone
+onglet access right : Usability : Technical Features et Multicompany
+Save
+F5
+
+Setting - Companies - Companies Create 
+
+Setting - Installed module - oph save use by default current filter
+Install
+Configuration de la connection Aeroo
+Configuration accounting data
+Configure directories
+Configure FTP server
+Set your Accounting Options: supprimer les taxes complétement
+
+Setting - Users - Users - Create - NE PAS OUBLIER de configurer Access right et More pour le passwd et l'activation du nouveau user sinon  il ne pourra pas se loguer.
+
+Setting - Translation - Load a translation - French
+
+Setting - Configuration - Accounting Char of accounts
+
+Setting - Configuration - Sale Quotations and Sales Orders - 
+Customer Features: Use pricelists to adapt your price per customers cocher la case/
+
+Sales - Configuration - Shop - Edit Company : cabinet d'ophtlamologie GOEEN 
+
+Account - Configuration - Journal - Journal CREATE
+
+\subsection{Comment configurer le journal pour les paiements?}
+\label{sec:paiement_journal}
+
+Account - Sales - Configuration - Journal - Journal Create 
+
+Faire un search more sur ces champs pour ensuite faire la selection du bon compte de la bonne compagnie. 
+
+name = Chèque
+code = CHQ
+default debit account : 511200 Chèques à encaisser
+Default credit account : 511200 Chèques à encaisser
+
+
+Create un journal pour les espèces:
+Name = Especes
+code ESP 
+type : bank and cheques
+default debit account : 531100
+default credit account : 531100
+
+
+\subsection{Configuration des prices list.}
+\label{sec:price_list_config}
+
+Sales - Configuration - Pricelists
+
+Dans les pricelists on ajoute des lignes de pricelist version  et dans les pricelist version on ajoute des lignes d'items et c'est dans les items que se trouvent les regles de calculs.
+Price Type il y a pas grand chose
+Pricelist version
+
+\section{Comment changer le password d'un user?}
+\label{sec:change_password}
+
+Dans la table res_users.
+
+\section{Odoo 8.0}
+\label{sec:8.0}
+
+\subsection{Comment récupérer les sources?}
+\label{sec:get_src}
+
+(http://runbot.odoo.com/runbot). prendre une saas-5
+
+\begin{verbatim}
+# aptitude install git
+$ git clone https://github.com/odoo/odoo.git
+\end{verbatim}
+
+
+Ensuite il faut virer les databases en version 7.0 du server pour pouvoir utiliser la 8.0.
+
+\begin{verbatim}
+su postgres
+$psql
+#-DROP DATABASE nom_database7.0;
+\end{verbatim}
+
+\section{Comment supprimer le "Manage Database"?}
+\label{sec:del_manage_database}
+
+lancer le serveur avec l'option: --no-database-list
+il faudrait pour accéder à openerp spécifier la database.
+
+http://myurl.com/?db=my_db#
+
+A vérifier.
+
+et pour supprimer l'acces aux API: créer dans le module controller/main.py avec 
+
+
+\begin{minted}{python}
+  # -*- coding: utf-8 -*- """ Block API It overrides functions for database
+  management and rase exception but allow you to create first database.  """
+
+  from web import http from openerp.addons.web.controllers.main import Database,
+  db_list openerpweb = http
+
+  class Database_restrict(Database): @openerpweb.jsonrequest def create(self,
+  req, fields):
+
+  # check if it is not first installation - restrict!
+
+  dblist = db_list(req) if len(dblist) > 0: raise Exception('Not allowed')
+
+  return super(Database_restrict, self).create(req, fields)
+
+  @openerpweb.jsonrequest def duplicate(self, req, fields): raise Exception('Not
+  allowed')
+
+  @openerpweb.jsonrequest def drop(self, req, fields): raise Exception('Not
+  allowed')
+
+  @openerpweb.httprequest def backup(self, req, backup_db, backup_pwd, token):
+  raise Exception('Not allowed')
+
+  @openerpweb.httprequest def restore(self, req, db_file, restore_pwd, new_db):
+  raise Exception('Not allowed')
+
+  @openerpweb.jsonrequest def change_password(self, req, fields): raise
+  Exception('Not allowed')
+\end{minted}
+
+et import controller dans le __init__.py du module oph ry 
+et import main dans le __init__ de controller.
+
+tout cela n'a pas été testé.
+
+\end{document}
+
+Example of useful tags
+by Wyden Silvan — last modified 11.06.2010 12:46
+
+[[ repeatIn(objects,’o’) ]] : Loop on each objects selected for the print
+[[ repeatIn(o.invoice_line,’l’) ]] : Loop on every line
+[[ (o.prop==’draft’)and ‘YES’ or ‘NO’ ]] : Print YES or NO according the field ‘prop’
+[[ round(o.quantity * o.price * 0.9, 2) ]] : Operations are OK.
+[[ ‘%07d’ % int(o.number) ]] : Number formating
+[[ reduce(lambda x, obj: x+obj.qty , list , 0 ) ]] : Total qty of list (try “objects” as list)
+[[ user.name ]] : user name
+[[ setLang(o.partner_id.lang) ]] : Localized printings
+[[ time.strftime(‘%d/%m/%Y’) ]] : Show the time in format=dd/MM/YYYY, check python doc for more about “%d”, ...
+[[ time.strftime(time.ctime()[0:10]) ]] or [[ time.strftime(time.ctime()[-4:]) ]] : Prints only date.
+[[ time.ctime() ]] : Prints the actual date & time
+[[ time.ctime().split()[3] ]] : Prints only time
+[[ o.type in [‘in_invoice’, ‘out_invoice’] and ‘Invoice’ or removeParentNode(‘tr’) ]] : If the type is ‘in_invoice’ or ‘out_invoice’ then the word ‘Invoice’ is printed, if it’s neither the first node above it of type ‘tr’ will be removed.
+ return {  # Comment if you don't want to open a quotation view
+            'name': _('Bla bla'),
+            'view_type': 'form',
+            'view_mode': 'form',
+            'res_model': 'sale.order',
+            'context': "{'default_partner_id': %s}" % (meeting.partner_id.id,),
+            #'context': "{'default_partner_id': %s, 'default_pricelist_id':%s}" % (meeting.partner_id.id, meeting.partner_id.property_product_pricelist.id),
+            'type': 'ir.actions.act_window',
+            'target': 'current',

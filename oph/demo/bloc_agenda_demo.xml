@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="0">
+    
+        <!-- Resource: bloc.agenda -->
+
+        <record id="oph_bloc_agenda_0" model="oph.bloc.agenda">
+            <field name="name">2013-03-13</field>
+            <field name="start_date" eval="time.strftime('2013-03-12 13:00:00')"/>
+            <field name="end_date" eval="time.strftime('2013-03-12 18:00:00')"/>
+        </record>
+       
+        <record id="oph_bloc_agenda_1" model="oph.bloc.agenda">
+            <field name="name">2013-03-20</field>
+            <field name="start_date" eval="time.strftime('2013-03-12 13:00:00')"/>
+            <field name="end_date" eval="time.strftime('2013-03-12 18:00:00')"/>
+        </record>
+        
+       <record id="oph_bloc_agenda_2" model="oph.bloc.agenda">
+            <field name="name">2013-03-27</field>
+            <field name="start_date" eval="time.strftime('2013-03-27 13:00:00')"/>
+            <field name="end_date" eval="time.strftime('2013-03-27 18:00:00')"/>
+        </record>   
+
+	    <record id="oph_bloc_agenda_3" model="oph.bloc.agenda">
+            <field name="name">2013-04-04</field>
+            <field name="start_date" eval="time.strftime('2013-04-04 13:00:00')"/>
+            <field name="end_date" eval="time.strftime('2013-04-04 18:00:00')"/>
+        </record>
+
+		<record id="oph_bloc_agenda_4" model="oph.bloc.agenda">
+            <field name="name">2013-04-18</field>
+            <field name="start_date" eval="time.strftime('2013-04-04 09:00:00')"/>
+            <field name="end_date" eval="time.strftime('2013-04-04 17:00:00')"/>
+        </record>
+
+		<record id="oph_bloc_agenda_5" model="oph.bloc.agenda">
+            <field name="name">2013-04-21</field>
+            <field name="start_date" eval="time.strftime('2013-04-04 07:30:00')"/>
+            <field name="end_date" eval="time.strftime('2013-04-04 12:00:00')"/>
+        </record>
+        
+		<!-- Resource: oph.bloc.agenda.line -->
+		<record id="bloc_agenda_1_line_1" model="oph.bloc.agenda.line">
+            <field name="sequence" eval="1"/>
+            <field name="duration" eval="15.0"/>
+            <field name="start_time">15:00</field>
+            <field name="comment">PKE+ICP SN60WF 20D</field>
+            <field name="bloc_agenda_id" ref="oph_bloc_agenda_0"/>
+            <!-- 
+            <field name="ane_type_id">ST</field>
+            <field name="inpatient_type_id">AMBU</field>
+             -->
+			<field name="odg">od</field>
+			<field name="partner_id" ref="res_partner_1"/>
+		</record>
+		
+        <record id="bloc_agenda_1_line_2" model="oph.bloc.agenda.line">
+            <field name="sequence" eval="2"/>
+            <field name="duration" eval="45.0"/>
+            <field name="start_time">15:45</field>
+            <field name="comment">V3V+EL BIOM 23G</field>
+			<!--
+			<field name="bloc_agenda_id" ref="oph_bloc_agenda_0"/>
+            <field name="ane_type_id">PERI</field>
+            <field name="inpatient_type_id">AMBU</field>
+            -->
+			<field name="odg">og</field>
+			<field name="partner_id" ref="res_partner_3"/>
+		</record>
+		<record id="bloc_agenda_1_line_3" model="oph.bloc.agenda.line">
+            <field name="sequence" eval="3"/>
+            <field name="duration" eval="2.30"/>
+            <field name="start_time">15:45</field>
+            <field name="comment">CRYOINDENTATION</field>
+            <field name="bloc_agenda_id" ref="oph_bloc_agenda_0"/>
+           <!-- 
+            <field name="ane_type_id">PERI</field>
+            <field name="inpatient_type_id">AMBU</field>
+            -->
+            <field name="odg">od</field>
+            <field name="partner_id" ref="res_partner_5"/>
+        </record>	
+    </data>
+</openerp>
+

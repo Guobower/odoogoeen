@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!-- FILLING TEMPLATE -->
+        <!-- FILLING FO SA NORMAL NON DILATE-->
+        <record model="oph.filling.template" id="fosanlnd_id">
+            <field name="name">Segment antérieur et fond d'oeil normal non dilaté</field>
+            <field name="code">FO SA NL ND</field>
+            <field name="as_od">Cornée claire, chambre antérieure calme</field>
+            <field name="as_os">Cornée claire, chambre antérieure calme</field>
+            <field name="ps_od">Papille normale</field>
+            <field name="ps_os">Papille normale</field>
+            <field name="comment">un commentaire</field>
+        </record>
+        <!-- FILLING FO SA NORMAL DILATE-->
+        <record model="oph.filling.template" id="fosanldil_id">
+            <field name="name">Segment antérieur et fond d'oeil normal dilaté</field>
+            <field name="code">FO SA NL DIL</field>
+            <field name="as_od">Cornée claire, chambre antérieure calme, cristallin clair</field>
+            <field name="as_os">Cornée claire, chambre antérieure calme, cristallin clair</field>
+            <field name="ps_od">Papille normale, macula normale, périphérie absence de lésion rhegmatogène sur les 360°</field>
+            <field name="ps_os">Papille normale, macula normale, périphérie absence de lésion rhegmatogène sur les 360°</field>
+            <field name="comment">un commentaire</field>
+        </record>
+        <!-- FILLING SA NORMAL -->
+        <record model="oph.filling.template" id="sanl_id">
+            <field name="name">Segment antérieur normal</field>
+            <field name="code">SA NL</field>
+            <field name="as_od">Cornée claire, chambre antérieure calme, cristallin clair</field>
+            <field name="as_os">Cornée claire, chambre antérieure calme, cristallin clair</field>
+            <field name="comment">un commentaire</field>
+        </record>
+        <!-- FILLING SA NORMAL W FLUO-->
+        <record model="oph.filling.template" id="sanlfluo_id">
+            <field name="name">Segment antérieur normal avec fluo</field>
+            <field name="code">SA NL FLUO</field>
+            <field name="as_od">Cornée claire, fluo-, chambre antérieure calme</field>
+            <field name="as_os">Cornée claire, fluo-, chambre antérieure calme </field>
+            <field name="comment">un commentaire</field>
+        </record>
+
+        <!-- FILLING POST OP PKE OD-->
+        <record model="oph.filling.template" id="popkeod_id">
+            <field name="name">PKE OD PO</field>
+            <field name="code">PO PKE OD</field>
+            <field name="as_od">Cornée claire, chambre antérieure calme, un implant de champbre postérieure bien en place, bien centré. Pas de Seydell</field>
+            <field name="comment">un commentaire</field>
+        </record>
+        <record model="oph.filling.template" id="popkeos_id">
+            <field name="name">PKE OS PO</field>
+            <field name="code">PO PKE OS</field>
+            <field name="as_os">Cornée claire, chambre antérieure calme, un implant de champbre postérieure bien en place, bien centré. Pas de Seydell</field>
+            <field name="comment">un commentaire</field>
+        </record>
+        
+        <!-- FILLING TEMPLATE DIABETE NORMAL -->
+        <record model="oph.filling.template" id="dt2_id">
+            <field name="name">DIABETE T2</field>
+            <field name="code">DT2 ODG</field>
+            <field name="as_od">Cornée claire, chambre antérieure calme, un cristallin clair. Absence de néovaisseaux iriens.</field>
+            <field name="as_os">Cornée claire, chambre antérieure calme, un cristallin clair. Absence de néovaisseaux irien.</field>
+            <field name="ps_od">Une papille normale avec un bon anneau neurorétinien. La macula est normale. Absence de lésion rhégmatogène sur les 360° de la périphérier rétinienne. Absence de lésion vasculaire.</field>
+            <field name="ps_os">Une papille normale avec un bon anneau neurorétinien. La macula est normale. Absence de lésion rhégmatogène sur les 360° de la périphérier rétinienne. Absence de lésion vasculaire.</field>
+            <field name="comment">un commentaire</field>
+        </record>
+
+
+
+    </data>
+</openerp>
