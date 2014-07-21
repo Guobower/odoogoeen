@@ -1,0 +1,3430 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+#	* oph
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 7.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-02-06 10:15+0000\n"
+"PO-Revision-Date: 2014-02-06 10:15+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: oph
+#: view:crm.meeting:0
+#: model:ir.actions.act_window,name:oph.reporting_action_id
+#: model:ir.ui.menu,name:oph.main_reporting_id
+#: model:ir.ui.menu,name:oph.menu_reporting_id
+#: model:ir.ui.menu,name:oph.reporting_menu_id
+#: view:oph.reporting:0
+msgid "Reporting"
+msgstr "Rapports"
+
+#. module: oph
+#: help:res.users,cafat_id:0
+msgid "CAFAT ID of the doctor = convention number. This is not the CAFAT Number as for a patient"
+msgstr "CAFAT ID du médecin = correspond au numéro de médecin conventionné. N'est pas le numéro CAFAT en tant que patient"
+
+#. module: oph
+#: view:oph.request:0
+msgid "Cancel Request"
+msgstr "Annule la demande d'entente préalable"
+
+#. module: oph
+#: field:oph.honorific,user_id:0
+msgid "User Id"
+msgstr "User Id"
+
+#. module: oph
+#: selection:account.invoice,payeur:0
+msgid "AMG Nord"
+msgstr "AMG Nord"
+
+#. module: oph
+#: view:crm.meeting:0
+#: view:oph.reporting:0
+msgid "Today"
+msgstr "Aujourd'hui"
+
+#. module: oph
+#: view:oph.reporting:0
+msgid "Orders processed Today or planned for Today"
+msgstr "Orders processed Today or planned for Today"
+
+#. module: oph
+#: field:oph.measurement,cyl_od:0
+msgid "CYL_OD"
+msgstr "CYL_OD"
+
+#. module: oph
+#: model:product.template,name:oph.product_product_OCT_id_product_template
+msgid "OCT [OD][OG] "
+msgstr "OCT [OD][OG] "
+
+#. module: oph
+#: view:crm.meeting:0
+msgid "Protocole Lines"
+msgstr "Protocole Lines"
+
+#. module: oph
+#: view:oph.request:0
+#: field:oph.request,referent_id:0
+msgid "Referent"
+msgstr "Médecin Référent"
+
+#. module: oph
+#: view:res.partner:0
+msgid "Trusted by others patients"
+msgstr "Tiers de confiance"
+
+#. module: oph
+#: field:oph.diabetic.report,receiver_city:0
+msgid "Receiver city"
+msgstr "Receiver city"
+
+#. module: oph
+#: model:ir.model,name:oph.model_oph_reporting
+msgid "oph.reporting"
+msgstr "oph.reporting"
+
+#. module: oph
+#: model:ir.actions.act_window,name:oph.honorific_action_id
+#: model:ir.ui.menu,name:oph.honorific_menu_id
+msgid "honorific"
+msgstr "honorific"
+
+#. module: oph
+#: help:oph.reporting,receiver_partner:0
+msgid "Patient is the receiver"
+msgstr "Le patient est le destinataire "
+
+#. module: oph
+#: view:oph.request:0
+msgid "Close Request"
+msgstr "Fermer la demande d'entente préalable"
+
+#. module: oph
+#: field:agenda.factory,ampm:0
+msgid "Day"
+msgstr "Day"
+
+#. module: oph
+#: field:oph.measurement,cyl_os:0
+msgid "CYL_OS"
+msgstr "CYL_OS"
+
+#. module: oph
+#: help:oph.instrumentation.type,comment:0
+msgid "Comment the type of instrument"
+msgstr "Comment the type of instrument"
+
+#. module: oph
+#: field:oph.diabetic.report,receiver_bp:0
+msgid "Receiver bp"
+msgstr "Receiver bp"
+
+#. module: oph
+#: selection:account.invoice,payeur:0
+#: selection:oph.etat.factory,template:0
+msgid "Longue Maladie"
+msgstr "Longue Maladie"
+
+#. module: oph
+#: field:oph.reporting,var3:0
+msgid "EDC"
+msgstr "EDC"
+
+#. module: oph
+#: help:agenda.factory,step:0
+msgid "Duration of the slot (minutes)"
+msgstr "Durée du rendez-vous (minutes)"
+
+#. module: oph
+#: code:addons/oph/wizard/oph_agenda_factory.py:271
+#: selection:agenda.factory,ampm:0
+#, python-format
+msgid "All day"
+msgstr "Journée entière"
+
+#. module: oph
+#: view:crm.meeting:0
+msgid "Prescriber"
+msgstr "Prescriber"
+
+#. module: oph
+#: view:crm.meeting:0
+#: field:crm.meeting,va_ids:0
+msgid "Visual Acuity"
+msgstr "Acuité Visuelle"
+
+#. module: oph
+#: field:oph.diabetic.report,receiver_title:0
+msgid "Receiver title"
+msgstr "Receiver title"
+
+#. module: oph
+#: code:addons/oph/oph_reporting.py:192
+#: view:oph.reporting.template:0
+#, python-format
+msgid "Conclusion Section"
+msgstr "Conclusion Section"
+
+#. module: oph
+#: help:oph.bloc.agenda,partner_id:0
+msgid "This is the owner of the agenda"
+msgstr "C'est le propriétaire de l'agenda"
+
+#. module: oph
+#: model:product.template,name:oph.product_product_afk35_id_product_template
+msgid "Angiographie(K35)"
+msgstr "Angiographie(K35)"
+
+#. module: oph
+#: view:oph.bloc.agenda.line:0
+msgid "IC given back by the patient"
+msgstr "Le consentement SIGNE est remis par le patient"
+
+#. module: oph
+#: field:oph.bloc.agenda.line,procedure_iol_status:0
+msgid "IOL Procedure"
+msgstr "IOL Procedure"
+
+#. module: oph
+#: field:crm.meeting,tag:0
+msgid "Tag"
+msgstr "Tag"
+
+#. module: oph
+#: view:account.invoice:0
+#: selection:oph.etat.factory,template:0
+msgid "AMG SUD"
+msgstr "AMG SUD"
+
+#. module: oph
+#: model:product.category,name:oph.product_category_clinic_id
+msgid "Clinique"
+msgstr "Clinique"
+
+#. module: oph
+#: field:crm.meeting,partner_id:0
+#: model:ir.model,name:oph.model_res_partner
+#: view:oph.bloc.agenda.line:0
+#: field:oph.bloc.agenda.line,partner_id:0
+#: help:oph.honorific,partner_id:0
+#: view:oph.measurement:0
+#: field:oph.measurement,partner_id:0
+#: view:oph.medication.line:0
+#: field:oph.medication.line,partner_id:0
+#: view:oph.protocole.line:0
+#: field:oph.protocole.line,partner_id:0
+#: view:oph.reporting:0
+#: field:oph.reporting,partner_id:0
+#: view:oph.request:0
+#: field:oph.request,partner_id:0
+#: field:oph.request.line,partner_id:0
+#: view:oph.todolist:0
+#: field:oph.todolist,partner_id:0
+msgid "Partner"
+msgstr "Partenaire"
+
+#. module: oph
+#: code:addons/oph/wizard/oph_formula_prescription.py:33
+#: model:ir.actions.report.xml,name:oph.report_multifocal_id
+#, python-format
+msgid "Multifocal"
+msgstr "Multifocal"
+
+#. module: oph
+#: model:ir.model,name:oph.model_oph_indication
+msgid "oph.indication"
+msgstr "oph.indication"
+
+#. module: oph
+#: field:oph.etat.factory,template:0
+#: field:oph.formula.prescription,template:0
+msgid "Template"
+msgstr "Template"
+
+#. module: oph
+#: model:ir.model,name:oph.model_agenda_factory
+msgid "Agenda factory. Set up of slots"
+msgstr "Agenda factory. Mise en place des créneaux de rendez-vous"
+
+#. module: oph
+#: field:oph.medication.line,poso:0
+#: field:oph.medication.line.template,poso:0
+msgid "POSO"
+msgstr "POSO"
+
+#. module: oph
+#: help:oph.instrumentation,serial_number:0
+msgid "serial number of the instrument"
+msgstr "Numéro de série de l'instrument"
+
+#. module: oph
+#: view:res.partner:0
+msgid "Comment Secured"
+msgstr "Comment Secured"
+
+#. module: oph
+#: field:agenda.factory,state:0
+#: field:oph.bloc.agenda.line,state:0
+#: field:oph.reporting,state:0
+#: view:oph.request:0
+#: view:oph.todolist:0
+#: field:oph.todolist,state:0
+msgid "State"
+msgstr "State"
+
+#. module: oph
+#: view:oph.reporting.template:0
+msgid "Posterior segment section"
+msgstr "Segment postérieur"
+
+#. module: oph
+#: view:crm.meeting:0
+msgid "Todo List"
+msgstr "Todo List"
+
+#. module: oph
+#: field:oph.iol.type,constant:0
+msgid "Constant Lens"
+msgstr "Constant Lens"
+
+#. module: oph
+#: field:oph.measurement,add_od:0
+msgid "ADD_OD"
+msgstr "ADD_OD"
+
+#. module: oph
+#: model:ir.actions.report.xml,name:oph.report_bi_id
+msgid "Bifocal"
+msgstr "Bifocal"
+
+#. module: oph
+#: code:addons/oph/custom/partner.py:74
+#: code:addons/oph/custom/partner.py:82
+#, python-format
+msgid " YO"
+msgstr " YO"
+
+#. module: oph
+#: model:ir.actions.report.xml,name:oph.general_report_id
+msgid "General Report"
+msgstr "General Report"
+
+#. module: oph
+#: field:oph.diabetic.report,receiver_street2:0
+msgid "Receiver street2"
+msgstr "Receiver street2"
+
+#. module: oph
+#: model:ir.actions.act_window,name:oph.logconsultation_act
+msgid "Log Consultation"
+msgstr "Log Consultation"
+
+#. module: oph
+#: field:oph.measurement,add_os:0
+msgid "ADD_OS"
+msgstr "ADD_OS"
+
+#. module: oph
+#: model:product.template,name:oph.product_product_OCTODG_id_product_template
+msgid "OCT ODG"
+msgstr "OCT ODG"
+
+#. module: oph
+#: view:crm.meeting:0
+msgid "Refraction Plus"
+msgstr "Refraction Plus"
+
+#. module: oph
+#: view:res.partner:0
+msgid "True"
+msgstr "True"
+
+#. module: oph
+#: help:oph.reporting.template,name:0
+msgid "Name of the procedure"
+msgstr "Name of the procedure"
+
+#. module: oph
+#: code:addons/oph/oph_reporting.py:47
+#: code:addons/oph/oph_reporting.py:193
+#, python-format
+msgid "Laser Report"
+msgstr "Laser Report"
+
+#. module: oph
+#: view:oph.todolist:0
+msgid "Set to Open"
+msgstr "Set to Open"
+
+#. module: oph
+#: field:oph.measurement,va_type:0
+msgid "VA TYPE"
+msgstr "VA TYPE"
+
+#. module: oph
+#: view:crm.meeting:0
+msgid "Q_OD"
+msgstr "Q_OD"
+
+#. module: oph
+#: field:res.partner,age:0
+msgid "Age"
+msgstr "Age"
+
+#. module: oph
+#: help:oph.protocole.line,result:0
+msgid "Exam result"
+msgstr "Exam result"
+
+#. module: oph
+#: field:oph.diabetic.report,receiver_street:0
+msgid "Receiver street"
+msgstr "Receiver street"
+
+#. module: oph
+#: model:ir.actions.act_window,name:oph.request_maker_action_id
+msgid "request.factory"
+msgstr "request.factory"
+
+#. module: oph
+#: model:res.groups,comment:oph.OR_group_id
+msgid "The group for the operating room"
+msgstr "Le groupe pour le bloc opératoire"
+
+#. module: oph
+#: model:product.template,name:oph.product_product_bio_id_product_template
+msgid "Bio [OD][OG]"
+msgstr "Bio [OD][OG]"
+
+#. module: oph
+#: field:oph.procedure.type,iol_status:0
+msgid "IOL Status"
+msgstr "IOL Status"
+
+#. module: oph
+#: model:product.template,description:oph.product_product_laserretodg_id_product_template
+msgid "Laser rétine ODG"
+msgstr "Laser rétine ODG"
+
+#. module: oph
+#: model:ir.actions.act_window,name:oph.inn_action_id
+#: model:ir.ui.menu,name:oph.inn_oph_id
+#: field:oph.brandname,brandname_id:0
+#: view:oph.inn:0
+#: help:oph.inn,alternate:0
+#: help:oph.inn,name:0
+msgid "INN"
+msgstr "DCI"
+
+#. module: oph
+#: field:oph.bloc.agenda,partner_id:0
+msgid "Owner"
+msgstr "Owner"
+
+#. module: oph
+#: view:crm.meeting:0
+msgid "Set RxP"
+msgstr "Set RxP"
+
+#. module: oph
+#: view:crm.meeting:0
+msgid "Category"
+msgstr "Category"
+
+#. module: oph
+#: field:oph.reporting,cc_partner:0
+msgid "Copie Patient"
+msgstr "Copie Patient"
+
+#. module: oph
+#: field:oph.measurement,va_tech:0
+msgid "Technique"
+msgstr "Technique"
+
+#. module: oph
+#: field:oph.reporting,quand:0
+msgid "When"
+msgstr "When"
+
+#. module: oph
+#: field:oph.instrumentation,date_purchase:0
+msgid "Purchase Date"
+msgstr "Date d'achat"
+
+#. module: oph
+#: view:res.partner:0
+#: field:res.partner,partner_ids:0
+msgid "Relations"
+msgstr "Relations"
+
+#. module: oph
+#: field:oph.lens,magnification:0
+msgid "Magnification"
+msgstr "Magnification"
+
+#. module: oph
+#: model:ir.model,name:oph.model_oph_motive
+msgid "oph.motive"
+msgstr "oph.motive"
+
+#. module: oph
+#: view:crm.meeting:0
+msgid "Filter on patients of the day"
+msgstr "Filter on patients of the day"
+
+#. module: oph
+#: model:product.template,name:oph.product_product_fo_id_product_template
+msgid "FO"
+msgstr "FO"
+
+#. module: oph
+#: view:res.partner:0
+#: field:res.partner,colleague:0
+msgid "Colleague"
+msgstr "Collègue"
+
+#. module: oph
+#: view:res.partner:0
+msgid "Customers"
+msgstr "Patients"
+
+#. module: oph
+#: field:oph.measurement,cct_od:0
+msgid "CCT_OD"
+msgstr "CCT_OD"
+
+#. module: oph
+#: model:oph.procedure.type,name:oph.procedure_cryoapp
+msgid "Cryoapplication"
+msgstr "Cryoapplication"
+
+#. module: oph
+#: model:ir.model,name:oph.model_oph_honorific
+msgid "oph.honorific"
+msgstr "oph.honorific"
+
+#. module: oph
+#: field:oph.reporting,lens:0
+msgid "Lens"
+msgstr "Lentille"
+
+#. module: oph
+#: field:oph.measurement,cct_os:0
+msgid "CCT_OS"
+msgstr "CCT_OS"
+
+#. module: oph
+#: model:ir.ui.menu,name:oph.main_oph_id
+#: model:ir.ui.menu,name:oph.ophthalmology_oph_id
+msgid "Ophthalmology"
+msgstr "Ophthalmology"
+
+#. module: oph
+#: view:crm.meeting:0
+msgid "History Measurement"
+msgstr "History Measurement"
+
+#. module: oph
+#: view:oph.formula.prescription:0
+msgid "Print Prescription"
+msgstr "Impression Prescription"
+
+#. module: oph
+#: model:ir.model,name:oph.model_oph_brandname
+msgid "oph.brandname"
+msgstr "oph.brandname"
+
+#. module: oph
+#: code:addons/oph/wizard/oph_formula_prescription.py:34
+#, python-format
+msgid "Multifocal - Sun Glass"
+msgstr "Multifocal - Sun Glass"
+
+#. module: oph
+#: view:crm.meeting:0
+msgid "Q_OS"
+msgstr "Q_OS"
+
+#. module: oph
+#: field:oph.todolist.tag,default:0
+msgid "Default"
+msgstr "Default"
+
+#. module: oph
+#: model:product.template,description:oph.product_product_cs_id_product_template
+#: model:product.template,description_sale:oph.product_product_cs_id_product_template
+msgid "Acte de consultation"
+msgstr "Acte de consultation"
+
+#. module: oph
+#: model:ir.model,name:oph.model_oph_measurement
+msgid "oph.measurement"
+msgstr "oph.measurement"
+
+#. module: oph
+#: model:ir.model,name:oph.model_oph_inpatient_type
+msgid "oph.inpatient.type"
+msgstr "oph.inpatient.type"
+
+#. module: oph
+#: field:oph.reporting,retinal_thickness_os:0
+msgid "Retinal Thickness OS"
+msgstr "Épaisseur rétinienne OS"
+
+#. module: oph
+#: view:sale.order:0
+msgid "Confirm Sale & Create Invoice"
+msgstr "Confirme la vente & crée la facture"
+
+#. module: oph
+#: model:ir.actions.report.xml,name:oph.report_multifocal_sunglasses_id
+msgid "Multifocal and Sunglasses"
+msgstr "Multifocal and Sunglasses"
+
+#. module: oph
+#: model:ir.ui.menu,name:oph.menu_agenda_factory
+msgid "Agenda Factory"
+msgstr "Agenda Factory"
+
+#. module: oph
+#: model:product.template,description_sale:oph.product_product_af_id_product_template
+#: model:product.template,description_sale:oph.product_product_afk35_id_product_template
+msgid "Angiographie numérisée"
+msgstr "Angiographie numérisée"
+
+#. module: oph
+#: view:crm.meeting:0
+#: field:crm.meeting,medication_line_ids:0
+#: model:ir.ui.menu,name:oph.medication_line_id
+#: view:oph.medication.line:0
+msgid "Medication Line"
+msgstr "Medication Line"
+
+#. module: oph
+#: field:crm.meeting,refraction_ids:0
+#: view:oph.measurement:0
+msgid "Refraction"
+msgstr "Refraction"
+
+#. module: oph
+#: field:oph.reporting,retinal_thickness_od:0
+msgid "Retinal Thickness OD"
+msgstr "Épaisseur rétinienne  OD"
+
+#. module: oph
+#: view:oph.bloc.agenda.line:0
+msgid "Bloc                         Line canceled"
+msgstr "Bloc                         Line canceled"
+
+#. module: oph
+#: field:oph.iol.type,manufactor:0
+msgid "Manufactor"
+msgstr "Manufactor"
+
+#. module: oph
+#: field:oph.bloc.agenda,comment:0
+msgid "Informations"
+msgstr "Informations"
+
+#. module: oph
+#: model:ir.model,name:oph.model_oph_request_line
+msgid "oph.request.line"
+msgstr "oph.request.line"
+
+#. module: oph
+#: code:addons/oph/oph_reporting.py:187
+#: field:oph.reporting,header_id:0
+#: view:oph.reporting.template:0
+#, python-format
+msgid "Header"
+msgstr "Header"
+
+#. module: oph
+#: model:product.template,description:oph.product_product_foret_id_product_template
+#: model:product.template,description_sale:oph.product_product_foret_id_product_template
+msgid "Fond d'oeil et Rétinophotographie"
+msgstr "Fond d'oeil et Rétinophotographie"
+
+#. module: oph
+#: field:crm.meeting,datewotime:0
+msgid "DateWOtime"
+msgstr "DateWOtime"
+
+#. module: oph
+#: model:ir.actions.report.xml,name:oph.report_sud_id
+msgid "Etat SUD"
+msgstr "Etat SUD"
+
+#. module: oph
+#: view:res.partner:0
+#: field:res.partner,trusted:0
+msgid "Trusted"
+msgstr "Trusted"
+
+#. module: oph
+#: view:crm.meeting:0
+msgid "Out"
+msgstr "Out"
+
+#. module: oph
+#: view:oph.indication:0
+msgid "OR Indication"
+msgstr "OR Indication"
+
+#. module: oph
+#: view:oph.request:0
+msgid "Cancelled Request"
+msgstr "Cancelled Request"
+
+#. module: oph
+#: field:oph.reporting,cc_ids:0
+msgid "Copies"
+msgstr "Copies"
+
+#. module: oph
+#: model:ir.actions.report.xml,name:oph.cardio_report_id
+msgid "Cardio Reporting"
+msgstr "Courrier Cardiologue"
+
+#. module: oph
+#: field:oph.inn,brandname_ids:0
+msgid "BrandName"
+msgstr "BrandName"
+
+#. module: oph
+#: model:oph.procedure.type,name:oph.procedure_v3vop
+msgid "V3V 25G à visée optique"
+msgstr "V3V 25G à visée optique"
+
+#. module: oph
+#: view:oph.bloc.agenda:0
+msgid "Bloc Agenda Lines"
+msgstr "Bloc Agenda Lines"
+
+#. module: oph
+#: view:crm.meeting:0
+#: field:crm.meeting,motive:0
+#: model:ir.actions.act_window,name:oph.motive_action_id
+#: model:ir.ui.menu,name:oph.motive_menu_id
+#: field:oph.measurement,motive:0
+#: view:oph.motive:0
+msgid "Motive"
+msgstr "Motif"
+
+#. module: oph
+#: model:product.template,description:oph.product_product_ivt_id_product_template
+#: model:product.template,description_sale:oph.product_product_ivt_id_product_template
+msgid "Injection intra-vitréenne OD et OG"
+msgstr "Injection intra-vitréenne OD et OG"
+
+#. module: oph
+#: field:oph.bloc.agenda,end_date:0
+msgid "EndDate"
+msgstr "EndDate"
+
+#. module: oph
+#: field:res.partner,carte:0
+msgid "Carte"
+msgstr "Carte"
+
+#. module: oph
+#: field:oph.measurement,k2_od:0
+msgid "K2_OD"
+msgstr "K2_OD"
+
+#. module: oph
+#: view:oph.bloc.agenda.line:0
+msgid "IC_Close"
+msgstr "IC_Close"
+
+#. module: oph
+#: code:addons/oph/oph_reporting.py:49
+#: code:addons/oph/oph_reporting.py:195
+#, python-format
+msgid "OCT Report"
+msgstr "OCT Report"
+
+#. module: oph
+#: view:res.partner:0
+msgid "firstname"
+msgstr "firstname"
+
+#. module: oph
+#: field:oph.measurement,k2_os:0
+msgid "K2_OS"
+msgstr "K2_OS"
+
+#. module: oph
+#: model:ir.actions.act_window,name:oph.action_oph_etat_factory
+msgid "Oph Etat Factory"
+msgstr "Oph Etat Factory"
+
+#. module: oph
+#: view:crm.meeting:0
+#: model:ir.actions.act_window,name:oph.request_action_id
+#: model:ir.ui.menu,name:oph.request_menu_id
+#: view:oph.request:0
+msgid "Request"
+msgstr "Demande d'entente"
+
+#. module: oph
+#: code:addons/oph/wizard/oph_formula_prescription.py:35
+#, python-format
+msgid "Bi-Focal"
+msgstr "Bi-Focal"
+
+#. module: oph
+#: field:oph.reporting,post_op_treatement:0
+msgid "Post Operatoire Treatement"
+msgstr "Post Operatoire Treatement"
+
+#. module: oph
+#: field:oph.instrumentation,model:0
+#: field:oph.iol.type,name:0
+#: field:oph.lens,model:0
+msgid "Model"
+msgstr "Model"
+
+#. module: oph
+#: model:oph.procedure.type,name:oph.procedure_v3v
+msgid "V3V+EL+GAZ ou HS"
+msgstr "V3V+EL+GAZ ou HS"
+
+#. module: oph
+#: field:oph.reporting,molecule_ids:0
+msgid "Molecule(s)"
+msgstr "Molecule(s)"
+
+#. module: oph
+#: view:crm.meeting:0
+msgid "M_OS"
+msgstr "M_OS"
+
+#. module: oph
+#: help:oph.todolist.tag,default:0
+msgid "Thick the box if you want it to be default if not thick another"
+msgstr "Cochez la case si vous voulez que ce soit celle par défaut. Sinon cochez une autre case"
+
+#. module: oph
+#: model:ir.model,name:oph.model_oph_exam
+msgid "oph.exam"
+msgstr "oph.exam"
+
+#. module: oph
+#: model:product.template,description_sale:oph.product_product_laserretodg_id_product_template
+msgid "Laser rétine OD et OG"
+msgstr "Laser rétine OD et OG"
+
+#. module: oph
+#: help:oph.instrumentation,price:0
+msgid "Purchase Price"
+msgstr "Prix d'achat"
+
+#. module: oph
+#: view:oph.diabetic.report:0
+#: view:oph.etat.factory:0
+#: view:oph.formula.prescription:0
+msgid "or"
+msgstr "or"
+
+#. module: oph
+#: view:oph.bloc.agenda.line:0
+msgid "Bloc Line just created"
+msgstr "Bloc Line just created"
+
+#. module: oph
+#: view:crm.meeting:0
+msgid "M_OD"
+msgstr "M_OD"
+
+#. module: oph
+#: selection:account.invoice,payeur:0
+msgid "CAFAT Mutuelle"
+msgstr "CAFAT Mutuelle"
+
+#. module: oph
+#: model:product.template,description:oph.product_product_af_id_product_template
+#: model:product.template,description:oph.product_product_afk35_id_product_template
+#: model:product.template,name:oph.product_product_af_id_product_template
+msgid "Angiographie"
+msgstr "Angiographie"
+
+#. module: oph
+#: field:oph.filling.template,as_od:0
+#: field:oph.measurement,as_od:0
+msgid "AS_OD"
+msgstr "AS_OD"
+
+#. module: oph
+#: field:agenda.factory,end_h:0
+#: field:agenda.factory,stop_dt:0
+msgid "Stop"
+msgstr "Stop"
+
+#. module: oph
+#: model:ir.actions.act_window,name:oph.action_agenda_factory
+msgid "Agenda Factory Action"
+msgstr "Agenda Factory Action"
+
+#. module: oph
+#: help:account.invoice,ref_statement:0
+msgid "Reference of the statement for bank reconcilation"
+msgstr "Reference of the statement for bank reconcilation"
+
+#. module: oph
+#: field:oph.diabetic.report,receiver_zip:0
+msgid "Receiver zip"
+msgstr "Receiver zip"
+
+#. module: oph
+#: help:res.partner,comment_secure:0
+msgid "Comment not to be shared"
+msgstr "Commentaire not to be shared"
+
+#. module: oph
+#: model:oph.procedure.type,name:oph.procedure_pkeicp
+msgid "Phakoémulsification et implantation de chambre postérieure"
+msgstr "Phakoémulsification et implantation de chambre postérieure"
+
+#. module: oph
+#: view:oph.request:0
+msgid "Accord"
+msgstr "Accord"
+
+#. module: oph
+#: code:addons/oph/custom/partner.py:77
+#: code:addons/oph/custom/partner.py:79
+#: code:addons/oph/custom/partner.py:88
+#: code:addons/oph/custom/partner.py:90
+#: code:addons/oph/custom/partner.py:92
+#, python-format
+msgid " month"
+msgstr " Mois"
+
+#. module: oph
+#: view:account.invoice:0
+#: selection:account.invoice,payeur:0
+#: selection:oph.etat.factory,template:0
+msgid "SMIT"
+msgstr "SMIT"
+
+#. module: oph
+#: model:ir.actions.act_window,name:oph.anesthesia_type_action_id
+#: model:ir.ui.menu,name:oph.anesthesia_type_menu_id
+#: field:oph.bloc.agenda.line,anesthesia_type_id:0
+msgid "Anesthesia Type"
+msgstr "Type d'anesthésie"
+
+#. module: oph
+#: field:oph.request.line,request_id:0
+msgid "Accord Reference"
+msgstr "Accord Reference"
+
+#. module: oph
+#: help:oph.formula.prescription,template:0
+msgid "Select template"
+msgstr "Select template"
+
+#. module: oph
+#: model:product.template,description:oph.product_product_biofo_id_product_template
+msgid "Biométrie OD ou OG et Fond d'oeil "
+msgstr "Biométrie OD ou OG et Fond d'oeil "
+
+#. module: oph
+#: field:res.users,cafat_id:0
+msgid "CAFAT ID"
+msgstr "CAFAT ID"
+
+#. module: oph
+#: model:oph.procedure.type,name:oph.procedure_cryoind
+msgid "Cryo-indentation"
+msgstr "Cryo-indentation"
+
+#. module: oph
+#: model:product.template,description:oph.product_product_ret_id_product_template
+#: model:product.template,description_sale:oph.product_product_ret_id_product_template
+msgid "Rétinophotographie OD ou OG"
+msgstr "Rétinophotographie OD ou OG"
+
+#. module: oph
+#: field:oph.bloc.agenda.line,dilatation:0
+#: field:oph.procedure.type,dilatation:0
+msgid "Dilatation"
+msgstr "Dilatation"
+
+#. module: oph
+#: view:res.partner:0
+msgid "onchange_name(firstname, name, dob, context)"
+msgstr "onchange_name(firstname, name, dob, context)"
+
+#. module: oph
+#: model:ir.actions.report.xml,name:oph.agenda_bloc_line_report_id
+msgid "Bloc Line Report"
+msgstr "Bloc Line Report"
+
+#. module: oph
+#: model:ir.actions.act_window,name:oph.action_formula_prescription
+#: view:oph.diabetic.report:0
+#: view:oph.formula.prescription:0
+msgid "Formula Prescription"
+msgstr "Formula Prescription"
+
+#. module: oph
+#: field:oph.diabetic.report,receiver:0
+#: field:oph.reporting,receiver_id:0
+msgid "Receiver"
+msgstr "Receiver"
+
+#. module: oph
+#: field:oph.bloc.agenda.line,iol_power:0
+msgid "IOL Power"
+msgstr "IOL Power"
+
+#. module: oph
+#: view:account.invoice:0
+msgid "CAFAT-Mut"
+msgstr "CAFAT-Mut"
+
+#. module: oph
+#: help:agenda.factory,date:0
+msgid "Day for slot to create"
+msgstr "Day for slot to create"
+
+#. module: oph
+#: field:oph.diabetic.report,receiver_name:0
+msgid "Receiver name"
+msgstr "Receiver name"
+
+#. module: oph
+#: help:oph.reporting,var6:0
+msgid "Amplitude de Torsion Moyenne en position 3"
+msgstr "Amplitude de Torsion Moyenne en position 3"
+
+#. module: oph
+#: model:ir.actions.act_window,name:oph.action_crm_meeting_tree
+#: model:ir.ui.menu,name:oph.calendar_tree_menu_id
+msgid "Meetings"
+msgstr "Rendez-vous"
+
+#. module: oph
+#: view:oph.gauge:0
+msgid "V3V gauge size"
+msgstr "V3V gauge size"
+
+#. module: oph
+#: model:ir.actions.report.xml,name:oph.report_nord_id
+msgid "Etat NORD"
+msgstr "Etat NORD"
+
+#. module: oph
+#: field:oph.measurement,tonometer_id:0
+msgid "Tonometer"
+msgstr "Tonomètre"
+
+#. module: oph
+#: view:oph.reporting.template:0
+msgid "Non Slit Lamp examination section"
+msgstr "Non Slit Lamp examination section"
+
+#. module: oph
+#: model:ir.actions.act_window,name:oph.measurement_action_id
+#: model:ir.ui.menu,name:oph.config_measurement_id
+#: model:ir.ui.menu,name:oph.measurement_menu_id
+#: field:oph.filling.template,measurement_ids:0
+msgid "Measurement"
+msgstr "Mesures"
+
+#. module: oph
+#: field:oph.measurement,qualif_os:0
+msgid "Qualif_OS"
+msgstr "Qualif_OS"
+
+#. module: oph
+#: field:oph.measurement,conclusion_od:0
+msgid "Conclusion OD"
+msgstr "Conclusion OD"
+
+#. module: oph
+#: field:oph.reporting,template_ids:0
+msgid "Reporting Templates"
+msgstr "Reporting Templates"
+
+#. module: oph
+#: model:ir.model,name:oph.model_oph_formula_prescription
+msgid "Formula report prescription"
+msgstr "Formula report prescription"
+
+#. module: oph
+#: code:addons/oph/oph_reporting.py:191
+#: view:oph.reporting.template:0
+#, python-format
+msgid "Posterior Segment Section"
+msgstr "Posterior Segment Section"
+
+#. module: oph
+#: selection:account.invoice,payeur:0
+msgid "Ticket moderateur"
+msgstr "Ticket moderateur"
+
+#. module: oph
+#: model:oph.procedure.type,name:oph.procedure_st
+msgid "Injection sous ténonienne"
+msgstr "Injection sous ténonienne"
+
+#. module: oph
+#: model:ir.actions.report.xml,name:oph.first_report_pdf_id
+msgid "Premier Report PDF"
+msgstr "Premier Report PDF"
+
+#. module: oph
+#: view:oph.reporting.template:0
+msgid "First section of your report"
+msgstr "Première section du rapport"
+
+#. module: oph
+#: view:oph.anesthesia.type:0
+#: view:oph.brandname:0
+#: field:oph.exam,type_id:0
+#: view:oph.filling.template:0
+#: view:oph.inn:0
+#: view:oph.inpatient.type:0
+#: view:oph.instrumentation:0
+#: view:oph.instrumentation.type:0
+#: view:oph.iol.type:0
+#: view:oph.measurement:0
+#: field:oph.measurement,type_id:0
+#: view:oph.measurement.type:0
+#: view:oph.medication.line.template:0
+#: view:oph.motive:0
+#: view:oph.pathology:0
+#: view:oph.procedure.type:0
+#: view:oph.protocole:0
+#: view:oph.reporting:0
+#: field:oph.reporting,type:0
+#: view:oph.reporting.template:0
+#: field:oph.reporting.template,type:0
+#: view:oph.request:0
+#: view:oph.todolist:0
+#: view:oph.va.tech:0
+msgid "Type"
+msgstr "Type"
+
+#. module: oph
+#: view:oph.reporting.template:0
+msgid "Anterior segment section"
+msgstr "Anterior segment section"
+
+#. module: oph
+#: model:ir.model,name:oph.model_oph_bloc_agenda_line
+msgid "oph.bloc.agenda.line"
+msgstr "oph.bloc.agenda.line"
+
+#. module: oph
+#: help:oph.reporting,name:0
+msgid "Name report"
+msgstr "Name report"
+
+#. module: oph
+#: view:oph.request:0
+#: field:oph.request,request_line_ids:0
+msgid "Accord Lines"
+msgstr "Accord Lines"
+
+#. module: oph
+#: model:ir.actions.act_window,name:oph.bloc_agenda_action_id
+#: model:ir.ui.menu,name:oph.bloc_agenda_menu_id
+#: view:oph.bloc.agenda:0
+#: view:oph.bloc.agenda.line:0
+#: field:oph.bloc.agenda.line,bloc_agenda_id:0
+msgid "Bloc Agenda"
+msgstr "Bloc Agenda"
+
+#. module: oph
+#: view:crm.meeting:0
+msgid "Miscellaneous"
+msgstr "Divers"
+
+#. module: oph
+#: view:oph.reporting.template:0
+msgid "History, Status of your patient"
+msgstr "History, Status of your patient"
+
+#. module: oph
+#: model:res.groups,name:oph.OR_group_id
+msgid "Operating Room Portal"
+msgstr "Bloc Opératoire Portal"
+
+#. module: oph
+#: model:product.template,description:oph.product_product_afret_id_product_template
+#: model:product.template,name:oph.product_product_afret_id_product_template
+msgid "Angiographie et rétinophotographie"
+msgstr "Angiographie et rétinophotographie"
+
+#. module: oph
+#: model:ir.model,name:oph.model_oph_protocole_line_template
+msgid "oph.protocole.line.template"
+msgstr "oph.protocole.line.template"
+
+#. module: oph
+#: field:crm.meeting,subject:0
+msgid "Subject"
+msgstr "Subject"
+
+#. module: oph
+#: help:oph.reporting,var3:0
+msgid "Energie dissipée cumulée"
+msgstr "Energie dissipée cumulée"
+
+#. module: oph
+#: view:res.partner:0
+msgid "Partners that are colleague"
+msgstr "Partners  that are colleague"
+
+#. module: oph
+#: model:ir.model,name:oph.model_oph_medication_line
+msgid "oph.medication.line"
+msgstr "oph.medication.line"
+
+#. module: oph
+#: code:addons/oph/wizard/oph_agenda_factory.py:271
+#: selection:agenda.factory,ampm:0
+#, python-format
+msgid "Afternoon"
+msgstr "Après Midi"
+
+#. module: oph
+#: selection:res.partner,gender:0
+msgid "Male"
+msgstr "Male"
+
+#. module: oph
+#: help:agenda.factory,start_dt:0
+msgid "First appointment  datetime"
+msgstr "First appointment  datetime"
+
+#. module: oph
+#: model:ir.ui.menu,name:oph.portal_agenda_menu
+msgid "Bloc Agenda Portal"
+msgstr "Bloc Agenda Portal"
+
+#. module: oph
+#: model:ir.ui.menu,name:oph.config_medication_id
+msgid "Medication"
+msgstr "Medication"
+
+#. module: oph
+#: view:oph.diabetic.report:0
+msgid "Print Diabetic Report"
+msgstr "Print Diabetic Report"
+
+#. module: oph
+#: model:product.template,name:oph.product_product_ivt_id_product_template
+msgid "IVT [OD][OG]"
+msgstr "IVT [OD][OG]"
+
+#. module: oph
+#: model:ir.actions.report.xml,name:oph.examination_report_id
+msgid "Examination Report"
+msgstr "Examination Report"
+
+#. module: oph
+#: model:ir.actions.act_window,name:oph.procedure_type_action_id
+#: model:ir.ui.menu,name:oph.procedure_type_menu_id
+#: field:oph.bloc.agenda.line,procedure_type_id:0
+msgid "Procedure Type"
+msgstr "Procedure Type"
+
+#. module: oph
+#: view:account.invoice:0
+#: selection:oph.etat.factory,template:0
+msgid "AMG NORD"
+msgstr "AMG NORD"
+
+#. module: oph
+#: view:res.users:0
+msgid "CAFAT N"
+msgstr "CAFAT N"
+
+#. module: oph
+#: field:oph.measurement,k1_od:0
+msgid "K1_OD"
+msgstr "K1_OD"
+
+#. module: oph
+#: model:res.groups,comment:oph.sec_group_id
+msgid "The group for the secretaries"
+msgstr "Groupe pour les secrétaires"
+
+#. module: oph
+#: field:crm.meeting,conclusion_ids:0
+msgid "Conclusion Line"
+msgstr "Ligne de Conclusion"
+
+#. module: oph
+#: view:crm.meeting:0
+msgid "Make Report"
+msgstr "Make Report"
+
+#. module: oph
+#: field:oph.measurement,k1_os:0
+msgid "K1_OS"
+msgstr "K1_OS"
+
+#. module: oph
+#: field:agenda.factory,start_dt:0
+#: field:agenda.factory,start_h:0
+msgid "Start"
+msgstr "Start"
+
+#. module: oph
+#: view:oph.measurement:0
+msgid "Search Measurement"
+msgstr "Search Measurement"
+
+#. module: oph
+#: help:oph.reporting,dictate_wpatient:0
+msgid "Thick the box, if dictate with patient"
+msgstr "Cochez la case, si dicté en présence du patient"
+
+#. module: oph
+#: view:oph.honorific:0
+#: field:oph.honorific,honorific:0
+#: field:oph.reporting,honorific:0
+msgid "Honorific"
+msgstr "Honorific"
+
+#. module: oph
+#: view:crm.meeting:0
+msgid "Invitations"
+msgstr "Invitations"
+
+#. module: oph
+#: field:oph.medication.line,meeting_id:0
+#: field:oph.protocole.line,meeting_id:0
+msgid "CRM MEETING"
+msgstr "CRM MEETING"
+
+#. module: oph
+#: view:oph.medication.line.template:0
+msgid "medication line template"
+msgstr "medication line template"
+
+#. module: oph
+#: code:addons/oph/oph_reporting.py:48
+#: code:addons/oph/oph_reporting.py:194
+#, python-format
+msgid "Fluoresceine Angiography Report"
+msgstr "Fluoresceine Angiography Report"
+
+#. module: oph
+#: model:ir.actions.act_window,name:oph.measurement_history_action_id
+msgid "measurement.history"
+msgstr "measurement.history"
+
+#. module: oph
+#: code:addons/oph/oph_reporting.py:190
+#: view:oph.reporting.template:0
+#, python-format
+msgid "Anterior Segment Section"
+msgstr "Anterior Segment Section"
+
+#. module: oph
+#: model:ir.actions.report.xml,name:oph.first_report_id
+msgid "Premier Report"
+msgstr "Premier Report"
+
+#. module: oph
+#: view:crm.meeting:0
+#: view:res.partner:0
+msgid "LogConsultation"
+msgstr "LogConsultation"
+
+#. module: oph
+#: model:ir.actions.report.xml,name:oph.diab_report_id
+msgid "Diabetic Reporting"
+msgstr "Diabetic Reporting"
+
+#. module: oph
+#: field:oph.medication.line,brandname_id:0
+#: field:oph.medication.line.template,brandname_id:0
+msgid "BRANDNAME"
+msgstr "BRANDNAME"
+
+#. module: oph
+#: model:ir.model,name:oph.model_oph_anesthesia_type
+msgid "oph.anesthesia.type"
+msgstr "oph.anesthesia.type"
+
+#. module: oph
+#: field:agenda.factory,date:0
+#: view:crm.meeting:0
+#: field:oph.bloc.agenda,name:0
+#: field:oph.instrumentation,date_on:0
+#: view:oph.medication.line:0
+#: view:oph.protocole.line:0
+msgid "Date"
+msgstr "Date"
+
+#. module: oph
+#: view:crm.meeting:0
+#: view:oph.measurement:0
+#: view:oph.medication.line:0
+#: view:oph.protocole.line:0
+#: view:oph.request:0
+#: view:oph.todolist:0
+msgid "Group_By..."
+msgstr "Group_By..."
+
+#. module: oph
+#: model:ir.model,name:oph.model_oph_measurement_type
+msgid "oph.measurement.type"
+msgstr "oph.measurement.type"
+
+#. module: oph
+#: view:crm.meeting:0
+#: field:crm.meeting,keratometry_ids:0
+#: view:oph.measurement:0
+msgid "Keratometry"
+msgstr "Keratometry"
+
+#. module: oph
+#: model:ir.model,name:oph.model_oph_instrumentation_type
+msgid "oph.instrumentation.type"
+msgstr "oph.instrumentation.type"
+
+#. module: oph
+#: field:oph.reporting,laser_power:0
+msgid "Laser Power"
+msgstr "Laser Power"
+
+#. module: oph
+#: model:res.groups,comment:oph.oph_group_id
+msgid "The group for the doctors"
+msgstr "Goupe pour les docteurs"
+
+#. module: oph
+#: field:oph.request,date_request:0
+msgid "Request Date"
+msgstr "Date de la demande"
+
+#. module: oph
+#: field:oph.diabetic.report,hba1c:0
+#: field:oph.reporting,HbA1c:0
+msgid "HbA1c"
+msgstr "HbA1c"
+
+#. module: oph
+#: field:oph.brandname,galenique:0
+msgid "Galenique"
+msgstr "Galénique"
+
+#. module: oph
+#: help:oph.reporting,var2:0
+msgid "Puissance Totale equivalente en position 3"
+msgstr "Puissance Totale équivalente en position 3"
+
+#. module: oph
+#: code:addons/oph/oph_reporting.py:188
+#: view:oph.reporting.template:0
+#: view:res.partner:0
+#, python-format
+msgid "History"
+msgstr "Historique"
+
+#. module: oph
+#: model:product.template,description:oph.product_product_caps_id_product_template
+#: model:product.template,description_sale:oph.product_product_caps_id_product_template
+#: model:product.template,name:oph.product_product_caps_id_product_template
+msgid "Capsulotomie laser"
+msgstr "Capsulotomie laser"
+
+#. module: oph
+#: field:oph.anesthesia.type,code:0
+#: field:oph.exam,code:0
+#: field:oph.filling.template,code:0
+#: field:oph.inpatient.type,code:0
+#: field:oph.iol.type,code:0
+#: field:oph.measurement.type,code:0
+#: field:oph.procedure.type,code:0
+msgid "Code"
+msgstr "Code"
+
+#. module: oph
+#: help:oph.brandname,name:0
+msgid "brand name"
+msgstr "brand name"
+
+#. module: oph
+#: code:addons/oph/oph_agenda.py:87
+#: code:addons/oph/oph_agenda.py:104
+#, python-format
+msgid "Warning for a close slot"
+msgstr "Warning for a close slot"
+
+#. module: oph
+#: model:ir.actions.act_window,name:oph.todolist_tag_action_id
+#: model:ir.ui.menu,name:oph.todolist_tag_menu_id
+#: view:oph.todolist.tag:0
+msgid "Todolist Tag"
+msgstr "Todolist Tag"
+
+#. module: oph
+#: model:ir.actions.report.xml,name:oph.agenda_bloc_report_id
+msgid "Bloc Agenda Report"
+msgstr "Bloc Agenda Report"
+
+#. module: oph
+#: view:oph.reporting.template:0
+msgid "Inactive"
+msgstr "Inactive"
+
+#. module: oph
+#: view:oph.todolist:0
+msgid "Set to Close"
+msgstr "Set to Close"
+
+#. module: oph
+#: view:agenda.factory:0
+#: view:crm.meeting:0
+#: view:oph.bloc.agenda.line:0
+#: view:oph.diabetic.report:0
+#: view:oph.etat.factory:0
+#: view:oph.formula.prescription:0
+msgid "Cancel"
+msgstr "Cancel"
+
+#. module: oph
+#: view:oph.reporting.template:0
+msgid "Search Reporting Template"
+msgstr "Search Reporting Template"
+
+#. module: oph
+#: view:oph.inn:0
+msgid "Search INN"
+msgstr "Search INN"
+
+#. module: oph
+#: help:crm.meeting,motive_comment:0
+msgid "Comment to precise the motive"
+msgstr "Commentaire qui précise le motif"
+
+#. module: oph
+#: model:ir.actions.report.xml,name:oph.pke_icp_report_id
+msgid "PKE ICP Report"
+msgstr "PKE ICP Report"
+
+#. module: oph
+#: field:oph.measurement,rp_od:0
+#: field:oph.measurement,rp_os:0
+msgid "Reading Pres"
+msgstr "Reading Pres"
+
+#. module: oph
+#: field:oph.bloc.agenda.line,snd_eye:0
+msgid "Second Eye"
+msgstr "Second Eye"
+
+#. module: oph
+#: view:crm.meeting:0
+msgid "What's the patient is complaining of"
+msgstr "Ce dont le patient se plaint"
+
+#. module: oph
+#: model:ir.model,name:oph.model_res_users
+msgid "Users"
+msgstr "Utilisateurs"
+
+#. module: oph
+#: model:ir.ui.menu,name:oph.brandname_oph_id
+msgid "Brand Name"
+msgstr "Brand Name"
+
+#. module: oph
+#: field:oph.reporting,tech_op_phako:0
+msgid "Tech op phako"
+msgstr "Tech op phako"
+
+#. module: oph
+#: model:ir.actions.report.xml,name:oph.using_template_report_id
+msgid "Using Template Reporting"
+msgstr "Using Template Reporting"
+
+#. module: oph
+#: field:oph.instrumentation,price:0
+msgid "Price"
+msgstr "Price"
+
+#. module: oph
+#: view:oph.bloc.agenda.line:0
+msgid "IC_Draft"
+msgstr "IC_Draft"
+
+#. module: oph
+#: model:product.template,name:oph.product_product_biofo_id_product_template
+msgid "Bio [OD][OG] + FO"
+msgstr "Bio [OD][OG] + FO"
+
+#. module: oph
+#: model:ir.actions.report.xml,name:oph.oct_report_id
+msgid "oct report"
+msgstr "oct report"
+
+#. module: oph
+#: help:oph.etat.factory,template:0
+msgid "Choix du modele de report"
+msgstr "Choix du modele de report"
+
+#. module: oph
+#: field:agenda.factory,name:0
+#: field:oph.anesthesia.type,name:0
+#: field:oph.brandname,name:0
+#: field:oph.diabetic.report,name:0
+#: field:oph.exam,name:0
+#: field:oph.filling.template,name:0
+#: field:oph.formula.prescription,name:0
+#: field:oph.gauge,name:0
+#: field:oph.indication,name:0
+#: field:oph.inn,name:0
+#: field:oph.inpatient.type,name:0
+#: field:oph.instrumentation,name:0
+#: field:oph.instrumentation.type,name:0
+#: field:oph.lens,name:0
+#: field:oph.measurement,name:0
+#: field:oph.measurement.type,name:0
+#: field:oph.motive,name:0
+#: field:oph.pathology,name:0
+#: field:oph.procedure.type,name:0
+#: field:oph.protocole,name:0
+#: field:oph.reporting,name:0
+#: field:oph.reporting.template,name:0
+#: field:oph.request,name:0
+#: field:oph.request.line,name:0
+#: field:oph.todolist,name:0
+#: field:oph.todolist.tag,name:0
+#: field:oph.va.tech,name:0
+msgid "Name"
+msgstr "Name"
+
+#. module: oph
+#: model:product.template,name:oph.product_product_foret_id_product_template
+msgid "FO+RET"
+msgstr "FO+RET"
+
+#. module: oph
+#: model:ir.model,name:oph.model_oph_gauge
+msgid "oph.gauge"
+msgstr "oph.gauge"
+
+#. module: oph
+#: model:ir.actions.report.xml,name:oph.prescription_report_id
+msgid "Prescription Report"
+msgstr "Prescription Report"
+
+#. module: oph
+#: view:oph.exam:0
+msgid "Search Exam"
+msgstr "Search Exam"
+
+#. module: oph
+#: help:crm.meeting,subject:0
+msgid "Object of the meeting"
+msgstr "Object of the meeting"
+
+#. module: oph
+#: view:oph.measurement:0
+msgid "SLE"
+msgstr "SLE"
+
+#. module: oph
+#: field:res.partner,fullname:0
+msgid "Fullname"
+msgstr "Fullname"
+
+#. module: oph
+#: model:product.template,description:oph.product_product_OCTODG_id_product_template
+msgid "Tomographie par cohérence optique ODG"
+msgstr "Tomographie par cohérence optique ODG"
+
+#. module: oph
+#: selection:oph.etat.factory,template:0
+msgid "Accident de Travail"
+msgstr "Accident de Travail"
+
+#. module: oph
+#: code:addons/oph/oph_reporting.py:50
+#: code:addons/oph/oph_reporting.py:184
+#: model:ir.actions.report.xml,name:oph.or_report_id
+#, python-format
+msgid "Operating Room Report"
+msgstr "Operating Room Report"
+
+#. module: oph
+#: code:addons/oph/oph_agenda.py:88
+#: code:addons/oph/oph_agenda.py:105
+#, python-format
+msgid "Well are you sure you want to add a slot"
+msgstr "Well are you sure you want to add a slot"
+
+#. module: oph
+#: selection:account.invoice,payeur:0
+msgid "AMG Iles"
+msgstr "AMG Iles"
+
+#. module: oph
+#: view:res.partner:0
+#: field:res.partner,PO_box:0
+msgid "PO box"
+msgstr "PO box"
+
+#. module: oph
+#: field:oph.reporting,vitreotome_machine:0
+msgid "Vitreotome mention"
+msgstr "Vitreotome mention"
+
+#. module: oph
+#: model:ir.actions.act_window,name:oph.reporting_template_action_id
+msgid "Reporting Template Action"
+msgstr "Reporting Template Action"
+
+#. module: oph
+#: model:ir.ui.menu,name:oph.config_gauge_menu_id
+#: field:oph.bloc.agenda.line,gauge_id:0
+#: field:oph.reporting,gauge_id:0
+msgid "Gauge"
+msgstr "Gauge"
+
+#. module: oph
+#: model:product.template,name:oph.product_product_bioodg_id_product_template
+msgid "Bio ODG"
+msgstr "Bio ODG"
+
+#. module: oph
+#: field:oph.honorific,partner_id:0
+msgid "Partner Id"
+msgstr "Partner Id"
+
+#. module: oph
+#: view:res.partner:0
+msgid "selection"
+msgstr "selection"
+
+#. module: oph
+#: view:oph.brandname:0
+msgid "Search brandname"
+msgstr "Search brandname"
+
+#. module: oph
+#: model:ir.model,name:oph.model_oph_reporting_template
+msgid "oph.reporting.template"
+msgstr "oph.reporting.template"
+
+#. module: oph
+#: view:account.invoice:0
+msgid "ILES"
+msgstr "ILES"
+
+#. module: oph
+#: field:oph.measurement,qualif_od:0
+msgid "QUALIF_OD"
+msgstr "QUALIF_OD"
+
+#. module: oph
+#: view:oph.bloc.agenda.line:0
+#: view:oph.reporting:0
+#: view:oph.reporting.template:0
+msgid "Group By..."
+msgstr "Group By..."
+
+#. module: oph
+#: model:ir.actions.report.xml,name:oph.report_iles_id
+msgid "Etat ILES"
+msgstr "Etat ILES"
+
+#. module: oph
+#: model:product.template,description_sale:oph.product_product_OCTODG_id_product_template
+msgid "Tomographie par cohérence optique des deux yeux"
+msgstr "Tomographie par cohérence optique des deux yeux"
+
+#. module: oph
+#: field:oph.inn,alternate:0
+msgid "Alernate"
+msgstr "Alernate"
+
+#. module: oph
+#: model:ir.actions.act_window,name:oph.filling_template_action_id
+#: model:ir.ui.menu,name:oph.filling_template_menu_id
+#: view:oph.filling.template:0
+#: field:oph.measurement,filling_template_id:0
+msgid "Filling Template"
+msgstr "Filling Template"
+
+#. module: oph
+#: field:oph.measurement,m_od:0
+msgid "METAMORPHOPSIA_OD"
+msgstr "METAMORPHOPSIA_OD"
+
+#. module: oph
+#: view:oph.request:0
+msgid "Search Request"
+msgstr "Search Request"
+
+#. module: oph
+#: view:crm.meeting:0
+msgid "Medication Lines"
+msgstr "Medication Lines"
+
+#. module: oph
+#: model:ir.actions.act_window,name:oph.action_agenda_portal_view
+msgid "Agenda Portal"
+msgstr "Agenda Portal"
+
+#. module: oph
+#: field:oph.measurement,m_os:0
+msgid "METAMORPHOPSIA_OS"
+msgstr "METAMORPHOPSIA_OS"
+
+#. module: oph
+#: field:oph.reporting,impact_size:0
+msgid "Impact Size"
+msgstr "Impact Size"
+
+#. module: oph
+#: field:oph.reporting,bv:0
+msgid "Blue Vision"
+msgstr "Blue Vision"
+
+#. module: oph
+#: view:oph.request:0
+msgid "Validate"
+msgstr "Validate"
+
+#. module: oph
+#: code:addons/oph/wizard/oph_formula_prescription.py:31
+#: model:ir.actions.report.xml,name:oph.report_sv_id
+#, python-format
+msgid "Single Vision"
+msgstr "Single Vision"
+
+#. module: oph
+#: model:oph.procedure.type,name:oph.procedure_tm
+msgid "V3V + PM + GAZ"
+msgstr "V3V + PM + GAZ"
+
+#. module: oph
+#: code:addons/oph/custom/partner.py:33
+#, python-format
+msgid "There is already an homonyme with the same birthdate"
+msgstr "There is already an homonyme with the same birthdate"
+
+#. module: oph
+#: field:agenda.factory,day_off:0
+msgid "Day Off"
+msgstr "Day Off"
+
+#. module: oph
+#: field:res.partner,request_ids:0
+msgid "Accords CAFAT"
+msgstr "Accords CAFAT"
+
+#. module: oph
+#: field:account.invoice,payeur:0
+msgid "Payeur"
+msgstr "Payeur"
+
+#. module: oph
+#: view:oph.bloc.agenda.line:0
+#: field:oph.bloc.agenda.line,start_time:0
+msgid "Horaire"
+msgstr "Horaire"
+
+#. module: oph
+#: help:oph.reporting,gauge_id:0
+msgid "Vitrectomie gauge"
+msgstr "Vitrectomie gauge"
+
+#. module: oph
+#: field:oph.reporting,impact_number:0
+msgid "Impacts number"
+msgstr "Impacts number"
+
+#. module: oph
+#: help:oph.procedure.type,duration:0
+msgid "Expected duration of procedure in minutes"
+msgstr "Expected duration of procedure in minutes"
+
+#. module: oph
+#: model:ir.model,name:oph.model_oph_iol_type
+msgid "oph.iol.type"
+msgstr "oph.iol.type"
+
+#. module: oph
+#: model:ir.actions.report.xml,name:oph.report_smit_id
+msgid "Etat SMIT"
+msgstr "Etat SMIT"
+
+#. module: oph
+#: model:product.template,name:oph.product_product_ret_id_product_template
+msgid "Retinophotographie [OD][OG]"
+msgstr "Retinophotographie [OD][OG]"
+
+#. module: oph
+#: selection:res.partner,gender:0
+msgid "Female"
+msgstr "Female"
+
+#. module: oph
+#: help:agenda.factory,stop_dt:0
+msgid "Last appointement  datetime"
+msgstr "Last appointement  datetime"
+
+#. module: oph
+#: view:crm.meeting:0
+#: field:crm.meeting,protocole_ids:0
+#: field:crm.meeting,protocole_line_ids:0
+#: model:ir.actions.act_window,name:oph.protocole_line_action_id
+#: model:ir.ui.menu,name:oph.protocole_line_id
+#: view:oph.protocole.line:0
+msgid "Protocole Line"
+msgstr "Protocole Line"
+
+#. module: oph
+#: help:agenda.factory,day_off:0
+msgid "End of the day"
+msgstr "End of the day"
+
+#. module: oph
+#: model:ir.actions.act_window,name:oph.instrumentation_action_id
+#: model:ir.ui.menu,name:oph.instrumentation_menu_id
+#: field:oph.instrumentation.type,instrumentation_ids:0
+msgid "Instrumentation"
+msgstr "Instrumentation"
+
+#. module: oph
+#: help:res.partner,trusted:0
+msgid "Used for partner which are a trusted budy for an other patient"
+msgstr "Used for partner which are a trusted budy for an other patient"
+
+#. module: oph
+#: model:ir.actions.act_window,help:oph.action_agenda_portal_view
+msgid "There are no public portal."
+msgstr "There are no public portal."
+
+#. module: oph
+#: view:oph.bloc.agenda.line:0
+msgid "Bloc                         Line waiting for execution"
+msgstr "Bloc                         Line waiting for execution"
+
+#. module: oph
+#: help:oph.bloc.agenda.line,gauge_id:0
+msgid "Vitrectomy gauge"
+msgstr "Vitrectomy gauge"
+
+#. module: oph
+#: view:oph.request:0
+#: field:oph.request,priority_id:0
+#: view:oph.todolist:0
+#: field:oph.todolist,tag_id:0
+msgid "Priority"
+msgstr "Priority"
+
+#. module: oph
+#: view:oph.protocole.line.template:0
+msgid "Protocole Line Template"
+msgstr "Protocole Line Template"
+
+#. module: oph
+#: selection:oph.etat.factory,template:0
+msgid "AMG ILES"
+msgstr "AMG ILES"
+
+#. module: oph
+#: model:ir.actions.act_window,name:oph.va_tech_action_id
+#: model:ir.ui.menu,name:oph.va_tech_menu_id
+msgid "VA tech"
+msgstr "VA tech"
+
+#. module: oph
+#: model:ir.model,name:oph.model_oph_filling_template
+msgid "oph.filling.template"
+msgstr "oph.filling.template"
+
+#. module: oph
+#: field:oph.reporting,var2:0
+msgid "PT"
+msgstr "PT"
+
+#. module: oph
+#: field:oph.bloc.agenda.line,ic:0
+msgid "Informed Consent"
+msgstr "Informed Consent"
+
+#. module: oph
+#: help:oph.reporting,var4:0
+msgid "Temps de Torsion"
+msgstr "Temps de Torsion"
+
+#. module: oph
+#: field:oph.reporting,var6:0
+msgid "Amp T M P3"
+msgstr "Amp T M P3"
+
+#. module: oph
+#: model:ir.actions.report.xml,name:oph.report_svsg_id
+msgid "Single Vision Sun Glasses"
+msgstr "Single Vision Sun Glasses"
+
+#. module: oph
+#: view:oph.todolist:0
+msgid "Search Todolist"
+msgstr "Search Todolist"
+
+#. module: oph
+#: field:oph.reporting,var5:0
+msgid "Amp T M"
+msgstr "Amp T M"
+
+#. module: oph
+#: model:ir.actions.act_window,name:oph.exam_action_id
+msgid "exam"
+msgstr "Examen"
+
+#. module: oph
+#: view:oph.bloc.agenda.line:0
+msgid "IC delivered to the patient"
+msgstr "IC delivered  to the patient"
+
+#. module: oph
+#: view:crm.meeting:0
+msgid "Precision for motive of consultation like OD/OS ..."
+msgstr "Précision sur le motif de la consultation comme OD/OS par exemple ..."
+
+#. module: oph
+#: code:addons/oph/oph_measurement.py:90
+#, python-format
+msgid "Refraction prescription"
+msgstr "Refraction prescription"
+
+#. module: oph
+#: model:oph.procedure.type,name:oph.procedure_ivt
+msgid "Injection intravitréenne"
+msgstr "Injection intravitréenne"
+
+#. module: oph
+#: model:ir.actions.act_window,help:oph.action_crm_meeting_tree
+msgid "<p class=\"oe_view_nocontent_create\">\n"
+"            Cliquez pour programmer un nouveau rendez-vous.\n"
+"                </p>\n"
+"                <p>\n"
+"            The calendar is shared between employees and fully integrated with\n"
+"            other applications such as the employee holidays or the business\n"
+"            opportunities.\n"
+"                </p>\n"
+"            "
+msgstr "<p class=\"oe_view_nocontent_create\">\n"
+"            Cliquez pour programmer un nouveau rendez-vous.\n"
+"                </p>\n"
+"                <p>\n"
+"            The calendar is shared between employees and fully integrated with\n"
+"            other applications such as the employee holidays or the business\n"
+"            opportunities.\n"
+"                </p>\n"
+"            "
+
+#. module: oph
+#: field:account.voucher,check_owner:0
+msgid "Check Owner"
+msgstr "Check Owner"
+
+#. module: oph
+#: help:agenda.factory,start_h:0
+msgid "Starting hour, eg: 08:00. Or starting of breakfast time for All day"
+msgstr "Starting hour, eg: 08:00. Or starting of breakfast time for All day"
+
+#. module: oph
+#: model:ir.model,name:oph.model_oph_inn
+msgid "oph.inn"
+msgstr "oph.inn"
+
+#. module: oph
+#: field:oph.protocole.line,result:0
+msgid "Result"
+msgstr "Result"
+
+#. module: oph
+#: help:account.voucher,check_owner:0
+msgid "Owner of the check. Change it, if different of the customer\""
+msgstr "Titulaire du chèque. Modifiez s'il est différent du patient\""
+
+#. module: oph
+#: model:product.template,description_sale:oph.product_product_echofo_id_product_template
+msgid "Echographie B [OD][OG] + FO"
+msgstr "Echographie B [OD][OG] + FO"
+
+#. module: oph
+#: field:oph.reporting,air_bubble:0
+msgid "Air Bubble"
+msgstr "Air Bubble"
+
+#. module: oph
+#: model:ir.actions.report.xml,name:oph.fiche_liaison_bdc_id
+msgid "Fiche Liaison BDC"
+msgstr "Fiche Liaison BDC"
+
+#. module: oph
+#: field:oph.reporting,var1:0
+msgid "US Total Time"
+msgstr "US Total Time"
+
+#. module: oph
+#: model:ir.actions.report.xml,name:oph.report_bisun_id
+msgid "Bifocal Sunglasses"
+msgstr "Bifocal Sunglasses"
+
+#. module: oph
+#: help:agenda.factory,end_h:0
+msgid "End period. eg: 12:00. This will be the end of the last slot, not the last slot. Or end of brakfast time for the All day"
+msgstr "End period. eg: 12:00. This will be the end of the last slot, not the last slot. Or end of brakfast time for the All day"
+
+#. module: oph
+#: model:ir.actions.report.xml,name:oph.report_lm_id
+msgid "Etat LM"
+msgstr "Etat LM"
+
+#. module: oph
+#: model:ir.actions.act_window,name:oph.action_etat_factory
+msgid "Run Etat Factory"
+msgstr "Run Etat Factory"
+
+#. module: oph
+#: help:oph.request.line,sequence:0
+msgid "Gives the sequence of this line when displaying the invoice."
+msgstr "Gives the sequence of this line when displaying the invoice."
+
+#. module: oph
+#: model:product.template,name:oph.product_product_echofo_id_product_template
+msgid "EchoB [OD][OG] + FO"
+msgstr "EchoB [OD][OG] + FO"
+
+#. module: oph
+#: help:oph.inn,ivt:0
+msgid "Used for intravitreal injection"
+msgstr "Used for intravitreal injection"
+
+#. module: oph
+#: view:oph.reporting:0
+msgid "Search Reporting"
+msgstr "Search Reporting"
+
+#. module: oph
+#: view:crm.meeting:0
+#: view:oph.measurement:0
+msgid "Conclusion"
+msgstr "Conclusion"
+
+#. module: oph
+#: view:account.invoice:0
+msgid "Organisme Payeur"
+msgstr "Organisme Payeur"
+
+#. module: oph
+#: model:oph.procedure.type,name:oph.procedure_impsec
+msgid "Implantation secondaire"
+msgstr "Implantation secondaire"
+
+#. module: oph
+#: code:addons/oph/oph_bloc_agenda.py:166
+#: code:addons/oph/oph_measurement.py:146
+#: code:addons/oph/oph_reporting.py:90
+#, python-format
+msgid "Left Eye"
+msgstr "Left Eye"
+
+#. module: oph
+#: help:oph.request,date_request:0
+msgid "Keep empty to use the current date"
+msgstr "Keep empty to use the current date"
+
+#. module: oph
+#: model:res.groups,name:oph.oph_group_id
+msgid "Doctors"
+msgstr "Doctors"
+
+#. module: oph
+#: model:ir.actions.act_window,name:oph.action_diabetic_report
+msgid "Diabetic Report"
+msgstr "Diabetic Report"
+
+#. module: oph
+#: field:oph.measurement,keratometer_id:0
+msgid "Keratometer"
+msgstr "Keratometer"
+
+#. module: oph
+#: model:ir.ui.menu,name:oph.main_prescription_id
+#: model:ir.ui.menu,name:oph.menu_prescription_id
+#: field:oph.brandname,meeting_id:0
+msgid "Prescription"
+msgstr "Prescription"
+
+#. module: oph
+#: model:ir.actions.act_window,name:oph.protocole_action_id
+#: view:oph.protocole:0
+msgid "protocole"
+msgstr "protocole"
+
+#. module: oph
+#: model:ir.model,name:oph.model_oph_diabetic_report
+msgid "Report for diabetic patient"
+msgstr "Report for diabetic patient"
+
+#. module: oph
+#: model:ir.actions.report.xml,name:oph.fds_id
+msgid "fds report"
+msgstr "fds report"
+
+#. module: oph
+#: code:addons/oph/oph_bloc_agenda.py:165
+#: code:addons/oph/oph_measurement.py:145
+#: code:addons/oph/oph_reporting.py:89
+#, python-format
+msgid "Right Eye"
+msgstr "Right Eye"
+
+#. module: oph
+#: model:ir.actions.act_window,name:oph.to_reporting_action_id
+msgid "to.reporting"
+msgstr "to.reporting"
+
+#. module: oph
+#: model:ir.model,name:oph.model_oph_todolist_tag
+msgid "oph.todolist.tag"
+msgstr "oph.todolist.tag"
+
+#. module: oph
+#: view:oph.measurement:0
+msgid "CP"
+msgstr "CP"
+
+#. module: oph
+#: model:ir.ui.menu,name:oph.reporting_template_menu_id
+#: view:oph.reporting.template:0
+msgid "Reporting Template"
+msgstr "Reporting Template"
+
+#. module: oph
+#: model:res.groups,name:oph.sec_group_id
+msgid "Secretary"
+msgstr "Secretary"
+
+#. module: oph
+#: model:ir.model,name:oph.model_oph_todolist
+msgid "oph.todolist"
+msgstr "oph.todolist"
+
+#. module: oph
+#: field:res.partner,cafatid:0
+msgid "CAFAT Number"
+msgstr "CAFAT Number"
+
+#. module: oph
+#: code:addons/oph/oph_agenda.py:245
+#, python-format
+msgid "Impossible to delete a meeting not in draft state !"
+msgstr "Impossible to delete a meeting not in draft state !"
+
+#. module: oph
+#: model:ir.model,name:oph.model_account_voucher
+msgid "Accounting Voucher"
+msgstr "Justificatif comptable"
+
+#. module: oph
+#: help:oph.filling.template,code:0
+msgid "Very short name"
+msgstr "Nom très court"
+
+#. module: oph
+#: help:oph.reporting,tech_op_phako:0
+msgid "Tech op phako information"
+msgstr "Tech op phako information"
+
+#. module: oph
+#: code:addons/oph/wizard/oph_formula_prescription.py:37
+#: model:ir.actions.report.xml,name:oph.report_mf_id
+#, python-format
+msgid "Reading Glasses"
+msgstr "Reading Glasses"
+
+#. module: oph
+#: model:ir.model,name:oph.model_account_invoice
+msgid "Invoice"
+msgstr "Facture"
+
+#. module: oph
+#: view:crm.meeting:0
+msgid "Wait"
+msgstr "Wait"
+
+#. module: oph
+#: view:crm.meeting:0
+#: view:oph.bloc.agenda.line:0
+#: view:oph.reporting:0
+#: view:oph.request:0
+#: view:oph.todolist:0
+msgid "Open"
+msgstr "Open"
+
+#. module: oph
+#: view:oph.protocole.line:0
+msgid "Search Protocole Line"
+msgstr "Search Protocole Line"
+
+#. module: oph
+#: field:oph.measurement,sph_os:0
+msgid "SPH_OS"
+msgstr "SPH_OS"
+
+#. module: oph
+#: view:crm.meeting:0
+msgid "Busy"
+msgstr "Busy"
+
+#. module: oph
+#: help:agenda.factory,day_on:0
+msgid "Start of the day"
+msgstr "Start of the day"
+
+#. module: oph
+#: help:oph.reporting,var7:0
+msgid "Amplitude de Torsion Moyenne equivalente en position 3"
+msgstr "Amplitude de Torsion Moyenne equivalente en position 3"
+
+#. module: oph
+#: field:oph.filling.template,ps_od:0
+#: field:oph.measurement,ps_od:0
+msgid "PS_OD"
+msgstr "PS_OD"
+
+#. module: oph
+#: model:product.template,description_sale:oph.product_product_echo_id_product_template
+msgid "Echographie B [OD][OG]"
+msgstr "Echographie B [OD][OG]"
+
+#. module: oph
+#: field:oph.measurement,iop_os:0
+msgid "IOP_OS"
+msgstr "IOP_OS"
+
+#. module: oph
+#: field:oph.filling.template,ps_os:0
+#: field:oph.measurement,ps_os:0
+msgid "PS_OS"
+msgstr "PS_OS"
+
+#. module: oph
+#: view:crm.meeting:0
+msgid "Prescription Maker"
+msgstr "Prescription Maker"
+
+#. module: oph
+#: view:crm.meeting:0
+msgid "OG"
+msgstr "OG"
+
+#. module: oph
+#: field:oph.measurement,sph_od:0
+msgid "SPH_OD"
+msgstr "SPH_OD"
+
+#. module: oph
+#: help:oph.instrumentation,model:0
+msgid "Model name"
+msgstr "Model name"
+
+#. module: oph
+#: field:oph.measurement,iop_od:0
+msgid "IOP_OD"
+msgstr "IOP_OD"
+
+#. module: oph
+#: model:ir.actions.act_window,name:oph.pathology_action_id
+#: view:oph.pathology:0
+msgid "pathology"
+msgstr "Pathologie"
+
+#. module: oph
+#: field:oph.instrumentation,type_id:0
+msgid "Instrumentation type"
+msgstr "Instrumentation type"
+
+#. module: oph
+#: code:addons/oph/oph_measurement.py:87
+#, python-format
+msgid "CVA"
+msgstr "CVA"
+
+#. module: oph
+#: model:product.template,description_sale:oph.product_product_OCTFO_id_product_template
+msgid "Tomographie par cohérence optique OD ou OG et Fond d'Oeil"
+msgstr "Tomographie par cohérence optique OD ou OG et Fond d'Oeil"
+
+#. module: oph
+#: field:oph.request.line,product_id:0
+msgid "Product"
+msgstr "Product"
+
+#. module: oph
+#: help:oph.filling.template,name:0
+msgid "Meanfull name to resume purpose template"
+msgstr "Meanfull name to resume purpose template"
+
+#. module: oph
+#: model:ir.actions.act_window,name:oph.todolist_action_id
+#: model:ir.ui.menu,name:oph.todolist_menu_id
+msgid "Todolist"
+msgstr "Todolist"
+
+#. module: oph
+#: model:product.template,description:oph.product_product_bio_id_product_template
+#: model:product.template,description_sale:oph.product_product_bio_id_product_template
+msgid "Biométrie OD ou OG"
+msgstr "Biométrie OD ou OG"
+
+#. module: oph
+#: field:agenda.factory,day_on:0
+msgid "Day On"
+msgstr "Day On"
+
+#. module: oph
+#: model:ir.actions.act_window,name:oph.measurement_type_action_id
+#: model:ir.ui.menu,name:oph.measurement_type_menu_id
+msgid "Measurement Type"
+msgstr "Measurement Type"
+
+#. module: oph
+#: view:oph.medication.line:0
+#: view:oph.pathology:0
+msgid "Search Medication Line"
+msgstr "Search Medication Line"
+
+#. module: oph
+#: view:oph.etat.factory:0
+msgid "Create Etat"
+msgstr "Create Etat"
+
+#. module: oph
+#: view:crm.meeting:0
+msgid "In Between"
+msgstr "In Between"
+
+#. module: oph
+#: field:oph.anesthesia.type,line_ids:0
+#: field:oph.bloc.agenda,line_ids:0
+#: field:oph.brandname,line_ids:0
+#: field:oph.inpatient.type,line_ids:0
+#: field:oph.iol.type,line_ids:0
+#: field:oph.pathology,medication_line_ids:0
+#: field:oph.procedure.type,line_ids:0
+#: field:oph.protocole,protocole_line_ids:0
+msgid "Lines"
+msgstr "Lines"
+
+#. module: oph
+#: field:oph.filling.template,as_os:0
+#: field:oph.measurement,as_os:0
+msgid "AS_OS"
+msgstr "AS_OS"
+
+#. module: oph
+#: model:ir.ui.menu,name:oph.config_indication_id
+#: model:ir.ui.menu,name:oph.config_indication_menu_id
+#: view:oph.indication:0
+#: field:oph.reporting,indication_id:0
+msgid "Indication"
+msgstr "Indication"
+
+#. module: oph
+#: field:oph.bloc.agenda,wd:0
+#: field:oph.bloc.agenda.line,wd:0
+msgid "Weekday"
+msgstr "Weekday"
+
+#. module: oph
+#: view:oph.request:0
+msgid "Draft Request"
+msgstr "Draft Request"
+
+#. module: oph
+#: model:ir.actions.act_window,name:oph.inpatient_type_action_id
+#: model:ir.ui.menu,name:oph.inpatient_type_menu_id
+#: field:oph.bloc.agenda.line,inpatient_type_id:0
+msgid "Inpatient Type"
+msgstr "Inpatient Type"
+
+#. module: oph
+#: view:oph.bloc.agenda.line:0
+msgid "Bloc                         Line waiting for confirmation"
+msgstr "Bloc                         Line waiting for confirmation"
+
+#. module: oph
+#: model:product.template,description:oph.product_product_bioodg_id_product_template
+msgid "Biométrie ODG"
+msgstr "Biométrie ODG"
+
+#. module: oph
+#: field:oph.measurement,va_od:0
+msgid "VA_OD"
+msgstr "VA_OD"
+
+#. module: oph
+#: code:addons/oph/oph_agenda.py:245
+#, python-format
+msgid "Error!"
+msgstr "Error!"
+
+#. module: oph
+#: field:oph.measurement,va_os:0
+msgid "VA_OS"
+msgstr "VA_OS"
+
+#. module: oph
+#: view:crm.meeting:0
+msgid "In"
+msgstr "In"
+
+#. module: oph
+#: field:agenda.factory,step:0
+#: field:oph.bloc.agenda.line,duration:0
+#: field:oph.medication.line,duration:0
+#: field:oph.medication.line.template,duration:0
+#: field:oph.procedure.type,duration:0
+msgid "Duration"
+msgstr "Duration"
+
+#. module: oph
+#: model:product.template,name:oph.product_product_lim_id_product_template
+msgid "Limaille"
+msgstr "Limaille"
+
+#. module: oph
+#: view:crm.meeting:0
+#: view:oph.bloc.agenda:0
+#: view:oph.bloc.agenda.line:0
+msgid "Total"
+msgstr "Total"
+
+#. module: oph
+#: model:product.template,description:oph.product_product_echofo_id_product_template
+msgid "Echographie B OD ou OG et Fond d'oeil "
+msgstr "Echographie B OD ou OG et Fond d'oeil "
+
+#. module: oph
+#: field:oph.bloc.agenda.line,name:0
+#: field:oph.medication.line,name:0
+#: field:oph.medication.line.template,name:0
+#: field:oph.protocole.line,name:0
+#: field:oph.protocole.line.template,name:0
+msgid "Id"
+msgstr "Id"
+
+#. module: oph
+#: field:oph.reporting,receiver_partner:0
+msgid "Receiver Patient"
+msgstr "Receiver Patient"
+
+#. module: oph
+#: field:oph.reporting,var7:0
+msgid "Amp T M Eq P3"
+msgstr "Amp T M Eq P3"
+
+#. module: oph
+#: model:ir.model,name:oph.model_oph_protocole_line
+msgid "oph.protocole.line"
+msgstr "oph.protocole.line"
+
+#. module: oph
+#: view:crm.meeting:0
+#: field:crm.meeting,sle_ids:0
+msgid "Slit Lamp Exam"
+msgstr "Slit Lamp Exam"
+
+#. module: oph
+#: field:res.partner,amgid:0
+msgid "N°AMG"
+msgstr "N°AMG"
+
+#. module: oph
+#: view:agenda.factory:0
+msgid "create slots"
+msgstr "create slots"
+
+#. module: oph
+#: help:oph.instrumentation,date_on:0
+#: help:oph.instrumentation,date_purchase:0
+msgid "Start-up date"
+msgstr "Start-up date"
+
+#. module: oph
+#: model:ir.actions.act_window,name:oph.iol_type_action_id
+#: model:ir.ui.menu,name:oph.iol_type_menu_id
+#: field:oph.bloc.agenda.line,iol_type_id:0
+#: field:oph.reporting,iol_type:0
+msgid "IOL Type"
+msgstr "IOL Type"
+
+#. module: oph
+#: model:product.template,description:oph.product_product_fo_id_product_template
+msgid "Fond d'oeil"
+msgstr "Fond d'oeil"
+
+#. module: oph
+#: model:ir.actions.report.xml,name:oph.medication_report_id
+msgid "Medication Report"
+msgstr "Medication Report"
+
+#. module: oph
+#: model:product.template,name:oph.product_product_cs_id_product_template
+msgid "CS+MPC"
+msgstr "CS+MPC"
+
+#. module: oph
+#: view:oph.request:0
+#: field:oph.request,company_id:0
+msgid "Company"
+msgstr "Company"
+
+#. module: oph
+#: field:oph.instrumentation,serial_number:0
+msgid "Serial Number"
+msgstr "Serial Number"
+
+#. module: oph
+#: view:res.partner:0
+msgid "TODO List"
+msgstr "TODO List"
+
+#. module: oph
+#: field:crm.meeting,chief_complaint:0
+#: field:oph.measurement,chief_complaint:0
+msgid "Chief Complaint"
+msgstr "Chief Complaint"
+
+#. module: oph
+#: model:product.template,description_sale:oph.product_product_biofo_id_product_template
+msgid "Biométrie [OD][OG] + FO"
+msgstr "Biométrie [OD][OG] + FO"
+
+#. module: oph
+#: field:oph.instrumentation,warranty:0
+msgid "Warranty"
+msgstr "Warranty"
+
+#. module: oph
+#: help:oph.bloc.agenda.line,dilatation:0
+msgid "Tick the box if the patient must be dilated"
+msgstr "Tick the box if the patient must be dilated"
+
+#. module: oph
+#: code:addons/oph/oph_reporting.py:51
+#: code:addons/oph/oph_reporting.py:185
+#, python-format
+msgid "Diabetic"
+msgstr "Diabetic"
+
+#. module: oph
+#: code:addons/oph/wizard/oph_agenda_factory.py:271
+#: selection:agenda.factory,ampm:0
+#, python-format
+msgid "Morning"
+msgstr "Morning"
+
+#. module: oph
+#: code:addons/oph/wizard/oph_formula_prescription.py:36
+#, python-format
+msgid "Bi-Focal - Sun Glass"
+msgstr "Bi-Focal - Sun Glass"
+
+#. module: oph
+#: code:addons/oph/wizard/oph_formula_prescription.py:32
+#, python-format
+msgid "Single Vision - Sun Glass"
+msgstr "Single Vision - Sun Glass"
+
+#. module: oph
+#: view:oph.request:0
+msgid "Cancelled"
+msgstr "Cancelled"
+
+#. module: oph
+#: help:oph.procedure.type,comment:0
+msgid "Where you put all the stuff you need for the intervention"
+msgstr "Where you put all the stuff you need for the intervention"
+
+#. module: oph
+#: field:crm.meeting,todo_list_ids:0
+#: view:oph.bloc.agenda.line:0
+msgid "TODO"
+msgstr "TODO"
+
+#. module: oph
+#: model:ir.ui.menu,name:oph.menu_action_shop_form
+msgid "Shop"
+msgstr "Shop"
+
+#. module: oph
+#: view:agenda.factory:0
+msgid "X_agenda_Factory"
+msgstr "X_agenda_Factory"
+
+#. module: oph
+#: model:product.template,name:oph.product_product_laserret_id_product_template
+msgid "Laser Rétine [OD][OG]"
+msgstr "Laser Rétine [OD][OG]"
+
+#. module: oph
+#: view:crm.meeting:0
+msgid "OD"
+msgstr "OD"
+
+#. module: oph
+#: field:oph.reporting.template,short_name:0
+msgid "Short Name"
+msgstr "Short Name"
+
+#. module: oph
+#: help:oph.pathology,comment:0
+msgid "Used to add some informations on the prescription report"
+msgstr "Used to add some informations on the prescription report"
+
+#. module: oph
+#: field:oph.measurement,conclusion_os:0
+msgid "Conclusion OS"
+msgstr "Conclusion OS"
+
+#. module: oph
+#: help:oph.brandname,galenique:0
+msgid "galenique"
+msgstr "galenique"
+
+#. module: oph
+#: field:oph.reporting,iol_power:0
+msgid "IOL power"
+msgstr "IOL power"
+
+#. module: oph
+#: model:ir.model,name:oph.model_sale_order
+msgid "Sales Order"
+msgstr "Bon de commande"
+
+#. module: oph
+#: view:crm.meeting:0
+#: selection:crm.meeting,tag:0
+msgid "OR"
+msgstr "OR"
+
+#. module: oph
+#: view:oph.reporting.template:0
+msgid "Conclusion section"
+msgstr "Conclusion section"
+
+#. module: oph
+#: model:product.template,description:oph.product_product_OCTFO_id_product_template
+msgid "Tomographie par cohérence optique OD ou OG et FO "
+msgstr "Tomographie par cohérence optique OD ou OG et FO "
+
+#. module: oph
+#: view:oph.todolist:0
+msgid "open todolist"
+msgstr "open todolist"
+
+#. module: oph
+#: view:oph.bloc.agenda.line:0
+msgid "Confirm"
+msgstr "Confirm"
+
+#. module: oph
+#: view:oph.etat.factory:0
+msgid "Etat Factory"
+msgstr "Etat Factory"
+
+#. module: oph
+#: field:crm.meeting,reporting_line_ids:0
+msgid "Reporting Line"
+msgstr "Reporting Line"
+
+#. module: oph
+#: field:res.partner,comment_secure:0
+msgid "Secured Comment"
+msgstr "Secured Comment"
+
+#. module: oph
+#: model:ir.actions.act_window,name:oph.gauge_action_id
+msgid "Gauge Action"
+msgstr "Gauge Action"
+
+#. module: oph
+#: model:ir.model,name:oph.model_oph_bloc_agenda
+msgid "oph.bloc.agenda"
+msgstr "oph.bloc.agenda"
+
+#. module: oph
+#: help:oph.honorific,honorific:0
+msgid "Tick the box if vous"
+msgstr "Tick the box if vous"
+
+#. module: oph
+#: view:res.partner:0
+msgid "oe_edit_only"
+msgstr "oe_edit_only"
+
+#. module: oph
+#: field:res.partner,dob:0
+msgid "Date of Birth"
+msgstr "Date of Birth"
+
+#. module: oph
+#: field:oph.measurement,nv_od:0
+msgid "NV_OD"
+msgstr "NV_OD"
+
+#. module: oph
+#: code:addons/oph/oph_reporting.py:52
+#: code:addons/oph/oph_reporting.py:186
+#, python-format
+msgid "IntraVitreal Injection"
+msgstr "IntraVitreal Injection"
+
+#. module: oph
+#: model:ir.actions.act_window,name:oph.medication_line_action_id
+msgid "medication Line"
+msgstr "medication Line"
+
+#. module: oph
+#: view:account.invoice:0
+msgid "Clinique BdC"
+msgstr "Clinique BdC"
+
+#. module: oph
+#: model:ir.ui.menu,name:oph.config_oph_id
+#: model:ir.ui.menu,name:oph.config_reporting_id
+#: model:ir.ui.menu,name:oph.menu_config_id
+msgid "Configuration"
+msgstr "Configuration"
+
+#. module: oph
+#: field:oph.measurement,nv_os:0
+msgid "NV_OS"
+msgstr "NV_OS"
+
+#. module: oph
+#: view:crm.meeting:0
+msgid "MyTodayOndateWOtime"
+msgstr "MyTodayOndateWOtime"
+
+#. module: oph
+#: field:oph.request,state:0
+msgid "Status"
+msgstr "Status"
+
+#. module: oph
+#: model:product.template,name:oph.product_product_OCTFO_id_product_template
+msgid "OCT [OD][OG]+FO "
+msgstr "OCT [OD][OG]+FO "
+
+#. module: oph
+#: model:ir.actions.report.xml,name:oph.refraction_report_id
+msgid "Refraction Report"
+msgstr "Refraction Report"
+
+#. module: oph
+#: model:product.template,name:oph.product_product_lasermac_id_product_template
+msgid "Laser maculaire [OD][OG]"
+msgstr "Laser maculaire [OD][OG]"
+
+#. module: oph
+#: model:ir.model,name:oph.model_oph_request
+msgid "oph.request"
+msgstr "oph.request"
+
+#. module: oph
+#: help:oph.reporting,bv:0
+msgid "Use of Blue Vision"
+msgstr "Use of Blue Vision"
+
+#. module: oph
+#: model:product.template,description:oph.product_product_lasermac_id_product_template
+#: model:product.template,description_sale:oph.product_product_lasermac_id_product_template
+msgid "Laser maculaire OD ou OG"
+msgstr "Laser maculaire OD ou OG"
+
+#. module: oph
+#: help:oph.diabetic.report,date:0
+#: help:oph.formula.prescription,date:0
+msgid "Date or the current day to print on report"
+msgstr "Date or the current day to print on report"
+
+#. module: oph
+#: model:ir.actions.report.xml,name:oph.report_at_id
+msgid "Etat AT"
+msgstr "Etat AT"
+
+#. module: oph
+#: view:crm.meeting:0
+#: model:ir.ui.menu,name:oph.pathology_oph_id
+#: field:oph.medication.line.template,pathology_id:0
+msgid "Pathology"
+msgstr "Pathology"
+
+#. module: oph
+#: field:oph.reporting.template,text_body:0
+msgid "Text Body"
+msgstr "Text Body"
+
+#. module: oph
+#: field:oph.reporting,dictate_wpatient:0
+msgid "Dictate with patient"
+msgstr "Dictate with patient"
+
+#. module: oph
+#: field:crm.meeting,motive_comment:0
+#: field:oph.anesthesia.type,comment:0
+#: field:oph.bloc.agenda.line,comment:0
+#: field:oph.exam,comment:0
+#: field:oph.filling.template,comment:0
+#: field:oph.inn,comment:0
+#: field:oph.inpatient.type,comment:0
+#: field:oph.instrumentation,comment:0
+#: field:oph.instrumentation.type,comment:0
+#: field:oph.iol.type,comment:0
+#: field:oph.medication.line,comment:0
+#: field:oph.medication.line.template,comment:0
+#: field:oph.motive,comment:0
+#: field:oph.pathology,comment:0
+#: field:oph.procedure.type,comment:0
+#: field:oph.protocole,comment:0
+#: field:oph.protocole.line,comment:0
+#: field:oph.protocole.line.template,comment:0
+#: field:oph.request,comment:0
+#: field:oph.request.line,comment:0
+#: field:oph.todolist,comment:0
+msgid "Comment"
+msgstr "Comment"
+
+#. module: oph
+#: model:ir.model,name:oph.model_oph_pathology
+msgid "oph.pathology"
+msgstr "oph.pathology"
+
+#. module: oph
+#: model:ir.model,name:oph.model_oph_procedure_type
+msgid "oph.procedure.type"
+msgstr "oph.procedure.type"
+
+#. module: oph
+#: field:oph.measurement,weight:0
+msgid "Weight"
+msgstr "Weight"
+
+#. module: oph
+#: field:oph.measurement,axis_od:0
+msgid "AXIS_OD"
+msgstr "AXIS_OD"
+
+#. module: oph
+#: field:oph.inn,ivt:0
+msgid "IVT"
+msgstr "IVT"
+
+#. module: oph
+#: model:ir.actions.report.xml,name:oph.bdx_check_id
+msgid "BDX Remise Chq"
+msgstr "BDX Remise Chq"
+
+#. module: oph
+#: field:oph.measurement,axis_os:0
+msgid "AXIS_OS"
+msgstr "AXIS_OS"
+
+#. module: oph
+#: field:oph.reporting,anesthesia_id:0
+msgid "Anesthesia"
+msgstr "Anesthesia"
+
+#. module: oph
+#: model:ir.model,name:oph.model_oph_va_tech
+msgid "oph.va.tech"
+msgstr "oph.va.tech"
+
+#. module: oph
+#: selection:account.invoice,payeur:0
+msgid "Accidents de travail"
+msgstr "Accidents de travail"
+
+#. module: oph
+#: field:crm.meeting,pathology_ids:0
+msgid "Pathology Line"
+msgstr "Pathology Line"
+
+#. module: oph
+#: view:crm.meeting:0
+#: field:crm.meeting,tono_ids:0
+#: view:oph.measurement:0
+msgid "Tonometry"
+msgstr "Tonometry"
+
+#. module: oph
+#: selection:account.invoice,payeur:0
+msgid "Baie des Citrons"
+msgstr "Baie des Citrons"
+
+#. module: oph
+#: field:crm.meeting,pachy_ids:0
+msgid "Center Corneal Thickness"
+msgstr "Center Corneal Thickness"
+
+#. module: oph
+#: view:oph.bloc.agenda.line:0
+#: view:oph.request:0
+#: view:oph.todolist:0
+msgid "Draft"
+msgstr "Draft"
+
+#. module: oph
+#: view:crm.meeting:0
+msgid "Inject"
+msgstr "Inject"
+
+#. module: oph
+#: view:crm.meeting:0
+#: model:ir.ui.menu,name:oph.config_protocole_id
+#: model:ir.ui.menu,name:oph.protocole_oph_id
+#: field:oph.protocole.line.template,protocole_id:0
+msgid "Protocole"
+msgstr "Protocole"
+
+#. module: oph
+#: model:ir.model,name:oph.model_crm_meeting
+#: field:oph.measurement,meeting_id:0
+#: field:oph.reporting,meeting_id:0
+#: field:oph.todolist,meeting_id:0
+msgid "Meeting"
+msgstr "Rendez-vous"
+
+#. module: oph
+#: field:oph.bloc.agenda,start_date:0
+msgid "StartDate"
+msgstr "StartDate"
+
+#. module: oph
+#: help:oph.etat.factory,date:0
+msgid "Date of the current day to print on report"
+msgstr "Date of the current day to print on report"
+
+#. module: oph
+#: code:addons/oph/oph_measurement.py:86
+#, python-format
+msgid "UCVA"
+msgstr "UCVA"
+
+#. module: oph
+#: view:oph.bloc.agenda.line:0
+msgid "IC_Open"
+msgstr "IC_Open"
+
+#. module: oph
+#: code:addons/oph/oph_reporting.py:189
+#: model:ir.ui.menu,name:oph.exam_oph_id
+#: view:oph.exam:0
+#: field:oph.protocole.line,exam_id:0
+#: field:oph.protocole.line.template,exam_id:0
+#: view:oph.reporting.template:0
+#, python-format
+msgid "Exam"
+msgstr "Exam"
+
+#. module: oph
+#: model:ir.actions.report.xml,name:oph.request_report_id
+msgid "Request Report"
+msgstr "Request Report"
+
+#. module: oph
+#: field:oph.bloc.agenda.line,ods:0
+#: field:oph.medication.line,ods:0
+#: field:oph.pathology,ods:0
+#: field:oph.protocole.line,ods:0
+#: field:oph.reporting,ods:0
+msgid "ODS"
+msgstr "ODS"
+
+#. module: oph
+#: model:product.template,description:oph.product_product_laserret_id_product_template
+#: model:product.template,description_sale:oph.product_product_laserret_id_product_template
+msgid "Laser rétine OD ou OG"
+msgstr "Laser rétine OD ou OG"
+
+#. module: oph
+#: help:agenda.factory,name:0
+msgid "Name for the open slots to be created"
+msgstr "Name for the open slots to be created"
+
+#. module: oph
+#: field:account.invoice,ref_statement:0
+#: field:oph.etat.factory,name:0
+msgid "Statement Ref"
+msgstr "Statement Ref"
+
+#. module: oph
+#: view:crm.meeting:0
+msgid "Infos"
+msgstr "Infos"
+
+#. module: oph
+#: view:account.invoice:0
+msgid "[('sale_ok', '=', True)]"
+msgstr "[('sale_ok', '=', True)]"
+
+#. module: oph
+#: field:oph.medication.line.template,odg:0
+#: field:oph.protocole.line.template,odg:0
+msgid "ODG"
+msgstr "ODG"
+
+#. module: oph
+#: field:oph.measurement,date:0
+#: field:oph.medication.line,date:0
+#: field:oph.protocole.line,date:0
+#: field:oph.reporting,date:0
+#: field:oph.todolist,date:0
+msgid "Consultation Date"
+msgstr "Consultation Date"
+
+#. module: oph
+#: model:product.template,description:oph.product_product_echo_id_product_template
+msgid "Echographie B OD ou OG"
+msgstr "Echographie B OD ou OG"
+
+#. module: oph
+#: model:ir.actions.report.xml,name:oph.plain_report_id
+msgid "Plain Report"
+msgstr "Plain Report"
+
+#. module: oph
+#: model:product.template,name:oph.product_product_laserretodg_id_product_template
+msgid "Laser Rétine ODG"
+msgstr "Laser Rétine ODG"
+
+#. module: oph
+#: field:oph.reporting,positionnement:0
+msgid "Positionnement"
+msgstr "Positionnement"
+
+#. module: oph
+#: field:crm.meeting,fullmotive:0
+msgid "Full Motive"
+msgstr "Full Motive"
+
+#. module: oph
+#: field:oph.reporting.template,active:0
+msgid "Active"
+msgstr "Active"
+
+#. module: oph
+#: model:ir.actions.act_window,name:oph.brandname_action_id
+#: view:oph.brandname:0
+msgid "brandname"
+msgstr "brandname"
+
+#. module: oph
+#: field:crm.meeting,miscellaneous_ids:0
+msgid "Miscellaneous informations"
+msgstr "Miscellaneous informations"
+
+#. module: oph
+#: help:oph.reporting,header_id:0
+msgid "Header for OR report"
+msgstr "Header for OR report"
+
+#. module: oph
+#: model:product.template,description_sale:oph.product_product_fo_id_product_template
+msgid "Description sale je ne sais pas quoi mettre"
+msgstr "Description sale je ne sais pas quoi mettre"
+
+#. module: oph
+#: model:product.template,name:oph.product_product_echo_id_product_template
+msgid "EchoB [OD][OG]"
+msgstr "EchoB [OD][OG]"
+
+#. module: oph
+#: model:product.template,description:oph.product_product_lim_id_product_template
+#: model:product.template,description_sale:oph.product_product_lim_id_product_template
+msgid "Corps étranger cornée"
+msgstr "Corps étranger cornée"
+
+#. module: oph
+#: field:oph.diabetic.report,date:0
+#: field:oph.formula.prescription,date:0
+msgid "Prescription Date"
+msgstr "Prescription Date"
+
+#. module: oph
+#: view:crm.meeting:0
+#: selection:crm.meeting,tag:0
+msgid "Office"
+msgstr "Office"
+
+#. module: oph
+#: view:oph.reporting:0
+msgid "Attr name de la sheet"
+msgstr "Attr name de la sheet"
+
+#. module: oph
+#: model:ir.actions.act_window,name:oph.bloc_agenda_action_line_id
+#: model:ir.ui.menu,name:oph.bloc_agenda_line_menu_id
+#: view:oph.bloc.agenda:0
+#: view:oph.bloc.agenda.line:0
+msgid "Bloc Agenda Line"
+msgstr "Bloc Agenda Line"
+
+#. module: oph
+#: code:addons/oph/custom/partner.py:32
+#, python-format
+msgid "Caution"
+msgstr "Caution"
+
+#. module: oph
+#: view:crm.meeting:0
+#: view:oph.bloc.agenda.line:0
+#: view:oph.reporting:0
+#: view:oph.request:0
+#: view:oph.todolist:0
+msgid "Close"
+msgstr "Close"
+
+#. module: oph
+#: model:ir.ui.menu,name:oph.config_surgery_id
+#: model:product.category,name:oph.product_category_surg_id
+msgid "Surgery"
+msgstr "Chirurgie"
+
+#. module: oph
+#: help:oph.diabetic.report,receiver:0
+msgid "select the receiver of the report"
+msgstr "Selectionne le destinataire du raport"
+
+#. module: oph
+#: model:ir.model,name:oph.model_oph_instrumentation
+msgid "oph.instrumentation"
+msgstr "oph.instrumentation"
+
+#. module: oph
+#: field:oph.etat.factory,date:0
+msgid "Statement Date"
+msgstr "Statement Date"
+
+#. module: oph
+#: view:oph.filling.template:0
+msgid "Search Filling Template"
+msgstr "Search Filling Template"
+
+#. module: oph
+#: help:oph.reporting,cc_partner:0
+msgid "Thick the box, if sending a copie to the patient"
+msgstr "Cochez la case, si vous envoyez une copie au patient"
+
+#. module: oph
+#: model:ir.model,name:oph.model_crm_phonecall
+msgid "Phonecall"
+msgstr "Appel téléphonique"
+
+#. module: oph
+#: view:oph.instrumentation:0
+msgid "Instrument"
+msgstr "Instrument"
+
+#. module: oph
+#: model:ir.model,name:oph.model_oph_medication_line_template
+msgid "oph.medication.line.template"
+msgstr "oph.medication.line.template"
+
+#. module: oph
+#: help:oph.bloc.agenda.line,ic:0
+msgid "Check if informed consent has been delivered to and given back by the patient"
+msgstr "Check if informed consent has been delivered to and given back by the patient"
+
+#. module: oph
+#: view:oph.todolist:0
+msgid "close todolist"
+msgstr "close todolist"
+
+#. module: oph
+#: help:oph.reporting.template,active:0
+msgid "If True the template wont be selectable"
+msgstr "If True the template wont be selectable"
+
+#. module: oph
+#: code:addons/oph/oph_agenda.py:151
+#, python-format
+msgid "Bla bla"
+msgstr "Bla bla"
+
+#. module: oph
+#: field:res.partner,firstname:0
+msgid "Firstname"
+msgstr "Prénom"
+
+#. module: oph
+#: field:oph.reporting,var4:0
+msgid "TT"
+msgstr "TT"
+
+#. module: oph
+#: view:res.partner:0
+msgid "Trusties"
+msgstr "Tiers de confiance"
+
+#. module: oph
+#: code:addons/oph/oph_reporting.py:46
+#: code:addons/oph/oph_reporting.py:183
+#, python-format
+msgid "Office Report"
+msgstr "Office Report"
+
+#. module: oph
+#: model:product.template,description_sale:oph.product_product_afret_id_product_template
+msgid "Angiographie numérisée et rétinophotographie "
+msgstr "Angiographie numérisée et rétinophotographie "
+
+#. module: oph
+#: selection:account.invoice,payeur:0
+msgid "AMG Sud"
+msgstr "AMG Sud"
+
+#. module: oph
+#: model:ir.actions.act_window,name:oph.action_oph_formula_prescription
+msgid "Oph Formula Prescription"
+msgstr "Oph Formula Prescription"
+
+#. module: oph
+#: field:res.partner,trusted_partner_ids:0
+msgid "Trusted Partner"
+msgstr "Tiers de confiance"
+
+#. module: oph
+#: help:oph.instrumentation.type,name:0
+msgid "Name of the type"
+msgstr "Name of the type"
+
+#. module: oph
+#: view:oph.request:0
+msgid "Customer"
+msgstr "Patient"
+
+#. module: oph
+#: view:oph.todolist:0
+msgid "Draft todolist"
+msgstr "Draft todolist"
+
+#. module: oph
+#: model:ir.model,name:oph.model_oph_protocole
+msgid "oph.protocole"
+msgstr "oph.protocole"
+
+#. module: oph
+#: help:oph.reporting,var5:0
+msgid "Amplitude de Torsion Moyenne"
+msgstr "Amplitude de Torsion Moyenne"
+
+#. module: oph
+#: help:oph.instrumentation,name:0
+msgid "Name of the instrument"
+msgstr "Name of the instrument"
+
+#. module: oph
+#: view:oph.request:0
+msgid "Open and Sended Request"
+msgstr "Open and Sended Request"
+
+#. module: oph
+#: field:res.partner,gender:0
+msgid "Gender"
+msgstr "Sexe"
+
+#. module: oph
+#: code:addons/oph/oph_measurement.py:88
+#, python-format
+msgid "BCVA"
+msgstr "MAVC"
+
+#. module: oph
+#: view:account.invoice:0
+msgid "AT"
+msgstr "AT"
+
+#. module: oph
+#: field:oph.reporting,next_year:0
+msgid "Next Year"
+msgstr "Next Year"
+
+#. module: oph
+#: model:product.template,description:oph.product_product_OCT_id_product_template
+#: model:product.template,description_sale:oph.product_product_OCT_id_product_template
+msgid "Tomographie par cohérence optique OD ou OG"
+msgstr "Tomographie par cohérence optique OD ou OG"
+
+#. module: oph
+#: model:ir.model,name:oph.model_oph_lens
+msgid "oph.lens"
+msgstr "oph.lens"
+
+#. module: oph
+#: field:oph.bloc.agenda.line,sequence:0
+#: field:oph.request.line,sequence:0
+msgid "Sequence"
+msgstr "Sequence"
+
+#. module: oph
+#: field:oph.reporting,sutureless:0
+msgid "Sutureless"
+msgstr "Sans Suture"
+
+#. module: oph
+#: view:res.partner:0
+msgid "{'search_default_partner_id': False, 'default_partner_id' : active_id, 'search_default_partner_ids':\n"
+"                            False, 'default_partner_ids' : [active_id]}"
+msgstr "{'search_default_partner_id': False, 'default_partner_id' : active_id, 'search_default_partner_ids':\n"
+"                            False, 'default_partner_ids' : [active_id]}"
+
+#. module: oph
+#: model:product.template,description_sale:oph.product_product_bioodg_id_product_template
+msgid "Biométrie des 2 yeux"
+msgstr "Biométrie des 2 yeux"
+
+#. module: oph
+#: view:oph.bloc.agenda.line:0
+msgid "Bloc Line closed"
+msgstr "Bloc Line closed"
+
+#. module: oph
+#: model:ir.model,name:oph.model_oph_etat_factory
+msgid "Custom report"
+msgstr "Rapport personnalisé"
+
+#. module: oph
+#: model:ir.actions.act_window,name:oph.indication_action_id
+msgid "Indication Action"
+msgstr "Indication Action"
+
+#. module: oph
+#: model:ir.actions.act_window,name:oph.instrumentation_type_action_id
+#: model:ir.ui.menu,name:oph.instrumentation_type_menu_id
+msgid "Instrumentation Type"
+msgstr "Instrumentation Type"
+
