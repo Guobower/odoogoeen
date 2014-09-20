@@ -43,6 +43,9 @@ Permet de faire pleins de choses absolument géniales
         'wizard/oph_agenda_factory_view.xml',
         'wizard/oph_etat_factory_view.xml',
         'report/Test_premier_report.xml',
+        'oph_measurement_view.xml',
+        'oph_agenda_view.xml',
+        'oph_reporting_view.xml',
         'oph_bloc_agenda_view.xml',
         'report/examination_report.xml',
         'report/bloc_agenda_report.xml',
@@ -54,10 +57,10 @@ Permet de faire pleins de choses absolument géniales
         'data/anesthesia_type_data.xml',
         'data/product_data.xml',
         # 'data/document_data.xml',
-        'oph_measurement_view.xml',
+        
         'oph_instrumentation_view.xml',
-        'oph_reporting_view.xml',
-        'oph_agenda_view.xml',
+        
+       
         'custom/oph_partner_view.xml',
         'custom/oph_phonecall_view.xml',
         'custom/oph_invoice_view.xml',
