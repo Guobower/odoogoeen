@@ -3011,7 +3011,15 @@ tout cela n'a pas été testé.
 \subsection{cloner uniquement une branche}
 git clone git@github.com:frouty/odoo -single-branch 7.0
 \subsection{comment faire pour que ma fork de odoo soit à jour}
-\subsection{comment faire pour que mon clone de la révision 7.0 soit à jour par rapport à odoo?}
+\subsection{comment faire pour que mon clone de la révision 7.0 soit à jour par rapport à la 7.0 de odoo?}
+
+git clone git@github.com:frouty/oph_dev
+make your changes
+git add .
+git commit -m 'blabla'
+git pull
+git push
+
 \end{document}
 
 Example of useful tags
