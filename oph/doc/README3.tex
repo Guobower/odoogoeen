@@ -3069,12 +3069,10 @@ non cela ne marche cela récupere quand la branche master.
 \subsection{comment faire pour que mon clone de la révision 7.0 soit à jour par rapport à la 7.0 de odoo?}
 
 git clone git@github.com:frouty/oph_dev
-make your changes
-git add .
-git commit -m 'blabla'
-git pull
-git push
-
+git remote add uspstream git@github.com:odoo/odoo.git
+git pull upstream <une branche>
+git push origin <une branche>(fait un fetch et un merge en fait)
+origin pointe vers le rep github clone de odoo.
 \subsection{merge/rebase}
 la branche sur laquelle on travail: "feature"
 la branche sur laquelle les autres travaillent. master
@@ -3125,6 +3123,7 @@ Pour voir les fichiers en conflit: git status
 resoudre les conflits
 les marqués comme résolus : git add  sur chaque fichier
 \end{document}
+
 
 Example of useful tags
 by Wyden Silvan — last modified 11.06.2010 12:46
