@@ -3008,8 +3008,64 @@ et import main dans le __init__ de controller.
 tout cela n'a pas été testé.
 
 \section{travailler avec git}
+
+git init
+La premiere branche port par défaut le nom de master.
+
+
+
+Dans git il faut considérer 3 éléments:
+\begin{itemize}
+\item working directory
+\item staged snapshot
+\item commit history
+\end{itemize}
+
+git reset et git checkout si on n'inclue pas de chemin de fichier en paramètre, ces commandes agirons sur tous les commits.
+\subsection{reset}
+reset est un moyen de bouger l'extrémité d'une branche sur un autre commit.
+git chechout hotfix
+git reset HEAD~2 
+déplace la branche hotfix de 2 commit en arriere.
+Les deux derniers commits de hotfix sont prêts à disparaitre. 
+On peut l'utiliser pour défaire des changements qui n'ont pas été partagé avec d'autres.
+
+Il y a des flags:
+\begin{itemize}
+\item  --hard the staged snapshot et le working directory sont affectés.
+\item --mixed the staged snapshot est affecté par le working directory
+\item --soft the staged snapshot et le working directory ne sont  pas affectés.
+\end{itemize}
+
+git reset --mixed HEAD unstage toutes les modifications mais les laissent dans le working directory
+git reset --hard HEAD élimine tous les changements qui n'ont pas été commit.
+
+\subsection{checkout}
+git checkout <nom_branch> déplace la HEAD sur une autre branche et modifie le working directory en conséquence. git force à faire un commit ou un stash de tous les changements dans le working directory qui pourraient être perdus dans un checkout.
+On peut déplacer la HEAD sur la meme branche. Cela peut etre interessant pour étudier une vieille version du projet. on se retrouve alors dans ce que l'on appelle detached HEAD stage. Mais attention à ne pas faire de nouveau commits car ils seront perdus. Si on veut faire des commits il faut faire une nouvelle branche avant.
+
+\subsection{revert}
+revert défait un commit en faisant un nouveau commit. C'est un moyen sûr de défaire. 
+git checkout hotfix
+git revert  HEAD~2
+cela va défaire tout ce qui a fait pour les deux précédents commit et faire un commit avec ce  qui a été défait
+
+On utilise revert pour les branches publiques et reset pour les branches privées.
+
+Comme git checkout et git revert ont la capacité de surcharger des fichiers dans le working directory et donc il faire un commit ou un stash
+
+\subsection{Opération sur les fichiers}
+\subsubsection{Comment unstagé un fichier stagé}
+git reset HEAD /path/to/foo.py va unstaged foo.py mais pas d'altération dans le working directory.
+Les flags --soft --mixed --hard n'ont aucun effet dans ce cas là. Le working directory n'est jamais affecté.
+
+git checkout /path/to/file va modifier le working directory. Il n'y pas de mouvement de la HEAD avec cette commande.
+git checkout HEAD~2 /path/to/foo.py va mettre le foo.py de l'avant avant dernier commit. 
+On peut faire un stage et un commit. On retourne à l'ancienne version du fichier 
+
 \subsection{cloner uniquement une branche}
 git clone git@github.com:frouty/odoo -single-branch 7.0
+non cela ne marche cela récupere quand la branche master.
 \subsection{comment faire pour que ma fork de odoo soit à jour}
 \subsection{comment faire pour que mon clone de la révision 7.0 soit à jour par rapport à la 7.0 de odoo?}
 
@@ -3020,6 +3076,55 @@ git commit -m 'blabla'
 git pull
 git push
 
+\subsection{merge/rebase}
+la branche sur laquelle on travail: "feature"
+la branche sur laquelle les autres travaillent. master
+Les deux branches divergent. 
+Pour récuperer le travail des autres sur la branche "feature"
+git checkout feature
+git merge master
+ou c'est pareil: git merge master feature (source cible)
+
+avec un merge les deux branches ne sont pas modifiées en aucune facon. ? et la branche feature.
+
+Cela entraine un merge commit et si la branche master est très active cela pollue l'historique de la branche feature.
+
+On peut faire un rebase:
+git checkout feature
+git rebase master
+cela toute la branche feature à la tete de la branche master. Cela donne un historique du projet plus propre. Mais attention rebasing peut etre catastrophique. Il y a des regles à respecter.
+
+L'interactive rebasing:
+git checkout feature
+git rebase -i master.
+
+Les regles de base du rebasing: ne jamais faire du rebasing sur une branche publique.
+
+Par défaut git pull fait un merge. On peut lui demander d'integrer la remote branch avec un rebase: git pull --rebase.
+
+Avant de faire un pull request il faut faire un clean-up du code avec un rebase interactive avec de soumettre un pull request.
+
+Pour les diff des les fichiers qui n'ont pas été stagé: git diff
+Pour les diff des fichiers stagés: git diff --cached.
+
+\section{Comment abandonner le suivi de version d'un fichier tout en le conservant dans le working directory}
+git rm --cached readme.txt.
+
+\section{comment annuler un commit}
+git commit --amend on pourra modifier le msg du commit
+git commit -m "blabla"
+#make your changes
+git add .
+git commit --amend
+
+\section{Comment renommer l'alias d'un remote?}
+git remote rename alias1 alias2
+
+
+\section{conflits}
+Pour voir les fichiers en conflit: git status
+resoudre les conflits
+les marqués comme résolus : git add  sur chaque fichier
 \end{document}
 
 Example of useful tags
