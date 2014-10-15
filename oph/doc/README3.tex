@@ -3133,9 +3133,11 @@ git push nondistan :nondebranchedistant
 \section{création de branche de suivi}
 pour créer une branche de suivi.
 git checkout -b <nomdebranche> <remote>/<nondebrancheremote>
-ou
-git checkout --track <remote>/<nomdebranche>
+On peut le faire a posterio
+git checkout --set-upstream <branch> <remote>/<nomdebranche>
 
+Comment cloner juste une branche 
+git clone git@github:odoo/odoo --branch 7.0
 \end{document}
 
 
