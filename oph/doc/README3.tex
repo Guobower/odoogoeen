@@ -3137,6 +3137,53 @@ git checkout --set-upstream <branch> <remote>/<nomdebranche>
 
 Comment cloner juste une branche 
 git clone git@github:odoo/odoo --branch 7.0
+
+➜  ~  git clone git@github.com:frouty/test
+➜  test git:(master) git remote add -f oph git@github.com:frouty/oph           
+➜  test git:(master) git remote add -f aeroo git@github.com:frouty/aeroo
+➜  test git:(master) git subtree add --prefix extra-addons/oph --squash oph/dev00
+Added dir 'extra-addons/oph'
+➜  test git:(master) git subtree add --prefix extra-addons/aeroo --squash aeroo/7.0
+Added dir 'extra-addons/aeroo'
+➜  test git:(master) tree -L 3
+.
+├── extra-addons
+│   ├── aeroo
+│   │   ├── README.md
+│   │   ├── report_aeroo
+│   │   ├── report_aeroo_direct_print
+│   │   ├── report_aeroo_ooo
+│   │   ├── report_aeroo_printscreen
+│   │   └── report_aeroo_sample
+│   └── oph
+│       ├── oph
+│       └── README.md
+└── README.md
+
+9 directories, 3 files
+➜  test git:(master) 
+
+
+C'est bon. 
+Reste à installer odoo et a voir ce que donne les pull et push
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \end{document}
 
 
