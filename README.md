@@ -1,4 +1,4 @@
 oph
 ===
 
-openerp for ophthalmologiste.
+openerp for ophthalmologist.
