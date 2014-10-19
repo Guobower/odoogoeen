@@ -3120,6 +3120,53 @@ git commit --amend
 \section{Comment renommer l'alias d'un remote?}
 git remote rename alias1 alias2
 
+\section{Travailler sur les branches}
+\label{sec:branch}
+
+Qd on fait un git clone apres dans une branche locale on peut faire git fetch, pull, fetch sans préciser le remote et la branche.
+
+Maintenant si tu crées la branche remote il va falloir faire de la configuration
+git pull ne suffit plus
+There is no tracking information for the current branch.
+Please specify which branch you want to merge with.
+
+Il va falloir etre plus précis dans la commande:
+git pull(or fetch) origin 7.0
+
+Mais on peut configurer pour que la branch locale track toujours la meme branche remote:
+git checkout localebranch
+git branch --set-upstream-to <remote>/<remotebranch>
+
+\subsection{Comment changer pour une branche qui existe déjà localement:}
+\label{sec:changebranch}
+git branch
+git co nomdelabranche
+
+\subsection{Comment changer pour une branche qui existe upstream:}
+\label{sec:remotebranch}
+
+git branch -a
+git co --track remotes/origine/nomdelabranche
+Comme cela on track la remote branch
+
+\subsection{Comment créer une nouvelle branche à partir d'une branche existante}
+\label{sec:createbranch}
+
+checkout la branche sur laquelle on va brancher
+git co nombranchequelonvabrancher
+git co -b nouvellebranche
+
+pousser la branche sur github
+git push origin nouvellebranche
+
+et track de la nouvelle branche
+git branch --set-upstream-to origin/nouvellebranche
+
+\subsection{Nettoyage en local des branches qui n'existent plus upstream:}
+\label{sec:prune}
+
+
+git remote prune <remote>
 
 \section{conflits}
 Pour voir les fichiers en conflit: git status
@@ -3127,10 +3174,11 @@ resoudre les conflits
 les marqués comme résolus : git add  sur chaque fichier
 
 \section{Comment supprimer une branche locale}
+git branch pour avoir la liste des branches
 git branch -d <nomdebranche>
 git branch -D pour forcer <nomdebranche>
 \section{supprimer une branche distante}
-git push nondistan :nondebranchedistant
+git push <remote> :nondebranchedistant
 
 \section{création de branche de suivi}
 pour créer une branche de suivi.
