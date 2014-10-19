@@ -111,5 +111,15 @@
             <field name="duration">60</field>
             <field name="comment">Boite rétine et cryode</field>
         </record>
+        
+		<record model="oph.procedure.type" id="procedure_v3vfrag">
+            <field name="name">V3V+PHAKOPHRAGMENTATION</field>
+            <field name="code">V3VFRAG</field>
+            <field name="dilatation">yes</field>
+            <field name="iol_status" eval="False"/>
+            <field name="duration">90</field>
+            <field name="comment">Boite rétine et phragmatome</field>
+        </record>
+
     </data>
 </openerp>
