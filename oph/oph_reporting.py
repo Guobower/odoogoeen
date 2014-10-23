@@ -272,11 +272,16 @@ class oph_request(orm.Model):
     def request_cancel(self, cr, uid, ids, context = None):
         self.write(cr, uid, ids, {"state": "cancel"}, context = context)
         return True
+    
+    def request_confirm(self, cr, uid, ids, context = None):
+        self.write(cr, uid, ids, {"state": "confirm"}, context = context)
+        return True
 
     def _state_get(self, cr, uid, context = None):
         return [
                     ('draft', 'Draft'),
                     ('open', 'Open'),
+                    ('confirm', 'Confirm'),
                     ('close', 'Close'),
                     ('cancel', 'Cancelled'),
                     ]
