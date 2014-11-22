@@ -120,7 +120,7 @@ class oph_reporting(orm.Model):
         Return a string
         Return month is in french not very convinient for internationalisation..
         """
-        nummonth = range(12)
+        nummonth = range(1,13) # 1 inclus; 13 exclus
         strmonth = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'aout', 'septembre', 'octobre', 'novembre', 'décembre']
         mappedmonth = dict(zip(nummonth, strmonth))
 
