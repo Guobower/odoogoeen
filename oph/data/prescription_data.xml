@@ -701,13 +701,13 @@
             <field name="pathology_id" ref="path16"/>
             <field name="name">ID0</field>
             <field name="brandname_id" ref="skia0"/>
-            <field name="comment">Instiller une goutte de chaque collyre dans chaque oeil à 0,5,1,15 minute et nouvel examen ophtalmologique à la 45ème minute. Pensez à prévoir un délai de 45 minutes par rapport à l'heure de votre rendez vous ophtalmologique.</field>
+            <field name="comment">Instiller une goutte de chaque collyre dans chaque oeil à 0,5,10,15 minute. (Soit une gtte toutes les 5 minutes pendant 15 minutes). Et nouvel examen ophtalmologique à la 45ème minute. Pensez à prévoir un délai de 45 minutes par rapport à l'heure de votre rendez vous ophtalmologique.</field>
         </record>
         <record id="path16_line1" model="oph.medication.line.template">
             <field name="pathology_id" ref="path16"/>
             <field name="name">ID0</field>
             <field name="brandname_id" ref="myd0"/>
-            <field name="comment">Instiller une goutte de chaque collyre dans chaque oeil à 0,5,1,15 minute et nouvel examen ophtalmologique à la 45ème minute. Pensez à prévoir un délai de 45 minutes par rapport à l'heure de votre rendez vous ophtalmologique.</field>
+            <field name="comment">Instiller une goutte de chaque collyre dans chaque oeil à 0,5,10,15 minute. (Soit une gtte toutes les 5 minutes pendant 15 minutes). Et nouvel examen ophtalmologique à la 45ème minute. Pensez à prévoir un délai de 45 minutes par rapport à l'heure de votre rendez vous ophtalmologique.</field>
         </record>
         <!--  Protocole moebomite -->
         <record id="path17" model="oph.pathology">
