@@ -1,0 +1,6 @@
+eclipse.preferences.version=1
+<<<<<<< HEAD
+encoding//oph/oph_reporting.py=utf-8
+=======
+encoding//oph/__init__.py=utf-8
+>>>>>>> modification in odt file
