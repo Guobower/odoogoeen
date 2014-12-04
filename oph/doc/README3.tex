@@ -764,7 +764,7 @@ select=True : crée un index sur la clef étrangère.
 
 De facon plus génériques. Soit la classe A qui a une relation one2many avec la class B.
 
-\footnotesize{
+
 \begin{verbatim}
 class A(osv.osv):
         _name = '$A._name'
@@ -779,7 +779,7 @@ class B(osv.osv):
       '$B.name.fields.many2one') == '$B_id' = fields.many2one('$A._name', '$A.field.name.label', select=True),
                 }
 \end{verbatim}
-}
+
 
 \begin{verbatim}
 <?xml version="1.0" encoding="utf-8"?>
@@ -3232,6 +3232,7 @@ Reste à installer odoo et a voir ce que donne les pull et push
 
 git remote show origin
 git remote show oph
+
 
 
 \end{document}
