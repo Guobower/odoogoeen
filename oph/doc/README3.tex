@@ -3233,6 +3233,49 @@ Reste à installer odoo et a voir ce que donne les pull et push
 git remote show origin
 git remote show oph
 
+\section{a sucessful git branching model}
+\label{sec:modelbranching}
+
+Le repository centrale contient deux branches principales: master et dev.
+origin/master est la branche principale dont la HEAD contient toujours le code pret pour la production. origin/dev dont la HEAD le code en developpement. Qd le code dans dev est stable tous les chngements sont merges dans master. 
+Mais on utilise tout un tas d'autres branches pour nous aider dans le développement.Contrairement aux deux autres branches celles ci ont une durée de vie courte. Elles sont issués de dev et vont merger dans dev.
+
+Quand on veut démarrer une nouvelle fonctionnalité on la branche à partir de dev. git checkout -b myfeature dev
+Quand on a fini de développer la fonctionnalité:
+git checkout dev
+git merge --no-ff myfeature
+git branch -d myfeature
+git push origin dev
+
+\subsection{Les release branches.}
+\label{sec:releasebranch}
+Elles sont là pour préparer une nouvelle version de production. Correction de bug mineurs., meta-data pour la release. En faisant cela sur une release branche on peut travailler sur dev pour une autre fonctionnalité.
+git checkout -b release-1.2 dev
+On fait des modifs sur les fichiers pour refleter la nouvelle version
+git commit -a -m 'Set version number to 1.2'
+Une fois qu'on est pret à mettre en production cette nouvelle release on fait:
+git checkout master 
+git merge --no-ff release-1.2
+git tag -a 1.2
+Il fait conserver les modifications faites dans la release branche il faut donc merger dans dev. 
+git checkout dev
+git merge --no-ff release-1.2
+git branch -d release-1.2
+
+\subsection{Les hotfix branch}
+\label{sec:hotfix}
+Quand on doit agir immédiatement sur la version de production. On crée une brancche hotfix-* 
+Il faut la brancher à partir du tag de la version en cours 
+git checkout -b hotfif-1.2.1 master
+il faut bumper la version vers 1.2.1
+reparer le bug en 1 ou plusieurs commit.
+git commit -m 'fix the problem'
+git checkout master
+git merge --no-ff hotfix-1.2.1
+git tag -a 1.2.1
+git checkout dev 
+git merge --no-ff hotfix-1.2.1
+git branch -d hotfix-1.2.1
 
 
 \end{document}
