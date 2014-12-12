@@ -37,7 +37,11 @@ Permet de faire pleins de choses absolument géniales
                 'custom/oph_res_users_view.xml',
                 'custom/oph_sale_order_view.xml',
                 'custom/oph_account_invoice_view.xml',
-                'custom/oph_account_voucher_view.xml',
+                'custom/oph_crm_phonecall_view.xml',
+                'oph_prescription_view.xml',
+                'oph_instrumentation_view.xml', 
+                'oph_measurement_view.xml',
+                'oph_agenda_view.xml',
        #========================================================================
        #  'security/oph_security.xml',
        #  'security/ir.model.access.csv',

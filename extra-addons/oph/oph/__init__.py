@@ -1,10 +1,14 @@
 # -*- coding: utf-8 -*-
-
-#import oph_instrumentation
+import custom
+import oph_prescription
+import oph_instrumentation
+import oph_measurement
+import oph_agenda
+#import oph_measurement
 #import oph_prescription
 #import oph_measurement
 #import oph_agenda
-import custom
+
 #import oph_bloc_agenda
 #import wizard
 #import oph_reporting
