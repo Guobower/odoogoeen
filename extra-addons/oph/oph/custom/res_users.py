@@ -10,6 +10,8 @@ class res_users(orm.Model):
     """
     Custom res_users object
     Add a CAFAT ID for use in New Caledonia
+    It's for odoo user not partner
+    For partner you'll find the CAFAT ID in res.parner object
     """
     _inherit = "res.users"
     _columns = {
