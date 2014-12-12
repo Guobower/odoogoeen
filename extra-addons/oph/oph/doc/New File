@@ -1,0 +1,13 @@
+install 
+git bzr zsh-beta
+#git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zshsudo adduser --system --home=/opt/openerp --group openerpsudo adduser --system --home=/opt/openerp --group openerp
+
+sudo adduser --system --home=/usr/openerp --group openerp
+
+Or, you could remove your Launchpad username setting with this command:
+
+bzr config --remove launchpad_username --scope bazaar
+
+/usr/bin/soffice --nologo --nofirststartwizard --headless --norestore --invisible "--accept=socket,host=localhost,port=8100,tcpNoDelay=1;urp;" &
+
+pour tester telnet localhost 8100

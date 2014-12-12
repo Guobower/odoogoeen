@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!-- ressources oph.medication lines -->
+        <!-- FORM VIEW FOR OPH.MEDICATION.LINE -->
+        <record model="ir.ui.view" id="view_medication_line_form_id">
+            <field name="name">Medication Line Form</field>
+            <field name="model">oph.medication.line</field>
+            <field name="priority" eval="2"/>
+            <field name="arch" type="xml">
+                <form string="Medication Line">
+                    <field name="name" invisible="1"/>
+                    <field name="ods_needed"/>
+                    <field name="partner_id"/>
+                    <field name="date"/>
+                    <field name="brandname_id"/>
+                    <field name="poso"/>
+                    <field name="duration"/>
+                    <field name="ods" attrs="{'required':[('ods_needed','=',True)],'invisible':[('ods_needed','=',False)]}"/>
+                </form>
+            </field>
+        </record>
+        <!-- TREE VIEW FOR OPH.MEDICATION.LINE -->
+        <record model="ir.ui.view" id="view_medication_line_tree_id">
+            <field name="name">Medication Line Tree</field>
+            <field name="model">oph.medication.line</field>
+            <field name="priority" eval="2"/>
+            <field name="arch" type="xml">
+                <tree string="Medication Line">
+                    <field name="name"/>
+                    <field name="partner_id"/>
+                    <field name="date"/>
+                    <field name="brandname_id"/>
+                    <field name="poso"/>
+                    <field name="duration"/>
+                    <field name="ods" required="True"/>
+                    <field name="ods_needed"/>
+                </tree>
+            </field>
+        </record>
+        <!-- END VIEWS FOR OPH.MEDICATION.LINE -->
+
+        <!-- INN VIEWS -->
+        <!-- TREE VIEW INN -->
+        <record model="ir.ui.view" id="inn_tree_view_id">
+            <field name="name">inn.tree</field>
+            <field name="model">oph.inn</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <tree string="INN">
+                    <field name="name"/>
+                    <field name="alternate"/>
+                    <field name="brandname_ids"/>
+                    <field name="ivt"/>
+                </tree>
+            </field>
+        </record>
+        <!-- FORM VIEW INN -->
+        <record model="ir.ui.view" id="inn_form_view_id">
+            <field name="name">inn.form</field>
+            <field name="model">oph.inn</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <form string="Type">
+                    <field name="name" on_change="onchange_name(name,context)"/>
+                    <field name="alternate" on_change="onchange_name(name,context)"/>
+                    <field name="brandname_ids"/>
+                    <field name="ivt"/>
+                </form>
+            </field>
+        </record>
+        <!-- END VIEW INN-->
+
+        <!-- BRAND NAME VIEWS -->
+        <!-- TREE VIEW BRANDNAME -->
+        <record model="ir.ui.view" id="brandname_tree_view_id">
+            <field name="name">brandname.tree</field>
+            <field name="model">oph.brandname</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <tree string="brandname">
+                    <field name="name"/>
+                    <field name="galenique"/>
+                    <field name="brandname_id"/>
+                    <field name="ivt"/>
+                    <field name="ods_needed"/>
+                </tree>
+            </field>
+        </record>
+        <!--FORM VIEW BRANDNAME -->
+        <record model="ir.ui.view" id="brandname_form_view_id">
+            <field name="name">brand.form</field>
+            <field name="model">oph.brandname</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <form string="Type">
+                    <field name="name" on_change="onchange_name(name,context)"/>
+                    <field name="galenique"/>
+                    <field name="brandname_id" required="True"/>
+                    <field name="ivt"/>
+                    <field name="meeting_id"/>
+                </form>
+            </field>
+        </record>
+        <!-- END VIEW INN-->
+
+        <!-- PATHOLOGY VIEWS -->
+        <!-- TREE VIEW PATHOLOGY -->
+        <record model="ir.ui.view" id="pathology_tree_view_id">
+            <field name="name">pathology.tree</field>
+            <field name="model">oph.pathology</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <tree string="pathology">
+                    <field name="name"/>
+                    <field name="comment"/>
+                    <field name="ods"/>
+                    <!-- <field name="medication_line_ids"/> Ne pas le mettre dans la tree view -->
+                </tree>
+            </field>
+        </record>
+        <!--FORM VIEW PATHOLOGY -->
+        <record model="ir.ui.view" id="pathology_form_view_id">
+            <field name="name">pathology.form</field>
+            <field name="model">oph.pathology</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <form string="Type">
+                    <field name="name"/>
+                    <field name="ods"/>
+                    <field name="comment"/>
+                    <field name="medication_line_ids"/>
+                </form>
+            </field>
+        </record>
+        <!-- END VIEW PATHOLOGY -->
+
+        <!-- medication LINE TEMPLATE VIEWS -->
+        <!-- TREE VIEW medication LINE TEMPLATE -->
+        <record model="ir.ui.view" id="medication_template_tree_view_id">
+            <field name="name">oph.medication.line.template.tree</field>
+            <field name="model">oph.medication.line.template</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <tree string="medication line template">
+                    <field name="name"/>
+                    <field name="brandname_id"/>
+                    <field name="poso"/>
+                    <field name="duration"/>
+                    <field name="comment"/>
+                    <field name="pathology_id"/>
+                </tree>
+            </field>
+        </record>
+        <!--FORM VIEW medication LINE TEMPLATE-->
+        <record model="ir.ui.view" id="medication_template_form_view_id">
+            <field name="name">oph.medication.line.template.form</field>
+            <field name="model">oph.medication.line.template</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <form string="Type">
+                    <field name="name"/>
+                    <field name="brandname_id"/>
+                    <field name="poso"/>
+                    <field name="duration"/>
+                    <field name="ods" invisible="1"/>
+                    <field name="comment"/>
+                    <field name="pathology_id" invisible="1"/>
+                </form>
+            </field>
+        </record>
+        <!-- END VIEW medication LINE TEMPLATE -->
+
+
+        <!--RESSOURCES OPH.EXAM -->
+        <!-- FORM VIEW OPH.EXAM-->
+        <record model="ir.ui.view" id="exam_form_view_id">
+            <field name="name">exams.form</field>
+            <field name="model">oph.exam</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <form string="Exam">
+                    <field name="type_id"/>
+                    <field name="name"/>
+                    <field name="code"/>
+                </form>
+            </field>
+        </record>
+        <!-- TREE VIEW OPH.EXAM-->
+        <record model="ir.ui.view" id="exam_tree_view_id">
+            <field name="name">exam.tree</field>
+            <field name="model">oph.exam</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <tree string="Exam">
+                    <field name="type_id"/>
+                    <field name="name"/>
+                    <field name="code"/>
+                </tree>
+            </field>
+        </record>
+        <!--END VIEWS OPH.EXAM -->
+
+        <!-- PROTOCOLE VIEWS -->
+        <!-- TREE VIEW PROTOCOLE -->
+        <record model="ir.ui.view" id="protocole_tree_view_id">
+            <field name="name">protocole.tree</field>
+            <field name="model">oph.protocole</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <tree string="protocole">
+                    <field name="name"/>
+                    <!-- <field name="protocole_line_ids"/> Ne pas le mettre dans la tree view -->
+                    <field name="comment"/>
+                </tree>
+            </field>
+        </record>
+        <!--FORM VIEW PROTOCOLE -->
+        <record model="ir.ui.view" id="protocole_form_view_id">
+            <field name="name">protocole.form</field>
+            <field name="model">oph.protocole</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <form string="Type">
+                    <field name="name"/>
+                    <field name="comment"/>
+                    <field name="protocole_line_ids"/>
+                    <field name="comment"/>
+                </form>
+            </field>
+        </record>
+        <!-- END VIEW PATHOLOGY -->
+
+        <!-- ressources oph.protocole lines -->
+        <!-- FORM VIEW FOR OPH.PROTOCOLE.LINE -->
+        <record model="ir.ui.view" id="view_protocole_line_form_id">
+            <field name="name">Protocole Line Form</field>
+            <field name="model">oph.protocole.line</field>
+            <field name="priority" eval="2"/>
+            <field name="arch" type="xml">
+                <form string="Protocole Line">
+                    <field name="name"/>
+                    <field name="partner_id"/>
+                    <field name="meeting_id" invisible="1"/>
+                    <field name="date"/>
+                    <field name="exam_id"/>
+                    <field name="comment"/>
+                    <field name="result"/>
+                    <field name="ods" required="0"/>
+                </form>
+            </field>
+        </record>
+        <!-- TREE VIEW FOR OPH.PROTOCOLE.LINE -->
+        <record model="ir.ui.view" id="view_protocole_line_tree_id">
+            <field name="name">Protocole Line Tree</field>
+            <field name="model">oph.protocole.line</field>
+            <field name="priority" eval="2"/>
+            <field name="arch" type="xml">
+                <tree string="Protocole Line">
+                    <field name="name"/>
+                    <field name="partner_id"/>
+                    <field name="meeting_id" invisible="1"/>
+                    <field name="date"/>
+                    <field name="exam_id"/>
+                    <field name="ods" required="False"/>
+                    <field name="result"/>
+                    <field name="comment"/>
+                </tree>
+            </field>
+        </record>
+        <!-- END VIEWS FOR OPH.PROTOCoLE.LINE -->
+
+
+        <!-- PROTOCOLE LINE TEMPLATE VIEWS -->
+        <!-- TREE VIEW PROTOCOLE LINE TEMPLATE -->
+        <record model="ir.ui.view" id="protocole_template_tree_view_id">
+            <field name="name">oph.protocole.line.template.tree</field>
+            <field name="model">oph.protocole.line.template</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <tree string="Protocole Line Template">
+                    <field name="name"/>
+                    <field name="exam_id"/>
+                    <field name="protocole_id"/>
+                </tree>
+            </field>
+        </record>
+        <!-- FORM VIEW PROTOCOLE LINE TEMPLATE -->
+        <record model="ir.ui.view" id="protocole_template_form_view_id">
+            <field name="name">oph.protocole.line.template.tree</field>
+            <field name="model">oph.protocole.line.template</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <form string="Protocole Line Template">
+                    <field name="name"/>
+                    <field name="exam_id"/>
+                    <field name="protocole_id"/>
+                </form>
+            </field>
+        </record>
+
+        <!-- MENUITEM FOR PRESCRIPTION-->
+        <!-- menuitem bandeau horizontal -->
+        <menuitem name="Prescription" icon="terp-project" id="main_prescription_id"/>
+
+        <menuitem name="Prescription" icon="terp-project" parent="main_prescription_id" id="menu_prescription_id"
+            sequence="10"/>
+
+        <menuitem name="Configuration" parent="main_prescription_id" id="menu_config_id" sequence="20"/>
+        <menuitem name="Medication" parent="menu_config_id" id="config_medication_id" sequence="10"/>
+        <menuitem name="Protocole" parent="menu_config_id" id="config_protocole_id" sequence="20"/>
+
+        <!-- ACTION / MENU -->
+        <!-- medication LINE -->
+        <record model="ir.actions.act_window" id="medication_line_action_id">
+            <field name="name">medication Line</field>
+            <field name="res_model">oph.medication.line</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_medication_line_tree_id"/>
+        </record>
+        <menuitem name="Medication Line" parent="menu_prescription_id" id="medication_line_id"
+            sequence="10" action="medication_line_action_id"/>
+
+        <!-- Protocole Line-->
+        <record model="ir.actions.act_window" id="protocole_line_action_id">
+            <field name="name">Protocole Line</field>
+            <field name="res_model">oph.protocole.line</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_protocole_line_tree_id"/>
+        </record>
+        <menuitem name="Protocole Line" parent="menu_prescription_id" id="protocole_line_id"
+            sequence="20" action="protocole_line_action_id"/>
+
+        <!-- INN -->
+        <record model="ir.actions.act_window" id="inn_action_id">
+            <field name="name">INN</field>
+            <field name="res_model">oph.inn</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="inn_tree_view_id"/>
+        </record>
+        <menuitem name="INN" parent= "config_medication_id" id="inn_oph_id" sequence="30"
+            action="inn_action_id"/>
+
+        <!-- BRANDNAME -->
+        <record model="ir.actions.act_window" id="brandname_action_id">
+            <field name="name">brandname</field>
+            <field name="res_model">oph.brandname</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="brandname_tree_view_id"/>
+        </record>
+        <menuitem name="Brand Name" parent="config_medication_id" id="brandname_oph_id" sequence="20"
+            action="brandname_action_id"/>
+
+        <!-- PATHOLOGY -->
+        <record model="ir.actions.act_window" id="pathology_action_id">
+            <field name="name">pathology</field>
+            <field name="res_model">oph.pathology</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="pathology_tree_view_id"/>
+        </record>
+        <menuitem name="Pathology" parent="config_medication_id" id="pathology_oph_id" sequence="30"
+            action="pathology_action_id"/>
+
+        <!-- EXAM -->
+        <record model="ir.actions.act_window" id="exam_action_id">
+            <field name="name">exam</field>
+            <field name="res_model">oph.exam</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="exam_tree_view_id"/>
+        </record>
+        <menuitem name="Exam" parent="config_protocole_id" id="exam_oph_id" sequence="40"
+            action="exam_action_id"/>
+
+        <!-- PROTOCOLE -->
+        <record model="ir.actions.act_window" id="protocole_action_id">
+            <field name="name">protocole</field>
+            <field name="res_model">oph.protocole</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="protocole_tree_view_id"/>
+        </record>
+        <menuitem name="Protocole" parent="config_protocole_id" id="protocole_oph_id" sequence="50"
+            action="protocole_action_id"/>
+
+        <!--SEARCH VIEWS -->
+        <!--SEARCH VIEWS FOR INN-->
+        <record id="inn_search_view_id" model="ir.ui.view">
+            <field name="name">oph.inn.select</field>
+            <field name="model">oph.inn</field>
+            <field name="arch" type="xml">
+                <search string = "Search INN">
+                    <field name="name" domain="[('name','=',self)]"/>
+                    <field name="brandname_ids"/>
+                </search>
+            </field>
+        </record>
+        <!--SEARCH VIEWS FOR BRANDNAME-->
+        <record id="brandname_search_view_id" model="ir.ui.view">
+            <field name="name">oph.brandname.select</field>
+            <field name="model">oph.brandname</field>
+            <field name="arch" type="xml">
+                <search string = "Search brandname">
+                    <field name="name" domain="[('name','=',self)]"/>
+                    <field name="brandname_id"/>
+                </search>
+            </field>
+        </record>
+
+        <!--SEARCH VIEWS FOR MEDICATION LINE-->
+        <record id="medication_line_search_view_id" model="ir.ui.view">
+            <field name="name">oph.medication.line.select</field>
+            <field name="model">oph.medication.line</field>
+            <field name="arch" type="xml">
+                <search string = "Search Medication Line">
+                    <field name="name" domain="[('name','=',self)]"/>
+                    <field name="meeting_id"/>
+                    <field name="brandname_id"/>
+                    <field name="partner_id"/>
+                    <group expand="0" string="Group_By...">
+                        <filter string="Partner" icon="terp-partner" domain="[]" context="{'group_by':'partner_id'}"/>
+                        <filter string="Date" icon="terp-partner" domain="[]" context="{'group_by':'date'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <!--SEARCH VIEWS FOR PATHOLOGY -->
+        <record id="pathology_search_view_id" model="ir.ui.view">
+            <field name="name">oph.pathology.select</field>
+            <field name="model">oph.pathology</field>
+            <field name="arch" type="xml">
+                <search string = "Search Medication Line">
+                    <field name="name"/>
+                </search>
+            </field>
+        </record>
+
+        <!--SEARCH VIEW EXAM -->
+        <record id="exam_search_view_id" model="ir.ui.view">
+            <field name="name">oph.exam.select</field>
+            <field name="model">oph.exam</field>
+            <field name="arch" type="xml">
+                <search string = "Search Exam">
+                </search>
+                <field name="name"/>
+            </field>
+        </record>
+
+        <!--SEARCH VIEWS FOR PROTOCOLE LINE-->
+        <record id="protocole_line_search_view_id" model="ir.ui.view">
+            <field name="name">oph.protocole.line.select</field>
+            <field name="model">oph.protocole.line</field>
+            <field name="arch" type="xml">
+                <search string = "Search Protocole Line">
+                    <field name="name" domain="[('name','=',self)]"/>
+                    <field name="meeting_id"/>
+                    <field name="exam_id"/>
+                    <field name="partner_id"/>
+                    <group expand="0" string="Group_By...">
+                        <filter string="Partner" icon="terp-partner" domain="[]" context="{'group_by':'partner_id'}"/>
+                        <filter string="Date" icon="terp-partner" domain="[]" context="{'group_by':'date'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+    </data>
+</openerp>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="oph_view_account_voucher_form" model="ir.ui.view">
+            <field name="name">oph.account.voucher.form</field>
+            <field name="model">account.voucher</field>
+            <field name="inherit_id" ref="account_voucher.view_vendor_receipt_form"/>
+            <field name="arch" type="xml">
+                <data>
+                <field name="reference" position="after">
+                    <field name="check_owner"/> 
+                </field>
+                <field name="company_id" position="after">
+                    <field name="check_deposit"/>
+                </field>
+                </data>
+            </field>
+        </record>
+        
+        <record id="oph_view_account_voucher_popup_form" model="ir.ui.view">
+            <field name="name">oph.account.voucher.popup.form</field>
+            <field name="model">account.voucher</field>
+            <field name="inherit_id" ref="account_voucher.view_vendor_receipt_dialog_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group/field[@name='reference']" position="after">
+                    <field name="check_owner"/> 
+                </xpath>
+            </field>
+        </record>
+
+         <record id="oph_view_account_voucher_tree" model="ir.ui.view">
+            <field name="name">oph.account.voucher.tree</field>
+            <field name="model">account.voucher</field>
+            <field name="inherit_id" ref="account_voucher.view_voucher_tree"/>
+            <field name="arch" type="xml">
+                <data>
+                <field name="number" position="after">
+                    <field name="check_deposit"/> 
+                </field>
+                </data>
+            </field>
+        </record>
+
+
+        <record id="oph_view_voucher_filter_customer_pay" model="ir.ui.view">
+            <field name="name">OPH - Customer Pay Search</field>
+            <field name="model">account.voucher</field>
+            <field name="inherit_id" ref="account_voucher.view_voucher_filter_customer_pay" />
+            <field name="arch" type="xml">
+                <xpath expr="filter[@string='Posted']" position="after">
+                     <filter string="Check Deposit" domain="[('check_deposit', '=', True)]"/>
+                     <filter string="For Deposit" domain="[('check_deposit', '=', False)]"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>

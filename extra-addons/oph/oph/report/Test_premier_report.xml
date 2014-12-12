@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- -->
+<openerp>
+    <data noupdate="0">
+        <!-- noupdate pour ne pas écraser par ce fichier des modifications faites dans le
+            client-->
+        <record model="ir.actions.report.xml" id="first_report_id">
+            <!-- mandatory -->
+            <field name="name">Premier Report</field>
+            <field name="type">ir.actions.report.xml</field>
+            <field name="model">res.partner</field>
+            <field name="report_name">Test.Premier.Report</field>
+            <field name="report_type">aeroo</field>
+            <field name="auto">TRUE</field>
+            <!-- optionals -->
+            <field name="report_rml">oph/report/odt/Test_premier_Report.odt</field>
+            <field name="parser_state">default</field>
+            <!-- parser state = default, loc, def-->
+            <field name="tml_source">file</field>
+            <!--  choix database, file, parser de template source-->
+            <field name="in_format">oo-odt</field>
+            <!-- choix de template Mime-type dans configuration-Technical-aero-report-Reports-->
+            <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')">
+            </field>
+            <!-- choix du format d'edition/impression -->
+        </record>
+
+        
+
+        <!-- declaration du boutton -->
+        <record model="ir.values" id="value_first_report_id">
+            <field name="name">Test.Premier.Report</field>
+            <!-- ATTENTION name == name="report_name" du rapport que je veux imprimer avec ce
+                bouton-->
+            <field name="key">action</field>
+            <field name="key2">client_print_multi</field>
+            <field name="model">res.partner</field>
+            <!-- ATTENTION name == name="model" du rapport que je veux imprimer avec ce bouton-->
+            <field name="object">TRUE</field>
+            <!-- c'est comme ça -->
+            <field name="value" eval="'ir.actions.report.xml,' + str(ref('oph.first_report_id'))"/>
+        </record>
+
+        <!-- pour faire du pdf-->
+        <record model="ir.actions.report.xml" id="first_report_pdf_id">
+            <!-- mandatory -->
+            <field name="name">Premier Report PDF</field>
+            <field name="type">ir.actions.report.xml</field>
+            <field name="model">res.partner</field>
+            <field name="report_name">Test.Premier.Report.Pdf</field>
+            <field name="report_type">aeroo</field>
+            <field name="auto">TRUE</field>
+            <!-- optionals -->
+            <field name="report_rml">oph/report/odt/Test_premier_Report.odt</field>
+            <field name="parser_state">default</field>
+            <!-- parser state = default, loc, def-->
+            <field name="tml_source">file</field>
+            <!--  choix database, file, parser de template source-->
+            <field name="in_format">oo-odt</field>
+            <!-- choix de template Mime-type dans configuration-Technical-aero-report-Reports-->
+            <field name="out_format" eval="ref('report_aeroo_ooo.report_mimetypes_pdf_odt')">
+            </field>
+            <!-- choix du format d'edition/impression -->
+        </record>
+        <!-- declaration du boutton -->
+        <record model="ir.values" id="value_first_report_pdf_id">
+            <field name="name">Test.Premier.Report.Pdf</field>
+            <!-- ATTENTION name == name="report_name" du rapport que je veux imprimer avec ce
+                bouton-->
+            <field name="key">action</field>
+            <field name="key2">client_print_multi</field>
+            <field name="model">res.partner</field>
+            <!-- ATTENTION name == name="model" du rapport que je veux imprimer avec ce bouton-->
+            <field name="object">TRUE</field>
+            <!-- c'est comme ça -->
+            <field name="value" eval="'ir.actions.report.xml,' + str(ref('oph.first_report_pdf_id'))"/>
+        </record>
+
+
+
+    </data>
+</openerp>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+<!-- IOL.TYPE -->
+
+        <record model="oph.iol.type" id="iol_sn60wf">
+            <field name="name">SN60WF</field>
+            <field name="code">SN60WF</field>
+            <field name="manufactor">ALCON</field>
+            <field name="constant">117</field>
+        </record>
+
+        <record model="oph.iol.type" id="iol_ma50bm">
+            <field name="code">MA50BM</field>
+            <field name="name">MA50BM</field>
+            <field name="manufactor">ALCON</field>
+        </record>
+
+        <record model="oph.iol.type" id="iol_ma60ac">
+            <field name="code">MA60AC</field>
+            <field name="name">MA60AC</field>
+            <field name="manufactor">ALCON</field>
+        </record>
+<!-- IOL.TYPE -->
+    </data>
+</openerp>

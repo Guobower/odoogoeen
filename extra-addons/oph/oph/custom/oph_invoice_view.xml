@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!-- CUSTOM INVOICE TREE VIEW -->
+        <record id="oph_invoice_tree" model="ir.ui.view">
+            <field name="name">oph.account.invoice.tree</field>
+            <field name="model">account.invoice</field>
+            <field name="type">tree</field>
+            <field name="inherit_id" ref="account.invoice_tree"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="date_invoice" position="after">
+                        <field name="date_acte"/>
+                        <field name="payeur"/>
+                        <field name="ref_statement"/>
+                    </field>
+                </data>
+            </field>
+        </record>
+
+        <!-- CUSTOM INVOICE FORM VIEW -->
+        <record id="oph_invoice_form" model="ir.ui.view">
+            <field name="name">oph.account.invoice.form</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="arch" type="xml"> 
+                <data>
+                <field name="partner_id" position="after">
+                    <field name="ref_statement" attrs="{'readonly':[('state','in',('draft','proforma','proforma2','paid','cancelled',))]}"/>
+                </field>
+               
+                    <xpath expr="//field[@name='invoice_line']" position="before">
+                        <group>
+                            <field name="payeur" string="Organisme Payeur" required="1"/>
+                            <!-- <group> </group> regle le probleme du label qui n'apparaissait pas ainsi que
+                                la largeur du field -->
+                        </group>
+                    </xpath>
+                    <xpath expr="//field[@name='invoice_line']/tree/field[@name='product_id']" position="attributes">
+                        <attribute name="domain">[('sale_ok', '=', True)]</attribute>
+                        <!-- on surcharge la vue invoice_form pour que seul les produits sale_ok s'afficchent-->
+                    </xpath>
+                                        
+                    <xpath expr="//group/group/field[@name='date_invoice']" position="after">
+                        <field name="date_acte"/>
+                    </xpath>
+                    
+                </data>
+            </field>
+        </record>
+
+        <!-- CUSTOM SEARCH ViEW -->
+        <record model="ir.ui.view" id="oph_account_invoice_search">
+            <field name="name">oph.account.invoice.search</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.view_account_invoice_filter"/>
+            <field name="arch" type="xml">
+                <filter name="unpaid" position="after">
+                    <separator/>
+                    <filter name="payeur" string="LM" domain="[('payeur','=','LM')]"/>
+                    <filter name="payeur" string="CAFAT-Mut" domain="[('payeur','=','CAFAT Mut')]"/>
+                    <filter name="payeur" string="AMG SUD" domain="[('payeur','=','SUD')]"/>
+                    <filter name="payeur" string="SMIT" domain="[('payeur','=','SMIT')]"/>
+                    <filter name="payeur" string="AMG NORD" domain="[('payeur','=','NORD')]"/>
+                    <filter name="payeur" string="ILES" domain="[('payeur','=','ILES')]"/>
+                    <filter name="payeur" string="AT" domain="[('payeur','=','AT')]"/>
+                    <filter name="payeur" string="Clinique BdC" domain="[('payeur','=','BdC')]"/>
+                    <separator/>
+                    <filter name="ref_statement" string="LM_No_Ref" domain="[('ref_statement','=',False),('payeur','=','LM')]"/>
+                    <filter name="ref_statement" string="LM_Ref" domain="[('ref_statement','!=',False),('payeur','=','LM')]"/>
+                    <filter name="ref_statement" string="SUD_No_Ref" domain="[('ref_statement','=',False),('payeur','=','SUD')]"/>
+                    <filter name="ref_statement" string="SUD_Ref" domain="[('ref_statement','!=',False),('payeur','=','SUD')]"/>
+                </filter>
+            </field>
+        </record>
+        <!-- END CUSTOM SEARCH VIEW FOR ACCOUNT.INVOICE -->
+    </data>
+</openerp>

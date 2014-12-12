@@ -1,0 +1,454 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="0">
+        
+
+<!-- [[[[[ DEMO CASES ]]]]] -->
+
+ <!-- Resource: crm.meeting -->
+ 		<record id="crm_meeting_0" model="crm.meeting">
+            <field eval="1" name="active"/>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="name">RDV_0</field>
+            <field name="description">A perdu ses lunette</field>
+            <field eval="time.strftime('%Y-%m-%d 00:00:00')" name="date"/>
+            <!--field name="categ_ids" eval="[(6,0,[ref('categ_meet1')])]"/>-->
+            <field eval="time.strftime('%Y-%m-%d 00:15:00')" name="date_deadline"/>
+            <field eval="0.25" name="duration"/>
+            <field name="state">open</field>
+        </record>
+
+  		<record id="crm_meeting_1" model="crm.meeting">
+            <field eval="1" name="active"/>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="name">RDB_1</field>
+            <field name="description">se plaint de mouches volantes</field>
+            <field eval="time.strftime('%Y-%m-%d 00:15:00')" name="date"/>
+            <!--field name="categ_ids" eval="[(6,0,[ref('categ_meet1')])]"/>-->
+            <field eval="time.strftime('%Y-%m-%d 00:30:00')" name="date_deadline"/>
+            <field eval="0.25" name="duration"/>
+            <field name="state">open</field>
+        </record>  
+
+		<record id="crm_meeting_2" model="crm.meeting">
+            <field eval="1" name="active"/>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="name">RDV_2</field>
+            <field name="description">Post Op</field>
+            <field eval="time.strftime('%Y-%m-%d 00:30:00')" name="date"/>
+            <!--field name="categ_ids" eval="[(6,0,[ref('categ_meet1')])]"/>-->
+            <field eval="time.strftime('%Y-%m-%d 00:45:00')" name="date_deadline"/>
+            <field eval="0.25" name="duration"/>
+            <field name="state">open</field>
+        </record>
+    
+  		<record id="crm_meeting_3" model="crm.meeting">
+            <field eval="1" name="active"/>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="name">RDV_3</field>
+            <field name="description">Post Op</field>
+            <field eval="time.strftime('%Y-%m-%d 00:45:00')" name="date"/>
+            <!--field name="categ_ids" eval="[(6,0,[ref('categ_meet1')])]"/>-->
+            <field eval="time.strftime('%Y-%m-%d 01:00:00')" name="date_deadline"/>
+            <field eval="0.25" name="duration"/>
+            <field name="state">open</field>
+        </record>  
+    
+    	<record id="crm_meeting_4" model="crm.meeting">
+            <field eval="1" name="active"/>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="name">RDV_4</field>
+            <field name="description">Post Op</field>
+            <field eval="time.strftime('%Y-%m-%d 01:00:00')" name="date"/>
+            <!--field name="categ_ids" eval="[(6,0,[ref('categ_meet1')])]"/>-->
+            <field eval="time.strftime('%Y-%m-%d 01:15:00')" name="date_deadline"/>
+            <field eval="0.25" name="duration"/>
+            <field name="state">open</field>
+        </record>  
+
+		<record id="crm_meeting_5" model="crm.meeting">
+            <field eval="1" name="active"/>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="name">RDV_5</field>
+            <field name="description">Post Op</field>
+            <field eval="time.strftime('%Y-%m-%d 01:15:00')" name="date"/>
+            <!--field name="categ_ids" eval="[(6,0,[ref('categ_meet1')])]"/>-->
+            <field eval="time.strftime('%Y-%m-%d 01:30:00')" name="date_deadline"/>
+            <field eval="0.25" name="duration"/>
+            <field name="state">open</field>
+        </record>  
+
+		<record id="crm_meeting_6" model="crm.meeting">
+            <field eval="1" name="active"/>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="name">RDV_6</field>
+            <field name="description">Post Op</field>
+            <field eval="time.strftime('%Y-%m-%d 01:30:00')" name="date"/>
+            <!--field name="categ_ids" eval="[(6,0,[ref('categ_meet1')])]"/>-->
+            <field eval="time.strftime('%Y-%m-%d 01:45:00')" name="date_deadline"/>
+            <field eval="0.25" name="duration"/>
+            <field name="state">open</field>
+        </record>  	
+
+		<record id="crm_meeting_7" model="crm.meeting">
+            <field eval="1" name="active"/>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="name">RDV_7</field>
+            <field name="description">Post Op</field>
+            <field eval="time.strftime('%Y-%m-%d 01:45:00')" name="date"/>
+            <!--field name="categ_ids" eval="[(6,0,[ref('categ_meet1')])]"/>-->
+            <field eval="time.strftime('%Y-%m-%d 02:00:00')" name="date_deadline"/>
+            <field eval="0.25" name="duration"/>
+            <field name="state">open</field>
+        </record>  
+    
+    	<record id="crm_meeting_8" model="crm.meeting">
+            <field eval="1" name="active"/>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="name">RDV_8</field>
+            <field name="description">Post Op</field>
+            <field eval="time.strftime('%Y-%m-%d 02:00:00')" name="date"/>
+            <!--field name="categ_ids" eval="[(6,0,[ref('categ_meet1')])]"/>-->
+            <field eval="time.strftime('%Y-%m-%d 02:15:00')" name="date_deadline"/>
+            <field eval="0.25" name="duration"/>
+            <field name="state">open</field>
+        </record>  
+
+		<record id="crm_meeting_9" model="crm.meeting">
+            <field eval="1" name="active"/>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="name">RDV_09</field>
+            <field name="description">Post Op</field>
+            <field eval="time.strftime('%Y-%m-%d 02:15:00')" name="date"/>
+            <!--field name="categ_ids" eval="[(6,0,[ref('categ_meet1')])]"/>-->
+            <field eval="time.strftime('%Y-%m-%d 02:30:00')" name="date_deadline"/>
+            <field eval="0.25" name="duration"/>
+            <field name="state">open</field>
+        </record>  
+
+		<record id="crm_meeting_10" model="crm.meeting">
+            <field eval="1" name="active"/>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="name">RDV_10</field>
+            <field name="description">Post Op</field>
+            <field eval="time.strftime('%Y-%m-%d 02:30:00')" name="date"/>
+            <!--field name="categ_ids" eval="[(6,0,[ref('categ_meet1')])]"/>-->
+            <field eval="time.strftime('%Y-%m-%d 02:45:00')" name="date_deadline"/>
+            <field eval="0.25" name="duration"/>
+            <field name="state">open</field>
+        </record>  	
+
+ 		<record id="crm_meeting_11" model="crm.meeting">
+            <field eval="1" name="active"/>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="name">RDV_11</field>
+            <field name="description">Post Op</field>
+            <field eval="time.strftime('%Y-%m-%d 02:45:00')" name="date"/>
+            <!--field name="categ_ids" eval="[(6,0,[ref('categ_meet1')])]"/>-->
+            <field eval="time.strftime('%Y-%m-%d 03:00:00')" name="date_deadline"/>
+            <field eval="0.25" name="duration"/>
+            <field name="state">open</field>
+        </record>  	
+
+		<record id="crm_meeting_12" model="crm.meeting">
+            <field eval="1" name="active"/>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="name">RDV_12</field>
+            <field name="description">A perdu ses lunette</field>
+            <field eval="time.strftime('%Y-%m-%d 11:00:00')" name="date"/>
+            <!--field name="categ_ids" eval="[(6,0,[ref('categ_meet1')])]"/>-->
+            <field eval="time.strftime('%Y-%m-%d 11:15:00')" name="date_deadline"/>
+            <field eval="0.25" name="duration"/>
+            <field name="state">open</field>
+        </record>
+
+  		<record id="crm_meeting_13" model="crm.meeting">
+            <field eval="1" name="active"/>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="name">RDV_13</field>
+            <field name="description">se plaint de mouches volantes</field>
+            <field eval="time.strftime('%Y-%m-%d 11:15:00')" name="date"/>
+            <!--field name="categ_ids" eval="[(6,0,[ref('categ_meet1')])]"/>-->
+            <field eval="time.strftime('%Y-%m-%d 11:30:00')" name="date_deadline"/>
+            <field eval="0.25" name="duration"/>
+            <field name="state">open</field>
+        </record>  
+
+		<record id="crm_meeting_14" model="crm.meeting">
+            <field eval="1" name="active"/>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="name">RDV_14</field>
+            <field name="description">Post Op</field>
+            <field eval="time.strftime('%Y-%m-%d 11:30:00')" name="date"/>
+            <!--field name="categ_ids" eval="[(6,0,[ref('categ_meet1')])]"/>-->
+            <field eval="time.strftime('%Y-%m-%d 11:45:00')" name="date_deadline"/>
+            <field eval="0.25" name="duration"/>
+            <field name="state">open</field>
+        </record>
+    
+  		<record id="crm_meeting_15" model="crm.meeting">
+            <field eval="1" name="active"/>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="name">RDV_15</field>
+            <field name="description">Post Op</field>
+            <field eval="time.strftime('%Y-%m-%d 11:45:00')" name="date"/>
+            <!--field name="categ_ids" eval="[(6,0,[ref('categ_meet1')])]"/>-->
+            <field eval="time.strftime('%Y-%m-%d 12:00:00')" name="date_deadline"/>
+            <field eval="0.25" name="duration"/>
+            <field name="state">open</field>
+        </record>  
+
+		<record id="crm_meeting_16" model="crm.meeting">
+            <field eval="1" name="active"/>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="name">RDV_16</field>
+            <field name="description">Post Op</field>
+            <field eval="time.strftime('%Y-%m-%d 13:45:00')" name="date"/>
+            <!--<field name="categ_ids" eval="[(6,0,[ref('categ_meet1')])]"/> -->
+            <field eval="time.strftime('%Y-%m-%d 14:00:00')" name="date_deadline"/>
+            <field eval="0.25" name="duration"/>
+            <field name="state">open</field>
+        </record>
+
+		<record id="crm_meeting_17" model="crm.meeting">
+            <field eval="1" name="active"/>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="name">RDV_17</field>
+            <field name="description">Post Op</field>
+            <field eval="time.strftime('%Y-%m-%d 14:00:00')" name="date"/>
+            <!--field name="categ_ids" eval="[(6,0,[ref('categ_meet1')])]"/>-->
+            <field eval="time.strftime('%Y-%m-%d 14:15:00')" name="date_deadline"/>
+            <field eval="0.25" name="duration"/>
+            <field name="state">open</field>
+        </record>  
+
+		<record id="crm_meeting_18" model="crm.meeting">
+            <field eval="1" name="active"/>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="name">RDV_18</field>
+            <field name="description">Post Op</field>
+            <field eval="time.strftime('%Y-%m-%d 14:45:00')" name="date"/>
+            <!--field name="categ_ids" eval="[(6,0,[ref('categ_meet1')])]"/>-->
+            <field eval="time.strftime('%Y-%m-%d 15:00:00')" name="date_deadline"/>
+            <field eval="0.25" name="duration"/>
+            <field name="state">open</field>
+        </record>  	
+
+		<record id="crm_meeting_19" model="crm.meeting">
+            <field eval="1" name="active"/>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="name">RDV_19</field>
+            <field name="description">Post Op</field>
+            <field eval="time.strftime('%Y-%m-%d 15:00:00')" name="date"/>
+            <!--field name="categ_ids" eval="[(6,0,[ref('categ_meet1')])]"/>-->
+            <field eval="time.strftime('%Y-%m-%d 15:15:00')" name="date_deadline"/>
+            <field eval="0.25" name="duration"/>
+            <field name="state">open</field>
+        </record>  
+    
+    	<record id="crm_meeting_20" model="crm.meeting">
+            <field eval="1" name="active"/>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="name">RDV_20</field>
+            <field name="description">Post Op</field>
+            <field eval="time.strftime('%Y-%m-%d 15:15:00')" name="date"/>
+            <!--field name="categ_ids" eval="[(6,0,[ref('categ_meet1')])]"/>-->
+            <field eval="time.strftime('%Y-%m-%d 15:30:00')" name="date_deadline"/>
+            <field eval="0.25" name="duration"/>
+            <field name="state">open</field>
+        </record>  
+
+		<record id="crm_meeting_21" model="crm.meeting">
+            <field eval="1" name="active"/>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="name">RDV_21</field>
+            <field name="description">Post Op</field>
+            <field eval="time.strftime('%Y-%m-%d 15:45:00')" name="date"/>
+            <!--field name="categ_ids" eval="[(6,0,[ref('categ_meet1')])]"/>-->
+            <field eval="time.strftime('%Y-%m-%d 16:00:00')" name="date_deadline"/>
+            <field eval="0.25" name="duration"/>
+            <field name="state">open</field>
+        </record>  
+
+		<record id="crm_meeting_22" model="crm.meeting">
+            <field eval="1" name="active"/>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="name">RDV_22</field>
+            <field name="description">Post Op</field>
+            <field eval="time.strftime('%Y-%m-%d 16:00:00')" name="date"/>
+            <!--field name="categ_ids" eval="[(6,0,[ref('categ_meet1')])]"/>-->
+            <field eval="time.strftime('%Y-%m-%d 16:15:00')" name="date_deadline"/>
+            <field eval="0.25" name="duration"/>
+            <field name="state">open</field>
+        </record>  	
+
+ 		<record id="crm_meeting_23" model="crm.meeting">
+            <field eval="1" name="active"/>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="name">RDV_23</field>
+            <field name="description">Post Op</field>
+            <field eval="time.strftime('%Y-%m-%d 16:30:00')" name="date"/>
+            <!--field name="categ_ids" eval="[(6,0,[ref('categ_meet1')])]"/>-->
+            <field eval="time.strftime('%Y-%m-%d 16:45:00')" name="date_deadline"/>
+            <field eval="0.25" name="duration"/>
+            <field name="state">open</field>
+        </record> 
+
+		<record id="crm_meeting_24" model="crm.meeting">
+            <field eval="1" name="active"/>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="name">RDV_24</field>
+            <field name="description">A perdu ses lunette</field>
+            <field eval="time.strftime('%Y-%m-%d 17:00:00')" name="date"/>
+            <!--field name="categ_ids" eval="[(6,0,[ref('categ_meet1')])]"/>-->
+            <field eval="time.strftime('%Y-%m-%d 17:15:00')" name="date_deadline"/>
+            <field eval="0.25" name="duration"/>
+            <field name="state">open</field>
+        </record>
+
+  		<record id="crm_meeting_25" model="crm.meeting">
+            <field eval="1" name="active"/>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="name">RDV_25</field>
+            <field name="description">se plaint de mouches volantes</field>
+            <field eval="time.strftime('%Y-%m-%d 17:15:00')" name="date"/>
+            <!--field name="categ_ids" eval="[(6,0,[ref('categ_meet1')])]"/>-->
+            <field eval="time.strftime('%Y-%m-%d 17:30:00')" name="date_deadline"/>
+            <field eval="0.25" name="duration"/>
+            <field name="state">open</field>
+        </record>  
+
+		<record id="crm_meeting_26" model="crm.meeting">
+            <field eval="1" name="active"/>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="name">RDV_26</field>
+            <field name="description">Post Op</field>
+            <field eval="time.strftime('%Y-%m-%d 17:30:00')" name="date"/>
+            <!--field name="categ_ids" eval="[(6,0,[ref('categ_meet1')])]"/>-->
+            <field eval="time.strftime('%Y-%m-%d 17:45:00')" name="date_deadline"/>
+            <field eval="0.25" name="duration"/>
+            <field name="state">open</field>
+        </record>
+    
+  		<record id="crm_meeting_27" model="crm.meeting">
+            <field eval="1" name="active"/>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="name">RDV_27</field>
+            <field name="description">Post Op</field>
+            <field eval="time.strftime('%Y-%m-%d 17:45:00')" name="date"/>
+            <!--field name="categ_ids" eval="[(6,0,[ref('categ_meet1')])]"/>-->
+            <field eval="time.strftime('%Y-%m-%d 18:00:00')" name="date_deadline"/>
+            <field eval="0.25" name="duration"/>
+            <field name="state">open</field>
+        </record>  
+    
+    	<record id="crm_meeting_28" model="crm.meeting">
+            <field eval="1" name="active"/>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="name">RDV_28</field>
+            <field name="description">Post Op</field>
+            <field eval="time.strftime('%Y-%m-%d 18:00:00')" name="date"/>
+            <!--field name="categ_ids" eval="[(6,0,[ref('categ_meet1')])]"/>-->
+            <field eval="time.strftime('%Y-%m-%d 18:15:00')" name="date_deadline"/>
+            <field eval="0.25" name="duration"/>
+            <field name="state">open</field>
+        </record>  
+
+		<record id="crm_meeting_29" model="crm.meeting">
+            <field eval="1" name="active"/>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="name">RDV_29</field>
+            <field name="description">Post Op</field>
+            <field eval="time.strftime('%Y-%m-%d 18:15:00')" name="date"/>
+            <!--field name="categ_ids" eval="[(6,0,[ref('categ_meet1')])]"/>-->
+            <field eval="time.strftime('%Y-%m-%d 18:30:00')" name="date_deadline"/>
+            <field eval="0.25" name="duration"/>
+            <field name="state">open</field>
+        </record>  
+
+		<record id="crm_meeting_30" model="crm.meeting">
+            <field eval="1" name="active"/>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="name">RDV_30</field>
+            <field name="description">Post Op</field>
+            <field eval="time.strftime('%Y-%m-%d 18:30:00')" name="date"/>
+            <!--field name="categ_ids" eval="[(6,0,[ref('categ_meet1')])]"/>-->
+            <field eval="time.strftime('%Y-%m-%d 18:45:00')" name="date_deadline"/>
+            <field eval="0.25" name="duration"/>
+            <field name="state">open</field>
+        </record>  	
+
+		<record id="crm_meeting_31" model="crm.meeting">
+            <field eval="1" name="active"/>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="name">RDV_31</field>
+            <field name="description">Post Op</field>
+            <field eval="time.strftime('%Y-%m-%d 18:45:00')" name="date"/>
+            <!--field name="categ_ids" eval="[(6,0,[ref('categ_meet1')])]"/>-->
+            <field eval="time.strftime('%Y-%m-%d 19:00:00')" name="date_deadline"/>
+            <field eval="0.25" name="duration"/>
+            <field name="state">open</field>
+        </record>  
+    
+    	<record id="crm_meeting_32" model="crm.meeting">
+            <field eval="1" name="active"/>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="name">RDV_32</field>
+            <field name="description">Post Op</field>
+            <field eval="time.strftime('%Y-%m-%d 18:45:00')" name="date"/>
+            <!--field name="categ_ids" eval="[(6,0,[ref('categ_meet1')])]"/>-->
+            <field eval="time.strftime('%Y-%m-%d 19:00:00')" name="date_deadline"/>
+            <field eval="0.25" name="duration"/>
+            <field name="state">open</field>
+        </record>  
+
+		<record id="crm_meeting_33" model="crm.meeting">
+            <field eval="1" name="active"/>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="name">RDV_33</field>
+            <field name="description">Post Op</field>
+            <field eval="time.strftime('%Y-%m-%d 18:45:00')" name="date"/>
+            <!--field name="categ_ids" eval="[(6,0,[ref('categ_meet1')])]"/>-->
+            <field eval="time.strftime('%Y-%m-%d 19:00:00')" name="date_deadline"/>
+            <field eval="0.25" name="duration"/>
+            <field name="state">open</field>
+        </record>  
+
+		<record id="crm_meeting_34" model="crm.meeting">
+            <field eval="1" name="active"/>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="name">RDV_34</field>
+            <field name="description">Post Op</field>
+            <field eval="time.strftime('%Y-%m-%d 18:45:00')" name="date"/>
+            <!--field name="categ_ids" eval="[(6,0,[ref('categ_meet1')])]"/>-->
+            <field eval="time.strftime('%Y-%m-%d 19:00:00')" name="date_deadline"/>
+            <field eval="0.25" name="duration"/>
+            <field name="state">open</field>
+        </record>  	
+
+        <record id="crm_meeting_35" model="crm.meeting">
+            <field eval="1" name="active"/>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="name">RDV_35</field>
+            <field name="description">Post Op</field>
+            <field eval="time.strftime('%Y-%m-%d 18:45:00')" name="date"/>
+            <!--field name="categ_ids" eval="[(6,0,[ref('categ_meet1')])]"/>-->
+            <field eval="time.strftime('%Y-%m-%d 19:00:00')" name="date_deadline"/>
+            <field eval="0.25" name="duration"/>
+            <field name="state">open</field>
+        </record>
+        
+        <record id="crm_meeting_36" model="crm.meeting">
+            <field eval="1" name="active"/>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="name">OFF</field>
+            <field name="description">VACANCES</field>
+            <field eval="time.strftime('%Y-04-02 08:00:00')" name="date"/>
+            <!--field name="categ_ids" eval="[(6,0,[ref('categ_meet1')])]"/>-->
+            <field eval="time.strftime('%Y-04-02 19:00:00')" name="date_deadline"/>
+            <field eval="0.25" name="duration"/>
+            <field name="state">open</field>
+        </record>
+    
+	</data>
+</openerp>

@@ -1,0 +1,519 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!-- ACTION LOG CONSULTATION-->
+        <record model="ir.actions.act_window" id="logconsultation_act">
+            <field name="name">Log Consultation</field>
+            <field name="res_model">crm.meeting</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_type">form</field>
+            <!--<field name="target">new</field>-->
+            <field name="target">current</field>
+        </record>
+
+        <!-- ACTION LOG BLOC LINE-->
+        <record model="ir.actions.act_window" id="logblocline_action_id">
+            <field name="name">Log Bloc Line</field>
+            <field name="res_model">oph.bloc.agenda.line</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_type">form</field>
+            <!--<field name="target">new</field>-->
+            <field name="target">current</field>
+        </record>
+
+        <!-- OPH AGENDA -->
+        <!-- FORM VIEW POUR L'OBJET CRM_MEETING -->
+        <record model="ir.ui.view" id="agenda_oph_form_view_id1">
+            <field name="name">oph.agenda.form.view</field>
+            <field name="model">crm.meeting</field>
+            <field name="inherit_id" ref="base_calendar.view_crm_meeting_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//sheet" position="before">
+                    <header>
+                        <button name="statechange_draft" string="Draft" type="object" groups="base.group_system"/>
+                        <button name="statechange_open" string="Open" type="object" groups="base.group_system" attrs="{'invisible':[('state', '!=', 'draft')]}"/>
+                        <button name="statechange_busy" string="Busy" type="object" attrs="{'invisible':['|',
+                            ('partner_id','=',False), ('state', '!=', 'open')]}"/>
+                        <button name="statechange_close" string="Close" states="open" type="object"/>
+                        <button name="statechange_in" string="In" states="wait" type="object"/>
+                        <button name="statechange_in_between" string="In Between" states="in" type="object"/>
+                        <button name="statechange_cancel" string="Cancel" states="busy" type="object"/>
+                        <button name="statechange_out" string="Out" states="in,in_between" type="object"/>
+                        <button name="statechange_wait" string="Wait" states="busy" type="object"/>
+                        <!--<button name="statechange_no_show" string="No Show" states="no_show" type="object" attrs="{'invisible':['|',('state','!=','busy'),('state','=','no_show')]}"/>-->
+                        <button name="statechange_no_show" string="No Show" states="no_show" type="object" attrs="{'invisible':[('state','in',['cs','tech','draft','open','wait','cancel','no_show','in','in_between','done','nwnm'])]}"/>
+                        <button name="statechange_nwnm" string="No Wait" states="nwnm" type="object" attrs="{'invisible':[('state','in',['cs','tech','draft','open','cancel','no_show','done','nwnm'])]}"/>
+                        <button name="%(measurement_history_action_id)d" string="History Measurement" type="action"
+                            context="{'search_default_partner_id': partner_id}" attrs="{'invisible':[('partner_id','=',False)]}"/>
+                        <!-- Button to trigger the action for opening measurement tree view-->
+                        <button string="LogConsultation" name="%(logconsultation_act)d" type="action" context="{'search_default_partner_id':partner_id'}"/>
+                        <!-- button to open the tree view for log consultation -->
+                        <button string="LogBlocLine" name="%(logblocline_action_id)d" type="action" context="{'search_default_partner_id':partner_id}"/>
+                        <button string="Inject" name="selection_partner_id" type="object"/>
+                        <!-- button to call the selection partner_id method that inject the partner_id in
+                            the record -->
+                        <button string="Prescriber" name="create_defaults_medication_lines" type="object" attrs="{'invisible':[('state','in',['cs','tech','draft','open','wait','cancel','no_show','busy'])]}"/>
+                        <button string="Prescription Maker" name="create_defaults_protocole_lines" type="object" attrs="{'invisible':[('state','in',['cs','tech','draft','open','wait','cancel','no_show','busy'])]}"/>
+                        <button string="Reports" name="%(oph.reporting_action_id)d" type="action" context="{'default_meeting_id': active_id, 'search_default_meeting_id': active_id}"/>
+                        <button string="Request" name="%(request_maker_action_id)d" type="action" context="{'default_partner_id':partner_id'}"/>
+                        <button string="Free" name="statechange_free" states="in,in_between" type="object"/>
+                        <field name="state" widget="statusbar" nolabel="1" statusbar_visible="draft,open,busy,cancel,in,no_show,wait,in_between,done"
+                            statusbar_colors='{"draft":"blue","busy":"blue"}'/>
+                    </header>
+                </xpath>
+                <!-- <field name="date" position="before"> <field name="state"/> </field> -->
+                <!--<field name="date" position="attributes">-->
+                <!-- <attribute name="on_change">onchange_slot(state, date, duration, organizer)</attribute>-->
+                <!--</field>-->
+                <!-- la suite ne marche pas
+                <div class="oe_title" position="after">
+                    <div class="oe_right oe_button_box" name="buttons">
+                        <button string="Reports" name="%(oph.reporting_action_id)d" type="action" context="{'default_meeting_id': active_id, 'default_search_meeting_id': active_id}"/>
+                    </div>
+                </div>
+                -->
+                <field name="name" position="after">
+                    <group string="Motive">
+                        <field name="motive" attrs="{'invisible':[('state','in',['cs','tech','draft','open','busy','wait','cancel','no_show'])],'required':[('state','in',['in'])]}"/>
+                        <field name="motive_comment" placeholder="Precision for motive of consultation like OD/OS ..." attrs="{'invisible':[('state','in',['cs','tech','draft','open','busy','wait','cancel','no_show'])]}"/>
+                        <field name="tag" invisible="1"/>
+                    </group>
+                    
+                    <label for='chief_complaint' class="oe_edit_only" attrs="{'invisible':[('state','in',['cs','tech','draft','open','busy','wait','cancel','no_show',])]}"/>
+                    <!--<field name='chief_complaint' attrs="{'invisible':[('state','in',['draft','open','busy','wait','cancel','no_show'])],'required':[('state','in',['in',])]}"/>-->
+                    <field name='chief_complaint' placeholder="What's the patient is complaining of" attrs="{'invisible':[('state','in',['cs','tech','draft','open','busy','wait','cancel','no_show'])]}"/>
+                </field>
+                <field name="partner_ids" position="replace">
+                    <label for="partner_id" class="oe_edit_only" attrs="{'invisible':[('state','in',['draft',])]}"/>
+                    <field name="partner_id" attrs="{'invisible':[('state','in',['draft',])]}" on_change="onchange_partner_id(state,given_date)"/>
+                    <field name="datewotime" invisible="0"/>
+                </field>
+
+                <xpath expr="//page[@string='Meeting Details']/group/group/field[@name='date']" position="before">
+                    <field name="given_date" invisible="0"/>
+                </xpath>
+
+                <field name="description" position="after">
+                    <field name="pricelist"/>
+                </field>
+                <page string="Invitations" position="after">
+                    <page string="Tonometry" attrs="{'invisible':[('state','in',['draft','open','wait','busy'])]}">
+                        <field name="tono_ids" widget="one2many" mode="tree" context="{'measurement_type':'tono'}">
+                            <tree string="Tonometry" editable="bottom">
+                                <field name="type_id" invisible="1"/>
+                                <field name="name" invisible="1"/>
+                                <field name="tonometer_id"/>
+                                <field name="iop_od"/>
+                                <field name="iop_os"/>
+                                <field name="comment_iop"/>
+                            </tree>
+                            <form string="Tonometry" version="7.0">
+                                <group  string="Tonometry">
+                                    <field name="type_id" invisible="1"/>
+                                    <field name="name" invisible="1"/>
+                                    <field name="tonometer_id" class="oe_inline"/>
+                                </group>
+                                <group col="4">
+                                <field name="iop_od" class="oe_inline"/>
+                                <field name="iop_os" class="oe_inline"/>
+                                </group>
+                            </form>
+                        </field>
+                    </page>
+                    <page string="Keratometry" attrs="{'invisible':[('state','in',['draft','open','wait','busy'])]}">
+                        <field name="keratometry_ids" widget="one2many" mode="tree" context="{'measurement_type':'ker'}">
+                            <tree string="Keratometry" editable="top">
+                                <field name="type_id" invisible="1"/>
+                                <field name="name" invisible="1"/>
+                                <field name="keratometer_id"/>
+                                <field name="k1_od" on_change="on_change_kod(k1_od)"/>
+                                <field name="k2_od"/>
+                                <field name="k1_os" on_change="on_change_kos(k1_os)"/>
+                                <field name="k2_os"/>
+                            </tree>
+                        </field>
+                    </page>
+
+                    <!--
+
+                    <page string="Visual Acuity" attrs="{'invisible':[('state','in',['draft','open','wait','busy'])]}">
+                        <field name="va_ids" widget="one2many" mode="tree" context="{'measurement_type':'va'}">
+                            <tree string="Visual Acuity" editable="top">
+                                <field name="type_id" invisible="1"/>
+                                <field name="name" invisible="1"/>
+                                <field name="va_tech"/>
+                                <field name="va_type"/>
+                                <field name="va_od"/>
+                                <field name="qualif_od"/>
+                                <field name="nv_od"/>
+                                <field name="m_od"/>
+                                <field name="va_os"/>
+                                <field name="qualif_os"/>
+                                <field name="nv_os"/>
+                                <field name="m_os"/>
+                            </tree>
+                        </field>
+                    </page>
+
+                    -->
+
+                    <page string="Refraction" attrs="{'invisible':[('state','in',['draft','open','wait','busy'])]}">
+                        <field name="refraction_ids" widget="one2many" mode="tree" context="{'measurement_type':'ref'}">
+                            <tree string="Visual Acuity">
+                                <button string="Set RxP" name="mavc2cp" icon="gtk-jump-to" type="object" attrs="{'invisible':[('va_type','=','Rx')]}"/>
+                                <field name="type_id" invisible="1"/>
+                                <field name="name" invisible="1"/>
+                                <field name="va_type"/>
+                                <field name="va_od"/>
+                                <field name="qualif_od" string="Q_OD"/>
+                                <field name="sph_od" on_change="on_change_sph(sph_od)"/>
+                                <field name="cyl_od"/>
+                                <field name="axis_od"/>
+                                <field name="nv_od" on_change="on_change_nv(nv_od)"/>
+                                <field name="add_od" on_change="on_change_add(add_od)"/>
+                                <field name="m_od" string="M_OD" on_change="on_change_m(m_od)"/>
+                                <field name="rp_od" invisible="0" readonly="True"/>
+                                <field name="va_os"/>
+                                <field name="qualif_os" string="Q_OS"/>
+                                <field name="sph_os"/>
+                                <field name="cyl_os"/>
+                                <field name="axis_os"/>
+                                <field name="nv_os"/>
+                                <field name="add_os"/>
+                                <field name="m_os" string="M_OS"/>
+                                <field name="rp_os" invisible="0"/>
+                            </tree>
+                            <form string="Refraction Plus" version="7.0">
+                                <group string="Infos">
+                                    <field name="name" class="oe_inline" invisible="1"/>
+                                    <field name="type_id" class="oe_inline"/>
+                                    <field name="va_type" class="oe_inline"/>
+                                    <field name="va_tech" class="oe_inline"/>
+                                </group>
+                                <group col="6" string="OD">
+                                    <field name="va_od" class="oe_inline" on_change="on_change_va(va_od)"/>
+                                    <field name="qualif_od" string="Q_OD" class="oe_inline"/>
+                                    <field name="m_od" string="M_OD" class="oe_inline" on_change="on_change_m(m_od)"/>
+                                    <field name="sph_od" class="oe_inline" on_change="on_change_sph(sph_od)"/>
+                                    <field name="cyl_od" class="oe_inline" on_change="on_change_cyl(cyl_od)"/>
+                                    <field name="axis_od" class="oe_inline" on_change="on_change_axis(axis_od)"/>
+                                    <field name="nv_od" class="oe_inline" on_change="on_change_nv(nv_od)"/>
+                                    <field name="add_od" class="oe_inline" on_change="on_change_add(add_od)"/>
+                                </group>
+                                <group col="6" string="OG">
+                                    <field name="va_os" class="oe_inline"/>
+                                    <field name="qualif_os" string="Q_OS" class="oe_inline"/>
+                                    <field name="m_os" string="M_OS" class="oe_inline"/>
+                                    <field name="sph_os" class="oe_inline"/>
+                                    <field name="cyl_os" class="oe_inline"/>
+                                    <field name="axis_os" class="oe_inline"/>
+                                    <field name="nv_os" class="oe_inline"/>
+                                    <field name="add_os" class="oe_inline"/>
+                                </group>
+                            </form>
+                        </field>
+                    </page>
+
+                    <page string="Slit Lamp Exam" attrs="{'invisible':[('state','in',['draft','open','wait','busy'])]}">
+                        <field name="sle_ids" widget="one2many" mode="tree" context="{'measurement_type':'sle'}">
+                            <tree string="Slit Lamp Exam" editable="top">
+                                <!-- editable="top"-->
+                                <field name="type_id" invisible="1"/>
+                                <field name="name"/>
+                                <field name="as_od"/>
+                                <field name="as_os"/>
+                                <field name="ps_od"/>
+                                <field name="ps_os"/>
+                            </tree>
+                        </field>
+                    </page>
+
+                    <page string="Todo List" attrs="{'invisible':[('state','in',['draft','open'])]}">
+                        <field name="todo_list_ids" widget="one2many" mode="tree">
+                            <tree string="Todo List" editable="top">
+                                <field name="name"/>
+                                <field name="state"/>
+                                <field name="comment"/>
+                                <field name="tag_id"/>
+                            </tree>
+                        </field>
+                    </page>
+
+                    <page string="Pathology" attrs="{'invisible':[('state','in',['draft','open','wait'])]}">
+                        <field name="pathology_ids" widget="many2many">
+                            <tree string="Pathology" editable="top">
+                                <field name="name"/>
+                                <field name="comment"/>
+                            </tree>
+                        </field>
+                    </page>
+
+                    <page string="Medication Lines" attrs="{'invisible':[('state','in',['draft','open','wait','busy'])]}">
+                        <field name="medication_line_ids">
+                            <tree string="Medication Line">
+                                <field name="name"/>
+                                <field name="brandname_id"/>
+                                <field name="poso"/>
+                                <field name="duration"/>
+                                <field name="ods" required="True"/>
+                                <field name="ods_needed"/>
+                            </tree>
+                        </field>
+                    </page>
+
+                    <page string="Protocole" attrs="{'invisible':[('state','in',['draft','open','wait','busy'])]}">
+                        <field name="protocole_ids" widget="many2many">
+                            <tree string="Protocole" editable="top">
+                                <field name="name"/>
+                            </tree>
+                        </field>
+                    </page>
+
+                    <page string="Protocole Lines" attrs="{'invisible':[('state','in',['draft','open','wait','busy'])]}">
+                        <field name="protocole_line_ids">
+                            <tree string="Protocole Line">
+                                <field name="name"/>
+                                <field name="exam_id"/>
+                                <field name="comment"/>
+                                <field name="result"/>
+                                <field name="ods" required="False"/>
+                            </tree>
+                        </field>
+                    </page>
+
+                    <page string="Reporting">
+                        <field name="reporting_line_ids">
+                            <tree string="Reporting">
+                                <field name="type"/>
+                                <field name="name"/>
+                                <field name="meeting_id" invisible="1"/>
+                                <field name="partner_id"/>
+                                <field name="template_ids"/>
+                                <field name="date"/>
+                                <field name="state"/>
+                            </tree>
+                        </field>
+                    </page>
+
+                    <page string="Neuro" attrs="{'invisible':[('state','in',['draft','open','wait','busy'])]}">
+                        <label for="neuro" string="observation neurologique"/>
+                        <field name="neuro"/> 
+                    </page>
+
+                    <page string="Medical History">
+                        <label for="mh"/>
+                        <field name="mh"/> 
+                    </page>
+
+                    <page string="Miscellaneous" attrs="{'invisible':[('state','in',['draft','open','wait','busy'])]}">
+                        <field name="miscellaneous_ids" widget="one2many" mode="tree" context="{'measurement_type':'misc'}">
+                            <tree string="Miscellaneous" editable="top">
+                                <!-- editable="top"-->
+                                <field name="weight"/>
+                                <field name="comment_misc"/>
+                            </tree>
+                        </field>
+                    </page>
+
+                    <page string="Conclusion" attrs="{'invisible':[('state','in',['draft','open','wait','busy'])]}">
+                        <field name="conclusion_ids" widget="one2many" mode="tree" context="{'measurement_type':'conc'}">
+                            <tree string="Conclusion" editable="top">
+                                <field name="type_id" invisible="1"/>
+                                <field name="name" invisible="1"/>
+                                <field name="conclusion"/>
+                                <field name="conclusion_od"/>
+                                <field name="conclusion_os"/>
+                            </tree>
+                        </field>
+                    </page>
+
+                </page>
+            </field>
+        </record>
+
+        <!-- TREE VIEW FOR CRM MEETING (=OPH AGENDA) -->
+        <record model="ir.ui.view" id="agenda_oph_tree_view_id1">
+            <field name="name">oph.agenda.form.view</field>
+            <field name="model">crm.meeting</field>
+            <field name="inherit_id" ref="base_calendar.view_crm_meeting_tree"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="user_id" position="before">
+                        <field name="partner_id"/>
+                        <field name="name" invisible="1"/>
+                        <field name="chief_complaint" placeholder="What's the patient is complaining of" invisible="1"/>
+                        <field name="fullmotive" string="FullMotive"/>
+                        <field name="state"/>
+                        <field name="tag" invisible="1"/>
+                        <field name="categ_ids"/>
+                        <field name="datewotime"/>
+                        <field name="todo_list_ids"/>
+                        <!--n'apporte pas grand chose comme information car on a pas l'état de ces records
+                            mais bon on voit qu'il y a des choses à faire ou pas-->
+                        <field name="medication_line_ids"/>
+                        <!-- on verra avec cela s'il y a eu ou pas prescription -->
+                        <field name="conclusion_ids"/>
+                        <field name="reporting_line_ids"/>
+                    </field>
+                    <field name="date" position="after">
+                        <field name="date_deadline"/> <!-- intéressant pour voir ce qui se passe avec les timezone et le tri sur Today pourra être supprimé plus tard-->
+                        <field name="given_date"/><!---->
+                        <field name="write_date" invisible="1"/><!--pas intéressant car modifié si modification du record a remplacer par given_date-->
+                        <field name="free" readonly="1"/>
+                    </field>
+                    <field name="duration" position="attributes">
+                        <attribute name="sum">Total</attribute>
+                    </field>
+                    <field name="categ_ids" position="replace"/>
+                </data>
+            </field>
+        </record>
+
+        <!-- VIEWS FOR OPH.MOTIVE -->
+        <!-- TREE VIEW OPH.MOTIVE  -->
+        <record model="ir.ui.view" id="motive_tree_view_id">
+            <field name="name">motive.tree</field>
+            <field name="model">oph.motive</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <tree string="Type">
+                    <field name="id"/>
+                    <field name="name"/>
+                    <field name="comment"/>
+                </tree>
+            </field>
+        </record>
+        <!-- FORM VIEW OPH.MOTIVE-->
+        <record model="ir.ui.view" id="motive_form_view_id">
+            <field name="name">oph.motive.form</field>
+            <field name="model">oph.motive</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <form string="Motive" version="7.0">
+                    <group>
+                        <field name="id"/>
+                        <field name="name"/>
+                        <field name="comment"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+        <!-- END VIEW OPH.MOTIVE-->
+
+        <!-- ACTIONS / MENUITEM -->
+        <!-- MOTIVE -->
+        <record model="ir.actions.act_window" id="motive_action_id">
+            <field name="name">Motive</field>
+            <field name="res_model">oph.motive</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="motive_tree_view_id"/>
+        </record>
+        <menuitem parent="config_oph_id" id="motive_menu_id" sequence ="70" action="motive_action_id"/>
+
+        <!-- TO HAVE SHOP MENU IN SALE MENU WITHOUT STOCK MODULE-->
+        <menuitem action="sale.action_shop_form" id="menu_action_shop_form" parent="base.menu_base_config" sequence="35" />
+
+        <!-- TO HAVE A CALENDAR MENU THAT PUT DIRECTLY TO TREE VIEW OF CALENDAR WITHOUT PASSING BY CALENDAR VIEW-->
+        <record id="action_crm_meeting_tree" model="ir.actions.act_window">
+            <field name="name">Meetings</field>
+            <field name="res_model">crm.meeting</field>
+            <field name="view_mode">tree,form,calendar,gantt</field>
+            <field name="view_id" ref="base_calendar.view_crm_meeting_tree"/>
+            <field name="search_view_id" ref="base_calendar.view_crm_meeting_search"/>
+            <field name="context">{"calendar_default_user_id": uid}</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+            Click to schedule a new meeting.
+                </p>
+                <p>
+            The calendar is shared between employees and fully integrated with
+            other applications such as the employee holidays or the business
+            opportunities.
+                </p>
+            </field>
+        </record>
+
+        <menuitem parent="mail.mail_my_stuff" id="calendar_tree_menu_id" action="action_crm_meeting_tree" sequence = "11"/>
+
+
+        <!-- VIEW SEARCH FOR MEETING -->
+        <record model="ir.ui.view" id="agenda_oph_search_view_id1">
+            <field name="name">oph.agenda.search.view</field>
+            <field name="model">crm.meeting</field>
+            <field name="inherit_id" ref="base_calendar.view_crm_meeting_search"/>
+            <field name="arch" type="xml">
+                <field name="name" position="before">
+                                
+
+                    <filter icon="terp-go-today" string="Today" domain="[('date','&lt;=',time.strftime('%%Y-%%m-%%d 23:59:59')),('date','&gt;=',time.strftime('%%Y-%%m-%%d 00:00:00'))]" help="Filter on patients of the day"/>
+
+<!--
+
+                    <filter icon="terp-go-today" string="Today" name="today" domain="[('name','&gt;=',current_date),('name','&lt;=',current_date)]" />
+____MARCHE PAS 
+-->
+
+<!--
+
+<filter name="today" string="Today" domain="[('date','=',time.strftime('%%Y-%%m-%%d'))]"/>
+___MARCHE PAS
+-->
+<!--
+                    <filter icon="terp-go-today" string="MyTodayOndateWOtime" domain="[('datewotime','=',time.strftime('%%Y-%%m-%%d'))]"/>
+
+-->
+                    <filter icon="terp-go-today" string="MyTodayOndateWOtime" domain="[('datewotime','=',current_date)]"/>
+
+                    <filter icon="terp-go-today" string="Open" domain="[('state','=','open')]"/>
+                    <filter icon="terp-go-today" string="Busy" domain="[('state','=','busy')]"/>
+                    <filter icon="terp-go-today" string="Wait" domain="[('state','=','wait')]"/>
+                    <filter icon="terp-go-today" string="In" domain="[('state','=','in')]"/>
+                    <filter icon="terp-go-today" string="In Between" domain="[('state','=','in_between')]"/>
+                    <filter icon="terp-go-today" string="Out" domain="[('state','=','done')]"/>
+                    <filter icon="terp-go-today" string="No Wait No More" domain="[('state','=','nwnm')]"/>
+                    <filter icon="terp-go-today" string="No Show" domain="[('state','=','no_show')]"/>
+                    <filter icon="terp-go-today" string="Office" domain="[('tag','=','office')]"/>
+                    <filter icon="terp-go-today" string="OR" domain="[('tag','=','or')]"/>
+                    <separator/>
+                    <filter icon="terp-go-today" string="Free" domain="[('free','=',True)]"/>
+                </field>
+                <field name="partner_ids" position="replace">
+                    <field name="partner_id"/>
+                    <!-- pour virer et surcharger participants -->
+                </field>
+                <xpath expr="//filter[@name='message_unread']" position="after">
+                    <field name="state"/>
+                    <field name="date"/>
+                    <field name="categ_ids"/>
+                    <group expand="0" string="Group_By...">
+                        <filter string="Date" icon="terp-partner" domain="[]" context="{'group_by':'date'}"/>
+                        <filter string="Category" icon="terp-partner" domain="[]" context="{'group_by':'categ_ids'}"/>
+                        <filter string="Motive" icon="terp-partner" domain="[]" context="{'group_by':'motive'}"/>
+                    </group>
+                </xpath>
+
+            </field>
+        </record>
+
+        <!-- CALENDAR VIEW CUSTOM -->
+        <!-- CRM Meeting Calendar -->
+
+        <record model="ir.ui.view" id="base_calendar.view_crm_meeting_calendar">
+            <field name="name">CRM - Meetings Calendar</field>
+            <field name="model">crm.meeting</field>
+            <field name="priority" eval="2"/>
+            <field name="arch" type="xml">
+                <calendar string="Meetings" date_start="date" color="state" date_stop="date_deadline"
+                    date_delay="duration">
+                    <field name="partner_id"/>
+                    <field name="name"/>
+                    <!--<field name="user_id"/>-->
+                    <field name="state"/>
+                </calendar>
+            </field>
+        </record>
+
+    </data>
+</openerp>

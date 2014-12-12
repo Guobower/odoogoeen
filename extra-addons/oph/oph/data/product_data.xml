@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="0">
+        <!-- ressoure res.partner 
+        <record id="goeen_partner" model="res.partner" context="{'default_is_company': True}">
+            <field name="name">Cabinet d'ophtalmologie GOEEN</field>
+            <field name="company_id" eval="None"/>
+            <field name="image" eval="False"/>
+            <field name="customer" eval="False"/>
+            <field name="is_company" eval="True"/>
+            <field name="street">48 av du maréchal FOCH</field>
+            <field name="city">Nouméa</field>
+            <field name="zip">98800</field>
+            <field name="phone">(+687) 28 16 00</field>
+            <field name="fax">(+687) 28 16 08</field>
+            <field name="email">ophtalmologie.goeen@gmail.com</field>
+            <field name="website">www.goeen.com</field>
+        </record>
+        -->
+        <!-- goeen company 
+        <record id="goeen_company_id" model="res.company">
+            <field name="name">Cabinet d'ophtalmologie GOEEN</field>
+            <field name="partner_id" ref="goeen_partner"/>
+            <field name="currency_id" ref="base.XPF"/>
+            <field name="rml_header1">Cabinet GOEEN Tagline</field>
+            <field name="phone">(+687) 28 16 00</field>
+            <field name="parent_id" ref="base.main_company"/>
+        </record>
+        -->
+
+   <!--
+     <field name="message_follower_ids" eval="[(3, ref('base.partner_root')), (4, ref('base.partner_demo'))]"/>
+    -->
+        
+        <!-- Resource: product.category -->
+        <record id="product_category_clinic_id" model="product.category">
+            <field name="parent_id" ref="product.product_category_all"/>
+            <field name="name">Clinique</field>
+        </record>
+
+        <record id="product_category_surg_id" model="product.category">
+            <field name="parent_id" ref="product.product_category_all"/>
+            <field name="name">Surgery</field>
+        </record>
+
+        <!--      Resource: product.product  -->
+        <!-- CS -->
+        <record id="product_product_cs_id" model="product.product">
+            <field name="name">CS+MPC</field>
+            <field name="categ_id" ref="product_category_clinic_id"/>
+            <field name="standard_price">4830</field>
+            <field name="list_price">4830</field>
+            <field name="type">service</field>
+            <field name="default_code">CS+MPC</field>
+            <field name="uom_id" ref="product.product_uom_hour"/>
+            <field name="uom_po_id" ref="product.product_uom_hour"/>
+            <field name="description">Acte de consultation</field>
+            <field name="description_sale">Acte de consultation</field>
+        </record>
+        
+        <!-- FO -->
+        <record id="product_product_fo_id" model="product.product">
+            <field name="name">FO</field>
+            <field name="categ_id" ref="product_category_clinic_id"/>
+            <field name="standard_price">5170</field>
+            <field name="list_price">5170</field>
+            <field name="type">service</field>
+            <field name="default_code">K11</field>
+            <field name="uom_id" ref="product.product_uom_hour"/>
+            <field name="uom_po_id" ref="product.product_uom_hour"/>
+            <field name="description">Fond d'oeil</field>
+            <field name="description_sale">Examen de la retine patient dilate</field>
+        </record>
+        <record id="product_product_foret_id" model="product.product">
+            <field name="name">FO+RET</field>
+            <field name="categ_id" ref="product_category_clinic_id"/>
+            <field name="standard_price">7285</field>
+            <field name="list_price">7285</field>
+            <field name="type">service</field>
+            <field name="default_code">K11+K9/2</field>
+            <field name="uom_id" ref="product.product_uom_hour"/>
+            <field name="uom_po_id" ref="product.product_uom_hour"/>
+            <field name="description">Fond d'oeil et Rétinophotographie</field>
+            <field name="description_sale">Fond d'oeil et Rétinophotographie</field>
+        </record>
+
+        <!-- OCTs-->
+        <record id="product_product_OCTODG_id" model="product.product">
+            <field name="name">OCT ODG</field>
+            <field name="categ_id" ref="product_category_clinic_id"/>
+            <field name="standard_price">13395</field>
+            <field name="list_price">13395</field>
+            <field name="type">service</field>
+            <field name="default_code">K19+19/2</field>
+            <field name="uom_id" ref="product.product_uom_hour"/>
+            <field name="uom_po_id" ref="product.product_uom_hour"/>
+            <field name="description">Tomographie par cohérence optique ODG</field>
+            <field name="description_sale">Tomographie par cohérence optique des deux yeux</field>
+        </record>
+        <record id="product_product_OCT_id" model="product.product">
+            <field name="name">OCT [OD][OG] </field>
+            <field name="categ_id" ref="product_category_clinic_id"/>
+            <field name="standard_price">8930</field>
+            <field name="list_price">8930</field>
+            <field name="type">service</field>
+            <field name="default_code">K19</field>
+            <field name="uom_id" ref="product.product_uom_hour"/>
+            <field name="uom_po_id" ref="product.product_uom_hour"/>
+            <field name="description">Tomographie par cohérence optique OD ou OG</field>
+            <field name="description_sale">Tomographie par cohérence optique OD ou OG</field>
+        </record>
+        <record id="product_product_OCTFO_id" model="product.product">
+            <field name="name">OCT [OD][OG]+FO </field>
+            <field name="categ_id" ref="product_category_clinic_id"/>
+            <field name="standard_price">15515</field>
+            <field name="list_price">15515</field>
+            <field name="type">service</field>
+            <field name="default_code">K19+K11/2</field>
+            <field name="uom_id" ref="product.product_uom_hour"/>
+            <field name="uom_po_id" ref="product.product_uom_hour"/>
+            <field name="description">Tomographie par cohérence optique OD ou OG et FO </field>
+            <field name="description_sale">Tomographie par cohérence optique OD ou OG et Fond d'Oeil</field>
+        </record>
+        <record id="product_product_ivt_id" model="product.product">
+            <field name="name">Injection Intra Vitrenne</field>
+            <field name="categ_id" ref="product_category_surg_id"/>
+            <field name="standard_price">20400</field>
+            <field name="list_price">20400</field>
+            <field name="type">service</field>
+            <field name="default_code">KC40</field>
+            <field name="uom_id" ref="product.product_uom_hour"/>
+            <field name="uom_po_id" ref="product.product_uom_hour"/>
+            <field name="description">Injection IntraVitréenne</field>
+            <field name="description_sale">Injection IntraVitréenne</field>
+        </record>
+
+        <!-- angiographie-->
+        <record id="product_product_afret_id" model="product.product">
+            <field name="name">Angiographie et rétinophotographie</field>
+            <field name="categ_id" ref="product_category_clinic_id"/>
+            <field name="standard_price">17155</field>
+            <field name="list_price">17155</field>
+            <field name="type">service</field>
+            <field name="default_code">KC32+9/2</field>
+            <field name="uom_id" ref="product.product_uom_hour"/>
+            <field name="uom_po_id" ref="product.product_uom_hour"/>
+            <field name="description">Angiographie et rétinophotographie</field>
+            <field name="description_sale">Angiographie numérisée et rétinophotographie </field>
+        </record>
+        <record id="product_product_af_id" model="product.product">
+            <field name="name">Angiographie</field>
+            <field name="categ_id" ref="product_category_clinic_id"/>
+            <field name="standard_price">15040</field>
+            <field name="list_price">15040</field>
+            <field name="type">service</field>
+            <field name="default_code">KC32</field>
+            <field name="uom_id" ref="product.product_uom_hour"/>
+            <field name="uom_po_id" ref="product.product_uom_hour"/>
+            <field name="description">Angiographie</field>
+            <field name="description_sale">Angiographie numérisée</field>
+        </record>
+        <record id="product_product_afk35_id" model="product.product">
+            <field name="name">Angiographie(K35)</field>
+            <field name="categ_id" ref="product_category_clinic_id"/>
+            <field name="standard_price">16450</field>
+            <field name="list_price">16450</field>
+            <field name="type">service</field>
+            <field name="default_code">KC35</field>
+            <field name="uom_id" ref="product.product_uom_hour"/>
+            <field name="uom_po_id" ref="product.product_uom_hour"/>
+            <field name="description">Angiographie</field>
+            <field name="description_sale">Angiographie numérisée</field>
+        </record>
+        
+        <!--Retinophotography-->
+        <record id="product_product_ret_id" model="product.product">
+            <field name="name">Retinophotographie [OD][OG]</field>
+            <field name="categ_id" ref="product_category_clinic_id"/>
+            <field name="standard_price">4230</field>
+            <field name="list_price">4230</field>
+            <field name="type">service</field>
+            <field name="default_code">K9</field>
+            <field name="uom_id" ref="product.product_uom_hour"/>
+            <field name="uom_po_id" ref="product.product_uom_hour"/>
+            <field name="description">Rétinophotographie OD ou OG</field>
+            <field name="description_sale">Rétinophotographie OD ou OG</field>
+        </record>
+    
+        <!--capsulotomy-->
+        <record id="product_product_caps_id" model="product.product">
+            <field name="name">Capsulotomie laser</field>
+            <field name="categ_id" ref="product_category_clinic_id"/>
+            <field name="standard_price">20400</field>
+            <field name="list_price">20400</field>
+            <field name="type">service</field>
+            <field name="default_code">KC40</field>
+            <field name="uom_id" ref="product.product_uom_hour"/>
+            <field name="uom_po_id" ref="product.product_uom_hour"/>
+            <field name="description">Capsulotomie laser</field>
+            <field name="description_sale">Capsulotomie laser</field>
+        </record>
+
+        <!--biométrie-->
+        <record id="product_product_bio_id" model="product.product">
+            <field name="name">Bio [OD][OG]</field>
+            <field name="categ_id" ref="product_category_clinic_id"/>
+            <field name="standard_price">8930</field>
+            <field name="list_price">8930</field>
+            <field name="type">service</field>
+            <field name="default_code">K19</field>
+            <field name="uom_id" ref="product.product_uom_hour"/>
+            <field name="uom_po_id" ref="product.product_uom_hour"/>
+            <field name="description">Biométrie OD ou OG</field>
+            <field name="description_sale">Biométrie OD ou OG</field>
+        </record>
+        <record id="product_product_bioodg_id" model="product.product">
+            <field name="name">Bio ODG</field>
+            <field name="categ_id" ref="product_category_clinic_id"/>
+            <field name="standard_price">13395</field>
+            <field name="list_price">13395</field>
+            <field name="type">service</field>
+            <field name="default_code">K19+19/2</field>
+            <field name="uom_id" ref="product.product_uom_hour"/>
+            <field name="uom_po_id" ref="product.product_uom_hour"/>
+            <field name="description">Biométrie ODG</field>
+            <field name="description_sale">Biométrie des 2 yeux</field>
+        </record>
+        <record id="product_product_biofo_id" model="product.product">
+            <field name="name">Bio [OD][OG] + FO</field>
+            <field name="categ_id" ref="product_category_clinic_id"/>
+            <field name="standard_price">11515</field>
+            <field name="list_price">11515</field>
+            <field name="type">service</field>
+            <field name="default_code">K19+11/2</field>
+            <field name="uom_id" ref="product.product_uom_hour"/>
+            <field name="uom_po_id" ref="product.product_uom_hour"/>
+            <field name="description">Biométrie OD ou OG et Fond d'oeil </field>
+            <field name="description_sale">Biométrie [OD][OG] + FO</field>
+        </record>
+        
+        <!-- Echography -->
+        <record id="product_product_echofo_id" model="product.product">
+            <field name="name">EchoB [OD][OG] + FO</field>
+            <field name="categ_id" ref="product_category_clinic_id"/>
+            <field name="standard_price">11515</field>
+            <field name="list_price">11515</field>
+            <field name="type">service</field>
+            <field name="default_code">K19+11/2</field>
+            <field name="uom_id" ref="product.product_uom_hour"/>
+            <field name="uom_po_id" ref="product.product_uom_hour"/>
+            <field name="description">Echographie B OD ou OG et Fond d'oeil </field>
+            <field name="description_sale">Echographie B [OD][OG] + FO</field>
+        </record>
+        <record id="product_product_echo_id" model="product.product">
+            <field name="name">EchoB [OD][OG]</field>
+            <field name="categ_id" ref="product_category_clinic_id"/>
+            <field name="standard_price">8930</field>
+            <field name="list_price">8930</field>
+            <field name="type">service</field>
+            <field name="default_code">K19</field>
+            <field name="uom_id" ref="product.product_uom_hour"/>
+            <field name="uom_po_id" ref="product.product_uom_hour"/>
+            <field name="description">Echographie B OD ou OG</field>
+            <field name="description_sale">Echographie B [OD][OG]</field>
+        </record>
+        
+        <!-- Laser retina-->
+        <record id="product_product_lasermac_id" model="product.product">
+            <field name="name">Laser maculaire [OD][OG]</field>
+            <field name="categ_id" ref="product_category_clinic_id"/>
+            <field name="standard_price">30600</field>
+            <field name="list_price">30600</field>
+            <field name="type">service</field>
+            <field name="default_code">KC60</field>
+            <field name="uom_id" ref="product.product_uom_hour"/>
+            <field name="uom_po_id" ref="product.product_uom_hour"/>
+            <field name="description">Laser maculaire OD ou OG</field>
+            <field name="description_sale">Laser maculaire OD ou OG</field>
+        </record>
+        <record id="product_product_laserret_id" model="product.product">
+            <field name="name">Laser Rétine [OD][OG]</field>
+            <field name="categ_id" ref="product_category_clinic_id"/>
+            <field name="standard_price">30600</field>
+            <field name="list_price">30600</field>
+            <field name="type">service</field>
+            <field name="default_code">KC60</field>
+            <field name="uom_id" ref="product.product_uom_hour"/>
+            <field name="uom_po_id" ref="product.product_uom_hour"/>
+            <field name="description">Laser rétine OD ou OG</field>
+            <field name="description_sale">Laser rétine OD ou OG</field>
+        </record>
+        <record id="product_product_laserretodg_id" model="product.product">
+            <field name="name">Laser Rétine ODG</field>
+            <field name="categ_id" ref="product_category_clinic_id"/>
+            <field name="standard_price">45900</field>
+            <field name="list_price">45900</field>
+            <field name="type">service</field>
+            <field name="default_code">KC60+60/2</field>
+            <field name="uom_id" ref="product.product_uom_hour"/>
+            <field name="uom_po_id" ref="product.product_uom_hour"/>
+            <field name="description">Laser rétine ODG</field>
+            <field name="description_sale">Laser rétine OD et OG</field>
+        </record>
+        
+        <!-- IVT's -->
+        <record id="product_product_ivt_id" model="product.product">
+            <field name="name">IVT [OD][OG]</field>
+            <field name="categ_id" ref="product_category_surg_id"/>
+            <field name="standard_price">20400</field>
+            <field name="list_price">20400</field>
+            <field name="type">service</field>
+            <field name="default_code">KC40</field>
+            <field name="uom_id" ref="product.product_uom_hour"/>
+            <field name="uom_po_id" ref="product.product_uom_hour"/>
+            <field name="description">Injection intra-vitréenne OD et OG</field>
+            <field name="description_sale">Injection intra-vitréenne OD ou OG</field>
+        </record>
+        
+        <!-- Corps étranger cornée -->
+        <record id="product_product_lim_id" model="product.product">
+            <field name="name">Limaille</field>
+            <field name="categ_id" ref="product_category_surg_id"/>
+            <field name="standard_price">5100</field>
+            <field name="list_price">5100</field>
+            <field name="type">service</field>
+            <field name="default_code">KC10</field>
+            <field name="uom_id" ref="product.product_uom_hour"/>
+            <field name="uom_po_id" ref="product.product_uom_hour"/>
+            <field name="description">Corps étranger cornée</field>
+            <field name="description_sale">Corps étranger cornée</field>
+        </record>
+
+    </data>
+</openerp>

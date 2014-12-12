@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <!-- OPH.INSTRUMENTATIONS TYPE VIEW -->
+        <!-- TREE VIEw -->
+        <record id="instrumentation_type_tree_view" model="ir.ui.view">
+                <field name="name">instrumentation.type.tree</field>
+            <field name="model">oph.instrumentation.type</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <tree string="Type">
+                    <field name="name"/>
+                    <field name="comment"/>
+                </tree>
+            </field>
+        </record>
+        
+        <!--FORM VIEW -->
+        <record model="ir.ui.view" id="measurement_type_form_view_id">
+            <field name="name">instrumentation.type.form</field>
+            <field name="model">oph.instrumentation.type</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <form string="Type" version="7.0">
+                    <group>
+                        <field name="name" class="oe_inline"/>
+                        <field name="instrumentation_ids"/>
+                    </group> 
+                </form>
+            </field>
+        </record>
+    
+       <!-- OPH INSTRUMENTATION VIEWS -->
+       <!-- TREE VIEW -->
+       <record id="instrumentation_tree_view" model="ir.ui.view">
+                <field name="name">instrumentation.tree</field>
+            <field name="model">oph.instrumentation</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <tree string="Type">
+                    <field name="type_id"/>
+                    <field name="name"/>
+                    <field name="comment"/>
+                    <field name="model"/>
+                    <field name="date_on"/>
+                    <field name="date_purchase"/>
+                    <field name="warranty"/>
+                    <field name="price"/>
+                    <field name="comment"/>
+                </tree>
+            </field>
+        </record>
+        <!--FORM VIEW -->
+        <record model="ir.ui.view" id="measurement_form_view_id">
+            <field name="name">oph.instrumentation.form</field>
+            <field name="model">oph.instrumentation</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <form string="Instrument" version="7.0">
+                    <group>
+                        <field name="type_id"/>
+                        <field name="name"/>
+                        <field name="comment"/>
+                        <field name="model"/>
+                        <field name="date_on"/>
+                        <field name="date_purchase"/>
+                        <field name="warranty"/>
+                        <field name="price"/>
+                    </group> 
+                </form>
+            </field>
+        </record>
+
+
+        <!--ACTION / MENU -->
+        <record model="ir.actions.act_window" id="instrumentation_type_action_id">
+            <field name="name">Instrumentation Type</field>
+            <field name="res_model">oph.instrumentation.type</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="instrumentation_type_tree_view"/>
+        </record>
+
+        <menuitem parent="config_measurement_id" id="instrumentation_type_menu_id" sequence ="60" action="instrumentation_type_action_id"/>
+        
+
+        <record model="ir.actions.act_window" id="instrumentation_action_id">
+            <field name="name">Instrumentation</field>
+            <field name="res_model">oph.instrumentation</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="instrumentation_tree_view"/>
+        </record>
+
+        <menuitem parent="config_measurement_id" id="instrumentation_menu_id" sequence ="70" action="instrumentation_action_id"/>
+    </data>
+</openerp>

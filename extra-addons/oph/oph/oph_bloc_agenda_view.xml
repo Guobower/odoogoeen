@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!-- OPH BLOC AGENDA -->
+        <!-- ressource bloc.agenda -->
+
+        <!-- FORM VIEW OBJECT BLOC.AGENDA -->
+        <record model="ir.ui.view" id="view_bloc_agenda_form_id">
+            <field name="name">Bloc Agenda</field>
+            <field name="model">oph.bloc.agenda</field>
+            <field name="priority" eval="2"/>
+            <field name="arch" type="xml">
+                <form string="Bloc Agenda" version="7.0">
+                    <h1>
+                        <field name="wd" readonly="1"/>
+                    </h1>
+                    <group>
+                        <group>
+                            <field name="name" readonly="False"/>
+                            <field name="start_date" readonly="False"/>
+                            <field name="end_date" readonly="False"/>
+                            <field name="active"/>
+                        </group>
+                        <group>
+                            <field name="comment"/>
+                            <field name="partner_id"/>
+                        </group>
+                    </group>
+                    <notebook colspan="4">
+                        <page string="Bloc Agenda Lines">
+                            <field name="line_ids">
+                                <tree string="Bloc Agenda Line" editable="bottom">
+                                    <!-- editable="bottom" ne marche pas bien j'enleve -->
+                                    <field name="state" readonly="1"/>
+                                    <field name="sequence"/>
+                                    <field name="wd"/>
+                                    <field name="partner_id" domain="[('customer','=',True)]"/>
+                                    <field name="start_time"/>
+                                    <field name="duration" widget="float_time" sum="Total"/>
+                                    <!--<field name="duration_procedure"/>-->
+                                    <field name="procedure_type_id" widget="selection" on_change="onchange_set_duration(procedure_type_id,dilatation,context)"/>
+                                    <field name="dilatation"/>
+                                    <field name="gauge_id"/>
+                                    <field name="ods"/>
+                                    <field name="snd_eye"/>
+                                    <field name="iol_type_id" widget="selection"/>
+                                    <field name="iol_power"/>
+                                    <field name="anesthesia_type_id" widget="selection"/>
+                                    <field name="inpatient_type_id" widget="selection"/>
+                                    <field name="comment"/>
+                                    <field name="ic" readonly="1"/>
+                                    <button string="Set to Open" name="statechange_open" states="draft" icon="gtk-go-forward" type="object"/>
+                                    <button string="Set to Confirm" name="statechange_confirm" states="draft,open" icon="gtk-ok" type="object"/>
+                                    <button string="Set to Close" name="statechange_close" states="draft,open,confirm" icon="gtk-close" type="object"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </form>
+            </field>
+        </record>
+
+        <!-- TREE VIEW OBJECT BLOC.AGENDA-->
+        <record model="ir.ui.view" id="view_bloc_agenda_tree_id">
+            <field name="name">Bloc Agenda</field>
+            <field name="model">oph.bloc.agenda</field>
+            <field name="priority" eval="2"/>
+            <field name="arch" type="xml">
+                <tree string="Bloc Agenda">
+                    <field name="name"/>
+                    <field name="wd"/>
+                    <field name="line_ids"/>
+                    <field name="comment"/>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <!-- ressource oph.bloc.agenda.line -->
+        <!-- FORM VIEW FOR OPH.BLOC.AGENDA.LINE -->
+        <record model="ir.ui.view" id="view_bloc_agenda_line_form_id">
+            <field name="name">Bloc Agenda Line</field>
+            <field name="model">oph.bloc.agenda.line</field>
+            <field name="priority" eval="2"/>
+            <field name="arch" type="xml">
+                <form string="Bloc Agenda Line" version="7.0">
+                    <header>
+                        <button name="statechange_draft" string="Draft" type="object" class="oe_highlight" groups="base.group_system"/>
+                        <button name="statechange_open" states="draft" string="Open" type="object" class="oe_highlight"/>
+                        <button name="statechange_confirm" states="draft,open" type="object" string="Confirm"
+                            class="oe_highlight"/>
+                        <button name="statechange_close" states="draft,open,confirm" type="object" string="Close"
+                            class="oe_highlight"/>
+                        <button name="statechange_cancel" states="draft,open,confirm" type="object" string="Cancel"
+                            class="oe_highlight"/>
+                        <!-- <button name="ic_open" type="object" string="Given" class="oe_highlight"/> <button
+                            name="ic_close" type="object" string="Signed" class="oe_highlight"/>
+                            pourquoi ces deux boutons foutent le boxon dans la vue
+                            -->
+                        <button name="statechange_noshow" states="draft,open,confirm" type="object" string="No Show"
+                            class="oe_highlight"/> 
+                        <button string="Reports" name="%(oph.reporting_action_id)d" type="action" context="{'default_partner_id': partner_id, 'search_default_partner_id': partner_id}"/> 
+                        <button string="LogConsultation" name="%(logconsultation_act)d" type="action" context="{'search_default_partner_id':partner_id}"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,open,confirm,cancel,close"
+                            statusbar_colors='{"draft":"blue","open":"blue","cancel":"red","confirm":"red","close":"blue"}'/>
+                        <!-- la status s'affiche mais pas de changement de couleur -->
+                        
+                    </header>
+                    <sheet string="Bloc Agenda Line">
+                        <group>
+                            <field name="wd" />
+                            <field name="bloc_agenda_id"/>
+                        </group>
+                        <group>
+                            <field name="sequence"/>
+                            <field name="name" invisible="1"/>
+                            <field name="start_time" string="Horaire"/>
+                            <field name="duration"/>
+                            <!--<field name="duration_procedure"/>-->
+                        </group>
+
+                        <group>
+                            <field name="partner_id" domain="[('customer','=',True)]"/>
+                            <field name="procedure_type_id" widget="selection" on_change="onchange_set_duration(procedure_type_id,dilatation)"/>
+                            <field name="gauge_id"/>
+                            <field name="dilatation"/>
+                            <field name="ods"/>
+                            <field name="snd_eye"/>
+                            <field name="anesthesia_type_id" widget="selection"/>
+                            <field name="inpatient_type_id" widget="selection"/>
+                        </group>
+
+                        <group attrs="{'invisible':[('procedure_iol_status','=',False)]}">
+                            <field name="procedure_iol_status" invisible="0" readonly="True"/>
+                            <field name="snd_eye"/>
+                            <field name="iol_type_id" widget="selection" />
+                            <field name="iol_power"/>
+                        </group>
+
+                        <group>
+                            <!--<field name="state"/> commented. If not commented status bar not working properly-->
+                            <field name="ic"/>
+                        </group>
+                        <field name="comment"/>
+                        <group string="RDV ANE Info">
+                            <field name="ane_appointment"/>
+                            <field name="ane_comment"/>
+                        </group>                        
+                        <!--<group attrs="{'invisible':['|','|','|',('state','=','draft'),('state','=','open'),('state','=','no_show'),('state','=','cancel')]}" string="CR hostpit">-->
+                        <group attrs="{'invisible':[('state','not in',['confirm','close'])]}" string="CR hostpit">
+                            <field name="po_meeting_id"/>
+                            <field name="indication_id"/>
+                            <field name="operator_id"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!-- END OF FORM VIEW FOR BLOC.AGENDA.LINE -->
+
+        <!-- TREE FOR BLOC.AGENDA.LINE -->
+        <record model="ir.ui.view" id="view_bloc_agenda_line_tree_id">
+            <field name="name">Bloc Agenda Line</field>
+            <field name="model">oph.bloc.agenda.line</field>
+            <field name="priority" eval="2"/>
+            <field name="arch" type="xml">
+                <tree string="Bloc Agenda Line" colors="red:state=='open';blue:state=='open';black:state=='close';grey:state=='cancel'">
+                    <field name="state"/>
+                    <field name="sequence" invisible="1"/>
+                    <field name="name" invisible="1"/>
+                    <field name="partner_id" domain="[('customer','=',True)]"/>
+                    <field name="bloc_agenda_id"/>
+                    <field name="ods"/>
+                    <field name="anesthesia_type_id"/>
+                    <field name="inpatient_type_id"/>
+                    <field name="iol_type_id"/>
+                    <!-- invisible marche pas dans les tree view-->
+                    <field name="iol_power"/>
+                    <field name="snd_eye"/>
+                    <field name="procedure_type_id" on_change="onchange_set_duration(procedure_type_id)"/>
+                    <field name="duration" sum="Total"/>
+                    <!--<field name="duration_procedure" sum="Total"/>-->
+                    <field name="start_time" string="Horaire"/>
+                    <field name="dilatation"/>
+                    <field name="comment"/>
+                    <field name="ic"/>
+                </tree>
+            </field>
+        </record>
+        <!-- END OF TREE FOR BLOC.AGENDA.LINE -->
+
+        <!-- SEARCH VIEW FOR BLOC.AGENDA LINE -->
+        <!-- "GROUP BY" -->
+        <record model="ir.ui.view" id="view_bloc_agenda_line_search_id">
+            <field name="name">Bloc Agenda Line Select</field>
+            <field name="model">oph.bloc.agenda.line</field>
+            <field name="priority" eval="2"/>
+            <field name="arch" type="xml">
+                <search string="Bloc Agenda Line">
+                    <field name="partner_id"/>
+                    <field name="bloc_agenda_id"/>
+                    <field name="state"/>
+                    <field name="ic"/>
+                    <filter name="state_draft" string="Draft" domain="[('state','=','draft')]" help="Bloc Line just created"/>
+                    <filter name="state_open" string="Open" domain="[('state','=','open')]" help="Bloc Line waiting for confirmation"/>
+                    <filter name="state_confirm" string="Confirm" domain="[('state','=','confirm')]" help="Bloc Line waiting for execution"/>
+                    <filter name="state_cancel" string="Cancel" domain="[('state','=','cancel')]" help="Bloc Line canceled"/>
+                    <filter name="state_close" string="Close" domain="[('state','=','close')]" help="Bloc Line closed"/>
+                    <separator/>
+                    <filter name="ic_draft" string="IC_Draft" domain="[('ic','=','draft')]" help="TODO"/>
+                    <filter name="ic_open" string="IC_Open" domain="[('ic','=','open')]" help="IC delivered to the patient"/>
+                    <filter name="ic_close" string="IC_Close" domain="[('ic','=','close')]" help="IC given back by the patient"/>
+                    <group expand="0" string="Group By...">
+                        <filter string="Partner" icon="terp-partner" domain="[]" context="{'group_by':'partner_id'}"/>
+                        <filter string="Bloc Agenda" icon="terp-partner" domain="[]" context="{'group_by':'bloc_agenda_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+
+
+        <!-- ACTION -->
+        <record model="ir.actions.act_window" id="bloc_agenda_action_id">
+            <field name="name">Bloc Agenda</field>
+            <field name="res_model">oph.bloc.agenda</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_bloc_agenda_tree_id"/>
+        </record>
+        <!-- CREE LE MENU POUR BLOC AGENDA -->
+        <menuitem parent="mail.mail_my_stuff" id="bloc_agenda_menu_id" action="bloc_agenda_action_id" sequence = "12"/>
+
+        <!-- LINE -->
+        <record model="ir.actions.act_window" id="bloc_agenda_action_line_id">
+            <field name="name">Bloc Agenda Line</field>
+            <field name="res_model">oph.bloc.agenda.line</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_bloc_agenda_line_tree_id"/>
+        </record>
+        <!-- CREE LE MENU POUR BLOC AGENDA LINE-->
+        <menuitem parent="mail.mail_my_stuff" id="bloc_agenda_line_menu_id" action="bloc_agenda_action_line_id" sequence = "13"/>
+        <!-- END MENU LINE -->
+
+        <!-- PORTAL FOR BLOC AGENDA-->
+        <record model="ir.actions.act_window" id="action_agenda_portal_view">
+            <field name="name">Agenda Portal</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">oph.bloc.agenda</field>
+            <field name="view_mode">tree,calendar,form</field>
+            <field name="help">There are no public portal.</field>
+        </record>
+
+        <menuitem name="Bloc Agenda Portal" id="portal_agenda_menu" parent="portal.portal_company"
+            action="action_agenda_portal_view" sequence="30"/>
+
+    </data>
+</openerp>
