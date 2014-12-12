@@ -33,6 +33,11 @@ Permet de faire pleins de choses absolument géniales
                  "portal",
                  ],
     'data': [
+                'custom/oph_partner_view.xml',
+                'custom/oph_res_users_view.xml',
+                'custom/oph_sale_order_view.xml',
+                'custom/oph_account_invoice_view.xml',
+                'custom/oph_account_voucher_view.xml',
        #========================================================================
        #  'security/oph_security.xml',
        #  'security/ir.model.access.csv',
@@ -59,7 +64,7 @@ Permet de faire pleins de choses absolument géniales
        # 
        #========================================================================
 #===============================================================================
-         'custom/oph_partner_view.xml',
+         
 # #        'custom/oph_phonecall_view.xml',
 # #        'custom/oph_invoice_view.xml',
 # #        'custom/oph_sale_view.xml',
@@ -72,7 +77,6 @@ Permet de faire pleins de choses absolument géniales
 #         # # 'wizard/oph_formula_prescription_view.xml',
 #         # # 'wizard/oph_diabetic_report_view.xml',
 #         #=======================================================================
-           'custom/oph_res_users_view.xml',
 #===============================================================================
         # 'custom/account_voucher_view.xml',
         # 'wizard/oph_ivt_prescription_view.xml',

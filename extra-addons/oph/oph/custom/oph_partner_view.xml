@@ -21,11 +21,7 @@
 
                 <field name="title" position="attributes">
                     <attribute name="widget">selection</attribute><!-- pour éliminer "create et modifier"-->
-                    <!--
-                    
-                    <attribute name="required"></attribute>
-                    
-                    -->
+                    <!--<attribute name="required">True</attribute>NEMARCHEPAS -->
                 </field>
 
                 <field name="street2" position="after">
@@ -52,15 +48,6 @@
                 <!-- cela fonctionne pas trop mal. J'ai bien l'affiche de la vue que je souhaite -->
                 <!-- sauf que je ne peux pas faire de modifications d'enregistrement car le boutton
                     "save" ne s'affiche pas -->
-
-                <xpath expr="//div[@name='buttons']" postion="after">
-                    <button string="LogConsultation" name="%(logconsultation_act)d" type="action" context="{'search_default_partner_id':active_id}"/>
-                    <button string="Reports" name="%(oph.reporting_action_id)d" type="action" context="{'default_partner_id': active_id, 'search_default_partner_id': active_id}"/>
-                    <button string="TODO List" name="%(todolist_action_id)d" type="action" context="{'search_default_partner_id':
-                        active_id}"/>
-                    <button string="LogBlocLine" name="%(logblocline_action_id)d" type="action" context="{'search_default_partner_id':
-                        active_id}"/>
-                </xpath>
 
                 <xpath expr="//page[@string='Sales &amp; Purchases']/group/group/field[@name='supplier']"
                     position="after">

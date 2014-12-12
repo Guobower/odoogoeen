@@ -7,11 +7,13 @@
 # filename:     __init__.py
 # Comment:
 # ===================================================================
-import partner
-#import account_invoice
+import oph_partner
+import oph_res_users
+import oph_sale_order
+import oph_account_invoice
+import oph_account_voucher
 #import oph_sale
-import res_users
-#import account_voucher
 
+#import account_voucher
 # import meeting
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
