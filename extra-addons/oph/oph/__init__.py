@@ -5,6 +5,7 @@ import oph_instrumentation
 import oph_measurement
 import oph_agenda
 import oph_bloc_agenda
+import oph_reporting
 #import wizard
 #import oph_reporting
 #import oph_filling_template

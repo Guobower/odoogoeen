@@ -46,6 +46,8 @@ Permet de faire pleins de choses absolument géniales
                 'data/prescription_data.xml',
                 'data/procedure_type_data.xml',
                 'oph_bloc_agenda_view.xml',
+                'data/surgery_data.xml',
+                'oph_reporting_view.xml',
        #========================================================================
        #  'security/oph_security.xml',
        #  'security/ir.model.access.csv',
@@ -54,7 +56,6 @@ Permet de faire pleins de choses absolument géniales
        #  'report/Test_premier_report.xml',
        #  
        #  'oph_reporting_view.xml',
-       #  'oph_bloc_agenda_view.xml',
        #  'report/examination_report.xml',
        #  'report/bloc_agenda_report.xml',
        #  'data/ir.config_parameter.xml',

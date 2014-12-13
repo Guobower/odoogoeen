@@ -6,7 +6,19 @@ from datetime import datetime
 import inspect
 import arrow
 
+class oph_lens(orm.Model):
+    """
+    Table for lens usualy for laser treatment or biomicroscopy.
+    Not use for biomicroscopy in the application
+    Usefull for Laser report
+    """
+    _name = "oph.lens"
 
+    _columns = {
+              'name':fields.char('Name', size = 64),
+              'model':fields.char('Model', size = 64),
+              'magnification':fields.float('Magnification'),
+                 }
 class oph_reporting(orm.Model):
     _name = 'oph.reporting'
 
@@ -70,7 +82,6 @@ class oph_reporting(orm.Model):
             context = {}
         obj_meeting = self.pool.get('crm.meeting')
         name = obj_meeting.browse(cr, uid, context['active_id'], context = context).partner_id.fullname
-
         # import pdb;pdb.set_trace()
         date = arrow.now().to(context['tz']).format("DD-MM-YYYY")
         return "Report_" + name + '_' + date

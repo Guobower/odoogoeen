@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="0">
+
+        <!-- INDICATIONS-->
+        <record id="indic-id1" model="oph.indication">
+            <field name="name">DMLA néovascularisée</field>
+            <field name="ivt">True</field>
+        </record>
+        <record id="indic-id2" model="oph.indication">
+            <field name="name">Décollement de rétine du pseudophake</field>
+        </record>
+        <record id="indic-id3" model="oph.indication">
+            <field name="name">Décollement de rétine. Patient phake</field>
+        </record>
+        <record id="indic-id4" model="oph.indication">
+            <field name="name">Récidive de décollement de rétine</field>
+        </record>
+        <record id="indic-id5" model="oph.indication">
+            <field name="name">Récidive de décollement de rétine à la résorption du gaz.</field>
+        </record>
+        <record id="indic-id6" model="oph.indication">
+            <field name="name">Récidive de décollement de rétine à l'ablation du silicone.</field>
+        </record>
+        <record id="indic-id7" model="oph.indication">
+            <field name="name">Cataracte liée à l'âge</field>
+        </record>
+        <record id="indic-id8" model="oph.indication">
+            <field name="name">Oedème maculaire du diabètique</field>
+            <field name="ivt">True</field>
+        </record>
+        <record id="indic-id9" model="oph.indication">
+            <field name="name">Oedème maculaire secondaire à une occlusion de branche veineuse</field>
+            <field name="ivt">True</field>
+        </record>
+        <record id="indic-id10" model="oph.indication">
+            <field name="name">Membrane néovascularisation du fort myope</field>
+            <field name="ivt">True</field>
+        </record>
+        <record id="indic-id11" model="oph.indication">
+            <field name="name">Trou maculaire</field>
+        </record>
+        <record id="indic-id12" model="oph.indication">
+            <field name="name">Membrane épimaculaire</field>
+        </record>
+        <record id="indic-id13" model="oph.indication">
+            <field name="name">Hémorragie intravitréenne</field>
+        </record>
+        <record id="indic-id14" model="oph.indication">
+            <field name="name">Trou maculaire. Patient phake</field>
+        </record>
+        <record id="indic-id15" model="oph.indication">
+            <field name="name">Trou maculaire. Patient pseudophake</field>
+        </record>
+        <record id="indic_id16" model="oph.indication">
+            <field name="name">Glaucome néovasculaire</field>
+        </record>
+
+        <!-- GAUGE DATAS -->
+        <record id="gauge-id1" model="oph.gauge">
+            <field name="name">20G</field>
+        </record>
+        <record id="gauge-id2" model="oph.gauge">
+            <field name="name">23G</field>
+        </record>
+        <record id="gauge-id3" model="oph.gauge">
+            <field name="name">25G</field>
+        </record>
+        <record id="gauge-id4" model="oph.gauge">
+            <field name="name">25G+</field>
+        </record>
+        
+
+        <!-- OPH.ANESTHESIA.TYPE -->
+        <record model="oph.anesthesia.type" id="ane_peri">
+            <field name="name">Péribulbaire</field>
+            <field name="code">PERI</field>
+            <field name="comment">un commentaire</field>
+        </record>
+
+        <record model="oph.anesthesia.type" id="ane_st">
+            <field name="name">Sous Ténonienne</field>
+            <field name="code">ST</field>
+            <field name="comment">un commentaire</field>
+        </record>
+
+        <record model="oph.anesthesia.type" id="ane_top">
+            <field name="name">Topique</field>
+            <field name="code">TOPIQUE</field>
+            <field name="comment">un commentaire</field>
+        </record>
+        
+        <record model="oph.anesthesia.type" id="ane_ag">
+            <field name="name">Anesthésie générale</field>
+            <field name="code">AG</field>
+            <field name="comment">un commentaire</field>
+        </record>
+        
+        <!-- oph.inpatient.type -->
+        <record model="oph.inpatient.type" id="inpatient_ambu">
+            <field name="name">Ambulatoire</field>
+            <field name="code">AMBU</field>
+            <field name="comment">un commentaire</field>
+        </record>
+
+        <record model="oph.inpatient.type" id="inpatient_1nuit">
+            <field name="name">1 nuit hospitalisation</field>
+            <field name="code">1NUITHOSP</field>
+            <field name="comment">Pour les patients restant à la clinique une nuit</field>
+        </record>
+
+        <record model="oph.inpatient.type" id="inpatient_ext">
+            <field name="name">Soins Externes</field>
+            <field name="code">EXT</field>
+            <field name="comment">un commentaire</field>
+        </record>
+
+        <!-- OPH.PROCEDURE.TYPE-->
+        <record model="oph.procedure.type" id="procedure_pkeicp">
+            <field name="name">Phakoémulsification et implantation de chambre postérieure</field>
+            <field name="code">PKE+ICP</field>
+            <field name="dilatation">yes</field>
+            <field name="iol_status" eval="True"/>
+            <field name="duration">45</field>
+            <field name="comment">un commentaire</field>
+        </record>
+
+        <record model="oph.procedure.type" id="procedure_impsec">
+            <field name="name">Implantation secondaire</field>
+            <field name="code">IMPSEC</field>
+            <field name="dilatation">yes</field>
+            <field name="iol_status" eval="True"/>
+            <field name="duration">45</field>
+            <field name="comment">un commentaire</field>
+        </record>
+
+        <record model="oph.procedure.type" id="procedure_ivt">
+            <field name="name">Injection intravitréenne</field>
+            <field name="code">IVT</field>
+            <field name="dilatation">no</field>
+            <field name="iol_status" eval="False"/>
+            <field name="duration">15</field>
+            <field name="comment">un commentaire</field>
+        </record>
+
+        <record model="oph.procedure.type" id="procedure_v3vop">
+            <field name="name">V3V 25G à visée optique</field>
+            <field name="code">V3V25G</field>
+            <field name="dilatation">yes</field>
+            <field name="iol_status" eval="False"/>
+            <field name="duration">90</field>
+            <field name="comment">Pack Total Plus 25G/BIOM</field>
+        </record>
+
+        <record model="oph.procedure.type" id="procedure_st">
+            <field name="name">Injection sous ténonienne</field>
+            <field name="code">ST</field>
+            <field name="dilatation">no</field>
+            <field name="iol_status" eval="False"/>
+            <field name="duration">15</field>
+            <field name="comment">Pas de commentaire</field>
+        </record>
+
+        <record model="oph.procedure.type" id="procedure_v3v">
+            <field name="name">V3V+EL+GAZ ou HS</field>
+            <field name="code">V3VELGAZHS</field>
+            <field name="dilatation">yes</field>
+            <field name="iol_status" eval="False"/>
+            <field name="duration">120</field>
+            <field name="comment">Pack Total Plus / BIOM</field>
+        </record>
+
+        <record model="oph.procedure.type" id="procedure_cryoapp">
+            <field name="name">Cryoapplication</field>
+            <field name="code">CRYOAP</field>
+            <field name="dilatation">yes</field>
+            <field name="iol_status" eval="False"/>
+            <field name="duration">90</field>
+            <field name="comment">Cryode</field>
+        </record>
+
+        <record model="oph.procedure.type" id="procedure_cryoind">
+            <field name="name">Cryo-indentation</field>
+            <field name="code">CRYOIND</field>
+            <field name="dilatation">yes</field>
+            <field name="iol_status" eval="False"/>
+            <field name="duration">90</field>
+            <field name="comment">Loupe Volk Superfield décontamination et lampe à fente</field>
+        </record>
+        
+        <record model="oph.procedure.type" id="procedure_tm">
+            <field name="name">V3V + PM + GAZ</field>
+            <field name="code">TM</field>
+            <field name="dilatation">yes</field>
+            <field name="iol_status" eval="False"/>
+            <field name="duration">90</field>
+            <field name="comment">Pack Total Plus 25G/BIOM + Infracyanine</field>
+        </record>
+        
+        <record model="oph.procedure.type" id="procedure_ablahs">
+            <field name="name">V3V + PM + Ablation huile de silicone</field>
+            <field name="code">ABLAHS</field>
+            <field name="dilatation">yes</field>
+            <field name="iol_status" eval="False"/>
+            <field name="duration">90</field>
+            <field name="comment">Pack Total Plus 25G/BIOM</field>
+        </record>
+        
+        <record model="oph.procedure.type" id="procedure_ablahs">
+            <field name="name">V3V + CERCLAGE + EL + HS ou GAZ</field>
+            <field name="code">V3VCERC</field>
+            <field name="dilatation">yes</field>
+            <field name="iol_status" eval="False"/>
+            <field name="duration">90</field>
+            <field name="comment">Pack Total Plus 23G/BIOM</field>
+        </record>
+        
+        <record model="oph.procedure.type" id="procedure_cycloaffai">
+            <field name="name">CYCLO CRYO AFFAIBLISSEMENT</field>
+            <field name="code">CYCLOAFF</field>
+            <field name="dilatation">no</field>
+            <field name="iol_status" eval="False"/>
+            <field name="duration">60</field>
+            <field name="comment">Boite rétine et cryode</field>
+        </record>
+        
+        <record model="oph.procedure.type" id="procedure_v3vfrag">
+            <field name="name">V3V+PHAKOPHRAGMENTATION</field>
+            <field name="code">V3VFRAG</field>
+            <field name="dilatation">yes</field>
+            <field name="iol_status" eval="False"/>
+            <field name="duration">90</field>
+            <field name="comment">Boite rétine et phragmatome</field>
+        </record>
+
+<!-- IOL.TYPE -->
+        <record model="oph.iol.type" id="iol_sn60wf">
+            <field name="name">SN60WF</field>
+            <field name="code">SN60WF</field>
+            <field name="manufactor">ALCON</field>
+            <field name="constant">117</field>
+        </record>
+
+        <record model="oph.iol.type" id="iol_ma50bm">
+            <field name="code">MA50BM</field>
+            <field name="name">MA50BM</field>
+            <field name="manufactor">ALCON</field>
+        </record>
+
+        <record model="oph.iol.type" id="iol_ma60ac">
+            <field name="code">MA60AC</field>
+            <field name="name">MA60AC</field>
+            <field name="manufactor">ALCON</field>
+        </record>
+<!-- IOL.TYPE -->
+    </data>
+</openerp>
