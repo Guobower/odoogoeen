@@ -12,8 +12,6 @@
             <field name="target">current</field>
         </record>
 
-        
-
         <!-- OPH AGENDA -->
         <!-- FORM VIEW POUR L'OBJET CRM_MEETING -->
         <record model="ir.ui.view" id="agenda_oph_form_view_id1">
@@ -35,17 +33,13 @@
                         <!--<button name="statechange_no_show" string="No Show" states="no_show" type="object" attrs="{'invisible':['|',('state','!=','busy'),('state','=','no_show')]}"/>-->
                         <button name="statechange_no_show" string="No Show" states="no_show" type="object" attrs="{'invisible':[('state','in',['cs','tech','draft','open','wait','cancel','no_show','in','in_between','done','nwnm'])]}"/>
                         <button name="statechange_nwnm" string="No Wait" states="nwnm" type="object" attrs="{'invisible':[('state','in',['cs','tech','draft','open','cancel','no_show','done','nwnm'])]}"/>
-                       
-                
                         <button string="LogConsultation" name="%(logconsultation_act)d" type="action" context="{'search_default_partner_id':partner_id'}"/>
                         <!-- button to open the tree view for log consultation -->
-                        
                         <button string="Inject" name="selection_partner_id" type="object"/>
                         <!-- button to call the selection partner_id method that inject the partner_id in
                             the record -->
                         <button string="Prescriber" name="create_defaults_medication_lines" type="object" attrs="{'invisible':[('state','in',['cs','tech','draft','open','wait','cancel','no_show','busy'])]}"/>
                         <button string="Prescription Maker" name="create_defaults_protocole_lines" type="object" attrs="{'invisible':[('state','in',['cs','tech','draft','open','wait','cancel','no_show','busy'])]}"/>
-                        
                         <button string="Free" name="statechange_free" states="in,in_between" type="object"/>
                         <field name="state" widget="statusbar" nolabel="1" statusbar_visible="draft,open,busy,cancel,in,no_show,wait,in_between,done"
                             statusbar_colors='{"draft":"blue","busy":"blue"}'/>

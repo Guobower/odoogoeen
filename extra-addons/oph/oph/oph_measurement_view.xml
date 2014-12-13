@@ -220,17 +220,7 @@
         <menuitem name="Ophthalmology" parent="main_oph_id" id="ophthalmology_oph_id" sequence="10"/>
         <!-- END MENUITEM -->
         
-        <!--MENU MEASUREMENT-->        
-        <record model="ir.actions.act_window" id="measurement_action_id">
-            <field name="name">Measurement</field>
-            <field name="res_model">oph.measurement</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">tree,form</field>
-            <field name="view_id" ref="measurement_tree_view_id"/>
-            <field name="search_view_id" ref="view_measurement_search_id"/>
-        </record>
-
-        <menuitem parent="ophthalmology_oph_id" id="measurement_menu_id" sequence ="10" action="measurement_action_id"/>
+        
         <!--END MENU MEASUREMENT-->
         
         <!-- CONFIG-MEASUREMENT MENU-->
@@ -308,6 +298,17 @@
             </field>
         </record>
         
+    <!--MENU MEASUREMENT-->        
+        <record model="ir.actions.act_window" id="measurement_action_id">
+            <field name="name">Measurement</field>
+            <field name="res_model">oph.measurement</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="measurement_tree_view_id"/>
+            <field name="search_view_id" ref="view_measurement_search_id"/>
+        </record>
+
+        <menuitem parent="ophthalmology_oph_id" id="measurement_menu_id" sequence ="10" action="measurement_action_id"/>
         <!--SEARCH VIEW FOR TODOLIST -->
         <record id="view_todolist_search_id" model="ir.ui.view">
             <field name="name">oph.tpdlist.select</field>

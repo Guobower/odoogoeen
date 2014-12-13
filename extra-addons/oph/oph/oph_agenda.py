@@ -275,4 +275,12 @@ class crm_meeting(orm.Model):
                 raise osv.except_osv(_('Error!'), _('Impossible to delete a meeting not in draft state  or open!'))
         return super(crm_meeting, self).unlink(cr, uid, ids, context = context)
 
+class oph_measurement(orm.Model):
+    _inherit = "oph.measurement"
+    _columns = {
+                'chief_complaint':fields.related('meeting_id', 'chief_complaint', type = 'char', string = 'Chief Complaint',),
+                'motive':fields.related('meeting_id', 'motive', type = 'many2one', relation = 'oph.motive', store = True, string = "Motive"),
+                }
+# '
+             # 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

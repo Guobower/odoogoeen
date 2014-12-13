@@ -227,9 +227,8 @@ class crm_meeting(orm.Model):
                                             'ods':line.ods,
                                             'result':False,
                                             'comment':line.comment,
-                                            }
-                                    )
-
+                                            }, context = context)
+        return True
 
     _columns = {
               'medication_line_ids':fields.one2many('oph.medication.line', 'meeting_id', 'Medication Line'),

@@ -42,6 +42,8 @@ Permet de faire pleins de choses absolument géniales
                 'oph_instrumentation_view.xml', 
                 'oph_measurement_view.xml',
                 'oph_agenda_view.xml',
+                'data/measurement_type.xml',
+                'data/prescription_data.xml',
        #========================================================================
        #  'security/oph_security.xml',
        #  'security/ir.model.access.csv',
@@ -55,7 +57,6 @@ Permet de faire pleins de choses absolument géniales
        #  'report/examination_report.xml',
        #  'report/bloc_agenda_report.xml',
        #  'data/ir.config_parameter.xml',
-       #  'data/measurement_type.xml',
        #  'data/oph_iol_type_data.xml',
        #  'data/inpatient_type_data.xml',
        #  'data/procedure_type_data.xml',
@@ -63,7 +64,6 @@ Permet de faire pleins de choses absolument géniales
        #  'data/product_data.xml',
        #  # 'data/document_data.xml',
        #  
-       #  'oph_instrumentation_view.xml',
        #  
        # 
        #========================================================================
@@ -76,7 +76,6 @@ Permet de faire pleins de choses absolument géniales
 #         # # 'oph_prescription_view.xml',
 #         # # 'oph_filling_template.xml',
 #         # # 'data/filling_template_data.xml',
-#         # # 'data/prescription_data.xml',
 #         # # 'data/reporting_template_data.xml',
 #         # # 'wizard/oph_formula_prescription_view.xml',
 #         # # 'wizard/oph_diabetic_report_view.xml',

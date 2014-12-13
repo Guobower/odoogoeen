@@ -331,8 +331,6 @@ class oph_measurement(orm.Model):
         self.create(cr, uid, vals, context = context)
         return True
 
-
-
 class oph_todolist(orm.Model):
     """
     TODO LIST for patients
@@ -362,7 +360,6 @@ class oph_todolist(orm.Model):
         get the default value of tag_id
         """
         print "DEFAULT_GET"
-
         tag_obj = self.pool.get('oph.todolist.tag')
         res = tag_obj.search(cr, uid, [('default', '=', True)], context = context)
         res = tag_obj.read(cr, uid, res, fields = ['name'], context = context)
