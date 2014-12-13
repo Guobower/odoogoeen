@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
-from openerp.osv import fields, osv
+from openerp.osv import fields, osv, orm
 from openerp.tools.translate import _
 import time
 from datetime import datetime, timedelta, date  # A tester voir si c'est OK.
 from mx import DateTime
 import numpy as np
 import pytz
+import inspect
 
 class oph_indication(orm.Model):
     """
@@ -28,8 +29,7 @@ class oph_gauge(orm.Model):
               'name':fields.char('Name', size = 64),
                  }
 
-    
-class oph_iol_type(osv.osv):
+class oph_iol_type(orm.Model):
     """
     Informations on IOL
     Object where you define all informations on IOL's
@@ -43,9 +43,8 @@ class oph_iol_type(osv.osv):
                 'comment':fields.text('Comment',),
                 'line_ids':fields.one2many('oph.bloc.agenda.line', 'iol_type_id', 'Lines',)
                 }
-oph_iol_type()
 
-class oph_anesthesia_type(osv.osv):
+class oph_anesthesia_type(orm.Model):
     """
     Anesthesia type
     Object where you define all informations on anesthesia
@@ -57,9 +56,8 @@ class oph_anesthesia_type(osv.osv):
                 'comment':fields.char('Comment', size = 128),
                 'line_ids':fields.one2many('oph.bloc.agenda.line', 'anesthesia_type_id', 'Lines',)
                 }
-oph_anesthesia_type()
 
-class oph_procedure_type(osv.osv):
+class oph_procedure_type(orm.Model):
     """
     Surgery Procedure type and description
     """
@@ -80,9 +78,8 @@ class oph_procedure_type(osv.osv):
                 'comment':fields.char('Comment', size = 128, help = 'Where you put all the stuff you need for the intervention'),
                 'line_ids':fields.one2many('oph.bloc.agenda.line', 'procedure_type_id', 'Lines',)
                 }
-oph_procedure_type()
 
-class oph_inpatient_type(osv.osv):
+class oph_inpatient_type(orm.Model):
     """
     Inpatient type
     """
@@ -93,7 +90,6 @@ class oph_inpatient_type(osv.osv):
                 'comment':fields.char('Comment', size = 128),
                 'line_ids':fields.one2many('oph.bloc.agenda.line', 'inpatient_type_id', 'Lines',),
                 }
-oph_inpatient_type()
 
 class oph_bloc_agenda(osv.osv):
     """
@@ -127,6 +123,7 @@ class oph_bloc_agenda(osv.osv):
             wd = pytz.UTC.localize(wd)  # make aware datetime object needed for astimezone()
             wd = wd.astimezone(local_tz)  # convert UTC time to local time
             res[record.id] = wd.strftime("%A") + ' ' + wd.strftime("%d") + ' ' + wd.strftime("%B")
+        print "PASSING in : %s. Type of wd is :%s" %(inspect.stack()[0][3], type(res))
         return res
 
     #===========================================================================
