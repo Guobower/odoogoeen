@@ -180,16 +180,7 @@
                         </field>
                     </page>
 
-                    <page string="Todo List" attrs="{'invisible':[('state','in',['draft','open'])]}">
-                        <field name="todo_list_ids" widget="one2many" mode="tree">
-                            <tree string="Todo List" editable="top">
-                                <field name="name"/>
-                                <field name="state"/>
-                                <field name="comment"/>
-                                <field name="tag_id"/>
-                            </tree>
-                        </field>
-                    </page>
+                    
 
                     <page string="Pathology" attrs="{'invisible':[('state','in',['draft','open','wait'])]}">
                         <field name="pathology_ids" widget="many2many">
@@ -228,7 +219,7 @@
                                 <field name="exam_id"/>
                                 <field name="comment"/>
                                 <field name="result"/>
-                                <field name="ods" required="False"/>
+                                <field name="ods" required="False" invisible="True"/>
                             </tree>
                         </field>
                     </page>
@@ -249,19 +240,6 @@
                     </page>
                     
 -->                    
-
-                    <page string="Radiology">
-                        <field name="protocole_line_ids" widget="one2many">
-                            <tree string="Radiology Line">
-                                <field name="name" /> <!--domain="[('name','=','Radiology')]"/> -->
-                                <field name="exam_id"/>
-                                <field name="comment"/>
-                                <field name="result"/>
-                            </tree>
-                        </field>
-                                        
-                    </page>
-
                     <page string="Neuro" attrs="{'invisible':[('state','in',['draft','open','wait','busy'])]}">
                         <label for="neuro" string="observation neurologique"/>
                         <field name="neuro"/> 
@@ -290,6 +268,17 @@
                                 <field name="conclusion"/>
                                 <field name="conclusion_od"/>
                                 <field name="conclusion_os"/>
+                            </tree>
+                        </field>
+                    </page>
+
+                    <page string="Todo List" attrs="{'invisible':[('state','in',['draft','open'])]}">
+                        <field name="todo_list_ids" widget="one2many" mode="tree">
+                            <tree string="Todo List" editable="top">
+                                <field name="name"/>
+                                <field name="state"/>
+                                <field name="comment"/>
+                                <field name="tag_id"/>
                             </tree>
                         </field>
                     </page>
