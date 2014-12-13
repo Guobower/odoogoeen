@@ -253,5 +253,29 @@
         <menuitem name="Bloc Agenda Portal" id="portal_agenda_menu" parent="portal.portal_company"
             action="action_agenda_portal_view" sequence="30"/>
 
+        <!-- ACTION LOG BLOC LINE-->
+        <record model="ir.actions.act_window" id="logblocline_action_id">
+            <field name="name">Log Bloc Line</field>
+            <field name="res_model">oph.bloc.agenda.line</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_type">form</field>
+            <!--<field name="target">new</field>-->
+            <field name="target">current</field>
+        </record>
+        
+        <!-- INHERIT CRM MEETING VIEW TO ADD BUTTON LOGBLOCLINE -->
+        <record model="ir.ui.view" id="crm_meeting_form_w_logblocline_id">
+            <field name="name">crm.meeting.w.logblocline</field>
+            <field name="model">crm.meeting</field>
+            <field name="inherit_id" ref="oph.agenda_oph_form_view_id1"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//button[@name='%(logconsultation_act)d']" position="after">
+                        <button string="LogBlocLine" name="%(logblocline_action_id)d" type="action" context="{'search_default_partner_id':partner_id}"/>               
+                    </xpath>
+                </data>        
+            </field>    
+        </record>
+
     </data>
 </openerp>
