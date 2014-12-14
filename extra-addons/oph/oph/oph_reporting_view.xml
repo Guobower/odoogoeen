@@ -336,6 +336,20 @@
             </field>
         </record>
 
+<!-- INHERIT CRM MEETING VIEW TO ADD BUTTON "REPORT" -->
+        <record model="ir.ui.view" id="crm_meeting_form_w_report_button_id">
+            <field name="name">crm.meeting.w.logblocline</field>
+            <field name="model">crm.meeting</field>
+            <field name="inherit_id" ref="oph.agenda_oph_form_view_id1"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//button[@string='Inject']" position="before">
+                        <button string="Reports" name="%(oph.reporting_action_id)d" type="action" context="{'default_meeting_id': active_id, 'search_default_meeting_id': active_id}"/>
+                    </xpath>
+                </data>
+            </field>    
+        </record>
+
 
     </data>
 </openerp>
