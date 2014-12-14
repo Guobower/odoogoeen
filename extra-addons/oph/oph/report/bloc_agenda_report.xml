@@ -223,6 +223,27 @@
         </record>
         <!-- END CR HOSPITALISATION -->
         
+        <!--  ORDO IVT -->
+        <record model="ir.actions.report.xml" id="ordo_ivt_id">
+            <field name="name">Ordonnance IVT</field>
+            <field name="type">ir.actions.report.xml</field>
+            <field name="model">oph.bloc.agenda.line</field>
+            <field name="report_name">oph.ivt.prescription</field>
+            <field name="report_type">aeroo</field>
+            <field name="auto">TRUE</field>
+            <field name="report_rml">oph/report/odt/oph_bloc_agenda/Ordo_IVT.odt</field>
+            <!--<field name="parser_state">default</field>-->
+            <!-- parser state = default, loc, def-->
+            <field name="parser_state">loc</field>
+            <field name="parser_loc">oph/report/parser.py</field>
+            <field name="tml_source">file</field>
+            <!--  choix database, file, parser de template source-->
+            <field name="in_format">oo-odt</field>
+            <!-- choix de template Mime-type dans configuration-Technical-aero-report-Reports-->
+            <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')">
+            </field>
+        </record>
+        
     </data>
 </openerp>
 

@@ -1,0 +1,61 @@
+<openerp>
+<data>
+<!-- FDS 1 -->
+        <record model="ir.actions.report.xml" id="fds_order_id">
+            <field name="name">FDS CAFAT MUT</field>
+            <field name="type">ir.actions.report.xml</field>
+            <field name="model">sale.order</field>
+            <field name="report_name">fds2</field>
+            <field name="report_type">aeroo</field>
+            <field name="auto">TRUE</field>
+            <field name="report_rml">oph/report/odt/FDS_Order.odt</field>
+            <field name="parser_state">loc</field>
+            <field name="parser_loc">oph/report/parser.py</field>
+            <field name="tml_source">file</field>
+            <!--  choix database, file, parser de template source-->
+            <field name="in_format">oo-odt</field>
+            <!-- choix de template Mime-type dans configuration-Technical-aero-report-Reports-->
+            <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')">
+            </field>
+        </record>
+        <!-- button -->
+        <record model="ir.values" id="value_fds_oder_id">
+            <field name="name">fds2</field>
+            <field name="key">action</field>
+            <field name="key2">client_print_multi</field>
+            <field name="model">sale.order</field>
+            <field name="object">TRUE</field>
+            <field name="value" eval="'ir.actions.report.xml,' + str(ref('oph.fds_order_id'))"/>
+        </record>
+<!-- FDS 2 -->
+        <record model="ir.actions.report.xml" id="fds_wbank_order_id">
+            <field name="name">FDS TIERS PAYANT</field>
+            <field name="type">ir.actions.report.xml</field>
+            <field name="model">sale.order</field>
+            <field name="report_name">fds4</field>
+            <field name="report_type">aeroo</field>
+            <field name="auto">TRUE</field>
+            <field name="report_rml">oph/report/odt/FDS_W_Bank_Order.odt</field>
+            <field name="parser_state">loc</field>
+            <field name="parser_loc">oph/report/parser.py</field>
+            <field name="tml_source">file</field>
+            <!--  choix database, file, parser de template source-->
+            <field name="in_format">oo-odt</field>
+            <!-- choix de template Mime-type dans configuration-Technical-aero-report-Reports-->
+            <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')">
+            </field>
+        </record>
+        <!-- button -->
+        <record model="ir.values" id="value_fds_wbank_order_id">
+            <field name="name">fds4</field>
+            <field name="key">action</field>
+            <field name="key2">client_print_multi</field>
+            <field name="model">sale.order</field>
+            <field name="object">TRUE</field>
+            <field name="value" eval="'ir.actions.report.xml,' + str(ref('oph.fds_wbank_order_id'))"/>
+        </record>
+        
+
+    
+</data>
+</openerp>

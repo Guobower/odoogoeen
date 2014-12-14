@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!-- LES MODELES ETAT FACTORY -->
+        <!-- ATTENTION a bien définir les parser -->
+        <!--  1- modele etat factory LM -->
+        <record model="ir.actions.report.xml" id="report_lm_id">
+            <field name="name">Etat LM</field>
+            <field name="type">ir.actions.report.xml</field>
+            <field name="model">account.invoice</field>
+            <field name="report_name">account.invoice.lm</field>
+            <field name="report_type">aeroo</field>
+            <field name="auto">TRUE</field>
+            <field name="report_rml">oph/report/odt/Report_Etat_LM.odt</field>
+            <!-- <field name="parser_state">default</field>-->
+            <!-- parser state = default, loc, def-->
+            <field name="parser_state">loc</field>
+            <field name="parser_loc">oph/report/parser.py</field>
+            <field name="tml_source">file</field>
+            <!--  choix database, file, parser de template source-->
+            <field name="in_format">oo-odt</field>
+            <!-- choix de template Mime-type dans configuration-Technical-aero-report-Reports-->
+            <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')">
+            </field>
+            <!-- choix du format d'edition/impression -->
+            <field name="styles_mode">specified</field>
+            <field name="stylesheet_id" ref="stt_etat_id"/>
+        </record>
+
+        <!--  2- modele etat factory SMIT -->
+        <record model="ir.actions.report.xml" id="report_smit_id">
+            <field name="name">Etat SMIT</field>
+            <field name="type">ir.actions.report.xml</field>
+            <field name="model">account.invoice</field>
+            <field name="report_name">account.invoice.smit</field>
+            <field name="report_type">aeroo</field>
+            <field name="auto">TRUE</field>
+            <field name="report_rml">oph/report/odt/Report_Etat_SMIT.odt</field>
+            <!--<field name="parser_state">default</field>-->
+            <!-- parser state = default, loc, def-->
+            <field name="parser_state">loc</field>
+            <field name="parser_loc">oph/report/parser.py</field>
+            <field name="tml_source">file</field>
+            <!--  choix database, file, parser de template source-->
+            <field name="in_format">oo-odt</field>
+            <!-- choix de template Mime-type dans configuration-Technical-aero-report-Reports-->
+            <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')">
+            </field>
+            <!-- choix du format d'edition/impression -->
+            <field name="styles_mode">specified</field>
+            <field name="stylesheet_id" ref="stt_etat_id"/>
+        </record>
+
+        <!--  3- modele etat factory AT -->
+        <record model="ir.actions.report.xml" id="report_at_id">
+            <field name="name">Etat AT</field>
+            <field name="type">ir.actions.report.xml</field>
+            <field name="model">account.invoice</field>
+            <field name="report_name">account.invoice.at</field>
+            <field name="report_type">aeroo</field>
+            <field name="auto">TRUE</field>
+            <field name="report_rml">oph/report/odt/Report_Etat_AT.odt</field>
+            <!--<field name="parser_state">default</field>-->
+            <!-- parser state = default, loc, def-->
+            <field name="parser_state">loc</field>
+            <field name="parser_loc">oph/report/parser.py</field>
+            <field name="tml_source">file</field>
+            <!--  choix database, file, parser de template source-->
+            <field name="in_format">oo-odt</field>
+            <!-- choix de template Mime-type dans configuration-Technical-aero-report-Reports-->
+            <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')">
+            </field>
+            <!-- choix du format d'edition/impression -->
+            <field name="styles_mode">specified</field>
+            <field name="stylesheet_id" ref="stt_etat_id"/>
+        </record>
+
+        <!--  4- modele etat factory ILES -->
+        <record model="ir.actions.report.xml" id="report_iles_id">
+            <field name="name">Etat ILES</field>
+            <field name="type">ir.actions.report.xml</field>
+            <field name="model">account.invoice</field>
+            <field name="report_name">account.invoice.iles</field>
+            <field name="report_type">aeroo</field>
+            <field name="auto">TRUE</field>
+            <field name="report_rml">oph/report/odt/Report_Etat_ILES.odt</field>
+            <!--<field name="parser_state">default</field>-->
+            <!-- parser state = default, loc, def-->
+            <field name="parser_state">loc</field>
+            <field name="parser_loc">oph/report/parser.py</field>
+            <field name="tml_source">file</field>
+            <!--  choix database, file, parser de template source-->
+            <field name="in_format">oo-odt</field>
+            <!-- choix de template Mime-type dans configuration-Technical-aero-report-Reports-->
+            <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')">
+            </field>
+            <!-- choix du format d'edition/impression -->
+            <field name="styles_mode">specified</field>
+            <field name="stylesheet_id" ref="stt_etat_id"/>
+        </record>
+
+        <!--  5- modele etat factory NORD -->
+        <record model="ir.actions.report.xml" id="report_nord_id">
+            <field name="name">Etat NORD</field>
+            <field name="type">ir.actions.report.xml</field>
+            <field name="model">account.invoice</field>
+            <field name="report_name">account.invoice.nord</field>
+            <field name="report_type">aeroo</field>
+            <field name="auto">TRUE</field>
+            <field name="report_rml">oph/report/odt/Report_Etat_NORD.odt</field>
+            <!--<field name="parser_state">default</field>-->
+            <!-- parser state = default, loc, def-->
+            <field name="parser_state">loc</field>
+            <field name="parser_loc">oph/report/parser.py</field>
+            <field name="tml_source">file</field>
+            <!--  choix database, file, parser de template source-->
+            <field name="in_format">oo-odt</field>
+            <!-- choix de template Mime-type dans configuration-Technical-aero-report-Reports-->
+            <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')">
+            </field>
+            <!-- choix du format d'edition/impression -->
+            <field name="styles_mode">specified</field>
+            <field name="stylesheet_id" ref="stt_etat_id"/>
+        </record>
+
+        <!--  6- modele etat factory SUD -->
+        <record model="ir.actions.report.xml" id="report_sud_id">
+            <field name="name">Etat SUD</field>
+            <field name="type">ir.actions.report.xml</field>
+            <field name="model">account.invoice</field>
+            <field name="report_name">account.invoice.sud</field>
+            <field name="report_type">aeroo</field>
+            <field name="auto">TRUE</field>
+            <field name="report_rml">oph/report/odt/Report_Etat_SUD.odt</field>
+            <!--<field name="parser_state">default</field>-->
+            <!-- parser state = default, loc, def-->
+            <field name="parser_state">loc</field>
+            <field name="parser_loc">oph/report/parser.py</field>
+            <field name="tml_source">file</field>
+            <!--  choix database, file, parser de template source-->
+            <field name="in_format">oo-odt</field>
+            <!-- choix de template Mime-type dans configuration-Technical-aero-report-Reports-->
+            <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')">
+            </field>
+            <!-- choix du format d'edition/impression -->
+            <field name="styles_mode">specified</field>
+            <field name="stylesheet_id" ref="stt_etat_id"/>
+        </record>
+        <!-- FIN DES MODELES ETAT FACTORY -->
+        
+<!-- FEUILLE DE SOINS -->
+ <!-- FDS 1 -->
+        <record model="ir.actions.report.xml" id="fds_account_id">
+            <field name="name">FDS CAFAT MUT</field>
+            <field name="type">ir.actions.report.xml</field>
+            <field name="model">account.invoice</field>
+            <field name="report_name">fds1</field>
+            <field name="report_type">aeroo</field>
+            <field name="auto">TRUE</field>
+            <field name="report_rml">oph/report/odt/FDS.odt</field>
+            <field name="parser_state">loc</field>
+            <field name="parser_loc">oph/report/parser.py</field>
+            <field name="tml_source">file</field>
+            <!--  choix database, file, parser de template source-->
+            <field name="in_format">oo-odt</field>
+            <!-- choix de template Mime-type dans configuration-Technical-aero-report-Reports-->
+            <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')">
+            </field>
+        </record>
+        <!-- button -->
+        <record model="ir.values" id="value_fds_account_id">
+            <field name="name">fds1</field>
+            <field name="key">action</field>
+            <field name="key2">client_print_multi</field>
+            <field name="model">account.invoice</field>
+            <field name="object">TRUE</field>
+            <field name="value" eval="'ir.actions.report.xml,' + str(ref('oph.fds_account_id'))"/>
+        </record>
+        
+<!--FDS 2 -->
+        <record model="ir.actions.report.xml" id="fds_wbank_account_id">
+            <field name="name">FDS TIERS PAYANT</field>
+            <field name="type">ir.actions.report.xml</field>
+            <field name="model">account.invoice</field>
+            <field name="report_name">fds3</field>
+            <field name="report_type">aeroo</field>
+            <field name="auto">TRUE</field>
+            <field name="report_rml">oph/report/odt/FDS_W_Bank.odt</field>
+            <field name="parser_state">loc</field>
+            <field name="parser_loc">oph/report/parser.py</field>
+            <field name="tml_source">file</field>
+            <!--  choix database, file, parser de template source-->
+            <field name="in_format">oo-odt</field>
+            <!-- choix de template Mime-type dans configuration-Technical-aero-report-Reports-->
+            <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')">
+            </field>
+        </record>
+        <!-- button -->
+        <record model="ir.values" id="value_fds_wbank_account_id">
+            <field name="name">fds3</field>
+            <field name="key">action</field>
+            <field name="key2">client_print_multi</field>
+            <field name="model">account.invoice</field>
+            <field name="object">TRUE</field>
+            <field name="value" eval="'ir.actions.report.xml,' + str(ref('oph.fds_wbank_account_id'))"/>
+        </record>
+        
+
+<!-- BDX REMISE CHEQUE -->
+        <record model="ir.actions.report.xml" id="bdx_check_id">
+            <field name="name">BDX Remise Chq</field>
+            <field name="type">ir.actions.report.xml</field>
+            <field name="model">account.voucher</field>
+            <field name="report_name">bdxcheck</field>
+            <field name="report_type">aeroo</field>
+            <field name="auto">TRUE</field>
+            <field name="report_rml">oph/report/odt/BDX-REMISE.odt</field>
+            <field name="parser_state">loc</field>
+            <field name="parser_loc">oph/report/parser.py</field>
+            <field name="tml_source">file</field>
+            <!--  choix database, file, parser de template source-->
+            <field name="in_format">oo-odt</field>
+            <!-- choix de template Mime-type dans configuration-Technical-aero-report-Reports-->
+            <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
+            <field name="styles_mode">specified</field>
+            <field name="stylesheet_id" ref="stt_etat_id"/>
+        </record>
+
+
+
+        </data>
+</openerp>
