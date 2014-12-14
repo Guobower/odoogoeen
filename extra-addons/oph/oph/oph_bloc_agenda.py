@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from openerp.osv import fields, osv, orm
 from openerp.tools.translate import _
+import arrow
 import time
 from datetime import datetime, timedelta, date  # A tester voir si c'est OK.
 from mx import DateTime
@@ -107,11 +108,13 @@ class oph_bloc_agenda(osv.osv):
     #     return False
     #===========================================================================
 
-    def _get_wdandmonth(self, cr, uid, ids, field_name, arg, context = {}):
+    def _get_wdandmonth2(self, cr, uid, ids, field_name, arg, context = {}):
         """
         will get the week day in text (eg: friday, saturday,...)
         and month 'eg: junuary, february,....)
+        Using datetime module
         """
+        import pudb;pudb.set_trace()
         res = {}
         if context is None:
             context = {}
@@ -126,6 +129,23 @@ class oph_bloc_agenda(osv.osv):
         print "PASSING in : %s. Type of wd is :%s" %(inspect.stack()[0][3], type(res))
         return res
 
+    def _get_wdandmonth(self,cr,uid,ids,field_name,arg,context={}):
+        """
+        To humanize the date format
+        Using the arrow python module.
+        """
+        res={}
+        if context is None:
+            context={}
+        fmt = 'dddd D MMMM YYYY' # to format the date: monday 1 junuary 3021
+        records=self.browse(cr,uid,ids,context)
+        for record in records:
+            if record.name:
+                wd = record.name
+                wd=arrow.get(wd,'YYYY-MM-DD').to('utc').format(fmt,locale=context['lang'])
+                print 'WD is :%s' %(wd,)
+                res[record.id]=wd
+        return res
     #===========================================================================
     # def name_get(self, cr, uid, ids, context = None):
     #     if not ids:
@@ -143,7 +163,7 @@ class oph_bloc_agenda(osv.osv):
                 'start_date':fields.datetime('StartDate',),
                 'end_date':fields.datetime('EndDate',),
                 'comment':fields.text('Informations',),
-                'wd':fields.function(_get_wdandmonth, method = True, type = 'char', string = 'Weekday',),
+                'wd':fields.function(_get_wdandmonth, method = True, type = 'char', string = 'Weekday',store=True),
                 'active':fields.boolean('Active', help = 'if the active field is set to False, it will allow you to hide the bloc agenda without removing it.'),
                 'line_ids':fields.one2many('oph.bloc.agenda.line', 'bloc_agenda_id', 'Lines',)}
 
@@ -160,7 +180,7 @@ class oph_bloc_agenda_line(osv.osv):
     _name = "oph.bloc.agenda.line"
     _order = "sequence"
 
-    def _get_wdandmonth(self, cr, uid, ids, field_name, arg, context = {}):
+    def _get_wdandmonth2(self, cr, uid, ids, field_name, arg, context = {}):
         """
         will get the week day in text (eg: friday, saturday,...)
         and month 'eg: junuary, february,....)
@@ -182,6 +202,24 @@ class oph_bloc_agenda_line(osv.osv):
             wd = pytz.UTC.localize(wd)  # make aware datetime object. Needed for astimezone()
             wd = wd.astimezone(local_tz)  # convert UTC datetime to local datetime
             res[record.id] = wd.strftime("%A") + ' ' + wd.strftime("%d") + ' ' + wd.strftime("%B")
+        return res
+
+    def _get_wdandmonth(self,cr,uid,ids,field_name,arg,context={}):
+        """
+        To humanize the date format
+        Using the arrow python module.
+        """
+        res={}
+        if context is None:
+            context={}
+        fmt = 'dddd D MMMM YYYY' # to format the date: monday 1 junuary 3021
+        records=self.browse(cr,uid,ids,context)
+        for record in records:
+            if record.name:
+                wd = record.name
+                wd=arrow.get(wd,'YYYY-MM-DD').to('utc').format(fmt,locale=context['lang'])
+                print 'WD is :%s' %(wd,)
+                res[record.id]=wd
         return res
 
     def _ods_get(self, cr, uid, context = None):
@@ -323,7 +361,7 @@ class oph_bloc_agenda_line(osv.osv):
 
     _columns = {
                 'name':fields.char('Id', size = 8,),
-                'wd':fields.function(_get_wdandmonth, method = True, type = 'char', string = 'Weekday',),
+                'wd':fields.function(_get_wdandmonth, method = True, type = 'char', string = 'Weekday', store=False),
                 'sequence':fields.integer('Sequence'),
                 'duration':fields.float('Duration',),
                 'start_time':fields.char('Horaire', size = 8),

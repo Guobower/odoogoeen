@@ -17,7 +17,7 @@
                     </h1>
                     <group>
                         <group>
-                            <field name="name" readonly="False"/>
+                            <field name="name" readonly="False" required="True"/>
                             <field name="start_date" readonly="False"/>
                             <field name="end_date" readonly="False"/>
                             <field name="active"/>
@@ -106,7 +106,7 @@
                     </header>
                     <sheet string="Bloc Agenda Line">
                         <group>
-                            <field name="wd" />
+                            <field name="wd" invisible="1"/>
                             <field name="bloc_agenda_id"/>
                         </group>
                         <group>
