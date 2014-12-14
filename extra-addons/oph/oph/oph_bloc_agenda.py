@@ -180,30 +180,6 @@ class oph_bloc_agenda_line(osv.osv):
     _name = "oph.bloc.agenda.line"
     _order = "sequence"
 
-    def _get_wdandmonth2(self, cr, uid, ids, field_name, arg, context = {}):
-        """
-        will get the week day in text (eg: friday, saturday,...)
-        and month 'eg: junuary, february,....)
-        All datetime are in UTC in the database. So we have to convert them in local time 
-        before getting day string an month string. If not you will get the  day and month
-        of date in UTC.
-        We use pytz for that. And we get information of timezone with context.
-        But if there is no context or info on tz in context 
-        we set tz = 'Pacific/Noumea'. Maybe this is not what you want in your place.
-        """
-        res = {}
-        if context is None:
-            context = {}
-        fmt = '%Y-%m-%d %H:%M:%S'  # set format. Adapted to the format of stored dates in postgresql
-        local_tz = pytz.timezone(context.get('tz', 'Pacific/Noumea'))  # get tz from context
-        records = self.browse(cr, uid, ids, context)
-        for record in records:
-            wd = datetime.strptime(record.bloc_agenda_id.start_date, fmt,)  # convert string date from database to datetime py object
-            wd = pytz.UTC.localize(wd)  # make aware datetime object. Needed for astimezone()
-            wd = wd.astimezone(local_tz)  # convert UTC datetime to local datetime
-            res[record.id] = wd.strftime("%A") + ' ' + wd.strftime("%d") + ' ' + wd.strftime("%B")
-        return res
-
     def _get_wdandmonth(self,cr,uid,ids,field_name,arg,context={}):
         """
         To humanize the date format
