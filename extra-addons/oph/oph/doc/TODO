@@ -1,0 +1,10 @@
+Il y a un probleme lorsque je fais un cancel sur un crm.meeting si l'on a fait une selection sur un patient.
+DONE
+
+Formula prescription - autres options s'affiche dans la tree view de crm.meeting. C'est pas utile.
+
+Mettre en place un bouton dans la form vue de refraction pour délier la copie automatique des données de l'od sur l'og.
+
+Refaire la vue de refraction pour qu'elle ressemble plus à celle du refracteur.
+
+Faire un lien entre l'account_invoice et crm.meeting.
