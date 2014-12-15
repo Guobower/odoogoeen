@@ -44,8 +44,6 @@ class oph_account_voucher_deposit(osv.osv_memory):
         for rec in data_inv:
             res = journal_obj.read(cr, uid, rec.get('journal_id')[0], ['name'], context = context)
             if res.get('name') != u'Chèques':
-                # from pdb import set_trace
-                # set_trace()
                 raise osv.except_osv(_('Error!'), _('Cannot Deposit a %s! Please Cancel and Select again') % (res.get('name'),))
 
 #         from pdb import set_trace
