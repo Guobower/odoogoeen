@@ -356,6 +356,12 @@
             <field name="name">SKIACOL 0,5% COLLYRE UNIDOSE 0,5ML</field>
             <field name="ods_needed">True</field>
         </record>
+         <record id="ozu0" model="oph.brandname">
+            <field name="brandname_id" ref="inn22"/>
+            <field name="name">OZURDEX 700MCG IMPLANT OPH</field>
+            <field name="ods_needed">True</field>
+            <field name="ivt">True</field>
+        </record>
 
         <!-- Pathology -->
         <!-- Conjonctivite -->

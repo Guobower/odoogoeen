@@ -57,11 +57,10 @@ Permet de faire pleins de choses absolument géniales
                 'report/account_invoice_report.xml',
                 'wizard/oph_agenda_factory_view.xml',
                 'wizard/oph_formula_prescription_view.xml',
+                'wizard/oph_ivt_prescription_view.xml',
        #========================================================================
        #  'security/oph_security.xml',
        #  'security/ir.model.access.csv',
-       #  'wizard/oph_agenda_factory_view.xml',
-       #  'wizard/oph_etat_factory_view.xml',
        #  'report/Test_premier_report.xml',
        #  
        #  
@@ -85,14 +84,12 @@ Permet de faire pleins de choses absolument géniales
 #         # #=======================================================================
 #         # # 'oph_prescription_view.xml',
 #         # # 
-#         # # 'data/filling_template_data.xml',
 #         # # 'data/reporting_template_data.xml',
-#         # # 'wizard/oph_formula_prescription_view.xml',
 #         # # 'wizard/oph_diabetic_report_view.xml',
 #         #=======================================================================
 #===============================================================================
         # 'custom/account_voucher_view.xml',
-        # 'wizard/oph_ivt_prescription_view.xml',
+        # 
         # 'wizard/oph_crm_meeting_state_view.xml',
         # 'wizard/oph_account_voucher_deposit_view.xml',
         #=======================================================================
