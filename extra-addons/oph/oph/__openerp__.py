@@ -49,6 +49,8 @@ Permet de faire pleins de choses absolument géniales
                 'report/stylesheet/stt_report.xml',
                 'report/bloc_agenda_report.xml',
                 'oph_filling_template.xml',
+                'oph_reporting_view.xml',
+                
        #========================================================================
        #  'security/oph_security.xml',
        #  'security/ir.model.access.csv',
@@ -56,7 +58,7 @@ Permet de faire pleins de choses absolument géniales
        #  'wizard/oph_etat_factory_view.xml',
        #  'report/Test_premier_report.xml',
        #  
-       #  'oph_reporting_view.xml',
+       #  
        #  'report/examination_report.xml',
        #  'report/bloc_agenda_report.xml',
        #  'data/ir.config_parameter.xml',
