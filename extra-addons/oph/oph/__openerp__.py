@@ -55,7 +55,7 @@ Permet de faire pleins de choses absolument géniales
                 'report/crm_meeting_report.xml',
                 'report/sale_order_report.xml',
                 'report/account_invoice_report.xml',
-                
+                'wizard/oph_agenda_factory_view.xml',
        #========================================================================
        #  'security/oph_security.xml',
        #  'security/ir.model.access.csv',

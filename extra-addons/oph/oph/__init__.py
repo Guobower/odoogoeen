@@ -7,8 +7,7 @@ import oph_agenda
 import oph_bloc_agenda
 import oph_reporting
 import oph_filling_template
-#import wizard
-#import oph_reporting
+import wizard # je pense que le mieux c'est de le mettre à la fin.
 #import controller
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
