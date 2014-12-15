@@ -50,6 +50,7 @@ Permet de faire pleins de choses absolument géniales
                 'report/bloc_agenda_report.xml',
                 'oph_filling_template.xml',
                 'oph_reporting_view.xml',
+                'report/oph_reporting_report.xml', 
                 
        #========================================================================
        #  'security/oph_security.xml',
