@@ -128,15 +128,16 @@ class crm_meeting(orm.Model):
         self.write(cr, uid, ids, {"state": "cancel"}, context = context)
         vals = self.read(cr, uid, ids, fields = ['date', 'duration', 'date_deadline', 'tag' ], context = context, load = '_classic_read')
         # vals est une liste de dictionnaire avec les données des records
-        for n in vals:  # on boucle sur les données des record retournées.
+        from pdb import set_trace;set_trace()
+        for record in vals:  # on boucle sur les données des record retournées.
         # n est un dictionnaire
         # comment récupérer le statut cs ou technique? C'est tag
         # pour info duration est de type float.
         # il nous faut supprimer la clef "id" qui est systématiquement fournie dans le return de read
-            del n['id']
+            del record['id']
             # del context['default_partner_id']
-            n.update({'name':'Factory', 'state':n['tag']})
-            self.create(cr, uid, n, context = context)
+            record.update({'name':'Factory', 'state':n['tag']})
+            self.create(cr, uid, record, context = context)
         return True
 
     def statechange_in(self, cr, uid, ids, context = None):
