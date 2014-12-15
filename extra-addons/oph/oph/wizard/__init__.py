@@ -7,9 +7,10 @@
 # Comment: fichier init pour le module wizard d'oph
 # ===================================================================
 import oph_agenda_factory
+import oph_formula_prescription
 #===============================================================================
 # import oph_etat_factory
-# import oph_formula_prescription
+# 
 # import oph_diabetic_report
 # import oph_ivt_prescription
 # import oph_crm_meeting_state
