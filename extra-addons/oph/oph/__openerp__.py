@@ -58,6 +58,7 @@ Permet de faire pleins de choses absolument géniales
                 'wizard/oph_agenda_factory_view.xml',
                 'wizard/oph_formula_prescription_view.xml',
                 'wizard/oph_ivt_prescription_view.xml',
+                'wizard/oph_account_voucher_deposit_view.xml',
        #========================================================================
        #  'security/oph_security.xml',
        #  'security/ir.model.access.csv',
@@ -72,26 +73,18 @@ Permet de faire pleins de choses absolument géniales
        #  'data/anesthesia_type_data.xml',
        #  'data/product_data.xml',
        #  # 'data/document_data.xml',
-       #  
-       #  
-       # 
-       #========================================================================
-#===============================================================================
-         
 # #        'custom/oph_phonecall_view.xml',
 # #        'custom/oph_invoice_view.xml',
 # #        'custom/oph_sale_view.xml',
-#         # #=======================================================================
 #         # # 'oph_prescription_view.xml',
 #         # # 
 #         # # 'data/reporting_template_data.xml',
 #         # # 'wizard/oph_diabetic_report_view.xml',
 #         #=======================================================================
-#===============================================================================
         # 'custom/account_voucher_view.xml',
         # 
         # 'wizard/oph_crm_meeting_state_view.xml',
-        # 'wizard/oph_account_voucher_deposit_view.xml',
+        # 
         #=======================================================================
         ],
     #===========================================================================

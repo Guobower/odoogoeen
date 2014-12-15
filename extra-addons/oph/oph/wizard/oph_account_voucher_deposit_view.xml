@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!-- VIEW OF WIZARD -->
+        <record id="oph_account_voucher_deposit_view" model="ir.ui.view">
+            <field name="name">Check Deposit Factory</field>
+            <field name="model">oph.account.voucher.deposit</field>
+            <field name="arch" type="xml">
+                <form string="Deposit" version="7.0">
+                    <p class="oe_grey">
+                        Set to deposit check.
+                    </p>
+                    <footer>
+                        <button string="Deposit" name="account_voucher_deposit" type="object" default_focus="1" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_oph_voucher_deposit" model="ir.actions.act_window">
+            <field name="name">Oph Voucher Deposit</field>
+            <field name="res_model">oph.account.voucher.deposit</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="oph_account_voucher_deposit_view"/>
+            <field name="target">new</field>
+        </record>
+
+
+        <act_window
+               name="Deposit"
+               id="action_oph_account_voucher_deposit"
+               multi="True"
+               key2="client_action_multi"
+               res_model="oph.account.voucher.deposit" 
+               src_model="account.voucher"
+               view_mode="form"
+               target="new"
+               view_type="form"/>
+
+    </data>
+</openerp>
