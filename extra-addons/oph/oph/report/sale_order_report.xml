@@ -8,7 +8,7 @@
             <field name="report_name">fds2</field>
             <field name="report_type">aeroo</field>
             <field name="auto">TRUE</field>
-            <field name="report_rml">oph/report/odt/FDS_Order.odt</field>
+            <field name="report_rml">oph/report/odt/sale_order/FDS_no_BankID_Order.odt</field>
             <field name="parser_state">loc</field>
             <field name="parser_loc">oph/report/parser.py</field>
             <field name="tml_source">file</field>
@@ -35,7 +35,7 @@
             <field name="report_name">fds4</field>
             <field name="report_type">aeroo</field>
             <field name="auto">TRUE</field>
-            <field name="report_rml">oph/report/odt/FDS_W_Bank_Order.odt</field>
+            <field name="report_rml">oph/report/odt/sale_order/FDS_W_BankID_Order.odt</field>
             <field name="parser_state">loc</field>
             <field name="parser_loc">oph/report/parser.py</field>
             <field name="tml_source">file</field>
@@ -56,6 +56,5 @@
         </record>
         
 
-    
 </data>
 </openerp>

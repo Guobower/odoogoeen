@@ -172,7 +172,7 @@
             <field name="report_name">cardio.reporting</field>
             <field name="report_type">aeroo</field>
             <field name="auto">TRUE</field>
-            <field name="report_rml">oph/report/odt/Cardio_Reporting.odt</field>
+            <field name="report_rml">oph/report/odt/oph_bloc_agenda/Cardio_Reporting.odt</field>
             <field name="parser_state">loc</field>
             <field name="parser_loc">oph/report/parser.py</field>
             <field name="tml_source">file</field>
