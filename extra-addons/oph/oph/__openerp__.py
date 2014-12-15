@@ -48,6 +48,7 @@ Permet de faire pleins de choses absolument géniales
                 'oph_bloc_agenda_view.xml',
                 'report/stylesheet/stt_report.xml',
                 'report/bloc_agenda_report.xml',
+                'oph_filling_template.xml',
        #========================================================================
        #  'security/oph_security.xml',
        #  'security/ir.model.access.csv',
@@ -75,7 +76,7 @@ Permet de faire pleins de choses absolument géniales
 # #        'custom/oph_sale_view.xml',
 #         # #=======================================================================
 #         # # 'oph_prescription_view.xml',
-#         # # 'oph_filling_template.xml',
+#         # # 
 #         # # 'data/filling_template_data.xml',
 #         # # 'data/reporting_template_data.xml',
 #         # # 'wizard/oph_formula_prescription_view.xml',
