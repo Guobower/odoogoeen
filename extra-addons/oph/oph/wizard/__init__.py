@@ -10,9 +10,10 @@ import oph_agenda_factory
 import oph_formula_prescription
 import oph_ivt_prescription
 import oph_account_voucher_deposit
+import oph_crm_meeting_state
 #===============================================================================
 # import oph_etat_factory
 # import oph_diabetic_report
-# import oph_crm_meeting_state
+# 
 #===============================================================================
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

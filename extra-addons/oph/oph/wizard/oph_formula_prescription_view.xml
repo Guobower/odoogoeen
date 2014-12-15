@@ -38,7 +38,7 @@
             <field name="target">new</field>
         </record>
         <!-- Action qui va permettre d'afficher le bouton "Formula prescription" dans la form
-            view view de crm.meeting -->
+            view view de crm.meeting bizarre s'affiche aussi dans la tree view-->
         <act_window name="Formula Prescription" res_model="oph.formula.prescription" src_model="crm.meeting"
             view_mode="form" target="new" key2="client_action_multi" id="action_formula_prescription"/>
     </data>
