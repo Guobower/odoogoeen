@@ -36,7 +36,7 @@
             <field name="report_name">Prescription.Report</field>
             <field name="report_type">aeroo</field>
             <field name="auto">TRUE</field>
-            <field name="report_rml">oph/report/odt/Prescription_Report.odt</field>
+            <field name="report_rml">oph/report/odt/oph_meeting/Prescription_Report.odt</field>
             <field name="parser_state">loc</field>
             <field name="parser_loc">oph/report/parser.py</field>
             <field name="tml_source">file</field>
@@ -64,7 +64,7 @@
             <field name="report_name">Medication.Report</field>
             <field name="report_type">aeroo</field>
             <field name="auto">TRUE</field>
-            <field name="report_rml">oph/report/odt/Medication_Report.odt</field>
+            <field name="report_rml">oph/report/odt/oph_meeting/Medication_Report.odt</field>
             <field name="parser_state">loc</field>
             <field name="parser_loc">oph/report/parser.py</field>
             <field name="tml_source">file</field>
@@ -200,7 +200,7 @@
             <field name="report_name">single.vision.report</field>
             <field name="report_type">aeroo</field>
             <field name="auto">TRUE</field>
-            <field name="report_rml">oph/report/odt/Report_Single_Vision.odt</field>
+            <field name="report_rml">oph/report/odt/oph_meeting/Report_Single_Vision.odt</field>
             <!-- <field name="parser_state">default</field>-->
             <!-- parser state = default, loc, def-->
             <field name="parser_state">loc</field>
@@ -223,7 +223,7 @@
             <field name="report_name">single.vision.sunglasses.report</field>
             <field name="report_type">aeroo</field>
             <field name="auto">TRUE</field>
-            <field name="report_rml">oph/report/odt/Report_Single_Vision_Sunglasses.odt</field>
+            <field name="report_rml">oph/report/odt/oph_meeting/Report_Single_Vision_Sunglasses.odt</field>
             <!-- <field name="parser_state">default</field>-->
             <!-- parser state = default, loc, def-->
             <field name="parser_state">loc</field>
@@ -246,7 +246,7 @@
             <field name="report_name">multifocal.report</field>
             <field name="report_type">aeroo</field>
             <field name="auto">TRUE</field>
-            <field name="report_rml">oph/report/odt/Report_Multifocal.odt</field>
+            <field name="report_rml">oph/report/odt/oph_meeting/Report_Multifocal.odt</field>
             <!-- <field name="parser_state">default</field>-->
             <!-- parser state = default, loc, def-->
             <field name="parser_state">loc</field>
@@ -269,7 +269,7 @@
             <field name="report_name">multifocal.sunglasses.report</field>
             <field name="report_type">aeroo</field>
             <field name="auto">TRUE</field>
-            <field name="report_rml">oph/report/odt/Report_Multifocal_Sunglasses.odt</field>
+            <field name="report_rml">oph/report/odt/oph_meeting/Report_Multifocal_Sunglasses.odt</field>
             <!-- <field name="parser_state">default</field>-->
             <!-- parser state = default, loc, def-->
             <field name="parser_state">loc</field>
@@ -292,7 +292,7 @@
             <field name="report_name">bifocal.report</field>
             <field name="report_type">aeroo</field>
             <field name="auto">TRUE</field>
-            <field name="report_rml">oph/report/odt/Report_Bifocal.odt</field>
+            <field name="report_rml">oph/report/odt/oph_meeting/Report_Bifocal.odt</field>
             <!-- <field name="parser_state">default</field>-->
             <!-- parser state = default, loc, def-->
             <field name="parser_state">loc</field>
@@ -315,7 +315,7 @@
             <field name="report_name">bifocal.sunglasses.report</field>
             <field name="report_type">aeroo</field>
             <field name="auto">TRUE</field>
-            <field name="report_rml">oph/report/odt/Report_Bifocal_Sunglasses.odt</field>
+            <field name="report_rml">oph/report/odt/oph_meeting/Report_Bifocal_Sunglasses.odt</field>
             <!-- <field name="parser_state">default</field>-->
             <!-- parser state = default, loc, def-->
             <field name="parser_state">loc</field>
@@ -338,7 +338,7 @@
             <field name="report_name">reading.report</field>
             <field name="report_type">aeroo</field>
             <field name="auto">TRUE</field>
-            <field name="report_rml">oph/report/odt/Report_Reading.odt</field>
+            <field name="report_rml">oph/report/odt/oph_meeting/Report_Reading.odt</field>
             <!-- <field name="parser_state">default</field>-->
             <!-- parser state = default, loc, def-->
             <field name="parser_state">loc</field>

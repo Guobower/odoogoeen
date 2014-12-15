@@ -51,6 +51,7 @@ Permet de faire pleins de choses absolument géniales
                 'oph_filling_template.xml',
                 'oph_reporting_view.xml',
                 'report/oph_reporting_report.xml', 
+                'report/crm_meeting_report.xml',
                 
        #========================================================================
        #  'security/oph_security.xml',
