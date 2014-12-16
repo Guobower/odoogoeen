@@ -18,6 +18,7 @@ class oph_indication(orm.Model):
     _columns = {
               'name':fields.char('Name', size = 128),
               'ivt':fields.boolean('IVT', help = "Tick the box if it's an indication for IVT"),
+              'comment':fields.text('Comment'),
                  }
     
 class oph_gauge(orm.Model):
