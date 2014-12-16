@@ -270,7 +270,6 @@
         
         <menuitem parent="config_oph_id" id="todolist_tag_menu_id" sequence ="70" action="todolist_tag_action_id"/>
 
-
         <!-- SEARCH VIEW FOR MEASUREMENT -->
         <record id="view_measurement_search_id" model="ir.ui.view">
             <field name="name">oph.measurement.select</field>
@@ -309,9 +308,10 @@
         </record>
 
         <menuitem parent="ophthalmology_oph_id" id="measurement_menu_id" sequence ="10" action="measurement_action_id"/>
+        
         <!--SEARCH VIEW FOR TODOLIST -->
         <record id="view_todolist_search_id" model="ir.ui.view">
-            <field name="name">oph.tpdlist.select</field>
+            <field name="name">oph.todolist.select</field><!--<field name="name">oph.tpdlist.select</field>-->
             <field name="model">oph.todolist</field>
             <field name="arch" type="xml">
                 <search string = "Search Todolist">
