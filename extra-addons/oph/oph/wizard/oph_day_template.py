@@ -39,7 +39,8 @@ class oph_slot(orm.Model):
     
 class oph_day_template(orm.Model):
     """
-    TODO
+    Journee type.
+    par exemple : lundi consultation, lundi + actes techniques, mardi cs + fermé l'apres midi etc..., fermee toute la journee
     """
     _name='oph.day.template'
     
