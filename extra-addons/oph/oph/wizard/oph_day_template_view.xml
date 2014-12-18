@@ -25,6 +25,7 @@
                     <group>
                         <field name="start_time"/>
                         <field name="duration"/>
+                        <field name="day_id" widget="selection"/>
                     </group>
                 </form>
             </field>
@@ -52,9 +53,9 @@
                 <form string="Filling Template" version="7.0">
                     <group>
                         <field name="name"/>
-                        <!--<field name="slot_ids"/> je n'ai pas accés dans la vue au record oph.slot -->
-                        <!--<field name="slot_ids" widget="one2many"/> je n'ai pas accés dans la vue au record oph.slot idem-->
-                       <field name="slot_ids" widget="selection"/>
+                        <!--<field name="slot_ids"/> je n'ai pas accés dans cette vue au record oph.slot pour les selectionner -->
+                        <field name="slot_ids" widget="one2many"/>
+                        <!--<field name="slot_ids" widget="selection"/>--> <!-- C'est plus ce que je veux mais c'est l'id qui est présenté et il est pas informatif"-->
                     </group>
                 </form>
             </field>
@@ -71,9 +72,19 @@
             <field name="view_mode">tree,form</field>
             <field name="view_id" ref="slot_tree_view_id"/>
         </record>
+        <!-- OPH DAY TEMPLATE ACTION -->
+        <record model="ir.actions.act_window" id="oph_day_template_action_id">
+            <field name="name">Day Template</field>
+            <field name="res_model">oph.day.template</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="day_template_tree_view_id"/>
+        </record>
 
         <!-- OPH SLOT MENU-->
         <menuitem parent="config_oph_id" id="oph_slot_menu_id" sequence ="80" action="oph_slot_action_id"/>
+        <!--DAY TEMPLATE MENU-->
+        <menuitem parent="config_oph_id" id="oph_day_template_menu_id" sequence="90" action="oph_day_template_action_id"/>
 
 
 
