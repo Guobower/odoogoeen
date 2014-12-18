@@ -33,7 +33,8 @@ class oph_slot(orm.Model):
     _name='oph.slot'
     _columns={
               'start_time':fields.char('Start Time', size=8),
-              'duration':fields.float('Duration'),
+              #'duration':fields.float('Duration'),
+              'duration':fields.char('Duration',size=8),
               }
     
     

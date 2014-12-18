@@ -11,7 +11,7 @@
             <field name="arch" type="xml">
                 <tree string="Type">
                     <field name="start_time"/>
-                    <field name="duration" widget="float_time"/>
+                    <field name="duration"/>
                 </tree>
             </field>
         </record>
