@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!-- SLOT  VIEWS-->
+        <!-- TREE VIEW SLOTS-->
+        <record model="ir.ui.view" id="slot_tree_view_id">
+            <field name="name">slot..tree</field>
+            <field name="model">oph.slot</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <tree string="Type">
+                    <field name="start_time"/>
+                    <field name="duration" widget="float_time"/>
+                </tree>
+            </field>
+        </record>
+        <!-- FORM VIEW SLOT-->
+        <record model="ir.ui.view" id="slot_form_view_id">
+            <field name="name"> slot.form</field>
+            <field name="model">oph.slot</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <form string="Filling Template" version="7.0">
+                    <group>
+                        <field name="start_time"/>
+                        <field name="duration"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+        
+<!-- DAY TEMPLATE  VIEWS-->
+        <!-- DAY TEMPLATE TREE VIEW -->
+        <record model="ir.ui.view" id="day_template_tree_view_id">
+            <field name="name">day.template.tree</field>
+            <field name="model">oph.day.template</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <tree string="Type">
+                    <field name="name"/>
+                    <!--<field name="slot_ids" widget="one2many"/>-->
+                </tree>
+            </field>
+        </record>
+        <!-- FORM VIEW DAY TEMPLATE-->
+        <record model="ir.ui.view" id="day_template_form_view_id">
+            <field name="name"> day.template.form</field>
+            <field name="model">oph.day.template</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <form string="Filling Template" version="7.0">
+                    <group>
+                        <field name="name"/>
+                        <!--<field name="slot_ids"/> je n'ai pas accés dans la vue au record oph.slot -->
+                        <!--<field name="slot_ids" widget="one2many"/> je n'ai pas accés dans la vue au record oph.slot idem-->
+                       <field name="slot_ids" widget="selection"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+        <!-- END VIEW -->
+        
+
+        <!-- ACTIONS / MENUITEM -->
+        <!-- OPH SLOT ACTION -->
+        <record model="ir.actions.act_window" id="oph_slot_action_id">
+            <field name="name">Slot</field>
+            <field name="res_model">oph.slot</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="slot_tree_view_id"/>
+        </record>
+
+        <!-- OPH SLOT MENU-->
+        <menuitem parent="config_oph_id" id="oph_slot_menu_id" sequence ="80" action="oph_slot_action_id"/>
+
+
+
+
+    </data>
+</openerp>
