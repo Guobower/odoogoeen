@@ -34,7 +34,7 @@ class oph_slot(orm.Model):
     _columns={
               'start_time':fields.char('Start Time', size=8),
               'duration':fields.float('Duration'),
-              'day_id':fields.many2one('oph.day.template','Day Template'),}
+              }
     
     
 class oph_day_template(orm.Model):
@@ -45,5 +45,5 @@ class oph_day_template(orm.Model):
     
     _columns={
               'name':fields.char('Name', help='A simple name', size=32),
-              'slot_ids':fields.one2many('oph.slot','day_id','Slots'),
+              'slot_ids':fields.many2many('oph.slot','oph_slot_day_template_rel','day_template_id', 'slot_id', 'Slots'),
               }

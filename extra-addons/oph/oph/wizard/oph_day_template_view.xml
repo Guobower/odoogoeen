@@ -25,7 +25,6 @@
                     <group>
                         <field name="start_time"/>
                         <field name="duration"/>
-                        <field name="day_id" widget="selection"/>
                     </group>
                 </form>
             </field>
@@ -54,7 +53,7 @@
                     <group>
                         <field name="name"/>
                         <!--<field name="slot_ids"/> je n'ai pas accés dans cette vue au record oph.slot pour les selectionner -->
-                        <field name="slot_ids" widget="one2many"/>
+                        <field name="slot_ids"/>
                         <!--<field name="slot_ids" widget="selection"/>--> <!-- C'est plus ce que je veux mais c'est l'id qui est présenté et il est pas informatif"-->
                     </group>
                 </form>
