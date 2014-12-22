@@ -34,7 +34,7 @@ class oph_slot(orm.Model):
     _columns={
               'start_time':fields.char('Start Time', size=8),
               #'duration':fields.float('Duration'),
-              'duration':fields.char('Duration',size=8),
+              'duration':fields.integer('Duration',help ='Duration in minutes'),
               }
     
     
@@ -44,6 +44,7 @@ class oph_day_template(orm.Model):
     par exemple : lundi consultation, lundi + actes techniques, mardi cs + fermé l'apres midi etc..., fermee toute la journee
     """
     _name='oph.day.template'
+    
     
     _columns={
               'name':fields.char('Name', help='A simple name', size=32),
