@@ -336,7 +336,7 @@
             </field>
         </record>
 
-<!-- INHERIT CRM MEETING VIEW TO ADD BUTTON "REPORT" -->
+<!-- ADD BUTTON "REPORTS" IN CRM MEETING VIEW  -->
         <record model="ir.ui.view" id="crm_meeting_form_w_report_button_id">
             <field name="name">crm.meeting.w.logblocline</field>
             <field name="model">crm.meeting</field>
@@ -349,7 +349,6 @@
                 </data>
             </field>    
         </record>
-
 
 <!-- ADD BUTTON  REPORTS IN RES_PARTNER VIEW -->
          <record model="ir.ui.view" id="oph_view_partner_form2">
@@ -364,13 +363,6 @@
                 </data>
             </field>
          </record>
-
-
-
-
-
-
-
 
     </data>
 </openerp>
