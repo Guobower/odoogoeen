@@ -351,5 +351,26 @@
         </record>
 
 
+<!-- ADD BUTTON  REPORTS IN RES_PARTNER VIEW -->
+         <record model="ir.ui.view" id="oph_view_partner_form2">
+            <field name="name">oph.partner.form.button.reports</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//div[@name='buttons']" position="inside">
+                       <button string="Reports" name="%(oph.reporting_action_id)d" type="action" context="{'search_default_partner_id':id}"/>
+                    </xpath>            
+                </data>
+            </field>
+         </record>
+
+
+
+
+
+
+
+
     </data>
 </openerp>

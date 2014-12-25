@@ -473,7 +473,7 @@ ___MARCHE PAS
             <field name="arch" type="xml">
                 <data>
                     <xpath expr="//div[@name='buttons']" position="inside">
-                       <button string="LogConsultation" name="%(logconsultation_act)d" type="action" context="{'search_default_partner_id':id}"/>                
+                       <button string="LogConsultation" name="%(logconsultation_act)d" type="action" context="{'search_default_partner_id':id}"/>
                     </xpath>            
                 </data>
             </field>
