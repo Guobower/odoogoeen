@@ -35,7 +35,8 @@
                         <button name="statechange_nwnm" string="No Wait" states="nwnm" type="object" attrs="{'invisible':[('state','in',['cs','tech','draft','open','cancel','no_show','done','nwnm'])]}"/>
                         <button string="LogConsultation" name="%(logconsultation_act)d" type="action" context="{'search_default_partner_id':partner_id}"/>
                         <button string="History Measurement" name="%(oph.measurement_action_id)d" type="action" context="{'search_default_partner_id':partner_id}"/>                        
-                        <button string="Refraction History" name="%(oph.measurement_action_id)d" type="action" context="{'search_default_partner_id':partner_id,'measurement_type':'conc'}"/>
+                        <button string="Refraction History" name="%(oph.measurement_action_id)d" type="action" context="{'search_default_partner_id':partner_id,'search_default_type_id':'2','measurement_type':'ref'}"/>
+                        <!-- ATTENTTION pour que le boutton refraction history marche il faut une entrée field name="type_id" dans la search view de oph.measurement -->
                         <button string="Inject" name="selection_partner_id" type="object"/>
                         <!-- button to call the selection partner_id method that inject the partner_id in
                             the record -->
