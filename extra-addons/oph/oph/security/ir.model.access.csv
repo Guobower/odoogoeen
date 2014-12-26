@@ -64,3 +64,6 @@ access_oph_lens_group_oph,oph.oph.lens group_oph,model_oph_lens,oph.oph_group_id
 access_oph_lens_group_sec,oph.oph.lens group_sec,model_oph_lens,oph.sec_group_id,1,0,0,0
 portal_bloc_agenda,portal_bloc_agenda,model_oph_bloc_agenda,portal.group_portal,1,0,0,0
 portal_bloc_agenda_line,portal_bloc_agenda_line,model_oph_bloc_agenda_line,portal.group_portal,1,0,0,0
+access_oph_measurement_calling_center_group,oph.measurement group_calling_center,model_oph_measurement,oph.calling_center_group,1,0,0,0
+access_oph_measurement_type_calling_center_group,oph.measurement.type group_calling_center,model_oph_measurement_type,oph.calling_center_group,1,1,1,1
+access_oph_todolist_calling_center_group,oph.oph.todolist group_calling_center,model_oph_todolist,oph.calling_center_group,1,0,0,0

@@ -347,34 +347,5 @@
             </field>
         </record>
 
-<!-- ADD MEASUREMENT BUTTON IN RES_PARTNER VIEW-->
-         <record model="ir.ui.view" id="oph_view_partner_form3">
-            <field name="name">oph.partner.form.button.measurement</field>
-            <field name="model">res.partner</field>
-            <field name="inherit_id" ref="base.view_partner_form"/>
-            <field name="arch" type="xml">
-                <data>
-                    <xpath expr="//div[@name='buttons']" position="inside">
-                       <button string="History Measurement" name="%(oph.measurement_action_id)d" type="action" context="{'search_default_partner_id':id}"/>
-                    </xpath>            
-                </data>
-            </field>
-         </record>
-
-<!-- ADD MEASUREMENT BUTTON FILTER ON CONCLUSION IN RES_PARTNER VIEW-->
-         <record model="ir.ui.view" id="oph_view_partner_form4">
-            <field name="name">oph.partner.form.button.conclusion</field>
-            <field name="model">res.partner</field>
-            <field name="inherit_id" ref="base.view_partner_form"/>
-            <field name="arch" type="xml">
-                <data>
-                    <xpath expr="//div[@name='buttons']" position="inside">
-                       <button string="Conclusions" name="%(oph.measurement_action_id)d" groups="oph.calling_center_group" type="action" context="{'search_default_partner_id':id,'search_default_type_id':'6','measurement_type':'conc'}"/>
-                       <button string="LogRefraction" name="%(oph.measurement_action_id)d" groups="oph.sec_group_id" type="action" context="{'search_default_partner_id':id,'search_default_type_id':'2','measurement_type':'ref'}"/>
-                    </xpath>            
-                </data>
-            </field>
-         </record>
-
-    </data>
+             </data>
 </openerp>
