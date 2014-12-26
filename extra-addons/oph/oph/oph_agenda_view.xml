@@ -34,9 +34,10 @@
                         <button name="statechange_no_show" string="No Show" states="no_show" type="object" attrs="{'invisible':[('state','in',['cs','tech','draft','open','wait','cancel','no_show','in','in_between','done','nwnm'])]}"/>
                         <button name="statechange_nwnm" string="No Wait" states="nwnm" type="object" attrs="{'invisible':[('state','in',['cs','tech','draft','open','cancel','no_show','done','nwnm'])]}"/>
                         <button string="LogConsultation" name="%(logconsultation_act)d" type="action" context="{'search_default_partner_id':partner_id}"/>
-                        <button string="History Measurement" name="%(oph.measurement_action_id)d" type="action" context="{'search_default_partner_id':partner_id}"/>                        
-                        <button string="Refraction History" name="%(oph.measurement_action_id)d" type="action" context="{'search_default_partner_id':partner_id,'search_default_type_id':'2','measurement_type':'ref'}"/>
+                        <button string="LogMeasurement" name="%(oph.measurement_action_id)d" type="action" context="{'search_default_partner_id':partner_id}"/>                        
+                        <button string="LogRefraction" name="%(oph.measurement_action_id)d" type="action" context="{'search_default_partner_id':partner_id,'search_default_type_id':'2','measurement_type':'ref'}"/>
                         <!-- ATTENTTION pour que le boutton refraction history marche il faut une entrée field name="type_id" dans la search view de oph.measurement -->
+                        <button string="LogSLE" name="%(oph.measurement_action_id)d" type="action" context="{'search_default_partner_id':partner_id,'search_default_type_id':'3','measurement_type':'sle'}"/>
                         <button string="Inject" name="selection_partner_id" type="object"/>
                         <!-- button to call the selection partner_id method that inject the partner_id in
                             the record -->
@@ -446,7 +447,6 @@ ___MARCHE PAS
                         <filter string="Motive" icon="terp-partner" domain="[]" context="{'group_by':'motive'}"/>
                     </group>
                 </xpath>
-
             </field>
         </record>
 
@@ -476,7 +476,7 @@ ___MARCHE PAS
                 <data>
                     <xpath expr="//div[@name='buttons']" position="inside">
                        <button string="LogConsultation" name="%(logconsultation_act)d" type="action" context="{'search_default_partner_id':id}"/>
-                    </xpath>            
+                    </xpath>
                 </data>
             </field>
          </record>
@@ -490,9 +490,10 @@ ___MARCHE PAS
                 <data>
                     <xpath expr="//div[@name='buttons']" position="inside">
                        <button string="LogConclusion" name="%(oph.measurement_action_id)d" type="action" context="{'search_default_partner_id':id,'search_default_type_id':'6','measurement_type':'conc'}"/>
-                    </xpath>            
+                    </xpath>
                 </data>
             </field>
          </record>
+
     </data>
 </openerp>
