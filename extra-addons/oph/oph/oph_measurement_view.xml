@@ -369,11 +369,29 @@
             <field name="arch" type="xml">
                 <data>
                     <xpath expr="//div[@name='buttons']" position="inside">
-                       <button string="Conclusions" name="%(oph.measurement_action_id)d" type="action" context="{'search_default_partner_id':id,'measurement_type':'conc'}"/>
+                       <button string="Conclusions" name="%(oph.measurement_action_id)d" groups="oph.calling_center_group" type="action" context="{'search_default_partner_id':id,'search_default_type_id':'6','measurement_type':'conc'}"/>
+                       <button string="LogRefraction" name="%(oph.measurement_action_id)d" groups="oph.sec_group_id" type="action" context="{'search_default_partner_id':id,'search_default_type_id':'2','measurement_type':'ref'}"/>
                     </xpath>            
                 </data>
             </field>
          </record>
+<!-- 
+
+ADD MEASUREMENT BUTTON FILTER ON REFRACTION IN RES_PARTNER VIEW
+          <record model="ir.ui.view" id="oph_view_partner_form5">
+            <field name="name">oph.partner.form.button.refraction</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//div[@name='buttons']" position="inside">
+                       
+                    </xpath>
+                </data>
+            </field>
+         </record>
          
+         -->
+
     </data>
 </openerp>

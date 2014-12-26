@@ -38,6 +38,7 @@
                         <button string="LogRefraction" name="%(oph.measurement_action_id)d" type="action" context="{'search_default_partner_id':partner_id,'search_default_type_id':'2','measurement_type':'ref'}"/>
                         <!-- ATTENTTION pour que le boutton refraction history marche il faut une entrée field name="type_id" dans la search view de oph.measurement -->
                         <button string="LogSLE" name="%(oph.measurement_action_id)d" type="action" context="{'search_default_partner_id':partner_id,'search_default_type_id':'3','measurement_type':'sle'}"/>
+                        <button string="Treatment" name="%(oph.medication_line_action_id)d" type="action" context="{'search_default_partner_id':partner_id}"/>
                         <button string="Inject" name="selection_partner_id" type="object"/>
                         <!-- button to call the selection partner_id method that inject the partner_id in
                             the record -->
@@ -489,7 +490,7 @@ ___MARCHE PAS
             <field name="arch" type="xml">
                 <data>
                     <xpath expr="//div[@name='buttons']" position="inside">
-                       <button string="LogConclusion" name="%(oph.measurement_action_id)d" type="action" context="{'search_default_partner_id':id,'search_default_type_id':'6','measurement_type':'conc'}"/>
+                       <button string="LogConclusion" name="%(oph.measurement_action_id)d" groups="oph.calling_center_group" type="action" context="{'search_default_partner_id':id,'search_default_type_id':'6','measurement_type':'conc'}"/>
                     </xpath>
                 </data>
             </field>

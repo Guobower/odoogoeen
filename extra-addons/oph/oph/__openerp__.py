@@ -33,6 +33,8 @@ Permet de faire pleins de choses absolument géniales
                  "portal",
                  ],
     'data': [
+                'security/oph_security.xml',
+                'security/ir.model.access.csv',
                 'custom/oph_partner_view.xml',
                 'custom/oph_res_users_view.xml',
                 'custom/oph_sale_order_view.xml',
