@@ -94,6 +94,7 @@
             <field name="priority" eval="16"/>
             <field name="arch" type="xml">
                 <tree string="Type">
+                     <field name="id"/>
                     <field name="name"/>
                     <field name="code"/>
                 </tree>
@@ -107,9 +108,23 @@
             <field name="priority" eval="16"/>
             <field name="arch" type="xml">
                 <form string="Type">
+                    <field name="id"/>
                     <field name="name"/>
                     <field name="code"/>
                 </form>
+            </field>
+        </record>
+        <!-- TREE VIEW MEASUREMENT TYPE -->
+        <record model="ir.ui.view" id="measurement_type_tree_view_id">
+            <field name="name">measurement.type.tree</field>
+            <field name="model">oph.measurement.type</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <tree string="Type">
+                    <field name="id"/>
+                    <field name="name"/>
+                    <field name="code"/>
+                </tree>
             </field>
         </record>
         <!-- END VIEW MEASUREMENT TYPE-->
@@ -278,7 +293,7 @@
                 <search string = "Search Measurement">
                     <field name="name"/>
                     <field name="partner_id"/>
-                    <!--<field name="type_id"/>-->
+                    <field name="type_id"/>
                     <field name="meeting_id"/>
                     <field name="va_type"/>
                     <filter name="type_tono" string="Tonometry" domain="[('type_id.code', '=', 'tono')]" context="{'measurement_type': 'tono'}"/>
