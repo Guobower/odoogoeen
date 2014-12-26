@@ -64,6 +64,10 @@ access_oph_lens_group_oph,oph.oph.lens group_oph,model_oph_lens,oph.oph_group_id
 access_oph_lens_group_sec,oph.oph.lens group_sec,model_oph_lens,oph.sec_group_id,1,0,0,0
 portal_bloc_agenda,portal_bloc_agenda,model_oph_bloc_agenda,portal.group_portal,1,0,0,0
 portal_bloc_agenda_line,portal_bloc_agenda_line,model_oph_bloc_agenda_line,portal.group_portal,1,0,0,0
+access_crm_meeting_group_calling_center,crm.meeting group_calling_center,model_crm_meeting,oph.calling_center_group,1,1,1,0
+access_oph_medication_line_group_calling_center,oph.oph.medication.line calling_center,model_oph_medication_line,oph.calling_center_group,1,0,0,0
 access_oph_measurement_calling_center_group,oph.measurement group_calling_center,model_oph_measurement,oph.calling_center_group,1,0,0,0
 access_oph_measurement_type_calling_center_group,oph.measurement.type group_calling_center,model_oph_measurement_type,oph.calling_center_group,1,1,1,1
 access_oph_todolist_calling_center_group,oph.oph.todolist group_calling_center,model_oph_todolist,oph.calling_center_group,1,0,0,0
+access_oph_todolist_tag_calling_center_group,oph.oph.todolist_tag calling_center,model_oph_todolist_tag,oph.calling_center_group,1,0,0,0
+access_oph_protocole_line_calling_center_group,oph.oph.protocole.line calling_center,model_oph_protocole_line,oph.calling_center_group,1,0,0,0
