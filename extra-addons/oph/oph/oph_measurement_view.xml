@@ -367,5 +367,15 @@
                 <field name="domain">[('type_id','=',2)]</field> <!-- ('partner_id','=',partner_id) ne va pas.? -->
                 <field name="context">{'measurement_type':'ref'}</field>
         </record>
+        <!-- ACTION POUR LE BOUTON CONCLUSION-->
+        <record model="ir.actions.act_window" id="logconclusion_action_id">
+                <field name="name">logconclusion</field>
+                <field name="src_model">crm.meeting</field>
+                <field name="res_model">oph.measurement</field>
+                <field name="view_mode">tree,form</field>
+                <field name="search_view_id" ref="view_measurement_search_id"/>
+                <field name="domain">[('type_id','=',6)]</field> <!-- ('partner_id','=',partner_id) ne va pas.? -->
+                <field name="context">{'measurement_type':'conc'}</field>
+        </record>
              </data>
 </openerp>
