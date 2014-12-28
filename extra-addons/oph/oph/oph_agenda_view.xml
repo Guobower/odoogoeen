@@ -491,7 +491,7 @@ ___MARCHE PAS
                 <data>
                     <xpath expr="//div[@name='buttons']" position="inside">
                        <button string="History Measurement" name="%(oph.measurement_action_id)d" type="action" context="{'search_default_partner_id':id}"/>
-                       <button string="LogConclusions" name="%(oph.logconclusion_action_id)d" groups="oph.sec_group_id" type="action" context="{'search_default_partner_id':id}"/>
+                       <button string="LogConclusions" name="%(oph.logconclusion_action_id)d" groups="oph.calling_center_group" type="action" context="{'search_default_partner_id':id}"/>
                        <button string="LogRefraction" name="%(oph.logrefraction_action_id)d" groups="oph.sec_group_id" type="action" context="{'search_default_partner_id':id}"/>
                     </xpath>
                 </data>
