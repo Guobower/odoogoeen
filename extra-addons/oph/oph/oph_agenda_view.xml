@@ -35,9 +35,11 @@
                         <button name="statechange_nwnm" string="No Wait" states="nwnm" type="object" attrs="{'invisible':[('state','in',['cs','tech','draft','open','cancel','no_show','done','nwnm'])]}"/>
                         <button string="LogConsultation" name="%(logconsultation_act)d" type="action" context="{'search_default_partner_id':partner_id}"/>
                         <button string="LogMeasurement" name="%(oph.measurement_action_id)d" type="action" context="{'search_default_partner_id':partner_id}"/>                        
-                        <button string="LogRefraction" name="%(oph.logrefraction_action_id)d" type="action"/>
+                        <button string="LogRefraction" name="%(oph.logrefraction_action_id)d" type="action" context="{'search_default_partner_id':partner_id}"/>
                         <!-- ATTENTTION pour que le boutton refraction history marche il faut une entrée field name="type_id" dans la search view de oph.measurement -->
-                        <button string="LogSLE" name="%(oph.measurement_action_id)d" type="action" context="{'search_default_partner_id':partner_id,'search_default_type_id':'3','measurement_type':'sle'}"/>
+                        <!-- button string="LogRefraction" name="%(oph.measurement_action_id)d" type="action" context="{'search_default_partner_id':partner_id,'search_default_type_id':'2','measurement_type':'sle'}" marche aussi mais j'ai voulu essayer autrement à causse de mon access denied.-->
+                        <!--<button string="LogSLE" name="%(oph.measurement_action_id)d" type="action" context="{'search_default_partner_id':partner_id,'search_default_type_id':'3','measurement_type':'sle'}"/>-->
+                        <button string="LogSLE" name="%(oph.logsle_action_id)d" type="action" context="{'search_default_partner_id':partner_id}"/>
                         <button string="Treatment" name="%(oph.medication_line_action_id)d" type="action" context="{'search_default_partner_id':partner_id}"/>
                         <button string="Inject" name="selection_partner_id" type="object"/>
                         <!-- button to call the selection partner_id method that inject the partner_id in

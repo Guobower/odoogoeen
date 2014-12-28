@@ -347,15 +347,25 @@
             </field>
         </record>
 
-        <!-- ACTION POUR LE BOUTTON LogRefraction --> 
-        <record model="ir.actions.act_window" id="logrefraction_action_id">
-                <field name="name">logrefraction</field>
+        <!-- ACTION POUR LE BOUTTON LogSLE --> 
+        <record model="ir.actions.act_window" id="logsle_action_id">
+                <field name="name">logsle</field>
+                <field name="src_model">crm.meeting</field>
                 <field name="res_model">oph.measurement</field>
                 <field name="view_mode">tree,form</field>
                 <field name="search_view_id" ref="view_measurement_search_id"/>
-                <field name="domain">[('type_id','=',2)]</field>
+                <field name="domain">[('type_id','=',3)]</field>
+                <field name="context">{'measurement_type':'sle'}</field>
+        </record>
+        <!-- ACTION POUR LE BOUTTON LogRefraction --> 
+        <record model="ir.actions.act_window" id="logrefraction_action_id">
+                <field name="name">logrefration</field>
+                <field name="src_model">crm.meeting</field>
+                <field name="res_model">oph.measurement</field>
+                <field name="view_mode">tree,form</field>
+                <field name="search_view_id" ref="view_measurement_search_id"/>
+                <field name="domain">[('type_id','=',2)]</field> <!-- ('partner_id','=',partner_id) ne va pas.? -->
                 <field name="context">{'measurement_type':'ref'}</field>
         </record>
-
              </data>
 </openerp>
