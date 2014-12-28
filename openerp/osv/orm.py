@@ -4012,6 +4012,7 @@ class BaseModel(object):
                                ' WHERE ' + self._table + '.id IN %s' + where_clause,
                                [sub_ids] + where_params)
                     returned_ids = [x['id'] for x in cr.dictfetchall()]
+                    #from pdb import set_trace;set_trace()
                     self._check_record_rules_result_count(cr, uid, sub_ids, returned_ids, operation, context=context)
 
     def _workflow_trigger(self, cr, uid, ids, trigger, context=None):

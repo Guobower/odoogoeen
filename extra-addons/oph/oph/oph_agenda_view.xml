@@ -35,7 +35,7 @@
                         <button name="statechange_nwnm" string="No Wait" states="nwnm" type="object" attrs="{'invisible':[('state','in',['cs','tech','draft','open','cancel','no_show','done','nwnm'])]}"/>
                         <button string="LogConsultation" name="%(logconsultation_act)d" type="action" context="{'search_default_partner_id':partner_id}"/>
                         <button string="LogMeasurement" name="%(oph.measurement_action_id)d" type="action" context="{'search_default_partner_id':partner_id}"/>                        
-                        <button string="LogRefraction" name="%(oph.measurement_action_id)d" type="action" context="{'search_default_partner_id':partner_id,'search_default_type_id':'2','measurement_type':'ref'}"/>
+                        <button string="LogRefraction" name="%(oph.measurement_action_id)d" type="action" context="{'search_default_partner_id':partner_id,'default_type_id':'2','search_default_type_id':'2','measurement_type':'ref'}"/>
                         <!-- ATTENTTION pour que le boutton refraction history marche il faut une entrée field name="type_id" dans la search view de oph.measurement -->
                         <button string="LogSLE" name="%(oph.measurement_action_id)d" type="action" context="{'search_default_partner_id':partner_id,'search_default_type_id':'3','measurement_type':'sle'}"/>
                         <button string="Treatment" name="%(oph.medication_line_action_id)d" type="action" context="{'search_default_partner_id':partner_id}"/>
@@ -183,8 +183,6 @@
                             </tree>
                         </field>
                     </page>
-
-                    
 
                     <page string="Pathology" attrs="{'invisible':[('state','in',['draft','open','wait'])]}">
                         <field name="pathology_ids" widget="many2many">
@@ -396,7 +394,6 @@
 
         <menuitem parent="mail.mail_my_stuff" id="calendar_tree_menu_id" action="action_crm_meeting_tree" sequence = "11"/>
 
-
         <!-- VIEW SEARCH FOR MEETING -->
         <record model="ir.ui.view" id="agenda_oph_search_view_id1">
             <field name="name">oph.agenda.search.view</field>
@@ -492,7 +489,7 @@ ___MARCHE PAS
                 <data>
                     <xpath expr="//div[@name='buttons']" position="inside">
                        <button string="History Measurement" name="%(oph.measurement_action_id)d" type="action" context="{'search_default_partner_id':id}"/>
-                       <button string="LogConclusions" name="%(oph.measurement_action_id)d" groups="oph.calling_center_group" type="action" context="{'search_default_partner_id':id,'search_default_type_id':'6','measurement_type':'conc'}"/>
+                       <button string="LogConclusions" name="%(oph.measurement_action_id)d" groups="oph.sec_group_id" type="action" context="{'search_default_partner_id':id,'search_default_type_id':'6','measurement_type':'conc'}"/>
                        <button string="LogRefraction" name="%(oph.measurement_action_id)d" groups="oph.sec_group_id" type="action" context="{'search_default_partner_id':id,'search_default_type_id':'2','measurement_type':'ref'}"/>
                     </xpath>
                 </data>

@@ -1,7 +1,7 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_crm_meeting_group_oph,crm.meeting group_oph,model_crm_meeting,oph.oph_group_id,1,1,1,1
-access_oph_measurement_group_oph,oph.measurement group_oph,model_oph_measurement,oph.oph_group_id,1,1,1,1
-access_oph_measurement_type_group_oph,oph.measurement.type group_oph,model_oph_measurement_type,oph.oph_group_id,1,0,0,0
+access_oph_measurement_group_oph,oph.oph.measurement group_oph,model_oph_measurement,oph.oph_group_id,1,1,1,1
+access_oph_measurement_type_group_oph,oph.oph.measurement.type group_oph,model_oph_measurement_type,oph.oph_group_id,1,0,0,0
 access_oph_todolist_group_oph,oph.oph.todolist group_oph,model_oph_todolist,oph.oph_group_id,1,1,1,1
 access_oph_todolist_tag_group_oph,oph.oph.todolist_tag group_oph,model_oph_todolist_tag,oph.oph_group_id,1,1,1,0
 access_oph_medication_line_group_oph,oph.oph.medication.line group_oph,model_oph_medication_line,oph.oph_group_id,1,1,1,1
@@ -29,8 +29,8 @@ access_oph_motive_group_oph,oph.oph.motive group_oph,model_oph_motive,oph.oph_gr
 access_oph_anesthesia_type_group_oph,oph.oph.anesthesia_type group_oph,model_oph_anesthesia_type,oph.oph_group_id,1,1,1,1
 access_oph_gauge_group_oph,oph.oph.gauge group_oph,model_oph_gauge,oph.oph_group_id,1,1,1,1
 access_crm_meeting_group_sec,crm.meeting group_sec,model_crm_meeting,oph.sec_group_id,1,1,1,0
-access_oph_measurement_group_sec,oph.measurement group_sec,model_oph_measurement,oph.sec_group_id,1,0,0,0
-access_oph_measurement_type_group_sec,oph.measurement.type group_sec,model_oph_measurement_type,oph.sec_group_id,1,0,0,0
+access_oph_measurement_group_sec,oph.oph.measurement group_sec,model_oph_measurement,oph.sec_group_id,1,0,0,0
+access_oph_measurement_type_group_sec,oph.oph.measurement.type group_sec,model_oph_measurement_type,oph.sec_group_id,1,0,0,0
 access_oph_todolist_group_sec,oph.oph.todolist group_secg,model_oph_todolist,oph.sec_group_id,1,1,1,0
 access_oph_todolist_tag_group_sec,oph.oph.todolist_tag group_sec,model_oph_todolist_tag,oph.sec_group_id,1,0,0,0
 access_oph_protocole_group_sec,oph.oph.protocole group_sec,model_oph_protocole,oph.sec_group_id,1,0,0,0
@@ -66,8 +66,8 @@ portal_bloc_agenda,portal_bloc_agenda,model_oph_bloc_agenda,portal.group_portal,
 portal_bloc_agenda_line,portal_bloc_agenda_line,model_oph_bloc_agenda_line,portal.group_portal,1,0,0,0
 access_crm_meeting_group_calling_center,crm.meeting group_calling_center,model_crm_meeting,oph.calling_center_group,1,1,1,0
 access_oph_medication_line_group_calling_center,oph.oph.medication.line calling_center,model_oph_medication_line,oph.calling_center_group,1,0,0,0
-access_oph_measurement_calling_center_group,oph.measurement group_calling_center,model_oph_measurement,oph.calling_center_group,1,0,0,0
-access_oph_measurement_type_calling_center_group,oph.measurement.type group_calling_center,model_oph_measurement_type,oph.calling_center_group,1,1,1,1
+access_oph_measurement_calling_center_group,oph.oph.measurement group_calling_center,model_oph_measurement,oph.calling_center_group,1,0,0,0
+access_oph_measurement_type_calling_center_group,oph.oph.measurement.type group_calling_center,model_oph_measurement_type,oph.calling_center_group,1,1,1,1
 access_oph_todolist_calling_center_group,oph.oph.todolist group_calling_center,model_oph_todolist,oph.calling_center_group,1,0,0,0
 access_oph_todolist_tag_calling_center_group,oph.oph.todolist_tag calling_center,model_oph_todolist_tag,oph.calling_center_group,1,0,0,0
 access_oph_protocole_line_calling_center_group,oph.oph.protocole.line calling_center,model_oph_protocole_line,oph.calling_center_group,1,0,0,0
