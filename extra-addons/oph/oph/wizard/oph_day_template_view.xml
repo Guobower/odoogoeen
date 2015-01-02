@@ -32,8 +32,7 @@
             </field>
         </record>
 
-
-        <!-- SLOT  VIEWS-->
+        <!-- RESOURCE OPH.SLOT  VIEWS-->
         <!-- TREE VIEW SLOTS-->
         <record model="ir.ui.view" id="slot_tree_view_id">
             <field name="name">slot..tree</field>
@@ -47,7 +46,6 @@
                 </tree>
             </field>
         </record>
-        
         <!-- FORM VIEW SLOT-->
         <record model="ir.ui.view" id="slot_form_view_id">
             <field name="name"> slot.form</field>
@@ -56,7 +54,7 @@
             <field name="arch" type="xml">
                 <form string="Filling Template" version="7.0">
                     <group>
-                        <field name="start_time" on_change="onchange_check_format(start_time,context)"/>
+                        <field name="start_time" on_change="onchange_check_format(start_time)"/>
                         <field name="tag_id" context="{'tag_id':tag_id}" on_change="onchange_tag(context)"/>
                         <field name="duration"/>
                     </group>
@@ -64,7 +62,7 @@
             </field>
         </record>
         
-<!-- DAY TEMPLATE  VIEWS-->
+        <!-- RESOURCE  OPH.DAY.TEMPLATE  VIEWS-->
         <!-- DAY TEMPLATE TREE VIEW -->
         <record model="ir.ui.view" id="day_template_tree_view_id">
             <field name="name">day.template.tree</field>
@@ -134,8 +132,6 @@
 
         <!--DAY TEMPLATE MENU-->
         <menuitem parent="config_oph_id" id="oph_day_template_menu_id" sequence="100" action="oph_day_template_action_id"/>
-
-
 
 
     </data>

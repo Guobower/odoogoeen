@@ -9,35 +9,42 @@ import arrow
 import inspect
 
 class day_template_agenda_factory(osv.osv_memory):
-    """
-    TODO
-    """
+    """Wizard for agenda factory using the day template"""
     _name = "day.template.agenda.factory"
     _description = "Agenda factory. Set up of slots using day template"
     
-    def To_Arrow(self,date,start_time,context=None):
-        """
-        @param : date type:string format : YYYY-MM-DD
-        @param start_item: type string format nn:nn
-        @param duration: type integer
+    def To_Arrow(self,date,start_time,duration,context=None):
+        """Get an arrow object from a date an a start_time string
         
-        @return: string  format : 'YYYY-MM-DD nn:nn' In UTC timezone anaware
+        @param : date type:string format : YYYY-MM-DD
+        @param start_time: type string format hh:mm
+        
+        @return: string  format : 'YYYY-MM-DD hh:mm' In UTC timezone unaware
         """
         if context is None:
             context = {}
+        format='YYYY-MM-DD HH:mm'
         print "PASSING in : %s - CONTeXT is :%s" % (inspect.stack()[0][3], context)
         print "PARAM: date=%s - start_time=%s" % (date, start_time)
+        datetime=date+' '+start_time
+        print "DATETIME:%s" %(datetime,)
+        #aw=arrow.get(datetime, 'YYYY-MM-DD HH:mm') #mais utc aware
+        # et c'est pas ce que je veux je veux locale tz aware
+        aw=arrow.get(datetime,format).replace(tzinfo = context.get('tz', None)).to('UTC')
         
-        datetime=date+' '+str(start_time)
-        aw=arrow.get(datetime).replace(tzinfo = context.get('tz', None)).to('UTC')
+        print "AW:%s" %(aw,)
+        print "AW DEADLINE:%s" %(aw.replace(minutes=+duration))
         #now get a str from arrow
-                
-        return aw.format('YYYY-MM-DD HH:mm:ss')
+        print "RETURN:%s" %(aw.format('YYYY-MM-DD HH:mm:ss'),)
+      
+        return {
+                'date':aw.format('YYYY-MM-DD HH:mm:ss'),
+                'date_deadline':aw.replace(minutes=+duration).format('YYYY-MM-DD HH:mm:ss'),
+                }
     
          
     def strdate2arrow(self, dt, hm = None, context = None):
-        """
-        Return an arrow object in UTC
+        """Return an arrow object in UTC from a datetime
         
         :param dt: datetime.
         :type dt: string can be a string with or without time informations
@@ -69,8 +76,42 @@ class day_template_agenda_factory(osv.osv_memory):
             return arw
         else:
             return arrow.get(dt)
-        
+
     def create_slot(self,cr,uid,ids,context=None):
+        if context is None:
+            context={}
+        datas=self.read(cr,uid,ids,['name','date','day_template_id'],context=context)
+        print "datas:%s" %(datas,)
+        
+        #day_template=self.pool.get('oph.day.template')
+        #day_template=day_template.browse(cr,uid,context.get('day_template_id',False),context=context) ca marche tres bien
+        day_template=datas[0].get('day_template_id')[0]
+        day_template=self.pool.get('oph.day.template').browse(cr,uid,day_template,context=context)
+        print day_template
+        
+        meeting=self.pool.get('crm.meeting')
+        
+        for slot in day_template.slot_ids:
+            print "date:%s" %(datas[0].get('date'),)
+            print "start_time:%s" %(slot.start_time,)
+            print "duration:%s" %(slot.duration,)
+            print "tag_id code:%s" %(slot.tag_id.code,)
+            print "To_Arrow:%s" %(self.To_Arrow(datas[0].get('date'),slot.start_time,slot.duration, context=context),)
+            print "create a record in crm.meeting"
+            #je crée le dict des valeurs que je veux stocker dans crm.meeting
+            vals={
+                  'name':datas[0].get('name'),
+                  'date':self.To_Arrow(datas[0].get('date'),slot.start_time,slot.duration, context=context).get('date'),
+                  'duration':slot.duration,
+                  'date_deadline':self.To_Arrow(datas[0].get('date'),slot.start_time,slot.duration, context=context).get('date_deadline'),
+                  }
+            print "VALS:%s" %(vals,)
+            meeting.create(cr,uid,vals,context=context)
+            print "========"
+        return {}
+        #import pdb;pdb.set_trace()
+    
+    def create_slotbis(self,cr,uid,ids,context=None):
         """
         TODO
         """
@@ -98,19 +139,11 @@ class day_template_agenda_factory(osv.osv_memory):
             # c'est pas mal mais il faut faire des conversions en utc.
             #travail a faire sur le float time de duration.
         return {}
-    
-    def _get_status_agenda(self, cursor, user_id, context = None):
-        return (
-                ('cs', 'Consultation'),
-                ('tech', 'Technique'),
-                ('close', 'Close'),
-                )
-    
-            
+
     _columns = {
                 'name':fields.char('Name', size = 8, help = "Name for the open slots to be created"),
                 'date':fields.date('Date', help = 'Day for slot to create'),
-                'state': fields.selection(_get_status_agenda, 'State', readonly = False),
+                #'state': fields.selection(_get_status_agenda, 'State', readonly = False),
                 'day_template_id':fields.many2one('oph.day.template','Day Template'),
                             }
     _defaults = {

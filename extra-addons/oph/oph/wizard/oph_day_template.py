@@ -33,7 +33,8 @@ class oph_tag_agenda(orm.Model):
               'code':fields.char('Code',size=8),
               'duration':fields.integer('Duration',help ='Duration in minutes'),
               }
-    
+    _sql_constraints=[('code_unique','unique(code)','Code must be unique')]
+
 class oph_slot(orm.Model):
     """ A simple slot  for one appointment
 
