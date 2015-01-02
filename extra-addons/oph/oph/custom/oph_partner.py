@@ -14,10 +14,7 @@ class res_partner(osv.osv):
     _inherit = "res.partner"
 
     def onchange_name(self, cr, uid, id, firstname, lastname, dob, context = None):
-        """
-        Will put fullname = LASTNAME, Firstname 
-        in field name of table res.partner
-        """
+        """Will put fullname = LASTNAME, Firstname in field name of table res.partner"""
         if context == None:
             context = {}
         fullname = ''

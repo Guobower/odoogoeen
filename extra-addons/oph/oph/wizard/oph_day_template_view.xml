@@ -41,7 +41,7 @@
             <field name="priority" eval="16"/>
             <field name="arch" type="xml">
                 <tree string="Type">
-                    <field name="start_time"/>
+                    <field name="start_time" on_change="onchange_check_format(start_time)"/>
                     <field name="duration"/>
                     <field name="tag_id"/>
                 </tree>
@@ -56,7 +56,7 @@
             <field name="arch" type="xml">
                 <form string="Filling Template" version="7.0">
                     <group>
-                        <field name="start_time"/>
+                        <field name="start_time" on_change="onchange_check_format(start_time,context)"/>
                         <field name="tag_id" context="{'tag_id':tag_id}" on_change="onchange_tag(context)"/>
                         <field name="duration"/>
                     </group>

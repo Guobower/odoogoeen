@@ -18,11 +18,15 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-import time
 from openerp.osv import osv, fields, orm
 from openerp.tools.translate import _
+import re
 
 class oph_tag_agenda(orm.Model):
+    """A tag for the slot
+    
+        You can create as many tags as you want
+    """
     _name='oph.tag.agenda'
     _columns={
               'name':fields.char('Name',size=16),
@@ -31,16 +35,16 @@ class oph_tag_agenda(orm.Model):
               }
     
 class oph_slot(orm.Model):
-    """
-    A simple slot
-    for one appointment
-    parameters: 
-    -start_time qui est l'heure de début du crénaux. Il faudra voir pour le formatage 08:00:00, 08:00, 08h,08h00,8h
-    -duration en float qui est la durée du crénaux.
+    """ A simple slot  for one appointment
+
+        start_time : start hour
+        duration; integer. in minutes
+        tag_id:type of the slot
     """
     _name='oph.slot'
     
     def onchange_tag(self,cr,uid,ids,context=None):
+        """Onchange method to get the default duration"""
         #context.get['tag_id'] = l'id  de oph.tag.agenda que je veux
         if context is None:
             context={}
@@ -55,32 +59,31 @@ class oph_slot(orm.Model):
                           'duration':res.duration},
                 }
 
+    def onchange_check_format(self,cr,uid,id,start_time,context=None):
+        """Check if start_time format is valid"""
+        pattern=re.compile(r'^([0-1]?[0-9]|[2][0-3]):([0-5][0-9])$')
+        match=pattern.match(start_time)
+        if context is None:
+            context={}
+        if match is None:
+            return {
+                        'warning': {'title': _('Error!'), 'message': _('Something went wrong! Please check your data. The data "start_time" must be hh:mm')},}
+        else:
+            return {}
+
     _columns={
               'start_time':fields.char('Start Time', size=8),
-              #'duration':fields.float('Duration'),
               'duration':fields.integer('Duration',help ='Duration in minutes'),
               'tag_id':fields.many2one('oph.tag.agenda','Tag',help='Set the type of the slot'),
               }
-    #===========================================================================
-    # 
-    # _defaults={
-    #            'duration':lambda s, cr, uid, c:s._get_default_duration(cr, uid, context = c),
-    #            }
-    #===========================================================================
 
 class oph_day_template(orm.Model):
-    """
-    Journee type.
-    par exemple : lundi consultation, lundi + actes techniques, mardi cs + fermé l'apres midi etc..., fermee toute la journee
-    """
+    """Template for a day"""
     _name='oph.day.template'
-    
-    
-    
     _columns={
               'name':fields.char('Name', help='A simple name', size=32),
               'comment':fields.char('A small description', size=128),
               'slot_ids':fields.many2many('oph.slot','oph_slot_day_template_rel','day_template_id', 'slot_id', 'Slots'),
               }
-    
-    
+
+# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
