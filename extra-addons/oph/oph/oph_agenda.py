@@ -38,9 +38,7 @@ class crm_meeting(orm.Model):
         return res
 
     def default_get(self, cr, uid, fields, context = None):
-        """
-        Surcharge la valeur par defaut de la durée d'un RDV
-        """
+        """ Surcharge la valeur par defaut de la durée d'un RDV"""
         res = super(crm_meeting, self).default_get(cr, uid, fields, context = context)
         res['duration'] = 0.25
         return res
@@ -90,7 +88,6 @@ class crm_meeting(orm.Model):
                                 'message': _("Well are you sure you want to add a slot"),
                      }})
        return res
-
 
     def _get_status_agenda(self, cursor, user_id, context = None):
         return (
