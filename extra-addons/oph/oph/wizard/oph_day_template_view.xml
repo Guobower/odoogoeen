@@ -2,6 +2,37 @@
 <openerp>
     <data>
 
+        <!-- RESOURCE OPH.TAG.AGENDA -->
+        <!-- TREE VIEW -->
+        <record model="ir.ui.view" id="tag_tree_view_id">
+            <field name="name">tag.tree</field>
+            <field name="model">oph.tag.agenda</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <tree string="Type">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="duration"/>
+                </tree>
+            </field>
+        </record>
+        <!-- FORM VIEW -->
+        <record model="ir.ui.view" id="tag_agenda_form_view_id">
+            <field name="name"> oph.agenda.form</field>
+            <field name="model">oph.tag.agenda</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <form string="Agenda Tag" version="7.0">
+                    <group>
+                        <field name="name"/>
+                        <field name="code"/>
+                        <field name="duration" help="Set a default duration"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+
         <!-- SLOT  VIEWS-->
         <!-- TREE VIEW SLOTS-->
         <record model="ir.ui.view" id="slot_tree_view_id">
@@ -12,9 +43,11 @@
                 <tree string="Type">
                     <field name="start_time"/>
                     <field name="duration"/>
+                    <field name="tag_id"/>
                 </tree>
             </field>
         </record>
+        
         <!-- FORM VIEW SLOT-->
         <record model="ir.ui.view" id="slot_form_view_id">
             <field name="name"> slot.form</field>
@@ -24,6 +57,7 @@
                 <form string="Filling Template" version="7.0">
                     <group>
                         <field name="start_time"/>
+                        <field name="tag_id" context="{'tag_id':tag_id}" on_change="onchange_tag(context)"/>
                         <field name="duration"/>
                     </group>
                 </form>
@@ -39,6 +73,7 @@
             <field name="arch" type="xml">
                 <tree string="Type">
                     <field name="name"/>
+                    <field name="comment"/>
                     <!--<field name="slot_ids" widget="one2many"/>-->
                 </tree>
             </field>
@@ -52,9 +87,8 @@
                 <form string="Filling Template" version="7.0">
                     <group>
                         <field name="name"/>
-                        <!--<field name="slot_ids"/> je n'ai pas accés dans cette vue au record oph.slot pour les selectionner -->
+                        <field name="comment"/>
                         <field name="slot_ids"/>
-                        <!--<field name="slot_ids" widget="selection"/>--> <!-- C'est plus ce que je veux mais c'est l'id qui est présenté et il est pas informatif"-->
                     </group>
                 </form>
             </field>
@@ -63,6 +97,14 @@
         
 
         <!-- ACTIONS / MENUITEM -->
+         <!-- OPH TAG AGENDA ACTION -->
+        <record model="ir.actions.act_window" id="oph_tag_adenda_action_id">
+            <field name="name">Tag Agenda</field>
+            <field name="res_model">oph.tag.agenda</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="tag_tree_view_id"/>
+        </record>
         <!-- OPH SLOT ACTION -->
         <record model="ir.actions.act_window" id="oph_slot_action_id">
             <field name="name">Slot</field>
@@ -80,10 +122,18 @@
             <field name="view_id" ref="day_template_tree_view_id"/>
         </record>
 
+        <!-- OPH TAG AGENDA MENU -->
+        <menuitem parent="config_oph_id" id="oph_tag_adenda_menu_id" sequence ="80" action="oph_tag_adenda_action_id"/>
         <!-- OPH SLOT MENU-->
-        <menuitem parent="config_oph_id" id="oph_slot_menu_id" sequence ="80" action="oph_slot_action_id"/>
+        
+<!--
+         j'ai pas envie de voir les slots car ne sert à rien
+        <menuitem parent="config_oph_id" id="oph_slot_menu_id" sequence ="90" action="oph_slot_action_id"/>
+
+        -->
+
         <!--DAY TEMPLATE MENU-->
-        <menuitem parent="config_oph_id" id="oph_day_template_menu_id" sequence="90" action="oph_day_template_action_id"/>
+        <menuitem parent="config_oph_id" id="oph_day_template_menu_id" sequence="100" action="oph_day_template_action_id"/>
 
 
 

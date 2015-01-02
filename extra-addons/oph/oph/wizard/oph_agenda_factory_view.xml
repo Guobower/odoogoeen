@@ -33,6 +33,9 @@
             <field name="target">new</field>
         </record>
 
+        <!-- MENU CONFIG-->
+        <menuitem name="Configuration" id="menu_config" parent="mail.mail_my_stuff" sequence="15"/>
+        <!-- MENU AGENDA FACTORY -->
         <menuitem name="Agenda Factory" id="menu_agenda_factory" action="action_agenda_factory"
             parent="mail.mail_my_stuff" sequence="14"/>
     </data>

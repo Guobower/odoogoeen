@@ -60,6 +60,7 @@ Permet de faire pleins de choses absolument géniales
                 'wizard/oph_ivt_prescription_view.xml',
                 'wizard/oph_account_voucher_deposit_view.xml',
                 'wizard/oph_crm_meeting_state_view.xml',
+                'wizard/oph_day_template_view.xml',
                 #'wizard/oph_day_template_view.xml',
                 #'wizard/oph_day_template_agenda_factory_view.xml',
        #========================================================================
