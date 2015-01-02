@@ -55,18 +55,6 @@ class oph_slot(orm.Model):
                           'duration':res.duration},
                 }
 
-    def  _get_default_duration(self,cr,uid,context=None):
-        """
-        Get default duration from oph.tag.agenda
-        Not finish
-        """
-        if context is None:
-            context={}
-        tag_agenda=self.pool.get('oph.tag.agenda')
-        print tag_agenda.search(cr,uid, [],context=context) # pour l'instant mais il faudra remplace 'cs'
-        import pdb;pdb.set_trace()
-        return True
-    
     _columns={
               'start_time':fields.char('Start Time', size=8),
               #'duration':fields.float('Duration'),
