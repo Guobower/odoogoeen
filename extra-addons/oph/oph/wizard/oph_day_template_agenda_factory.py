@@ -41,43 +41,9 @@ class day_template_agenda_factory(osv.osv_memory):
                 'date':aw.format('YYYY-MM-DD HH:mm:ss'),
                 'date_deadline':aw.replace(minutes=+duration).format('YYYY-MM-DD HH:mm:ss'),
                 }
-    
-         
-    def strdate2arrow(self, dt, hm = None, context = None):
-        """Return an arrow object in UTC from a datetime
-        
-        :param dt: datetime.
-        :type dt: string can be a string with or without time informations
-        :param hm: time 
-        :type hm: string can be "8" or "08" for 8h must be converted to a formated time "HH-mm-ss"
-        :returns date wih time
-        :rtype: arrow
-        :example:
-        
-        strdate2arrow('2012-10-18, '08:30')
-        <arrow
-        """
-        #=======================================================================
-        # Est ce qu'un champ date subit une modification à cause des TZ
-        # quand il est inséré dans la database.
-        # si on veut utiliser le hm (HH:mm:ss)
-        # Comme on récupère une string en UTC
-        #
-        #=======================================================================
-        if context is None:
-            context = {}
-        print "PASSING in : %s - CONTeXT is :%s" (inspect.stack()[0][3], context)
-        print "CONTEXT:%s" % context
-        print "hm:%s" %(hm,)
-
-        if hm:
-            hm = dict(zip(['hour', 'minute'], [int(x) for x in hm.lstrip('0').split(':') ]))
-            arw = arrow.get(dt).replace(hour = hm['hour'], minute = hm['minute']).replace(tzinfo = context.get('tz', None)).to('UTC')
-            return arw
-        else:
-            return arrow.get(dt)
 
     def create_slot(self,cr,uid,ids,context=None):
+        """Create slots using the wizard data and the day_template record"""
         if context is None:
             context={}
         datas=self.read(cr,uid,ids,['name','date','day_template_id'],context=context)
@@ -95,7 +61,7 @@ class day_template_agenda_factory(osv.osv_memory):
             print "date:%s" %(datas[0].get('date'),)
             print "start_time:%s" %(slot.start_time,)
             print "duration:%s" %(slot.duration,)
-            print "tag_id code:%s" %(slot.tag_id.code,)
+            print "tag_id state:%s" %(slot.tag_id.state,)
             print "To_Arrow:%s" %(self.To_Arrow(datas[0].get('date'),slot.start_time,slot.duration, context=context),)
             print "create a record in crm.meeting"
             #je crée le dict des valeurs que je veux stocker dans crm.meeting
@@ -104,6 +70,7 @@ class day_template_agenda_factory(osv.osv_memory):
                   'date':self.To_Arrow(datas[0].get('date'),slot.start_time,slot.duration, context=context).get('date'),
                   'duration':slot.duration,
                   'date_deadline':self.To_Arrow(datas[0].get('date'),slot.start_time,slot.duration, context=context).get('date_deadline'),
+                  'state':slot.tag_id.state,
                   }
             print "VALS:%s" %(vals,)
             meeting.create(cr,uid,vals,context=context)

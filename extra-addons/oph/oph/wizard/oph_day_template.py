@@ -28,12 +28,29 @@ class oph_tag_agenda(orm.Model):
         You can create as many tags as you want
     """
     _name='oph.tag.agenda'
+
+    def _get_status_agenda(self, cursor, user_id, context = None):
+        return (
+                # ('draft', 'Draft'),
+                ('cs', 'Consultation'),
+                ('tech', 'Technique'),
+                # ('open', 'Open'),
+                # ('busy', 'Busy'),
+                ('close', 'Close'),
+                # ('cancel', 'Cancel'),
+                # ('no_show', 'No Show'),
+                # ('wait', 'Wait'),
+                # ('in', 'In'),
+                # ('in_between', 'In Between'),
+                # ('done', 'Out'),
+                )
+
     _columns={
               'name':fields.char('Name',size=16),
-              'code':fields.char('Code',size=8),
+              #'code':fields.char('Code',size=8),
               'duration':fields.integer('Duration',help ='Duration in minutes'),
+              'state': fields.selection(_get_status_agenda, 'State', readonly = False),
               }
-    _sql_constraints=[('code_unique','unique(code)','Code must be unique')]
 
 class oph_slot(orm.Model):
     """ A simple slot  for one appointment
