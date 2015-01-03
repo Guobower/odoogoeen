@@ -71,3 +71,4 @@ access_oph_measurement_type_calling_center_group,oph.oph.measurement.type group_
 access_oph_todolist_calling_center_group,oph.oph.todolist group_calling_center,model_oph_todolist,oph.calling_center_group,1,0,0,0
 access_oph_todolist_tag_calling_center_group,oph.oph.todolist_tag calling_center,model_oph_todolist_tag,oph.calling_center_group,1,0,0,0
 access_oph_protocole_line_calling_center_group,oph.oph.protocole.line calling_center,model_oph_protocole_line,oph.calling_center_group,1,0,0,0
+access_oph_oph_instrumentation_type_group_oph,oph.instrumentation.type group_oph,model_oph_instrumentation_type,oph.oph_group_id,1,1,1,0

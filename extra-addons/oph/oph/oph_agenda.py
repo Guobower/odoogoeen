@@ -10,6 +10,7 @@ import arrow
 
 
 class oph_motive(orm.Model):
+    """Motives for a crm.meeting"""
     _name = 'oph.motive'
 
     _columns = {
@@ -177,12 +178,15 @@ class crm_meeting(orm.Model):
     def statechange_no_show(self, cr, uid, ids, context = None):
         self.write(cr, uid, ids, {"state": "no_show"}, context = context)
         return True
+
     def statechange_busy(self, cr, uid, ids, context = None):
         self.write(cr, uid, ids, {"state": "busy"}, context = context)
         return True
+
     def statechange_wait(self, cr, uid, ids, context = None):
         self.write(cr, uid, ids, {"state": "wait"}, context = context)
         return True
+
     def statechange_nwnm(self, cr, uid, ids, context = None):
         self.write(cr, uid, ids, {"state": "nwnm"}, context = context)
         return True
@@ -220,8 +224,6 @@ class crm_meeting(orm.Model):
             fullmotive = motive + ' ' + motivecomment
             res[br.id] = fullmotive
         return res
-
-
 
     _columns = {
                 'subject':fields.char('Subject', size = 128, help = "Object of the meeting",),  # not sure it's usefull

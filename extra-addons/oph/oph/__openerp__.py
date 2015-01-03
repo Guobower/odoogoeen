@@ -64,27 +64,23 @@ Permet de faire pleins de choses absolument géniales
                 'wizard/oph_crm_meeting_state_view.xml',
                 'wizard/oph_day_template_view.xml',
                 'wizard/oph_day_template_agenda_factory_view.xml',
-                #'wizard/oph_day_template_view.xml',
-                #'wizard/oph_day_template_agenda_factory_view.xml',
+                'oph_prescription_view.xml',
+                'data/surgery_data.xml',
+                 'data/product_data.xml',
        #========================================================================
        #  'security/oph_security.xml',
        #  'security/ir.model.access.csv',
        #  'report/Test_premier_report.xml',
-       #  
-       #  
        #  'report/examination_report.xml',
        #  'report/bloc_agenda_report.xml',
        #  'data/ir.config_parameter.xml',
        #  'data/oph_iol_type_data.xml',
        #  'data/inpatient_type_data.xml',
        #  'data/anesthesia_type_data.xml',
-       #  'data/product_data.xml',
        #  # 'data/document_data.xml',
 # #        'custom/oph_phonecall_view.xml',
 # #        'custom/oph_invoice_view.xml',
 # #        'custom/oph_sale_view.xml',
-#         # # 'oph_prescription_view.xml',
-#         # # 
 #         # # 'data/reporting_template_data.xml',
 #         # # 'wizard/oph_diabetic_report_view.xml',
 #         #=======================================================================
