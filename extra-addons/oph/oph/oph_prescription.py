@@ -15,10 +15,11 @@ class exam(orm.Model):
                 ('Bio',_('Biology')),
                 ('Rx', _('Radiology')),
                 ('Cx', _('Cardiology')),
+                ('Oph',_('Ophthalmology'))
                 )
 
     _columns = {
-              'type_id':fields.selection(_get_sel, 'Type', size = 8),
+              'type':fields.selection(_get_sel, 'Type', size = 8),
               'name':fields.char('Name', size = 64),
               'code':fields.char('Code', size = 16),
               'comment':fields.text('Comment'),
@@ -233,6 +234,11 @@ class crm_meeting(orm.Model):
     _columns = {
               'medication_line_ids':fields.one2many('oph.medication.line', 'meeting_id', 'Medication Line'),
               'pathology_ids':fields.many2many('oph.pathology', 'oph_pathology_meeting_rel', 'meeting_id', 'pathology_id', 'Pathology Line'),
+              #Trying to improve the protocole process
               'protocole_ids':fields.many2many('oph.protocole', 'oph_protocole_meeting_rel', 'meeting_id', 'protocole_id', 'Protocole Line'),
-              'protocole_line_ids':fields.one2many('oph.protocole.line', 'meeting_id', 'Protocole Line'), }
+              'biology_line_ids':fields.one2many('oph.protocole.line', 'meeting_id', 'Biology Line',domain=[('exam_id.type','=','Bio'),]),
+              'radiology_line_ids':fields.one2many('oph.protocole.line', 'meeting_id', 'Radiology Line',domain=[('exam_id.type','=','Rx'),]),
+              'cardiology_line_ids':fields.one2many('oph.protocole.line', 'meeting_id', 'Cardiology Line',domain=[('exam_id.type','=','Cx'),]),
+               
+               }
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

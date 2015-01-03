@@ -739,42 +739,42 @@
         <record id="ex0" model="oph.exam">
             <field name="name">NFS</field>
             <field name="code">NFS</field>
-            <field name="type_id">Bio</field>
+            <field name="type">Bio</field>
         </record>
         <record id="ex1" model="oph.exam">
             <field name="name">Plaquette</field>
             <field name="code">Plaquette</field>
-            <field name="type_id">Bio</field>
+            <field name="type">Bio</field>
         </record>
         <record id="ex2" model="oph.exam">
             <field name="name">Vitesse de sédimentation</field>
             <field name="code">VS</field>
-            <field name="type_id">Bio</field>
+            <field name="type">Bio</field>
         </record>
         <record id="ex3" model="oph.exam">
             <field name="name">C Reactive Proteine</field>
             <field name="code">CRP</field>
-            <field name="type_id">Bio</field>
+            <field name="type">Bio</field>
         </record>
         <record id="ex4" model="oph.exam">
             <field name="name">TP, TCA</field>
             <field name="code">TPTCA</field>
-            <field name="type_id">Bio</field>
+            <field name="type">Bio</field>
         </record>
         <record id="ex5" model="oph.exam">
             <field name="name">IRM cérébrale et orbitaire</field>
             <field name="code">IRM</field>
-            <field name="type_id">Rx</field>
+            <field name="type">Rx</field>
         </record>
         <record id="ex6" model="oph.exam">
             <field name="name">TDM cérébrale et orbitaire</field>
             <field name="code">TDM</field>
-            <field name="type_id">Rx</field>
+            <field name="type">Rx</field>
         </record>
         <record id="ex7" model="oph.exam">
             <field name="name">Echo-Doppler des Troncs SupraAortiques</field>
             <field name="code">EchoTSA</field>
-            <field name="type_id">Rx</field>
+            <field name="type">Cx</field>
         </record>
         <record id="ex8" model="oph.exam">
             <field name="name">Champ visuel par la méthode de confrontation</field>
@@ -783,212 +783,221 @@
         <record id="ex9" model="oph.exam">
             <field name="name">Périmétrie automatisée</field>
             <field name="code">CVA</field>
+            <field name="type">Oph</field>
         </record>
         <record id="ex10" model="oph.exam">
             <field name="name">Angiographie à la Fluorescéine</field>
             <field name="code">AFF</field>
+            <field name="type">Oph</field>
         </record>
         <record id="ex11" model="oph.exam">
             <field name="name">Electrorétinogramme</field>
             <field name="code">ERG </field>
+            <field name="type">Oph</field>
         </record>
+        
         <record id="ex12" model="oph.exam">
             <field name="name">Hémoglobine Glyquée</field>
             <field name="code">HbA1c</field>
-            <field name="type_id">Bio</field>
+            <field name="type">Bio</field>
         </record>
         <record id="ex13" model="oph.exam">
             <field name="name">Electrophorès des protéines sanguines</field>
             <field name="code">EPP</field>
-            <field name="type_id">Bio</field>
+            <field name="type">Bio</field>
         </record>
         <record id="ex14" model="oph.exam">
             <field name="name">BétaHCg qualitative</field>
             <field name="code">BHCg</field>
-            <field name="type_id">Bio</field>
+            <field name="type">Bio</field>
         </record>
         <record id="ex15" model="oph.exam">
             <field name="name">Créatininémie</field>
             <field name="code">CREA</field>
-            <field name="type_id">Bio</field>
+            <field name="type">Bio</field>
         </record>
         <record id="ex16" model="oph.exam">
             <field name="name">Ionogramme sanguin</field>
             <field name="code">IONO</field>
-            <field name="type_id">Bio</field>
+            <field name="type">Bio</field>
         </record>
         <record id="ex17" model="oph.exam">
             <field name="name">ASAT/ALAT</field>
             <field name="code">ASATALAT</field>
             <field name="code">HEP</field>
-            <field name="type_id">Bio</field>
+            <field name="type">Bio</field>
         </record>
         <record id="ex18" model="oph.exam">
             <field name="name">Fibrinogène</field>
             <field name="code">Fib</field>
-            <field name="type_id">Bio</field>
+            <field name="type">Bio</field>
         </record>
         <record id="ex19" model="oph.exam">
             <field name="name">Créatininémie</field>
             <field name="code">Creat</field>
-            <field name="type_id">Bio</field>
+            <field name="type">Bio</field>
         </record>
         <record id="ex20" model="oph.exam">
             <field name="code">FIB</field>
-            <field name="type_id">Bio</field>
+            <field name="type">Bio</field>
         </record>
         <record id="ex21" model="oph.exam">
             <field name="name">Serologie HIV</field>
             <field name="code">HIV</field>
-            <field name="type_id">Bio</field>
+            <field name="type">Bio</field>
         </record>
         <record id="ex22" model="oph.exam">
             <field name="name">Serologie HSV</field>
             <field name="code">HSV</field>
-            <field name="type_id">Bio</field>
+            <field name="type">Bio</field>
         </record>
         <record id="ex23" model="oph.exam">
             <field name="name">Serologie Toxoplasmose</field>
             <field name="code">TOXO</field>
-            <field name="type_id">Bio</field>
+            <field name="type">Bio</field>
         </record>
         <record id="ex24" model="oph.exam">
             <field name="name">serologie Toxocarose</field>
             <field name="code">TOXOCA</field>
-            <field name="type_id">Bio</field>
+            <field name="type">Bio</field>
         </record>
         <record id="ex25" model="oph.exam">
             <field name="name">C3</field>
             <field name="code">C3</field>
-            <field name="type_id">Bio</field>
+            <field name="type">Bio</field>
         </record>
         <record id="ex26" model="oph.exam">
             <field name="name">C4</field>
             <field name="code">C4</field>
-            <field name="type_id">Bio</field>
+            <field name="type">Bio</field>
         </record>
         <record id="ex27" model="oph.exam">
             <field name="name">CH50</field>
             <field name="code">CH50</field>
-            <field name="type_id">Bio</field>
+            <field name="type">Bio</field>
         </record>
         <record id="ex28" model="oph.exam">
             <field name="name">Anticorps anti-ADN</field>
             <field name="code">ANTIDNA</field>
-            <field name="type_id">Bio</field>
+            <field name="type">Bio</field>
         </record>
         <record id="ex29" model="oph.exam">
             <field name="name">?</field>
             <field name="code">?</field>
-            <field name="type_id">Bio</field>
+            <field name="type">Bio</field>
         </record>
         <record id="ex30" model="oph.exam">
             <field name="name">Cholesterol total-HDL-LDL-Triglycéride</field>
             <field name="code">LIP</field>
-            <field name="type_id">Bio</field>
+            <field name="type">Bio</field>
         </record>
         <record id="ex31" model="oph.exam">
             <field name="name">Anticorps antiphospholipide</field>
             <field name="code">ANTILIP</field>
-            <field name="type_id">Bio</field>
+            <field name="type">Bio</field>
         </record>
         <record id="ex32" model="oph.exam">
             <field name="name">Enzyme de conversion de l'angiotensine</field>
             <field name="code">ACE</field>
-            <field name="type_id">Bio</field>
+            <field name="type">Bio</field>
         </record>
         <record id="ex33" model="oph.exam">
             <field name="name">HLAB27</field>
             <field name="code">HLAB27</field>
-            <field name="type_id">Bio</field>
+            <field name="type">Bio</field>
         </record>
         <record id="ex34" model="oph.exam">
             <field name="name">TP</field>
             <field name="code">TP</field>
-            <field name="type_id">Bio</field>
+            <field name="type">Bio</field>
         </record>
         <record id="ex35" model="oph.exam">
             <field name="name">TCA</field>
             <field name="code">TCA</field>
-            <field name="type_id">Bio</field>
+            <field name="type">Bio</field>
         </record>
         <record id="ex36" model="oph.exam">
             <field name="name">Protéine C</field>
             <field name="code">PC</field>
-            <field name="type_id">Bio</field>
+            <field name="type">Bio</field>
         </record>
         <record id="ex37" model="oph.exam">
             <field name="name">Protéine S</field>
             <field name="code">PS</field>
-            <field name="type_id">Bio</field>
+            <field name="type">Bio</field>
         </record>
         <record id="ex38" model="oph.exam">
             <field name="name">Anticorps anticardiolipines</field>
             <field name="code">aCLl</field>
-            <field name="type_id">Bio</field>
+            <field name="type">Bio</field>
         </record>
         <record id="ex39" model="oph.exam">
             <field name="name">Anticorps anti-noyaux</field>
             <field name="code">anti-ECT</field>
-            <field name="type_id">Bio</field>
+            <field name="type">Bio</field>
         </record>
         <record id="ex40" model="oph.exam">
             <field name="name">Recherche mutation prothrombine</field>
             <field name="code">Pm</field>
-            <field name="type_id">Bio</field>
+            <field name="type">Bio</field>
         </record>
         <record id="ex41" model="oph.exam">
             <field name="name">TPHA/VDRL</field>
             <field name="code">SYPH</field>
-            <field name="type_id">Bio</field>
+            <field name="type">Bio</field>
         </record>
         <record id="ex42" model="oph.exam">
             <field name="name">PCR maladie des griffes du Chat</field>
             <field name="code">BART</field>
             <field name="comment">Bartonela Henseale</field>
-            <field name="type_id">Bio</field>
+            <field name="type">Bio</field>
         </record>
         <record id="ex43" model="oph.exam">
             <field name="name">Bilan calcique</field>
             <field name="code">Ca</field>
-            <field name="type_id">Bio</field>
+            <field name="type">Bio</field>
         </record>
         <record id="ex44" model="oph.exam">
             <field name="name">Sérologie maladie de Lyme</field>
             <field name="code">LYME</field>
-            <field name="type_id">Bio</field>
+            <field name="type">Bio</field>
         </record>
         <record id="ex45" model="oph.exam">
             <field name="name">Bilirubine totale, libre et conjuguée</field>
             <field name="code">BILI</field>
-            <field name="type_id">Bio</field>
+            <field name="type">Bio</field>
         </record>
         <record id="ex46" model="oph.exam">
             <field name="name">Gamma GT</field>
             <field name="code">GGT</field>
-            <field name="type_id">Bio</field>
+            <field name="type">Bio</field>
         </record>
         <record id="ex47" model="oph.exam">
             <field name="name">Phophatase alcaline</field>
             <field name="code">Pa</field>
-            <field name="type_id">Bio</field>
+            <field name="type">Bio</field>
         </record>
         <record id="ex48" model="oph.exam">
             <field name="name">IRM VEINEUSE</field>
             <field name="code">IRM VEINEUSE</field>
             <field name="comment"></field>
-            <field name="type_id">Rx</field>
+            <field name="type">Rx</field>
         </record>
         <record id="ex49" model="oph.exam">
             <field name="name">Bilan lipidique</field>
             <field name="code">LP</field>
-            <field name="type_id">Bio</field>
+            <field name="type">Bio</field>
         </record>
         <record id="ex50" model="oph.exam">
             <field name="name">Ionogramme sanguin</field>
             <field name="code">IONO</field>
-            <field name="type_id">Bio</field>
-        
+            <field name="type">Bio</field>
+        </record>
+        <record id="ex51" model="oph.exam">
+            <field name="name">IRM Cérébrale et Orbitaire et IRM veineuse</field>
+            <field name="code">IRM2</field>
+            <field name="type">Rx</field>
+            <field name="comment">Avec coupe sur le nerf optique</field>
         </record>
 
         <!--protocole-->
