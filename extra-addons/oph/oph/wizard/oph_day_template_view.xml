@@ -96,7 +96,7 @@
 
         <!-- ACTIONS / MENUITEM -->
          <!-- OPH TAG AGENDA ACTION -->
-        <record model="ir.actions.act_window" id="oph_tag_adenda_action_id">
+        <record model="ir.actions.act_window" id="oph_tag_agenda_action_id">
             <field name="name">Tag Agenda</field>
             <field name="res_model">oph.tag.agenda</field>
             <field name="view_type">form</field>
@@ -121,7 +121,7 @@
         </record>
 
         <!-- OPH TAG AGENDA MENU -->
-        <menuitem parent="config_oph_id" id="oph_tag_adenda_menu_id" sequence ="80" action="oph_tag_adenda_action_id"/>
+        <menuitem parent="config_oph_id" id="oph_tag_agenda_menu_id" sequence ="110" action="oph_tag_agenda_action_id"/>
         <!-- OPH SLOT MENU-->
         
 <!--
@@ -131,7 +131,7 @@
         -->
 
         <!--DAY TEMPLATE MENU-->
-        <menuitem parent="config_oph_id" id="oph_day_template_menu_id" sequence="100" action="oph_day_template_action_id"/>
+        <menuitem parent="config_oph_id" id="oph_day_template_menu_id" sequence="120" action="oph_day_template_action_id"/>
 
 
     </data>

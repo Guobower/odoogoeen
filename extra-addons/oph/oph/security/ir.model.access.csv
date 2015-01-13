@@ -72,3 +72,7 @@ access_oph_todolist_calling_center_group,oph.oph.todolist group_calling_center,m
 access_oph_todolist_tag_calling_center_group,oph.oph.todolist_tag calling_center,model_oph_todolist_tag,oph.calling_center_group,1,0,0,0
 access_oph_protocole_line_calling_center_group,oph.oph.protocole.line calling_center,model_oph_protocole_line,oph.calling_center_group,1,0,0,0
 access_oph_oph_instrumentation_type_group_oph,oph.instrumentation.type group_oph,model_oph_instrumentation_type,oph.oph_group_id,1,1,1,0
+access_oph_tag_agenda_group_oph,oph.tag.agenda group_oph,model_oph_tag_agenda,oph.oph_group_id,1,1,1,0
+access_oph_tag_agenda_group_sec,oph.tag.agenda group_sec,model_oph_tag_agenda,oph.sec_group_id,1,0,0,0
+access_oph_day_template_group_oph,oph.day.template group_oph,model_oph_day_template,oph.oph_group_id,1,1,1,0
+access_oph_day_template_group_sec,oph.day.template group_sec,model_oph_day_template,oph.oph_group_id,1,0,0,0
