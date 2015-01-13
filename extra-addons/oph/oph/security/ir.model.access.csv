@@ -76,3 +76,5 @@ access_oph_tag_agenda_group_oph,oph.tag.agenda group_oph,model_oph_tag_agenda,op
 access_oph_tag_agenda_group_sec,oph.tag.agenda group_sec,model_oph_tag_agenda,oph.sec_group_id,1,0,0,0
 access_oph_day_template_group_oph,oph.day.template group_oph,model_oph_day_template,oph.oph_group_id,1,1,1,0
 access_oph_day_template_group_sec,oph.day.template group_sec,model_oph_day_template,oph.oph_group_id,1,0,0,0
+access_oph_slot_group_oph,oph.slot group_oph,model_oph_slot,oph.oph_group_id,1,1,1,0
+access_oph_slot_group_sec,oph.slot group_sec,model_oph_slot,oph.sec_group_id,1,0,0,0
