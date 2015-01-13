@@ -268,7 +268,7 @@ class oph_bloc_agenda_line(osv.osv):
                   'datewotime':l.bloc_agenda_id.name,
                   'date':l.bloc_agenda_id.name,
                   'date_deadline':l.bloc_agenda_id.name,
-                  'state':'out',
+                  'state':'done',
                   'tag':'or',
                   }
             crm_meeting_obj = self.pool.get('crm.meeting').create(cr, uid, vals_meeting, context = context)
