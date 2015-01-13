@@ -44,6 +44,7 @@ class day_template_agenda_factory(osv.osv_memory):
 
     def create_slot(self,cr,uid,ids,context=None):
         """Create slots using the wizard data and the day_template record"""
+        print "PASSING IN CREATE SLOT"
         if context is None:
             context={}
         datas=self.read(cr,uid,ids,['name','date','day_template_id'],context=context)
