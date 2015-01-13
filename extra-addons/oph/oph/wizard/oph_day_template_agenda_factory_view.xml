@@ -9,8 +9,8 @@
             <field name="arch" type="xml">
                 <form string="New agenda_Factory" version="7.0">
                     <field name="name"/>
-                    <field name="date"/>
-                    <field name="day_template_id"/>
+                    <field name="date" required="1"/>
+                    <field name="day_template_id" required="1"/>
                     <button string="Cancel" special="cancel" icon="gtk-cancel"/>
                     <button name="create_slot" string="Create Slots"  type="object" icon="gtk-ok" context="{'day_template_id':day_template_id}"/>
                 </form>
