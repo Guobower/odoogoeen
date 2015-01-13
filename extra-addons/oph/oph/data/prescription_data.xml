@@ -881,11 +881,7 @@
             <field name="code">ANTIDNA</field>
             <field name="type">Bio</field>
         </record>
-        <record id="ex29" model="oph.exam">
-            <field name="name">?</field>
-            <field name="code">?</field>
-            <field name="type">Bio</field>
-        </record>
+        
         <record id="ex30" model="oph.exam">
             <field name="name">Cholesterol total-HDL-LDL-Triglycéride</field>
             <field name="code">LIP</field>
@@ -991,16 +987,15 @@
         <record id="ex50" model="oph.exam">
             <field name="name">Ionogramme sanguin</field>
             <field name="code">IONO</field>
-            <field name="type">Bio</field>
+            <field name="type_id">Bio</field>
         </record>
-        <record id="ex51" model="oph.exam">
-            <field name="name">IRM Cérébrale et Orbitaire et IRM veineuse</field>
-            <field name="code">IRM2</field>
-            <field name="type">Rx</field>
-            <field name="comment">Avec coupe sur le nerf optique</field>
+        <record id="ex29" model="oph.exam">
+            <field name="name">?</field>
+            <field name="code">?</field>
+            <field name="type_id">Bio</field>
         </record>
-
-        <!--protocole-->
+        
+<!--protocole-->
         <!-- Bilan preop -->
         <record id="pro0" model="oph.protocole">
             <field name="name">Bilan pré-opératoire</field>
