@@ -877,11 +877,7 @@
             <field name="code">ANTIDNA</field>
             <field name="type_id">Bio</field>
         </record>
-        <record id="ex29" model="oph.exam">
-            <field name="name">?</field>
-            <field name="code">?</field>
-            <field name="type_id">Bio</field>
-        </record>
+        
         <record id="ex30" model="oph.exam">
             <field name="name">Cholesterol total-HDL-LDL-Triglycéride</field>
             <field name="code">LIP</field>
@@ -988,10 +984,14 @@
             <field name="name">Ionogramme sanguin</field>
             <field name="code">IONO</field>
             <field name="type_id">Bio</field>
-        
         </record>
-
-        <!--protocole-->
+        <record id="ex29" model="oph.exam">
+            <field name="name">?</field>
+            <field name="code">?</field>
+            <field name="type_id">Bio</field>
+        </record>
+        
+<!--protocole-->
         <!-- Bilan preop -->
         <record id="pro0" model="oph.protocole">
             <field name="name">Bilan pré-opératoire</field>
@@ -1089,44 +1089,34 @@
         <record id="pro2_line6" model="oph.protocole.line.template">
             <field name="protocole_id" ref="pro2"/>
             <field name="name">PR6</field>
-            <field name="exam_id" ref="ex14"/>
+            <field name="exam_id" ref="ex33"/>
         </record>
         <record id="pro2_line7" model="oph.protocole.line.template">
             <field name="protocole_id" ref="pro2"/>
             <field name="name">PR7</field>
-            <field name="exam_id" ref="ex29"/>
+            <field name="exam_id" ref="ex25"/>
         </record>
         <record id="pro2_line8" model="oph.protocole.line.template">
             <field name="protocole_id" ref="pro2"/>
             <field name="name">PR8</field>
-            <field name="exam_id" ref="ex33"/>
+            <field name="exam_id" ref="ex26"/>
         </record>
         <record id="pro2_line9" model="oph.protocole.line.template">
             <field name="protocole_id" ref="pro2"/>
             <field name="name">PR9</field>
-            <field name="exam_id" ref="ex25"/>
+            <field name="exam_id" ref="ex27"/>
         </record>
         <record id="pro2_line10" model="oph.protocole.line.template">
             <field name="protocole_id" ref="pro2"/>
             <field name="name">PR10</field>
-            <field name="exam_id" ref="ex26"/>
+            <field name="exam_id" ref="ex31"/>
         </record>
         <record id="pro2_line11" model="oph.protocole.line.template">
             <field name="protocole_id" ref="pro2"/>
             <field name="name">PR11</field>
-            <field name="exam_id" ref="ex27"/>
-        </record>
-        <record id="pro2_line12" model="oph.protocole.line.template">
-            <field name="protocole_id" ref="pro2"/>
-            <field name="name">PR12</field>
-            <field name="exam_id" ref="ex31"/>
-        </record>
-        <record id="pro2_line13" model="oph.protocole.line.template">
-            <field name="protocole_id" ref="pro2"/>
-            <field name="name">PR13</field>
             <field name="exam_id" ref="ex28"/>
         </record>
-
+        
         <!-- Bilan rétinite -->
         <record id="pro3" model="oph.protocole">
             <field name="name">Bilan rétinite</field>
