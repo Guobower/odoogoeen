@@ -146,7 +146,7 @@
                         </group>                        
                         <!--<group attrs="{'invisible':['|','|','|',('state','=','draft'),('state','=','open'),('state','=','no_show'),('state','=','cancel')]}" string="CR hostpit">-->
                         <group attrs="{'invisible':[('state','not in',['confirm','close'])]}" string="CR hostpit">
-                            <field name="po_meeting_id"/>
+                            <field name="po_meeting_id" domain="[('partner_id','=',partner_id)]" widget="many2one"/>
                             <field name="indication_id"/>
                             <field name="operator_id"/>
                         </group>
