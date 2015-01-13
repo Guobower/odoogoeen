@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!-- TAG AGENDA RESSOURCE : oph.tag.agenda-->
+        <record model="oph.tag.agenda" id="tag_tech">
+            <field name="name">Acte Technique</field>
+            <field name="duration">30</field>
+            <field name="state">tech</field>
+        </record>
+
+       <record model="oph.tag.agenda" id="tag_cs">
+            <field name="name">Consultation</field>
+            <field name="duration">15</field>
+            <field name="state">cs</field>
+        </record>
+
+    </data>
+</openerp>
