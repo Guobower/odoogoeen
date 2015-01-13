@@ -180,7 +180,7 @@
             <field name="priority" eval="16"/>
             <field name="arch" type="xml">
                 <form string="Exam">
-                    <field name="type_id"/>
+                    <field name="type"/>
                     <field name="name"/>
                     <field name="code"/>
                     <field name="comment"/>
@@ -194,7 +194,7 @@
             <field name="priority" eval="16"/>
             <field name="arch" type="xml">
                 <tree string="Exam">
-                    <field name="type_id"/>
+                    <field name="type"/>
                     <field name="name"/>
                     <field name="code"/>
                 </tree>

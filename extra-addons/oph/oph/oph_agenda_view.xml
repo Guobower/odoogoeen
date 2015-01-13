@@ -210,23 +210,49 @@
 
                     <page string="Protocole" attrs="{'invisible':[('state','in',['draft','open','wait','busy'])]}">
                         <field name="protocole_ids" widget="many2many">
-                            <tree string="Protocole" editable="top">
+                            <tree string="Protocole">
                                 <field name="name"/>
                             </tree>
                         </field>
                     </page>
 
-                    <page string="Protocole Lines" attrs="{'invisible':[('state','in',['draft','open','wait','busy'])]}">
-                        <field name="protocole_line_ids">
-                            <tree string="Protocole Line">
+                    <page string="Biology Lines" attrs="{'invisible':[('state','in',['draft','open','wait','busy'])]}">
+                        <field name="biology_line_ids" context="{'protocole_line_type':'Bio'}" editable="top">
+                            <tree string="Biology Line" editable="bottom">
                                 <field name="name"/>
-                                <field name="exam_id"/>
+                                <field name="exam_id" domain="[('type','=','Bio')]"/>
                                 <field name="comment"/>
                                 <field name="result"/>
                                 <field name="ods" required="False" invisible="True"/>
                             </tree>
                         </field>
                     </page>
+
+                    <page string="Radiology Lines" attrs="{'invisible':[('state','in',['draft','open','wait','busy'])]}">
+                        <field name="radiology_line_ids" context="{'protocole_line_type':'Rx'}">
+                            <tree string="Protocole Line" editable="bottom">
+                                <field name="name"/>
+                                <field name="exam_id" domain="[('type','=','Rx')]"/>
+                                <field name="comment"/>
+                                <field name="result"/>
+                                <field name="ods" required="False" invisible="True"/>
+                            </tree>
+                        </field>
+                    </page>
+
+                    <page string="Cardiology Lines" attrs="{'invisible':[('state','in',['draft','open','wait','busy'])]}">
+                        <field name="cardiology_line_ids" context="{'protocole_line_type':'Cx'}">
+                            <tree string="Cardiology Line" editable="bottom">
+                                <field name="name"/>
+                                <field name="exam_id" domain="[('type','=','Cx')]"/>
+                                <field name="comment"/>
+                                <field name="result"/>
+                                <field name="ods" required="False" invisible="True"/>
+                            </tree>
+                        </field>
+                    </page>
+
+
 
 <!--
                     <page string="Reporting">
