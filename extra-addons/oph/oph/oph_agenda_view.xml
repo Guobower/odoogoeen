@@ -24,29 +24,29 @@
                         <button name="statechange_draft" string="Draft" type="object" groups="base.group_system"/>
                         <button name="statechange_open" string="Open" type="object" groups="base.group_system" attrs="{'invisible':[('state', '!=', 'draft')]}"/>
                         <button name="statechange_busy" string="Busy" type="object" attrs="{'invisible':['|',('partner_id','=',False), ('state', '!=', 'open')]}"/>
-                        <button name="statechange_close" string="Close" states="open" type="object"/>
-                        <button name="statechange_in" string="In" states="wait" type="object"/>
-                        <button name="statechange_in_between" string="In Between" states="in" type="object"/>
-                        <button name="statechange_cancel" string="Cancel" states="busy" type="object"/>
-                        <button name="statechange_out" string="Out" states="in,in_between" type="object"/>
-                        <button name="statechange_wait" string="Wait" states="busy" type="object"/>
+                        <button name="statechange_close" string="Close" states="open" type="object" groups="oph.oph_group_id"/>
+                        <button name="statechange_in" string="In" states="wait" type="object" groups="oph.sec_group_id"/>
+                        <button name="statechange_in_between" string="In Between" states="in" type="object" groups="oph.oph_group_id"/>
+                        <button name="statechange_cancel" string="Cancel" states="busy" type="object" groups="oph.calling_center_group"/>
+                        <button name="statechange_out" string="Out" states="in,in_between" groups="oph.sec_group_id" type="object" />
+                        <button name="statechange_wait" string="Wait" states="busy" type="object" groups="oph.oph_group_id"/>
                         <!--<button name="statechange_no_show" string="No Show" states="no_show" type="object" attrs="{'invisible':['|',('state','!=','busy'),('state','=','no_show')]}"/>-->
-                        <button name="statechange_no_show" string="No Show" states="no_show" type="object" attrs="{'invisible':[('state','in',['cs','tech','draft','open','wait','cancel','no_show','in','in_between','done','nwnm'])]}"/>
-                        <button name="statechange_nwnm" string="No Wait" states="nwnm" type="object" attrs="{'invisible':[('state','in',['cs','tech','draft','open','cancel','no_show','done','nwnm'])]}"/>
+                        <button name="statechange_no_show" string="No Show" groups="oph.sec_group_id" states="no_show" type="object" attrs="{'invisible':[('state','in',['cs','tech','draft','open','wait','cancel','no_show','in','in_between','done','nwnm'])]}"/>
+                        <button name="statechange_nwnm" string="No Wait" states="nwnm" groups="oph.sec_group_id" type="object" attrs="{'invisible':[('state','in',['cs','tech','draft','open','cancel','no_show','done','nwnm'])]}"/>
                         <button string="LogConsultation" name="%(logconsultation_act)d" type="action" context="{'search_default_partner_id':partner_id}"/>
-                        <button string="LogMeasurement" name="%(oph.measurement_action_id)d" type="action" context="{'search_default_partner_id':partner_id}"/>                        
-                        <button string="LogRefraction" name="%(oph.logrefraction_action_id)d" type="action" context="{'search_default_partner_id':partner_id}"/>
-                        <!-- ATTENTTION pour que le boutton refraction history marche il faut une entrée field name="type_id" dans la search view de oph.measurement -->
+                        <button string="LogMeasurement" name="%(oph.measurement_action_id)d" type="action" context="{'search_default_partner_id':partner_id}" groups="oph.sec_group_id"/>
+                        <button string="LogRefraction" name="%(oph.logrefraction_action_id)d" type="action" context="{'search_default_partner_id':partner_id}" groups="oph.sec_group_id"/>
+                        <!-- ATTENTION pour que le boutton refraction history marche il faut une entrée field name="type_id" dans la search view de oph.measurement -->
                         <!-- button string="LogRefraction" name="%(oph.measurement_action_id)d" type="action" context="{'search_default_partner_id':partner_id,'search_default_type_id':'2','measurement_type':'sle'}" marche aussi mais j'ai voulu essayer autrement à causse de mon access denied.-->
                         <!--<button string="LogSLE" name="%(oph.measurement_action_id)d" type="action" context="{'search_default_partner_id':partner_id,'search_default_type_id':'3','measurement_type':'sle'}"/>-->
-                        <button string="LogSLE" name="%(oph.logsle_action_id)d" type="action" context="{'search_default_partner_id':partner_id}"/>
-                        <button string="Treatment" name="%(oph.medication_line_action_id)d" type="action" context="{'search_default_partner_id':partner_id}"/>
+                        <button string="LogSLE" name="%(oph.logsle_action_id)d" type="action" context="{'search_default_partner_id':partner_id}" groups="oph.sec_group_id"/>
+                        <button string="Treatment" name="%(oph.medication_line_action_id)d" type="action" context="{'search_default_partner_id':partner_id}" groups="oph.sec_group_id"/>
                         <button string="Inject" name="selection_partner_id" type="object"/>
                         <!-- button to call the selection partner_id method that inject the partner_id in
                             the record -->
-                        <button string="Prescriber" name="create_defaults_medication_lines" type="object" attrs="{'invisible':[('state','in',['cs','tech','draft','open','wait','cancel','no_show','busy'])]}"/>
-                        <button string="Prescription Maker" name="create_defaults_protocole_lines" type="object" attrs="{'invisible':[('state','in',['cs','tech','draft','open','wait','cancel','no_show','busy'])]}"/>
-                        <button string="Free" name="statechange_free" states="in,in_between" type="object"/>
+                        <button string="Prescriber" name="create_defaults_medication_lines" type="object" attrs="{'invisible':[('state','in',['cs','tech','draft','open','wait','cancel','no_show','busy'])]}" groups="oph.oph_group_id"/>
+                        <button string="Prescription Maker" name="create_defaults_protocole_lines" type="object" attrs="{'invisible':[('state','in',['cs','tech','draft','open','wait','cancel','no_show','busy'])]}" groups="oph.oph_group_id"/>
+                        <button string="Free" name="statechange_free" states="in,in_between" type="object" groups="oph.oph_group_id"/>
                         <field name="state" widget="statusbar" nolabel="1" statusbar_visible="draft,open,busy,cancel,in,no_show,wait,in_between,done"
                             statusbar_colors='{"draft":"blue","busy":"blue"}'/>
                     </header>
@@ -172,7 +172,7 @@
                         </field>
                     </page>
 
-                    <page string="Slit Lamp Exam" attrs="{'invisible':[('state','in',['draft','open','wait','busy'])]}">
+                    <page string="Slit Lamp Exam" attrs="{'invisible':[('state','in',['draft','open','wait','busy'])]}" groups="oph.sec_group_id">
                         <field name="sle_ids" widget="one2many" mode="tree" context="{'measurement_type':'sle'}">
                             <tree string="Slit Lamp Exam" editable="top">
                                 <!-- editable="top"-->
@@ -186,7 +186,7 @@
                         </field>
                     </page>
 
-                    <page string="Pathology" attrs="{'invisible':[('state','in',['draft','open','busy','wait'])]}">
+                    <page string="Pathology" attrs="{'invisible':[('state','in',['draft','open','busy','wait'])]}" groups="oph.sec_group_id">
                         <field name="pathology_ids" widget="many2many">
                             <tree string="Pathology" editable="top">
                                 <field name="name"/>
@@ -195,7 +195,7 @@
                         </field>
                     </page>
 
-                    <page string="Medication Lines" attrs="{'invisible':[('state','in',['draft','open','wait','busy'])]}">
+                    <page string="Medication Lines" attrs="{'invisible':[('state','in',['draft','open','wait','busy'])]}" groups="oph.sec_group_id">
                         <field name="medication_line_ids">
                             <tree string="Medication Line">
                                 <field name="name"/>
@@ -208,9 +208,9 @@
                         </field>
                     </page>
 
-                    <page string="Protocole" attrs="{'invisible':[('state','in',['draft','open','wait','busy'])]}">
+                    <page string="Protocole" attrs="{'invisible':[('state','in',['draft','open','wait','busy'])]}" groups="oph.sec_group_id">
                         <field name="protocole_ids" widget="many2many">
-                            <tree string="Protocole">
+                            <tree string="Protocole" editable="top">
                                 <field name="name"/>
                             </tree>
                         </field>
@@ -270,17 +270,17 @@
                     </page>
                     
 -->                    
-                    <page string="Neuro" attrs="{'invisible':[('state','in',['draft','open','wait','busy'])]}">
+                    <page string="Neuro" attrs="{'invisible':[('state','in',['draft','open','wait','busy'])]}" groups="oph.sec_group_id">
                         <label for="neuro" string="observation neurologique"/>
                         <field name="neuro"/> 
                     </page>
 
-                    <page string="Medical History" attrs="{'invisible':[('state','in',['draft','open','wait','busy'])]}">
+                    <page string="Medical History" attrs="{'invisible':[('state','in',['draft','open','wait','busy'])]}" groups="oph.sec_group_id">
                         <label for="mh"/>
                         <field name="mh"/> 
                     </page>
 
-                    <page string="Miscellaneous" attrs="{'invisible':[('state','in',['draft','open','wait','busy'])]}">
+                    <page string="Miscellaneous" attrs="{'invisible':[('state','in',['draft','open','wait','busy'])]}" groups="oph.sec_group_id">
                         <field name="miscellaneous_ids" widget="one2many" mode="tree" context="{'measurement_type':'misc'}">
                             <tree string="Miscellaneous" editable="top">
                                 <!-- editable="top"-->
@@ -290,7 +290,7 @@
                         </field>
                     </page>
 
-                    <page string="Conclusion" attrs="{'invisible':[('state','in',['draft','open','close'])]}">
+                    <page string="Conclusion" attrs="{'invisible':[('state','in',['draft','open','close'])]}" groups="oph.calling_center_group">
                         <field name="conclusion_ids" widget="one2many" mode="tree" context="{'measurement_type':'conc'}">
                             <tree string="Conclusion" editable="top">
                                 <field name="type_id" invisible="1"/>
@@ -302,7 +302,7 @@
                         </field>
                     </page>
 
-                    <page string="Todo List" attrs="{'invisible':[('state','in',['draft','open'])]}">
+                    <page string="Todo List" attrs="{'invisible':[('state','in',['draft','open'])]}" groups="oph.calling_center_group">
                         <field name="todo_list_ids" widget="one2many" mode="tree">
                             <tree string="Todo List" editable="top">
                                 <field name="name"/>

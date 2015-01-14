@@ -78,3 +78,4 @@ access_oph_day_template_group_oph,oph.day.template group_oph,model_oph_day_templ
 access_oph_day_template_group_sec,oph.day.template group_sec,model_oph_day_template,oph.oph_group_id,1,0,0,0
 access_oph_slot_group_oph,oph.slot group_oph,model_oph_slot,oph.oph_group_id,1,1,1,0
 access_oph_slot_group_sec,oph.slot group_sec,model_oph_slot,oph.sec_group_id,1,0,0,0
+access_oph_reporting_group_calling_center,oph.oph.reporting group_calling_center,model_oph_reporting,oph.calling_center_group,1,0,0,0
