@@ -186,7 +186,7 @@
                         </field>
                     </page>
 
-                    <page string="Pathology" attrs="{'invisible':[('state','in',['draft','open','wait'])]}">
+                    <page string="Pathology" attrs="{'invisible':[('state','in',['draft','open','busy','wait'])]}">
                         <field name="pathology_ids" widget="many2many">
                             <tree string="Pathology" editable="top">
                                 <field name="name"/>
@@ -275,7 +275,7 @@
                         <field name="neuro"/> 
                     </page>
 
-                    <page string="Medical History">
+                    <page string="Medical History" attrs="{'invisible':[('state','in',['draft','open','wait','busy'])]}">
                         <label for="mh"/>
                         <field name="mh"/> 
                     </page>
@@ -290,7 +290,7 @@
                         </field>
                     </page>
 
-                    <page string="Conclusion" attrs="{'invisible':[('state','in',['draft','open','wait','busy'])]}">
+                    <page string="Conclusion" attrs="{'invisible':[('state','in',['draft','open','close'])]}">
                         <field name="conclusion_ids" widget="one2many" mode="tree" context="{'measurement_type':'conc'}">
                             <tree string="Conclusion" editable="top">
                                 <field name="type_id" invisible="1"/>
