@@ -245,7 +245,7 @@ class crm_meeting(orm.Model):
                 'medication_line_ids':fields.one2many('oph.medication.line', 'meeting_id', 'Medication Line'),
                 # cut/paste to inherit class crm.meeting cf oph_prescription.py
                 #===============================================================
-                ####'reporting_line_ids':fields.one2many('oph.reporting', 'meeting_id', 'Reporting Line'),
+                'reporting_line_ids':fields.one2many('oph.reporting', 'meeting_id', 'Reporting Line'),
                 'conclusion_ids':fields.one2many('oph.measurement', 'meeting_id', 'Conclusion Line', domain = [('type_id.code', '=', 'conc')]),
                 'miscellaneous_ids':fields.one2many('oph.measurement', 'meeting_id', 'Miscellaneous informations', domain = [('type_id.code', '=', 'misc')]),
                 'tag':fields.selection([

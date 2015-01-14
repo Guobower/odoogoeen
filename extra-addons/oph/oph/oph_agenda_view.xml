@@ -339,7 +339,7 @@
                         <field name="medication_line_ids"/>
                         <!-- on verra avec cela s'il y a eu ou pas prescription -->
                         <field name="conclusion_ids"/>
-                        <!--<field name="reporting_line_ids"/>-->
+                        <field name="reporting_line_ids"/>
                     </field>
                     <field name="date" position="after">
                         <field name="date_deadline"/> <!-- intéressant pour voir ce qui se passe avec les timezone et le tri sur Today pourra être supprimé plus tard-->
