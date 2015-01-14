@@ -1093,44 +1093,34 @@
         <record id="pro2_line6" model="oph.protocole.line.template">
             <field name="protocole_id" ref="pro2"/>
             <field name="name">PR6</field>
-            <field name="exam_id" ref="ex14"/>
+            <field name="exam_id" ref="ex33"/>
         </record>
         <record id="pro2_line7" model="oph.protocole.line.template">
             <field name="protocole_id" ref="pro2"/>
             <field name="name">PR7</field>
-            <field name="exam_id" ref="ex29"/>
+            <field name="exam_id" ref="ex25"/>
         </record>
         <record id="pro2_line8" model="oph.protocole.line.template">
             <field name="protocole_id" ref="pro2"/>
             <field name="name">PR8</field>
-            <field name="exam_id" ref="ex33"/>
+            <field name="exam_id" ref="ex26"/>
         </record>
         <record id="pro2_line9" model="oph.protocole.line.template">
             <field name="protocole_id" ref="pro2"/>
             <field name="name">PR9</field>
-            <field name="exam_id" ref="ex25"/>
+            <field name="exam_id" ref="ex27"/>
         </record>
         <record id="pro2_line10" model="oph.protocole.line.template">
             <field name="protocole_id" ref="pro2"/>
             <field name="name">PR10</field>
-            <field name="exam_id" ref="ex26"/>
+            <field name="exam_id" ref="ex31"/>
         </record>
         <record id="pro2_line11" model="oph.protocole.line.template">
             <field name="protocole_id" ref="pro2"/>
             <field name="name">PR11</field>
-            <field name="exam_id" ref="ex27"/>
-        </record>
-        <record id="pro2_line12" model="oph.protocole.line.template">
-            <field name="protocole_id" ref="pro2"/>
-            <field name="name">PR12</field>
-            <field name="exam_id" ref="ex31"/>
-        </record>
-        <record id="pro2_line13" model="oph.protocole.line.template">
-            <field name="protocole_id" ref="pro2"/>
-            <field name="name">PR13</field>
             <field name="exam_id" ref="ex28"/>
         </record>
-
+        
         <!-- Bilan rétinite -->
         <record id="pro3" model="oph.protocole">
             <field name="name">Bilan rétinite</field>
