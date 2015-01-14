@@ -32,7 +32,7 @@
                         <button name="statechange_wait" string="Wait" states="busy" type="object" groups="oph.oph_group_id"/>
                         <!--<button name="statechange_no_show" string="No Show" states="no_show" type="object" attrs="{'invisible':['|',('state','!=','busy'),('state','=','no_show')]}"/>-->
                         <button name="statechange_no_show" string="No Show" groups="oph.sec_group_id" states="no_show" type="object" attrs="{'invisible':[('state','in',['cs','tech','draft','open','wait','cancel','no_show','in','in_between','done','nwnm'])]}"/>
-                        <button name="statechange_nwnm" string="No Wait" states="nwnm" groups="oph.sec_group_id" type="object" attrs="{'invisible':[('state','in',['cs','tech','draft','open','cancel','no_show','done','nwnm'])]}"/>
+                        <button name="statechange_nwnm" string="No Wait" groups="oph.sec_group_id" type="object" attrs="{'invisible':[('state','in',['cs','tech','draft','open','cancel','no_show','done','nwnm'])]}"/>
                         <button string="LogConsultation" name="%(logconsultation_act)d" type="action" context="{'search_default_partner_id':partner_id}"/>
                         <button string="LogMeasurement" name="%(oph.measurement_action_id)d" type="action" context="{'search_default_partner_id':partner_id}" groups="oph.sec_group_id"/>
                         <button string="LogRefraction" name="%(oph.logrefraction_action_id)d" type="action" context="{'search_default_partner_id':partner_id}" groups="oph.sec_group_id"/>
@@ -78,7 +78,7 @@
                     <field name="pricelist"/>
                 </field>
                 <page string="Invitations" position="after">
-                    <page string="Tonometry" attrs="{'invisible':[('state','in',['draft','open','wait','busy'])]}">
+                    <page string="Tonometry" attrs="{'invisible':[('state','in',['draft','open','wait','busy'])]}" groups="oph.sec_group_id">
                         <field name="tono_ids" widget="one2many" mode="tree" context="{'measurement_type':'tono'}">
                             <tree string="Tonometry" editable="bottom">
                                 <field name="type_id" invisible="1"/>
@@ -101,7 +101,7 @@
                             </form>
                         </field>
                     </page>
-                    <page string="Keratometry" attrs="{'invisible':[('state','in',['draft','open','wait','busy'])]}">
+                    <page string="Keratometry" attrs="{'invisible':[('state','in',['draft','open','wait','busy'])]}" groups="oph.sec_group_id">
                         <field name="keratometry_ids" widget="one2many" mode="tree" context="{'measurement_type':'ker'}">
                             <tree string="Keratometry" editable="top">
                                 <field name="type_id" invisible="1"/>
@@ -115,7 +115,7 @@
                         </field>
                     </page>
 
-                    <page string="Refraction" attrs="{'invisible':[('state','in',['draft','open','wait','busy'])]}">
+                    <page string="Refraction" attrs="{'invisible':[('state','in',['draft','open','wait','busy'])]}" groups="oph.sec_group_id">
                         <field name="refraction_ids" widget="one2many" mode="tree" context="{'measurement_type':'ref'}">
                             <tree string="Visual Acuity">
                                 <button string="Set RxP" name="mavc2cp" icon="gtk-jump-to" type="object" attrs="{'invisible':[('va_type','=','Rx')]}"/>
@@ -216,7 +216,7 @@
                         </field>
                     </page>
 
-                    <page string="Biology Lines" attrs="{'invisible':[('state','in',['draft','open','wait','busy'])]}">
+                    <page string="Biology Lines" attrs="{'invisible':[('state','in',['draft','open','wait','busy'])]}" groups="oph.sec_group_id">
                         <field name="biology_line_ids" context="{'protocole_line_type':'Bio'}" editable="top">
                             <tree string="Biology Line" editable="bottom">
                                 <field name="name"/>
@@ -228,7 +228,7 @@
                         </field>
                     </page>
 
-                    <page string="Radiology Lines" attrs="{'invisible':[('state','in',['draft','open','wait','busy'])]}">
+                    <page string="Radiology Lines" attrs="{'invisible':[('state','in',['draft','open','wait','busy'])]}" groups="oph.sec_group_id">
                         <field name="radiology_line_ids" context="{'protocole_line_type':'Rx'}">
                             <tree string="Protocole Line" editable="bottom">
                                 <field name="name"/>
@@ -240,7 +240,7 @@
                         </field>
                     </page>
 
-                    <page string="Cardiology Lines" attrs="{'invisible':[('state','in',['draft','open','wait','busy'])]}">
+                    <page string="Cardiology Lines" attrs="{'invisible':[('state','in',['draft','open','wait','busy'])]}" groups="oph.sec_group_id">
                         <field name="cardiology_line_ids" context="{'protocole_line_type':'Cx'}">
                             <tree string="Cardiology Line" editable="bottom">
                                 <field name="name"/>
@@ -251,8 +251,6 @@
                             </tree>
                         </field>
                     </page>
-
-
 
 <!--
                     <page string="Reporting">
