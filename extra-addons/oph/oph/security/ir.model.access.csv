@@ -43,6 +43,7 @@ access_oph_medication_line_template_group_sec,oph.oph.medication.line.template g
 access_oph_brandname_group_sec,oph.oph.brandname group_sec,model_oph_brandname,oph.sec_group_id,1,0,0,0
 access_oph_inn_group_sec,oph.oph.inn group_sec,model_oph_inn,oph.sec_group_id,1,0,0,0
 access_oph_exam_group_sec,oph.oph.exam group_sec,model_oph_exam,oph.sec_group_id,1,0,0,0
+access_oph_exam_calling_center,oph.oph.exam calling_center_group,model_oph_exam,oph.calling_center_group,1,0,0,0
 access_oph_pathology_group_sec,oph.oph.pathology group_sec,model_oph_pathology,oph.sec_group_id,1,0,0,0
 access_oph_reporting_group_sec,oph.oph.reporting group_sec,model_oph_reporting,oph.sec_group_id,1,1,1,0
 access_oph_reporting_template_group_sec,oph.oph.reporting.template group_sec,model_oph_reporting_template,oph.sec_group_id,1,0,0,0
