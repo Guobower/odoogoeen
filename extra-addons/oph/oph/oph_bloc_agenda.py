@@ -135,6 +135,7 @@ class oph_bloc_agenda(osv.osv):
         To humanize the date format
         Using the arrow python module.
         """
+        print "CONTEXT:%s" %(context,)
         res={}
         if context is None:
             context={}
