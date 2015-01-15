@@ -12,7 +12,7 @@ access_oph_va_tech_group_oph,oph.oph.va.tech group_oph,model_oph_va_tech,oph.oph
 access_oph_filling_template_group_oph,oph.oph.filling.template group_oph,model_oph_filling_template,oph.oph_group_id,1,1,1,1
 access_oph_medication_line_group_oph,oph.oph.medication.line,model_oph_medication_line,oph.oph_group_id,1,1,1,1
 access_oph_medication_line_template_group_oph,oph.oph.medication.line.template group_oph,model_oph_medication_line_template,oph.oph_group_id,1,1,1,1
-access_oph_brandname_group_oph,oph.oph.brandname group_oph,model_oph_brandname,oph.oph_group_id,1,0,1,0
+access_oph_brandname_group_oph,oph.oph.brandname group_oph,model_oph_brandname,oph.oph_group_id,1,1,1,0
 access_oph_inn_group_oph,oph.oph.inn group_oph,model_oph_inn,oph.oph_group_id,1,1,1,1
 access_oph_exam_group_oph,oph.oph.exam group_oph,model_oph_exam,oph.oph_group_id,1,0,0,0
 access_oph_pathology_group_oph,oph.oph.pathology group_oph,model_oph_pathology,oph.oph_group_id,1,0,0,0
