@@ -222,7 +222,7 @@
         <!-- END VIEW -->
 
         <!-- ACTIONS / MENUITEM -->
-        <menuitem name="Reporting" icon="terp-project" id="main_reporting_id"/>
+        <menuitem name="Reporting" groups="oph.sec_group_id" icon="terp-project" id="main_reporting_id"/>
         <menuitem name="Reporting" icon="terp-project" parent="main_reporting_id" id="menu_reporting_id"
             sequence="50"/>
         <menuitem name="Configuration" icon="terp-project" parent="main_reporting_id" id="config_reporting_id"

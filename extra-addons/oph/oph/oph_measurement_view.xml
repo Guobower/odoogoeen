@@ -227,7 +227,7 @@
         
         <!-- ACTIONS / MENUITEM -->
         <!-- MENUITEM -->
-        <menuitem name="Ophthalmology" icon="terp-project" id="main_oph_id" />
+        <menuitem name="Ophthalmology" icon="terp-project" id="main_oph_id" groups="oph.sec_group_id"/>
         <menuitem name="Configuration" parent="main_oph_id" id="config_oph_id" sequence ="50"/>
         <menuitem name="Measurement" id="config_measurement_id" parent="config_oph_id" sequence="10"/>
         <menuitem name="Surgery" id="config_surgery_id" parent="config_oph_id" sequence="20"/>

@@ -304,7 +304,7 @@
 
         <!-- MENUITEM FOR PRESCRIPTION-->
         <!-- menuitem bandeau horizontal -->
-        <menuitem name="Prescription" icon="terp-project" id="main_prescription_id"/>
+        <menuitem name="Prescription" icon="terp-project" id="main_prescription_id" groups="oph.sec_group_id"/>
 
         <menuitem name="Prescription" icon="terp-project" parent="main_prescription_id" id="menu_prescription_id"
             sequence="10"/>

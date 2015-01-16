@@ -288,7 +288,7 @@ class agenda_factory(osv.osv_memory):
                             }
     _defaults = {
                  'step': 15,
-                 'name': 'Factory',
+                 'name': 'Ouvert',
                  'ampm':'daylong',
                  'day_on':'08:00',
                  'day_off':'15:30',
