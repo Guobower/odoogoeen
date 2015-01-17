@@ -85,11 +85,6 @@
             <field name="value" eval="'ir.actions.report.xml,' + str(ref('oph.prescription_biology_report_id'))"/>
         </record>
 
-
-
-
-
-
         <!-- 3 MEDICATION REPORT -->
         <record model="ir.actions.report.xml" id="medication_report_id">
             <field name="name">Medication Report</field>
