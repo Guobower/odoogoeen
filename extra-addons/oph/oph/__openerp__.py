@@ -68,6 +68,7 @@ Permet de faire pleins de choses absolument géniales
                 'data/surgery_data.xml',
                 'data/product_data.xml',
                 'wizard/oph_etat_factory_view.xml',
+                'oph_request_view.xml',
        #========================================================================
        #  'security/oph_security.xml',
        #  'security/ir.model.access.csv',
