@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!-- OPH.REQUEST -->
+        <!-- FORM OPH.REQUEST -->
+        <record model="ir.ui.view" id="request_form_view_id">
+            <field name="name">request.form</field>
+            <field name="model">oph.request</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <form string="Type" version="7.0">
+                    <header>
+                        <button name="request_open" states="draft" string="Validate" class="oe_highlight" type="object" help="Press when request is send"/>
+                        <button name="request_close" states="drat,open" class="oe_highlight" string="Close Request" type="object" help="Press when all is done"/>
+                        <button name="request_confirm" states="draft,open" class="oe_highlight" string="Confirm Request" type="object" help="Press when the request is validated"/>
+                        <button name="request_cancel" states="draft,open" string="Cancel Request" type="object"/>
+                        <field name="state" widget="statusbar" nolabel="1" statusbar_visible="draft,open,close,cancel" statusbar_colors='{"draft":"blue","open":"blue"}'/>
+                    </header>
+                    <sheet string="Request">
+                        <group>
+                            <field name="name" class="oe_inline"/>
+                            <field string="Customer" name="partner_id" context="{'search_default_customer':1, 'show_address': 1}" on_change="on_change_oph_partner(partner_id,date_request)"
+                                options='{"always_reload": True}'
+                                domain="[('customer', '=', True)]"/>
+                            <field name="referent_id" class="oe_inline"/>
+                            <field name="comment" class="oe_inline"/>
+                            <field name="date_request" class="oe_inline"/>
+                            <field name="priority_id" string="Priority" class="oe_inline" required="1"/>
+                        </group>
+                        <notebook colspan="4">
+                            <page string="Accord Lines">
+                               <field name="request_line_ids" nolabel="1" widget="one2many_list">
+                                    <tree string="Accord Lines" editable="bottom">
+                                        <field name="sequence"/> <!-- widget="handle"/ je pensais que cela allait faire une séquence automatique et bien non-->
+                                        <field name="product_id"/>
+                                        <field name="name" invisible="1"/>
+                                        <field name="comment"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!--END FORM OPH.ACCORD-->
+        
+        <!-- ACTION TO BE TRIGGERED BY THE BUTTON REQUEST IN THE CRM_MEETING FORM VIEW -->
+        <record model="ir.actions.act_window" id="request_maker_action_id">
+                <field name="name">request.factory</field>
+                <field name="res_model">oph.request</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="request_form_view_id"/>
+        </record>
+
+
+        <!-- TREE OPH.REQUEST-->
+        <record id="request_tree_view_id" model="ir.ui.view">
+            <field name="name">oph.request.tree</field>
+            <field name="model">oph.request</field>
+            <field name="arch" type="xml">
+                <tree string="Accord">
+                    <field name="partner_id"/>
+                    <field name="date_request"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        <!--END TREE OPH.REQUEST-->
+
+
+        <!-- OPH.REQUEST -->
+        <record model="ir.actions.act_window" id="request_action_id">
+            <field name="name">Request</field>
+            <field name="res_model">oph.request</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="request_tree_view_id"/>
+        </record>
+
+        <menuitem parent="ophthalmology_oph_id" id="request_menu_id" sequence ="30" action="request_action_id"/>
+
+    <!--SEARCH VIEW FOR REQUEST -->
+     <record id="view_request_search_id" model="ir.ui.view">
+            <field name="name">oph.request.select</field>
+            <field name="model">oph.request</field>
+            <field name="arch" type="xml">
+                <search string = "Search Request">
+                    <field name="name"/>
+                    <field name="state"/>
+                    <field name="date_request"/>
+                    <field name="company_id"/>
+                    <filter name="draft" string="Draft" domain="[('state','=','draft')]" help="Draft Request"/>
+                    <filter name="open" string="Open" domain="[('state','=','open')]" help="Open and Sended Request"/>
+                    <filter name="close" string="Close" domain="[('state','=','close')]" help="Close Request"/>
+                    <filter name="cancelled" string="Cancelled" domain="[('stat','=','cancel')]" help="Cancelled Request"/>
+                    <group expand="0" string="Group_By...">
+                        <filter string="Priority" icon="terp-partner" domain="[]" context="{'group_by':'priority_id'}"/>
+                        <filter string="Partner" icon="terp-partner" domain="[]" context="{'group_by':'partner_id'}"/>
+                        <filter string="State" icon="terp-partner" domain="[]" context="{'group_by':'state'}"/>
+                        <filter string="Company" icon="terp-partner" domain="[]" context="{'group_by':'company_id'}"/>
+                        <filter string="Referent" icon="terp-partner" domain="[]" context="{'group_by':'referent_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+        <!-- END SEARCH VIEW FOR REQUEST -->
+
+
+    </data>
+</openerp>

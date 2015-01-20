@@ -145,7 +145,6 @@ class oph_bloc_agenda(osv.osv):
             if record.name:
                 wd = record.name
                 wd=arrow.get(wd,'YYYY-MM-DD').to('utc').format(fmt,locale=context['lang'])
-                print 'WD is :%s' %(wd,)
                 res[record.id]=wd
         return res
     #===========================================================================
