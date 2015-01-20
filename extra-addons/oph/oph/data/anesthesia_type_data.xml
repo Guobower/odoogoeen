@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+<!-- INPATIENT.TYPE -->
+
+        <record model="oph.anesthesia.type" id="ane_peri">
+            <field name="name">Péribulbaire</field>
+            <field name="code">PERI</field>
+            <field name="comment">un commentaire</field>
+        </record>
+
+        <record model="oph.anesthesia.type" id="ane_st">
+            <field name="name">Sous Ténonienne</field>
+            <field name="code">ST</field>
+            <field name="comment">un commentaire</field>
+        </record>
+
+        <record model="oph.anesthesia.type" id="ane_top">
+            <field name="name">Topique</field>
+            <field name="code">TOPIQUE</field>
+            <field name="comment">un commentaire</field>
+        </record>
+        
+<record model="oph.anesthesia.type" id="ane_ag">
+            <field name="name">Anesthésie générale</field>
+            <field name="code">AG</field>
+            <field name="comment">un commentaire</field>
+        </record>
+    </data>
+</openerp>

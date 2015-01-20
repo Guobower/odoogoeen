@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!-- OPH.ANESTHESIA RESOURCE -->
+        <!-- TREE VIEW ANESTHESIA -->
+        <record model="ir.ui.view" id="anesthesia_type_tree_view_id">
+            <field name="name">anesthesia.type.tree</field>
+            <field name="model">oph.anesthesia.type</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <tree string="Type">
+                    <field name="name"/>
+                    <field name="code"/>
+                </tree>
+            </field>
+        </record>
+        <!-- FORM VIEW ANESTHESIA TYPE -->
+        <record model="ir.ui.view" id="anesthesia_type_form_view_id">
+            <field name="name">anesthesia.type.form</field>
+            <field name="model">oph.anesthesia.type</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <form string="Type">
+                    <field name="name"/>
+                    <field name="code"/>
+                </form>
+            </field>
+        </record>
+        <!-- END ANESTHESIA TYPE VIEWS-->
+
+        <!-- IOL VIEWS -->
+        <!-- TREE VIEW IOL -->
+        <record model="ir.ui.view" id="iol_type_tree_view_id">
+            <field name="name">iol.type.tree</field>
+            <field name="model">oph.iol.type</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <tree string="Type">
+                    <field name="name"/>
+                    <field name="manufactor"/>
+                    <field name="comment"/>
+                    <field name="constant"/>
+                </tree>
+            </field>
+        </record>
+        <!-- FORM VIEW IOL -->
+        <record model="ir.ui.view" id="iol_type_form_view_id">
+            <field name="name">iol.type.form</field>
+            <field name="model">oph.iol.type</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <form string="Type">
+                    <field name="name"/>
+                    <field name="manufactor"/>
+                    <field name="constant"/>
+                    <field name="comment"/>
+                </form>
+            </field>
+        </record>
+        <!--END IOL VIEWS -->
+
+        <!-- INPATIENT TYPE -->
+        <!-- TREE INPATIENT TYPE -->
+        <record model="ir.ui.view" id="inpatient_type_tree_view_id">
+            <field name="name">inpatient.type.tree</field>
+            <field name="model">oph.inpatient.type</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <tree string="Type">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="comment"/>
+                </tree>
+            </field>
+        </record>
+        <!-- FORM VIEW INPATIENT TYPE -->
+        <record model="ir.ui.view" id="inpatient_type_form_view_id">
+            <field name="name">inpatient.type.form</field>
+            <field name="model">oph.inpatient.type</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <form string="Type">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="comment"/>
+                </form>
+            </field>
+        </record>
+        <!-- END VIEW INPATIENT TYPE -->
+
+        <!-- PROCEDURE.TYPE -->
+        <!-- FORM VIEW PROCEDURE.TYPE -->
+        <record model="ir.ui.view" id="procedure_type_form_view_id">
+            <field name="name">procedure.type.form</field>
+            <field name="model">oph.procedure.type</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <form string="Type">
+                    <field name="name" required="1"/>
+                    <field name="code"/>
+                    <field name="duration"/>
+                    <field name="dilatation" required="1"/>
+                    <field name="iol_status"/>
+                    <field name="comment"/>
+                </form>
+            </field>
+        </record>
+        <!-- END FORM VIEW PROCEDURE.TYPE -->
+        <!-- TREE OPH.PROCEDURE.TYPE -->
+        <record model="ir.ui.view" id="procedure_type_tree_view_id">
+            <field name="name">procedure.type.tree</field>
+            <field name="model">oph.procedure.type</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <tree string="Type">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="duration"/>
+                    <field name="dilatation"/>
+                    <field name="iol_status"/>
+                    <field name="comment"/>
+                </tree>
+            </field>
+        </record>
+        <!-- END TREE VIEW PROCEDURE.TYPE -->
+
+               <!-- VIEWS OPH.GAUGE-->
+        <!--FORM VIEW OPH.GAUGE -->
+        <record model="ir.ui.view" id="gauge_form_view_id">
+            <field name="name">gauge.form</field>
+            <field name="model">oph.gauge</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <form string="V3V gauge size" version="7.0">
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+        <!--TREE VIEW OPH.GAUGE-->
+        <record model="ir.ui.view" id="gauge_tree_view_id">
+            <field name="name">gauge.tree</field>
+            <field name="model">oph.gauge</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <tree string="V3V gauge size">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+        <!-- END VIEW -->
+
+
+        <!-- ACTIONS / MENUITEM -->
+        <!-- MENUITEM -->
+        <menuitem name="Surgery" id="config_surgery_id" parent="config_oph_id" sequence="20"/>
+        <!-- sequence plus c'est haut plus c'est bas dans le menu-->
+        <!-- END MENUITEM -->
+
+
+        <!-- CONFIG - SURGERY -->
+        <!-- ANESTHESIA TYPE -->
+        <record model="ir.actions.act_window" id="anesthesia_type_action_id">
+            <field name="name">Anesthesia Type</field>
+            <field name="res_model">oph.anesthesia.type</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="anesthesia_type_tree_view_id"/>
+        </record>
+
+        <menuitem parent="config_surgery_id" id="anesthesia_type_menu_id" sequence ="20" action="anesthesia_type_action_id"/>
+
+        <!-- IOL TYPE -->
+        <record model="ir.actions.act_window" id="iol_type_action_id">
+            <field name="name">IOL Type</field>
+            <field name="res_model">oph.iol.type</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="iol_type_tree_view_id"/>
+        </record>
+
+        <menuitem parent="config_surgery_id" id="iol_type_menu_id" sequence ="30" action="iol_type_action_id"/>
+
+        <!-- INPATIENT TYPE -->
+        <record model="ir.actions.act_window" id="inpatient_type_action_id">
+            <field name="name">Inpatient Type</field>
+            <field name="res_model">oph.inpatient.type</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="inpatient_type_tree_view_id"/>
+        </record>
+
+        <menuitem parent="config_surgery_id" id="inpatient_type_menu_id" sequence ="40" action="inpatient_type_action_id"/>
+
+        <!-- PROCEDURE TYPE -->
+        <record model="ir.actions.act_window" id="procedure_type_action_id">
+            <field name="name">Procedure Type</field>
+            <field name="res_model">oph.procedure.type</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="procedure_type_tree_view_id"/>
+        </record>
+
+        <menuitem parent="config_surgery_id" id="procedure_type_menu_id" sequence ="50" action="procedure_type_action_id"/>
+
+        <!-- GAUGE ACTION -->
+        <record model="ir.actions.act_window" id="gauge_action_id">
+            <field name="name">Gauge Action</field>
+            <field name="res_model">oph.gauge</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="gauge_tree_view_id"/>
+        </record>
+
+        <menuitem name="Gauge" parent="config_surgery_id" id="config_gauge_menu_id"
+            sequence ="30" action="gauge_action_id"/>
+
+
+        <!-- END ACTIONS / MENUITEM -->
+
+    </data>
+</openerp>

@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<openerp>
+    <data noupdate="1">
+        
+        <record id="filestore_id" model="ir.config_parameter">
+            <field name="key">ir_attachment.location</field>
+            <field name="value">file:///filestore</field>
+        </record>
+        
+        
+    </data>
+</openerp>
+<!-- TO BE TESTED -->

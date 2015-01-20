@@ -194,32 +194,7 @@
         </record>
         <!-- END VIEW -->
 
-        <!-- VIEWS OPH.GAUGE-->
-        <!--FORM VIEW OPH.GAUGE -->
-        <record model="ir.ui.view" id="gauge_form_view_id">
-            <field name="name">gauge.form</field>
-            <field name="model">oph.gauge</field>
-            <field name="priority" eval="16"/>
-            <field name="arch" type="xml">
-                <form string="V3V gauge size" version="7.0">
-                    <group>
-                        <field name="name"/>
-                    </group>
-                </form>
-            </field>
-        </record>
-        <!--TREE VIEW OPH.GAUGE-->
-        <record model="ir.ui.view" id="gauge_tree_view_id">
-            <field name="name">gauge.tree</field>
-            <field name="model">oph.gauge</field>
-            <field name="priority" eval="16"/>
-            <field name="arch" type="xml">
-                <tree string="V3V gauge size">
-                    <field name="name"/>
-                </tree>
-            </field>
-        </record>
-        <!-- END VIEW -->
+        
 
         <!-- ACTIONS / MENUITEM -->
         <menuitem name="Reporting" groups="oph.sec_group_id" icon="terp-project" id="main_reporting_id"/>
@@ -267,17 +242,7 @@
         <menuitem name="Indication" parent="config_oph_id" id="config_indication_menu_id"
             sequence ="20" action="indication_action_id"/>
 
-        <!-- GAUGE ACTION -->
-        <record model="ir.actions.act_window" id="gauge_action_id">
-            <field name="name">Gauge Action</field>
-            <field name="res_model">oph.gauge</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">tree,form</field>
-            <field name="view_id" ref="gauge_tree_view_id"/>
-        </record>
-
-        <menuitem name="Gauge" parent="config_oph_id" id="config_gauge_menu_id"
-            sequence ="30" action="gauge_action_id"/>
+        
         
         <!-- ACTION TO BE TRIGGER BY A BUTTON IN THE ONGLET REPORTING OF CRM.MEETING FORM -->
         <record model="ir.actions.act_window" id="to_reporting_action_id">
