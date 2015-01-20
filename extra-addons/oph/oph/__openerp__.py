@@ -48,6 +48,7 @@ Permet de faire pleins de choses absolument géniales
                 'data/measurement_type.xml',
                 'data/prescription_data.xml',
                 'data/procedure_type_data.xml',
+                'data/filling_template_data.xml',
                 'oph_bloc_agenda_view.xml',
                 'report/stylesheet/stt_report.xml',
                 'report/bloc_agenda_report.xml',
