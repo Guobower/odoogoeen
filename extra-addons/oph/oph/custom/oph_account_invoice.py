@@ -24,6 +24,7 @@ class account_invoice(orm.Model):
             ('TM', 'Ticket moderateur'),
             ('BdC', 'Baie des Citrons')], 'Payeur'),  # required=True),
         'ref_statement': fields.char('Statement Ref', size = 32, help = 'Reference of the statement for bank reconcilation'),
+        'date_acte':fields.date('Appointment Date')
         }
 
     def invoice_pay_customer(self, cr, uid, ids, context = None):

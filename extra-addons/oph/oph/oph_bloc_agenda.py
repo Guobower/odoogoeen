@@ -145,7 +145,6 @@ class oph_bloc_agenda(osv.osv):
             if record.name:
                 wd = record.name
                 wd=arrow.get(wd,'YYYY-MM-DD').to('utc').format(fmt,locale=context['lang'])
-                print 'WD is :%s' %(wd,)
                 res[record.id]=wd
         return res
     #===========================================================================
@@ -165,7 +164,7 @@ class oph_bloc_agenda(osv.osv):
                 'start_date':fields.datetime('StartDate',),
                 'end_date':fields.datetime('EndDate',),
                 'comment':fields.text('Informations',),
-                'wd':fields.function(_get_wdandmonth, method = True, type = 'char', string = 'Weekday',store=True),
+                'wd':fields.function(_get_wdandmonth, method = True, type = 'char', string = 'Weekday',store=False),
                 'active':fields.boolean('Active', help = 'if the active field is set to False, it will allow you to hide the bloc agenda without removing it.'),
                 'line_ids':fields.one2many('oph.bloc.agenda.line', 'bloc_agenda_id', 'Lines',)}
 
