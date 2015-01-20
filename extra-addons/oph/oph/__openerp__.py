@@ -41,6 +41,8 @@ Permet de faire pleins de choses absolument géniales
                 'custom/oph_account_invoice_view.xml',
                 'custom/oph_account_voucher_view.xml',
                 'custom/oph_crm_phonecall_view.xml',
+                'custom/oph_phonecall_view.xml',
+                 'custom/oph_invoice_view.xml',
                 'oph_prescription_view.xml',
                 'oph_instrumentation_view.xml', 
                 'oph_measurement_view.xml',
@@ -80,8 +82,7 @@ Permet de faire pleins de choses absolument géniales
        #  'report/examination_report.xml',
        #  'data/ir.config_parameter.xml',
        #  # 'data/document_data.xml',
-# #        'custom/oph_phonecall_view.xml',
-# #        'custom/oph_invoice_view.xml',
+# #       
 # #        'custom/oph_sale_view.xml',
 #         # # 'data/reporting_template_data.xml',
 #         # # 'wizard/oph_diabetic_report_view.xml',
