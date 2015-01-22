@@ -1,0 +1,36 @@
+<<<<<<< HEAD
+# sphinx build directories
+_build/
+
+=======
+>>>>>>> cfba9f5201ac352c263f6ee26771157f9e817d55
+# dotfiles
+.*
+!.gitignore
+# compiled python files
+*.py[co]
+# setup.py egg_info
+*.egg-info
+# emacs backup files
+*~
+# hg stuff
+*.orig
+<<<<<<< HEAD
+status
+# odoo filestore
+openerp/filestore
+# generated for windows installer?
+install/win32/*.bat
+install/win32/meta.py
+
+# various virtualenv
+/bin/
+/build/
+/dist/
+/include/
+/lib/
+/man/
+/share/
+/src/
+=======
+>>>>>>> cfba9f5201ac352c263f6ee26771157f9e817d55
