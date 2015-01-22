@@ -44,7 +44,7 @@ Permet de faire pleins de choses absolument géniales
                 'custom/oph_phonecall_view.xml',
                  'custom/oph_invoice_view.xml',
                 'oph_prescription_view.xml',
-                'oph_instrumentation_view.xml', 
+                'oph_instrumentation_view.xml',
                 'oph_measurement_view.xml',
                 'oph_agenda_view.xml',
                 'data/measurement_type.xml',
@@ -56,7 +56,7 @@ Permet de faire pleins de choses absolument géniales
                 'report/bloc_agenda_report.xml',
                 'oph_filling_template.xml',
                 'oph_reporting_view.xml',
-                'report/oph_reporting_report.xml', 
+                'report/oph_reporting_report.xml',
                 'report/crm_meeting_report.xml',
                 'report/sale_order_report.xml',
                 'report/account_invoice_report.xml',
@@ -66,7 +66,7 @@ Permet de faire pleins de choses absolument géniales
                 'wizard/oph_account_voucher_deposit_view.xml',
                 'wizard/oph_crm_meeting_state_view.xml',
                 'wizard/oph_day_template_view.xml',
-                #'wizard/oph_day_template_agenda_factory_view.xml',
+                # 'wizard/oph_day_template_agenda_factory_view.xml',
                 'oph_prescription_view.xml',
                 'data/surgery_data.xml',
                 'data/product_data.xml',
@@ -77,12 +77,13 @@ Permet de faire pleins de choses absolument géniales
                 'oph_config_surgery_view.xml',
                 'data/oph_iol_type_data.xml',
                 'data/reporting_template_data.xml',
+                'report/examination_report.xml',
        #========================================================================
        #  'report/Test_premier_report.xml',
-       #  'report/examination_report.xml',
+       #
        #  'data/ir.config_parameter.xml',
        #  # 'data/document_data.xml',
-# #       
+# #
 # #        'custom/oph_sale_view.xml',
 #         # # 'data/reporting_template_data.xml',
 #         # # 'wizard/oph_diabetic_report_view.xml',

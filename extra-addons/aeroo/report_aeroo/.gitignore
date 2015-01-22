@@ -1,6 +1,9 @@
+<<<<<<< HEAD
 # sphinx build directories
 _build/
 
+=======
+>>>>>>> cfba9f5201ac352c263f6ee26771157f9e817d55
 # dotfiles
 .*
 !.gitignore
@@ -12,6 +15,7 @@ _build/
 *~
 # hg stuff
 *.orig
+<<<<<<< HEAD
 status
 # odoo filestore
 openerp/filestore
@@ -28,3 +32,5 @@ install/win32/meta.py
 /man/
 /share/
 /src/
+=======
+>>>>>>> cfba9f5201ac352c263f6ee26771157f9e817d55
