@@ -1,0 +1,7 @@
+script pour la mise à jour du serveur à partir du git repository.
+lien entre git et l'arborescence:odoogoenn.prod.
+1-faire un bck de odoogoenn.prod. odoogoen.$DATEduJOUR
+2-faire un dump de la database (on sait jamais)
+3-rsync -avh /home/lfs/odogoeen /usr/odoogoeen.prod
+4-récuperer le dir filestorage /usr/odoogoeen.$DATEduJour/openerp/filestorage
+rsync -avh filestorage /usr/odoogoeen.$DATEduJour/openerp/filestorage /usr/odoogoeen/openerp/filestorage
