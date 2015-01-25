@@ -33,6 +33,14 @@ class oph_reporting(orm.Model):
                 ('IVT', _('IntraVitreal Injection')),
                  ]
 
+    def on_change_type(self,cr,uid,ids,type,context=None):
+        print "IN ON_CHANGE_TYPE"
+        print 'CONTEXT is:%s and TYPE is:%s' %(context,type)
+        context.update({'report_type':type})
+        print "NEW CONTEXT:%s" %(context,)
+        #from pdb import set_trace;set_trace()
+        return True
+    
     def on_change_receiver(self, cr, uid, ids, receiver_id, context = None):
         if context is None:
             context = {}
@@ -129,8 +137,8 @@ class oph_reporting(orm.Model):
               'template_id':fields.many2one('oph.reporting.template', 'Reporting Template', select = True),
               'text_body':fields.text('Text Body', help = 'Text body of the report'),
               # many2one ou many2many?
-              # je penche plutot pour many2many et pourquoi je pense qu'il ne peut y avoir qu'un seul template
-              'template_ids':fields.many2many('oph.reporting.template', 'oph_reporting_reporting_template_rel', 'reporting_id', 'reporting_template_id', 'Reporting Templates', domain = [('active', '=', True)]),
+              # Il n'y qu'un seul template par record template donc c'est pas un many2many donc c'est un one2one==many2one
+              #'template_ids':fields.many2many('oph.reporting.template', 'oph_reporting_reporting_template_rel', 'reporting_id', 'reporting_template_id', 'Reporting Templates', domain = [('active', '=', True)]),
               # coordonnées du destinataire pour remplir l'entete automatiquement
               'receiver_id':fields.many2one('res.partner', 'Receiver', domain = [('colleague', '=', True)]),
               'receiver_partner':fields.boolean('Receiver Patient', help = "Patient is the receiver"),
