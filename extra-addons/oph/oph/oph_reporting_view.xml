@@ -18,11 +18,6 @@
                     <field name="receiver_id"/>
                     <field name="cc_ids" invisible="1"/>
                     <field name="template_id"/>
-                    <!-- Je veux que le systeme ne me propose que les template correspondant au type de report
-                    domain=[('type','=',context.get(qqch))]
-                    meme chose pour les headers.
-                    
-                    -->
                     <field name="state"/>
                     <button string="Set to Open" name="statechange_open" states="draft" icon="gtk-go-forward" type="object"/>
                     <button string="Set to Close" name="statechange_close" states="draft,open" icon="gtk-close" type="object"/>
@@ -46,7 +41,7 @@
                     </header>
                     <sheet string="Attr name de la sheet">
                     <group>
-                        <field name="type" class="oe_inline" on_change="on_change_type(type,context)"/>
+                        <field name="type" class="oe_inline"/>
                         <field name="name" class="oe_inline"/>
                         <field name="partner_id" class="oe_inline"/>
                         <field name="meeting_id" class="oe_inline"/>
@@ -70,9 +65,7 @@
                     </group>
                     <separator colspan="2"/>
                     <group attrs="{'invisible':[('type','=','DIAB')]}">
-                        <field name="template_id" context="{'report_type':type}" domain="[('type','=',context['report_type'])]"/>
-                        <!-- la syntaxe est bonne mais il faut que je rende la variable 'Laser' dynamique -->
-                        <!-- context="{'report_type':type} ne marche pas -->
+                        <field name="template_id" domain="[('type','=',type)]"/>
                         <field name="text_body"/>
                     </group>
                     <separator colspan="2"/>

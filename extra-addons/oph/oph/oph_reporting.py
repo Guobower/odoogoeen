@@ -33,14 +33,6 @@ class oph_reporting(orm.Model):
                 ('IVT', _('IntraVitreal Injection')),
                  ]
 
-    def on_change_type(self,cr,uid,ids,type,context=None):
-        print "IN ON_CHANGE_TYPE"
-        print 'CONTEXT is:%s and TYPE is:%s' %(context,type)
-        context.update({'report_type':type})
-        print "NEW CONTEXT:%s" %(context,)
-        #from pdb import set_trace;set_trace()
-        return True
-    
     def on_change_receiver(self, cr, uid, ids, receiver_id, context = None):
         if context is None:
             context = {}
