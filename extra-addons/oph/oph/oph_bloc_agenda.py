@@ -73,6 +73,7 @@ class oph_procedure_type(orm.Model):
 
     _columns = {
                 'name':fields.char('Name', size = 128, translate = True),
+                'shortname':fields.char('Short Name', size=64, translate=True),
                 'code':fields.char('Code', size = 64,),
                 'dilatation':fields.selection(_get_yesorno, 'Dilatation',),
                 'iol_status':fields.boolean('IOL Status', Help = 'For an IOL during this type of procedure thick the boxe',),

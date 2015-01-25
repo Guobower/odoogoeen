@@ -59,7 +59,7 @@
                     </group>
                     <separator colspan="2"/>
                     <group attrs="{'invisible':[('type','!=','ORR'),('type','!=','IVT'),('type','!=','OCT'),('type','!=','Laser')]}">
-                        <field name="header_id" class="oe_inline" />
+                        <field name="header_id" class="oe_inline" domain="[('type','=','H')]"/>
                         <field name="indication_id" class="oe_inline"/>
                         <field name="ods" class="oe_inline"/>
                     </group>
