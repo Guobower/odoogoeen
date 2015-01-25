@@ -260,7 +260,6 @@
                                 <field name="name"/>
                                 <field name="meeting_id" invisible="1"/>
                                 <field name="partner_id"/>
-                                <field name="template_ids"/>
                                 <field name="date"/>
                                 <field name="state"/>
                             </tree>
