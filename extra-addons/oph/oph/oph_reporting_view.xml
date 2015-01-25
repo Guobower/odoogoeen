@@ -70,7 +70,9 @@
                     </group>
                     <separator colspan="2"/>
                     <group attrs="{'invisible':[('type','=','DIAB')]}">
-                        <field name="template_id" domain="[('type','=',context.get('report_type'))]"/>
+                        <field name="template_id" context="{'report_type':type}" domain="[('type','=',context['report_type'])]"/>
+                        <!-- la syntaxe est bonne mais il faut que je rende la variable 'Laser' dynamique -->
+                        <!-- context="{'report_type':type} ne marche pas -->
                         <field name="text_body"/>
                     </group>
                     <separator colspan="2"/>
