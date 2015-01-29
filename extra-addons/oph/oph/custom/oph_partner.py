@@ -19,9 +19,19 @@ class res_partner(osv.osv):
         """
         if context is None:
             context = {}
-        if gender == 'M':
-            print "GENDER IS: %s" % (gender,)
-        pass
+        title_table=self.pool.get('res.partner.title')
+        if gender:
+            if gender=='M': #va chercher l'id dans la table res.partner.title est Mister
+                ID=title_table.search(cr,uid,[('name','=','Mister')])
+            if gender=='F':
+                ID=title_table.search(cr,uid,[('name','=','Madam')])
+        else:
+            warning={
+                     'title':_('Caution'),
+                     'message':_('You must choose a gender',)
+                     }
+            return {'warning':warning,}
+        return {'value':{'title':ID},}
 
     def onchange_name(self, cr, uid, id, firstname, lastname, dob, context = None):
         """Will put fullname = LASTNAME, Firstname in field name of table res.partner"""

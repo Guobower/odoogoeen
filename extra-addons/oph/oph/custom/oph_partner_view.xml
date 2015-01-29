@@ -33,10 +33,12 @@
                     <attribute name="invisible">True</attribute>
                 </field>
 
-                <field name="title" position="after">
-                    <field name="gender" attrs="{'required':['|',('customer','=',True),('colleague','=',True),('is_company','=',False)],'invisible':[('is_company','=',True)]}"/>
+                <field name="title" position="before">
+                    <field name="gender" on_change="onchange_gender(gender)" attrs="{'required':['|',('customer','=',True),('colleague','=',True),('is_company','=',False)],'invisible':[('is_company','=',True)]}"/>
                     <field name="dob" attrs="{'required':[('customer','=',True),('is_company','=',False)],'invisible':['|',('colleague','=',True),('is_company','=',True)]}" on_change="onchange_name(firstname, name, dob, context)"/>
                     <field name="age" attrs="{'invisible':['|',('colleague','=',True),('is_company','=',True)]}"/>
+                </field>
+                <field name="title" position="after">
                     <field name="amgid" attrs="{'invisible':['|',('colleague','=',True),('is_company','=',True)]}"/>
                     <field name="cafatid" attrs="{'invisible':['|',('colleague','=',True),('is_company','=',True)]}"/>
                 </field>
