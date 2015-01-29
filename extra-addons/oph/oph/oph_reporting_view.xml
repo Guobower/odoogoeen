@@ -135,6 +135,7 @@
             <field name="priority" eval="16"/>
             <field name="arch" type="xml">
                 <tree string="Reporting Template">
+                    <field name="id"/>
                     <field name="name"/>
                     <field name="text_body"/>
                     <field name="type"/>
