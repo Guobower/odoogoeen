@@ -329,7 +329,7 @@
                         <field name="state"/>
                         <field name="tag" invisible="1"/>
                         <field name="categ_ids"/>
-                        <field name="datewotime"/>
+                        <field name="datewotime" invisible="1"/>
                         <field name="todo_list_ids"/>
                         <!--n'apporte pas grand chose comme information car on a pas l'état de ces records
                             mais bon on voit qu'il y a des choses à faire ou pas-->
@@ -427,6 +427,7 @@
             <field name="arch" type="xml">
                 <field name="name" position="before">
                     <filter icon="terp-go-today" string="Today" domain="[('date','&lt;=',time.strftime('%%Y-%%m-%%d 23:59:59')),('date','&gt;=',time.strftime('%%Y-%%m-%%d 00:00:00'))]" help="Filter on patients of the day"/>
+                    <filter string="Tech" domain="[('tag','=','tech')]"/>
 <!--
 
                     <filter icon="terp-go-today" string="Today" name="today" domain="[('name','&gt;=',current_date),('name','&lt;=',current_date)]" />
