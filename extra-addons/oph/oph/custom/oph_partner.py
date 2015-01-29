@@ -13,6 +13,16 @@ from openerp.tools.translate import _
 class res_partner(osv.osv):
     _inherit = "res.partner"
 
+    def onchange_gender(self, cr, uid, id, gender, context = None):
+        """Set title according to gender
+        ie gender == male ---> mister
+        """
+        if context is None:
+            context = {}
+        if gender == 'M':
+            print "GENDER IS: %s" % (gender,)
+        pass
+
     def onchange_name(self, cr, uid, id, firstname, lastname, dob, context = None):
         """Will put fullname = LASTNAME, Firstname in field name of table res.partner"""
         if context == None:
