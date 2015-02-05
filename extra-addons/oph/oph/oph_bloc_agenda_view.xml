@@ -130,7 +130,6 @@
 
                         <group attrs="{'invisible':[('procedure_iol_status','=',False)]}">
                             <field name="procedure_iol_status" invisible="0" readonly="True"/>
-                            <field name="snd_eye"/>
                             <field name="iol_type_id" widget="selection" />
                             <field name="iol_power"/>
                         </group>
