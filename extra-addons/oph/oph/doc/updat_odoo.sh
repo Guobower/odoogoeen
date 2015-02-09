@@ -1,6 +1,5 @@
 #!/bin/bash
 #update the version of odoo
-#mùùùmùùù
 #Utiliser des chemins absolu pour les dossiers et des chemins relatif pour les nom de 
 #$CHEMIN_DU_DOSSIER/$NOM_DU_FICHIER
 #
@@ -22,7 +21,9 @@ REPOSITORY=/home/$CURRENT_USER/$DIR_NAME
 PROD_BRANCH=devfromscratch70
 UPSTREAM=upstream
 SERVER_PATH=/usr/odoo
+SERVER_NAME=odoogoeen
 SUFFIXE=$(date +'%F_%T')
+
 echo "SUFFIXE: $SUFFIXE"
 
 error() {
@@ -34,7 +35,20 @@ if [[ "$EUID" -eq 0 ]]; then
 	exit 1
 fi
 
+#test sur les symbolic link
+[ -h  $SERVER_PATH/$SERVER_NAME -a -e $SERVER_PATH/$SERVER_NAME ]  && echo "foo existe. je le supprime " || echo "foo n'existe pas"
 
+if [ -h $SERVER_PATH/$SERVER_NAME -a -e $SERVER_PATH/$SERVER_NAME ]; then 
+	echo "Link exist I delete it"
+	sudo unlik $SERVER_PATH/$SERVER_NAME
+	exit 
+else 
+	echo "foo doesn't exist. Create it"
+	echo "in $SERVER_NAME"
+	sudo ln -s $SERVER_PATH/$SERVER_NAME.$SUFFIXE $SERVER_PATH/$SERVER_NAME
+	exit 
+fi	
+	
 # on met à jour le repository
 # doit se faire sous le current user
 echo "Pull github $PROD_BRANCH"
@@ -44,13 +58,13 @@ git checkout $PROD_BRANCH
 git pull $UPSTREAM $PROD_BRANCH 
 echo "C'est fait"
 #Verification de l'existance du dir contenant le serveur
-if [ -d /usr/odoo ]; then
+if [ -d $SERVER_PATH ]; then
 	#exit 1
 	sudo rsync -avh $REPOSITORY/ /usr/odoo/odoogoeen.$SUFFIXE
 else
 	#exit 1
-	sudo mkdir /usr/odoo
-	rsync -avh $REPOSITORY/ /usr/odoo/odoogoeen.$SUFFIXE
+	sudo mkdir $SERVER_PATH
+	rsync -avh $REPOSITORY/ $SERVER_PATH/$SERVER_NAME.$SUFFIXE
 fi
 
-exit 0;
+exit 0
