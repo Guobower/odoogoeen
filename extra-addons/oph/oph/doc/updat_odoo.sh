@@ -35,8 +35,11 @@ if [[ "$EUID" -eq 0 ]]; then
 	exit 1
 fi
 
+## STOP SERVICE
+sudo service odoo-server stop
+
 #test sur les symbolic link
-[ -h  $SERVER_PATH/$SERVER_NAME -a -e $SERVER_PATH/$SERVER_NAME ]  && echo "foo existe. je le supprime " || echo "foo n'existe pas"
+[ -h  $SERVER_PATH/$SERVER_NAME -a -e $SERVER_PATH/$SERVER_NAME ]  && echo " existe. je le supprime " || echo "foo n'existe pas"
 
 if [ -h $SERVER_PATH/$SERVER_NAME -a -e $SERVER_PATH/$SERVER_NAME ]; then 
 	echo "Link exist I delete it"
@@ -67,4 +70,11 @@ else
 	rsync -avh $REPOSITORY/ $SERVER_PATH/$SERVER_NAME.$SUFFIXE
 fi
 
+## chown -R openerp:openerp /usr/odoogoeen
+
+###on récupere tout le filestorage.
+#rsync -avh /usr/odoogoeen.16022015/openerp/filestore /usr/odoogoeen/openerp
+
+## Start the server
+sudo service odoo-server start
 exit 0
