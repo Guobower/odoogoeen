@@ -37,14 +37,11 @@ if [[ "$EUID" -eq 0 ]]; then
 	exit 1
 fi
 
-#rsync the repository to the SERVER_PATH
-if [ -d $SERVER_PATH ]
-then
-	sudo rsync -avh $REPOSITORY/ /usr/odoo/odoogoeen.$SUFFIXE
-else
-	sudo mkdir $SERVER_PATH
-	rsync -avh $REPOSITORY/ $SERVER_PATH/$SERVER_NAME.$SUFFIXE
-fi
+## STOP SERVICE
+sudo service odoo-server stop
+
+#test sur les symbolic link
+[ -h  $SERVER_PATH/$SERVER_NAME -a -e $SERVER_PATH/$SERVER_NAME ]  && echo "foo existe. je le supprime " || echo "foo n'existe pas"
 
 #manage filestorage
 #before changing symlink
@@ -87,6 +84,20 @@ git checkout $PROD_BRANCH
 git pull $UPSTREAM $PROD_BRANCH 
 echo "C'est fait"
 #Verification de l'existance du dir contenant le serveur
+if [ -d $SERVER_PATH ]; then
+	#exit 1
+	sudo rsync -avh $REPOSITORY/ /usr/odoo/odoogoeen.$SUFFIXE
+else
+	#exit 1
+	sudo mkdir $SERVER_PATH
+	rsync -avh $REPOSITORY/ $SERVER_PATH/$SERVER_NAME.$SUFFIXE
+fi
 
+## chown -R openerp:openerp /usr/odoogoeen
 
+###on récupere tout le filestorage.
+#rsync -avh /usr/odoogoeen.16022015/openerp/filestore /usr/odoogoeen/openerp
+
+## Start the server
+sudo service odoo-server start
 exit 0
