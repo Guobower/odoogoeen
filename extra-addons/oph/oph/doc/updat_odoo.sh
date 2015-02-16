@@ -30,24 +30,53 @@ error() {
 	printf '\E[31m'; echo "$@"; printf '\E[0m'
 }
 #check if you're root
+#not useful here
+#in case I need it
 if [[ "$EUID" -eq 0 ]]; then
 	error "This script should be run using sudo or as the root user"
 	exit 1
 fi
 
-#test sur les symbolic link
-[ -h  $SERVER_PATH/$SERVER_NAME -a -e $SERVER_PATH/$SERVER_NAME ]  && echo "foo existe. je le supprime " || echo "foo n'existe pas"
+#rsync the repository to the SERVER_PATH
+if [ -d $SERVER_PATH ]
+then
+	sudo rsync -avh $REPOSITORY/ /usr/odoo/odoogoeen.$SUFFIXE
+else
+	sudo mkdir $SERVER_PATH
+	rsync -avh $REPOSITORY/ $SERVER_PATH/$SERVER_NAME.$SUFFIXE
+fi
 
-if [ -h $SERVER_PATH/$SERVER_NAME -a -e $SERVER_PATH/$SERVER_NAME ]; then 
-	echo "Link exist I delete it"
-	sudo unlik $SERVER_PATH/$SERVER_NAME
-	exit 
-else 
-	echo "foo doesn't exist. Create it"
-	echo "in $SERVER_NAME"
+#manage filestorage
+#before changing symlink
+#trying to get the right PATH to the right FILESTORAGE
+if [ -h  $SERVER_PATH/$SERVER_NAME ]
+then 
+	cd $SERVER_PATH/
+	cd $SERVER_NAME
+	TARGET=`pwd -P`
+	echo "TARGET is: $TARGET"
+else
+	echo "Le symlink n'existe pas"
+fi
+#manage symlink
+#shutdown service
+#sudo service odoo-server stop
+if [ -h  $SERVER_PATH/$SERVER_NAME ]
+then 
+	echo "$SERVER_PATH/$SERVER_NAME is a link"
+	echo "I delete it"
+	sudo unlink $SERVER_PATH/$SERVER_NAME
+	echo "symlink deleted"
+	echo "Create symlink to the right server name: $SERVER_NAME.$SUFFIXE"
 	sudo ln -s $SERVER_PATH/$SERVER_NAME.$SUFFIXE $SERVER_PATH/$SERVER_NAME
-	exit 
-fi	
+	
+else
+	echo "$SERVER_PATH/$SERVER_NAME is not a link"
+	echo "Create symlink $SERVER_PATH/$SERVER_NAME"
+	sudo ln -s $SERVER_PATH/$SERVER_NAME.$SUFFIXE $SERVER_PATH/$SERVER_NAME
+fi
+#start service odoo-server
+#sudo service odoo-server start
 	
 # on met à jour le repository
 # doit se faire sous le current user
@@ -58,13 +87,6 @@ git checkout $PROD_BRANCH
 git pull $UPSTREAM $PROD_BRANCH 
 echo "C'est fait"
 #Verification de l'existance du dir contenant le serveur
-if [ -d $SERVER_PATH ]; then
-	#exit 1
-	sudo rsync -avh $REPOSITORY/ /usr/odoo/odoogoeen.$SUFFIXE
-else
-	#exit 1
-	sudo mkdir $SERVER_PATH
-	rsync -avh $REPOSITORY/ $SERVER_PATH/$SERVER_NAME.$SUFFIXE
-fi
+
 
 exit 0
