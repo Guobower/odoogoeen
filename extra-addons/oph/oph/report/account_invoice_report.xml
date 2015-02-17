@@ -204,7 +204,7 @@
             <field name="object">TRUE</field>
             <field name="value" eval="'ir.actions.report.xml,' + str(ref('oph.fds_wbank_account_id'))"/>
         </record>
-        
+<!-- END FEUILLE DE SOINS -->
 
 <!-- BDX REMISE CHEQUE -->
         <record model="ir.actions.report.xml" id="bdx_check_id">

@@ -243,6 +243,7 @@
             <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')">
             </field>
         </record>
+        <!--  END ORDO IVT -->
         
     </data>
 </openerp>
