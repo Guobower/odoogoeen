@@ -330,7 +330,8 @@
                         <field name="tag" invisible="1"/>
                         <field name="categ_ids"/>
                         <field name="datewotime" invisible="1"/>
-                        <field name="todo_list_ids"/>
+                        <field name="tag"/>
+                        <field name="todo_list_ids" invisible="True"/>
                         <!--n'apporte pas grand chose comme information car on a pas l'état de ces records
                             mais bon on voit qu'il y a des choses à faire ou pas-->
                         <field name="medication_line_ids"/>
