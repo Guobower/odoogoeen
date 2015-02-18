@@ -74,6 +74,7 @@
                         <field name="impact_size" class="oe_inline"/>
                         <field name="impact_number" class="oe_inline"/>
                         <field name="laser_power" class="oe_inline"/>
+                        <field name="localisation" class="oe_inline"/>
                     </group>
                     <separator colspan="2"/>
                     <group attrs="{'invisible':[('type','!=','OCT')]}">
