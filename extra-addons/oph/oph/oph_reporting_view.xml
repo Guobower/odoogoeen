@@ -193,7 +193,33 @@
         </record>
         <!-- END VIEW -->
 
-        
+        <!-- VIEWS HONORIFIC -->
+        <!-- TREE VIEW -->
+        <record model="ir.ui.view" id="honorific_tree_view_id">
+            <field name="name">honorific.tree</field>
+            <field name="model">oph.honorific</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <tree string="Honorific">
+                    <field name="partner_id"/>
+                    <field name="user_id"/>
+                    <field name="honorific"/>
+                </tree>
+            </field>
+        </record>
+        <!-- FORM VIEW -->
+        <record model="ir.ui.view" id="honorific_form_view_id">
+            <field name="name">honorific.form</field>
+            <field name="model">oph.honorific</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <form string="Honorific">
+                    <field name="partner_id"/>
+                    <field name="user_id"/>
+                    <field name="honorific"/>
+                </form>
+            </field>
+        </record>
 
         <!-- ACTIONS / MENUITEM -->
         <menuitem name="Reporting" groups="oph.sec_group_id" icon="terp-project" id="main_reporting_id"/>
@@ -216,6 +242,7 @@
 
         <menuitem parent="menu_reporting_id" id="reporting_menu_id" sequence ="10" action="reporting_action_id"/>
 
+        <!-- IN REPORT CONFIGURATION MENU -->        
         <!-- REPORTING TEMPLATE ACTION -->
         <record model="ir.actions.act_window" id="reporting_template_action_id">
             <field name="name">Reporting Template Action</field>
@@ -228,6 +255,17 @@
         <menuitem name="Reporting Template" parent="config_reporting_id" id="reporting_template_menu_id"
             sequence ="20" action="reporting_template_action_id"/>
 
+        <!-- HONORIFIC ACTION -->
+         <record model="ir.actions.act_window" id="honorific_action_id">
+            <field name="name">Honorific Action</field>
+            <field name="res_model">oph.honorific</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="honorific_form_view_id"/>
+        </record>
+        
+        <menuitem name="Honorific" parent="config_reporting_id" id="honorific_menu_id" sequence="30" action="honorific_action_id"/>
+        
         <!-- IN OPHALMOLOGY / CONFIGURATION -->
         <!-- INDICATION ACTION -->
         <record model="ir.actions.act_window" id="indication_action_id">
@@ -237,10 +275,7 @@
             <field name="view_mode">tree,form</field>
             <field name="view_id" ref="indication_tree_view_id"/>
         </record>
-
-        <menuitem name="Indication" parent="config_oph_id" id="config_indication_menu_id"
-            sequence ="20" action="indication_action_id"/>
-
+        <menuitem name="Indication" parent="config_oph_id" id="config_indication_menu_id" sequence ="20" action="indication_action_id"/>
         
         
         <!-- ACTION TO BE TRIGGER BY A BUTTON IN THE ONGLET REPORTING OF CRM.MEETING FORM -->
