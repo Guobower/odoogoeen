@@ -491,7 +491,7 @@ ___MARCHE PAS
             </field>
         </record>
 
-        <!-- ADD BUTTON  LOGCONSULTATION IN RES_PARTNER VIEW -->
+        <!-- ADD BUTTON  LOGCONSULTATION AND LOGBLOCLINE IN RES_PARTNER VIEW -->
          <record model="ir.ui.view" id="oph_view_partner_form1">
             <field name="name">oph.partner.form.newbuttons</field>
             <field name="model">res.partner</field>
@@ -500,6 +500,7 @@ ___MARCHE PAS
                 <data>
                     <xpath expr="//div[@name='buttons']" position="inside">
                        <button string="LogConsultation" name="%(logconsultation_act)d" type="action" context="{'search_default_partner_id':id}"/>
+                       <button string="LogBlocLine" name="%(logblocline_action_id)d" type="action" context="{'search_default_partner_id':id}"/>
                     </xpath>
                 </data>
             </field>

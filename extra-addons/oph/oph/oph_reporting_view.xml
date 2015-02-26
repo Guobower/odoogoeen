@@ -338,7 +338,7 @@
 <!-- "REPORT" FOR THE REPORT OF THIS CRM.MEETING -->
 <!-- "LOGREPORTS" FOR ALL  REPORTS  OF  PATIENT -->
         <record model="ir.ui.view" id="crm_meeting_form_w_report_button_id">
-            <field name="name">crm.meeting.w.logblocline</field>
+            <field name="name">crm.meeting.w.reportbutton</field>
             <field name="model">crm.meeting</field>
             <field name="inherit_id" ref="oph.agenda_oph_form_view_id1"/>
             <field name="arch" type="xml">
