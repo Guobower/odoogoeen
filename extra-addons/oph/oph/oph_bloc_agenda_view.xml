@@ -111,6 +111,7 @@
                         </group>
                         <group>
                             <field name="sequence"/>
+                            <field name="notification_time"/>
                             <field name="name" invisible="1"/>
                             <field name="start_time" string="Horaire"/>
                             <field name="duration"/>
@@ -163,7 +164,7 @@
             <field name="arch" type="xml">
                 <tree string="Bloc Agenda Line" colors="red:state=='open';blue:state=='open';black:state=='close';grey:state=='cancel'">
                     <field name="state"/>
-                    <field name="sequence" invisible="1"/>
+                    <field name="sequence" invisible="0"/>
                     <field name="name" invisible="1"/>
                     <field name="partner_id" domain="[('customer','=',True)]"/>
                     <field name="bloc_agenda_id"/>
@@ -176,10 +177,11 @@
                     <field name="snd_eye"/>
                     <field name="procedure_type_id" on_change="onchange_set_duration(procedure_type_id)"/>
                     <field name="duration" sum="Total"/>
+                    <field name="dilatation"/>
                     <!--<field name="duration_procedure" sum="Total"/>-->
                     <field name="start_time" string="Horaire"/>
-                    <field name="dilatation"/>
                     <field name="comment"/>
+                    <field name="notification_time"/>
                     <field name="ic"/>
                 </tree>
             </field>

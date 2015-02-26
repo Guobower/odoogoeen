@@ -366,6 +366,7 @@ class oph_bloc_agenda_line(osv.osv):
                 'po_meeting_id':fields.many2one('crm.meeting', 'PostOR Appointment'),
                 'indication_id':fields.many2one('oph.indication', 'Indication'),
                 'operator_id':fields.many2one('res.users', 'Operator'),
+                'notification_time':fields.char('Notification Time', size = 8),
                 }
 
     _defaults = {
