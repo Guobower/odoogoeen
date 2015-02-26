@@ -59,6 +59,7 @@ class Parser(report_sxw.rml_parse):
             'total_chq':self.total_chq,
             'only_time':self.get_only_time,
             'only_time1':self.get_only_time1,
+            'only_time2':self.get_only_time2,
             # 'molecule':self._get_molecule,
             # 'indication':self._get_indication,
             # 'molecule1':self._get_molecule1,
@@ -173,6 +174,29 @@ class Parser(report_sxw.rml_parse):
             label = ustr(localized.strftime("%A %d %B %Y")) + ' ' + u'à' + ' ' + ustr(localized.strftime("%H H %M"))
             context['only_time1'] = label
             return context.get('only_time1', '')
+        else:
+            return True
+
+    def get_only_time2(self, context = None):
+        """
+        Humanize date for oph_bloc_agenda_line object
+        for PO appointment
+        """
+        if context is None:
+            context = {}
+        context = self.context
+        temp = self.pool.get(context.get('active_model')).browse(self.cr, self.uid, context.get('active_ids'))
+        for rec in temp:
+            context['only_time2'] = rec.ane_appointment
+        if context['only_time2']:
+            unaware = datetime.strptime(context['only_time2'], '%Y-%m-%d %H:%M:%S')
+            aware = unaware.replace(tzinfo = pytz.UTC)
+            localized = aware.astimezone(pytz.timezone(context.get('tz')))
+            loc = locale.getlocale()
+            locale.setlocale(locale.LC_ALL, 'fr_FR.UTF-8')
+            label = ustr(localized.strftime("%A %d %B %Y")) + ' ' + u'à' + ' ' + ustr(localized.strftime("%H H %M"))
+            context['only_time2'] = label
+            return context.get('only_time2', '')
         else:
             return True
 
