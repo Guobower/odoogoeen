@@ -10,10 +10,10 @@
             <field name="arch" type="xml">
                 <form string="Type" version="7.0">
                     <header>
-                        <button name="request_open" states="draft" string="Validate" class="oe_highlight" type="object" help="Press when request is send"/>
-                        <button name="request_close" states="drat,open" class="oe_highlight" string="Close Request" type="object" help="Press when all is done"/>
-                        <button name="request_confirm" states="draft,open" class="oe_highlight" string="Confirm Request" type="object" help="Press when the request is validated"/>
-                        <button name="request_cancel" states="draft,open" string="Cancel Request" type="object"/>
+                        <button name="request_open" states="draft" string="Confirm" class="oe_highlight" type="object" help="Press when request is send"/>
+                        <button name="request_close" states="confirm" class="oe_highlight" string="Close Request" type="object" help="Press when all is done"/>
+                        <button name="request_confirm" states="open" class="oe_highlight" string="Accepted" type="object" help="Press when the request is accepted"/>
+                        <button name="request_cancel" states="draft,open,confirm" string="Cancel Request" type="object"/>
                         <field name="state" widget="statusbar" nolabel="1" statusbar_visible="draft,open,close,cancel" statusbar_colors='{"draft":"blue","open":"blue"}'/>
                     </header>
                     <sheet string="Request">

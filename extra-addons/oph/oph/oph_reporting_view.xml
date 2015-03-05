@@ -287,7 +287,7 @@
             <field name="target">current</field>
             <field name="view_id" ref="reporting_form_view_id"/>
         </record>
-
+        
         <!-- SEARCH VIEW FOR REPORTING -->
         <record id="view_reporting_search_id" model="ir.ui.view">
             <field name="name">oph.reporting.select</field>
@@ -334,21 +334,24 @@
             </field>
         </record>
 
-<!-- ADD BUTTON "REPORTS" IN CRM MEETING VIEW  -->
+<!-- ADD BUTTON "REPORT" and "LOGREPORTS" IN CRM MEETING VIEW  -->
+<!-- "REPORT" FOR THE REPORT OF THIS CRM.MEETING -->
+<!-- "LOGREPORTS" FOR ALL  REPORTS  OF  PATIENT -->
         <record model="ir.ui.view" id="crm_meeting_form_w_report_button_id">
-            <field name="name">crm.meeting.w.logblocline</field>
+            <field name="name">crm.meeting.w.reportbutton</field>
             <field name="model">crm.meeting</field>
             <field name="inherit_id" ref="oph.agenda_oph_form_view_id1"/>
             <field name="arch" type="xml">
                 <data>
                     <xpath expr="//button[@string='Inject']" position="before">
-                        <button string="Reports" name="%(oph.reporting_action_id)d" type="action" context="{'default_meeting_id': active_id, 'search_default_meeting_id': active_id}"/>
+                        <button string="Report" name="%(oph.reporting_action_id)d" type="action" context="{'default_meeting_id': active_id, 'search_default_meeting_id': active_id}"/>
+                        <button string="LogReports" name="%(oph.reporting_action_id)d" type="action" context="{'search_default_partner_id':partner_id}"/>
                     </xpath>
                 </data>
             </field>    
         </record>
 
-<!-- ADD BUTTON  REPORTS IN RES_PARTNER VIEW -->
+<!-- ADD BUTTON  "LOGREPORTS" IN RES_PARTNER VIEW -->
          <record model="ir.ui.view" id="oph_view_partner_form2">
             <field name="name">oph.partner.form.button.reports</field>
             <field name="model">res.partner</field>
@@ -356,7 +359,7 @@
             <field name="arch" type="xml">
                 <data>
                     <xpath expr="//div[@name='buttons']" position="inside">
-                       <button string="Reports" name="%(oph.reporting_action_id)d" type="action" context="{'search_default_partner_id':id}"/>
+                       <button string="LogReports" name="%(oph.reporting_action_id)d" type="action" context="{'search_default_partner_id':id}"/>
                     </xpath>            
                 </data>
             </field>

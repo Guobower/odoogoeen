@@ -361,11 +361,12 @@ class oph_bloc_agenda_line(osv.osv):
                 # 'duration_procedure':fields.integer('Duration', 'Estimated procedure duration in minutes'), # Moins bien que le duration fields.float car pas de calcul du total en bas de la colonne
                 'procedure_iol_status':fields.related('procedure_type_id', 'iol_status', type = 'boolean', string = 'IOL Procedure',),
                 'ic':fields.selection(_get_ic_selection, 'Informed Consent', help = 'Check if informed consent has been delivered to and given back by the patient'),
-                'ane_appointment':fields.date('Date ANE RDV', help = 'date appointment for anesthesia'),
+                'ane_appointment':fields.datetime('Date ANE RDV', help = 'date appointment for anesthesia'),
                 'ane_comment':fields.char('comment ANE', char = '128'),
                 'po_meeting_id':fields.many2one('crm.meeting', 'PostOR Appointment'),
                 'indication_id':fields.many2one('oph.indication', 'Indication'),
                 'operator_id':fields.many2one('res.users', 'Operator'),
+                'notification_time':fields.char('Notification Time', size = 8),
                 }
 
     _defaults = {

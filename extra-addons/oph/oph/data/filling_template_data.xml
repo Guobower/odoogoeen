@@ -58,14 +58,12 @@
         <record model="oph.filling.template" id="dt2_id">
             <field name="name">DIABETE T2</field>
             <field name="code">DT2 ODG</field>
-            <field name="as_od">Cornée claire, chambre antérieure calme, un cristallin clair. Absence de néovaisseaux iriens.</field>
+            <field name="as_od">Cornée claire, chambre antérieure calme, un cristallin clair. Absence de néovaisseaux irien.</field>
             <field name="as_os">Cornée claire, chambre antérieure calme, un cristallin clair. Absence de néovaisseaux irien.</field>
             <field name="ps_od">Une papille normale avec un bon anneau neurorétinien. La macula est normale. Absence de lésion rhégmatogène sur les 360° de la périphérier rétinienne. Absence de lésion vasculaire.</field>
             <field name="ps_os">Une papille normale avec un bon anneau neurorétinien. La macula est normale. Absence de lésion rhégmatogène sur les 360° de la périphérier rétinienne. Absence de lésion vasculaire.</field>
             <field name="comment">un commentaire</field>
         </record>
-
-
 
     </data>
 </openerp>
