@@ -203,11 +203,15 @@ class crm_meeting(orm.Model):
         for meeting in self.browse(cr, uid, ids, context = context):
             for pathology in meeting.pathology_ids:
                 for line in pathology.medication_line_ids:
+                    if line.brandname_id.ods_needed is True:
+                        ods=meeting.ods
+                    else:
+                        ods=False
                     line_obj.create(cr, uid, {
                             'meeting_id': meeting.id,
                             'name': line.name,
                             'brandname_id': line.brandname_id.id,
-                            'ods': meeting.ods,
+                            'ods': ods,
                             'poso': line.poso,
                             'duration': line.duration,
                             'comment': line.comment,
