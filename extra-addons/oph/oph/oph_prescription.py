@@ -207,7 +207,7 @@ class crm_meeting(orm.Model):
                             'meeting_id': meeting.id,
                             'name': line.name,
                             'brandname_id': line.brandname_id.id,
-                            'ods': line.ods,
+                            'ods': meeting.ods,
                             'poso': line.poso,
                             'duration': line.duration,
                             'comment': line.comment,
