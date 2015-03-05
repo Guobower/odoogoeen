@@ -187,6 +187,10 @@
                     </page>
 
                     <page string="Pathology" attrs="{'invisible':[('state','in',['draft','open','busy','wait'])]}" groups="oph.sec_group_id">
+                         <div style="width:25%%">
+                            <label for="ods"/>
+                            <field name="ods" class="oe_inline"/>
+                        </div>
                         <field name="pathology_ids" widget="many2many">
                             <tree string="Pathology" editable="top">
                                 <field name="name"/>
@@ -197,13 +201,13 @@
 
                     <page string="Medication Lines" attrs="{'invisible':[('state','in',['draft','open','wait','busy'])]}" groups="oph.sec_group_id">
                         <field name="medication_line_ids">
-                            <tree string="Medication Line">
+                            <tree string="Medication Line" editable="top">
                                 <field name="name"/>
                                 <field name="brandname_id"/>
                                 <field name="poso"/>
                                 <field name="duration"/>
                                 <field name="ods" required="True"/>
-                                <field name="ods_needed"/>
+                                <field name="ods_needed" invisible="1"/>
                             </tree>
                         </field>
                     </page>

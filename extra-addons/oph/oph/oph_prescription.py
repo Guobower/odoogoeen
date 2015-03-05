@@ -231,14 +231,21 @@ class crm_meeting(orm.Model):
                                             }, context = context)
         return True
 
+    def _get_ods(self, cursor, user_id, context = None):
+        return (
+                ('od', _('Right Eye')),
+                ('os', _('Left Eye')),
+                ('ods', _('Right and Left Eye'))
+                )
+
     _columns = {
-              'medication_line_ids':fields.one2many('oph.medication.line', 'meeting_id', 'Medication Line'),
-              'pathology_ids':fields.many2many('oph.pathology', 'oph_pathology_meeting_rel', 'meeting_id', 'pathology_id', 'Pathology Line'),
-              #Trying to improve the protocole process
-              'protocole_ids':fields.many2many('oph.protocole', 'oph_protocole_meeting_rel', 'meeting_id', 'protocole_id', 'Protocole Line'),
-              'biology_line_ids':fields.one2many('oph.protocole.line', 'meeting_id', 'Biology Line',domain=[('exam_id.type','=','Bio'),]),
-              'radiology_line_ids':fields.one2many('oph.protocole.line', 'meeting_id', 'Radiology Line',domain=[('exam_id.type','=','Rx'),]),
-              'cardiology_line_ids':fields.one2many('oph.protocole.line', 'meeting_id', 'Cardiology Line',domain=[('exam_id.type','=','Cx'),]),
-               
+                 'ods':fields.selection(_get_ods, 'ODS', required = False,),
+                 'medication_line_ids':fields.one2many('oph.medication.line', 'meeting_id', 'Medication Line'),
+                 'pathology_ids':fields.many2many('oph.pathology', 'oph_pathology_meeting_rel', 'meeting_id', 'pathology_id', 'Pathology Line'),
+                 #Trying to improve the protocole process
+                 'protocole_ids':fields.many2many('oph.protocole', 'oph_protocole_meeting_rel', 'meeting_id', 'protocole_id', 'Protocole Line'),
+                 'biology_line_ids':fields.one2many('oph.protocole.line', 'meeting_id', 'Biology Line',domain=[('exam_id.type','=','Bio'),]),
+                 'radiology_line_ids':fields.one2many('oph.protocole.line', 'meeting_id', 'Radiology Line',domain=[('exam_id.type','=','Rx'),]),
+                 'cardiology_line_ids':fields.one2many('oph.protocole.line', 'meeting_id', 'Cardiology Line',domain=[('exam_id.type','=','Cx'),]),
                }
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
