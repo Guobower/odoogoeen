@@ -71,7 +71,19 @@ class Parser(report_sxw.rml_parse):
 
     def arrow_today_timestamp(self):
         fmt = 'DD-MM-YYYY HH:mm'
+
+
         return arrow.now().format(fmt)
+
+    def arrow_today_timestamp2(self, context = None):
+        # FIX the format of date print  in report
+        if context is None:
+            context = {}
+        context = self.context
+        fmt = 'DD-MM-YYYY HH:mm'
+        aware = arrow.now().replace(tzinfo = pytz.UTC)
+        localized = aware.astimezone(pytz.timezone(context.get('tz')))
+        return localized.format(fmt)
 
     def printed_date(self):
         return datetime.now().strftime("%y-%m-%d")
