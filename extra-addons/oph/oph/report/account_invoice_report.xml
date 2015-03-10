@@ -214,7 +214,7 @@
             <field name="report_name">bdxcheck</field>
             <field name="report_type">aeroo</field>
             <field name="auto">TRUE</field>
-            <field name="report_rml">oph/report/odt/account_invoice/BDX-REMISE.odt</field>
+            <field name="report_rml">oph/report/odt/account_voucher/BDX-REMISE.odt</field>
             <field name="parser_state">loc</field>
             <field name="parser_loc">oph/report/parser.py</field>
             <field name="tml_source">file</field>
