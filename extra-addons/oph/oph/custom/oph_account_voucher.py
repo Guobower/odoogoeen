@@ -14,8 +14,17 @@ class account_voucher(orm.Model):
     """
     _inherit = "account.voucher"
 
+    def _get_process_status(self,cursor, uid,context=None):
+        return (
+                ('process',_('In Process')),
+                ('done',_('Done')),
+                ('forprocess',_('For processing')),
+                )
     _columns = {
                 'check_owner':fields.char('Check Owner', help = 'Owner of the check. Change it, if different of the customer"', size = 32),
                 'check_deposit':fields.boolean('Check Deposit', help = 'Check Deposit'),
+                'process_status':fields.selection(_get_process_status,'Process',readonly=False),
                 }
+    _defaults={
+               'process_status':'forprocess'}
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
