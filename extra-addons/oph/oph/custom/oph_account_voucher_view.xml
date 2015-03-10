@@ -13,6 +13,7 @@
                 </field>
                 <field name="company_id" position="after">
                     <field name="check_deposit"/>
+                    <field name="process_status"/>
                 </field>
                 </data>
             </field>
