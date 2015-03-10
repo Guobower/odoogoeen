@@ -55,6 +55,9 @@
             <field name="inherit_id" ref="account_voucher.view_voucher_filter_customer_pay" />
             <field name="arch" type="xml">
                 <xpath expr="filter[@string='Posted']" position="after">
+                      <filter string="Done" domain="[('process_status','=','done')]"/>
+                      <filter string="In Process" domain="[('process_status','=','process')]"/>
+                      <filter string="For Process" domain="[('process_status','=','forprocess')]"/>
                      <filter string="Check Deposit" domain="[('check_deposit', '=', True)]"/>
                      <filter string="For Deposit" domain="[('check_deposit', '=', False)]"/>
                 </xpath>
