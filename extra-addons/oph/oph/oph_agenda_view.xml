@@ -148,25 +148,27 @@
                                     <field name="va_type" class="oe_inline"/>
                                     <field name="va_tech" class="oe_inline"/>
                                 </group>
-                                <group col="6" string="OD">
-                                    <field name="va_od" class="oe_inline" on_change="on_change_va(va_od)"/>
-                                    <field name="qualif_od" string="Q_OD" class="oe_inline"/>
-                                    <field name="m_od" string="M_OD" class="oe_inline" on_change="on_change_m(m_od)"/>
+                                <group col="4" string="Refraction">
+                                     <h1 colspan="2">OD</h1>
+                                     <h1 colspan="2">OG</h1>
                                     <field name="sph_od" class="oe_inline" on_change="on_change_sph(sph_od)"/>
-                                    <field name="cyl_od" class="oe_inline" on_change="on_change_cyl(cyl_od)"/>
-                                    <field name="axis_od" class="oe_inline" on_change="on_change_axis(axis_od)"/>
-                                    <field name="nv_od" class="oe_inline" on_change="on_change_nv(nv_od)"/>
-                                    <field name="add_od" class="oe_inline" on_change="on_change_add(add_od)"/>
-                                </group>
-                                <group col="6" string="OG">
-                                    <field name="va_os" class="oe_inline"/>
-                                    <field name="qualif_os" string="Q_OS" class="oe_inline"/>
-                                    <field name="m_os" string="M_OS" class="oe_inline"/>
                                     <field name="sph_os" class="oe_inline"/>
+                                    <field name="cyl_od" class="oe_inline" on_change="on_change_cyl(cyl_od)"/>
                                     <field name="cyl_os" class="oe_inline"/>
+                                    <field name="axis_od" class="oe_inline" on_change="on_change_axis(axis_od)"/>
                                     <field name="axis_os" class="oe_inline"/>
-                                    <field name="nv_os" class="oe_inline"/>
+                                    <field name="add_od" class="oe_inline" on_change="on_change_add(add_od)"/>
                                     <field name="add_os" class="oe_inline"/>
+                              </group>
+                              <group col="4" string="Visual Acuity">
+                                    <field name="va_od" class="oe_inline" on_change="on_change_va(va_od)"/>
+                                    <field name="va_os" class="oe_inline"/>
+                                    <field name="qualif_od" string="Q_OD" class="oe_inline"/>
+                                    <field name="qualif_os" string="Q_OS" class="oe_inline"/>
+                                    <field name="m_od" string="M_OD" class="oe_inline" on_change="on_change_m(m_od)"/>
+                                     <field name="m_os" string="M_OS" class="oe_inline"/>
+                                     <field name="nv_od" class="oe_inline" on_change="on_change_nv(nv_od)"/>
+                                     <field name="nv_os" class="oe_inline"/>
                                 </group>
                             </form>
                         </field>
