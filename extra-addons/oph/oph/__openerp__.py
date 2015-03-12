@@ -100,6 +100,7 @@ Permet de faire pleins de choses absolument géniales
     #===========================================================================
     'test': [],
     'installable': True,
-    'active': False
+    'active': False,
+    'qweb':["static/src/xml/base.xml",],
 }
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
