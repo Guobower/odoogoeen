@@ -33,3 +33,5 @@ class Database_restrict(Database):
     @openerpweb.jsonrequest
     def change_password(self, req, fields):
         raise Exception('Not allowed')
+
+## C'est trop restrictif. permet uniquement de fonctionner s'il n'y pas déjà une database'
