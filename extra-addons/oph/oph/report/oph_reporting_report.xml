@@ -124,6 +124,35 @@
             <field name="value" eval="'ir.actions.report.xml,' + str(ref('oph.plain_report_id'))"/>
         </record>
 
+        <!-- 5 PLAIN REPORT WITH SMALL FONT FOR ENTETE-->
+        <record model="ir.actions.report.xml" id="plain_report_id">
+            <field name="name">Plain Report Small Header</field>
+            <field name="type">ir.actions.report.xml</field>
+            <field name="model">oph.reporting</field>
+            <field name="report_name">plain.report.small</field>
+            <field name="report_type">aeroo</field>
+            <field name="auto">TRUE</field>
+            <field name="report_rml">oph/report/odt/oph_reporting/Plain_Report_Font8.odt</field>
+            <field name="parser_state">loc</field>
+            <field name="parser_loc">oph/report/parser.py</field>
+            <field name="tml_source">file</field>
+            <!--  choix database, file, parser de template source-->
+            <field name="in_format">oo-odt</field>
+            <!-- choix de template Mime-type dans configuration-Technical-aero-report-Reports-->
+            <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
+            <field name="styles_mode">specified</field>
+            <field name="stylesheet_id" ref="stt_courrierfont8_id"/>
+            <field name="attachment">'Plain Report'+'_'+object.partner_id.fullname+'_'+object.date+'.odt'</field>
+        </record>
+        <!-- button -->
+        <record model="ir.values" id="value_plain_report_id">
+            <field name="name">Plain.Report</field>
+            <field name="key">action</field>
+            <field name="key2">client_print_multi</field>
+            <field name="model">oph.reporting</field>
+            <field name="object">TRUE</field>
+            <field name="value" eval="'ir.actions.report.xml,' + str(ref('oph.plain_report_id'))"/>
+        </record>
 
         <!-- 5 DIABETIC REPORTING -->
         <record model="ir.actions.report.xml" id="diab_report_id">

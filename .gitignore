@@ -19,6 +19,10 @@ openerp/filestore
 install/win32/*.bat
 install/win32/meta.py
 
+#latex files
+*.aux
+*.log
+*.tex~
 # various virtualenv
 /bin/
 /build/
