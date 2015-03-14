@@ -12,4 +12,5 @@
     </t>
 
 </templates>
-<!-- Ca n'a pas l'air de marcher -->
+<!-- Ca enleve uniquement le lien "manage database" de la fenetre de connection -->
+<!-- donc on ne peut plus faire de dump -->>
