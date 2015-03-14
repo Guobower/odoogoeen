@@ -125,7 +125,7 @@
         </record>
 
         <!-- 5 PLAIN REPORT WITH SMALL FONT FOR ENTETE-->
-        <record model="ir.actions.report.xml" id="plain_report_id">
+        <record model="ir.actions.report.xml" id="plain_report_font8_id">
             <field name="name">Plain Report Small Header</field>
             <field name="type">ir.actions.report.xml</field>
             <field name="model">oph.reporting</field>
@@ -145,13 +145,13 @@
             <field name="attachment">'Plain Report'+'_'+object.partner_id.fullname+'_'+object.date+'.odt'</field>
         </record>
         <!-- button -->
-        <record model="ir.values" id="value_plain_report_id">
-            <field name="name">Plain.Report</field>
+        <record model="ir.values" id="value_plain_report_font8_id">
+            <field name="name">plain.report.small</field>
             <field name="key">action</field>
             <field name="key2">client_print_multi</field>
             <field name="model">oph.reporting</field>
             <field name="object">TRUE</field>
-            <field name="value" eval="'ir.actions.report.xml,' + str(ref('oph.plain_report_id'))"/>
+            <field name="value" eval="'ir.actions.report.xml,' + str(ref('oph.plain_report_font8_id'))"/>
         </record>
 
         <!-- 5 DIABETIC REPORTING -->
