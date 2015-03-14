@@ -101,6 +101,7 @@ Permet de faire pleins de choses absolument géniales
     'test': [],
     'installable': True,
     'active': False,
-    'qweb':["static/src/xml/base.xml",],
+    #uncomment if you want to delete the link "manage database" from the connection window
+    #'qweb':["static/src/xml/base.xml",],
 }
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
