@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Ca enleve uniquement le lien "manage database" de la fenetre de connection -->
+<!-- donc on ne peut plus faire de dump -->
+<!-- ca marche pas toujours -->
+
 <templates>
     <!-- Templates modified at the web start, before loading of a database. -->
 
@@ -6,11 +10,11 @@
     <t t-extend="Login">
         <t t-jquery="div.oe_login_footer" t-operation="replace">
             <div class="oe_login_footer">
-                <a href="http://www.openerp.com" target="_blank">Powered by <span>OpenERP</span></a>
+                <a href="http://www.openerp.com" target="_blank">Powered by <span>DaFunkyFamily</span></a>
             </div>
         </t>
     </t>
 
 </templates>
-<!-- Ca enleve uniquement le lien "manage database" de la fenetre de connection -->
-<!-- donc on ne peut plus faire de dump -->>
+
+>
