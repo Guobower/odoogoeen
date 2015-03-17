@@ -50,7 +50,7 @@
             <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
             <field name="styles_mode">specified</field>
             <field name="stylesheet_id" ref="stt_courrier_id"/>
-            <field name="attachment">'OR_Report'+'_'+object.partner_id.fullname+'_'+object.date+'.odt'</field>
+            <field name="attachment">object.partner_id.fullname+'_'+'OR_Report'+'_'+object.date+'.odt'</field>
             
         </record>
         <!-- button -->
@@ -82,7 +82,7 @@
             <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
             <field name="styles_mode">specified</field>
             <field name="stylesheet_id" ref="stt_courrier_id"/>
-            <field name="attachment">'PKE_ICP_REPORT'+'_'+object.partner_id.fullname+'_'+object.date+'.odt'</field>
+            <field name="attachment">object.partner_id.fullname+'_'+'PKE_ICP_REPORT'+'_'+object.date+'.odt'</field>
         </record>
         <!-- button -->
         <record model="ir.values" id="value_pke_icp_report_id">
@@ -112,7 +112,7 @@
             <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
             <field name="styles_mode">specified</field>
             <field name="stylesheet_id" ref="stt_courrier1_id"/>
-            <field name="attachment">'Plain Report'+'_'+object.partner_id.fullname+'_'+object.date+'.odt'</field>
+            <field name="attachment">object.partner_id.fullname+'_'+'Plain Report'+'_'+object.date+'.odt'</field>
         </record>
         <!-- button -->
         <record model="ir.values" id="value_plain_report_id">
@@ -143,7 +143,7 @@
             <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
             <field name="styles_mode">specified</field>
             <field name="stylesheet_id" ref="stt_courrier_id"/>
-            <field name="attachment">'Diabetic Report'+'_'+object.partner_id.fullname+'_'+object.date+'.odt'</field>
+            <field name="attachment">object.partner_id.fullname+'_'+'Diabetic Report'+'_'+object.date+'.odt'</field>
             
         </record>
         <!-- button -->
@@ -203,7 +203,7 @@
             <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
             <field name="styles_mode">specified</field>
             <field name="stylesheet_id" ref="stt_courrier1_id"/>
-            <field name="attachment">'OCT_Report'+'_'+object.partner_id.fullname+'_'+object.date+'.odt'</field>
+            <field name="attachment">object.partner_id.fullname+'_'+'OCT_Report'+'_'+object.date+'.odt'</field>
         </record>
         <!-- button -->
         <record model="ir.values" id="value_oct_report_id">
@@ -232,7 +232,7 @@
             <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
             <field name="styles_mode">specified</field>
             <field name="stylesheet_id" ref="stt_courrier1_id"/>
-            <field name="attachment">'Capsulotomy_Report'+'_'+object.partner_id.fullname+'_'+object.date+'.odt'</field>
+            <field name="attachment">object.partner_id.fullname+'_'+'Capsulotomy_Report'+'_'+object.date+'.odt'</field>
         </record>
         <!-- button -->
         <record model="ir.values" id="value_caps_report_id">
@@ -262,7 +262,7 @@
             <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
             <field name="styles_mode">specified</field>
             <field name="stylesheet_id" ref="stt_courrier1_id"/>
-            <field name="attachment">'CCPatient'+'_'+object.partner_id.fullname+'_'+object.date+'.odt'</field>
+            <field name="attachment">object.partner_id.fullname+'_'+'CCPatient'+'_'+object.date+'.odt'</field>
         </record>
         <!-- button -->
         <record model="ir.values" id="value_copy_report_id">
