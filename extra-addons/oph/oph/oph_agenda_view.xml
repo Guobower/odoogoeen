@@ -506,7 +506,6 @@ ___MARCHE PAS
                 <data>
                     <xpath expr="//div[@name='buttons']" position="inside">
                        <button string="LogConsultation" name="%(logconsultation_act)d" type="action" context="{'search_default_partner_id':id}"/>
-                       <button string="LogBlocLine" name="%(logblocline_action_id)d" type="action" context="{'search_default_partner_id':id}"/>
                     </xpath>
                 </data>
             </field>
