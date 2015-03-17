@@ -401,7 +401,7 @@
         <menuitem parent="config_oph_id" id="motive_menu_id" sequence ="70" action="motive_action_id"/>
 
         <!-- TO HAVE SHOP MENU IN SALE MENU WITHOUT STOCK MODULE-->
-        <menuitem action="sale.action_shop_form" id="menu_action_shop_form" parent="base.menu_base_config" sequence="35" />
+        <menuitem action="sale.action_shop_form" id="menu_action_shop_form" parent="base.menu_base_config" sequence="35"/>
 
         <!-- TO HAVE A CALENDAR MENU THAT PUT DIRECTLY TO TREE VIEW OF CALENDAR WITHOUT PASSING BY CALENDAR VIEW-->
         <record id="action_crm_meeting_tree" model="ir.actions.act_window">
