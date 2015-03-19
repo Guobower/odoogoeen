@@ -49,7 +49,7 @@
                     </group>
                     <separator colspan="2"/>
                     <group>
-                        <field name="receiver_partner"  attrs="{'invisible':['|','|',('receiver_id','=',True),('type','=','ORR'),('type','=','IVT')]}"/>
+                        <field name="receiver_partner"  attrs="{'invisible':['|','|',('receiver_id','=',True),('type','=','ORR'),('type','=','IVT')]}" on_change="on_change_partner(receiver_partner)"/>
                         <field name="receiver_id" class="oe_inline" attrs="{'invisible':['|','|',('receiver_partner','=',True),('type','=','ORR'),('type','=','IVT')]}" on_change="on_change_receiver(receiver_id,context)"/>
                         <!--marche pas-->
                         <field name="dictate_wpatient" attrs="{'invisible':['|',('type','=','ORR'),('type','=','IVT')]}"/>

@@ -19,6 +19,7 @@ class oph_lens(orm.Model):
               'model':fields.char('Model', size = 64),
               'magnification':fields.float('Magnification'),
                  }
+
 class oph_reporting(orm.Model):
     _name = 'oph.reporting'
 
@@ -32,6 +33,17 @@ class oph_reporting(orm.Model):
                 ('DIAB', _('Diabetic')),
                 ('IVT', _('IntraVitreal Injection')),
                  ]
+
+    def on_change_partner(self, cr, uid, ids, receiver_partner, context = None):
+        if context is None:
+            context = {}
+        # from pdb import set_trace; set_trace()
+        values = {}
+        if receiver_partner is True:
+            receiver = self.browse(cr, uid, ids[0]).partner_id.id
+            values = {'receiver_id':receiver}
+        return {'value':values}
+
 
     def on_change_receiver(self, cr, uid, ids, receiver_id, context = None):
         if context is None:
@@ -91,7 +103,7 @@ class oph_reporting(orm.Model):
         Return a string
         Return month is in french not very convinient for internationalisation..
         """
-        nummonth = range(1,13) # 1 inclus; 13 exclus
+        nummonth = range(1, 13)  # 1 inclus; 13 exclus
         strmonth = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'aoûtt', 'septembre', 'octobre', 'novembre', 'décembre']
         mappedmonth = dict(zip(nummonth, strmonth))
 
@@ -104,19 +116,19 @@ class oph_reporting(orm.Model):
         print "PASSING IN:%s. CONTEXT:%s" % (inspect.stack()[0][3], context)
         print "RETURN: %s" % (ny,)
         return ny
-    
+
     def get_default_body_text(self, cr, uid, id, context = None):
         """
         Will get the body text from the template_id record
         """
         if context is None:
-            context={}
+            context = {}
         template_obj = self.pool.get('oph.reporting.template')
         for report in self.browse(cr, uid, id, context = context):
             template_rec = template_obj.read(cr, uid, report.template_id.id, ['text_body', ], context = context)
             self.write(cr, uid, report.id, {'text_body':template_rec.get('text_body', '')}, context = context)
         return True
-            
+
     _columns = {
               'name':fields.char('Name', size = 128, help = "Name report"),
               'type':fields.selection(_type_get, 'Type'),
@@ -130,7 +142,7 @@ class oph_reporting(orm.Model):
               'text_body':fields.text('Text Body', help = 'Text body of the report'),
               # many2one ou many2many?
               # Il n'y qu'un seul template par record template donc c'est pas un many2many donc c'est un one2one==many2one
-              #'template_ids':fields.many2many('oph.reporting.template', 'oph_reporting_reporting_template_rel', 'reporting_id', 'reporting_template_id', 'Reporting Templates', domain = [('active', '=', True)]),
+              # 'template_ids':fields.many2many('oph.reporting.template', 'oph_reporting_reporting_template_rel', 'reporting_id', 'reporting_template_id', 'Reporting Templates', domain = [('active', '=', True)]),
               # coordonnées du destinataire pour remplir l'entete automatiquement
               'receiver_id':fields.many2one('res.partner', 'Receiver', domain = [('colleague', '=', True)]),
               'receiver_partner':fields.boolean('Receiver Patient', help = "Patient is the receiver"),
@@ -209,7 +221,7 @@ class oph_reporting_template(orm.Model):
     _columns = {
               'name':fields.char('Name', size = 128, help = "Name of the template"),
               'short_name':fields.char('Short Name', size = 64),
-              'text_body':fields.text('Text Body', help='Text body of the template'),
+              'text_body':fields.text('Text Body', help = 'Text body of the template'),
               'type':fields.selection(_type_get, 'Type'),
               'active':fields.boolean('Active', help = "If False the template wont be selectable"),
               }
@@ -243,7 +255,7 @@ class oph_request(orm.Model):
     def request_cancel(self, cr, uid, ids, context = None):
         self.write(cr, uid, ids, {"state": "cancel"}, context = context)
         return True
-    
+
     def request_confirm(self, cr, uid, ids, context = None):
         self.write(cr, uid, ids, {"state": "confirm"}, context = context)
         return True

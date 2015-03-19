@@ -50,7 +50,7 @@
             <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
             <field name="styles_mode">specified</field>
             <field name="stylesheet_id" ref="stt_courrier_id"/>
-            <field name="attachment">object.partner_id.fullname+'_'+'OR_Report'+'_'+object.date+'.odt'</field>
+            <field name="attachment">object.partner_id.fullname+'_OR_Report_'+object.date+'.odt'</field>
             
         </record>
         <!-- button -->
@@ -82,7 +82,7 @@
             <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
             <field name="styles_mode">specified</field>
             <field name="stylesheet_id" ref="stt_courrier_id"/>
-            <field name="attachment">object.partner_id.fullname+'_'+'PKE_ICP_REPORT'+'_'+object.date+'.odt'</field>
+            <field name="attachment">object.partner_id.fullname+'_PKE_ICP_REPORT_'+object.date+'.odt'</field>
         </record>
         <!-- button -->
         <record model="ir.values" id="value_pke_icp_report_id">
@@ -112,7 +112,7 @@
             <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
             <field name="styles_mode">specified</field>
             <field name="stylesheet_id" ref="stt_courrier1_id"/>
-            <field name="attachment">object.partner_id.fullname+'_'+'Plain Report'+'_'+object.date+'.odt'</field>
+            <field name="attachment">object.partner_id.fullname+'_Report_TO_'+object.receiver_id.name+'_'+object.date+'.odt'</field>
         </record>
         <!-- button -->
         <record model="ir.values" id="value_plain_report_id">
@@ -142,7 +142,7 @@
             <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
             <field name="styles_mode">specified</field>
             <field name="stylesheet_id" ref="stt_courrier1_smallfont_id"/>
-            <field name="attachment">object.partner_id.fullname+'_'+'Plain Report'+'_'+object.date+'.odt'</field>
+            <field name="attachment">object.partner_id.fullname+'_Report_TO_'+object.receiver_id.name+object.date+'.odt'</field>
         </record>
         <!-- button -->
         <record model="ir.values" id="value_plain_report_smallfont_id">
@@ -153,7 +153,8 @@
             <field name="object">TRUE</field>
             <field name="value" eval="'ir.actions.report.xml,' + str(ref('oph.plain_report_smallfont_id'))"/>
         </record>
-        <!-- 5 DIABETIC REPORTING -->
+
+        <!-- 6 DIABETIC REPORTING -->
         <record model="ir.actions.report.xml" id="diab_report_id">
             <field name="name">Diabetic Reporting</field>
             <field name="type">ir.actions.report.xml</field>
@@ -171,7 +172,7 @@
             <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
             <field name="styles_mode">specified</field>
             <field name="stylesheet_id" ref="stt_courrier1_smallfont_id"/>
-            <field name="attachment">object.partner_id.fullname+'_'+'Diabetic Report'+'_'+object.date+'.odt'</field>
+            <field name="attachment">object.partner_id.fullname+'_'+'Diabetic Report'+'_TO_'+object.receiver_id.name+'_'+object.date+'.odt'</field>
             
         </record>
         <!-- button -->
@@ -231,7 +232,7 @@
             <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
             <field name="styles_mode">specified</field>
             <field name="stylesheet_id" ref="stt_courrier1_smallfont_id"/>
-            <field name="attachment">object.partner_id.fullname+'_'+'OCT_Report'+'_'+object.date+'.odt'</field>
+            <field name="attachment">object.partner_id.fullname+'_OCT_Report_TO_'+object.receiver_id.name+'_'+object.date+'.odt'</field>
         </record>
         <!-- button -->
         <record model="ir.values" id="value_oct_report_id">
@@ -243,12 +244,12 @@
             <field name="value" eval="'ir.actions.report.xml,' + str(ref('oph.oct_report_id'))"/>
         </record>
         
-        <!-- 9 CAPS REPORTING -->
-        <record model="ir.actions.report.xml" id="caps_report_id">
-            <field name="name">Capsulotomy Report</field>
+        <!-- 9 LASER REPORTING -->
+        <record model="ir.actions.report.xml" id="laser_report_id">
+            <field name="name">Laser Report</field>
             <field name="type">ir.actions.report.xml</field>
             <field name="model">oph.reporting</field>
-            <field name="report_name">Capsulotomy.Reporting</field>
+            <field name="report_name">Laser.Reporting</field>
             <field name="report_type">aeroo</field>
             <field name="auto">TRUE</field>
             <field name="report_rml">oph/report/odt/oph_reporting/Laser_Report.odt</field>
@@ -260,16 +261,16 @@
             <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
             <field name="styles_mode">specified</field>
             <field name="stylesheet_id" ref="stt_courrier1_id"/>
-            <field name="attachment">object.partner_id.fullname+'_'+'Capsulotomy_Report'+'_'+object.date+'.odt'</field>
+            <field name="attachment">object.partner_id.fullname+'_Laser_Report_TO_'+object.receiver_id.name+'_'+object.date+'.odt'</field>
         </record>
         <!-- button -->
-        <record model="ir.values" id="value_caps_report_id">
-            <field name="name">Capsulotomy.Reporting</field>
+        <record model="ir.values" id="value_laser_report_id">
+            <field name="name">Laser.Reporting</field>
             <field name="key">action</field>
             <field name="key2">client_print_multi</field>
             <field name="model">oph.reporting</field>
             <field name="object">TRUE</field>
-            <field name="value" eval="'ir.actions.report.xml,' + str(ref('oph.caps_report_id'))"/>
+            <field name="value" eval="'ir.actions.report.xml,' + str(ref('oph.laser_report_id'))"/>
         </record>
 
         <!-- 10 COPY PATIENT -->
@@ -320,7 +321,7 @@
             <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
             <field name="styles_mode">specified</field>
             <field name="stylesheet_id" ref="stt_courrier1_smallfont_id"/>
-            <field name="attachment">'AF_Report'+'_'+object.partner_id.fullname+'_'+object.date+'.odt'</field>
+            <field name="attachment">object.partner_id.fullname+'_AF_Report_TO_'+object.receiver_id.name+'_'+object.date+'.odt'</field>
         </record>
         <record model="ir.values" id="value_fa_report_id">
             <field name="name">FA.Reporting</field>
