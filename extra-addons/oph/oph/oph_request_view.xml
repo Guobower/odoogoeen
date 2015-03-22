@@ -14,7 +14,9 @@
                         <button name="request_close" states="confirm" class="oe_highlight" string="Close Request" type="object" help="Press when all is done"/>
                         <button name="request_confirm" states="open" class="oe_highlight" string="Accepted" type="object" help="Press when the request is accepted"/>
                         <button name="request_cancel" states="draft,open,confirm" string="Cancel Request" type="object"/>
-                        <field name="state" widget="statusbar" nolabel="1" statusbar_visible="draft,open,close,cancel" statusbar_colors='{"draft":"blue","open":"blue"}'/>
+                        <field name="state" widget="statusbar" nolabel="1" 
+                                                            statusbar_visible="draft,open,confirm,close,cancel" 
+                                                            statusbar_colors='{"draft":"blue","open":"blue","confirm":"red","close":"blue","cancel":"blue"}'/>
                     </header>
                     <sheet string="Request">
                         <group>
