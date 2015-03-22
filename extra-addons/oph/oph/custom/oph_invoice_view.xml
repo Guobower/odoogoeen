@@ -43,7 +43,7 @@
                     </xpath>
                                         
                     <xpath expr="//group/group/field[@name='date_invoice']" position="after">
-                        <field name="date_acte"/>
+                        <field name="date_acte" required="1"/>
                     </xpath>
                     
                 </data>
