@@ -12,10 +12,10 @@ class exam(orm.Model):
 
     def _get_sel(self, cursor, user_id, context = None):
         return (
-                ('Bio',_('Biology')),
+                ('Bio', _('Biology')),
                 ('Rx', _('Radiology')),
                 ('Cx', _('Cardiology')),
-                ('Oph',_('Ophthalmology'))
+                ('Oph', _('Ophthalmology'))
                 )
 
     _columns = {
@@ -191,8 +191,6 @@ class oph_protocole_line(orm.Model):
                 'partner_id':fields.related("meeting_id", "partner_id", type = "many2one", relation = "res.partner", string = "Partner", store = True, readonly = True,),
               }
 
-
-
 class crm_meeting(orm.Model):
     _inherit = 'crm.meeting'
 
@@ -204,9 +202,9 @@ class crm_meeting(orm.Model):
             for pathology in meeting.pathology_ids:
                 for line in pathology.medication_line_ids:
                     if line.brandname_id.ods_needed is True:
-                        ods=meeting.ods
+                        ods = meeting.ods
                     else:
-                        ods=False
+                        ods = False
                     line_obj.create(cr, uid, {
                             'meeting_id': meeting.id,
                             'name': line.name,
@@ -246,10 +244,10 @@ class crm_meeting(orm.Model):
                  'ods':fields.selection(_get_ods, 'ODS', required = False,),
                  'medication_line_ids':fields.one2many('oph.medication.line', 'meeting_id', 'Medication Line'),
                  'pathology_ids':fields.many2many('oph.pathology', 'oph_pathology_meeting_rel', 'meeting_id', 'pathology_id', 'Pathology Line'),
-                 #Trying to improve the protocole process
+                 # Trying to improve the protocole process
                  'protocole_ids':fields.many2many('oph.protocole', 'oph_protocole_meeting_rel', 'meeting_id', 'protocole_id', 'Protocole Line'),
-                 'biology_line_ids':fields.one2many('oph.protocole.line', 'meeting_id', 'Biology Line',domain=[('exam_id.type','=','Bio'),]),
-                 'radiology_line_ids':fields.one2many('oph.protocole.line', 'meeting_id', 'Radiology Line',domain=[('exam_id.type','=','Rx'),]),
-                 'cardiology_line_ids':fields.one2many('oph.protocole.line', 'meeting_id', 'Cardiology Line',domain=[('exam_id.type','=','Cx'),]),
+                 'biology_line_ids':fields.one2many('oph.protocole.line', 'meeting_id', 'Biology Line', domain = [('exam_id.type', '=', 'Bio'), ]),
+                 'radiology_line_ids':fields.one2many('oph.protocole.line', 'meeting_id', 'Radiology Line', domain = [('exam_id.type', '=', 'Rx'), ]),
+                 'cardiology_line_ids':fields.one2many('oph.protocole.line', 'meeting_id', 'Cardiology Line', domain = [('exam_id.type', '=', 'Cx'), ]),
                }
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

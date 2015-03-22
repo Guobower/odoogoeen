@@ -278,5 +278,21 @@
             </field>    
         </record>
 
+        <!-- ADD BUTTON  LOGCONSULTATION AND LOGBLOCLINE IN RES_PARTNER VIEW -->
+         <record model="ir.ui.view" id="oph_view_partner_form4">
+            <field name="name">oph.partner.form.newbuttons</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//div[@name='buttons']" position="inside">
+                       <button string="LogBlocLine" name="%(logblocline_action_id)d" type="action" context="{'search_default_partner_id':id}"/>
+                    </xpath>
+                </data>
+            </field>
+         </record>
+
+
+
     </data>
 </openerp>
