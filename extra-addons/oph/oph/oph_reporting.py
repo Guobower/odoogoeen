@@ -189,6 +189,13 @@ class oph_reporting(orm.Model):
               'positionnement':fields.text('Positionnement'),
               'retinal_thickness_od':fields.integer('Retinal Thickness OD'),
               'retinal_thickness_os':fields.integer('Retinal Thickness OS'),
+              # For FA reports
+              'color_or':fields.text('Color OR'),
+              'color_os':fields.text('Color OS'),
+              'fa_or':fields.text('FA OR'),
+              'fa_os':fields.text('FA OS'),
+              'cc_or':fields.text('CC OR'),
+              'cc_os':fields.text('CC OS')
               }
 
     _defaults = {

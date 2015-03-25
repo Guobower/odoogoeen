@@ -115,6 +115,18 @@
                         <field name="post_op_treatement" class="oe_inline"/>
                         <field name="positionnement" class="oe_inline"/>
                     </group>
+                    <group string="FA" attrs="{'invisible':[('type','!=','FAF')]}" col="4">
+                        <h1 colspan="2">OR</h1>
+                        <h1 colspan="2">OS</h1>
+                        <field name="color_or"/>
+                        <field name="color_os"/>
+                        <field name="fa_or"/>
+                        <field name="fa_os"/>
+                        <h2 colspan="4">Conclusion</h2>
+                        <field name="cc_or"/>
+                        <field name="cc_os"/>
+                                        
+                    </group>
                     <!-- 
                     J'enleve car la coloration de la statusbar ne marche pas avec 
                     <group>
