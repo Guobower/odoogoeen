@@ -13,7 +13,7 @@
 #3eme arg: utilisateur dont root prend les droits
 #4eme arg: les commandes aux quelles user aura droit
 
-SERVER_DIR=/usr
+SERVER_DIR=/usr/odoo
 echo "SERVER:$SERVER_DIR"
 CURRENT_USER=lof
 DIR_NAME=odoogoeen.source
@@ -22,6 +22,7 @@ PROD_BRANCH=devfromscratch70
 UPSTREAM=upstream
 SERVER_PATH=/usr/odoo
 SERVER_NAME=odoogoeen
+FILESTORE_DIR=filestore
 SUFFIXE=$(date +'%F_%T')
 
 echo "SUFFIXE: $SUFFIXE"
@@ -43,7 +44,30 @@ sudo service odoo-server stop
 #test sur les symbolic link
 [ -h  $SERVER_PATH/$SERVER_NAME -a -e $SERVER_PATH/$SERVER_NAME ]  && echo "foo existe. je le supprime " || echo "foo n'existe pas"
 
-#manage filestorage
+
+#faire le backup du serveur actuel avec 
+# rsync -avh odoogoeen/ backup/odoogoeen.23032015
+#ATTENTION le / compte
+#il vaut mieux faire un mv
+#mv /usr/odoo/odoogoeen /usr/odoo/backup/odoogoeen.23032015
+#copier la nouvelle version
+#rsync -avh /home/lfs/odoogoeen /usr/odoo
+#chown -R openerp:openerp /usr/odoo/odoogoeen
+#créer le symbolic link pour filestore
+#ln -s /usr/odoo/filestore /usr/odoo/odoogoeen/openerp/filestore
+#service odoo-server start
+#tail -f le log
+#tester 
+#update le module oph
+
+
+#J'ai changé le fonctionnement de filestore
+#créer le repertoire /usr/odoo/filestore s'il n'existe pas
+#changer les droits dessus chown openerp:openerp /usr/odoo/filestore
+#créer le lien symbolic vers filestore 
+#ln -s $SERVER_PATH/$SERVER_NAME/openerp/$FILESTORE_DIR $SERVER_PATH/$FILESTORE_DIR
+
+#manage filestore
 #before changing symlink
 #trying to get the right PATH to the right FILESTORAGE
 if [ -h  $SERVER_PATH/$SERVER_NAME ]

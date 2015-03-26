@@ -36,9 +36,11 @@
             <field name="inherit_id" ref="account_voucher.view_voucher_tree"/>
             <field name="arch" type="xml">
                 <data>
+                                <!--
                 <field name="number" position="before">
                     <field name="process_status"/>            
                 </field>
+                                -->
                 <field name="number" position="after">
                     <field name="check_deposit"/> 
                 </field>
@@ -48,7 +50,6 @@
                 </data>
             </field>
         </record>
-
 
         <record id="oph_view_voucher_filter_customer_pay" model="ir.ui.view">
             <field name="name">OPH - Customer Pay Search</field>
@@ -64,5 +65,6 @@
                 </xpath>
             </field>
         </record>
+
     </data>
 </openerp>

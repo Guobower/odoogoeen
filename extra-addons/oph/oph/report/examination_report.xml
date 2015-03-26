@@ -1732,6 +1732,42 @@ LnhtbFBLBQYAAAAAEQARAHAEAADEIgAAAAA=
             <field name="value" eval="'ir.actions.report.xml,' + str(ref('oph.request_report_id'))"/>
         </record>
         
+
+        <!-- REQUEST REPORT BIZONE-->
+        <record model="ir.actions.report.xml" id="request_bizone_id">
+            <field name="name">Request Bizone</field>
+            <field name="type">ir.actions.report.xml</field>
+            <field name="model">oph.request</field>
+            <field name="report_name">request.bizone</field>
+            <field name="report_type">aeroo</field>
+            <field name="auto">TRUE</field>
+            <field name="report_rml">oph/report/odt/oph_request/Bizone_Request.odt</field>
+            <field name="parser_state">loc</field>
+            <field name="parser_loc">oph/report/parser.py</field>
+            <field name="tml_source">file</field>
+            <!--  choix database, file, parser de template source-->
+            <field name="in_format">oo-odt</field>
+            <!-- choix de template Mime-type dans configuration-Technical-aero-report-Reports-->
+            <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
+            <field name="styles_mode">specified</field>
+            <field name="stylesheet_id" ref="stt_ordo_id"/>
+            <field name="attachment">'Request Bizone'+'_'+object.partner_id.fullname+'_'+object.date_request+'.odt'</field>
+        </record>
+        <!-- button -->
+        <record model="ir.values" id="value_request_bizone_id">
+            <field name="name">request.bizone</field>
+            <field name="key">action</field>
+            <field name="key2">client_print_multi</field>
+            <field name="model">oph.request</field>
+            <field name="object">TRUE</field>
+            <field name="value" eval="'ir.actions.report.xml,' + str(ref('oph.request_bizone_id'))"/>
+        </record>
+
+
+
+
+
+
         <!-- button  deleted for new deposit wizard
         
         <record model="ir.values" id="value_bdx_check__id">
