@@ -1764,9 +1764,33 @@ LnhtbFBLBQYAAAAAEQARAHAEAADEIgAAAAA=
         </record>
 
 
-
-
-
+        <!--         REQUEST REPORT BIZONE PDF    -->
+        <record model="ir.actions.report.xml" id="request_bizone_pdf_id">
+            <field name="name">Request Bizone PDF</field>
+            <field name="type">ir.actions.report.xml</field>
+            <field name="model">oph.request</field>
+            <field name="report_name">request.bizone.pdf</field>
+            <field name="report_type">aeroo</field>
+            <field name="auto">TRUE</field>
+            <field name="report_rml">oph/report/odt/oph_request/Bizone_Request.odt</field>
+            <field name="parser_state">loc</field>
+            <field name="parser_loc">oph/report/parser.py</field>
+            <field name="tml_source">file</field>
+            <field name="in_format">oo-odt</field>
+            <field name="out_format" model="report.mimetypes" ref="report_aeroo_ooo.report_mimetypes_pdf_odt"/>
+            <field name="styles_mode">specified</field>
+            <field name="stylesheet_id" ref="stt_ordo_id"/>
+            <field name="attachment">'Request Bizone'+'_'+object.partner_id.fullname+'_'+object.date_request+'.pdf'</field>
+        </record>
+        <!-- button  -->
+        <record model="ir.values" id="value_request_bizone_pdf_id">
+            <field name="name">request.bizone.pdf</field>
+            <field name="key">action</field>
+            <field name="key2">client_print_multi</field>
+            <field name="model">oph.request</field>
+            <field name="object">TRUE</field>
+            <field name="value" eval="'ir.actions.report.xml,' + str(ref('oph.request_bizone_pdf_id'))"/>
+        </record>
 
         <!-- button  deleted for new deposit wizard
         
