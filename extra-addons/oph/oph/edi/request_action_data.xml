@@ -24,7 +24,7 @@
         <record id="email_template_edi_request" model="email.template">
             <field name="name">Request - Send by Email</field>
             <field name="email_from">${(object.user_id.email or object.company_id.email or 'noreply@localhost')|safe}</field>
-            <field name="subject">Da proot sujet</field>
+            <field name="subject">Demande d'entente préalable Ref: LM_ ${object.partner_if.cafatid}</field>
             <field name="email_recipients">${object.partner_id.id}</field>
             <field name="model_id" ref="oph.model_oph_request"/>
             <field name="auto_delete" eval="True"/>
