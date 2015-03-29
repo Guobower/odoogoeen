@@ -78,6 +78,7 @@ Permet de faire pleins de choses absolument géniales
                 'data/oph_iol_type_data.xml',
                 'data/reporting_template_data.xml',
                 'report/examination_report.xml',
+                'edi/request_action_data.xml',
        #========================================================================
        #  'report/Test_premier_report.xml',
        #

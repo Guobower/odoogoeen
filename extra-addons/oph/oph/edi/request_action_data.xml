@@ -1,7 +1,9 @@
 <?xml version="1.0" ?>
 <openerp>
-    <data>
-        <!-- EDI related Email Templates menu -->
+  <!--   
+
+ <data>
+       EDI related Email Templates menu 
         <record model="ir.actions.act_window" id="action_email_templates">
             <field name="name">Email Templates</field>
             <field name="res_model">email.template</field>
@@ -14,10 +16,10 @@
         </record>
         <menuitem id="menu_email_templates" parent="menu_configuration_misc" action="action_email_templates" sequence="30" groups="base.group_no_one"/>
     </data>
-
+-->
     <!-- Mail template are declared in a NOUPDATE block
          so users can freely customize/delete them -->
-    <data noupdate="1">
+    <data noupdate="0">
         <!--Email template -->
         <record id="email_template_edi_request" model="email.template">
             <field name="name">Request - Send by Email</field>
