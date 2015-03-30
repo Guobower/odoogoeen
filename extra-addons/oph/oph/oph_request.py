@@ -66,15 +66,17 @@ class oph_request(orm.Model):
                 'company_id': fields.many2one('res.company', 'Company', required = True, change_default = True, readonly = True, states = {'draft':[('readonly', False)]}),
                 'priority_id':fields.selection(_priority_id_selection, 'Priority'),
                 'sent':fields.boolean('Sent'),
+                'user_id': fields.many2one('res.users', 'Responsable', readonly = True, track_visibility = 'onchange', states = {'draft':[('readonly', False)]}),
                 }
 
     _defaults = {
         'state': 'draft',
         'company_id': lambda self, cr, uid, c: self.pool.get('res.company')._company_default_get(cr, uid, 'account.invoice', context = c),
         'date_request': lambda *a: time.strftime('%Y-%m-%d'),
+        'user_id': lambda self, cr, uid, c: uid,
                 }
 
-    def action_request_sent(self, cr, uid, ids, context=None):
+    def action_request_sent(self, cr, uid, ids, context = None):
         '''
         This function opens a window to compose an email, with the edi invoice template message loaded by default
         '''
@@ -128,13 +130,13 @@ class res_partner(orm.Model):
     _columns = {
                 'request_ids': fields.one2many('oph.request.line', 'partner_id', 'Accords CAFAT', readonly = True),
                 }
-    
+
 class mail_compose_message(osv.Model):
     _inherit = 'mail.compose.message'
 
-    def send_mail(self, cr, uid, ids, context=None):
+    def send_mail(self, cr, uid, ids, context = None):
         context = context or {}
         if context.get('default_model') == 'oph.request' and context.get('default_res_id') and context.get('mark_request_as_sent'):
-            context = dict(context, mail_post_autofollow=True)
-            self.pool.get('oph.request').write(cr, uid, [context['default_res_id']], {'sent': True}, context=context)
-        return super(mail_compose_message, self).send_mail(cr, uid, ids, context=context)
+            context = dict(context, mail_post_autofollow = True)
+            self.pool.get('oph.request').write(cr, uid, [context['default_res_id']], {'sent': True}, context = context)
+        return super(mail_compose_message, self).send_mail(cr, uid, ids, context = context)

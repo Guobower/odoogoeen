@@ -41,7 +41,11 @@
                                     </tree>
                                 </field>
                             </page>
+                            <page string="Other info">
+                               <field name="user_id"/>
+                            </page>
                         </notebook>
+                        
                     </sheet>
                     <div class="oe_chatter">
                         <field name="message_follower_ids" widget="mail_followers"/>
@@ -70,6 +74,7 @@
                 <tree string="Accord">
                     <field name="partner_id"/>
                     <field name="date_request"/>
+                    <field name="user_id"/>
                     <field name="state"/>
                 </tree>
             </field>
@@ -98,16 +103,20 @@
                     <field name="state"/>
                     <field name="date_request"/>
                     <field name="company_id"/>
+                    <field name="user_id" string="Responsable"/>
                     <filter name="draft" string="Draft" domain="[('state','=','draft')]" help="Draft Request"/>
                     <filter name="open" string="Open" domain="[('state','=','open')]" help="Open and Sended Request"/>
                     <filter name="close" string="Close" domain="[('state','=','close')]" help="Close Request"/>
                     <filter name="cancelled" string="Cancelled" domain="[('stat','=','cancel')]" help="Cancelled Request"/>
+                    <separator/>
+                    <filter domain="[('user_id','=',uid)]" help="My Requests" icon="terp-personal"/>
                     <group expand="0" string="Group_By...">
                         <filter string="Priority" icon="terp-partner" domain="[]" context="{'group_by':'priority_id'}"/>
                         <filter string="Partner" icon="terp-partner" domain="[]" context="{'group_by':'partner_id'}"/>
                         <filter string="State" icon="terp-partner" domain="[]" context="{'group_by':'state'}"/>
                         <filter string="Company" icon="terp-partner" domain="[]" context="{'group_by':'company_id'}"/>
                         <filter string="Referent" icon="terp-partner" domain="[]" context="{'group_by':'referent_id'}"/>
+                        <filter string="Responsable" icon="terp-personal" domain="[]"  context="{'group_by':'user_id'}"/>
                     </group>
                 </search>
             </field>
