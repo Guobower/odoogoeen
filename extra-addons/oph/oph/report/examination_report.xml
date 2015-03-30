@@ -1751,7 +1751,7 @@ LnhtbFBLBQYAAAAAEQARAHAEAADEIgAAAAA=
             <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
             <field name="styles_mode">specified</field>
             <field name="stylesheet_id" ref="stt_ordo_id"/>
-            <field name="attachment">'Request Bizone'+'_'+object.partner_id.fullname+'_'+object.date_request+'.odt'</field>
+            <field name="attachment">object.partner_id.fullname+'_Request Bizone_'+object.date_request+'.odt'</field>
         </record>
         <!-- button -->
         <record model="ir.values" id="value_request_bizone_id">
@@ -1780,7 +1780,7 @@ LnhtbFBLBQYAAAAAEQARAHAEAADEIgAAAAA=
             <field name="out_format" model="report.mimetypes" ref="report_aeroo_ooo.report_mimetypes_pdf_odt"/>
             <field name="styles_mode">specified</field>
             <field name="stylesheet_id" ref="stt_ordo_id"/>
-            <field name="attachment">'Request Bizone'+'_'+object.partner_id.fullname+'_'+object.date_request+'.pdf'</field>
+            <field name="attachment">object.partner_id.fullname+'_Request Bizone_'+object.date_request+'.pdf'</field>
         </record>
         <!-- button  -->
         <record model="ir.values" id="value_request_bizone_pdf_id">
@@ -1809,7 +1809,7 @@ LnhtbFBLBQYAAAAAEQARAHAEAADEIgAAAAA=
             <field name="out_format" model="report.mimetypes" ref="report_aeroo_ooo.report_mimetypes_pdf_odt"/>
             <field name="styles_mode">specified</field>
             <field name="stylesheet_id" ref="stt_ordo_id"/>
-            <field name="attachment">'Request Bizone'+'_'+object.partner_id.fullname+'_'+object.date_request+'.pdf'</field>
+            <field name="attachment">object.partner_id.fullname+'_Request Bizone_'+object.date_request+'.pdf'</field>
         </record>
         <!-- button  -->
         <record model="ir.values" id="value_request_blue_pdf_id">
