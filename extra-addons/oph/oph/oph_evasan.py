@@ -27,7 +27,15 @@ class oph_evasan(orm.Model):
               'stand':fields.boolean('Stand', help = 'patient can stand up'),
               'walk':fields.boolean('Walk', help = 'patient can walk'),
               'eat':fields.boolean('Eat', help = 'eat alone'),
-              'weight':field.integer('Weight', help = 'Weight')
+              'weight':field.integer('Weight', help = 'Weight'),
+              'transport': fields.selection([
+            ('alone', 'Alone'),
+            ('acc familial', 'Acc familial'),
+            ('acc med', 'Acc médical'),
+            ('acc paramed', 'Acc paramedical'),
+            ('seat', 'Assis'),
+            ('cancel', 'Cancelled'),
+            ], 'Transportation', select = True, readonly = False, help = 'Modalité de transport'),
 
               }
 
