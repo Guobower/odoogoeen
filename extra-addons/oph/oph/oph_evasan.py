@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+9914  # -*- coding: utf-8 -*-
 from openerp.osv import fields, osv, orm
 from openerp.tools.translate import _
 
