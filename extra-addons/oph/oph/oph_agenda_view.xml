@@ -345,7 +345,7 @@
                         <field name="reporting_line_ids"/>
                     </field>
                     <field name="date" position="after">
-                        <field name="date_deadline"/> <!-- intéressant pour voir ce qui se passe avec les timezone et le tri sur Today pourra être supprimé plus tard-->
+                        <field name="date_deadline" invisible="1"/> <!-- intéressant pour voir ce qui se passe avec les timezone et le tri sur Today pourra être supprimé plus tard-->
                         <field name="given_date"/><!---->
                         <field name="write_date" invisible="1"/><!--pas intéressant car modifié si modification du record a remplacer par given_date-->
                         <field name="free" invisible="1" readonly="1"/>
