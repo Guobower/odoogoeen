@@ -20,7 +20,7 @@ class oph_indication(orm.Model):
               'ivt':fields.boolean('IVT', help = "Tick the box if it's an indication for IVT"),
               'comment':fields.text('Comment'),
                  }
-    
+
 class oph_gauge(orm.Model):
     """
     Vitreteotome Hand Piece Gauge
@@ -73,7 +73,7 @@ class oph_procedure_type(orm.Model):
 
     _columns = {
                 'name':fields.char('Name', size = 128, translate = True),
-                'shortname':fields.char('Short Name', size=64, translate=True),
+                'shortname':fields.char('Short Name', size = 64, translate = True),
                 'code':fields.char('Code', size = 64,),
                 'dilatation':fields.selection(_get_yesorno, 'Dilatation',),
                 'iol_status':fields.boolean('IOL Status', Help = 'For an IOL during this type of procedure thick the boxe',),
@@ -98,6 +98,7 @@ class oph_bloc_agenda(osv.osv):
     """
     TODO
     """
+    _inherit = ['mail.thread']
     _name = "oph.bloc.agenda"
     _rec_name = 'wd'
     #===========================================================================
@@ -128,25 +129,25 @@ class oph_bloc_agenda(osv.osv):
             wd = pytz.UTC.localize(wd)  # make aware datetime object needed for astimezone()
             wd = wd.astimezone(local_tz)  # convert UTC time to local time
             res[record.id] = wd.strftime("%A") + ' ' + wd.strftime("%d") + ' ' + wd.strftime("%B")
-        print "PASSING in : %s. Type of wd is :%s" %(inspect.stack()[0][3], type(res))
+        print "PASSING in : %s. Type of wd is :%s" % (inspect.stack()[0][3], type(res))
         return res
 
-    def _get_wdandmonth(self,cr,uid,ids,field_name,arg,context={}):
+    def _get_wdandmonth(self, cr, uid, ids, field_name, arg, context = {}):
         """
         To humanize the date format
         Using the arrow python module.
         """
-        print "CONTEXT:%s" %(context,)
-        res={}
+        print "CONTEXT:%s" % (context,)
+        res = {}
         if context is None:
-            context={}
-        fmt = 'dddd D MMMM YYYY' # to format the date: monday 1 junuary 3021
-        records=self.browse(cr,uid,ids,context)
+            context = {}
+        fmt = 'dddd D MMMM YYYY'  # to format the date: monday 1 junuary 3021
+        records = self.browse(cr, uid, ids, context)
         for record in records:
             if record.name:
                 wd = record.name
-                wd=arrow.get(wd,'YYYY-MM-DD').to('utc').format(fmt,locale=context['lang'])
-                res[record.id]=wd
+                wd = arrow.get(wd, 'YYYY-MM-DD').to('utc').format(fmt, locale = context['lang'])
+                res[record.id] = wd
         return res
     #===========================================================================
     # def name_get(self, cr, uid, ids, context = None):
@@ -165,7 +166,7 @@ class oph_bloc_agenda(osv.osv):
                 'start_date':fields.datetime('StartDate',),
                 'end_date':fields.datetime('EndDate',),
                 'comment':fields.text('Informations',),
-                'wd':fields.function(_get_wdandmonth, method = True, type = 'char', string = 'Weekday',store=False),
+                'wd':fields.function(_get_wdandmonth, method = True, type = 'char', string = 'Weekday', store = False),
                 'active':fields.boolean('Active', help = 'if the active field is set to False, it will allow you to hide the bloc agenda without removing it.'),
                 'line_ids':fields.one2many('oph.bloc.agenda.line', 'bloc_agenda_id', 'Lines',)}
 
@@ -182,22 +183,22 @@ class oph_bloc_agenda_line(osv.osv):
     _name = "oph.bloc.agenda.line"
     _order = "sequence"
 
-    def _get_wdandmonth(self,cr,uid,ids,field_name,arg,context={}):
+    def _get_wdandmonth(self, cr, uid, ids, field_name, arg, context = {}):
         """
         To humanize the date format
         Using the arrow python module.
         """
-        res={}
+        res = {}
         if context is None:
-            context={}
-        fmt = 'dddd D MMMM YYYY' # to format the date: monday 1 junuary 3021
-        records=self.browse(cr,uid,ids,context)
+            context = {}
+        fmt = 'dddd D MMMM YYYY'  # to format the date: monday 1 junuary 3021
+        records = self.browse(cr, uid, ids, context)
         for record in records:
             if record.name:
                 wd = record.name
-                wd=arrow.get(wd,'YYYY-MM-DD').to('utc').format(fmt,locale=context['lang'])
-                print 'WD is :%s' %(wd,)
-                res[record.id]=wd
+                wd = arrow.get(wd, 'YYYY-MM-DD').to('utc').format(fmt, locale = context['lang'])
+                print 'WD is :%s' % (wd,)
+                res[record.id] = wd
         return res
 
     def _ods_get(self, cr, uid, context = None):
@@ -339,7 +340,7 @@ class oph_bloc_agenda_line(osv.osv):
 
     _columns = {
                 'name':fields.char('Id', size = 8,),
-                'wd':fields.function(_get_wdandmonth, method = True, type = 'char', string = 'Weekday', store=False),
+                'wd':fields.function(_get_wdandmonth, method = True, type = 'char', string = 'Weekday', store = False),
                 'sequence':fields.integer('Sequence'),
                 'duration':fields.float('Duration',),
                 'start_time':fields.char('Horaire', size = 8),
