@@ -462,6 +462,8 @@ ___MARCHE PAS
                     <filter icon="terp-go-today" string="OR" domain="[('tag','=','or')]"/>
                     <separator/>
                     <filter icon="terp-go-today" string="Free" domain="[('free','=',True)]"/>
+                    <separator/>
+                    <filter name="Contact" domain="[('state','not in',('cancel','no_show'))]"/>
                 </field>
                 <field name="partner_ids" position="replace">
                     <field name="partner_id"/>
