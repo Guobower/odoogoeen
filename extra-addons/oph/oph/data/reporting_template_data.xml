@@ -28,8 +28,7 @@ ICI je ne peux pas renseigner puissance et nombre d'impact par exemple
             <field name="name">CAPSULOTOMIE LASER</field>
             <field name="short_name">CR CAPS</field>
             <field name="type">Laser</field>
-            <field name="text_body">
-Anesthésie topique par Tétracaine
+            <field name="text_body">Anesthésie topique par Tétracaine
 Pose d'un verre contact Abraham
 <!--
 Puissance: 
