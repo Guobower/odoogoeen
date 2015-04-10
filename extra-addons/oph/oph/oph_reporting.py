@@ -34,16 +34,30 @@ class oph_reporting(orm.Model):
                 ('IVT', _('IntraVitreal Injection')),
                  ]
 
+    def create(self, cr, uid, data, context = None):
+        if data['receiver_partner'] is True:
+            receiver = self.pool.get('crm.meeting').browse(cr, uid, data['meeting_id']).partner_id.id
+            data['receiver_id'] = receiver
+        # from pdb import set_trace;set_trace()
+        result = super(oph_reporting, self).create(cr, uid, data, context = context)
+        return result
+
     def on_change_partner(self, cr, uid, ids, receiver_partner, context = None):
+        """
+        Get the id of the patient if tick the box the receiver is the patient
+        and send it to "receiver_id" field
+        """
+        print "PASSING IN ON_CHANGE_PARTNER"
         if context is None:
             context = {}
-        # from pdb import set_trace; set_trace()
         values = {}
-        if receiver_partner is True:
+        # from pdb import set_trace;set_trace()
+        if not ids:
+            print "IDS is empty: %s" % (ids,)  # when the record is created
+        if receiver_partner is True and ids:
             receiver = self.browse(cr, uid, ids[0]).partner_id.id
-            values = {'receiver_id':receiver}
+            values['receiver_id'] = receiver
         return {'value':values}
-
 
     def on_change_receiver(self, cr, uid, ids, receiver_id, context = None):
         if context is None:
