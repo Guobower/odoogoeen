@@ -53,6 +53,7 @@
                                     <button string="Set to Open" name="statechange_open" states="draft" icon="gtk-go-forward" type="object"/>
                                     <button string="Set to Confirm" name="statechange_confirm" states="draft,open" icon="gtk-ok" type="object"/>
                                     <button string="Set to Close" name="statechange_close" states="draft,open,confirm" icon="gtk-close" type="object"/>
+                                    <button string="Set to Cancel" name="statechange_cancel" states="draft,open,confirm" icon="gtk-cancel" type="object"/>
                                 </tree>
                             </field>
                         </page>
