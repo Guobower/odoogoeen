@@ -10,6 +10,7 @@
             <field name="arch" type="xml">
                 <form string="Type" version="7.0">
                     <header>
+                        <button name="action_request_sent" type="object" string="Send by Email" class="oe_highlight" groups="base.group_user"/>
                         <button name="request_open" states="draft" string="Confirm" class="oe_highlight" type="object" help="Press when request is send"/>
                         <button name="request_close" states="confirm" class="oe_highlight" string="Close Request" type="object" help="Press when all is done"/>
                         <button name="request_confirm" states="open" class="oe_highlight" string="Accepted" type="object" help="Press when the request is accepted"/>
@@ -40,12 +41,20 @@
                                     </tree>
                                 </field>
                             </page>
+                            <page string="Other info">
+                               <field name="user_id"/>
+                            </page>
                         </notebook>
+                        
                     </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
                 </form>
             </field>
         </record>
-        <!--END FORM OPH.ACCORD-->
+        <!--END FORM OPH.REQUEST-->
         
         <!-- ACTION TO BE TRIGGERED BY THE BUTTON REQUEST IN THE CRM_MEETING FORM VIEW -->
         <record model="ir.actions.act_window" id="request_maker_action_id">
@@ -65,6 +74,7 @@
                 <tree string="Accord">
                     <field name="partner_id"/>
                     <field name="date_request"/>
+                    <field name="user_id"/>
                     <field name="state"/>
                 </tree>
             </field>
@@ -93,16 +103,20 @@
                     <field name="state"/>
                     <field name="date_request"/>
                     <field name="company_id"/>
+                    <field name="user_id" string="Responsable"/>
                     <filter name="draft" string="Draft" domain="[('state','=','draft')]" help="Draft Request"/>
                     <filter name="open" string="Open" domain="[('state','=','open')]" help="Open and Sended Request"/>
                     <filter name="close" string="Close" domain="[('state','=','close')]" help="Close Request"/>
                     <filter name="cancelled" string="Cancelled" domain="[('stat','=','cancel')]" help="Cancelled Request"/>
+                    <separator/>
+                    <filter domain="[('user_id','=',uid)]" help="My Requests" icon="terp-personal"/>
                     <group expand="0" string="Group_By...">
                         <filter string="Priority" icon="terp-partner" domain="[]" context="{'group_by':'priority_id'}"/>
                         <filter string="Partner" icon="terp-partner" domain="[]" context="{'group_by':'partner_id'}"/>
                         <filter string="State" icon="terp-partner" domain="[]" context="{'group_by':'state'}"/>
                         <filter string="Company" icon="terp-partner" domain="[]" context="{'group_by':'company_id'}"/>
                         <filter string="Referent" icon="terp-partner" domain="[]" context="{'group_by':'referent_id'}"/>
+                        <filter string="Responsable" icon="terp-personal" domain="[]"  context="{'group_by':'user_id'}"/>
                     </group>
                 </search>
             </field>
