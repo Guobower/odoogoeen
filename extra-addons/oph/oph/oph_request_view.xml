@@ -11,9 +11,9 @@
                 <form string="Type" version="7.0">
                     <header>
                         <button name="action_request_sent" type="object" string="Send by Email" class="oe_highlight" groups="base.group_user"/>
-                        <button name="request_open" states="draft" string="Confirm" class="oe_highlight" type="object" help="Press when request is send"/>
-                        <button name="request_close" states="confirm" class="oe_highlight" string="Close Request" type="object" help="Press when all is done"/>
                         <button name="request_confirm" states="open" class="oe_highlight" string="Accepted" type="object" help="Press when the request is accepted"/>
+                        <button name="request_open" states="draft" string="Send" class="oe_highlight" type="object" help="Press when request is send"/>
+                        <button name="request_close" states="open,confirm" class="oe_highlight" string="Close Request" type="object" help="Press when all is done"/>
                         <button name="request_cancel" states="draft,open,confirm" string="Cancel Request" type="object"/>
                         <field name="state" widget="statusbar" nolabel="1" 
                                                             statusbar_visible="draft,open,confirm,close,cancel" 

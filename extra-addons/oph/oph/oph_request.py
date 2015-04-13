@@ -139,4 +139,5 @@ class mail_compose_message(osv.Model):
         if context.get('default_model') == 'oph.request' and context.get('default_res_id') and context.get('mark_request_as_sent'):
             context = dict(context, mail_post_autofollow = True)
             self.pool.get('oph.request').write(cr, uid, [context['default_res_id']], {'sent': True}, context = context)
+            self.pool.get('oph.request').write(cr, uid, [context['default_res_id']], {'state': 'open'}, context = context)
         return super(mail_compose_message, self).send_mail(cr, uid, ids, context = context)
