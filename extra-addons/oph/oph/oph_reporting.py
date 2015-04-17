@@ -209,8 +209,17 @@ class oph_reporting(orm.Model):
               'fa_or':fields.text('FA OR'),
               'fa_os':fields.text('FA OS'),
               'cc_or':fields.text('CC OR'),
-              'cc_os':fields.text('CC OS')
-              }
+              'cc_os':fields.text('CC OS'),
+              # For OCT Report
+              'mac_or':fields.text('mac_OR'),
+              'mac_os':fields.text('mac_OS'),
+              'macrnfl_or':fields.text('macrnfl_OR'),
+              'macrnfl_os':fields.text('macrnfl_OS'),
+              'onrnfl_or':fields.text('ONrnfl_OR'),
+              'onrnfl_os':fields.text('ONrnfl_OS'),
+              'ccoct_or':fields.text('CC OR'),
+              'ccoct_os':fields.text('CC OS'),
+                            }
 
     _defaults = {
                'state':'draft',
