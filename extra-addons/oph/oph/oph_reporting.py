@@ -56,7 +56,6 @@ class oph_reporting(orm.Model):
             values['receiver_id'] = receiver
         return {'value':values}
 
-
     def on_change_receiver(self, cr, uid, ids, receiver_id, context = None):
         if context is None:
             context = {}

@@ -11,8 +11,9 @@
                 <form string="Type" version="7.0">
                     <header>
                         <button name="action_request_sent" type="object" string="Send by Email" class="oe_highlight" groups="base.group_user"/>
-                        <button name="request_confirm" states="open" class="oe_highlight" string="Accepted" type="object" help="Press when the request is accepted"/>
                         <button name="request_open" states="draft" string="Send" class="oe_highlight" type="object" help="Press when request is send"/>
+                        <button name="request_confirm" states="open" class="oe_highlight" string="Accepted" type="object" help="Press when the request is accepted"/>
+                        <button name="request_refused" states="open,draft" class="oe_highlight" string="Refused" type="object" help="Press when the request is refused"/>
                         <button name="request_close" states="open,confirm" class="oe_highlight" string="Close Request" type="object" help="Press when all is done"/>
                         <button name="request_cancel" states="draft,open,confirm" string="Cancel Request" type="object"/>
                         <field name="state" widget="statusbar" nolabel="1" 
@@ -107,6 +108,7 @@
                     <filter name="draft" string="Draft" domain="[('state','=','draft')]" help="Draft Request"/>
                     <filter name="open" string="Open" domain="[('state','=','open')]" help="Open and Sended Request"/>
                     <filter name="close" string="Close" domain="[('state','=','close')]" help="Close Request"/>
+                    <filter name="refused" string="Refused" domain="[('state','=','refused')]" help="Refused Request"/>
                     <filter name="cancelled" string="Cancelled" domain="[('stat','=','cancel')]" help="Cancelled Request"/>
                     <separator/>
                     <filter domain="[('user_id','=',uid)]" help="My Requests" icon="terp-personal"/>
