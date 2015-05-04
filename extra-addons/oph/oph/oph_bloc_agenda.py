@@ -239,6 +239,7 @@ class oph_bloc_agenda_line(osv.osv):
         return True
 
     def statechange_confirm(self, cr, uid, ids, context = None):
+        #from pdb import set_trace;set_trace()
         self.write(cr, uid, ids, {"state": "confirm"}, context = context)
         return True
 
@@ -365,7 +366,8 @@ class oph_bloc_agenda_line(osv.osv):
                 'ane_comment':fields.char('comment ANE', char = '128'),
                 'po_meeting_id':fields.many2one('crm.meeting', 'PostOR Appointment'),
                 'indication_id':fields.many2one('oph.indication', 'Indication'),
-                'operator_id':fields.many2one('res.users', 'Operator'),
+                #'operator_id':fields.many2one('res.users', 'Operator'),
+                'operator_id':fields.many2one('res.partner', 'Operator'),
                 'notification_time':fields.char('Notification Time', size = 8),
                 }
 
