@@ -22,6 +22,7 @@ PROD_BRANCH=devfromscratch70
 UPSTREAM=upstream
 SERVER_PATH=/usr/odoo
 SERVER_NAME=odoogoeen
+SERVER_BCK=backup
 FILESTORE_DIR=filestore
 SUFFIXE=$(date +'%F_%T')
 
@@ -41,12 +42,21 @@ fi
 ## STOP SERVICE
 sudo service odoo-server stop
 
+##FAIRE LE BACKUP
+sudo mv $SERVER_PATH/$SERVER_NAME $SERVER_PATH/$SERVER_BCK/$SERVER_NAME.$SUFFIXE
+
+##RECUPERER L'ARBORESCENCE
+sudo rsync -avh $REPOSITORY $SERVER_PATH
+
+##CREER LE SYMBOLIC LINK TO FILESTORE
+sudo ln -s $SERVER_PATH/filestore $SERVER_PATH/$SERVER_NAME/openerp/filestore
+
+##
 #test sur les symbolic link
-[ -h  $SERVER_PATH/$SERVER_NAME -a -e $SERVER_PATH/$SERVER_NAME ]  && echo "foo existe. je le supprime " || echo "foo n'existe pas"
+#[ -h  $SERVER_PATH/$SERVER_NAME -a -e $SERVER_PATH/$SERVER_NAME ]  && echo "foo existe. je le supprime " || echo "foo n'existe pas"
 
 
-#faire le backup du serveur actuel avec 
-# rsync -avh odoogoeen/ backup/odoogoeen.23032015
+
 #ATTENTION le / compte
 #il vaut mieux faire un mv
 #mv /usr/odoo/odoogoeen /usr/odoo/backup/odoogoeen.23032015
