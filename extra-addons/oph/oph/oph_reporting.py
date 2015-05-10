@@ -35,6 +35,7 @@ class oph_reporting(orm.Model):
                  ]
 
     def create(self, cr, uid, data, context = None):
+        # from pdb import set_trace;set_trace()
         if data['receiver_partner'] is True:
             receiver = self.pool.get('crm.meeting').browse(cr, uid, data['meeting_id']).partner_id.id
             data['receiver_id'] = receiver
