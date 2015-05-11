@@ -1,26 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
     <data>
-        <!-- OPH.REQUEST -->
-        <!-- FORM OPH.REQUEST -->
-        <record model="ir.ui.view" id="request_form_view_id">
-            <field name="name">request.form</field>
-            <field name="model">oph.request</field>
+        <!-- OPH.EVASAN -->
+        <!-- FORM OPH.EVASAN -->
+        <record model="ir.ui.view" id="evasan_form_view_id">
+            <field name="name">evasan.form</field>
+            <field name="model">oph.evasan</field>
             <field name="priority" eval="16"/>
             <field name="arch" type="xml">
                 <form string="Type" version="7.0">
                     <header>
-                        <button name="action_request_sent" type="object" string="Send by Email" class="oe_highlight" groups="base.group_user"/>
-                        <button name="request_open" states="draft" string="Send" class="oe_highlight" type="object" help="Press when request is send"/>
+                                        <!--
+                        <button name="request_open" states="draft" string="Confirm" class="oe_highlight" type="object" help="Press when request is send"/>
+                        <button name="request_close" states="confirm" class="oe_highlight" string="Close Request" type="object" help="Press when all is done"/>
                         <button name="request_confirm" states="open" class="oe_highlight" string="Accepted" type="object" help="Press when the request is accepted"/>
-                        <button name="request_refused" states="open,draft" class="oe_highlight" string="Refused" type="object" help="Press when the request is refused"/>
-                        <button name="request_close" states="open,confirm" class="oe_highlight" string="Close Request" type="object" help="Press when all is done"/>
                         <button name="request_cancel" states="draft,open,confirm" string="Cancel Request" type="object"/>
-                        <field name="state" widget="statusbar" nolabel="1" 
-                                                            statusbar_visible="draft,open,confirm,close,cancel" 
-                                                            statusbar_colors='{"draft":"blue","open":"blue","confirm":"red","close":"blue","cancel":"blue"}'/>
-                    </header>
-                    <sheet string="Request">
+                        <field name="state" widget="statusbar" nolabel="1" statusbar_visible="draft,open,close,cancel" statusbar_colors='{"draft":"blue","open":"blue"}'/>
+                                       
+                                        </field>
+                                        
+                                        -->
+                                        
+                                        </header>
+                    <sheet string="EVASAN">
                         <group>
                             <field name="name" class="oe_inline"/>
                             <field string="Customer" name="partner_id" context="{'search_default_customer':1, 'show_address': 1}" on_change="on_change_oph_partner(partner_id,date_request)"
@@ -42,20 +44,12 @@
                                     </tree>
                                 </field>
                             </page>
-                            <page string="Other info">
-                               <field name="user_id"/>
-                            </page>
                         </notebook>
-                        
                     </sheet>
-                    <div class="oe_chatter">
-                        <field name="message_follower_ids" widget="mail_followers"/>
-                        <field name="message_ids" widget="mail_thread"/>
-                    </div>
                 </form>
             </field>
         </record>
-        <!--END FORM OPH.REQUEST-->
+        <!--END FORM OPH.ACCORD-->
         
         <!-- ACTION TO BE TRIGGERED BY THE BUTTON REQUEST IN THE CRM_MEETING FORM VIEW -->
         <record model="ir.actions.act_window" id="request_maker_action_id">
@@ -75,7 +69,6 @@
                 <tree string="Accord">
                     <field name="partner_id"/>
                     <field name="date_request"/>
-                    <field name="user_id"/>
                     <field name="state"/>
                 </tree>
             </field>
@@ -104,21 +97,16 @@
                     <field name="state"/>
                     <field name="date_request"/>
                     <field name="company_id"/>
-                    <field name="user_id" string="Responsable"/>
                     <filter name="draft" string="Draft" domain="[('state','=','draft')]" help="Draft Request"/>
                     <filter name="open" string="Open" domain="[('state','=','open')]" help="Open and Sended Request"/>
                     <filter name="close" string="Close" domain="[('state','=','close')]" help="Close Request"/>
-                    <filter name="refused" string="Refused" domain="[('state','=','refused')]" help="Refused Request"/>
                     <filter name="cancelled" string="Cancelled" domain="[('stat','=','cancel')]" help="Cancelled Request"/>
-                    <separator/>
-                    <filter domain="[('user_id','=',uid)]" help="My Requests" icon="terp-personal"/>
                     <group expand="0" string="Group_By...">
                         <filter string="Priority" icon="terp-partner" domain="[]" context="{'group_by':'priority_id'}"/>
                         <filter string="Partner" icon="terp-partner" domain="[]" context="{'group_by':'partner_id'}"/>
                         <filter string="State" icon="terp-partner" domain="[]" context="{'group_by':'state'}"/>
                         <filter string="Company" icon="terp-partner" domain="[]" context="{'group_by':'company_id'}"/>
                         <filter string="Referent" icon="terp-partner" domain="[]" context="{'group_by':'referent_id'}"/>
-                        <filter string="Responsable" icon="terp-personal" domain="[]"  context="{'group_by':'user_id'}"/>
                     </group>
                 </search>
             </field>

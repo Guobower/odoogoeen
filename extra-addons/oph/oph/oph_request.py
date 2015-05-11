@@ -5,7 +5,6 @@ import time
 from datetime import datetime
 
 
-
 class oph_request(orm.Model):
     _name = 'oph.request'
     _inherit = ['mail.thread']
@@ -15,7 +14,6 @@ class oph_request(orm.Model):
             context = {}
         values = {}
         res_partner = self.pool.get('res.partner')
-        # import pdb;pdb.set_trace()
         br = res_partner.browse(cr, uid, partner_id, context = None)
         name = 'Demande Accord' + ' ' + br.fullname + ' ' + date_request
 
@@ -37,6 +35,10 @@ class oph_request(orm.Model):
         self.write(cr, uid, ids, {"state": "confirm"}, context = context)
         return True
 
+    def request_refused(self, cr,uid,ids,context=None):
+        self.write(cr,uid,ids,{"state":"refused"},context=None)
+        return True
+
     def _state_get(self, cr, uid, context = None):
         return [
                     ('draft', 'Draft'),
@@ -44,6 +46,7 @@ class oph_request(orm.Model):
                     ('confirm', 'Confirm'),
                     ('close', 'Close'),
                     ('cancel', 'Cancelled'),
+                    ('refused','Refused'),
                     ]
 
     def _priority_id_selection(self, cr, uid, context = None):
@@ -139,4 +142,5 @@ class mail_compose_message(osv.Model):
         if context.get('default_model') == 'oph.request' and context.get('default_res_id') and context.get('mark_request_as_sent'):
             context = dict(context, mail_post_autofollow = True)
             self.pool.get('oph.request').write(cr, uid, [context['default_res_id']], {'sent': True}, context = context)
+            self.pool.get('oph.request').write(cr, uid, [context['default_res_id']], {'state': 'open'}, context = context)
         return super(mail_compose_message, self).send_mail(cr, uid, ids, context = context)

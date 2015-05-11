@@ -1,4 +1,5 @@
 script pour la mise à jour du serveur à partir du git repository.
+Mv l'arborescence en production dans le bck
 Copie depuis le git repository.rsync -avh /home/lfs/odoogoeen /usr/odoogoeen.$DATE
 -lien entre git et l'arborescence:odoogoenn.prod. ln -s odoogoeen.prod
 1 lien odoogoeen.prod vers l'arborescence la plus à jour odoogoeen.$DATE-1

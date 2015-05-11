@@ -38,7 +38,6 @@ class oph_reporting(orm.Model):
         if data['receiver_partner'] is True:
             receiver = self.pool.get('crm.meeting').browse(cr, uid, data['meeting_id']).partner_id.id
             data['receiver_id'] = receiver
-        # from pdb import set_trace;set_trace()
         result = super(oph_reporting, self).create(cr, uid, data, context = context)
         return result
 
@@ -51,9 +50,8 @@ class oph_reporting(orm.Model):
         if context is None:
             context = {}
         values = {}
-        # from pdb import set_trace;set_trace()
         if not ids:
-            print "IDS is empty: %s" % (ids,)  # when the record is created
+            print "IDS is empty: %s" % (ids,)  # this happen when the record is created
         if receiver_partner is True and ids:
             receiver = self.browse(cr, uid, ids[0]).partner_id.id
             values['receiver_id'] = receiver
