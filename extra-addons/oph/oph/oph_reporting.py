@@ -199,8 +199,6 @@ class oph_reporting(orm.Model):
               'anesthesia_id':fields.many2one('oph.anesthesia.type', 'Anesthesia'),
               'post_op_treatement':fields.text('Post Operatoire Treatement'),
               'positionnement':fields.text('Positionnement'),
-              'retinal_thickness_od':fields.integer('Retinal Thickness OD'),
-              'retinal_thickness_os':fields.integer('Retinal Thickness OS'),
               # For FA reports
               'color_or':fields.text('Color OR'),
               'color_os':fields.text('Color OS'),
@@ -209,6 +207,10 @@ class oph_reporting(orm.Model):
               'cc_or':fields.text('CC OR'),
               'cc_os':fields.text('CC OS'),
               # For OCT Report
+              'retinal_thickness_od':fields.integer('Retinal Thickness OD'),
+              'retinal_thickness_os':fields.integer('Retinal Thickness OS'),
+              'center_thickness_od':fields.integer('Center Thickness OD'),
+              'center_thickness_os':fields.integer('Center Thickness OS'),
               'mac_or':fields.text('mac_OR'),
               'mac_os':fields.text('mac_OS'),
               'macrnfl_or':fields.text('macrnfl_OR'),
