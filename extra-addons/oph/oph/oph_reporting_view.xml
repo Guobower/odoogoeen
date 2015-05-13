@@ -133,7 +133,6 @@
                         <h2 colspan="4">Conclusion</h2>
                         <field name="cc_or"/>
                         <field name="cc_os"/>
-                                        
                     </group>
                     <!-- 
                     J'enleve car la coloration de la statusbar ne marche pas avec 
