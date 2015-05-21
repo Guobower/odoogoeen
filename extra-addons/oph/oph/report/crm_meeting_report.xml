@@ -59,7 +59,7 @@
         
         <!-- 3 PRESCRIPTION BIOLOGY REPORT -->
         <record model="ir.actions.report.xml" id="prescription_biology_report_id">
-            <field name="name">Prescription Biology Report</field>
+            <field name="name">Biology Prescription Report</field>
             <field name="type">ir.actions.report.xml</field>
             <field name="model">crm.meeting</field>
             <field name="report_name">Prescription.Biology.Report</field>
@@ -87,7 +87,7 @@
         
         <!-- 4 PRESCRIPTION RADIOLOGY REPORT -->
         <record model="ir.actions.report.xml" id="prescription_radiology_report_id">
-            <field name="name">Prescription Radiology Report</field>
+            <field name="name">Radiology Prescription Report</field>
             <field name="type">ir.actions.report.xml</field>
             <field name="model">crm.meeting</field>
             <field name="report_name">Prescription.Radiology.Report</field>
@@ -115,7 +115,7 @@
 
         <!-- 4 PRESCRIPTION CARDIOLOGY REPORT -->
         <record model="ir.actions.report.xml" id="prescription_cardiology_report_id">
-            <field name="name">Prescription Cardiology Report</field>
+            <field name="name">Cardiology Prescription Report</field>
             <field name="type">ir.actions.report.xml</field>
             <field name="model">crm.meeting</field>
             <field name="report_name">Prescription.Cardiology.Report</field>

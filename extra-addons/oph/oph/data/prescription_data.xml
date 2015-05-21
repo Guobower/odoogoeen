@@ -764,6 +764,7 @@
         <record id="ex5" model="oph.exam">
             <field name="name">IRM cérébrale et orbitaire</field>
             <field name="code">IRM</field>
+            <field name="comment">avec coupe sur les nerfs optiques et reconstruction coronale.</field>
             <field name="type">Rx</field>
         </record>
         <record id="ex6" model="oph.exam">
@@ -772,7 +773,7 @@
             <field name="type">Rx</field>
         </record>
         <record id="ex7" model="oph.exam">
-            <field name="name">Echo-Doppler des Troncs SupraAortiques</field>
+            <field name="name">Echo-Doppler des Troncs Supra-Aortiques</field>
             <field name="code">EchoTSA</field>
             <field name="type">Cx</field>
         </record>
@@ -1210,6 +1211,56 @@
         <record id="pro6" model="oph.protocole">
             <field name="name">Bilan OACR/OBAR >60ans</field>
         </record>
+        <record id="pro6_line0" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro6"/>
+            <field name="name">PR1</field>
+            <field name="exam_id" ref="ex0"/>
+        </record>
+        <record id="pro6_line1" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro6"/>
+            <field name="name">PR2</field>
+            <field name="exam_id" ref="ex2"/>
+        </record>
+        <record id="pro6_line2" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro6"/>
+            <field name="name">PR3</field>
+            <field name="exam_id" ref="ex3"/>
+        </record>
+        <record id="pro6_line3" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro6"/>
+            <field name="name">PR4</field>
+            <field name="exam_id" ref="ex18"/>
+        </record>
+        <record id="pro6_line4" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro6"/>
+            <field name="name">PR5</field>
+            <field name="exam_id" ref="ex30"/>
+        </record>
+        <record id="pro6_line5" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro6"/>
+            <field name="name">PR6</field>
+            <field name="exam_id" ref="ex34"/>
+        </record>
+        <record id="pro6_line6" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro6"/>
+            <field name="name">PR7</field>
+            <field name="exam_id" ref="ex35"/>
+        </record>
+        <record id="pro6_line7" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro6"/>
+            <field name="name">PR8</field>
+            <field name="exam_id" ref="ex50"/>
+        </record>
+        <record id="pro6_line8" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro6"/>
+            <field name="name">PR9</field>
+            <field name="exam_id" ref="ex16"/>
+        </record>
+        <record id="pro6_line9" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro6"/>
+            <field name="name">PR10</field>
+            <field name="exam_id" ref="ex7"/>
+        </record>
 
         <!-- Bilan initial traitement anti-toxo -->
         <record id="pro3" model="oph.protocole">
@@ -1346,6 +1397,47 @@
             <field name="name">PR4</field>
             <field name="exam_id" ref="ex48"/>
         </record>
+
+        <!-- BILAN BAV NON EXPLIQUEE -->
+        <record id="pro10" model="oph.protocole">
+            <field name="name">Bilan BAV non expliquee</field>
+        </record>
+        <record id="pro10_line0" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro10"/>
+            <field name="name">PR1</field>
+            <field name="exam_id" ref="ex0"/>
+        </record>
+        <record id="pro10_line1" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro10"/>
+            <field name="name">PR2</field>
+            <field name="exam_id" ref="ex2"/>
+        </record>
+        <record id="pro10_line2" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro10"/>
+            <field name="name">PR3</field>
+            <field name="exam_id" ref="ex3"/>
+        </record>
+        <record id="pro10_line3" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro10"/>
+            <field name="name">PR4</field>
+            <field name="exam_id" ref="ex18"/>
+        </record>
+        <record id="pro10_line4" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro10"/>
+            <field name="name">PR1</field>
+            <field name="exam_id" ref="ex5"/>
+        </record>
+        <record id="pro10_line5" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro10"/>
+            <field name="name">PR2</field>
+            <field name="exam_id" ref="ex48"/>
+        </record>
+        <record id="pro10_line6" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro10"/>
+            <field name="name">PR1</field>
+            <field name="exam_id" ref="ex7"/>
+        </record>
+        
 
     </data>
 </openerp>
