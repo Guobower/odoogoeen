@@ -1198,6 +1198,12 @@
         <record id="pro5" model="oph.protocole">
             <field name="name">Bilan OVCR - 60 ans </field>
         </record>
+        <record id="pro5_line1" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro5"/>
+            <field name="name">PR1</field>
+            <field name="exam_id" ref="ex1"/>
+        </record> 
+
 
         <!-- Bilan OACR >60ans -->
         <record id="pro6" model="oph.protocole">
