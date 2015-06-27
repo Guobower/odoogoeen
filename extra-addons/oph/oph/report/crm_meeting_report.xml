@@ -29,35 +29,9 @@
             <field name="value" eval="'ir.actions.report.xml,' + str(ref('oph.cr_consultation_id'))"/>
         </record>
         
-        <!-- 2 PRESCRIPTION REPORT -->
-        <record model="ir.actions.report.xml" id="prescription_report_id">
-            <field name="name">Prescription Report</field>
-            <field name="type">ir.actions.report.xml</field>
-            <field name="model">crm.meeting</field>
-            <field name="report_name">Prescription.Report</field>
-            <field name="report_type">aeroo</field>
-            <field name="auto">TRUE</field>
-            <field name="report_rml">oph/report/odt/oph_meeting/Prescription_Report.odt</field>
-            <field name="parser_state">loc</field>
-            <field name="parser_loc">oph/report/parser.py</field>
-            <field name="tml_source">file</field>
-            <field name="in_format">oo-odt</field>
-            <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
-            <field name="styles_mode">specified</field>
-            <field name="stylesheet_id" ref="stt_ordo_id"/>
-            <field name="attachment">'Prescription'+'_'+object.partner_id.fullname+'_'+object.date</field>
-        </record>
-        <!-- button -->
-        <record model="ir.values" id="value_prescription_report_id">
-            <field name="name">Prescription.Report</field>
-            <field name="key">action</field>
-            <field name="key2">client_print_multi</field>
-            <field name="model">crm.meeting</field>
-            <field name="object">TRUE</field>
-            <field name="value" eval="'ir.actions.report.xml,' + str(ref('oph.prescription_report_id'))"/>
-        </record>
         
-        <!-- 3 PRESCRIPTION BIOLOGY REPORT -->
+        
+        <!-- 2 PRESCRIPTION BIOLOGY REPORT -->
         <record model="ir.actions.report.xml" id="prescription_biology_report_id">
             <field name="name">Prescription Biology Report</field>
             <field name="type">ir.actions.report.xml</field>
@@ -73,7 +47,7 @@
             <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
             <field name="styles_mode">specified</field>
             <field name="stylesheet_id" ref="stt_ordo_id"/>
-            <field name="attachment">'Prescription'+'_'+object.partner_id.fullname+'_'+object.date</field>
+            <field name="attachment">'Prescription'+'_'+object.partner_id.fullname+'_'+object.date+'.odt'</field>
         </record>
         <!-- button -->
         <record model="ir.values" id="value_prescription_biology_report_id">
@@ -85,7 +59,7 @@
             <field name="value" eval="'ir.actions.report.xml,' + str(ref('oph.prescription_biology_report_id'))"/>
         </record>
         
-        <!-- 4 PRESCRIPTION RADIOLOGY REPORT -->
+        <!-- 3 PRESCRIPTION RADIOLOGY REPORT -->
         <record model="ir.actions.report.xml" id="prescription_radiology_report_id">
             <field name="name">Prescription Radiology Report</field>
             <field name="type">ir.actions.report.xml</field>

@@ -829,17 +829,19 @@
         </record>
         <record id="ex18" model="oph.exam">
             <field name="name">Fibrinogène</field>
-            <field name="code">Fib</field>
+            <field name="code">FIB</field>
             <field name="type">Bio</field>
         </record>
         <record id="ex19" model="oph.exam">
-            <field name="name">Créatininémie</field>
-            <field name="code">Creat</field>
+        <field name="name">Inhibiteur de l'activateur tissulaire du plaminogène</field>
+            <field name="code">INPLAS</field>
             <field name="type">Bio</field>
         </record>
+        
         <record id="ex20" model="oph.exam">
-            <field name="code">FIB</field>
-            <field name="type">Bio</field>
+            <field name="name">Antithrombine III</field>
+            <field name="code">AT III</field>
+            <field name="type_id">Bio</field>
         </record>
         <record id="ex21" model="oph.exam">
             <field name="name">Serologie HIV</field>
@@ -984,16 +986,7 @@
             <field name="code">LP</field>
             <field name="type">Bio</field>
         </record>
-        <record id="ex50" model="oph.exam">
-            <field name="name">Ionogramme sanguin</field>
-            <field name="code">IONO</field>
-            <field name="type_id">Bio</field>
-        </record>
-        <record id="ex29" model="oph.exam">
-            <field name="name">?</field>
-            <field name="code">?</field>
-            <field name="type_id">Bio</field>
-        </record>
+        
         
 <!--protocole-->
         <!-- Bilan preop -->
@@ -1053,7 +1046,7 @@
         <record id="pro1_line6" model="oph.protocole.line.template">
             <field name="protocole_id" ref="pro1"/>
             <field name="name">PR7</field>
-            <field name="exam_id" ref="ex50"/>
+            <field name="exam_id" ref="ex16"/>
         </record>
 
         <!-- Bilan uvéite -->
@@ -1205,6 +1198,12 @@
         <record id="pro5" model="oph.protocole">
             <field name="name">Bilan OVCR - 60 ans </field>
         </record>
+        <record id="pro5_line1" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro5"/>
+            <field name="name">PR1</field>
+            <field name="exam_id" ref="ex1"/>
+        </record> 
+
 
         <!-- Bilan OACR >60ans -->
         <record id="pro6" model="oph.protocole">
@@ -1280,11 +1279,14 @@
             <field name="name">PR6</field>
             <field name="exam_id" ref="ex14"/>
         </record>
+        <!--
+        
         <record id="pro7_line7" model="oph.protocole.line.template">
             <field name="protocole_id" ref="pro7"/>
             <field name="name">PR7</field>
             <field name="exam_id" ref="ex29"/>
         </record>
+        -->
         <record id="pro7_line8" model="oph.protocole.line.template">
             <field name="protocole_id" ref="pro7"/>
             <field name="name">PR8</field>

@@ -35,10 +35,11 @@ class oph_reporting(orm.Model):
                  ]
 
     def create(self, cr, uid, data, context = None):
+        # from pdb import set_trace;set_trace()
         if data['receiver_partner'] is True:
             receiver = self.pool.get('crm.meeting').browse(cr, uid, data['meeting_id']).partner_id.id
             data['receiver_id'] = receiver
-            result = super(oph_reporting, self).create(cr, uid, data, context=context)
+        result = super(oph_reporting, self).create(cr, uid, data, context = context)
         return result
 
     def on_change_partner(self, cr, uid, ids, receiver_partner, context = None):
