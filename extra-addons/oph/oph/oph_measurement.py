@@ -117,6 +117,7 @@ class oph_measurement(orm.Model):
                             ('BCVA', _('BCVA')),  # best corrected visual acuity
                             ('MAVC sous cycloplegique', 'MAVC sous cycloplegique'),
                             ('Rx', _('Refraction prescription')),  # refraction prescrite
+                            ('AR',_('AutoRefractometer')),
                             )
         return va_type_selection
 

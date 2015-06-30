@@ -141,7 +141,7 @@
             <field name="standard_price">17155</field>
             <field name="list_price">17155</field>
             <field name="type">service</field>
-            <field name="default_code">KC32+9/2</field>
+            <field name="default_code">K32+9/2</field>
             <field name="uom_id" ref="product.product_uom_hour"/>
             <field name="uom_po_id" ref="product.product_uom_hour"/>
             <field name="description">Angiographie et rétinophotographie</field>
