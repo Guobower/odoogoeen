@@ -1136,62 +1136,62 @@
         </record>
         <record id="pro4_line2" model="oph.protocole.line.template">
             <field name="protocole_id" ref="pro4"/>
-            <field name="name">PR1</field>
+            <field name="name">PR2</field>
             <field name="exam_id" ref="ex3"/>
         </record>
         <record id="pro4_line3" model="oph.protocole.line.template">
             <field name="protocole_id" ref="pro4"/>
-            <field name="name">PR2</field>
+            <field name="name">PR3</field>
             <field name="exam_id" ref="ex17"/>
         </record>
         <record id="pro4_line4" model="oph.protocole.line.template">
             <field name="protocole_id" ref="pro4"/>
-            <field name="name">PR3</field>
+            <field name="name">PR4</field>
             <field name="exam_id" ref="ex13"/>
         </record>
         <record id="pro4_line5" model="oph.protocole.line.template">
             <field name="protocole_id" ref="pro4"/>
-            <field name="name">PR4</field>
+            <field name="name">PR5</field>
             <field name="exam_id" ref="ex15"/>
         </record>
         <record id="pro4_line6" model="oph.protocole.line.template">
             <field name="protocole_id" ref="pro4"/>
-            <field name="name">PR5</field>
+            <field name="name">PR6</field>
             <field name="exam_id" ref="ex14"/>
         </record>
         <record id="pro4_line7" model="oph.protocole.line.template">
             <field name="protocole_id" ref="pro4"/>
-            <field name="name">PR6</field>
+            <field name="name">PR7</field>
             <field name="exam_id" ref="ex21"/>
         </record>
         <record id="pro4_line8" model="oph.protocole.line.template">
             <field name="protocole_id" ref="pro4"/>
-            <field name="name">PR7</field>
+            <field name="name">PR8</field>
             <field name="exam_id" ref="ex44"/>
-        </record>
+        </record>ping 
         <record id="pro4_line9" model="oph.protocole.line.template">
             <field name="protocole_id" ref="pro4"/>
-            <field name="name">PR8</field>
+            <field name="name">PR9</field>
             <field name="exam_id" ref="ex23"/>
         </record>
         <record id="pro4_line10" model="oph.protocole.line.template">
             <field name="protocole_id" ref="pro4"/>
-            <field name="name">PR9</field>
+            <field name="name">PR10</field>
             <field name="exam_id" ref="ex42"/>
         </record>
         <record id="pro4_line11" model="oph.protocole.line.template">
             <field name="protocole_id" ref="pro4"/>
-            <field name="name">PR10</field>
+            <field name="name">PR11</field>
             <field name="exam_id" ref="ex41"/>
         </record>
         <record id="pro4_line12" model="oph.protocole.line.template">
             <field name="protocole_id" ref="pro4"/>
-            <field name="name">PR11</field>
+            <field name="name">PR12</field>
             <field name="exam_id" ref="ex32"/>
         </record>
         <record id="pro4_line13" model="oph.protocole.line.template">
             <field name="protocole_id" ref="pro4"/>
-            <field name="name">PR12</field>
+            <field name="name">PR13</field>
             <field name="exam_id" ref="ex43"/>
         </record> 
 
@@ -1248,7 +1248,7 @@
         <record id="pro6_line7" model="oph.protocole.line.template">
             <field name="protocole_id" ref="pro6"/>
             <field name="name">PR8</field>
-            <field name="exam_id" ref="ex50"/>
+            <field name="exam_id" ref="ex49"/>
         </record>
         <record id="pro6_line8" model="oph.protocole.line.template">
             <field name="protocole_id" ref="pro6"/>
@@ -1287,7 +1287,7 @@
         </record>
         <record id="pro3_line4" model="oph.protocole.line.template">
             <field name="protocole_id" ref="pro3"/>
-            <field name="name">PR4</field>
+            <field name="name">PR5</field>
             <field name="exam_id" ref="ex15"/>
         </record>
 

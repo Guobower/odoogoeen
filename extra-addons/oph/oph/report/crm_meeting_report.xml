@@ -75,7 +75,7 @@
             <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
             <field name="styles_mode">specified</field>
             <field name="stylesheet_id" ref="stt_ordo_id"/>
-            <field name="attachment">object.partner_id.fullname+'_'+'Rx'+'_'+object.date</field>
+            <field name="attachment">object.partner_id.fullname+'_'+'Rx'+'_'+object.date+'.odt'</field>
         </record>
         <!-- button -->
         <record model="ir.values" id="value_prescription_radiology_report_id">
@@ -103,7 +103,7 @@
             <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
             <field name="styles_mode">specified</field>
             <field name="stylesheet_id" ref="stt_ordo_id"/>
-            <field name="attachment">object.partner_id.fullname+'_'+'Cx'+'_'+object.date</field>
+            <field name="attachment">object.partner_id.fullname+'_'+'Cx'+'_'+object.date+'.odt'</field>
         </record>
         <!-- button -->
         <record model="ir.values" id="value_prescription_cardiology_report_id">
@@ -159,7 +159,7 @@
             <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
             <field name="styles_mode">specified</field>
             <field name="stylesheet_id" ref="stt_ordo_id"/>
-            <field name="attachment">'Certificat presence'+'_'+object.partner_id.fullname+'_'+object.date</field>
+            <field name="attachment">'Certificat presence'+'_'+object.partner_id.fullname+'_'+object.date+'.odt'</field>
         </record>
         <!-- button -->
         <record model="ir.values" id="value_certif_presence_id">
@@ -186,7 +186,7 @@
             <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
             <field name="styles_mode">specified</field>
             <field name="stylesheet_id" ref="stt_ordo_id"/>
-            <field name="attachment">'Certificat dilatation'+'_'+object.partner_id.fullname+'_'+object.date</field>
+            <field name="attachment">'Certificat dilatation'+'_'+object.partner_id.fullname+'_'+object.date+'.odt'</field>
         </record>
         <!-- button -->
         <record model="ir.values" id="value_certif_dil_id">
