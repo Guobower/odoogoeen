@@ -245,7 +245,7 @@ class oph_bloc_agenda_line(osv.osv):
         return True
 
     def statechange_cancel(self, cr, uid, ids, context = None):
-        self.write(cr, uid, ids, {"state": "cancel"}, context = context)
+        self.write(cr, uid, ids, {"state": "cancel","sequence":0}, context = context)
         return True
 
     def statechange_close(self, cr, uid, ids, context = None):
