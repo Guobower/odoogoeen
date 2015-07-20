@@ -35,7 +35,6 @@ class oph_reporting(orm.Model):
                  ]
 
     def create(self, cr, uid, data, context = None):
-        # from pdb import set_trace;set_trace()
         if data['receiver_partner'] is True:
             receiver = self.pool.get('crm.meeting').browse(cr, uid, data['meeting_id']).partner_id.id
             data['receiver_id'] = receiver
@@ -47,6 +46,7 @@ class oph_reporting(orm.Model):
         Get the id of the patient if tick the box the receiver is the patient
         and send it to "receiver_id" field
         """
+        print "PASSING IN ON_CHANGE_PARTNER"
         if context is None:
             context = {}
         values = {}
@@ -199,16 +199,25 @@ class oph_reporting(orm.Model):
               'anesthesia_id':fields.many2one('oph.anesthesia.type', 'Anesthesia'),
               'post_op_treatement':fields.text('Post Operatoire Treatement'),
               'positionnement':fields.text('Positionnement'),
-              'retinal_thickness_od':fields.integer('Retinal Thickness OD'),
-              'retinal_thickness_os':fields.integer('Retinal Thickness OS'),
               # For FA reports
               'color_or':fields.text('Color OR'),
               'color_os':fields.text('Color OS'),
               'fa_or':fields.text('FA OR'),
               'fa_os':fields.text('FA OS'),
               'cc_or':fields.text('CC OR'),
-              'cc_os':fields.text('CC OS')
-              }
+              'cc_os':fields.text('CC OS'),
+              # For OCT Report
+              'retinal_thickness_or':fields.integer('Retinal Thickness OD'),
+              'retinal_thickness_os':fields.integer('Retinal Thickness OS'),
+              'center_thickness_or':fields.integer('Center Thickness OD'),
+              'center_thickness_os':fields.integer('Center Thickness OS'),
+              'mac_or':fields.text('mac_OR'),
+              'mac_os':fields.text('mac_OS'),
+              'rnfl_or':fields.text('ONrnfl_OR'),
+              'rnfl_os':fields.text('ONrnfl_OS'),
+              'ccoct_or':fields.text('CC OR'),
+              'ccoct_os':fields.text('CC OS'),
+                            }
 
     _defaults = {
                'state':'draft',

@@ -76,9 +76,19 @@
                         <field name="laser_power" class="oe_inline"/>
                     </group>
                     <separator colspan="2"/>
-                    <group attrs="{'invisible':[('type','!=','OCT')]}">
-                        <field name="retinal_thickness_od" class="oe_inline"/>
+                    <group string="OCT" attrs="{'invisible':[('type','!=','OCT')]}" col="4">
+                        <h2 colspan="2">OR</h2>
+                        <h2 colspan="2">OS</h2>
+                        <field name="retinal_thickness_or" class="oe_inline"/>
                         <field name="retinal_thickness_os" class="oe_inline"/>
+                        <field name="center_thickness_or" class="oe_inline"/>
+                        <field name="center_thickness_os" class="oe_inline"/>
+                        <field name="mac_or" class="oe_inline"/>
+                        <field name="mac_os" class="oe_inline"/>
+                        <field name="rnfl_or" class="oe_inline"/>
+                        <field name="rnfl_os" class="oe_inline"/>
+                        <field name="ccoct_or" class="oe_inline"/>
+                        <field name="ccoct_os" class="oe_inline"/>
                     </group>
                     <separator colspan="2"/>
                     <group attrs="{'invisible':[('type','!=','DIAB')]}">
@@ -116,8 +126,8 @@
                         <field name="positionnement" class="oe_inline"/>
                     </group>
                     <group string="FA" attrs="{'invisible':[('type','!=','FAF')]}" col="4">
-                        <h1 colspan="2">OR</h1>
-                        <h1 colspan="2">OS</h1>
+                        <h2 colspan="2">OR</h2>
+                        <h2 colspan="2">OS</h2>
                         <field name="color_or"/>
                         <field name="color_os"/>
                         <field name="fa_or"/>
@@ -125,7 +135,6 @@
                         <h2 colspan="4">Conclusion</h2>
                         <field name="cc_or"/>
                         <field name="cc_os"/>
-                                        
                     </group>
                     <!-- 
                     J'enleve car la coloration de la statusbar ne marche pas avec 

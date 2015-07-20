@@ -33,7 +33,7 @@
         
         <!-- 2 PRESCRIPTION BIOLOGY REPORT -->
         <record model="ir.actions.report.xml" id="prescription_biology_report_id">
-            <field name="name">Prescription Biology Report</field>
+            <field name="name">Biology Prescription Report</field>
             <field name="type">ir.actions.report.xml</field>
             <field name="model">crm.meeting</field>
             <field name="report_name">Prescription.Biology.Report</field>
@@ -61,7 +61,7 @@
         
         <!-- 3 PRESCRIPTION RADIOLOGY REPORT -->
         <record model="ir.actions.report.xml" id="prescription_radiology_report_id">
-            <field name="name">Prescription Radiology Report</field>
+            <field name="name">Radiology Prescription Report</field>
             <field name="type">ir.actions.report.xml</field>
             <field name="model">crm.meeting</field>
             <field name="report_name">Prescription.Radiology.Report</field>
@@ -75,7 +75,7 @@
             <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
             <field name="styles_mode">specified</field>
             <field name="stylesheet_id" ref="stt_ordo_id"/>
-            <field name="attachment">object.partner_id.fullname+'_'+'Rx'+'_'+object.date</field>
+            <field name="attachment">object.partner_id.fullname+'_'+'Rx'+'_'+object.date+'.odt'</field>
         </record>
         <!-- button -->
         <record model="ir.values" id="value_prescription_radiology_report_id">
@@ -89,7 +89,7 @@
 
         <!-- 4 PRESCRIPTION CARDIOLOGY REPORT -->
         <record model="ir.actions.report.xml" id="prescription_cardiology_report_id">
-            <field name="name">Prescription Cardiology Report</field>
+            <field name="name">Cardiology Prescription Report</field>
             <field name="type">ir.actions.report.xml</field>
             <field name="model">crm.meeting</field>
             <field name="report_name">Prescription.Cardiology.Report</field>
@@ -103,7 +103,7 @@
             <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
             <field name="styles_mode">specified</field>
             <field name="stylesheet_id" ref="stt_ordo_id"/>
-            <field name="attachment">object.partner_id.fullname+'_'+'Cx'+'_'+object.date</field>
+            <field name="attachment">object.partner_id.fullname+'_'+'Cx'+'_'+object.date+'.odt'</field>
         </record>
         <!-- button -->
         <record model="ir.values" id="value_prescription_cardiology_report_id">
@@ -159,7 +159,7 @@
             <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
             <field name="styles_mode">specified</field>
             <field name="stylesheet_id" ref="stt_ordo_id"/>
-            <field name="attachment">'Certificat presence'+'_'+object.partner_id.fullname+'_'+object.date</field>
+            <field name="attachment">'Certificat presence'+'_'+object.partner_id.fullname+'_'+object.date+'.odt'</field>
         </record>
         <!-- button -->
         <record model="ir.values" id="value_certif_presence_id">
@@ -186,7 +186,7 @@
             <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
             <field name="styles_mode">specified</field>
             <field name="stylesheet_id" ref="stt_ordo_id"/>
-            <field name="attachment">'Certificat dilatation'+'_'+object.partner_id.fullname+'_'+object.date</field>
+            <field name="attachment">'Certificat dilatation'+'_'+object.partner_id.fullname+'_'+object.date+'.odt'</field>
         </record>
         <!-- button -->
         <record model="ir.values" id="value_certif_dil_id">
