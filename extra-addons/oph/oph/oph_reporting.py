@@ -225,6 +225,7 @@ class oph_reporting(orm.Model):
                'vitreotome_machine':'Constellation Alcon. Mise en service novembre 2011',
                'tech_op_phako':'Technique Ozyl. Sonde Kellman 30° 0.9mm. Microincision',
                'next_meeting':_get_next_meeting,
+               'cc_partner':True,
                     }
 
 class oph_reporting_template(orm.Model):
