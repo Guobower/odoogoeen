@@ -9,10 +9,10 @@
     'author' : 'Cabinet GOEEN',
     'category': 'Generic Modules/Others',
     'description': """
-Module de consultation pour l'ophtalmologiste
+This module will delete the link 'manage database' in the login screen
+So you won't archive, restore anymore the database by this easy way
 =======================================================================================
-
-Permet de faire pleins de choses absolument géniales
+But still the database list in the upper right corner
                 """,
     'website': '',
     'depends' : [
