@@ -362,6 +362,37 @@
             <field name="ods_needed">True</field>
             <field name="ivt">True</field>
         </record>
+        
+        <record id="inn25" model="oph.inn">
+            <field name="name">Pyrimethamine</field>
+            <field name="ods_needed">False</field>
+        </record>
+        <record id="malo0" model="oph.brandname">
+            <field name="brandname_id" ref="inn25"/>
+            <field name="name">MALOCIDE 50MG CPR</field>
+            <field name="ivt">False</field>
+        </record>
+        
+        <record id="inn26" model="oph.inn">
+            <field name="name">Azithromycine</field>
+            <field name="ods_needed">False</field>
+        </record>
+        <record id="zithr0" model="oph.brandname">
+            <field name="brandname_id" ref="inn26"/>
+            <field name="name">ZITHROMAX 250MG CPR</field>
+            <field name="ivt">False</field>
+        </record>
+
+        <record id="inn27" model="oph.inn">
+            <field name="name">Acide folinique</field>
+            <field name="ods_needed">False</field>
+        </record>
+        <record id="leder0" model="oph.brandname">
+            <field name="brandname_id" ref="inn27"/>
+            <field name="name">LEDERFOLINE 5MG CPR</field>
+            <field name="ivt">False</field>
+        </record>
+
 
         <!-- Pathology -->
         <!-- Conjonctivite -->
@@ -715,6 +746,7 @@
             <field name="brandname_id" ref="myd0"/>
             <field name="comment">Instiller une goutte de chaque collyre dans chaque oeil à 0,5,10,15 minute. (Soit une gtte toutes les 5 minutes pendant 15 minutes). Et nouvel examen ophtalmologique à la 45ème minute. Pensez à prévoir un délai de 45 minutes par rapport à l'heure de votre rendez vous ophtalmologique.</field>
         </record>
+        
         <!--  Protocole moebomite -->
         <record id="path17" model="oph.pathology">
             <field name="name">Moebomite Sans Sterdex</field>
@@ -733,8 +765,46 @@
             pour 2 mois 
             il est important de poursuivre les soins de paupière même si la symptomatologie s'améliore.
             </field>
-
         </record>
+        
+        <!-- TRAITEMENT ANTITOXOPLASMOSE -->
+        <record id="path18" model="oph.medication.line.template">
+            <field name="name">Traitement Toxoplasmose</field>
+            <field name="comment">Traitement de la toxoplasmose. Protocole CHU BDX 2015</field>
+        </record>
+        <record id="path18_line0" model="oph.medication.line.template">
+            <field name="pathology_id" ref="path18"/>
+            <field name="name">ID0</field>
+            <field name="brandname_id" ref="malo0"/>
+            <field name="poso">2 comprimés le premier jour. Puis 1 comprimé par jour.</field>
+            <field name="duration">pendant 5 semaines</field>
+        </record>
+        <record id="path18_line1" model="oph.medication.line.template">
+            <field name="pathology_id" ref="path18"/>
+            <field name="name">ID1</field>
+            <field name="brandname_id" ref="malo0"/>
+            <field name="poso">2 comprimés le premier jour. Puis 1 comprimé par jour.</field>
+            <field name="duration">pendant 5 semaines</field>
+        </record>
+        <record id="path18_line2" model="oph.medication.line.template">
+            <field name="pathology_id" ref="path18"/>
+            <field name="name">ID2</field>
+            <field name="brandname_id" ref="zithr0"/>
+            <field name="poso">2 comprimés le premier jour. Puis 1 comprimé par jour</field>
+            <field name="duration">pendant 5 semaines</field>
+        </record>
+        <record id="path18_line3" model="oph.medication.line.template">
+            <field name="pathology_id" ref="path18"/>
+            <field name="name">ID3</field>
+            <field name="brandname_id" ref="leder0"/>
+            <field name="poso">1 comprimé par jour</field>
+            <field name="duration">pendant 5 semaines</field>
+        </record>
+
+
+
+
+
         <!-- Ressource: oph.exam-->
         <record id="ex0" model="oph.exam">
             <field name="name">NFS</field>
