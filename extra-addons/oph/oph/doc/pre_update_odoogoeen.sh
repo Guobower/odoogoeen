@@ -43,27 +43,27 @@ service odoo-server stop
 echo "Backing up the last running odoogoeen directory of the server, please wait..."
 rsync-copy $SERVERDIR/$SERVERDIRNAME/ $HOMEDIR/$BCKDIR.$NOW
 
-Echo "The last odoogoeen server directories are:"
+echo "The last odoogoeen server directories are:"
 ls -alh $HOMEDIR/$BCKDIR*
 
-Echo "Size of the last backup odoogoeen directories are:"
+echo "Size of the last backup odoogoeen directories are:"
 du -h --summarize HOMEDIR/BCKDIR*/
 
-Echo "The size of filestore directory is:"
+echo "The size of filestore directory is:"
 du -h --summarize $SERVERDIR/$SERVERDIRNAME/openerp/filestore
 
-Echo "Now we are updating the production server directory"
-Echo "Renaming the production server directory to $SERVERDIRNAME.last"
+echo "Now we are updating the production server directory"
+echo "Renaming the production server directory to $SERVERDIRNAME.last"
 mv $SERVERDIR/$SERVERDIRNAME $SERVERDIR/$SERVERDIRNAME.last
 ls -alh $SERVERDIR/$SERVERDIRNAME
 
-Echo "Update the odoo server directory from $HOMEDIR/$SERVERDIRNAME to $SERVERDIR"
+echo "Update the odoo server directory from $HOMEDIR/$SERVERDIRNAME to $SERVERDIR"
 rsync-move $HOMEDIR/$SERVERDIRNAME $SERVERDIR/
 ls -alh $SERVERDIR/$SERVERDIRNAME
 
 
 
-Echo "change ownership and group to $ODOOUSER"
+echo "change ownership and group to $ODOOUSER"
 chown -R $ODOOUSER:$ODOOUSER $SERVERDIR/$SERVERDIRNAME/
 
 Echo "Restart the server odoogoeen"
