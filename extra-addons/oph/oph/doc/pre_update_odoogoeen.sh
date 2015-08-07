@@ -30,12 +30,14 @@
 #////////////////////////////////////////////////////////////////////////////////////#
 
 # ---------------------------------------------------------------------------------- #
-NOW = $(date+"%F-%T)
+NOW = $(date+"%F-%T")
 HOMEDIR='/home/lof' # home directory in the odoo server
 SERVERDIR='/home/lof/ODOO'
 SERVERDIRNAME='odoogoeen'
-BCKDIR='odoogoeen.last.prod'
+BCKDIR='odoogoeen.prod'
+FILESTORE_PATH='openerp/filestore'
 # ----------------------------------------------------------------------------------- #
+echo "DONT FORGET TO DUMP THE DATABASE"
 echo "--- WARNING --- WARNING ---"
 echo "we are closing the odoogoeen server"
 service odoo-server stop
@@ -47,10 +49,10 @@ echo "The last odoogoeen server directories are:"
 ls -alh $HOMEDIR/$BCKDIR*
 
 echo "Size of the last backup odoogoeen directories are:"
-du -h --summarize HOMEDIR/BCKDIR*/
+du -h --summarize $HOMEDIR/$BCKDIR*/
 
-echo "The size of filestore directory is:"
-du -h --summarize $SERVERDIR/$SERVERDIRNAME/openerp/filestore
+echo "The size of the last bck filestore directory is:"
+du -h --summarize $HOMEDIR/$BCKDIR.$NOW/$FILESTORE_PATH
 
 echo "Now we are updating the production server directory"
 echo "Renaming the production server directory to $SERVERDIRNAME.last"
@@ -61,11 +63,16 @@ echo "Update the odoo server directory from $HOMEDIR/$SERVERDIRNAME to $SERVERDI
 rsync-move $HOMEDIR/$SERVERDIRNAME $SERVERDIR/
 ls -alh $SERVERDIR/$SERVERDIRNAME
 
-
-
 echo "change ownership and group to $ODOOUSER"
 chown -R $ODOOUSER:$ODOOUSER $SERVERDIR/$SERVERDIRNAME/
 
-Echo "Restart the server odoogoeen"
+echo "Copy the last filestore tree files to the new file tree server"
+rsync-copy $SERVERDIR/$SERVERDIRNAME.last/$FILESTORE_PATH/ $SERVERDIR/$SERVERDIRNAME/$FILESTORE_PATH
+
+echo "the size of the filestore is:"
+du -h --summarize $SERVERDIR/$SERVERDIRNAME/$FILESTORE_PATH
+
+echo "Restart the server odoogoeen"
 service odoo-server start
+# show up the log so you can see if everything fine.
 tail -f /var/log/openerp/odoo-server.log
