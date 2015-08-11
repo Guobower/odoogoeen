@@ -42,7 +42,7 @@
 # ---------------------------------------------------------------------------------- #
 
 # Fichier de LOG
-LOG_FILE='/var/log//openerp/odoo_backup.log'
+LOG_FILE='/var/log/openerp/odoo_backup.log'
 
 # Création du fichier de log
 if [ ! -e ${LOG_FILE} ]; then
