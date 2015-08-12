@@ -63,8 +63,9 @@ NOW=`date +%F-%T`
 bckfile=$bckroot/$dbname-$NOW.dump
 echo 'Dump will be saved on:' $bckfile
 # pg_dump -Fc $dbname > $bckfile OK for dev machine
-pg_dump -U $odoouser -Fc $dbname > $bckfile # marche pas
-#pour l'instant odooser est en trust. 
+pg_dump -U $odoouser -Fc $dbname -h 127.0.0.1 > $bckfile
+# il faut specifier le -h car c'est en peer.
+#pour l'instant odooser est en trust 
 # il va falloir le changer.
 
 ## OK fonctionne en local dev mais la restauration n'a pas été testé.
