@@ -42,6 +42,7 @@
 # ---------------------------------------------------------------------------------- #
 
 # odoo dbname
+odoouser='openerp'
 dbname='goeen001'
 # Fichier de LOG
 LOG_FILE='/var/log/openerp/odoo_backup.log'
@@ -61,7 +62,10 @@ fi
 NOW=`date +%F-%T`
 bckfile=$bckroot/$dbname-$NOW.dump
 echo 'Dump will be saved on:' $bckfile
-pg_dump -Fc $dbname > $bckfile
+# pg_dump -Fc $dbname > $bckfile OK for dev machine
+pg_dump -U $odoouser -Fc $dbname > $bckfile
+#pour l'instant odooser est en trust. 
+# il va falloir le changer.
 
 ## OK fonctionne en local dev mais la restauration n'a pas été testé.
 ## n'a pas été testé sur le serveur.
@@ -92,3 +96,6 @@ pg_dump -Fc $dbname > $bckfile
 ## to reload the dump in a new database
 ## creatdb -T template0 newdb
 ## pg_restore -d newdb goeen.bck.dump # msg d'erreur mais parait ok a voir dans la vraie vie.
+
+## Qd je me connecte en lof sur le server
+## je ne peux pas lancer un pg_dump. Se plaint que le role lof n'existe pas.
