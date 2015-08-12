@@ -68,6 +68,8 @@ pg_dump -U $odoouser -Fc $dbname -h 127.0.0.1 > $bckfile
 #pour l'instant odooser est en trust 
 # il va falloir le changer.
 
+tree -sh $bckfile
+
 ## OK fonctionne en local dev mais la restauration n'a pas été testé.
 ## n'a pas été testé sur le serveur.
  

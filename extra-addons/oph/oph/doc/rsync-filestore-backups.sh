@@ -38,5 +38,9 @@ echo "The size of this last backup of filestore directory is:"
 du --summarize -h $LPATH/filestore.$NOW
 echo "-------------------"
 ## TODO 
-## rotate filestore.bck
+## rotate filestore.bck:
+## FIND='$(which find)'
+## RM='$(which rm)'
+## days_rotation=14
+## $FIND $LPATH -mtime +$days_rotation -exec $RM () -f \;
 ## set hourly when it's ok by day.
