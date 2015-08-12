@@ -41,11 +41,54 @@
 #                                                                                    #
 # ---------------------------------------------------------------------------------- #
 
+# odoo dbname
+dbname='goeen001'
 # Fichier de LOG
 LOG_FILE='/var/log/openerp/odoo_backup.log'
+# bck root directory
+homedir=${HOME}
+bckdirname='dump.bck'
+bckroot=$homedir/$bckdirname
 
-# Création du fichier de log
-if [ ! -e ${LOG_FILE} ]; then
-    echo 'Creation du fichier de log :'${LOG_FILE}
-    touch ${LOG_FILE}
+#create bck rootdirectory
+# Create the directory for bck
+if [ ! -d $bckroot ]; then
+    echo 'Creation du directory de backup :'$bckroot
+    mkdir $bckroot
 fi
+
+# Create a dump of database.
+NOW=`date +%F-%T`
+bckfile=$bckroot/$dbname-$NOW.dump
+echo 'Dump will be saved on:' $bckfile
+pg_dump -Fc $dbname > $bckfile
+
+## OK fonctionne en local dev mais la restauration n'a pas été testé.
+## n'a pas été testé sur le serveur.
+ 
+###suppression des sauvegardes trop anciennes.
+## FIND='$(which find)'
+## RM='$(which rm)'
+## days_rotation=14
+## $FIND $LPATH -mtime +$days_rotation -exec $RM () -f \;
+## synchronisation avec le FTP:
+## $LFTP -u $ltp_user,$lftp_pass $lftp_host -p -$lftp_port -e "mirror -R --delete $bckroot $lftp_target && quit"
+## LFTP='$(which lftp)'
+## configuration du FTP 
+## installer lftp
+## lftp_prot='IP du ftp'
+## lftp_port='port du ftp'
+## lftp_user='user du ftp'
+## lft_pass='password'
+## lftp_target='repertoire de dstination sur le ftp'
+
+
+## pg_dump -Fc goeen001 > goeen001.bck.dump
+
+## to drop the database and recreate it
+## dropdb goeen001
+## pg_restore -C -d postgres goeen.bck.dump
+##
+## to reload the dump in a new database
+## creatdb -T template0 newdb
+## pg_restore -d newdb goeen.bck.dump # msg d'erreur mais parait ok a voir dans la vraie vie.
