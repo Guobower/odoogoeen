@@ -63,7 +63,7 @@ NOW=`date +%F-%T`
 bckfile=$bckroot/$dbname-$NOW.dump
 echo 'Dump will be saved on:' $bckfile
 # pg_dump -Fc $dbname > $bckfile OK for dev machine
-pg_dump -U $odoouser -Fc $dbname > $bckfile
+pg_dump -U $odoouser -Fc $dbname > $bckfile # marche pas
 #pour l'instant odooser est en trust. 
 # il va falloir le changer.
 
