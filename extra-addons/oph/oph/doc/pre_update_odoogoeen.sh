@@ -8,7 +8,7 @@
 # Created : 06/08/2015 
 # par laurent FRANCOIS                                                               #
 # Le script effectue une sauvegarde complète du repertoire odoogoeen
-# So there is a problem during update you can reverse easily                         #
+# So if there is a problem during update you can reverse easily                         #
 # without usint git.
 # 
 # In this backup you have the last filestore                                         #
@@ -30,15 +30,20 @@
 #////////////////////////////////////////////////////////////////////////////////////#
 
 # ---------------------------------------------------------------------------------- #
-NOW = $(date+"%F-%T")
-HOMEDIR='/home/lof' # home directory in the odoo server
-SERVERDIR='/home/lof/ODOO'
-SERVERDIRNAME='odoogoeen'
-BCKDIR='odoogoeen.prod'
+NOW = $(date +"%F-%T")
+HOMEDIR=${HOME} # home directory in the odoo server
+SERVERROOT='ODOO'
+SERVERDIR=$HOMEDIR/$SERVERROOT
+SERVERDIRNAME='odoogoeen' #we could rename it in INSTANCE
+SUF='prod'
+BCKDIR=$SERVERDIRNAME.$SUF
 FILESTORE_PATH='openerp/filestore'
 # ----------------------------------------------------------------------------------- #
 echo "DONT FORGET TO DUMP THE DATABASE"
 echo "--- WARNING --- WARNING ---"
+## On peut appeler le script de dump  pour faire cela à voir
+## cd ./home/lof/ophodoo-admin.sh
+## ./dump-oo.sh &
 echo "we are closing the odoogoeen server"
 service odoo-server stop
 
