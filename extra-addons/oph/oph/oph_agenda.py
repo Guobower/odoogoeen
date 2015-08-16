@@ -134,7 +134,7 @@ class crm_meeting(orm.Model):
         # il nous faut supprimer la clef "id" qui est systématiquement fournie dans le return de read
             del record['id']
             # del context['default_partner_id']
-            record.update({'name':'Factory', 'state':record['tag'], 'partner_id':False})
+            record.update({'name':'Ouvert', 'state':record['tag'], 'partner_id':False})
             self.create(cr, uid, record, context = context)
         return True
 

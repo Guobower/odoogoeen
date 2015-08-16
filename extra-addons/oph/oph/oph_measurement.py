@@ -224,7 +224,6 @@ class oph_measurement(orm.Model):
               'iop_os':fields.integer('IOP_OS'),
               'comment_iop':fields.text('Comment'),
               # --keratometry
-
               'keratometer_id':fields.many2one('oph.instrumentation', 'Keratometer'),
               'k1_od':fields.float('K1_OD', digits = (3, 2)),
               'k2_od':fields.float('K2_OD', digits = (3, 2)),
