@@ -28,8 +28,12 @@
                 <data>
                 <field name="partner_id" position="after">
                     <field name="ref_statement" attrs="{'readonly':[('state','in',('draft','proforma','proforma2','paid','cancelled',))]}"/>
+                    <field name="payment_method"/>
                 </field>
-               
+                    <xpath expr="//button[@string='Cancel Invoice']" position="after">
+                        <button name="invoice_validate_cash" string="Validate &amp; Check" states="draft" type="object" class="oe_highlight" groups="base.group_user"/>
+                        <button name="invoice_validate_check" string="Validate &amp; Cash" states="draft" type="object" groups="base.group_user"/>
+                    </xpath>
                     <xpath expr="//field[@name='invoice_line']" position="before">
                         <group>
                             <field name="payeur" string="Organisme Payeur" required="1"/>
@@ -71,6 +75,9 @@
                     <filter name="ref_statement" string="LM_Ref" domain="[('ref_statement','!=',False),('payeur','=','LM')]"/>
                     <filter name="ref_statement" string="SUD_No_Ref" domain="[('ref_statement','=',False),('payeur','=','SUD')]"/>
                     <filter name="ref_statement" string="SUD_Ref" domain="[('ref_statement','!=',False),('payeur','=','SUD')]"/>
+                    <separator/>
+                    <filter name="payment_method" string="Cash" domain="[('payment_method','=','cash'),('status','!=','paid']"/>
+                    <filter name="payment_method" string="Check" domain="[('payment_method','=','check'),('status','!=','paid']"/>
                 </filter>
             </field>
         </record>

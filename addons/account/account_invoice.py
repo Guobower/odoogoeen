@@ -1054,6 +1054,7 @@ class account_invoice(osv.osv):
         return True
 
     def invoice_validate(self, cr, uid, ids, context=None):
+        #from pdb import set_trace;set_trace()
         self.write(cr, uid, ids, {'state':'open'}, context=context)
         return True
 
