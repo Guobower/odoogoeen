@@ -26,9 +26,7 @@
             <field name="inherit_id" ref="account.invoice_form"/>
             <field name="arch" type="xml"> 
                 <data>
-                    <xpath expr="//button[@string='Validate']" position="after">
-                        <buttoalidate_cash" states="draftn name="invoice_v" string="Cash Payment" type="object" groups="base.group_user"/>
-                    </xpath>
+                   
                     <field name="partner_id" position="after">
                         <field name="ref_statement" attrs="{'readonly':[('state','in',('draft','proforma','proforma2','paid','cancelled',))]}"/>
                         <field name="payment_method"/>
