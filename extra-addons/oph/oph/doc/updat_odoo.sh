@@ -15,7 +15,7 @@
 
 SERVER_DIR=/usr/odoo
 echo "SERVER:$SERVER_DIR"
-CURRENT_USER=lof
+CURRENT_USER='lof'
 DIR_NAME=odoogoeen.source
 REPOSITORY=/home/$CURRENT_USER/$DIR_NAME
 PROD_BRANCH=devfromscratch70

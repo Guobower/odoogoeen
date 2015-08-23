@@ -11,6 +11,7 @@
             <field name="arch" type="xml">
                 <data>
                     <field name="date_invoice" position="after">
+                        <field name="date_acte"/>
                         <field name="payeur"/>
                         <field name="ref_statement"/>
                     </field>
@@ -25,12 +26,15 @@
             <field name="inherit_id" ref="account.invoice_form"/>
             <field name="arch" type="xml"> 
                 <data>
-                    <xpath expr="//button[@string='Validate']" position="after">
-                        <button name=" invoice_validate_cash" states="draft" string="Validate &amp; Cash Payment" type="object" groups="base.group_user"/>
-                    </xpath>
+                   
                     <field name="partner_id" position="after">
                         <field name="ref_statement" attrs="{'readonly':[('state','in',('draft','proforma','proforma2','paid','cancelled',))]}"/>
+                        <field name="payment_method"/>
                     </field>
+                    <xpath expr="//button[@string='Validate']" position="after">
+                        <button name="invoice_check" states="draft" string="Check Payment" type="object" groups="base.group_user"/>
+                        <button name="invoice_cash" states="draft" string="Cash Payment" type="object" groups="base.group_user"/>
+                    </xpath>
                
                     <xpath expr="//field[@name='invoice_line']" position="before">
                         <group>
@@ -42,6 +46,9 @@
                     <xpath expr="//field[@name='invoice_line']/tree/field[@name='product_id']" position="attributes">
                         <attribute name="domain">[('sale_ok', '=', True)]</attribute>
                         <!-- on surcharge la vue invoice_form pour que seul les produits sale_ok s'affichent-->
+                    </xpath>
+                    <xpath expr="//group/group/field[@name='date_invoice']" position="after">
+                        <field name="date_acte" required="1"/>
                     </xpath>
 
                 </data>
