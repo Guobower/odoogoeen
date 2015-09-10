@@ -1496,6 +1496,7 @@ AttributeError: type object 'datetime.date' has no attribute 'now'
 \label{sec:defaultnow}
 
 
+
 \begin{minted}{python}
 import time
 [...]
@@ -1515,7 +1516,6 @@ _defaults = {
 "date": lambda *a: time.strftime(’%Y-%m-%d’),
 }
 \end{verbatim}
-
 
 \subsection{Calculer l'age }
 \label{sec:age}

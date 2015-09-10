@@ -1,98 +1,245 @@
 \select@language {french}
-\contentsline {section}{\numberline {1}Raccourcis Emacs}{4}
-\contentsline {section}{\numberline {2}SVN configuration}{5}
-\contentsline {subsection}{\numberline {2.1}Checkout}{7}
-\contentsline {subsection}{\numberline {2.2}Commit}{7}
-\contentsline {subsection}{\numberline {2.3}Export}{7}
-\contentsline {subsubsection}{\numberline {2.3.1}Export d'une r\IeC {\'e}vision particuli\IeC {\`e}re}{8}
-\contentsline {subsection}{\numberline {2.4}Status}{9}
-\contentsline {section}{\numberline {3}installation des d\IeC {\'e}pendances python}{9}
-\contentsline {section}{\numberline {4}Eclipse}{9}
-\contentsline {subsection}{\numberline {4.1}Comment cr\IeC {\'e}er un projet openerp}{9}
-\contentsline {subsection}{\numberline {4.2}Cr\IeC {\'e}ation d'un role pour openerp}{10}
-\contentsline {subsection}{\numberline {4.3}Cr\IeC {\'e}ation du projet dans eclipse}{10}
-\contentsline {subsection}{\numberline {4.4}Run configuration}{10}
-\contentsline {subsection}{\numberline {4.5}Lorsque qu'il manque pleins de choses dans le menu "Run"}{10}
-\contentsline {subsection}{\numberline {4.6}Installation de aeroolib}{10}
-\contentsline {subsection}{\numberline {4.7}A faire en fin de session}{11}
-\contentsline {subsection}{\numberline {4.8}Mise \IeC {\`a} jour d'une branche d\IeC {\'e}j\IeC {\`a} pr\IeC {\'e}sente localement}{11}
-\contentsline {subsection}{\numberline {4.9}Comment r\IeC {\'e}cup\IeC {\'e}rer une version d'un fichier}{11}
-\contentsline {subsection}{\numberline {4.10}Comment revenir en arriere sur un fichier}{11}
-\contentsline {subsection}{\numberline {4.11}Comment faire un diff entre sa derni\IeC {\`e}re r\IeC {\'e}vision et la derni\IeC {\`e}re r\IeC {\'e}vision d'une autre branche?}{12}
-\contentsline {subsubsection}{\numberline {4.11.1}Et pour avoir un diff en couleur}{12}
-\contentsline {subsection}{\numberline {4.12}Comment accepter un merge avec une autre branche?}{12}
-\contentsline {subsection}{\numberline {4.13}Comment connaitre ses branches}{12}
-\contentsline {subsection}{\numberline {4.14}Comment effacer une branche?}{13}
-\contentsline {subsection}{\numberline {4.15}Comment cr\IeC {\'e}er une nouvelle branche}{13}
-\contentsline {subsection}{\numberline {4.16}Comment utiliser Latex dans eclipse}{13}
-\contentsline {section}{\numberline {5}Configuration du server}{13}
-\contentsline {section}{\numberline {6}postgresql}{13}
-\contentsline {subsection}{\numberline {6.1}comment connaitre les processus connect\IeC {\'e} \IeC {\`a} une base de donn\IeC {\'e}e:}{13}
-\contentsline {subsection}{\numberline {6.2}Comment dump/restore une database.}{14}
-\contentsline {subsection}{\numberline {6.3}Exemple de script}{14}
-\contentsline {section}{\numberline {7}PGadmin}{17}
-\contentsline {subsection}{\numberline {7.1}Comment changer le password d'un role?}{17}
-\contentsline {subsection}{\numberline {7.2}Comment retrouver le nom des databases?}{18}
-\contentsline {subsection}{\numberline {7.3}Comment v\IeC {\'e}rifier que postgresql est en route}{18}
-\contentsline {subsection}{\numberline {7.4}Comment changer de database?}{18}
-\contentsline {subsection}{\numberline {7.5}Comment obtenir la liste des tables?}{18}
-\contentsline {subsection}{\numberline {7.6}Comment changer de role?}{19}
-\contentsline {section}{\numberline {8}Editer du code en remote avec emacs}{19}
-\contentsline {section}{\numberline {9}Comment imprimer du code en coloration syntaxique}{19}
-\contentsline {subsection}{\numberline {9.1}Imprimer coloration syntaxique python}{20}
-\contentsline {section}{\numberline {10}Commentaire dans un XML}{20}
-\contentsline {subsection}{\numberline {10.1}commentaire}{20}
-\contentsline {subsection}{\numberline {10.2}Comment retirer du code xml temporairement?}{20}
-\contentsline {section}{\numberline {11}Chercher une string dans les fichier d'un directory}{20}
-\contentsline {section}{\numberline {12}Deboggage}{21}
-\contentsline {subsection}{\numberline {12.1}Utilisation de pdb}{21}
-\contentsline {subsection}{\numberline {12.2}Comment afficher le nom de la m\IeC {\'e}thode }{21}
-\contentsline {section}{\numberline {13}Object, Fields}{22}
-\contentsline {subsection}{\numberline {13.1}Fields}{22}
-\contentsline {subsection}{\numberline {13.2}boolean}{23}
-\contentsline {section}{\numberline {14}H\IeC {\'e}ritage}{23}
-\contentsline {subsection}{\numberline {14.1}class inheritance}{23}
-\contentsline {subsection}{\numberline {14.2}H\IeC {\'e}ritage par prototyping}{23}
-\contentsline {subsection}{\numberline {14.3}H\IeC {\'e}ritage par d\IeC {\'e}l\IeC {\'e}gation}{24}
-\contentsline {subsection}{\numberline {14.4}Peut on \IeC {\'e}craser les valeurs d\IeC {\textquoteright }un champ fields.selection avec un h\IeC {\'e}ritage.}{24}
-\contentsline {subsection}{\numberline {14.5}H\IeC {\'e}ritage de vue}{24}
-\contentsline {subsubsection}{\numberline {14.5.1}H\IeC {\'e}ritage de search view}{24}
-\contentsline {section}{\numberline {15}Les relations one2many, many2many, many2one}{25}
-\contentsline {subsection}{\numberline {15.1}one2one}{25}
-\contentsline {subsection}{\numberline {15.2}one2many}{26}
-\contentsline {subsection}{\numberline {15.3}many2one}{27}
-\contentsline {subsubsection}{\numberline {15.3.1}optional parameters}{28}
-\contentsline {subsection}{\numberline {15.4}many2many}{28}
-\contentsline {subsection}{\numberline {15.5}Bidirectionnel. Comment le rendre bidirectionnel?}{28}
-\contentsline {section}{\numberline {16}Nom des champs}{29}
-\contentsline {section}{\numberline {17}Convention de nommage}{29}
-\contentsline {subsection}{\numberline {17.1}Wizard et convention de nommage}{30}
-\contentsline {section}{\numberline {18}Les method ORM}{30}
-\contentsline {subsection}{\numberline {18.1}create}{30}
-\contentsline {subsubsection}{\numberline {18.1.1}Signature}{30}
-\contentsline {subsubsection}{\numberline {18.1.2}return}{30}
-\contentsline {subsection}{\numberline {18.2}write}{30}
-\contentsline {subsubsection}{\numberline {18.2.1}Signature}{30}
-\contentsline {subsubsection}{\numberline {18.2.2}return}{31}
-\contentsline {subsection}{\numberline {18.3}Diff\IeC {\'e}rence entre write et create}{31}
-\contentsline {subsection}{\numberline {18.4}search}{31}
-\contentsline {subsubsection}{\numberline {18.4.1}signature}{31}
-\contentsline {subsubsection}{\numberline {18.4.2}return}{31}
-\contentsline {subsection}{\numberline {18.5}browse}{32}
-\contentsline {subsubsection}{\numberline {18.5.1}signature}{32}
-\contentsline {subsubsection}{\numberline {18.5.2}return}{32}
-\contentsline {subsection}{\numberline {18.6}read}{32}
-\contentsline {subsubsection}{\numberline {18.6.1}signature}{32}
-\contentsline {subsubsection}{\numberline {18.6.2}return}{33}
-\contentsline {section}{\numberline {19}unlink}{33}
-\contentsline {subsection}{\numberline {19.1}Comment faire pour ne pas pouvoir supprimer certains records en fonction de leur state?}{33}
-\contentsline {section}{\numberline {20}name\_get()}{33}
-\contentsline {section}{\numberline {21}name\_search()}{33}
-\contentsline {section}{\numberline {22}Syntaxe du xml pour les forms view}{34}
-\contentsline {subsection}{\numberline {22.1}Affichage des labels des champs}{34}
-\contentsline {subsection}{\numberline {22.2}label for}{34}
-\contentsline {subsection}{\numberline {22.3}separator}{34}
-\contentsline {subsection}{\numberline {22.4}class="oe\_inline"}{34}
-\contentsline {subsection}{\numberline {22.5}class="oe\_highlight"}{34}
-\contentsline {subsection}{\numberline {22.6}widget status bar }{35}
-\contentsline {subsection}{\numberline {22.7}group}{35}
+\contentsline {section}{\numberline {1}Raccourcis Emacs}{6}
+\contentsline {section}{\numberline {2}SVN configuration}{6}
+\contentsline {subsection}{\numberline {2.1}Checkout}{8}
+\contentsline {subsection}{\numberline {2.2}Commit}{9}
+\contentsline {subsection}{\numberline {2.3}Export}{9}
+\contentsline {subsubsection}{\numberline {2.3.1}Export d'une r\IeC {\'e}vision particuli\IeC {\`e}re}{10}
+\contentsline {subsection}{\numberline {2.4}Status}{10}
+\contentsline {section}{\numberline {3}installation des d\IeC {\'e}pendances python}{10}
+\contentsline {section}{\numberline {4}Eclipse}{11}
+\contentsline {subsection}{\numberline {4.1}Comment cr\IeC {\'e}er un projet openerp}{11}
+\contentsline {subsection}{\numberline {4.2}Cr\IeC {\'e}ation d'un role pour openerp}{11}
+\contentsline {subsection}{\numberline {4.3}Cr\IeC {\'e}ation du projet dans eclipse}{12}
+\contentsline {subsection}{\numberline {4.4}Run configuration}{12}
+\contentsline {subsection}{\numberline {4.5}Lorsque qu'il manque pleins de choses dans le menu "Run"}{12}
+\contentsline {subsection}{\numberline {4.6}Installation de aeroolib}{12}
+\contentsline {subsection}{\numberline {4.7}A faire en fin de session}{13}
+\contentsline {subsection}{\numberline {4.8}Mise \IeC {\`a} jour d'une branche d\IeC {\'e}j\IeC {\`a} pr\IeC {\'e}sente localement}{13}
+\contentsline {subsection}{\numberline {4.9}Comment r\IeC {\'e}cup\IeC {\'e}rer une version d'un fichier}{13}
+\contentsline {subsection}{\numberline {4.10}Comment revenir en arriere sur un fichier}{13}
+\contentsline {subsection}{\numberline {4.11}Comment faire un diff entre sa derni\IeC {\`e}re r\IeC {\'e}vision et la derni\IeC {\`e}re r\IeC {\'e}vision d'une autre branche?}{13}
+\contentsline {subsubsection}{\numberline {4.11.1}Et pour avoir un diff en couleur}{14}
+\contentsline {subsection}{\numberline {4.12}Comment accepter un merge avec une autre branche?}{14}
+\contentsline {subsection}{\numberline {4.13}Comment connaitre ses branches}{14}
+\contentsline {subsection}{\numberline {4.14}Comment effacer une branche?}{14}
+\contentsline {subsection}{\numberline {4.15}Comment cr\IeC {\'e}er une nouvelle branche}{15}
+\contentsline {subsection}{\numberline {4.16}Comment utiliser Latex dans eclipse}{15}
+\contentsline {section}{\numberline {5}Configuration du server}{15}
+\contentsline {section}{\numberline {6}postgresql}{15}
+\contentsline {subsection}{\numberline {6.1}comment connaitre les processus connect\IeC {\'e} \IeC {\`a} une base de donn\IeC {\'e}e:}{15}
+\contentsline {subsection}{\numberline {6.2}Comment dump/restore une database.}{15}
+\contentsline {subsection}{\numberline {6.3}Exemple de script}{16}
+\contentsline {section}{\numberline {7}PGadmin}{18}
+\contentsline {subsection}{\numberline {7.1}Comment changer le password d'un role?}{19}
+\contentsline {subsection}{\numberline {7.2}Comment retrouver le nom des databases?}{19}
+\contentsline {subsection}{\numberline {7.3}Comment v\IeC {\'e}rifier que postgresql est en route}{20}
+\contentsline {subsection}{\numberline {7.4}Comment changer de database?}{20}
+\contentsline {subsection}{\numberline {7.5}Comment obtenir la liste des tables?}{20}
+\contentsline {subsection}{\numberline {7.6}Comment changer de role?}{20}
+\contentsline {section}{\numberline {8}Editer du code en remote avec emacs}{20}
+\contentsline {section}{\numberline {9}Comment imprimer du code en coloration syntaxique}{21}
+\contentsline {subsection}{\numberline {9.1}Imprimer coloration syntaxique python}{21}
+\contentsline {section}{\numberline {10}Commentaire dans un XML}{22}
+\contentsline {subsection}{\numberline {10.1}commentaire}{22}
+\contentsline {subsection}{\numberline {10.2}Comment retirer du code xml temporairement?}{22}
+\contentsline {section}{\numberline {11}Chercher une string dans les fichier d'un directory}{22}
+\contentsline {section}{\numberline {12}Deboggage}{22}
+\contentsline {subsection}{\numberline {12.1}Utilisation de pdb}{22}
+\contentsline {subsection}{\numberline {12.2}Comment afficher le nom de la m\IeC {\'e}thode }{23}
+\contentsline {section}{\numberline {13}Object, Fields}{23}
+\contentsline {subsection}{\numberline {13.1}Fields}{23}
+\contentsline {subsection}{\numberline {13.2}boolean}{24}
+\contentsline {section}{\numberline {14}H\IeC {\'e}ritage}{25}
+\contentsline {subsection}{\numberline {14.1}class inheritance}{25}
+\contentsline {subsection}{\numberline {14.2}H\IeC {\'e}ritage par prototyping}{25}
+\contentsline {subsection}{\numberline {14.3}H\IeC {\'e}ritage par d\IeC {\'e}l\IeC {\'e}gation}{26}
+\contentsline {subsection}{\numberline {14.4}Peut on \IeC {\'e}craser les valeurs d\IeC {\textquoteright }un champ fields.selection avec un h\IeC {\'e}ritage.}{26}
+\contentsline {subsection}{\numberline {14.5}H\IeC {\'e}ritage de vue}{26}
+\contentsline {subsubsection}{\numberline {14.5.1}H\IeC {\'e}ritage de search view}{26}
+\contentsline {section}{\numberline {15}Les relations one2many, many2many, many2one}{27}
+\contentsline {subsection}{\numberline {15.1}one2one}{27}
+\contentsline {subsection}{\numberline {15.2}one2many}{27}
+\contentsline {subsection}{\numberline {15.3}many2one}{29}
+\contentsline {subsubsection}{\numberline {15.3.1}optional parameters}{29}
+\contentsline {subsection}{\numberline {15.4}many2many}{30}
+\contentsline {subsection}{\numberline {15.5}Bidirectionnel. Comment le rendre bidirectionnel?}{30}
+\contentsline {section}{\numberline {16}Nom des champs}{31}
+\contentsline {section}{\numberline {17}Convention de nommage}{31}
+\contentsline {subsection}{\numberline {17.1}Wizard et convention de nommage}{31}
+\contentsline {section}{\numberline {18}Les method ORM}{32}
+\contentsline {subsection}{\numberline {18.1}create}{32}
+\contentsline {subsubsection}{\numberline {18.1.1}Signature}{32}
+\contentsline {subsubsection}{\numberline {18.1.2}return}{32}
+\contentsline {subsection}{\numberline {18.2}write}{32}
+\contentsline {subsubsection}{\numberline {18.2.1}Signature}{32}
+\contentsline {subsubsection}{\numberline {18.2.2}return}{33}
+\contentsline {subsection}{\numberline {18.3}Diff\IeC {\'e}rence entre write et create}{33}
+\contentsline {subsection}{\numberline {18.4}search}{33}
+\contentsline {subsubsection}{\numberline {18.4.1}signature}{33}
+\contentsline {subsubsection}{\numberline {18.4.2}return}{33}
+\contentsline {subsection}{\numberline {18.5}browse}{33}
+\contentsline {subsubsection}{\numberline {18.5.1}signature}{34}
+\contentsline {subsubsection}{\numberline {18.5.2}return}{34}
+\contentsline {subsection}{\numberline {18.6}read}{34}
+\contentsline {subsubsection}{\numberline {18.6.1}signature}{34}
+\contentsline {subsubsection}{\numberline {18.6.2}return}{34}
+\contentsline {section}{\numberline {19}unlink}{35}
+\contentsline {subsection}{\numberline {19.1}Comment faire pour ne pas pouvoir supprimer certains records en fonction de leur state?}{35}
+\contentsline {section}{\numberline {20}name\_get()}{35}
+\contentsline {section}{\numberline {21}name\_search()}{35}
+\contentsline {section}{\numberline {22}Syntaxe du xml pour les forms view}{36}
+\contentsline {subsection}{\numberline {22.1}Affichage des labels des champs}{36}
+\contentsline {subsection}{\numberline {22.2}label for}{36}
+\contentsline {subsection}{\numberline {22.3}separator}{36}
+\contentsline {subsection}{\numberline {22.4}class="oe\_inline"}{36}
+\contentsline {subsection}{\numberline {22.5}class="oe\_highlight"}{36}
+\contentsline {subsection}{\numberline {22.6}widget status bar }{37}
+\contentsline {subsection}{\numberline {22.7}group}{37}
+\contentsline {section}{\numberline {23}Comment masquer (ou pas) certains champs d\IeC {\textquoteright }une form view en fonction de valeurs d\IeC {\textquoteright }une autre field dans cette meme form?}{37}
+\contentsline {section}{\numberline {24}H\IeC {\'e}ritage de vue}{38}
+\contentsline {section}{\numberline {25}Les onglets}{39}
+\contentsline {section}{\numberline {26}Quand un module d\IeC {\'e}pend d\IeC {\textquoteright }autres modules}{39}
+\contentsline {section}{\numberline {27}Comment g\IeC {\'e}r\IeC {\'e} les dates avec le module arrow}{40}
+\contentsline {subsection}{\numberline {27.1}Installation de arrow}{40}
+\contentsline {subsection}{\numberline {27.2}import}{40}
+\contentsline {subsection}{\numberline {27.3}}{40}
+\contentsline {subsection}{\numberline {27.4}Que r\IeC {\'e}cupere-t-on dans avec un read qd le fields est un datetime}{40}
+\contentsline {subsection}{\numberline {27.5}string to arrow}{40}
+\contentsline {subsection}{\numberline {27.6}arrow to string}{41}
+\contentsline {subsection}{\numberline {27.7}Comment rentrer le timestamp now}{42}
+\contentsline {subsection}{\numberline {27.8}Les intervalles de temps avec arrow}{42}
+\contentsline {section}{\numberline {28}Time}{43}
+\contentsline {subsection}{\numberline {28.1}String 2 python date object: strptime}{43}
+\contentsline {subsection}{\numberline {28.2}datetime object 2 string: strftime}{43}
+\contentsline {section}{\numberline {29}Time et dur\IeC {\'e}e}{44}
+\contentsline {section}{\numberline {30}Comment rentrer des dates?}{45}
+\contentsline {subsection}{\numberline {30.1} Comment rentrer la date de saisie dans un champ \IeC {\textquotedblleft }datetime\IeC {\textquotedblright } ?}{45}
+\contentsline {subsection}{\numberline {30.2} Comment rentrer par d\IeC {\'e}faut la date du jour dans un champ "date" ?}{45}
+\contentsline {subsection}{\numberline {30.3}Calculer l'age }{46}
+\contentsline {subsubsection}{\numberline {30.3.1}comment r\IeC {\'e}cup\IeC {\'e}rer l'age en ann\IeC {\'e}es?}{46}
+\contentsline {subsection}{\numberline {30.4}Comment calculer la dur\IeC {\'e}e quand on a 2 dates}{46}
+\contentsline {subsection}{\numberline {30.5}Comment mettre la date en valeur par d\IeC {\'e}faut?}{47}
+\contentsline {section}{\numberline {31}Fabrique de l'agenda}{47}
+\contentsline {subsection}{\numberline {31.1} Fabrique de l\IeC {\textquoteright }agenda par 1/2 journ\IeC {\'e}e}{48}
+\contentsline {subsection}{\numberline {31.2}les resultats de read pour les fields de type datetime}{49}
+\contentsline {section}{\numberline {32}Travail sur les timezone}{49}
+\contentsline {section}{\numberline {33}Comment utiliser on\_change sur les datetime pour obtenir la date, le time, le jour de la semaine}{50}
+\contentsline {subsection}{\numberline {33.1}Comment obtenir le jour de la semaine}{50}
+\contentsline {subsection}{\numberline {33.2}Format date en interne}{52}
+\contentsline {section}{\numberline {34}Comment faire pour ne pas avoir \IeC {\`a} passer par une view form quand on veut cr\IeC {\'e}er/modifier un nouvel enregistrement?}{52}
+\contentsline {section}{\numberline {35}Comment cr\IeC {\'e}er les selections pour les spheres, cylindres, axis?}{53}
+\contentsline {section}{\numberline {36} onchange, attribute on\_change}{53}
+\contentsline {subsection}{\numberline {36.1}Comment cela fonctionne? La syntaxe}{53}
+\contentsline {subsection}{\numberline {36.2}Avec warning}{55}
+\contentsline {subsection}{\numberline {36.3}Si la class python contient d\IeC {\'e}j\IeC {\`a} une method on\_change}{56}
+\contentsline {section}{\numberline {37}Form /Tree view}{57}
+\contentsline {section}{\numberline {38}Se former sur psycopg2}{57}
+\contentsline {subsection}{\numberline {38.1}Insertion de valeurs}{58}
+\contentsline {section}{\numberline {39}Comprendre la requete dans la fonction name\_search}{59}
+\contentsline {section}{\numberline {40}COALESCE}{61}
+\contentsline {section}{\numberline {41}Syntaxe d'une SQL query}{62}
+\contentsline {section}{\numberline {42}Comment faire pour avoir l'entete uniquement sur la premiere page ?TODO}{62}
+\contentsline {section}{\numberline {43}Comment cr\IeC {\'e}er une s\IeC {\'e}rie de nombre flottant?}{62}
+\contentsline {section}{\numberline {44}Comment mettre en place des fichiers de configuration}{63}
+\contentsline {subsection}{\numberline {44.1}avec des d\IeC {\'e}corators}{63}
+\contentsline {subsection}{\numberline {44.2}Utilisation de configparser}{64}
+\contentsline {section}{\numberline {45}les groups et les users dans openerp}{64}
+\contentsline {subsection}{\numberline {45.1}Les droits (Right)}{64}
+\contentsline {subsection}{\numberline {45.2}Les groupes}{65}
+\contentsline {subsubsection}{\numberline {45.2.1}Comment utiliser le xml pour les groupes}{65}
+\contentsline {subsection}{\numberline {45.3}Les record rules}{65}
+\contentsline {subsection}{\numberline {45.4}Structure xml pour les record rules}{65}
+\contentsline {subsection}{\numberline {45.5}structure de id.model.access.csv}{66}
+\contentsline {subsection}{\numberline {45.6}Structure du fichier <nom\_module\_security.xml>}{66}
+\contentsline {subsection}{\numberline {45.7}Comment on donne acc\IeC {\'e}s aux menus - Menu access rights}{67}
+\contentsline {subsection}{\numberline {45.8}Comment ajouter un nouvel user?}{67}
+\contentsline {subsection}{\numberline {45.9}Comment faire pour qu'un user ait acc\IeC {\'e}s au menu setting}{67}
+\contentsline {section}{\numberline {46}Menu et Action}{68}
+\contentsline {section}{\numberline {47}Menuitem}{68}
+\contentsline {subsection}{\numberline {47.1} Comment ordonner les items du menus dans la colonne de gauche?}{68}
+\contentsline {section}{\numberline {48}Les pricelist}{68}
+\contentsline {subsection}{\numberline {48.1}Pricelist: object product.pricelist}{69}
+\contentsline {subsection}{\numberline {48.2}pricelist version: object product.pricelist.version}{69}
+\contentsline {subsection}{\numberline {48.3}En bref}{69}
+\contentsline {section}{\numberline {49}Workflow}{69}
+\contentsline {section}{\numberline {50}Quels sont les icons disponibles?}{70}
+\contentsline {subsection}{\numberline {50.1}la liste}{70}
+\contentsline {section}{\numberline {51}Report Aeroo}{70}
+\contentsline {subsection}{\numberline {51.1}Comment faire pour que le report aeroo cr\IeC {\'e}\IeC {\'e} soit enregistr\IeC {\'e} en attachment?}{70}
+\contentsline {subsection}{\numberline {51.2}Comment faire pour que les attachment ne soient pas stock\IeC {\'e}s en database (sous forme binaire) mais dans le syst\IeC {\`e}me de fichier}{70}
+\contentsline {subsection}{\numberline {51.3}document\_ftp}{71}
+\contentsline {subsection}{\numberline {51.4}Comment ins\IeC {\'e}rer les donn\IeC {\'e}es de la database dans le report?}{71}
+\contentsline {subsection}{\numberline {51.5}Comment mettre des conditions?}{71}
+\contentsline {subsection}{\numberline {51.6}when}{71}
+\contentsline {subsection}{\numberline {51.7}Comment faire pour supprimer les blank lines g\IeC {\'e}n\IeC {\'e}r\IeC {\'e}s par les <if>}{72}
+\contentsline {subsection}{\numberline {51.8}Dans une selection on met la clef ou la valeur pour le test?}{73}
+\contentsline {subsubsection}{\numberline {51.8.1}Tester l'existance d'une valeur pour un champ?}{73}
+\contentsline {subsubsection}{\numberline {51.8.2}Comment faire pour imprimer la valeur et pas la clef d'un fields.selection dans un aeroo report}{73}
+\contentsline {subsubsection}{\numberline {51.8.3}la fonction date\_report() dans les reports}{73}
+\contentsline {subsubsection}{\numberline {51.8.4}formattage des dates dans les aeroo reports}{73}
+\contentsline {subsubsection}{\numberline {51.8.5}Comment afficher uniquement le time d'un champ datetime dans un report aeroo?}{74}
+\contentsline {subsubsection}{\numberline {51.8.6}Comment afficher la date du jour?}{74}
+\contentsline {subsubsection}{\numberline {51.8.7}For loop dans un aeroo report}{74}
+\contentsline {subsubsection}{\numberline {51.8.8}Imprimer la signature du user dans les report aeroo?}{74}
+\contentsline {subsubsection}{\numberline {51.8.9}Comment imprimer la somme d'un champ}{74}
+\contentsline {section}{\numberline {52}Comment faire pour emp\IeC {\'e}cher la suppression de certains records en fonction de leur state?}{75}
+\contentsline {section}{\numberline {53}Comment avec un boutton dans une vue d'object ouvrir une vue d'un autre object?}{75}
+\contentsline {section}{\numberline {54}Champ selection(fields.selection)}{76}
+\contentsline {subsection}{\numberline {54.1}Avec une fonction}{76}
+\contentsline {section}{\numberline {55}Comment on remplit les data.xml avec des relations one2many?}{78}
+\contentsline {section}{\numberline {56}Calcul sur les formules de lunettes}{78}
+\contentsline {section}{\numberline {57}Prefix Operator}{79}
+\contentsline {section}{\numberline {58}AND-OR tricks}{79}
+\contentsline {section}{\numberline {59}Portal}{80}
+\contentsline {subsection}{\numberline {59.1}Comment mettre en place un user pour le portal?}{80}
+\contentsline {section}{\numberline {60}Webkit}{80}
+\contentsline {subsection}{\numberline {60.1}Installation de webkit}{80}
+\contentsline {subsection}{\numberline {60.2}Cr\IeC {\'e}ation d'un rapport webkit}{81}
+\contentsline {subsection}{\numberline {60.3}les autres modules webkit pour aider \IeC {\`a} comprendre}{81}
+\contentsline {section}{\numberline {61}multicompany}{81}
+\contentsline {subsection}{\numberline {61.1}Comment on rajoute un user dans une company.}{82}
+\contentsline {subsection}{\numberline {61.2}Installer les charts of account}{82}
+\contentsline {section}{\numberline {62}Commment activer un nouveau user}{82}
+\contentsline {section}{\numberline {63}Comment faire pour que les invoices utilisent le compte 706 prestation de service.}{82}
+\contentsline {subsection}{\numberline {63.1}Comment cr\IeC {\'e}er un compte 706 001 pour la chirurgie}{83}
+\contentsline {section}{\numberline {64}Comment allow cancelling entries dans les journals?}{83}
+\contentsline {section}{\numberline {65}user et multicompany}{83}
+\contentsline {section}{\numberline {66}Shop}{83}
+\contentsline {section}{\numberline {67}Configuration finale}{84}
+\contentsline {subsection}{\numberline {67.1}Comment configurer le journal pour les paiements?}{84}
+\contentsline {subsection}{\numberline {67.2}Configuration des prices list.}{85}
+\contentsline {section}{\numberline {68}Comment changer le password d'un user?}{85}
+\contentsline {section}{\numberline {69}Odoo 8.0}{85}
+\contentsline {subsection}{\numberline {69.1}Comment r\IeC {\'e}cup\IeC {\'e}rer les sources?}{85}
+\contentsline {section}{\numberline {70}Comment supprimer le "Manage Database"?}{86}
+\contentsline {section}{\numberline {71}travailler avec git}{87}
+\contentsline {subsection}{\numberline {71.1}reset}{87}
+\contentsline {subsection}{\numberline {71.2}checkout}{88}
+\contentsline {subsection}{\numberline {71.3}revert}{88}
+\contentsline {subsection}{\numberline {71.4}Op\IeC {\'e}ration sur les fichiers}{89}
+\contentsline {subsubsection}{\numberline {71.4.1}Comment unstag\IeC {\'e} un fichier stag\IeC {\'e}}{89}
+\contentsline {subsection}{\numberline {71.5}cloner uniquement une branche}{89}
+\contentsline {subsection}{\numberline {71.6}comment faire pour que ma fork de odoo soit \IeC {\`a} jour}{89}
+\contentsline {subsection}{\numberline {71.7}comment faire pour que mon clone de la r\IeC {\'e}vision 7.0 soit \IeC {\`a} jour par rapport \IeC {\`a} la 7.0 de odoo?}{89}
+\contentsline {subsection}{\numberline {71.8}merge/rebase}{90}
+\contentsline {section}{\numberline {72}Comment abandonner le suivi de version d'un fichier tout en le conservant dans le working directory}{90}
+\contentsline {section}{\numberline {73}comment annuler un commit}{91}
+\contentsline {section}{\numberline {74}Comment renommer l'alias d'un remote?}{91}
+\contentsline {section}{\numberline {75}Travailler sur les branches}{91}
+\contentsline {subsection}{\numberline {75.1}Comment changer pour une branche qui existe d\IeC {\'e}j\IeC {\`a} localement:}{91}
+\contentsline {subsection}{\numberline {75.2}Comment changer pour une branche qui existe upstream:}{91}
+\contentsline {subsection}{\numberline {75.3}Comment cr\IeC {\'e}er une nouvelle branche \IeC {\`a} partir d'une branche existante}{92}
+\contentsline {subsection}{\numberline {75.4}Nettoyage en local des branches qui n'existent plus upstream:}{92}
+\contentsline {section}{\numberline {76}conflits}{92}
+\contentsline {section}{\numberline {77}Comment supprimer une branche locale}{92}
+\contentsline {section}{\numberline {78}supprimer une branche distante}{92}
+\contentsline {section}{\numberline {79}cr\IeC {\'e}ation de branche de suivi}{93}
+\contentsline {section}{\numberline {80}Comment avoir des informations sur les remote}{94}
+\contentsline {section}{\numberline {81}a sucessful git branching model}{94}
+\contentsline {subsection}{\numberline {81.1}Les release branches.}{94}
+\contentsline {subsection}{\numberline {81.2}Les hotfix branch}{95}
+\contentsline {section}{\numberline {82}Mise en place des emails dans un module}{95}
+\contentsline {subsection}{\numberline {82.1}les diff\IeC {\'e}rents champs}{95}
+\contentsline {subsection}{\numberline {82.2}Email to bloc operatoire}{95}
+\contentsline {section}{\numberline {83}Sauvegarde de la base de donn\IeC {\'e}e}{95}
