@@ -474,6 +474,7 @@ for db_name in db_names:
     except:
         print "Couldn't backup database" % (db_name)
 \end{minted}
+
 \begin{minted}{python}
 import os
 import time
@@ -482,18 +483,17 @@ import subprocess
 bck_dir='/home/lof/backup'
 db_username='openerp'
 db_names=['goeen001']
-dumpit ='-Fc \%s -f \%s'
+dumpit ='-Fc %s -f %s'
 
 for db in db_names:
 try:
-dump_file='\%s_\%s.dump' \%(db,time.strftime('\%Y\%m\%d_\%H\%M'))
+dump_file='%s_%s.dump' %(db,time.strftime('%Y%m%d_%H%M'))
 dump_path=os.join.path(bck_dir,dump_file)
 command ='pg_dump' + dumpit \% (db, dump_path)
 subprocess.call(command, shell=True)
 \end{minted} 
 
-
-
+\begin{minted}{bash}
 #!/bin/sh    
 hostname=`hostname`
 
@@ -509,7 +509,7 @@ hostname=`hostname`
 for db in openerpdb1 openerpdb2
 do
   date=`date +"%Y%m%d_%H%M%N"`
-  filename="/var/pgdump/${hostname}_${db}_${date}.sql"
+  #filename="/var/pgdump/${hostname}\_${db}\_${date}.sql"
   pg_dump -E UTF-8 -p 5433 -F p -b -f $filename $db
   gzip $filename
 done
@@ -518,9 +518,11 @@ done
 /etc/init.d/openerp-server start
 
 exit 0
+\end{minted} 
 
 Housekeeping script /var/scripts/housekeeping.sh (deletes backups which are older than 30 days)
 
+\begin{minted}{bash}
 #!/bin/sh
 path=/var/pgdump
 logfile=/var/log/$0
@@ -531,17 +533,12 @@ do
   echo "deleting: " $file >> $logfile
   rm $file
 done
-
 exit 0
-
-
-
-
-
-
+\end{minted}
 
 \section{PGadmin}
 \label{sec:pgadmin_remote}
+
 
 \begin{alltt}
 name:unnom
@@ -551,11 +548,12 @@ username: openerp
 password: openerp
 \end{alltt}
 
-Il y a plusieurs roles pour les voir :
+Il y a plusieurs roles.
+Comment voir quels sont les roles:
 \begin{verbatim}
 su postgres
 psql
-SELECT rolname FROM pg\_roles;
+SELECT rolname FROM pg_roles;
 \end{verbatim}
 
 
@@ -573,6 +571,7 @@ psql
 Saisissez le nouveau mot de passe :
 Saisissez-le à nouveau :
 \end{verbatim}
+
 \subsection{Comment retrouver le nom des databases?}
 \label{sec:databas_name}
 
@@ -585,26 +584,40 @@ SELECT datname FROM pg_database;
 \subsection{Comment vérifier que postgresql est en route}
 \label{sec:postgresql}
 
+\begin{verbatim}
 invoke-rc.d postgresql status
 Running clusters: 9.1/main 
+\end{verbatim}
 
+ou
+\begin{verbatim}
+service postgresql status
+\end{verbatim}
+ou
+\begin{verbatim}
 lsof -i :5432
 COMMAND   PID     USER   FD   TYPE DEVICE SIZE/OFF NODE NAME
 postgres 2585 postgres    3u  IPv4   8037      0t0  TCP localhost:postgresql (LISTEN)
+\end{verbatim}
+
+le : avant le port est important.
 
 \subsection{Comment changer de database?}
 \label{sec:ch_database}
+
 \begin{verbatim}
-\c nom\_database
+\c nom_database
 \end{verbatim}
+
 \subsection{Comment obtenir la liste des tables?}
 \label{sec:table_list}
+
 \begin{verbatim}
 \d
 \end{verbatim}
+
 \subsection{Comment changer de role?}
 \label{sec:role}
-
 
 \section{Editer du code en remote avec emacs}
 \label{sec:emacs-remote}
@@ -614,7 +627,6 @@ Il arrive que cela bloque sur nouvelle demande de mot de passe. En allant dans /
 
 \section{Comment imprimer du code en coloration syntaxique}
 \label{sec:print_color}
-
 
 \begin{verbatim}
 aptitude install python-pygments
@@ -689,8 +701,11 @@ find ./ -type f -print0 | xargs -0 grep -i fields.many2many
 \label{sec:pdb}
 
 Dans le code là où on a un problème on met:
+
+\begin{minted}{python}
 import pdb
-pdb.set\_trace()
+pdb.set _trace()
+\end{minted}
 
 Le code va s'arréter là en mode console (pdb).
 \begin{description}
@@ -706,6 +721,7 @@ Le code va s'arréter là en mode console (pdb).
 
 \subsection{Comment afficher le nom de la méthode }
 \label{sec:stack}
+
 import inspect
 print "PASSING through", inspect.stack()[0][3]
 
@@ -771,8 +787,6 @@ custom_material()
 
 
 \framebox[1.1\width]{\_name == \_inherit}
-
-
 
 La class custom\_materiel va ajouter le nouveau champ manuf\_warranty à l'objet parent.material. Les nouvelles instances de cette class seront visibles par les views et tree de la superclass parent.material.
 
@@ -845,7 +859,6 @@ For example add a filer name ='Patel' and add a 'group by' name.
 \end{verbatim}
 
 
-
 \section{Les relations one2many, many2many, many2one}
 \label{sec:relations}
 
@@ -896,7 +909,6 @@ class B(osv.osv):
                 }
 \end{verbatim}
 
-
 \begin{verbatim}
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
@@ -927,13 +939,13 @@ fields.many2one('other.object.name', 'Field name', optional parameter)
 
 \subsubsection{optional parameters}
 \label{sec:optional_par}
+
 \begin{description}
 \item[ondelete] définit ce qui se passe lorsque la ressource vers laquelle pointe ce field est supprimé
   \begin{itemize}
     \item Default value: 'set null'
     \item Autres valeurs possibles: "cascade", "set null", "restrict", "no action", "set default"
   \end{itemize}
-
 \end{description}
 
 
@@ -951,6 +963,7 @@ class A(osv.osv):
                                                 '$Bname_id',
                                                 'Nom du champ'),
 \end{verbatim}
+
 
 Explication:
 
