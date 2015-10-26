@@ -525,7 +525,7 @@ Housekeeping script /var/scripts/housekeeping.sh (deletes backups which are olde
 \begin{minted}{bash}
 #!/bin/sh
 path=/var/pgdump
-logfile=/var/log/$0
+logfile=/var/log/\$0
 
 rm -f $logfile
 for file in `find /var/pgdump/ -mtime +30 -type f -name *.sql.gz`
@@ -535,6 +535,7 @@ do
 done
 exit 0
 \end{minted}
+
 
 \section{PGadmin}
 \label{sec:pgadmin_remote}
@@ -2810,7 +2811,6 @@ Si toutes les valeurs sont False OR retourne la derniere valeur.
 0 and a or b 2 $\leftarrow$ retourne b 
 
 
-
 \section{Portal}
 \label{sec:portal}
 
@@ -2826,6 +2826,8 @@ Il faut créer des droits dans ir.model.access.csv:
 portal_bloc_agenda,portal_bloc_agenda,model_oph_bloc_agenda,portal.group_portal,1,0,0,0
 portal_bloc_agenda_line,portal_bloc_agenda_line,model_oph_bloc_agenda_line,portal.group_portal,1,0,0,0
 \end{verbatim}
+
+
 
 Il faut créer une vue pour ce que l'on veut montrer eg:
 
@@ -2872,6 +2874,12 @@ setting-Technical-Parameters-System Parameters
 key :‘webkit\_path’
 path : /usr/share/openerp/wkhtmltopdf On met l'executable path
 
+
+
+\end{document}
+
+
+\end{document}
 \subsection{Création d'un rapport webkit}
 \label{sec:webkit_report_create}
 
@@ -2965,6 +2973,8 @@ Dans le formulaire de création de l'account il y a le champ "default tax" qu'il
 
 
 
+
+\end{document}
 
 \section{Comment allow cancelling entries dans les journals?}
 \label{sec:cancelling_entries}
@@ -3201,7 +3211,7 @@ non cela ne marche cela récupere quand la branche master.
 \subsection{comment faire pour que ma fork de odoo soit à jour}
 git remote add upstream git@github.com:odoo/odoo.git
 
-git feth upstream
+git fetch upstream
 
 git co mabranchelocaleamettreajour
 
@@ -3249,6 +3259,8 @@ Pour les diff des fichiers stagés: git diff --cached.
 
 \section{Comment abandonner le suivi de version d'un fichier tout en le conservant dans le working directory}
 git rm --cached readme.txt.
+
+
 
 \section{comment annuler un commit}
 git commit --amend on pourra modifier le msg du commit
@@ -3305,13 +3317,15 @@ git branch --set-upstream-to origin/nouvellebranche
 \subsection{Nettoyage en local des branches qui n'existent plus upstream:}
 \label{sec:prune}
 
-
 git remote prune <remote>
+
 
 \section{conflits}
 Pour voir les fichiers en conflit: git status
 resoudre les conflits
 les marqués comme résolus : git add  sur chaque fichier
+
+
 
 \section{Comment supprimer une branche locale}
 git branch pour avoir la liste des branches
@@ -3319,6 +3333,9 @@ git branch -d <nomdebranche>
 git branch -D pour forcer <nomdebranche>
 \section{supprimer une branche distante}
 git push <remote> :nondebranchedistant
+
+
+/end{document}
 
 \section{création de branche de suivi}
 pour créer une branche de suivi.
@@ -3328,6 +3345,7 @@ git checkout --set-upstream <branch> <remote>/<nomdebranche>
 
 Comment cloner juste une branche 
 git clone git@github:odoo/odoo --branch 7.0
+
 \begin{verbatim}
 ➜  ~  git clone git@github.com:frouty/test
 ➜  test git:(master) git remote add -f oph git@github.com:frouty/oph           
@@ -3336,6 +3354,7 @@ git clone git@github:odoo/odoo --branch 7.0
 Added dir 'extra-addons/oph'
 ➜  test git:(master) git subtree add --prefix extra-addons/aeroo --squash aeroo/7.0
 Added dir 'extra-addons/aeroo'
+
 ➜  test git:(master) tree -L 3
 .
 ├── extra-addons
@@ -3432,6 +3451,8 @@ Dans un fichier XML on va mettre les choses suivantes:
 Technical -> Automated action -  je trouve le mail pour le chef de bloc. 
 Technical  -> Actions -> Server Actions je trouve le mail pour le bloc.
 
+
+
 \section{Sauvegarde de la base de donnée}
 \label{sec:save_db}
 
@@ -3465,6 +3486,14 @@ lof\$pg_restore -d glaglaDB -U lof -C foo.dump # ne marche pas. j'ai une databas
 Pas réussi à régler le probleme avec pg_restore.
 
 \end{document}
+\section{Installation de la 8.0}
+\label{sec:install80}
+
+su
+pip install requirements.txt.
+requirements.txt est un fichier dans l'arborescence d'ODOO.
+
+
 
 
 Example of useful tags
