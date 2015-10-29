@@ -79,6 +79,7 @@ Permet de faire pleins de choses absolument géniales
                 'data/reporting_template_data.xml',
                 'report/examination_report.xml',
                 'edi/request_action_data.xml',
+                'oph_cim10_view.xml',
        #========================================================================
        #  'report/Test_premier_report.xml',
        #

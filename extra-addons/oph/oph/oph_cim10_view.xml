@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!-- OPH CIM10 VIEWS-->
+        <!-- TREE VIEW CIM10-->
+        <record model="ir.ui.view" id="cim10_tree_view_id">
+            <field name="name">cim10.tree</field>
+            <field name="model">oph.cim10</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <tree string="Type">
+                    <field name="name"/>
+                    <field name="code"/>
+                </tree>
+            </field>
+        </record>
+        <!-- FORM VIEW CIM10 -->
+        <record model="ir.ui.view" id="cim10_form_view_id">
+            <field name="name"> cim10.form</field>
+            <field name="model">oph.cim10</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <form string="CIM10" version="7.0">
+                    <group>
+                        <field name="name"/>
+                        <field name="code"/>
+                    </group>
+
+                    <group>
+                        <field name="comment"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+        <!-- END VIEW -->
+
+        <!-- ACTIONS / MENUITEM -->
+        <!-- CIM10 ACTION -->
+        <record model="ir.actions.act_window" id="cim10_action_id">
+            <field name="name">CIM10</field>
+            <field name="res_model">oph.cim10</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="cim10_tree_view_id"/>
+        </record>
+
+        <!-- CIM10 MENU-->
+        <menuitem parent="config_oph_id" id="cim10_menu_id" sequence ="90" action="cim10_action_id" name="CIM10"/>
+
+        <!-- SEARCH VIEW CIM 10 -->
+        <!--  search view  -->
+        <record id="view_filling_template_search_id" model="ir.ui.view">
+            <field name="name">oph.cim10.select</field>
+            <field name="model">oph.cim10</field>
+            <field name="arch" type="xml">
+                <search string = "Search CIM10">
+                    <field name="name"/>
+                    <field name="code"/>
+                </search>
+            </field>
+        </record>
+
+        
+
+    </data>
+</openerp>
