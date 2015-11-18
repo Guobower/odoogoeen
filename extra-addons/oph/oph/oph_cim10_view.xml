@@ -15,6 +15,7 @@
                 </tree>
             </field>
         </record>
+
         <!-- FORM VIEW CIM10 -->
         <record model="ir.ui.view" id="cim10_form_view_id">
             <field name="name"> cim10.form</field>
@@ -26,7 +27,6 @@
                         <field name="name"/>
                         <field name="code"/>
                     </group>
-
                     <group>
                         <field name="comment"/>
                     </group>
@@ -46,7 +46,7 @@
         </record>
 
         <!-- CIM10 MENU-->
-        <menuitem parent="config_oph_id" id="cim10_menu_id" sequence ="90" action="cim10_action_id" name="CIM10"/>
+        <menuitem parent="config_oph_id" id="cim10_menu_id" sequence ="90" action="cim10_action_id"/>
 
         <!-- SEARCH VIEW CIM 10 -->
         <!--  search view  -->
