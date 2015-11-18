@@ -2,6 +2,72 @@
 <openerp>
     <data>
 
+        <!-- OPH CIM10 CATEGORY VIEWS -->
+        <!-- CIM10 CATEGORY FORM VIEW -->
+        <record id="cim10_category_form_view" model="ir.ui.view">
+            <field name="name">cim10.category.form</field>
+            <field name="model">oph.cim10.category</field>
+            <field name="arch" type="xml">
+                <form string="CIM10 Categories" version="7.0">
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only"/>
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group name="parent" col="4">
+                                <field name="parent_id"/>
+                                <field name="type"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record id="cim10_category_list_view" model="ir.ui.view">
+            <field name="name">cim10.category.list</field>
+            <field name="model">oph.cim10.category</field>
+            <field name="priority">1</field>
+            <field name="arch" type="xml">
+                <tree string="CIM10 Categories">
+                    <field name="complete_name"/>
+                </tree>
+            </field>
+        </record>
+        
+         <!-- CIM10 CATEGORY TREE VIEW -->
+        <record id="cim10_category_tree_view" model="ir.ui.view">
+            <field name="name">cim10.category.tree</field>
+            <field name="model">oph.cim10.category</field>
+            <field name="field_parent">child_id</field>
+            <field name="arch" type="xml">
+                <tree toolbar="True" string="CIM10 Categories">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record id="cim10_category_action" model="ir.actions.act_window">
+            <field name="name">Code CIM10 by Category</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">oph.cim10.category</field>
+            <field name="domain">[('parent_id','=',False)]</field>
+            <field name="view_type">tree</field>
+            <field name="view_id" ref="cim10_category_tree_view"/>
+            <field name="help" type="html">
+              <p>
+                Here is a list of all your cim10 code classified by category. You
+                can click a category to get the list of all CIM10 codes linked to
+                this category or to a child of this category.
+              </p>
+            </field>
+        </record>
+
+
+
         <!-- OPH CIM10 VIEWS-->
         <!-- TREE VIEW CIM10-->
         <record model="ir.ui.view" id="cim10_tree_view_id">
@@ -36,6 +102,11 @@
         <!-- END VIEW -->
 
         <!-- ACTIONS / MENUITEM -->
+        <!-- MENUITEM -->
+        <menuitem name="CIM10" id="config_cim10_id" parent="config_oph_id" sequence="60"/>
+        <menuitem action="cim10_category_action" id="menu_cim10_category" parent="config_cim10_id" groups="base.group_no_one"/>
+        <!-- END MENUITEM -->
+        
         <!-- CIM10 ACTION -->
         <record model="ir.actions.act_window" id="cim10_action_id">
             <field name="name">CIM10</field>
@@ -46,7 +117,7 @@
         </record>
 
         <!-- CIM10 MENU-->
-        <menuitem parent="config_oph_id" id="cim10_menu_id" sequence ="90" action="cim10_action_id"/>
+        <menuitem parent="config_cim10_id" id="cim10_menu_id" sequence ="90" action="cim10_action_id"/>
 
         <!-- SEARCH VIEW CIM 10 -->
         <!--  search view  -->
