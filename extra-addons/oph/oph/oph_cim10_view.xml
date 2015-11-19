@@ -57,6 +57,7 @@
                                 
                                 <label for="categ_id" class="oe_edit_only"/>
                                     <h2><field name="categ_id"/></h2>
+                                <field name="description"/>
                             </div>
                     </sheet>
                 </form>
@@ -86,7 +87,7 @@
 
 
         <!-- OPH CIM10 CATEGORY VIEWS -->
-        <!-- CIM10 CATEGORY SERACH VIEW -->
+        <!-- CIM10 CATEGORY SEARCH VIEW -->
         <record id="cim10_category_search_view" model="ir.ui.view">
             <field name="name">cim10.category.search</field>
             <field name="model">oph.cim10.category</field>
@@ -118,6 +119,7 @@
                             <group name="parent" col="4">
                                 <field name="parent_id"/>
                                 <field name="type"/>
+                                <field name="description"/>
                             </group>
                         </group>
                     </sheet>

@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="0">
+        <!--
+    Resource: oph.cim10.category
+    -->
+        <!-- CHAPT -->
+        <record id="cim10_category_main" model="oph.cim10.category">
+            <field name="name">Main CIM10</field>
+            <field name="code">0</field>
+        </record>
+        <record id="cim10_category_I" model="oph.cim10.category">
+            <field name="parent_id" ref="cim10_category_main"/>
+            <field name="name">Chapitre I Certaines maladies infectieuses et parasitaires</field>
+            <field name="code">A00-B99</field>
+        </record>
+        <record id="cim10_category_II" model="oph.cim10.category">
+            <field name="parent_id" ref="cim10_category_main"/>
+            <field name="name"> Chapitre II Tumeurs</field>
+            <field name="code">C00-D48</field>
+        </record>
+        <record id="cim10_category_III" model="oph.cim10.category">
+            <field name="parent_id" ref="cim10_category_main"/>
+            <field name="name">Chapitre III Maladies du sang et des organes hématopoïétiques et certains troubles du système immunitaire</field>
+            <field name="code">D50-D89</field>
+        </record>
+        <record id="cim10_category_IV" model="oph.cim10.category">
+            <field name="parent_id" ref="cim10_category_main"/>
+            <field name="name">Chapitre IV Maladies endocriniennes, nutritionnelles et métaboliques</field>
+            <field name="code">E00-E90</field>
+        </record>
+        <record id="cim10_category_V" model="oph.cim10.category">
+            <field name="parent_id" ref="cim10_category_main"/>
+            <field name="name">Chapitre V Troubles mentaux et du comportement</field>
+            <field name="code">F00-F99</field>
+        </record>
+        <record id="cim10_category_VI" model="oph.cim10.category">
+            <field name="parent_id" ref="cim10_category_main"/>
+            <field name="name">Chapitre VI Maladies du système nerveux</field>
+            <field name="code">G00-G99</field>
+        </record>
+        <record id="cim10_category_VII" model="oph.cim10.category">
+            <field name="parent_id" ref="cim10_category_main"/>
+            <field name="name">Chapitre VII Maladies de l'oeil et de ses annexes</field>
+            <field name="code">H00-H59</field>
+        </record>
+        <record id="cim10_category_H00_H06" model="oph.cim10.category">
+            <field name="parent_id" ref="cim10_category_VII"/>
+            <field name="name">Affections de la paupière, de l'appareil lacrymal et de l'orbite</field>
+            <field name="code">H00-H06</field>
+        </record>
+       <record id="cim10_category_H00" model="oph.cim10.category">
+            <field name="parent_id" ref="cim10_category_H00_H06"/>
+            <field name="name">Orgelet et chalazion</field>
+            <field name="code">H00</field>
+        </record>
+        <record id="cim10_category_H00_0" model="oph.cim10.category">
+            <field name="parent_id" ref="cim10_category_H00"/>
+            <field name="name">Orgelet et autres inflammations profondes de la paupière</field>
+            <field name="code">H00.0</field>
+        </record>
+        <record id="cim10_category_H00_1" model="oph.cim10.category">
+            <field name="parent_id" ref="cim10_category_H00"/>
+            <field name="name">Chalazion</field>
+            <field name="code">H00.1</field>
+        </record>  
+
+        <record id="cim10_category_H10_H13" model="oph.cim10.category">
+            <field name="parent_id" ref="cim10_category_VII"/>
+            <field name="name">Affections de la conjonctive</field>
+            <field name="code">H10-H13</field>
+        </record>
+        <record id="cim10_category_H15_H22" model="oph.cim10.category">
+            <field name="parent_id" ref="cim10_category_VII"/>
+            <field name="name">Affections de la sclérotique, de la cornée, de l'iris et du corps ciliaire</field>
+            <field name="code">H15-H22</field>
+        </record>
+        <record id="cim10_category_H15" model="oph.cim10.category">
+            <field name="parent_id" ref="cim10_category_H15_H22"/>
+            <field name="name">Affections de la sclérotique</field>
+            <field name="code">H15</field>
+        </record>
+        <record id="cim10_category_H15_0" model="oph.cim10.category">
+            <field name="parent_id" ref="cim10_category_H15"/>
+            <field name="name">Sclérite</field>
+            <field name="code">H15.0</field>
+        </record>
+        <record id="cim10_category_H15_1" model="oph.cim10.category">
+            <field name="parent_id" ref="cim10_category_H15"/>
+            <field name="name">Episclérite</field>
+            <field name="code">H15.1</field>
+        </record>
+        <record id="cim10_category_H15_8" model="oph.cim10.category">
+            <field name="parent_id" ref="cim10_category_H15"/>
+            <field name="name">Autres affections de la sclérotique</field>
+            <field name="code">H15.8</field>
+        </record>
+        <record id="cim10_category_H15_9" model="oph.cim10.category">
+            <field name="parent_id" ref="cim10_category_H15"/>
+            <field name="name">Affection de la sclérotique, sans précision</field>
+            <field name="code">H15.9</field>
+        </record>
+        <record id="cim10_category_H16" model="oph.cim10.category">
+            <field name="parent_id" ref="cim10_category_H15_H22"/>
+            <field name="name">Kératite</field>
+            <field name="code">H16</field>
+        </record>
+        <record id="cim10_category_H16_0" model="oph.cim10.category">
+            <field name="parent_id" ref="cim10_category_H16"/>
+            <field name="name">Ulcère de la cornée</field>
+            <field name="description">-Ulcère de (la) cornée SAI
+-Ulcère de (la) cornée annulaire
+-Ulcère de (la) cornée avec hypopyon
+-Ulcère de (la) cornée central
+-Ulcère de (la) cornée marginal
+-Ulcère de (la) cornée perforé
+-Ulcère de (la) Mooren
+-Erosion (de) cornée (non traumatique)
+-Hypopyon (chambre antérieure de l'oeil) avec ulcère de la cornée
+-Kératite à hypopyon
+-Kératite hypopyon
+-Kératite ulcéreuse (centrale) (marginale) (perforée)
+-Mooren, ulcère (cornée) de
+-Perforation (non traumatique) (de) (due à) cornée (non traumatique) (par ulcération)
+-Saemisch, ulcère de
+-Staphylome cornéen dû à ulcère
+-Ulcère (à) (de) cornée (annulaire) (catarrhal) (central) (infectieux) (marginal) (perforé) (serpigineux) (superficiel)
+-Ulcère (à) (de) hypopyon (chronique) (subaigu)
+-Ulcère (à) (de) Mooren (cornée)
+-Ulcère (à) (de) rodens cornée
+-Ulcère (à) (de) Sömisch
+-Ulcus serpens corneae (pneumococcique)
+-Xérosis (de) cornée avec ulcération</field>
+            <field name="code">H16.0</field>
+        </record>
+        <record id="cim10_category_H16_1" model="oph.cim10.category">
+            <field name="parent_id" ref="cim10_category_H16"/>
+            <field name="name">Autres kératites superficielles sans conjonctivite</field>
+            <field name="code">H16.1</field>
+        </record>
+        <record id="cim10_category_H16_2" model="oph.cim10.category">
+            <field name="parent_id" ref="cim10_category_H16"/>
+            <field name="name">Kératoconjonctivite</field>
+            <field name="code">H16.2</field>
+        </record>
+        <record id="cim10_category_H16_3" model="oph.cim10.category">
+            <field name="parent_id" ref="cim10_category_H16"/>
+            <field name="name">Kératoconjonctivite interstitielle et profonde</field>
+            <field name="code">H16.3</field>
+        </record>
+        <record id="cim10_category_H16_4" model="oph.cim10.category">
+            <field name="parent_id" ref="cim10_category_H16"/>
+            <field name="name">Néovascularisation cornéenne</field>
+            <field name="code">H16.4</field>
+        </record>
+        <record id="cim10_category_H16_8" model="oph.cim10.category">
+            <field name="parent_id" ref="cim10_category_H16"/>
+            <field name="name">Autres kératites</field>
+            <field name="code">H16.8</field>
+        </record>
+        <record id="cim10_category_H16_9" model="oph.cim10.category">
+            <field name="parent_id" ref="cim10_category_H16"/>
+            <field name="name">Kératite, sans précision</field>
+            <field name="code">H16.9</field>
+        </record>
+        <record id="cim10_category_VIII" model="oph.cim10.category">
+            <field name="parent_id" ref="cim10_category_main"/>
+            <field name="name">Chapitre VIII Maladies de l'oreille et de l'apophyse mastoïde</field>
+            <field name="code">H60-H95</field>
+        </record>
+        
+
+
+        <!--         CIM10 Items           -->
+        
+        <record id="cim10_item_H00_0X-001" model="oph.cim10">
+            <field name="name">Abcès de la paupière</field>
+            <field name="categ_id" ref="cim10_category_H00_0"/>
+            <field name="code">H00.0X-001</field>
+        </record>
+        <record id="cim10_item_H00_0X-002" model="oph.cim10">
+            <field name="name"> Furoncle de la paupière</field>
+            <field name="categ_id" ref="cim10_category_H00_0"/>
+            <field name="code">H00.0X-002</field>
+        </record>
+        <record id="cim10_item_H16_0X-001" model="oph.cim10">
+            <field name="name">Ulcère de la cornée</field>
+            <field name="categ_id" ref="cim10_category_H16_0"/>
+            <field name="code">H16.0X-001</field>
+        </record>
+        <record id="cim10_item_H16_0" model="oph.cim10">
+            <field name="name">Ulcère de la cornée</field>
+            <field name="categ_id" ref="cim10_category_H16_0"/>
+            <field name="description">-Ulcère de (la) cornée SAI
+-Ulcère de (la) cornée annulaire
+-Ulcère de (la) cornée avec hypopyon
+-Ulcère de (la) cornée central
+-Ulcère de (la) cornée marginal
+-Ulcère de (la) cornée perforé
+-Ulcère de (la) Mooren
+-Erosion (de) cornée (non traumatique)
+-Hypopyon (chambre antérieure de l'oeil) avec ulcère de la cornée
+-Kératite à hypopyon
+-Kératite hypopyon
+-Kératite ulcéreuse (centrale) (marginale) (perforée)
+-Mooren, ulcère (cornée) de
+-Perforation (non traumatique) (de) (due à) cornée (non traumatique) (par ulcération)
+-Saemisch, ulcère de
+-Staphylome cornéen dû à ulcère
+-Ulcère (à) (de) cornée (annulaire) (catarrhal) (central) (infectieux) (marginal) (perforé) (serpigineux) (superficiel)
+-Ulcère (à) (de) hypopyon (chronique) (subaigu)
+-Ulcère (à) (de) Mooren (cornée)
+-Ulcère (à) (de) rodens cornée
+-Ulcère (à) (de) Sömisch
+-Ulcus serpens corneae (pneumococcique)
+-Xérosis (de) cornée avec ulcération</field>
+            <field name="code">H16.0</field>
+        </record>
+
+    </data>
+</openerp>

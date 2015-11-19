@@ -33,13 +33,14 @@ class oph_cim10_category(osv.osv):
         'name': fields.char('Name', size = 64, required = True, translate = True, select = True),
         'complete_name': fields.function(_name_get_fnc, type = "char", string = 'Name'),
         'code':fields.char('Code', size = 16, required = True, translate = True, select = True),
+        'description':fields.text('Description', translate = True),
         'parent_id': fields.many2one('oph.cim10.category', 'Parent Category', select = True, ondelete = 'cascade'),
         'child_id': fields.one2many('oph.cim10.category', 'parent_id', string = 'Child Categories'),
         'sequence': fields.integer('Sequence', select = True, help = "Gives the sequence order when displaying a list of product categories."),
         'type': fields.selection([('view', 'View'), ('normal', 'Normal')], 'Category Type', help = "A category of the view type is a virtual category that can be used as the parent of another category to create a hierarchical structure."),
         'parent_left': fields.integer('Left Parent', select = 1),
         'parent_right': fields.integer('Right Parent', select = 1),
-    }
+        }
 
     _defaults = {
         'type' : lambda *a : 'normal',
@@ -85,6 +86,7 @@ class oph_cim10(orm.Model):
               'code':fields.char('Code', size = 16, help = "Very short name"),
               'categ_id': fields.many2one('oph.cim10.category', 'Category', required = True, change_default = True, domain = "[('type','=','normal')]" , help = "Select category for the current product"),
               'comment':fields.text('Comment'),
+              'description':fields.text('Comment', translate = True),
               # image: all image fields are base64 encoded and PIL-supported
               'image': fields.binary("Image",
                                      help = "This field holds the image used as image for the product, limited to 1024x1024px."),
