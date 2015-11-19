@@ -3,6 +3,18 @@
     <data>
 
         <!-- OPH CIM10 CATEGORY VIEWS -->
+        <!-- CIM10 CATEGORY SERACH VIEW -->
+        <record id="cim10_category_search_view" model="ir.ui.view">
+            <field name="name">cim10.category.search</field>
+            <field name="model">oph.cim10.category</field>
+            <field name="arch" type="xml">
+                <search string="CIM10 Categories">
+                    <field name="name" string="CIM10 Categories"/>
+                    <field name="parent_id"/>
+                </search>
+            </field>
+        </record>
+        
         <!-- CIM10 CATEGORY FORM VIEW -->
         <record id="cim10_category_form_view" model="ir.ui.view">
             <field name="name">cim10.category.form</field>
@@ -26,7 +38,7 @@
                 </form>
             </field>
         </record>
-        
+        <!-- CIM10 CATEGORY LIST VIEW -->
         <record id="cim10_category_list_view" model="ir.ui.view">
             <field name="name">cim10.category.list</field>
             <field name="model">oph.cim10.category</field>
@@ -65,6 +77,20 @@
               </p>
             </field>
         </record>
+
+    
+        <record id="cim10_category_action_form" model="ir.actions.act_window">
+            <field name="name">CIM10 Categories</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">oph.cim10.category</field>
+            <field name="view_type">form</field>
+            <field name="search_view_id" ref="cim10_category_search_view"/>
+            <field name="view_id" ref="cim10_category_list_view"/>
+        </record>
+        
+
+
+        
 
 
 
@@ -105,6 +131,7 @@
         <!-- MENUITEM -->
         <menuitem name="CIM10" id="config_cim10_id" parent="config_oph_id" sequence="60"/>
         <menuitem action="cim10_category_action" id="menu_cim10_category" parent="config_cim10_id" groups="base.group_no_one"/>
+        <menuitem action="cim10_category_action_form" groups="base.group_no_one" id="menu_cim10_category_action_form" parent="config_cim10_id" sequence="2"/>
         <!-- END MENUITEM -->
         
         <!-- CIM10 ACTION -->
