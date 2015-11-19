@@ -28,9 +28,10 @@
             <field name="priority" eval="16"/>
             <field name="arch" type="xml">
                 <tree string="Type">
+                    <field name="code"/>
                     <field name="name"/>
                     <field name="categ_id"/>
-                    <field name="code"/>
+                    
                 </tree>
             </field>
         </record>
@@ -41,13 +42,27 @@
             <field name="model">oph.cim10</field>
             <field name="arch" type="xml">
                 <form string="CIM10 Items" version="7.0">
-                    <label for="name" class="oe_edit_only"/>
-                    <h1><field name="name"/></h1>
-                    <label for="categ_id" class="oe_edit_only"/>
-                    <h2><field name="categ_id"/></h2>
+                    <sheet>
+                        <field name="image_medium" widget="image" class="oe_avatar oe_left"/>
+                            <div class="oe_title">
+                               
+                                    <div class="oe_edit_only">
+                                        <label for="name" string="CIM10 Items"/>
+                                    </div>
+                                    <h1><field name="name"/></h1>
+                                    <div class="oe_edit_only">
+                                        <label for="code" string="Code"/>
+                                    </div>
+                                    <h1><field name="code"/></h1>
+                                
+                                <label for="categ_id" class="oe_edit_only"/>
+                                    <h2><field name="categ_id"/></h2>
+                            </div>
+                    </sheet>
                 </form>
             </field>
         </record>
+
         <!-- END VIEW CIM10 ITEMS -->
         
         <!-- CIM10 ACTION -->
@@ -91,10 +106,13 @@
                 <form string="CIM10 Categories" version="7.0">
                     <sheet>
                         <div class="oe_title">
+                            <group>
                             <label for="name" class="oe_edit_only"/>
                             <h1>
                                 <field name="name"/>
                             </h1>
+                            <field name="code"/>
+                            </group>
                         </div>
                         <group>
                             <group name="parent" col="4">

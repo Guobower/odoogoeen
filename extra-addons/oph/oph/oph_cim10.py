@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from openerp.osv import fields, osv, orm
 from openerp.tools.translate import _
+from openerp import tools, SUPERUSER_ID
 
 class oph_cim10_category(osv.osv):
 
@@ -9,12 +10,16 @@ class oph_cim10_category(osv.osv):
             return []
         if isinstance(ids, (long, int)):
             ids = [ids]
-        reads = self.read(cr, uid, ids, ['name', 'parent_id'], context = context)
+        reads = self.read(cr, uid, ids, ['name', 'parent_id', 'code'], context = context)
         res = []
+        # from pdb import set_trace; set_trace()
         for record in reads:
             name = record['name']
             if record['parent_id']:
                 name = record['parent_id'][1] + ' / ' + name
+            res.append((record['id'], name))
+            if record['code']:
+                name = record['code'] + ' / ' + name
             res.append((record['id'], name))
         return res
 
@@ -27,6 +32,7 @@ class oph_cim10_category(osv.osv):
     _columns = {
         'name': fields.char('Name', size = 64, required = True, translate = True, select = True),
         'complete_name': fields.function(_name_get_fnc, type = "char", string = 'Name'),
+        'code':fields.char('Code', size = 16, required = True, translate = True, select = True),
         'parent_id': fields.many2one('oph.cim10.category', 'Parent Category', select = True, ondelete = 'cascade'),
         'child_id': fields.one2many('oph.cim10.category', 'parent_id', string = 'Child Categories'),
         'sequence': fields.integer('Sequence', select = True, help = "Gives the sequence order when displaying a list of product categories."),
@@ -34,7 +40,6 @@ class oph_cim10_category(osv.osv):
         'parent_left': fields.integer('Left Parent', select = 1),
         'parent_right': fields.integer('Right Parent', select = 1),
     }
-
 
     _defaults = {
         'type' : lambda *a : 'normal',
@@ -66,12 +71,37 @@ oph_cim10_category()
 class oph_cim10(orm.Model):
     _name = 'oph.cim10'
 
+
+    def _get_image(self, cr, uid, ids, name, args, context = None):
+        result = dict.fromkeys(ids, False)
+        for obj in self.browse(cr, uid, ids, context = context):
+            result[obj.id] = tools.image_get_resized_images(obj.image, avoid_resize_medium = True)
+        return result
+
+    def _set_image(self, cr, uid, id, name, value, args, context = None):
+        return self.write(cr, uid, [id], {'image': tools.image_resize_image_big(value)}, context = context)
     _columns = {
-              'name':fields.char('Name', size = 64, help = ""),
+              'name':fields.char('Name', size = 64, help = "Long name"),
               'code':fields.char('Code', size = 16, help = "Very short name"),
               'categ_id': fields.many2one('oph.cim10.category', 'Category', required = True, change_default = True, domain = "[('type','=','normal')]" , help = "Select category for the current product"),
-              'comment':fields.text('Comment')
-              }
+              'comment':fields.text('Comment'),
+              # image: all image fields are base64 encoded and PIL-supported
+              'image': fields.binary("Image",
+                                     help = "This field holds the image used as image for the product, limited to 1024x1024px."),
+              'image_medium': fields.function(_get_image, fnct_inv = _set_image,
+                                              string = "Medium-sized image", type = "binary", multi = "_get_image",
+                                              store = {'oph.cim10': (lambda self, cr, uid, ids, c = {}: ids, ['image'], 10), },
+                                              help = "Medium-sized image of the product. It is automatically "\
+                                              "resized as a 128x128px image, with aspect ratio preserved, "\
+                                              "only when the image exceeds one of those sizes. Use this field in form views or some kanban views."),
+              'image_small': fields.function(_get_image, fnct_inv = _set_image,
+                                             string = "Small-sized image",
+                                             type = "binary", multi = "_get_image",
+                                             store = {'oph.cim10': (lambda self, cr, uid, ids, c = {}: ids, ['image'], 10), },
+                                             help = "Small-sized image of the product. It is automatically "\
+                                                  "resized as a 64x64px image, with aspect ratio preserved. "\
+                                                  "Use this field anywhere a small image is required."),
+                }
 
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
