@@ -1,6 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
     <data>
+        
+        <menuitem name="CIM10" id="base_cim10_id" parent="config_oph_id" sequence="60"/>
+        
+        <!-- SEARCH VIEW CIM10 ITEMS -->
+        <record id="cim10_items_search_form_view" model="ir.ui.view">
+            <field name="name">cim10.search.form</field>
+            <field name="model">oph.cim10</field>
+            <field name="arch" type="xml">
+                <search string="CIM10 Items">
+                   <field name="name" string="CIM10 Item" filter_domain="['|',('name','ilike',self),('default_code','ilike',self)]"/>
+                   <separator/>
+                   <field name="categ_id"/>
+                   <group  expand='0' string='Group by...'>
+                       <filter string='Category' icon="terp-stock_symbol-selection" domain="[]" context="{'group_by' : 'categ_id'}"/>
+                   </group>
+                </search>
+            </field>
+        </record>
+        
+        <!-- CIM10 ITEMS VIEWS-->
+        <!-- TREE VIEW CIM10 ITEMS-->
+        <record model="ir.ui.view" id="cim10_tree_view_id">
+            <field name="name">cim10.tree</field>
+            <field name="model">oph.cim10</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <tree string="Type">
+                    <field name="name"/>
+                    <field name="categ_id"/>
+                    <field name="code"/>
+                </tree>
+            </field>
+        </record>
+        
+        <!-- FORM VIEW CIM10 ITEMS -->
+        <record id="cim10_form_view" model="ir.ui.view">
+            <field name="name">cim10.form</field>
+            <field name="model">oph.cim10</field>
+            <field name="arch" type="xml">
+                <form string="CIM10 Items" version="7.0">
+                    <label for="name" class="oe_edit_only"/>
+                    <h1><field name="name"/></h1>
+                    <label for="categ_id" class="oe_edit_only"/>
+                    <h2><field name="categ_id"/></h2>
+                </form>
+            </field>
+        </record>
+        <!-- END VIEW CIM10 ITEMS -->
+        
+        <!-- CIM10 ACTION -->
+        <record model="ir.actions.act_window" id="cim10_items_action">
+            <field name="name">CIM10 Items</field>
+            <field name="res_model">oph.cim10</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="cim10_tree_view_id"/>
+            <field name="search_view_id" ref="cim10_items_search_form_view"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to define a new CIM10 items.
+              </p>
+            </field>
+        </record>
+        
+        <!-- CIM10 ITEMS MENU-->
+        <menuitem parent="base_cim10_id" id="cim10_items_menu" sequence ="90" action="cim10_items_action"/>
+
+
 
         <!-- OPH CIM10 CATEGORY VIEWS -->
         <!-- CIM10 CATEGORY SERACH VIEW -->
@@ -78,7 +146,6 @@
             </field>
         </record>
 
-    
         <record id="cim10_category_action_form" model="ir.actions.act_window">
             <field name="name">CIM10 Categories</field>
             <field name="type">ir.actions.act_window</field>
@@ -89,76 +156,24 @@
         </record>
         
 
+        
 
+        
+        
         
 
 
-
-        <!-- OPH CIM10 VIEWS-->
-        <!-- TREE VIEW CIM10-->
-        <record model="ir.ui.view" id="cim10_tree_view_id">
-            <field name="name">cim10.tree</field>
-            <field name="model">oph.cim10</field>
-            <field name="priority" eval="16"/>
-            <field name="arch" type="xml">
-                <tree string="Type">
-                    <field name="name"/>
-                    <field name="code"/>
-                </tree>
-            </field>
-        </record>
-
-        <!-- FORM VIEW CIM10 -->
-        <record model="ir.ui.view" id="cim10_form_view_id">
-            <field name="name"> cim10.form</field>
-            <field name="model">oph.cim10</field>
-            <field name="priority" eval="16"/>
-            <field name="arch" type="xml">
-                <form string="CIM10" version="7.0">
-                    <group>
-                        <field name="name"/>
-                        <field name="code"/>
-                    </group>
-                    <group>
-                        <field name="comment"/>
-                    </group>
-                </form>
-            </field>
-        </record>
-        <!-- END VIEW -->
 
         <!-- ACTIONS / MENUITEM -->
         <!-- MENUITEM -->
-        <menuitem name="CIM10" id="config_cim10_id" parent="config_oph_id" sequence="60"/>
-        <menuitem action="cim10_category_action" id="menu_cim10_category" parent="config_cim10_id" groups="base.group_no_one"/>
-        <menuitem action="cim10_category_action_form" groups="base.group_no_one" id="menu_cim10_category_action_form" parent="config_cim10_id" sequence="2"/>
+        <menuitem action="cim10_category_action" id="menu_cim10_category" parent="base_cim10_id" groups="base.group_no_one"/>
+        <menuitem action="cim10_category_action_form" groups="base.group_no_one" id="menu_cim10_category_action_form" parent="base_cim10_id" sequence="2"/>
         <!-- END MENUITEM -->
         
-        <!-- CIM10 ACTION -->
-        <record model="ir.actions.act_window" id="cim10_action_id">
-            <field name="name">CIM10</field>
-            <field name="res_model">oph.cim10</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">tree,form</field>
-            <field name="view_id" ref="cim10_tree_view_id"/>
-        </record>
+        
+        
 
-        <!-- CIM10 MENU-->
-        <menuitem parent="config_cim10_id" id="cim10_menu_id" sequence ="90" action="cim10_action_id"/>
-
-        <!-- SEARCH VIEW CIM 10 -->
-        <!--  search view  -->
-        <record id="view_filling_template_search_id" model="ir.ui.view">
-            <field name="name">oph.cim10.select</field>
-            <field name="model">oph.cim10</field>
-            <field name="arch" type="xml">
-                <search string = "Search CIM10">
-                    <field name="name"/>
-                    <field name="code"/>
-                </search>
-            </field>
-        </record>
-
+        
         
 
     </data>

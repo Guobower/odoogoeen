@@ -69,6 +69,7 @@ class oph_cim10(orm.Model):
     _columns = {
               'name':fields.char('Name', size = 64, help = ""),
               'code':fields.char('Code', size = 16, help = "Very short name"),
+              'categ_id': fields.many2one('oph.cim10.category', 'Category', required = True, change_default = True, domain = "[('type','=','normal')]" , help = "Select category for the current product"),
               'comment':fields.text('Comment')
               }
 
