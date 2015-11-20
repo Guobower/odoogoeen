@@ -105,6 +105,9 @@
             <field name="name">Kératite</field>
             <field name="code">H16</field>
         </record>
+        
+        
+        
         <record id="cim10_category_H16_0" model="oph.cim10.category">
             <field name="parent_id" ref="cim10_category_H16"/>
             <field name="name">Ulcère de la cornée</field>
@@ -184,8 +187,37 @@
             <field name="code">H60-H95</field>
         </record>
         
-
-
+        <record id="cim10_category_H17" model="oph.cim10.category">
+            <field name="parent_id" ref="cim10_category_H15_H22"/>
+            <field name="name">Cicatrices et opacités cornéennes </field>
+            <field name="code">H17</field>
+        </record>
+        <record id="cim10_category_H18" model="oph.cim10.category">
+            <field name="parent_id" ref="cim10_category_H15_H22"/>
+            <field name="name">Autres affections de la cornée</field>
+            <field name="code">H18</field>
+        </record>
+        <record id="cim10_category_H19" model="oph.cim10.category">
+            <field name="parent_id" ref="cim10_category_H15_H22"/>
+            <field name="name">Affections de la sclérotique et de la cornée au cours de maladies classées ailleurs</field>
+            <field name="code">H19</field>
+        </record>
+        <record id="cim10_category_H20" model="oph.cim10.category">
+            <field name="parent_id" ref="cim10_category_H15_H22"/>
+            <field name="name">Iridocyclite</field>
+            <field name="code">H20</field>
+        </record>
+        <record id="cim10_category_H21" model="oph.cim10.category">
+            <field name="parent_id" ref="cim10_category_H15_H22"/>
+            <field name="name">Autres affections de l'iris et du corps ciliaire</field>
+            <field name="code">H21</field>
+        </record>
+        <record id="cim10_category_H22" model="oph.cim10.category">
+            <field name="parent_id" ref="cim10_category_H15_H22"/>
+            <field name="name">Affections de l'iris et du corps ciliaire au cours de maladies classées ailleurs </field>
+            <field name="code">H22</field>
+        </record>
+    
         <!--         CIM10 Items           -->
         
         <record id="cim10_item_H00_0X-001" model="oph.cim10">
@@ -271,7 +303,7 @@
             <field name="categ_id" ref="cim10_category_H00_0"/>
             <field name="code">H16.1X-008</field>
         </record>
-
+<!--  H16 -->
         <record id="cim10_item_H16_2" model="oph.cim10">
             <field name="name">Kératoconjonctivite</field>
             <field name="categ_id" ref="cim10_category_H16_0"/>
@@ -321,8 +353,7 @@ Phlycténule de la cornée (allergique) (non tuberculeuse)</field>
             <field name="code">H16.2X-006</field>
         </record>
         <record id="cim10_item_H16_3" model="oph.cim10">
-            <field name="name">Kératite interstitielle et profonde
-</field>
+            <field name="name">Kératite interstitielle et profonde</field>
             <field name="categ_id" ref="cim10_category_H16_0"/>
             <field name="description">Abcès (embolique) (infectieux) (multiple) (pyogène) (septique) (de) cornée
 Cogan, syndrome de
@@ -331,7 +362,47 @@ Kératite profonde
 Kératite sclérosante</field>
             <field name="code">H16.3</field>
         </record>
-  
-
+        <record id="cim10_item_H16_4" model="oph.cim10">
+            <field name="name">Néovascularisation cornéenne</field>
+            <field name="categ_id" ref="cim10_category_H16"/>
+            <field name="description">Néovaisseaux (de la cornée)
+Pannus (de la cornée)
+Néovascularisation cornéenne
+Pannus (de la cornée) allergique eczémateux
+Pannus (de la cornée) dégénératif
+            </field>
+            <field name="code">H16.4</field>
+        </record>
+        <record id="cim10_item_H16_4X-001" model="oph.cim10">
+            <field name="name">Néovaisseaux de la cornée</field>
+            <field name="categ_id" ref="cim10_category_H00_0"/>
+            <field name="code">H16.4X-001</field>
+        </record>
+        <record id="cim10_item_H16_4X-002" model="oph.cim10">
+            <field name="name">Pannus de la cornée</field>
+            <field name="categ_id" ref="cim10_category_H00_0"/>
+            <field name="code">H16.4X-002</field>
+        </record>
+        <record id="cim10_item_H16_8" model="oph.cim10">
+            <field name="name">Kératites</field>
+            <field name="categ_id" ref="cim10_category_H16"/>
+            <field name="description">Kératite calcaire
+    Kératite précisée NCA
+    Kératite suppurée
+    Kératite vésiculaire
+    Sclérokératite
+        </field>
+        <field name="code">H16.8</field>
+        </record>
+        <record id="cim10_item_H16_9" model="oph.cim10">
+            <field name="name"> Kératite, sans précision</field>
+            <field name="categ_id" ref="cim10_category_H16"/>
+            <field name="description">Inflammation (de) cornée
+    Kératite
+        </field>
+        <field name="code">H16.9</field>
+        </record>
+        
+H17 Cicatrices et opacités cornéennes 
     </data>
 </openerp>
