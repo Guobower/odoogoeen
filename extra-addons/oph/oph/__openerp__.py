@@ -79,18 +79,8 @@ Permet de faire pleins de choses absolument géniales
                 'data/reporting_template_data.xml',
                 'report/examination_report.xml',
                 'edi/request_action_data.xml',
-       #========================================================================
-       #  'report/Test_premier_report.xml',
-       #
-       #  'data/ir.config_parameter.xml',
-       #  # 'data/document_data.xml',
-# #
-# #        'custom/oph_sale_view.xml',
-#         # # 'data/reporting_template_data.xml',
-#         # # 'wizard/oph_diabetic_report_view.xml',
-#         #=======================================================================
-        # 'custom/account_voucher_view.xml',
-        #=======================================================================
+                'oph_cim10_view.xml',
+                'data/oph_cim10_data.xml',
         ],
     #===========================================================================
     # 'demo': [

@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        
+        <menuitem name="CIM10" id="base_cim10_id" parent="config_oph_id" sequence="60"/>
+        
+        <!-- SEARCH VIEW CIM10 ITEMS -->
+        <record id="cim10_items_search_form_view" model="ir.ui.view">
+            <field name="name">cim10.search.form</field>
+            <field name="model">oph.cim10</field>
+            <field name="arch" type="xml">
+                <search string="CIM10 Items">
+                   <field name="name" string="CIM10 Item" filter_domain="['|',('name','ilike',self),('default_code','ilike',self)]"/>
+                   <separator/>
+                   <field name="categ_id"/>
+                   <group  expand='0' string='Group by...'>
+                       <filter string='Category' icon="terp-stock_symbol-selection" domain="[]" context="{'group_by' : 'categ_id'}"/>
+                   </group>
+                </search>
+            </field>
+        </record>
+        
+        <!-- CIM10 ITEMS VIEWS-->
+        <!-- TREE VIEW CIM10 ITEMS-->
+        <record model="ir.ui.view" id="cim10_tree_view_id">
+            <field name="name">cim10.tree</field>
+            <field name="model">oph.cim10</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <tree string="Type">
+                    <field name="code"/>
+                    <field name="name"/>
+                    <field name="categ_id"/>
+                    
+                </tree>
+            </field>
+        </record>
+        
+        <!-- FORM VIEW CIM10 ITEMS -->
+        <record id="cim10_form_view" model="ir.ui.view">
+            <field name="name">cim10.form</field>
+            <field name="model">oph.cim10</field>
+            <field name="arch" type="xml">
+                <form string="CIM10 Items" version="7.0">
+                    <sheet>
+                        <field name="image_medium" widget="image" class="oe_avatar oe_left"/>
+                            <div class="oe_title">
+                               
+                                    <div class="oe_edit_only">
+                                        <label for="name" string="CIM10 Items"/>
+                                    </div>
+                                    <h1><field name="name"/></h1>
+                                    <div class="oe_edit_only">
+                                        <label for="code" string="Code"/>
+                                    </div>
+                                    <h1><field name="code"/></h1>
+                                
+                                <label for="categ_id" class="oe_edit_only"/>
+                                    <h2><field name="categ_id"/></h2>
+                                <field name="description"/>
+                            </div>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- END VIEW CIM10 ITEMS -->
+        
+        <!-- CIM10 ACTION -->
+        <record model="ir.actions.act_window" id="cim10_items_action">
+            <field name="name">CIM10 Items</field>
+            <field name="res_model">oph.cim10</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="cim10_tree_view_id"/>
+            <field name="search_view_id" ref="cim10_items_search_form_view"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to define a new CIM10 items.
+              </p>
+            </field>
+        </record>
+        
+        <!-- CIM10 ITEMS MENU-->
+        <menuitem parent="base_cim10_id" id="cim10_items_menu" sequence ="90" action="cim10_items_action"/>
+
+
+
+        <!-- OPH CIM10 CATEGORY VIEWS -->
+        <!-- CIM10 CATEGORY SEARCH VIEW -->
+        <record id="cim10_category_search_view" model="ir.ui.view">
+            <field name="name">cim10.category.search</field>
+            <field name="model">oph.cim10.category</field>
+            <field name="arch" type="xml">
+                <search string="CIM10 Categories">
+                    <field name="name" string="CIM10 Categories"/>
+                    <field name="parent_id"/>
+                </search>
+            </field>
+        </record>
+        
+        <!-- CIM10 CATEGORY FORM VIEW -->
+        <record id="cim10_category_form_view" model="ir.ui.view">
+            <field name="name">cim10.category.form</field>
+            <field name="model">oph.cim10.category</field>
+            <field name="arch" type="xml">
+                <form string="CIM10 Categories" version="7.0">
+                    <sheet>
+                        <div class="oe_title">
+                            <group>
+                            <label for="name" class="oe_edit_only"/>
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                            <field name="code"/>
+                            </group>
+                        </div>
+                        <group>
+                            <group name="parent" col="4">
+                                <field name="parent_id"/>
+                                <field name="type"/>
+                                <field name="description"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!-- CIM10 CATEGORY LIST VIEW -->
+        <record id="cim10_category_list_view" model="ir.ui.view">
+            <field name="name">cim10.category.list</field>
+            <field name="model">oph.cim10.category</field>
+            <field name="priority">1</field>
+            <field name="arch" type="xml">
+                <tree string="CIM10 Categories">
+                    <field name="complete_name"/>
+                </tree>
+            </field>
+        </record>
+        
+         <!-- CIM10 CATEGORY TREE VIEW -->
+        <record id="cim10_category_tree_view" model="ir.ui.view">
+            <field name="name">cim10.category.tree</field>
+            <field name="model">oph.cim10.category</field>
+            <field name="field_parent">child_id</field>
+            <field name="arch" type="xml">
+                <tree toolbar="True" string="CIM10 Categories">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record id="cim10_category_action" model="ir.actions.act_window">
+            <field name="name">Code CIM10 by Category</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">oph.cim10.category</field>
+            <field name="domain">[('parent_id','=',False)]</field>
+            <field name="view_type">tree</field>
+            <field name="view_id" ref="cim10_category_tree_view"/>
+            <field name="help" type="html">
+              <p>
+                Here is a list of all your cim10 code classified by category. You
+                can click a category to get the list of all CIM10 codes linked to
+                this category or to a child of this category.
+              </p>
+            </field>
+        </record>
+
+        <record id="cim10_category_action_form" model="ir.actions.act_window">
+            <field name="name">CIM10 Categories</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">oph.cim10.category</field>
+            <field name="view_type">form</field>
+            <field name="search_view_id" ref="cim10_category_search_view"/>
+            <field name="view_id" ref="cim10_category_list_view"/>
+        </record>
+        
+
+        
+
+        
+        
+        
+
+
+
+        <!-- ACTIONS / MENUITEM -->
+        <!-- MENUITEM -->
+        <menuitem action="cim10_category_action" id="menu_cim10_category" parent="base_cim10_id" groups="base.group_no_one"/>
+        <menuitem action="cim10_category_action_form" groups="base.group_no_one" id="menu_cim10_category_action_form" parent="base_cim10_id" sequence="2"/>
+        <!-- END MENUITEM -->
+        
+        
+        
+
+        
+        
+
+    </data>
+</openerp>
