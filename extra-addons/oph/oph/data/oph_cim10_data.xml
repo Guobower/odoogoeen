@@ -137,6 +137,21 @@
             <field name="parent_id" ref="cim10_category_H16"/>
             <field name="name">Autres kératites superficielles sans conjonctivite</field>
             <field name="code">H16.1</field>
+            <field name="description">-Kératite annulaire
+-Kératite filamenteuse
+-Kératite nummulaire
+-Kératite ponctuée superficielle
+-Kératite stellaire
+-Kératite striée
+-Ophtalmie des neiges
+-Photokératite
+-Cazenave, maladie de due à rayonnement de la neige
+-Kératite actinique
+-Kératite superficielle (aréolaire) (ponctuée) (stellaire)
+-Ophtalmie (catarrhale) (congestive) (due à) des neiges
+-Photophtalmie
+            </field>
+            
         </record>
         <record id="cim10_category_H16_2" model="oph.cim10.category">
             <field name="parent_id" ref="cim10_category_H16"/>
@@ -216,6 +231,107 @@
 -Xérosis (de) cornée avec ulcération</field>
             <field name="code">H16.0</field>
         </record>
+        <record id="cim10_item_H16_1X-001" model="oph.cim10">
+            <field name="name">Kératite annulaire</field>
+            <field name="categ_id" ref="cim10_category_H00_0"/>
+            <field name="code">H16.1X-001</field>
+        </record>
+        <record id="cim10_item_H16_1X-002" model="oph.cim10">
+            <field name="name">Kératite filamenteuse</field>
+            <field name="categ_id" ref="cim10_category_H00_0"/>
+            <field name="code">H16.1X-002</field>
+        </record>
+        <record id="cim10_item_H16_1X-003" model="oph.cim10">
+            <field name="name">Kératite nummulaire</field>
+            <field name="categ_id" ref="cim10_category_H00_0"/>
+            <field name="code">H16.1X-003</field>
+        </record>
+        <record id="cim10_item_H16_1X-004" model="oph.cim10">
+            <field name="name">Kératite ponctuée superficielle</field>
+            <field name="categ_id" ref="cim10_category_H00_0"/>
+            <field name="code">H16.1X-004</field>
+        </record>
+        <record id="cim10_item_H16_1X-005" model="oph.cim10">
+            <field name="name">Kératite stellaire</field>
+            <field name="categ_id" ref="cim10_category_H00_0"/>
+            <field name="code">H16.1X-005</field>
+        </record>
+        <record id="cim10_item_H16_1X-006" model="oph.cim10">
+            <field name="name">Kératite striée</field>
+            <field name="categ_id" ref="cim10_category_H00_0"/>
+            <field name="code">H16.1X-006</field>
+        </record>
+        <record id="cim10_item_H16_1X-007" model="oph.cim10">
+            <field name="name">Ophtalmie des neiges</field>
+            <field name="categ_id" ref="cim10_category_H00_0"/>
+            <field name="code">H16.1X-007</field>
+        </record>
+        <record id="cim10_item_H16_1X-008" model="oph.cim10">
+            <field name="name">Photokératite</field>
+            <field name="categ_id" ref="cim10_category_H00_0"/>
+            <field name="code">H16.1X-008</field>
+        </record>
+
+        <record id="cim10_item_H16_2" model="oph.cim10">
+            <field name="name">Kératoconjonctivite</field>
+            <field name="categ_id" ref="cim10_category_H16_0"/>
+            <field name="description">Kératite superficielle avec conjonctivite
+Kératoconjonctivite SAI
+Kératoconjonctivite d'exposition
+Kératoconjonctivite neurotrophique
+Kératoconjonctivite phlycténulaire
+Ophtalmia nodosa
+Kératite superficielle (aréolaire) (ponctuée) (stellaire) avec conjonctivite
+Kératoconjonctivite
+Kératoconjonctivite lagophtalmique
+Kératoconjonctivite phlycténulaire (allergique) (non tuberculeuse)
+Lagophtalmie (nerveuse) (paupière) avec kératite
+Ophtalmie (catarrhale) (congestive) (due à) noueuse
+Phlycténule de la cornée (allergique) (non tuberculeuse)</field>
+            <field name="code">H16.2</field>
+        </record>
+        <record id="cim10_item_H16_2X-001" model="oph.cim10">
+            <field name="name">Kératite superficielle avec conjonctivite</field>
+            <field name="categ_id" ref="cim10_category_H00_0"/>
+            <field name="code">H16.2X-001</field>
+        </record>
+        <record id="cim10_item_H16_2X-002" model="oph.cim10">
+            <field name="name">Kérato-conjonctivite</field>
+            <field name="categ_id" ref="cim10_category_H00_0"/>
+            <field name="code">H16.2X-002</field>
+        </record>
+        <record id="cim10_item_H16_2X-003" model="oph.cim10">
+            <field name="name">Kérato-conjonctivite d'exposition</field>
+            <field name="categ_id" ref="cim10_category_H00_0"/>
+            <field name="code">H16.2X-003</field>
+        </record>
+        <record id="cim10_item_H16_2X-004" model="oph.cim10">
+            <field name="name">Kérato-conjonctivite neurotrophique</field>
+            <field name="categ_id" ref="cim10_category_H00_0"/>
+            <field name="code">H16.2X-004</field>
+        </record>
+        <record id="cim10_item_H16_2X-005" model="oph.cim10">
+            <field name="name">Kérato-conjonctivite phlycténulaire</field>
+            <field name="categ_id" ref="cim10_category_H00_0"/>
+            <field name="code">H16.2X-005</field>
+        </record>
+        <record id="cim10_item_H16_2X-006" model="oph.cim10">
+            <field name="name">Ophtalmia nodosa</field>
+            <field name="categ_id" ref="cim10_category_H00_0"/>
+            <field name="code">H16.2X-006</field>
+        </record>
+        <record id="cim10_item_H16_3" model="oph.cim10">
+            <field name="name">Kératite interstitielle et profonde
+</field>
+            <field name="categ_id" ref="cim10_category_H16_0"/>
+            <field name="description">Abcès (embolique) (infectieux) (multiple) (pyogène) (septique) (de) cornée
+Cogan, syndrome de
+Kératite interstitielle (non syphilitique)
+Kératite profonde
+Kératite sclérosante</field>
+            <field name="code">H16.3</field>
+        </record>
+  
 
     </data>
 </openerp>
