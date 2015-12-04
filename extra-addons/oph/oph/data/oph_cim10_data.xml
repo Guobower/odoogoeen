@@ -44,7 +44,15 @@
             <field name="name">Chapitre VII Maladies de l'oeil et de ses annexes</field>
             <field name="code">H00-H59</field>
         </record>
-        <record id="cim10_category_H00_H06" model="oph.cim10.category">
+        <record id="cim10_category_VIII" model="oph.cim10.category">
+            <field name="parent_id" ref="cim10_category_main"/>
+            <field name="name">Chapitre VIII Maladies de l'oreille et de l'apophyse mastoïde</field>
+            <field name="code">H60-H95</field>
+        </record>
+        <!-- CHAP END -->
+        
+
+ <record id="cim10_category_H00_H06" model="oph.cim10.category">
             <field name="parent_id" ref="cim10_category_VII"/>
             <field name="name">Affections de la paupière, de l'appareil lacrymal et de l'orbite</field>
             <field name="code">H00-H06</field>
@@ -105,9 +113,6 @@
             <field name="name">Kératite</field>
             <field name="code">H16</field>
         </record>
-        
-        
-        
         <record id="cim10_category_H16_0" model="oph.cim10.category">
             <field name="parent_id" ref="cim10_category_H16"/>
             <field name="name">Ulcère de la cornée</field>
@@ -136,7 +141,7 @@
 -Xérosis (de) cornée avec ulcération</field>
             <field name="code">H16.0</field>
         </record>
-        <record id="cim10_category_H16_1" model="oph.cim10.category">
+                <record id="cim10_category_H16_1" model="oph.cim10.category">
             <field name="parent_id" ref="cim10_category_H16"/>
             <field name="name">Autres kératites superficielles sans conjonctivite</field>
             <field name="code">H16.1</field>
@@ -180,54 +185,48 @@
             <field name="name">Kératite, sans précision</field>
             <field name="code">H16.9</field>
             <field name="description">-Inflammation (de) cornée
-            -Kératite
+-Kératite
             </field>
         </record>
-        <record id="cim10_category_VIII" model="oph.cim10.category">
-            <field name="parent_id" ref="cim10_category_main"/>
-            <field name="name">Chapitre VIII Maladies de l'oreille et de l'apophyse mastoïde</field>
-            <field name="code">H60-H95</field>
-        </record>
-        
         <record id="cim10_category_H17" model="oph.cim10.category">
             <field name="parent_id" ref="cim10_category_H15_H22"/>
             <field name="name">Cicatrices et opacités cornéennes </field>
             <field name="code">H17</field>
         </record>
-        <record id="cim10_category_H17_0" odel="oph.cim10.category">
+        <record id="cim10_category_H17_0" model="oph.cim10.category">
             <field name="parent_id" ref="cim10_category_H17"/>
             <field name="name">Leucome adhérent</field>
             <field name="code">H17.0</field>
             <field name="description">-Leucome (cornée) adhérent</field>
         </record>
-        <record id="cim10_category_H17_1" odel="oph.cim10.category">
+        <record id="cim10_category_H17_1" model="oph.cim10.category">
             <field name="parent_id" ref="cim10_category_H17"/>
             <field name="name">Autres opacités cornéennes centrales</field>
             <field name="code">H17.1</field>
             <field name="description">- Opacité(s) (de) cornée (macula) (nebula) centrale NCA</field>
         </record>
-        <record id="cim10_category_H17_8" odel="oph.cim10.category">
+        <record id="cim10_category_H17_8" model="oph.cim10.category">
             <field name="parent_id" ref="cim10_category_H17"/>
             <field name="name">Autres cicatrices et opacités cornéennes</field>
             <field name="code">H17.8</field>
             <field name="description">-Cicatrice (adhérente) (cutanée) (douloureuse) (rétractile) (vicieuse) (de) cornée précisée NCA
-    -Cornée nébuleuse
-    -Leucome (cornée)
-    -Néphélion (cornée)
-    -Opacité(s) (de) cornée (macula) (nebula) précisée NCA
-    -Sclérose (de) cornée
-    -Taie (cornée)</field>
+-Cornée nébuleuse
+-Leucome (cornée)
+-Néphélion (cornée)
+-Opacité(s) (de) cornée (macula) (nebula) précisée NCA
+-Sclérose (de) cornée
+-Taie (cornée)
+            </field>
         </record>
-        <record id="cim10_category_H17_9" odel="oph.cim10.category">
+        <record id="cim10_category_H17_9" model="oph.cim10.category">
             <field name="parent_id" ref="cim10_category_H17"/>
             <field name="name">Cicatrice et opacité cornéennes, sans précision</field>
             <field name="code">H17.9</field>
             <field name="description">-Cicatrice (adhérente) (cutanée) (douloureuse) (rétractile) (vicieuse) (de) cornée
-    -Opacité(s) (de) cornée (macula) (nebula)
+-Opacité(s) (de) cornée (macula) (nebula)
             </field>
         </record>
-
-        <record id="cim10_category_H18" model="oph.cim10.category">
+         <record id="cim10_category_H18" model="oph.cim10.category">
             <field name="parent_id" ref="cim10_category_H15_H22"/>
             <field name="name">Autres affections de la cornée</field>
             <field name="code">H18</field>
@@ -262,50 +261,50 @@
             <field name="name">Cataracte sénile</field>
             <field name="code">H25</field>
         </record>
-         <record id="cim10_category_H25_0" odel="oph.cim10.category">
+                <record id="cim10_category_H25_0" model="oph.cim10.category">
             <field name="parent_id" ref="cim10_category_H25"/>
             <field name="name"> Cataracte incipiente sénile</field>
             <field name="code">H25.0</field>
             <field name="description">- Cataracte sénile coronaire
-    - Cataracte sénile corticale
-    - Cataracte sénile polaire sous-capsulaire (antérieure) (postérieure)
-    - Cataracte sénile punctiforme
-    - Water clefts (fentes)
-    - Cataracte coronaire sénile
-    - Cataracte sénile incipiente
+- Cataracte sénile corticale
+- Cataracte sénile polaire sous-capsulaire (antérieure) (postérieure)
+- Cataracte sénile punctiforme
+- Water clefts (fentes)
+- Cataracte coronaire sénile
+- Cataracte sénile incipiente
             </field>
         </record>
-        <record id="cim10_category_H25_1" odel="oph.cim10.category">
+        <record id="cim10_category_H25_1" model="oph.cim10.category">
             <field name="parent_id" ref="cim10_category_H25"/>
             <field name="name"> Cataracte sénile nucléaire</field>
             <field name="code">H25.1</field>
             <field name="description">- Cataracte brunescente
-    - Sclérose nucléaire
-    - Cataracte sclérose nucléaire
-    - Cataracte sénile brunescente
-    - Cataracte sénile nucléaire
-    - Sclérose (de) nucléaire
+- Sclérose nucléaire
+- Cataracte sclérose nucléaire
+- Cataracte sénile brunescente
+- Cataracte sénile nucléaire
+- Sclérose (de) nucléaire
             </field>
         </record>
-        <record id="cim10_category_H25_2" odel="oph.cim10.category">
+         <record id="cim10_category_H25_2" model="oph.cim10.category">
             <field name="parent_id" ref="cim10_category_H25"/>
             <field name="name"> Cataracte sénile, de type Morgagni</field>
             <field name="code">H25.1</field>
             <field name="description">- Cataracte sénile hypermûre
-    - Cataracte morgagnienne
-    - Cataracte sénile morgagnienne
+- Cataracte morgagnienne
+- Cataracte sénile morgagnienne
             </field>
         </record>
-        <record id="cim10_category_H25_8" odel="oph.cim10.category">
+                <record id="cim10_category_H25_8" model="oph.cim10.category">
             <field name="parent_id" ref="cim10_category_H25"/>
             <field name="name"> Autres cataractes séniles</field>
             <field name="code">H25.8</field>
             <field name="description">- Formes combinées de cataracte sénile
-    - Cataracte sénile formes combinées
-    - Cataracte sénile précisée NCA
+- Cataracte sénile formes combinées
+- Cataracte sénile précisée NCA
             </field>
         </record>
-        <record id="cim10_category_H25_9" odel="oph.cim10.category">
+        <record id="cim10_category_H25_9" model="oph.cim10.category">
             <field name="parent_id" ref="cim10_category_H25"/>
             <field name="name">Cataractes séniles, sans précision</field>
             <field name="code">H25.9</field>
@@ -321,150 +320,206 @@
             <field name="name">Cataracte et autres affections du cristallin au cours de maladies classées ailleurs</field>
             <field name="code">H27</field>
         </record>
-        <record id="cim10_category_H28_0" odel="oph.cim10.category">
+        <record id="cim10_category_H28_0" model="oph.cim10.category">
             <field name="parent_id" ref="cim10_category_H28"/>
             <field name="name">Cataracte diabétique</field>
             <field name="code">H28.0</field>
-            <field name="description">
-    Cataracte diabétique (E14.3+)
-    Cataracte diabétique type insulino-dépendant (E10.3+)
-    Cataracte diabétique type malnutrition (insulino-dépendant) (non insulino-dépendant) (E12.3+)
-    Cataracte diabétique type non insulino-dépendant (E11.3+)
-    Cataracte diabétique type précisé NCA (E13.3+)
+            <field name="description">- Cataracte diabétique (E14.3+)
+-Cataracte diabétique type insulino-dépendant (E10.3+)
+-Cataracte diabétique type malnutrition (insulino-dépendant) (non insulino-dépendant) (E12.3+)
+-Cataracte diabétique type non insulino-dépendant (E11.3+)
+-Cataracte diabétique type précisé NCA (E13.3+)
             </field>
         </record>
-         <record id="cim10_category_H28_1" odel="oph.cim10.category">
+         <record id="cim10_category_H28_1" model="oph.cim10.category">
             <field name="parent_id" ref="cim10_category_H28"/>
             <field name="name">Cataracte au cours d'autres maladies endocriniennes, nutritionnelles et métaboliques</field>
             <field name="code">H28.1</field>
-            <field name="description">
-    Cataracte au cours de hypoparathyroïdie (E20.-+)
-    Cataracte au cours de malnutrition - déshydratation (E40-E46+)
-    Cataracte due à hypoparathyroïdie (E20.-+)
-    Cataracte due à maladie endocrinienne NCA (E34.9+)
-    Cataracte due à maladie métabolique NCA (E88.9+)
-    Cataracte due à maladie nutritionnelle NCA (E63.9+)
-    Cataracte due à myxoedème (E03.9+)
+            <field name="description">- Cataracte au cours de hypoparathyroïdie (E20.-+)
+-Cataracte au cours de malnutrition - déshydratation (E40-E46+)
+-Cataracte due à hypoparathyroïdie (E20.-+)
+-Cataracte due à maladie endocrinienne NCA (E34.9+)
+-Cataracte due à maladie métabolique NCA (E88.9+)
+-Cataracte due à maladie nutritionnelle NCA (E63.9+)
+-Cataracte due à myxoedème (E03.9+)
             </field>
         </record>
-         <record id="cim10_category_H28_2" odel="oph.cim10.category">
+         <record id="cim10_category_H28_2" model="oph.cim10.category">
             <field name="parent_id" ref="cim10_category_H28"/>
             <field name="name">Cataracte au cours d'autres maladies classées ailleurs</field>
             <field name="code">H28.2</field>
             <field name="description">- Cataracte myotonique (G71.1+)
             </field>
         </record>
-         <record id="cim10_category_H28_8" odel="oph.cim10.category">
+         <record id="cim10_category_H28_8" model="oph.cim10.category">
             <field name="parent_id" ref="cim10_category_H28"/>
             <field name="name">Autres affections du cristallin au cours de maladies classées ailleurs</field>
             <field name="code">H28.8</field>
-            <field name="description">
-    -Luxation (de) cristallin (ancienne) (partielle) (spontanée) congénitale syphilitique (A50.3+)
-    -Marfan maladie de (syphilitique) avec luxation du cristallin (A50.3+)
-    -Marfan syndrome de signifiant syphilis, congénitale avec luxation du cristallin (A50.3+)
-    -Syphilis (acquise) (de) cristallin (tardive) (A52.7+)
-    -Syphilis (acquise) (de) cristallin (tardive) congénitale (précoce) (A50.0+)
-    -Syphilis (acquise) (de) cristallin (tardive) congénitale (précoce) tardive (A50.3+)
-    -Syphilis (acquise) (de) cristallin (tardive) précoce (A51.4+)
+            <field name="description">-Luxation (de) cristallin (ancienne) (partielle) (spontanée) congénitale syphilitique (A50.3+)
+-Marfan maladie de (syphilitique) avec luxation du cristallin (A50.3+)
+-Marfan syndrome de signifiant syphilis, congénitale avec luxation du cristallin (A50.3+)
+-Syphilis (acquise) (de) cristallin (tardive) (A52.7+)
+-Syphilis (acquise) (de) cristallin (tardive) congénitale (précoce) (A50.0+)
+-Syphilis (acquise) (de) cristallin (tardive) congénitale (précoce) tardive (A50.3+)
+-Syphilis (acquise) (de) cristallin (tardive) précoce (A51.4+)
             </field>
         </record>
-        
-        <record id="cim10_category_H30_H36" model="oph.cim10.category">
+                <record id="cim10_category_H30_H36" model="oph.cim10.category">
             <field name="parent_id" ref="cim10_category_VII"/>
             <field name="name">Affections de la choroïde et de la rétine</field>
             <field name="code">H30-H36</field>
         </record>
-        <record id="cim10_category_H30_0" odel="oph.cim10.category">
+        <record id="cim10_category_H30" model="oph.cim10.category">
+            <field name="parent_id" ref="cim10_category_H30_H36"/>
+            <field name="name">Choriorétinite</field>
+            <field name="code">H30</field>
+        </record>
+        <record id="cim10_category_H30_0" model="oph.cim10.category">
             <field name="parent_id" ref="cim10_category_H30"/>
             <field name="name">Choriorétinite en foyer </field>
             <field name="code">H30.0</field>
-            <field name="description">
-    Choroïdite - en foyer
-    Rétinite - en foyer
-    Rétinochoroïdite - en foyer
-    Abcès (embolique) (infectieux) (multiple) (pyogène) (septique) (de) choroïde
-    Abcès (embolique) (infectieux) (multiple) (pyogène) (septique) (de) rétine
-    Choriorétinite en foyer (aiguë) (chronique) (centrale) (exsudative) (de Jensen) (juxtapapillaire)
-    Jensen, choriorétinite ou maladie de
-    Rétinite en foyer
-    Rétinite juxtapapillaire (Jensen)
-    Ulcère (à) (de) rétine
-                        
+            <field name="description">-Choroïdite - en foyer
+-Rétinite - en foyer
+-Rétinochoroïdite - en foyer
+-Abcès (embolique) (infectieux) (multiple) (pyogène) (septique) (de) choroïde
+-Abcès (embolique) (infectieux) (multiple) (pyogène) (septique) (de) rétine
+-Choriorétinite en foyer (aiguë) (chronique) (centrale) (exsudative) (de Jensen) (juxtapapillaire)
+-Jensen, choriorétinite ou maladie de
+-Rétinite en foyer
+-Rétinite juxtapapillaire (Jensen)
+-Ulcère (à) (de) rétine
             </field>
         </record>
-        <record id="cim10_category_H30_1" odel="oph.cim10.category">
+                <record id="cim10_category_H30_1" model="oph.cim10.category">
             <field name="parent_id" ref="cim10_category_H30"/>
             <field name="name">Choriorétinite disséminée </field>
             <field name="code">H30.1</field>
-            <field name="description">
-    Choroïdite - disséminée
-    Rétinite - disséminée
-    Rétinochoroïdite - disséminée
-    Choriorétinite disséminée
-    Rétinite disséminée
-                        
+            <field name="description">-Choroïdite - disséminée
+-Rétinite - disséminée
+-Rétinochoroïdite - disséminée
+-Choriorétinite disséminée
+-Rétinite disséminée
             </field>
         </record>
-        <record id="cim10_category_H30_2" odel="oph.cim10.category">
+
+        <record id="cim10_category_H30_2" model="oph.cim10.category">
             <field name="parent_id" ref="cim10_category_H30"/>
             <field name="name">Cyclite postérieure </field>
             <field name="code">H30.2</field>
-            <field name="description">
-    Inflammation de la zone postérieure
-    Cyclite (aiguë) (subaiguë) (récidivante) postérieure
-    Inflammation (de) zone postérieure (oeil)
-                        
+            <field name="description">-Inflammation de la zone postérieure
+-Cyclite (aiguë) (subaiguë) (récidivante) postérieure
+-Inflammation (de) zone postérieure (oeil)
             </field>
         </record>
-       <record id="cim10_category_H30_8" odel="oph.cim10.category">
+        <record id="cim10_category_H30_8" model="oph.cim10.category">
             <field name="parent_id" ref="cim10_category_H30"/>
             <field name="name">Autres choriorétinites </field>
-            <field name="code">H30.8</field>
-            <field name="description">
-    Maladie de Harada
-    Choriorétinite précisée NCA
-    Harada, maladie ou syndrome de
-    Vogt-Koyanagi, syndrome de
-                        
-            </field>
         </record>
-        <record id="cim10_category_H30_9" odel="oph.cim10.category">
+        <record id="cim10_category_H30_9" model="oph.cim10.category">
             <field name="parent_id" ref="cim10_category_H30"/>
             <field name="name">Choriorétinite, sans précision</field>
             <field name="code">H30.9</field>
             <field name="description">
-    Maladie de Harada
-    Choriorétinite précisée NCA
-    Harada, maladie ou syndrome de
-    Vogt-Koyanagi, syndrome de
-                        
+-Choroïdite - SAI
+-Rétinite - SAI
+-Retinochoroïdite - SAI
+-Choriorétinite
+-Inflammation (de) choroïde
+-Inflammation (de) rétine
+-Inflammation (de) tractus uvéal (antérieur) postérieur
+-Neurochoriorétinite
+-Neurorétinite
+-Rétinite
+-Uvéite (antérieure) (due à) postérieure
             </field>
         </record>
         
-                
+        <record id="cim10_category_H31" model="oph.cim10.category">
+            <field name="parent_id" ref="cim10_category_H30_H36"/>
+            <field name="name">Autres affections de la choroïde</field>
+            <field name="code">H31</field>
+        </record>
+        <record id="cim10_category_H32" model="oph.cim10.category">
+            <field name="parent_id" ref="cim10_category_H30_H36"/>
+            <field name="name">Affections choriorétiniennes au cours de maladies classées ailleurs</field>
+            <field name="code">H32</field>
+        </record>
+        <record id="cim10_category_H33" model="oph.cim10.category">
+            <field name="parent_id" ref="cim10_category_H30_H36"/>
+            <field name="name">Décollement et déchirure de la rétine</field>
+            <field name="code">H33</field>
+        </record>
+        <record id="cim10_category_H34" model="oph.cim10.category">
+            <field name="parent_id" ref="cim10_category_H30_H36"/>
+            <field name="name">Occlusions vasculaires rétiniennes</field>
+            <field name="code">H34</field>
+        </record><record id="cim10_category_H35" model="oph.cim10.category">
+            <field name="parent_id" ref="cim10_category_H30_H36"/>
+            <field name="name">Autres affections rétiniennes</field>
+            <field name="code">H35</field>
+        </record>
+        <record id="cim10_category_H36" model="oph.cim10.category">
+            <field name="parent_id" ref="cim10_category_H30_H36"/>
+            <field name="name">Affections rétiniennes au cours de maladies classées ailleurs</field>
+            <field name="code">H36</field>
+        </record>
+        <record id="cim10_category_H36_0" model="oph.cim10.category">
+            <field name="parent_id" ref="cim10_category_H36"/>
+            <field name="name">Rétinopathie diabétique (E10-E14+ avec le quatrième chiffre .3)</field>
+            <field name="code">H36.0</field>
+            <field name="description">
+    Anévrisme, anévrysme (anastomotique) (cirsoïde) (diffus) (faux) (fusiforme) (multiple) (sacculaire) (de) rétinien diabétique (E14.3+)
+    Anévrisme, anévrysme (anastomotique) (cirsoïde) (diffus) (faux) (fusiforme) (multiple) (sacculaire) (de) rétinien diabétique insulino-dépendant (E10.3+)
+    Anévrisme, anévrysme (anastomotique) (cirsoïde) (diffus) (faux) (fusiforme) (multiple) (sacculaire) (de) rétinien diabétique malnutrition (insulino-dépendant) (non-insulino-dépendant) (E12.3+)
+    Anévrisme, anévrysme (anastomotique) (cirsoïde) (diffus) (faux) (fusiforme) (multiple) (sacculaire) (de) rétinien diabétique non insulino-dépendant (E11.3+)
+    Anévrisme, anévrysme (anastomotique) (cirsoïde) (diffus) (faux) (fusiforme) (multiple) (sacculaire) (de) rétinien diabétique type précisé NCA (E13.3+)
+    Hémorragie (de) (due à) rétine (profonde) (superficielle) diabétique (type) (E14.3+)
+    Hémorragie (de) (due à) rétine (profonde) (superficielle) diabétique (type) insulino-dépendant (E10.3+)
+    Hémorragie (de) (due à) rétine (profonde) (superficielle) diabétique (type) malnutrition (insulino-dépendant) (non insulino-dépendant) (E12.3+)
+    Hémorragie (de) (due à) rétine (profonde) (superficielle) diabétique (type) non insulino-dépendant (E11.3+)
+    Hémorragie (de) (due à) rétine (profonde) (superficielle) diabétique (type) précisé NCA (E13.3+)
+    Micro-anévrisme rétinien diabétique (type) (E14.3+)
+    Micro-anévrisme rétinien diabétique (type) insulino-dépendant (E10.3+)
+    Micro-anévrisme rétinien diabétique (type) malnutrition (insulino-dépendant) (non insulino-dépendant) (E12.3+)
+    Micro-anévrisme rétinien diabétique (type) non insulino-dépendant (E11.3+)
+    Micro-anévrisme rétinien diabétique (type) précisé NCA (E13.3+)
+    Rétinite diabétique (type) (E14.3+)
+    Rétinite diabétique (type) insulino-dépendant (E10.3+)
+    Rétinite diabétique (type) malnutrition (insulino-dépendant) (non insulino-dépendant) (E12.3+)
+    Rétinite diabétique (type) non insulino-dépendant (E11.3+)
+    Rétinite diabétique (type) précisé NCA (E13.3+)
+    Rétinopathie (avec antécédents) (circinée) (de Coats) (exsudative) (hypertensive) (de) diabétique (proliférante) (type) (E14.3+)
+    Rétinopathie (avec antécédents) (circinée) (de Coats) (exsudative) (hypertensive) (de) diabétique (proliférante) (type) insulino-dépendant (E10.3+)
+    Rétinopathie (avec antécédents) (circinée) (de Coats) (exsudative) (hypertensive) (de) diabétique (proliférante) (type) malnutrition (insulino-dépendant) (non insulino-dépendant) (E12.3+)
+    Rétinopathie (avec antécédents) (circinée) (de Coats) (exsudative) (hypertensive) (de) diabétique (proliférante) (type) non insulino-dépendant (E11.3+)
+    Rétinopathie (avec antécédents) (circinée) (de Coats) (exsudative) (hypertensive) (de) diabétique (proliférante) (type) précisé NCA (E13.3+)
+            </field>
+        </record>
+    <record id="cim10_category_H36_8" model="oph.cim10.category">
+            <field name="parent_id" ref="cim10_category_H36"/>
+            <field name="name">Autres affections rétiniennes au cours de maladies classées ailleurs</field>
+            <field name="code">H36.8</field>
+            <field name="description">-Dystrophie rétinienne au cours des anomalies du stockage des lipides (E75.-+)
+-Rétinopathie athéroscléreuse (I70.8+)
+-Rétinopathie proliférante au cours de l'anémie à hématies falciformes (D57.-+)
+-Artériosclérose (avec calcification) (diffuse) (généralisée) (oblitérante) (occlusive) (sénile) (de) rétine (vasculaire) (I70.8+)
+-Batten-Mayou, maladie ou syndrome de rétine (E75.4+)
+-Dégénérescence (de) rétine (cystoïde) (en palissade) (entrecroisée) (microcystoïde) (pavimenteuse) (périphérique) (réticulaire) (sénile) au cours de cérébrolipidose (E75.4+)
+-Dégénérescence (de) rétine (cystoïde) (en palissade) (entrecroisée) (microcystoïde) (pavimenteuse) (périphérique) (réticulaire) (sénile) au cours de lipidose (E75.6+)
+-Dystrophie (de) rétine (héréditaire) (pigmentaire) (ponctuée albescente) (vitelliforme) au cours d'anomalie de stockage des lipides (E75.6+)
+-Périphlébite tuberculeuse vaisseaux rétiniens (A18.5+)
+-Phlébite (infectieuse) (pyohémique) (suppurée) (veine) tuberculeuse vaisseaux de l'oeil (A18.5+)
+-Rétinite athéroscléreuse (I70.8+)
+-Rétinopathie (avec antécédents) (circinée) (de Coats) (exsudative) (hypertensive) (de) athéroscléreuse (I70.8+)
+-Rétinopathie (avec antécédents) (circinée) (de Coats) (exsudative) (hypertensive) (de) proliférante NCA au cours de maladie à hématies falciformes (D57.-+)
+            </field>
+        </record>
 
+    
+                H36.8*  Autres affections rétiniennes au cours de maladies classées ailleurs 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <!--         CIM10 Items           -->
-        
-        <record id="cim10_item_H00_0X-001" model="oph.cim10">
+      <!--         CIM10 Items           -->
+      <record id="cim10_item_H00_0X-001" model="oph.cim10">
             <field name="name">Abcès de la paupière</field>
             <field name="categ_id" ref="cim10_category_H00_0"/>
             <field name="code">H00.0X-001</field>
@@ -547,156 +602,66 @@
             <field name="categ_id" ref="cim10_category_H00_0"/>
             <field name="code">H16.1X-008</field>
         </record>
-<!--  H16 -->
-        <record id="cim10_item_H16_2" model="oph.cim10">
-            <field name="name">Kératoconjonctivite</field>
-            <field name="categ_id" ref="cim10_category_H16_0"/>
-            <field name="description">Kératite superficielle avec conjonctivite
-Kératoconjonctivite SAI
-Kératoconjonctivite d'exposition
-Kératoconjonctivite neurotrophique
-Kératoconjonctivite phlycténulaire
-Ophtalmia nodosa
-Kératite superficielle (aréolaire) (ponctuée) (stellaire) avec conjonctivite
-Kératoconjonctivite
-Kératoconjonctivite lagophtalmique
-Kératoconjonctivite phlycténulaire (allergique) (non tuberculeuse)
-Lagophtalmie (nerveuse) (paupière) avec kératite
-Ophtalmie (catarrhale) (congestive) (due à) noueuse
-Phlycténule de la cornée (allergique) (non tuberculeuse)</field>
-            <field name="code">H16.2</field>
+
+        
+        <record id="cim10_item_H30_0X-001" model="oph.cim10">
+            <field name="name">Choroïdite en foyer</field>
+            <field name="categ_id" ref="cim10_category_H30_0"/>
+            <field name="code">H30.0X-001</field>
         </record>
-        <record id="cim10_item_H16_2X-001" model="oph.cim10">
-            <field name="name">Kératite superficielle avec conjonctivite</field>
-            <field name="categ_id" ref="cim10_category_H00_0"/>
-            <field name="code">H16.2X-001</field>
+        <record id="cim10_item_H30_0X-002" model="oph.cim10">
+            <field name="name">Rétinite en foyer</field>
+            <field name="categ_id" ref="cim10_category_H30_0"/>
+            <field name="code">H30.0X-002</field>
         </record>
-        <record id="cim10_item_H16_2X-002" model="oph.cim10">
-            <field name="name">Kérato-conjonctivite</field>
-            <field name="categ_id" ref="cim10_category_H00_0"/>
-            <field name="code">H16.2X-002</field>
+        <record id="cim10_item_H30_0X-003" model="oph.cim10">
+            <field name="name">Choriorétinite en foyer</field>
+            <field name="categ_id" ref="cim10_category_H30_0"/>
+            <field name="code">H30.0X-003</field>
         </record>
-        <record id="cim10_item_H16_2X-003" model="oph.cim10">
-            <field name="name">Kérato-conjonctivite d'exposition</field>
-            <field name="categ_id" ref="cim10_category_H00_0"/>
-            <field name="code">H16.2X-003</field>
+
+        <record id="cim10_item_H30_1X-001" model="oph.cim10">
+            <field name="name">Choroïdite disséminée</field>
+            <field name="categ_id" ref="cim10_category_H30_1"/>
+            <field name="code">H30.1X-001</field>
         </record>
-        <record id="cim10_item_H16_2X-004" model="oph.cim10">
-            <field name="name">Kérato-conjonctivite neurotrophique</field>
-            <field name="categ_id" ref="cim10_category_H00_0"/>
-            <field name="code">H16.2X-004</field>
+        <record id="cim10_item_H30_1X-002" model="oph.cim10">
+            <field name="name">Rétinite disséminée</field>
+            <field name="categ_id" ref="cim10_category_H30_1"/>
+            <field name="code">H30.1X-002</field>
         </record>
-        <record id="cim10_item_H16_2X-005" model="oph.cim10">
-            <field name="name">Kérato-conjonctivite phlycténulaire</field>
-            <field name="categ_id" ref="cim10_category_H00_0"/>
-            <field name="code">H16.2X-005</field>
+        <record id="cim10_item_H30_1X-003" model="oph.cim10">
+            <field name="name">Rétinochoroïdite disséminée</field>
+            <field name="categ_id" ref="cim10_category_H30_1"/>
+            <field name="code">H30.1X-003</field>
         </record>
-        <record id="cim10_item_H16_2X-006" model="oph.cim10">
-            <field name="name">Ophtalmia nodosa</field>
-            <field name="categ_id" ref="cim10_category_H00_0"/>
-            <field name="code">H16.2X-006</field>
+
+        <record id="cim10_item_H30_2X-001" model="oph.cim10">
+            <field name="name">Inflammation de la zone postérieure</field>
+            <field name="categ_id" ref="cim10_category_H30_2"/>
+            <field name="code">H30.2X-001</field>
         </record>
-        <record id="cim10_item_H16_3" model="oph.cim10">
-            <field name="name">Kératite interstitielle et profonde</field>
-            <field name="categ_id" ref="cim10_category_H16_0"/>
-            <field name="description">Abcès (embolique) (infectieux) (multiple) (pyogène) (septique) (de) cornée
-Cogan, syndrome de
-Kératite interstitielle (non syphilitique)
-Kératite profonde
-Kératite sclérosante</field>
-            <field name="code">H16.3</field>
-        </record>
-        <record id="cim10_item_H16_4" model="oph.cim10">
-            <field name="name">Néovascularisation cornéenne</field>
-            <field name="categ_id" ref="cim10_category_H16"/>
-            <field name="description">Néovaisseaux (de la cornée)
-Pannus (de la cornée)
-Néovascularisation cornéenne
-Pannus (de la cornée) allergique eczémateux
-Pannus (de la cornée) dégénératif
-            </field>
-            <field name="code">H16.4</field>
-        </record>
-        <record id="cim10_item_H16_4X-001" model="oph.cim10">
-            <field name="name">Néovaisseaux de la cornée</field>
-            <field name="categ_id" ref="cim10_category_H00_0"/>
-            <field name="code">H16.4X-001</field>
-        </record>
-        <record id="cim10_item_H16_4X-002" model="oph.cim10">
-            <field name="name">Pannus de la cornée</field>
-            <field name="categ_id" ref="cim10_category_H00_0"/>
-            <field name="code">H16.4X-002</field>
-        </record>
-        <record id="cim10_item_H16_8" model="oph.cim10">
-            <field name="name">Kératites</field>
-            <field name="categ_id" ref="cim10_category_H16"/>
-            <field name="description">Kératite calcaire
-    Kératite précisée NCA
-    Kératite suppurée
-    Kératite vésiculaire
-    Sclérokératite
-        </field>
-        <field name="code">H16.8</field>
-        </record>
-        <record id="cim10_item_H16_9" model="oph.cim10">
-            <field name="name"> Kératite, sans précision</field>
-            <field name="categ_id" ref="cim10_category_H16"/>
-            <field name="description">Inflammation (de) cornée
-    Kératite
-        </field>
-        <field name="code">H16.9</field>
+
+        <record id="cim10_item_H30_8X-001" model="oph.cim10">
+            <field name="name">Maladie de Harada</field>
+            <field name="categ_id" ref="cim10_category_H30_8"/>
+            <field name="code">H30.8X-001</field>
         </record>
         
-        <record id="cim10_item_H25.0X-001" model="oph.cim10">
-            <field name="name">Cataracte sénile coronaire</field>
-            <field name="categ_id" ref="cim10_category_H25_0"/>
-            <field name="code">H25.0X-001</field>
+        <record id="cim10_item_H30_9X-001" model="oph.cim10">
+            <field name="name">Choroïdite</field>
+            <field name="categ_id" ref="cim10_category_H30_9"/>
+            <field name="code">H30.9X-001</field>
         </record>
-        <record id="cim10_item_H25.0X-002" model="oph.cim10">
-            <field name="name">Cataracte sénile corticale</field>
-            <field name="categ_id" ref="cim10_category_H25_0"/>
-            <field name="code">H25.0X-002</field>
+        <record id="cim10_item_H30_9X-002" model="oph.cim10">
+            <field name="name">Rétinite</field>
+            <field name="categ_id" ref="cim10_category_H30_9"/>
+            <field name="code">H30.9X-002</field>
         </record>
-        <record id="cim10_item_H25.0X-003" model="oph.cim10">
-            <field name="name">Cataracte sénile polaire sous capsulaire</field>
-            <field name="categ_id" ref="cim10_category_H25_0"/>
-            <field name="code">H25.0X-003</field>
+        <record id="cim10_item_H30_9X-003" model="oph.cim10">
+            <field name="name">Retinochoroïdite</field>
+            <field name="categ_id" ref="cim10_category_H30_9"/>
+            <field name="code">H30.9X-003</field>
         </record>
-        <record id="cim10_item_H25.0X-004" model="oph.cim10">
-            <field name="name">Cataracte sénile punctiforme</field>
-            <field name="categ_id" ref="cim10_category_H25_0"/>
-            <field name="code">H25.0X-004</field>
-        </record>
-        <record id="cim10_item_H25.0X-005" model="oph.cim10">
-            <field name="name">Water clefts</field>
-            <field name="categ_id" ref="cim10_category_H25_0"/>
-            <field name="code">H25.0X-001</field>
-        </record>
-        <record id="cim10_item_H25.8X-00" model="oph.cim10">
-            <field name="name">Formes combinées de cataracte sénile</field>
-            <field name="categ_id" ref="cim10_category_H25_8"/>
-            <field name="code">H25.8X-001</field>
-        </record>
-        
-        <record id="cim10_item_H28.1X-001" model="oph.cim10">
-            <field name="name">Cataracte au cours d' hypoparathyroïdie</field>
-            <field name="categ_id" ref="cim10_category_H28_1"/>
-            <field name="code">H28.1X-001</field>
-        </record>
-        <record id="cim10_item_H28.1X-002" model="oph.cim10">
-            <field name="name">Cataracte au cours de malnutrition - déshydratation</field>
-            <field name="categ_id" ref="cim10_category_H28_1"/>
-            <field name="code">H28.1X-002</field>
-        </record>
-        <record id="cim10_item_H28.2X-001" model="oph.cim10">
-            <field name="name">Cataracte myotonique</field>
-            <field name="categ_id" ref="cim10_category_H28_2"/>
-            <field name="code">H28.2X-001</field>
-        </record>
-
-
-
-
-
     </data>
 </openerp>
