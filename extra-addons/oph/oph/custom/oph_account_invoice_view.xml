@@ -32,8 +32,8 @@
                         <field name="payment_method"/>
                     </field>
                     <xpath expr="//button[@string='Validate']" position="after">
-                        <button name="invoice_check" states="draft" string="Check Payment" type="object" groups="base.group_user"/>
-                        <button name="invoice_cash" states="draft" string="Cash Payment" type="object" groups="base.group_user"/>
+                        <button name="invoice_check" states="draft" string="Check Payment" type="object" groups="base.group_user" invisible="1"/>
+                        <button name="invoice_cash" states="draft" string="Cash Payment" type="object" groups="base.group_user" invisible="1"/>
                     </xpath>
                
                     <xpath expr="//field[@name='invoice_line']" position="before">

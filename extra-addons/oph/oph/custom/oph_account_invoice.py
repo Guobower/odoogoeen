@@ -14,13 +14,15 @@ class account_invoice(orm.Model):
 
     _columns = {
         'payeur': fields.selection([
-            ('CAFAT Mut', 'CAFAT Mutuelle'),
+            ('check','Check'),
+            ('cash','Cash'),
+            ('LM', 'Longue Maladie'),
             ('SUD', 'AMG Sud'),
             ('NORD', 'AMG Nord'),
             ('ILES', 'AMG Iles'),
-            ('LM', 'Longue Maladie'),
             ('AT', 'Accidents de travail'),
             ('SMIT', 'SMIT'),
+            ('CAFAT Mut', 'CAFAT Mutuelle'),
             ('TM', 'Ticket moderateur'),
             ('BdC', 'Baie des Citrons')], 'Payeur'),  # required=True),
         'ref_statement': fields.char('Statement Ref', size = 32, help = 'Reference of the statement for bank reconcilation'),
