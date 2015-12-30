@@ -541,6 +541,41 @@ Nombre d'impact
 2 iridotomies périphériques sur 11h et 1h
             </field>
         </record>
+        
+        <!-- REPORTING TEMPLATE 21 -->
+        <record id="temp_rep_21" model="oph.reporting.template">
+            <field name="name">VITRECTOMIE 3 VOIES 25G + CRYOAPPLICATION + TAMPONNEMENT PAR GAZ</field>
+            <field name="short_name">HEMFOV</field>
+            <field name="type">ORR</field>
+            <field name="text_body">
+Désinfection cutanée et des culs de sac à la Bétadine 5%. Temps de contact 2 minutes.
+Pose du champ opératoire. Incision du champ opératoire et isolement des cils.
+Pose d'un blépharostat de Castroviejo.
+Mise en place des trocards en tunnelisant l'insertion et avec décalage de la conjonctive à 3.5mm du limbe.
+Insersion de la ligne d'infusion clampée.
+Vérification de sa bonne position dans le segment postérieur. Ouverture de la ligne d'infusion.
+Utilisation du système de visualisation grand champ BIOM.
+Réalisation d'une vitrectomie centrale.
+Réalisation du décollement postérieur du vitré par aspiration au vitréotome, coupe désactivée en regard de la papille.
+Vitrectomie périphérique en indentant.
+Inspection soigneuse de la périphérie en indentant qui ne permet pas de retrouver d'autre déhiscence, et vérification de l'absence d'incarcération de vitré dans les trocards.
+Echange eau-air avec aspiration au vitréotome coupe désactivée qui permet une bonne réapplication rétinienne.
+Cryo-application de la déhiscence sous controle visuel.
+Ablation des trocards. Vérification de l'étanchéité.
+Les sclerotomies sont autoétanches.
+Lavage de la cavité vitréenne par 2 seringues de 20 ml de C2F6 isovolumétrique (16%).
+On termine sur un globe normotone au doigt.
+Ablation du blepharostat. Ablation du champ opératoire
+Pilocarpine collyre. Sterdex. Pansement. Coque
+            </field>
+        </record>
+
+
+
+
+
+
+
                     <!-- INDICATIONS-->
         <record id="indic-id1" model="oph.indication">
             <field name="name">DMLA néovascularisée</field>
