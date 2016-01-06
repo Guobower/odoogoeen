@@ -192,7 +192,9 @@ class oph_reporting(orm.Model):
               # I want to have more than one molecule
               'molecule_ids':fields.many2many('oph.inn', 'oph_reporting_inn_rel', 'reporting_id', 'inn_id', 'Molecule(s)'),  # marche pas domain = [('ivt', 'is', True)],
               'indication_id':fields.many2one('oph.indication', 'Indication'),
-              'ods':fields.selection(__ods_get, 'ODS', required = False,),
+              'ods':fields.selection([('od', _('Right Eye')),
+                                                ('os', _('Left Eye')),
+                                                ('ods', _('Right and Left Eye')),], 'ODS', required = False,),
               'state':fields.selection(_state_get, 'State'),
               # text_body:fields.text qui serait construit par concaténation des text_body des templates et insertions des données var1....
               'honorific':fields.boolean('Honorific'),
@@ -251,7 +253,20 @@ class oph_reporting_template(orm.Model):
               'name':fields.char('Name', size = 128, help = "Name of the template"),
               'short_name':fields.char('Short Name', size = 64),
               'text_body':fields.text('Text Body', help = 'Text body of the template'),
-              'type':fields.selection(_type_get, 'Type'),
+              'type':fields.selection([('Off', _('Office Report')),
+                                                ('ORR', _('Operating Room Report')),
+                                                ('DIAB', _('Diabetic')),
+                                                ('IVT', _('IntraVitreal Injection')),
+                                                ('H', _('Header')),
+                                                ('His', _('History')),
+                                                ('Ex', _('Exam')),
+                                                ('ASS', _('Anterior Segment Section')),
+                                                ('PSS', _('Posterior Segment Section')),
+                                                ('CS', _('Conclusion Section')),
+                                                ('Laser', _('Laser Report')),
+                                                ('FAF', _('Fluoresceine Angiography Report')),
+                                                ('OCT', _('OCT Report')),
+                                                ], 'Type'),
               'active':fields.boolean('Active', help = "If False the template wont be selectable"),
               }
 

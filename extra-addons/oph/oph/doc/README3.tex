@@ -3485,6 +3485,34 @@ lof\$createdb glaglaDB -O lof
 lof\$pg_restore -d glaglaDB -U lof -C foo.dump # ne marche pas. j'ai une database sans table.
 Pas réussi à régler le probleme avec pg_restore.
 
+
+\section{Traduction-Traduire}
+\label{sec:traduction}
+
+\section{workflow}
+\label{sec:workflow}
+Settings -> Translation -> Export a translation -> New language (empty translation template, PO File, module to export ophtalmology -> Export -> Export complete qui donne des informations sur le fichier. On clique sur le lien du fichier .po pour le downloader.
+
+On fait les modifications dans ce fichier .po. On l'enregistre. oph/i18n/fr.po.
+on remplace bien le nomdumodule.po par fr.po. On relance le serveur et c'est tout.
+
+
+\subsection{selection}
+\label{sec:selection}
+
+def _type_get(self, cr, uid, context = None):
+        return [
+                ('Off', _('Office Report')),
+                ('Laser', _('Laser Report')),
+                ('FAF', _('Fluoresceine Angiography Report')),
+                ('OCT', _('OCT Report')),
+                ('ORR', _('Operating Room Report')),
+                ('DIAB', _('Diabetic')),
+                ('IVT', _('IntraVitreal Injection')),
+                 ]
+
+Ces éléments ne se trouveront pas dans le fichier de traduction. C'est embétant pour les fields.selection(_type_get,...).
+
 \end{document}
 \section{Installation de la 8.0}
 \label{sec:install80}
