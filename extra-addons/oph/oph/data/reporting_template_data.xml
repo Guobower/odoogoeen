@@ -545,7 +545,7 @@ Nombre d'impact
         <!-- REPORTING TEMPLATE 21 -->
         <record id="temp_rep_21" model="oph.reporting.template">
             <field name="name">VITRECTOMIE 3 VOIES 25G + CRYOAPPLICATION + TAMPONNEMENT PAR GAZ</field>
-            <field name="short_name">HEMFOV</field>
+            <field name="short_name">V3VCRYOGAZ</field>
             <field name="type">ORR</field>
             <field name="text_body">
 Désinfection cutanée et des culs de sac à la Bétadine 5%. Temps de contact 2 minutes.
