@@ -90,23 +90,25 @@ class crm_meeting(orm.Model):
                      }})
        return res
 
-    def _get_status_agenda(self, cursor, user_id, context = None):
-        return (
-                ('draft', _('Draft')),
-                ('cs', _('Consultation')),
-                ('tech', _('Technique')),
-                ('open', _('Open')),
-                ('busy', _('Busy')),
-                ('close', _('Close')),
-                ('cancel', _('Cancel')),
-                ('no_show', _('No Show')),
-                ('wait', _('Wait')),
-                ('nwnm', _('No Wait')),
-                ('in', _('In')),
-                ('in_between', _('In Between')),
-                ('done', 'Out'),
-                ('office', _('Office')),  # pourquoi devoir rajouter cette valeur
-                )
+    #===========================================================================
+    # def _get_status_agenda(self, cursor, user_id, context = None):
+    #     return (
+    #             ('draft', _('Draft')),
+    #             ('cs', _('Consultation')),
+    #             ('tech', _('Technique')),
+    #             ('open', _('Open')),
+    #             ('busy', _('Busy')),
+    #             ('close', _('Close')),
+    #             ('cancel', _('Cancel')),
+    #             ('no_show', _('No Show')),
+    #             ('wait', _('Wait')),
+    #             ('nwnm', _('No Wait')),
+    #             ('in', _('In')),
+    #             ('in_between', _('In Between')),
+    #             ('done', 'Out'),
+    #             ('office', _('Office')),  # pourquoi devoir rajouter cette valeur
+    #             )
+    #===========================================================================
 
     def statechange_draft(self, cr, uid, ids, context = None):
         self.write(cr, uid, ids, {"state": "draft"}, context = context)
@@ -231,7 +233,21 @@ class crm_meeting(orm.Model):
                 'motive_comment':fields.char('Comment', size = 128, help = 'Comment to precise the motive'),
                 'fullmotive':fields.function(_format_fullmotive, type = 'char', size = 128, string = 'Full Motive', store = True, method = True),
                 'chief_complaint':fields.text('Chief Complaint'),
-                'state': fields.selection(_get_status_agenda, 'State', readonly = False),
+                'state': fields.selection([
+                                                    ('draft', _('Draft')),
+                                                    ('cs', _('Consultation')),
+                                                    ('tech', _('Technique')),
+                                                    ('open', _('Open')),
+                                                    ('busy', _('Busy')),
+                                                    ('close', _('Close')),
+                                                    ('cancel', _('Cancel')),
+                                                    ('no_show', _('No Show')),
+                                                    ('wait', _('Wait')),
+                                                    ('nwnm', _('No Wait')),
+                                                    ('in', _('In')),
+                                                    ('in_between', _('In Between')),
+                                                    ('done', 'Out'),
+                                                    ('office', _('Office'))], readonly = False),
                 'partner_id':fields.many2one('res.partner', 'Partner',),
                 'tono_ids':fields.one2many('oph.measurement', 'meeting_id', 'Tonometry', domain = [('type_id.code', '=', 'tono')]),
                 'refraction_ids':fields.one2many('oph.measurement', 'meeting_id', 'Refraction', domain = [('type_id.code', '=', 'ref')]),
