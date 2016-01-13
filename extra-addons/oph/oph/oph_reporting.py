@@ -192,9 +192,9 @@ class oph_reporting(orm.Model):
               # I want to have more than one molecule
               'molecule_ids':fields.many2many('oph.inn', 'oph_reporting_inn_rel', 'reporting_id', 'inn_id', 'Molecule(s)'),  # marche pas domain = [('ivt', 'is', True)],
               'indication_id':fields.many2one('oph.indication', 'Indication'),
-              'ods':fields.selection([('od', _('Right Eye')),
-                                                ('os', _('Left Eye')),
-                                                ('ods', _('Right and Left Eye')),], 'ODS', required = False,),
+              'ods':fields.selection([('OD', _('Right Eye')),
+                                      ('OS', _('Left Eye')),
+                                      ('ODS', _('Right and Left Eye')), ], 'ODS', required = False,),
               'state':fields.selection(_state_get, 'State'),
               # text_body:fields.text qui serait construit par concaténation des text_body des templates et insertions des données var1....
               'honorific':fields.boolean('Honorific'),

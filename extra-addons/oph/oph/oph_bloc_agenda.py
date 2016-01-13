@@ -76,7 +76,7 @@ class oph_procedure_type(orm.Model):
                 'name':fields.char('Name', size = 128, translate = True),
                 'shortname':fields.char('Short Name', size = 64, translate = True),
                 'code':fields.char('Code', size = 64,),
-                'dilatation':fields.selection([('yes', _('YES')),('no', _('NO')),], 'Dilatation',),
+                'dilatation':fields.selection([('yes', _('YES')), ('no', _('NO')), ], 'Dilatation',),
                 'iol_status':fields.boolean('IOL Status', Help = 'For an IOL during this type of procedure thick the boxe',),
                 'duration':fields.integer('Duration', help = 'Expected duration of procedure in minutes'),
                 'comment':fields.char('Comment', size = 128, help = 'Where you put all the stuff you need for the intervention'),
@@ -202,10 +202,10 @@ class oph_bloc_agenda_line(osv.osv):
         return res
 
     #===========================================================================
-    # sous forme de fonction 
+    # sous forme de fonction
     # cela n'est pas pris en compte pour la traduction.
     # en tout cas je n'ai pas réussi
-    #def _ods_get(self, cr, uid, context = None):
+    # def _ods_get(self, cr, uid, context = None):
     #     return [
     #             ('OD', _('Right Eye')),
     #             ('OS', _('Left Eye')),
@@ -252,7 +252,7 @@ class oph_bloc_agenda_line(osv.osv):
         return True
 
     def statechange_cancel(self, cr, uid, ids, context = None):
-        self.write(cr, uid, ids, {"state": "cancel","sequence":0}, context = context)
+        self.write(cr, uid, ids, {"state": "cancel", "sequence":0}, context = context)
         return True
 
     def statechange_close(self, cr, uid, ids, context = None):
@@ -294,6 +294,7 @@ class oph_bloc_agenda_line(osv.osv):
                         'anesthesia_id':l.anesthesia_type_id.id,
                         'receiver_partner':True,
                         }
+            print "VALS_REPORTING: %s" % vals_reporting
             reporting_obj = self.pool.get('oph.reporting').create(cr, uid, vals_reporting, context = context)
         # return True
 
@@ -359,10 +360,10 @@ class oph_bloc_agenda_line(osv.osv):
                                                     ('confirm', _('Confirm')),
                                                     ('cancel', _('Cancel')),
                                                     ('close', _('Close')),
-                                                    ('no_show', _('No Show')),], 'State', readonly = False),
+                                                    ('no_show', _('No Show')), ], 'State', readonly = False),
                 'comment':fields.text('Comment'),
-                'ods':fields.selection( [('OD', _('Right Eye')),
-                                                ('OS', _('Left Eye')),], 'ODS', required = True,),
+                'ods':fields.selection([('OD', _('Right Eye')),
+                                         ('OS', _('Left Eye')), ], 'ODS', required = True,),
                 'snd_eye':fields.boolean('Second Eye'),
                 # 'ane_type':fields.selection(_get_ane_type, 'ANE', required = True,),
                 'anesthesia_type_id':fields.many2one('oph.anesthesia.type', 'Anesthesia Type'),
