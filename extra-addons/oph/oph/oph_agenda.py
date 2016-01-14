@@ -276,7 +276,6 @@ class crm_meeting(orm.Model):
                 #'allergia':fields.one2many('oph.allergen', 'meeting_id', 'Allergia'),
                 'pricelist':fields.related('partner_id', 'property_product_pricelist', type = 'many2one', relation = 'product.pricelist', string = 'Pricelist', store = False),
                 'given_date':fields.datetime('Given Date', help = 'Date when the appointement is given to the partner'),
-                'invoice_ids':fields.one2many('account.invoice','meeting_id', 'Invoice line'),
                 }
 
     _defaults = {
