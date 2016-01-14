@@ -26,6 +26,7 @@ class account_invoice(orm.Model):
         'ref_statement': fields.char('Statement Ref', size = 32, help = 'Reference of the statement for bank reconcilation'),
         'date_acte':fields.date('Appointment Date'),
         'payment_method':fields.char('Payment Method', size=16, help= 'Payment method to help tracking paiement'),
+        'meeting_id':fields.many2one('crm.meeting', 'Meeting'),
         }
 
     def invoice_pay_customer(self, cr, uid, ids, context = None):
