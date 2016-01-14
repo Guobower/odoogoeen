@@ -42,7 +42,8 @@
             <field name="name">TIMOPTOL LP 0,50% COLLYRE FL 2,5ML</field>
             <field name="ods_needed">True</field>
         </record>
-
+        
+        <!-- -->
         <record id="inn1" model="oph.inn">
             <field name="name">Carmelose</field>
         </record>
@@ -59,7 +60,7 @@
         <record id="div1" model="oph.brandname">
             <field name="name">COMPRESSES NON STÉRILES NON TISSÉES 7.5 x 7.5</field>
         </record>
-
+ <!-- -->
         <record id="inn2" model="oph.inn">
             <field name="name">Dexaméthasone + Tobramycine</field>
         </record>
@@ -68,7 +69,7 @@
             <field name="name">TOBRADEX COLLYRE FL 5ML</field>
             <field name="ods_needed">True</field>
         </record>
-
+ <!-- -->
         <record id="inn3" model="oph.inn">
             <field name="name">ketorolac trometamol</field>
         </record>
@@ -77,6 +78,7 @@
             <field name="name">ACULAR 0,5% COLLYRE FL 5ML</field>
             <field name="ods_needed">True</field>
         </record>
+ <!-- -->
         <record id="inn4" model="oph.inn">
             <field name="name">loratadine</field>
         </record>
@@ -84,6 +86,7 @@
             <field name="brandname_id" ref="inn4"/>
             <field name="name">CLARITYNE 10MG CPR</field>
         </record>
+ <!-- -->
         <record id="inn5" model="oph.inn">
             <field name="name">HYDROXYZINE DICHLORHYDRATE</field>
         </record>
@@ -91,6 +94,7 @@
             <field name="brandname_id" ref="inn4"/>
             <field name="name">ATARAX 25MG CPR</field>
         </record>
+ <!-- -->
         <record id="inn6" model="oph.inn">
             <field name="name">VALACICLOVIR CHLORHYDRATE</field>
         </record>
@@ -98,35 +102,35 @@
             <field name="brandname_id" ref="inn6"/>
             <field name="name">VALACICLOVIR 500MG CPR</field>
         </record>
-
-        <record id="inn4" model="oph.inn">
+ <!-- -->
+        <record id="inn7" model="oph.inn">
             <field name="name">tobramycine</field>
         </record>
         <record id="tob1" model="oph.brandname">
-            <field name="brandname_id" ref="inn4"/>
+            <field name="brandname_id" ref="inn7"/>
             <field name="name">TOBREX 0,3% COLLYRE FL 5ML</field>
             <field name="ods_needed">True</field>
         </record>
         <record id="tob2" model="oph.brandname">
-            <field name="brandname_id" ref="inn4"/>
+            <field name="brandname_id" ref="inn7"/>
             <field name="name">TOBREX 0,3% POMMADE OPH TB 5G</field>
             <field name="ods_needed">True</field>
         </record>
-
-        <record id="inn5" model="oph.inn">
+ <!-- -->
+        <record id="inn8" model="oph.inn">
             <field name="name">ciprofloxacine</field>
         </record>
         <record id="cil0" model="oph.brandname">
-            <field name="brandname_id" ref="inn5"/>
+            <field name="brandname_id" ref="inn8"/>
             <field name="name">CILOXAN 0,3% POMMADE OPH TB 3,5G</field>
             <field name="ods_needed">True</field>
         </record>
         <record id="cil1" model="oph.brandname">
-            <field name="brandname_id" ref="inn5"/>
+            <field name="brandname_id" ref="inn8"/>
             <field name="name">CILOXAN 0,3% COLLYRE FL 5ML</field>
             <field name="ods_needed">True</field>
         </record>
-
+ <!-- -->
         <record id="inn6" model="oph.inn">
             <field name="name">dexamethasone+ oxytetracycline</field>
         </record>
@@ -135,7 +139,7 @@
             <field name="name">STERDEX POMMADE OPH UNIDOSE</field>
             <field name="ods_needed">True</field>
         </record>
-
+ <!-- -->
         <record id="inn7" model="oph.inn">
             <field name="name">pilocarpine</field>
         </record>
@@ -164,7 +168,7 @@
             <field name="name">ISOPTO PILOCARPINE 0,5% COLLYRE 10ML</field>
             <field name="ods_needed">True</field>
         </record>
-
+ <!-- -->
         <record id="inn8" model="oph.inn">
             <field name="name">latanoprost + timolol</field>
         </record>
@@ -173,7 +177,7 @@
             <field name="name">XALACOM COLLYRE FL 2,5ML</field>
             <field name="ods_needed">True</field>
         </record>
-
+ <!-- -->
         <record id="inn9" model="oph.inn">
             <field name="name">acétozolamide</field>
         </record>
@@ -185,7 +189,7 @@
             <field name="brandname_id" ref="inn9"/>
             <field name="name">DIAMOX 500MG PDR INJ</field>
         </record>
-
+ <!-- -->
         <record id="inn10" model="oph.inn">
             <field name="name">POTASSIUM CHLORURE</field>
         </record>
@@ -193,6 +197,7 @@
             <field name="brandname_id" ref="inn10"/>
             <field name="name">DIFFU-K 600MG GELULE</field>
         </record>
+ <!-- -->
         <record id="inn11" model="oph.inn">
             <field name="name">brinzolamide</field>
         </record>
@@ -201,6 +206,7 @@
             <field name="name">AZOPT 10MG/ML COLLYRE FL 5ML</field>
             <field name="ods_needed">True</field>
         </record>
+ <!-- -->
         <record id="inn12" model="oph.inn">
             <field name="name">ranibizumab</field>
             <field name="ivt">True</field>
@@ -210,6 +216,7 @@
             <field name="name">LUCENTIS 10MG/ML SOL INJ FL 0,23ML</field>
             <field name="ivt">True</field>
         </record>
+ <!-- -->
         <record id="comp0" model="oph.brandname">
             <field name="name">COMPRESSES NON TISSÉES 7.5x7.5</field>
         </record>
@@ -219,6 +226,7 @@
         <record id="soliso0" model="oph.brandname">
             <field name="name">SOLUTÉ ISOTONIQUE UNIDOSE</field>
         </record>
+ <!-- -->
         <record id="inn13" model="oph.inn">
             <field name="name">Tropicamide</field>
         </record>
@@ -232,6 +240,7 @@
             <field name="name">MYDRIATICUM 2MG/0,4ML COLLYRE UNIDOS</field>
             <field name="ods_needed">True</field>
         </record>
+ <!-- -->
         <record id="inn14" model="oph.inn">
             <field name="name">Retinol</field>
         </record>
@@ -240,7 +249,7 @@
             <field name="name">VITAMINE A POMMADE OPH</field>
             <field name="ods_needed">True</field>
         </record>
-        
+ <!-- -->
         <record id="inn15" model="oph.inn">
             <field name="name">latanoprost</field>
         </record>
@@ -249,7 +258,7 @@
             <field name="name">XALATAN 0,005% COLLYRE FL 2,5ML</field>
             <field name="ods_needed">True</field>
         </record>
-        
+ <!-- -->
         <record id="inn16" model="oph.inn">
             <field name="name">ciprofloxacine</field>
         </record>
@@ -263,6 +272,7 @@
             <field name="name">CILOXAN 0,3% POMMADE OPH TB 3,5G</field>
             <field name="ods_needed">True</field>
         </record>
+ <!-- --> 
         <record id="inn16" model="oph.inn">
             <field name="name">brinzolamide + timolol</field>
         </record>
@@ -271,6 +281,7 @@
             <field name="name">AZARGA COLLYRE FL 5ML</field>
             <field name="ods_needed">True</field>
         </record>
+ <!-- -->
         <record id="inn17" model="oph.inn">
             <field name="name">atropine</field>
         </record>
@@ -289,6 +300,7 @@
             <field name="name">ATROPINE ALC 1% COLLYRE FL 10ML</field>
             <field name="ods_needed">True</field>
         </record>
+ <!-- -->
         <record id="inn18" model="oph.inn">
             <field name="name">travoprost</field>
         </record>
@@ -297,6 +309,7 @@
             <field name="name">TRAVATAN 0,004% COLLYRE FL 2,5ML</field>
             <field name="ods_needed">True</field>
         </record>
+ <!-- -->
         <record id="inn19" model="oph.inn">
             <field name="name">hypromellose</field>
         </record>
@@ -305,6 +318,7 @@
             <field name="name">ARTELAC 1,6MG/0,5ML COLLYRE UNIDOSE</field>
             <field name="ods_needed">True</field>
         </record>
+ <!-- -->
         <record id="inn20" model="oph.inn">
             <field name="name">carbomere 980 NF</field>
         </record>
@@ -318,6 +332,7 @@
             <field name="name">LACRIFLUID 0,13% COLLYRE FL 10G</field>
             <field name="ods_needed">True</field>
         </record>
+ <!-- -->
         <record id="inn21" model="oph.inn">
             <field name="name">dorzolamide + timolol</field>
         </record>
@@ -331,6 +346,7 @@
             <field name="name">COSOPT COLLYRE UNIDOSE 0,2ML</field>
            <field name="ods_needed">True</field> 
         </record>
+ <!-- -->
         <record id="inn22" model="oph.inn">
             <field name="name">dexamethasone</field>
         </record>
@@ -339,9 +355,16 @@
             <field name="name">DEXAFREE 1MG/ML COLLYRE 0,4ML</field>
             <field name="ods_needed">True</field>
         </record>
+ <!-- -->
         <record id="inn23" model="oph.inn">
             <field name="name">cyclopentolate</field>
         </record>
+        <record id="skia0" model="oph.brandname">
+            <field name="brandname_id" ref="inn23"/>
+            <field name="name">SKIACOL 0,5% COLLYRE UNIDOSE 0,5ML</field>
+            <field name="ods_needed">True</field>
+        </record>
+<!-- -->
         <record id="inn24" model="oph.inn">
             <field name="name">aflibercept</field>
             <field name="ivt">True</field>
@@ -351,17 +374,66 @@
             <field name="name">EYLEA 40MG/ML SOL INJ FL 0,1ML</field>
             <field name="ivt">True</field>
         </record>
-        <record id="skia0" model="oph.brandname">
-            <field name="brandname_id" ref="inn23"/>
-            <field name="name">SKIACOL 0,5% COLLYRE UNIDOSE 0,5ML</field>
-            <field name="ods_needed">True</field>
-        </record>
+<!-- -->
          <record id="ozu0" model="oph.brandname">
             <field name="brandname_id" ref="inn22"/>
             <field name="name">OZURDEX 700MCG IMPLANT OPH</field>
             <field name="ods_needed">True</field>
             <field name="ivt">True</field>
         </record>
+<!-- -->
+        <record id="inn25" model="oph.inn">
+            <field name="name">Pyrimethamine</field>
+            <field name="ods_needed">False</field>
+        </record>
+        <record id="malo0" model="oph.brandname">
+            <field name="brandname_id" ref="inn25"/>
+            <field name="name">MALOCIDE 50MG CPR</field>
+            <field name="ivt">False</field>
+        </record>
+<!-- -->
+        <record id="inn26" model="oph.inn">
+            <field name="name">Azithromycine</field>
+            <field name="ods_needed">False</field>
+        </record>
+        <record id="zithr0" model="oph.brandname">
+            <field name="brandname_id" ref="inn26"/>
+            <field name="name">ZITHROMAX 250MG CPR</field>
+            <field name="ivt">False</field>
+        </record>
+<!-- -->
+        <record id="inn27" model="oph.inn">
+            <field name="name">Acide folinique</field>
+            <field name="ods_needed">False</field>
+        </record>
+        <record id="leder0" model="oph.brandname">
+            <field name="brandname_id" ref="inn27"/>
+            <field name="name">LEDERFOLINE 5MG CPR</field>
+            <field name="ivt">False</field>
+        </record>
+<!-- -->
+        <record id="inn28" model="oph.inn">
+            <field name="name">Prednisone</field>
+            <field name="ods_needed">False</field>
+        </record>
+        <record id="cortcyl0" model="oph.brandname">
+            <field name="brandname_id" ref="inn28"/>
+            <field name="name">CORTANCYL 20MG CPR</field>
+            <field name="ivt">False</field>
+        </record>
+        <record id="cortcyl1" model="oph.brandname">
+            <field name="brandname_id" ref="inn28"/>
+            <field name="name">CORTANCYL 5MG CPR</field>
+            <field name="ivt">False</field>
+        </record>
+        <record id="cortcyl2" model="oph.brandname">
+            <field name="brandname_id" ref="inn28"/>
+            <field name="name">CORTANCYL 1MG CPR</field>
+            <field name="ivt">False</field>
+        </record>
+<!-- -->
+<!-- -->
+<!-- -->
 
         <!-- Pathology -->
         <!-- Conjonctivite -->
@@ -715,6 +787,7 @@
             <field name="brandname_id" ref="myd0"/>
             <field name="comment">Instiller une goutte de chaque collyre dans chaque oeil à 0,5,10,15 minute. (Soit une gtte toutes les 5 minutes pendant 15 minutes). Et nouvel examen ophtalmologique à la 45ème minute. Pensez à prévoir un délai de 45 minutes par rapport à l'heure de votre rendez vous ophtalmologique.</field>
         </record>
+        
         <!--  Protocole moebomite -->
         <record id="path17" model="oph.pathology">
             <field name="name">Moebomite Sans Sterdex</field>
@@ -733,8 +806,51 @@
             pour 2 mois 
             il est important de poursuivre les soins de paupière même si la symptomatologie s'améliore.
             </field>
-
         </record>
+        
+
+
+        <!-- TRAITEMENT ANTITOXOPLASMOSE -->
+
+
+        <record id="path18" model="oph.pathology">
+            <field name="name">Traitement Toxoplasmose</field>
+            <field name="comment">Traitement de la toxoplasmose. Protocole CHU BDX 2015</field>
+        </record>
+        <record id="path18_line0" model="oph.medication.line.template">
+            <field name="pathology_id" ref="path18"/>
+            <field name="name">ID1</field>
+            <field name="brandname_id" ref="malo0"/>
+            <field name="poso">2 comprimés le premier jour. Puis 1 comprimé par jour.</field>
+            <field name="duration">pendant 5 semaines</field>
+        </record>
+        <record id="path18_line1" model="oph.medication.line.template">
+            <field name="pathology_id" ref="path18"/>
+            <field name="name">ID2</field>
+            <field name="brandname_id" ref="zithr0"/>
+            <field name="poso">2 comprimés le premier jour. Puis 1 comprimé par jour</field>
+            <field name="duration">pendant 5 semaines</field>
+        </record>
+        <record id="path18_line2" model="oph.medication.line.template">
+            <field name="pathology_id" ref="path18"/>
+            <field name="name">ID3</field>
+            <field name="brandname_id" ref="leder0"/>
+            <field name="poso">1 comprimé par jour</field>
+            <field name="duration">pendant 5 semaines</field>
+        </record>
+        <record id="path18_line3" model="oph.medication.line.template">
+            <field name="pathology_id" ref="path18"/>
+            <field name="name">ID4</field>
+            <field name="brandname_id" ref="cortcyl0"/>
+            <field name="poso">1mg/kg/jour, soit xxxx mg en une prise unique le matin</field>
+            <field name="duration">pendant 19 jours</field>
+            <field name="comment">A commençer 48 heures après le début du traitement</field>
+        </record>
+        <!-- FIN - TRAITEMENT ANTITOXOPLASMOSE -->
+
+
+
+
         <!-- Ressource: oph.exam-->
         <record id="ex0" model="oph.exam">
             <field name="name">NFS</field>
@@ -944,7 +1060,7 @@
             <field name="name">TPHA/VDRL</field>
             <field name="code">SYPH</field>
             <field name="type">Bio</field>
-        </record>
+        </record>   
         <record id="ex42" model="oph.exam">
             <field name="name">PCR maladie des griffes du Chat</field>
             <field name="code">BART</field>
@@ -987,7 +1103,22 @@
             <field name="code">LP</field>
             <field name="type">Bio</field>
         </record>
-        
+        <record id="ex50" model="oph.exam">
+            <field name="name">Anticorps antigenes nucléaires solubles</field>
+            <field name="code">AcAGsolubles</field>
+            <field name="type">Bio</field>
+        </record>
+        <record id="ex51" model="oph.exam">
+            <field name="name">TDM THORAX</field>
+            <field name="code">TDM THORAX</field>
+            <field name="type">Rx</field>
+        </record>
+        <record id="ex51" model="oph.exam">
+            <field name="name">TDM THORACO-ABDOMINO-PELVIEN</field>
+            <field name="code">TDM TAP</field>
+            <field name="type">Rx</field>
+        </record>
+
         
 <!--protocole-->
         <!-- Bilan preop -->
@@ -1440,6 +1571,109 @@
             <field name="exam_id" ref="ex7"/>
         </record>
         
+        <!-- BILAN LESION CHOROIDIENNE -->
+        <record id="pro11" model="oph.protocole">
+            <field name="name">Bilan LESION CHOROIDIENNE</field>
+        </record>
+         <record id="pro11_line0" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro11"/>
+            <field name="name">PR0</field>
+            <field name="exam_id" ref="ex0"/>
+        </record>
+        <record id="pro11_line1" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro11"/>
+            <field name="name">PR1</field>
+            <field name="exam_id" ref="ex2"/>
+        </record>
+        <record id="pro11_line2" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro11"/>
+            <field name="name">PR2</field>
+            <field name="exam_id" ref="ex3"/>
+        </record>
+        <record id="pro11_line3" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro11"/>
+            <field name="name">PR3</field>
+            <field name="exam_id" ref="ex17"/>
+        </record>
+        <record id="pro11_line4" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro11"/>
+            <field name="name">PR4</field>
+            <field name="exam_id" ref="ex13"/>
+        </record>
+        <record id="pro11_line5" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro11"/>
+            <field name="name">PR5</field>
+            <field name="exam_id" ref="ex15"/>
+        </record>
+        <record id="pro11_line6" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro11"/>
+            <field name="name">PR6</field>
+            <field name="exam_id" ref="ex16"/>
+        </record>
+        <record id="pro11_line7" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro11"/>
+            <field name="name">PR7</field>
+            <field name="exam_id" ref="ex25"/>
+        </record>
+        <record id="pro11_line8" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro11"/>
+            <field name="name">PR8</field>
+            <field name="exam_id" ref="ex26"/>
+        </record>
+        <record id="pro11_line9" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro11"/>
+            <field name="name">PR9</field>
+            <field name="exam_id" ref="ex27"/>
+        </record>
+        <record id="pro11_line10" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro11"/>
+            <field name="name">PR10</field>
+            <field name="exam_id" ref="ex31"/>
+        </record>
+        <record id="pro11_line11" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro11"/>
+            <field name="name">PR11</field>
+            <field name="exam_id" ref="ex28"/>
+        </record>
+        <record id="pro11_line12" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro11"/>
+            <field name="name">PR12</field>
+            <field name="exam_id" ref="ex50"/>
+        </record>
+        <record id="pro11_line13" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro11"/>
+            <field name="name">PR13</field>
+            <field name="exam_id" ref="ex51"/>
+        </record>
+        <record id="pro11_line14" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro11"/>
+            <field name="name">PR14</field>
+            <field name="exam_id" ref="ex5"/>
+        </record>
+        <record id="pro11_line15" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro11"/>
+            <field name="name">PR15</field>
+            <field name="exam_id" ref="ex45"/>
+        </record>
+        <record id="pro11_line16" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro11"/>
+            <field name="name">PR16</field>
+            <field name="exam_id" ref="ex17"/>
+        </record>
+        <record id="pro11_line17" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro11"/>
+            <field name="name">PR17</field>
+            <field name="exam_id" ref="ex46"/>
+        </record>
+        <record id="pro11_line18" model="oph.protocole.line.template">
+            <field name="protocole_id" ref="pro11"/>
+            <field name="name">PR18</field>
+            <field name="exam_id" ref="ex47"/>
+        </record>
+
+
+
+
 
     </data>
 </openerp>

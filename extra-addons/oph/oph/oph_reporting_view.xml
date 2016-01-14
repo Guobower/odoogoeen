@@ -372,7 +372,7 @@
             </field>    
         </record>
 
-<!-- ADD BUTTON  "LOGREPORTS" IN RES_PARTNER VIEW -->
+<!-- ADD BUTTON  "LOGREPORTS" AND "LOGINVOICE" IN RES_PARTNER VIEW -->
          <record model="ir.ui.view" id="oph_view_partner_form2">
             <field name="name">oph.partner.form.button.reports</field>
             <field name="model">res.partner</field>
@@ -381,10 +381,15 @@
                 <data>
                     <xpath expr="//div[@name='buttons']" position="inside">
                        <button string="LogReports" name="%(oph.reporting_action_id)d" type="action" context="{'search_default_partner_id':id}"/>
+                       <button string="LogInvoices" name="%(account.action_invoice_tree)d" type="action" context="{'search_default_partner_id':id}"/>
                     </xpath>            
                 </data>
             </field>
          </record>
+<!-- ADD BUTTON "ACCOUNT" in CRM.MEETING VIEW -->
+<!-- TO GET A VIEW OF INVOICE OF THIS PATIENT -->
+
+
 
     </data>
 </openerp>
