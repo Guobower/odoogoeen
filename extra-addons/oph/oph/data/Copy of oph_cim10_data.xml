@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="0">
+        <!--
+    Resource: oph.cim10.category
+    -->
+        <!-- CHAPT -->
+        <record id="cim10_category_main" model="oph.cim10.category">
+            <field name="name">Main CIM10</field>
+            <field name="code">0</field>
+        </record>
+        <record id="cim10_category_I" model="oph.cim10.category">
+            <field name="parent_id" ref="cim10_category_main"/>
+            <field name="name">Chapitre I Certaines maladies infectieuses et parasitaires</field>
+            <field name="code">A00-B99</field>
+        </record>
+        <record id="cim10_category_II" model="oph.cim10.category">
+            <field name="parent_id" ref="cim10_category_main"/>
+            <field name="name"> Chapitre II Tumeurs</field>
+            <field name="code">C00-D48</field>
+        </record>
+        <record id="cim10_category_III" model="oph.cim10.category">
+            <field name="parent_id" ref="cim10_category_main"/>
+            <field name="name">Chapitre III Maladies du sang et des organes hématopoïétiques et certains troubles du système immunitaire</field>
+            <field name="code">D50-D89</field>
+        </record>
+        <record id="cim10_category_IV" model="oph.cim10.category">
+            <field name="parent_id" ref="cim10_category_main"/>
+            <field name="name">Chapitre IV Maladies endocriniennes, nutritionnelles et métaboliques</field>
+            <field name="code">E00-E90</field>
+        </record>
+        <record id="cim10_category_V" model="oph.cim10.category">
+            <field name="parent_id" ref="cim10_category_main"/>
+            <field name="name">Chapitre V Troubles mentaux et du comportement</field>
+            <field name="code">F00-F99</field>
+        </record>
+        <record id="cim10_category_VI" model="oph.cim10.category">
+            <field name="parent_id" ref="cim10_category_main"/>
+            <field name="name">Chapitre VI Maladies du système nerveux</field>
+            <field name="code">G00-G99</field>
+        </record>
+        <record id="cim10_category_VII" model="oph.cim10.category">
+            <field name="parent_id" ref="cim10_category_main"/>
+            <field name="name">Chapitre VII Maladies de l'oeil et de ses annexes</field>
+            <field name="code">H00-H59</field>
+        </record>
+        <record id="cim10_category_VIII" model="oph.cim10.category">
+            <field name="parent_id" ref="cim10_category_main"/>
+            <field name="name">Chapitre VIII Maladies de l'oreille et de l'apophyse mastoïde</field>
+            <field name="code">H60-H95</field>
+        </record>
+        <!-- CHAP END -->
+ 
+
+
+        <!--         CIM10 Items           -->
+
+        
+<!--  H16 -->
+        <record id="cim10_item_H16_2" model="oph.cim10">
+            <field name="name">Kératoconjonctivite</field>
+            <field name="categ_id" ref="cim10_category_H16_0"/>
+            <field name="description">-Kératite superficielle avec conjonctivite
+-Kératoconjonctivite SAI
+-Kératoconjonctivite d'exposition
+-Kératoconjonctivite neurotrophique
+-Kératoconjonctivite phlycténulaire
+-Ophtalmia nodosa
+-Kératite superficielle (aréolaire) (ponctuée) (stellaire) avec conjonctivite
+-Kératoconjonctivite
+-Kératoconjonctivite lagophtalmique
+-Kératoconjonctivite phlycténulaire (allergique) (non tuberculeuse)
+-Lagophtalmie (nerveuse) (paupière) avec kératite
+-Ophtalmie (catarrhale) (congestive) (due à) noueuse
+-Phlycténule de la cornée (allergique) (non tuberculeuse)</field>
+            <field name="code">H16.2</field>
+        </record>
+        <record id="cim10_item_H16_2X-001" model="oph.cim10">
+            <field name="name">Kératite superficielle avec conjonctivite</field>
+            <field name="categ_id" ref="cim10_category_H00_0"/>
+            <field name="code">H16.2X-001</field>
+        </record>
+        <record id="cim10_item_H16_2X-002" model="oph.cim10">
+            <field name="name">Kérato-conjonctivite</field>
+            <field name="categ_id" ref="cim10_category_H00_0"/>
+            <field name="code">H16.2X-002</field>
+        </record>
+        <record id="cim10_item_H16_2X-003" model="oph.cim10">
+            <field name="name">Kérato-conjonctivite d'exposition</field>
+            <field name="categ_id" ref="cim10_category_H00_0"/>
+            <field name="code">H16.2X-003</field>
+        </record>
+        <record id="cim10_item_H16_2X-004" model="oph.cim10">
+            <field name="name">Kérato-conjonctivite neurotrophique</field>
+            <field name="categ_id" ref="cim10_category_H00_0"/>
+            <field name="code">H16.2X-004</field>
+        </record>
+        <record id="cim10_item_H16_2X-005" model="oph.cim10">
+            <field name="name">Kérato-conjonctivite phlycténulaire</field>
+            <field name="categ_id" ref="cim10_category_H00_0"/>
+            <field name="code">H16.2X-005</field>
+        </record>
+        <record id="cim10_item_H16_2X-006" model="oph.cim10">
+            <field name="name">Ophtalmia nodosa</field>
+            <field name="categ_id" ref="cim10_category_H00_0"/>
+            <field name="code">H16.2X-006</field>
+        </record>
+        <record id="cim10_item_H16_3" model="oph.cim10">
+            <field name="name">Kératite interstitielle et profonde</field>
+            <field name="categ_id" ref="cim10_category_H16_0"/>
+            <field name="description">-Abcès (embolique) (infectieux) (multiple) (pyogène) (septique) (de) cornée
+-Cogan, syndrome de
+-Kératite interstitielle (non syphilitique)
+-Kératite profonde
+-Kératite sclérosante</field>
+            <field name="code">H16.3</field>
+        </record>
+        <record id="cim10_item_H16_4" model="oph.cim10">
+            <field name="name">Néovascularisation cornéenne</field>
+            <field name="categ_id" ref="cim10_category_H16"/>
+            <field name="description">-Néovaisseaux (de la cornée)
+-Pannus (de la cornée)
+-Néovascularisation cornéenne
+-Pannus (de la cornée) allergique eczémateux
+-Pannus (de la cornée) dégénératif
+            </field>
+            <field name="code">H16.4</field>
+        </record>
+        <record id="cim10_item_H16_4X-001" model="oph.cim10">
+            <field name="name">Néovaisseaux de la cornée</field>
+            <field name="categ_id" ref="cim10_category_H00_0"/>
+            <field name="code">H16.4X-001</field>
+        </record>
+        <record id="cim10_item_H16_4X-002" model="oph.cim10">
+            <field name="name">Pannus de la cornée</field>
+            <field name="categ_id" ref="cim10_category_H00_0"/>
+            <field name="code">H16.4X-002</field>
+        </record>
+        <record id="cim10_item_H16_8" model="oph.cim10">
+            <field name="name">Kératites</field>
+            <field name="categ_id" ref="cim10_category_H16"/>
+            <field name="description">-Kératite calcaire
+-Kératite précisée NCA
+-Kératite suppurée
+-Kératite vésiculaire
+-Sclérokératite
+        </field>
+        <field name="code">H16.8</field>
+        </record>
+        <record id="cim10_item_H16_9" model="oph.cim10">
+            <field name="name"> Kératite, sans précision</field>
+            <field name="categ_id" ref="cim10_category_H16"/>
+            <field name="description">Inflammation (de) cornée
+-Kératite
+        </field>
+        <field name="code">H16.9</field>
+        </record>
+        
+        <record id="cim10_item_H25.0X-001" model="oph.cim10">
+            <field name="name">Cataracte sénile coronaire</field>
+            <field name="categ_id" ref="cim10_category_H25_0"/>
+            <field name="code">H25.0X-001</field>
+        </record>
+        <record id="cim10_item_H25.0X-002" model="oph.cim10">
+            <field name="name">Cataracte sénile corticale</field>
+            <field name="categ_id" ref="cim10_category_H25_0"/>
+            <field name="code">H25.0X-002</field>
+        </record>
+        <record id="cim10_item_H25.0X-003" model="oph.cim10">
+            <field name="name">Cataracte sénile polaire sous capsulaire</field>
+            <field name="categ_id" ref="cim10_category_H25_0"/>
+            <field name="code">H25.0X-003</field>
+        </record>
+        <record id="cim10_item_H25.0X-004" model="oph.cim10">
+            <field name="name">Cataracte sénile punctiforme</field>
+            <field name="categ_id" ref="cim10_category_H25_0"/>
+            <field name="code">H25.0X-004</field>
+        </record>
+        <record id="cim10_item_H25.0X-005" model="oph.cim10">
+            <field name="name">Water clefts</field>
+            <field name="categ_id" ref="cim10_category_H25_0"/>
+            <field name="code">H25.0X-001</field>
+        </record>
+        <record id="cim10_item_H25.8X-00" model="oph.cim10">
+            <field name="name">Formes combinées de cataracte sénile</field>
+            <field name="categ_id" ref="cim10_category_H25_8"/>
+            <field name="code">H25.8X-001</field>
+        </record>
+        
+        <record id="cim10_item_H28.1X-001" model="oph.cim10">
+            <field name="name">Cataracte au cours d' hypoparathyroïdie</field>
+            <field name="categ_id" ref="cim10_category_H28_1"/>
+            <field name="code">H28.1X-001</field>
+        </record>
+        <record id="cim10_item_H28.1X-002" model="oph.cim10">
+            <field name="name">Cataracte au cours de malnutrition - déshydratation</field>
+            <field name="categ_id" ref="cim10_category_H28_1"/>
+            <field name="code">H28.1X-002</field>
+        </record>
+        <record id="cim10_item_H28.2X-001" model="oph.cim10">
+            <field name="name">Cataracte myotonique</field>
+            <field name="categ_id" ref="cim10_category_H28_2"/>
+            <field name="code">H28.2X-001</field>
+        </record>
+
+
+
+
+
+    </data>
+</openerp>
