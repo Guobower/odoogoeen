@@ -15,6 +15,9 @@
                     <xpath expr="//button[@string='Confirm Sale']" position="after">
                         <button name="action_button_confirm_to_invoice" states="draft" string="Confirm Sale &amp; Create Invoice" type="object" groups="base.group_user"/>
                     </xpath>
+                    <xpath expr="//field[@name='date_order']" position="after">
+                        <field name="appointment_id"/>
+                    </xpath>
                 </data>
             </field>
         </record>
@@ -28,6 +31,8 @@
                 <data>
                     <field name="state" position="after">
                         <field name="origin"/>
+                        <field name="appointment_date"/>
+                        <field name="appointment_id"/>
                     </field>
                 </data>
             </field>

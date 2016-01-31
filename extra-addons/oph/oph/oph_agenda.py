@@ -157,7 +157,8 @@ class crm_meeting(orm.Model):
        # pricelist = part.property_product_pricelist and part.property_product_pricelist.id or False
         res = {'default_partner_id': meeting.partner_id.id,
                'default_pricelist_id': meeting.partner_id.property_product_pricelist.id,
-               'default_date_acte':meeting.datewotime,
+               'default_appointment_date':meeting.datewotime,
+               'default_appointment_id':meeting.id,
                'default_origin':'Office',
                }
 

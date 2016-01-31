@@ -26,6 +26,7 @@ class sale_order(osv.Model):
                 v['project_id'] = shop.project_id.id
         return {'value': v}
 
-#    _columns = {'date_acte':fields.date('Date Acte'), }
+    _columns = {'appointment_date':fields.date('Appointment Date'),
+                        'appointment_id':fields.many2one('crm.meeting', 'Appointment Id',readonly=True) }
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
