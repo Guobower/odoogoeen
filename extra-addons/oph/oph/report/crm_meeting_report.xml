@@ -267,7 +267,9 @@
             <field name="in_format">oo-odt</field>
             <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
             <field name="styles_mode">specified</field>
+            <!-->
             <field name="stylesheet_id" ref="stt_ordo_id"/>
+            <-->
             <field name="attachment">'Medication'+'_'+object.partner_id.fullname+'_'+object.date+'.odt'</field>
         </record>
         <!-- button -->
