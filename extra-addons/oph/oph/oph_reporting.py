@@ -268,6 +268,7 @@ class oph_reporting_template(orm.Model):
                                                 ('OCT', _('OCT Report')),
                                                 ], 'Type'),
               'active':fields.boolean('Active', help = "If False the template wont be selectable"),
+              'product_ids':fields.many2many('product.product', 'oph_technique_procedure_rel', 'reporting_template_id', 'product_id', 'Technique',),
               }
 
     _defaults = {

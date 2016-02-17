@@ -177,7 +177,13 @@
                         <field name="short_name"/>
                         <field name="text_body"/>
                         <field name="type" required="True"/>
+                        <field name="product_ids">
+                            <tree string="Technique" editable="top">
+                                <field name="name" domain="[('sale_ok','=',False)]"/>
+                            </tree>
+                    </field>
                     </group>
+                    
                 </form>
             </field>
         </record>
