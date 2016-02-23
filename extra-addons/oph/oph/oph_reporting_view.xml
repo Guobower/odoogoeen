@@ -175,10 +175,15 @@
                         <field name="active"/>
                         <field name="name"/>
                         <field name="short_name"/>
-                        <field name="text_body"/>
                         <field name="type" required="True"/>
+                        <field name="text_body"/>
                         <field name="product_ids">
-                            <tree string="Technique" editable="top">
+                            <tree string="Technique many2many" editable="top">
+                                <field name="name" domain="[('sale_ok','=',False)]"/>
+                            </tree>
+                    </field>
+                    <field name="tech_ids">
+                            <tree string="Technique one2many" widget="one2many" editable="top">
                                 <field name="name" domain="[('sale_ok','=',False)]"/>
                             </tree>
                     </field>

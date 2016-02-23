@@ -6,6 +6,14 @@ from datetime import datetime
 import inspect
 import arrow
 
+
+
+class product_product(orm.Model):
+    _inherit = "product.product"
+
+    _columns = {
+                'template_id':fields.many2one('oph.reporting.template', 'Technique'), }
+
 class oph_lens(orm.Model):
     """
     Table for lens usualy for laser treatment or biomicroscopy.
@@ -268,6 +276,7 @@ class oph_reporting_template(orm.Model):
                                                 ('OCT', _('OCT Report')),
                                                 ], 'Type'),
               'active':fields.boolean('Active', help = "If False the template wont be selectable"),
+              'tech_ids':fields.one2many('product.product', 'template_id', 'Techniques'),
               'product_ids':fields.many2many('product.product', 'oph_technique_procedure_rel', 'reporting_template_id', 'product_id', 'Technique',),
               }
 
