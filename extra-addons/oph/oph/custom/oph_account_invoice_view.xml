@@ -63,6 +63,10 @@
             <field name="arch" type="xml">
                 <filter name="unpaid" position="after">
                     <separator/>
+                    <filter string="CHECK" domain="[('payeur','=','Check')]"/>
+                    <filter string="CASH" domain="[('payeur','=','Cash')]"/>
+                    
+                    <separator/>
                     <filter name="payeur" string="LM" domain="[('payeur','=','LM')]"/>
                     <filter name="payeur" string="CAFAT-Mut" domain="[('payeur','=','CAFAT Mut')]"/>
                     <filter name="payeur" string="AMG SUD" domain="[('payeur','=','SUD')]"/>
