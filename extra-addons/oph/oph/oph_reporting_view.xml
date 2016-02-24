@@ -182,11 +182,6 @@
                                 <field name="name"/>
                             </tree>
                     </field>
-                    <field name="tech_ids" string="Technique one2many">
-                            <tree string="Technique one2many" widget="one2many" editable="top">
-                                <field name="name" domain="[('sale_ok','=',False)]"/>
-                            </tree>
-                    </field>
                     </group>
                     
                 </form>
