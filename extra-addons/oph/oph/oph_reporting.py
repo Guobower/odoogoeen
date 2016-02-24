@@ -277,7 +277,7 @@ class oph_reporting_template(orm.Model):
                                                 ], 'Type'),
               'active':fields.boolean('Active', help = "If False the template wont be selectable"),
               'tech_ids':fields.one2many('product.product', 'template_id', 'Techniques'),
-              'product_ids':fields.many2many('product.product', 'oph_technique_procedure_rel', 'reporting_template_id', 'product_id', 'Technique',),
+              'product_ids':fields.many2many('product.product', 'oph_technique_procedure_rel', 'reporting_template_id', 'product_id', 'Technique', domain = [('sale_ok', '=', False)]),
               }
 
     _defaults = {
