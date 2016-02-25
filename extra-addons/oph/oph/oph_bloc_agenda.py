@@ -80,7 +80,7 @@ class oph_procedure_type(orm.Model):
                 'iol_status':fields.boolean('IOL Status', Help = 'For an IOL during this type of procedure thick the boxe',),
                 'duration':fields.integer('Duration', help = 'Expected duration of procedure in minutes'),
                 'comment':fields.char('Comment', size = 128, help = 'Where you put all the stuff you need for the intervention'),
-                'line_ids':fields.one2many('oph.bloc.agenda.line', 'procedure_type_id', 'Lines',)
+                'line_ids':fields.one2many('oph.bloc.agenda.line', 'procedure_type_id', 'Lines',),
                 }
 
 class oph_inpatient_type(orm.Model):
