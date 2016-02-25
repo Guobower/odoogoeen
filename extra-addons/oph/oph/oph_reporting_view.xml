@@ -177,11 +177,15 @@
                         <field name="short_name"/>
                         <field name="type" required="True"/>
                         <field name="text_body"/>
-                        <field name="product_ids" string="Technique many2many" widget="many2many_tags">
-                            <tree string="Technique many2many" editable="top">
+                        <field name="product_ids" string="Technique" widget="many2many_tags"/>
+                        <!--cela sert a rien en bas. Ci dessus suffit.
+                        
+                        <field name="product_ids" string="Technique" widget="many2many_tags">
+                            <tree string="Technique" editable="top">
                                 <field name="name"/>
                             </tree>
                     </field>
+                        -->
                     </group>
                     
                 </form>
