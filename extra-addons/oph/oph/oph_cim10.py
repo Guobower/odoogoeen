@@ -128,6 +128,7 @@ class oph_cim10(orm.Model):
                                                   "resized as a 64x64px image, with aspect ratio preserved. "\
                                                   "Use this field anywhere a small image is required."),
                 'agenda.bloc.line_ids':fields.one2many('oph.bloc.agenda.line', 'cim10_id', string = "CIM10 Codification", readonly = True),
+                'oph.request.ids':fields.one2many('oph.request', 'cim10_id', string = 'CIM10 codification', readonly = True),
                 }
 
 
