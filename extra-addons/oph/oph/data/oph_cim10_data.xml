@@ -318,7 +318,7 @@
         <record id="cim10_category_H28" model="oph.cim10.category">
             <field name="parent_id" ref="cim10_category_H25_H28"/>
             <field name="name">Cataracte et autres affections du cristallin au cours de maladies classées ailleurs</field>
-            <field name="code">H27</field>
+            <field name="code">H28</field>
         </record>
         <record id="cim10_category_H28_0" model="oph.cim10.category">
             <field name="parent_id" ref="cim10_category_H28"/>
@@ -414,6 +414,7 @@
         <record id="cim10_category_H30_8" model="oph.cim10.category">
             <field name="parent_id" ref="cim10_category_H30"/>
             <field name="name">Autres choriorétinites </field>
+            <field name="code">H30.8</field>
         </record>
         <record id="cim10_category_H30_9" model="oph.cim10.category">
             <field name="parent_id" ref="cim10_category_H30"/>
@@ -449,15 +450,80 @@
             <field name="name">Décollement et déchirure de la rétine</field>
             <field name="code">H33</field>
         </record>
+        <record id="cim10_category_H33_0" model="oph.cim10.category">
+            <field name="parent_id" ref="cim10_category_H33"/>
+            <field name="name">Rétinopathie diabétique (E10-E14+ avec le quatrième chiffre .3)</field>
+            <field name="code">H33.0</field>
+            <field name="description">- Décollement de la rétine rhegmatogène
+- Déchirure (de) rétine (en fer à chevel) (lambeau) (sans décollement) avec décollement
+- Décollement (de) rétine (séreux) (sans déchirure) avec déchirure
+- Décollement (de) rétine (séreux) (sans déchirure) rhegmatogène
+- Désinsertion de la rétine
+- Dialyse (intermittente) rétinienne antérieure (signifiant rupture)
+- Opercule (rétine) (sans décollement) avec décollement
+- Rupture (de) rétine (sans décollement) (traumatique) avec décollement
+- Trou (de) rétinien (sans décollement) avec décollement
+            </field>
+        </record>
+                    
         <record id="cim10_category_H34" model="oph.cim10.category">
             <field name="parent_id" ref="cim10_category_H30_H36"/>
             <field name="name">Occlusions vasculaires rétiniennes</field>
             <field name="code">H34</field>
+            
         </record><record id="cim10_category_H35" model="oph.cim10.category">
             <field name="parent_id" ref="cim10_category_H30_H36"/>
             <field name="name">Autres affections rétiniennes</field>
             <field name="code">H35</field>
         </record>
+        
+        <record id="cim10_category_H35_3" model="oph.cim10.category">
+            <field name="parent_id" ref="cim10_category_H35"/>
+            <field name="name">Dégénérescence de la macula et du pôle postérieur</field>
+            <field name="code">H35.3</field>
+            <field name="description">- Dégénérescence (de) Junius-Kuhnt
+- Dégénérescence (de) maculaire sénile (atrophique) (exsudative)
+- Druses (dégénératives) - de la macula
+- Kyste - de la macula
+- Plis - de la macula
+- Stries angioïdes - de la macula
+- Trou - de la macula
+- Maculopathie toxique
+- Atrophie (de) rétine dégénérative (de) macula
+- Atrophie (de) rétine dégénérative (de) pôle postérieur
+- Dégénérescence (de) macula (acquise) (atrophique) (disciforme) (exsudative) (sénile)
+- Dégénérescence (de) oculaire maculaire
+- Dégénérescence (de) pôle postérieur, oeil
+- Dégénérescence (de) rétine (cystoïde) (en palissade) (entrecroisée) (microcystoïde) (pavimenteuse) (périphérique) (réticulaire) (sénile) Junius-Kuhnt
+- Dégénérescence (de) rétine (cystoïde) (en palissade) (entrecroisée) (microcystoïde) (pavimenteuse) (périphérique) (réticulaire) (sénile) maculaire (atrophique) (disciforme) (exsudative) (toxique)
+- Dégénérescence (de) rétine (cystoïde) (en palissade) (entrecroisée) (microcystoïde) (pavimenteuse) (périphérique) (réticulaire) (sénile) pôle postérieur
+- Drusen, druses (de) macula (dégénératives)
+- Hypertrophie (de) macula
+- Junius-Kuhnt, dégénérescence de
+- Kyste (colloïde) (muqueux) (séreux) (de) maculaire
+- Plis (de) macula
+- Rétinite disciforme
+- Stries (de) angioïdes de la macula (rétine)
+- Trou (de) macula
+            </field>
+        </record>
+
+
+        <record id="cim10_category_H35_7" model="oph.cim10.category">
+            <field name="parent_id" ref="cim10_category_H35"/>
+            <field name="name">Décollement des couches de la rétine</field>
+            <field name="code">H35.7</field>
+            <field name="description">-Choriorétinopathie séreuse centrale
+- Décollement de l'épithélium pigmentaire rétinien
+- Choriorétinite séreuse centrale
+- Décollement (de) couche pigmentaire rétinienne
+- Décollement (de) épithélium pigmentaire rétinien
+- Décollement (de) rétine (séreux) (sans déchirure) couche pigmentaire
+            </field>
+        </record>
+
+
+
         <record id="cim10_category_H36" model="oph.cim10.category">
             <field name="parent_id" ref="cim10_category_H30_H36"/>
             <field name="name">Affections rétiniennes au cours de maladies classées ailleurs</field>
@@ -515,8 +581,6 @@
             </field>
         </record>
 
-    
-                H36.8*  Autres affections rétiniennes au cours de maladies classées ailleurs 
 
       <!--         CIM10 Items           -->
       <record id="cim10_item_H00_0X-001" model="oph.cim10">
@@ -602,8 +666,40 @@
             <field name="categ_id" ref="cim10_category_H00_0"/>
             <field name="code">H16.1X-008</field>
         </record>
-
+        <record id="cim10_item_H25-0" model="oph.cim10">
+            <field name="name">Cataracte incipiente sénile</field>
+            <field name="categ_id" ref="cim10_category_H25"/>
+            <field name="code">H25-0</field>
+        </record>
+        <record id="cim10_item_H25-1" model="oph.cim10">
+            <field name="name">Cataracte sénile nucléaire</field>
+            <field name="categ_id" ref="cim10_category_H25"/>
+            <field name="code">H25-1</field>
+        </record>
+        <record id="cim10_item_H25-2" model="oph.cim10">
+            <field name="name">Cataracte sénile, de type Morgagni</field>
+            <field name="categ_id" ref="cim10_category_H25"/>
+            <field name="code">H25-2</field>
+        </record>
+        <record id="cim10_item_H25-8" model="oph.cim10">
+            <field name="name">Autres cataractes séniles</field>
+            <field name="categ_id" ref="cim10_category_H25"/>
+            <field name="code">H25-8</field>
+        </record>
+        <record id="cim10_item_H25-9" model="oph.cim10">
+            <field name="name">Cataracte sénile, sans précision</field>
+            <field name="categ_id" ref="cim10_category_H25"/>
+            <field name="code">H25-9</field>
+        </record>
         
+        <record id="cim10_item_H27-0" model="oph.cim10">
+            <field name="name">Aphakie</field>
+            <field name="categ_id" ref="cim10_category_H27"/>
+            <field name="code">H27-0</field>
+            <field name="comment">Absence (complète ou partielle) (de) cristallin (acquise)
+Aphakie (acquise)</field>
+        </record>
+
         <record id="cim10_item_H30_0X-001" model="oph.cim10">
             <field name="name">Choroïdite en foyer</field>
             <field name="categ_id" ref="cim10_category_H30_0"/>
@@ -663,5 +759,103 @@
             <field name="categ_id" ref="cim10_category_H30_9"/>
             <field name="code">H30.9X-003</field>
         </record>
+        
+        <record id="cim10_item_H33_0" model="oph.cim10">
+            <field name="name">Décollement de la rétine avec déchirure rétinienne</field>
+            <field name="categ_id" ref="cim10_category_H33"/>
+            <field name="code"> H33.0</field>
+        </record>
+        <record id="cim10_item_H33_0X-001" model="oph.cim10">
+            <field name="name">Décollement de la rétine rhegmatogène</field>
+            <field name="categ_id" ref="cim10_category_H33_0"/>
+            <field name="code">H33.0X-001</field>
+        </record>
+        
+        <record id="cim10_item_H35_3X-001" model="oph.cim10">
+            <field name="name">Dégénérescence de Junius-Kuhnt</field>
+            <field name="categ_id" ref="cim10_category_H35_3"/>
+            <field name="code">H35.3X-001</field>
+        </record>
+        <record id="cim10_item_H35_3X-002" model="oph.cim10">
+            <field name="name">Dégénérescence maculaire sénile (atrophique) (exsudative)</field>
+            <field name="categ_id" ref="cim10_category_H35_3"/>
+            <field name="code">H35.3X-002</field>
+        </record>
+        <record id="cim10_item_H35_" model="oph.cim10">
+            <field name="name">Druses (dégénératives) de la macula</field>
+            <field name="categ_id" ref="cim10_category_H35_3"/>
+            <field name="code">H35.</field>
+        </record>
+        <record id="cim10_item_H35_3X-004" model="oph.cim10">
+            <field name="name">Kyste de la macula</field>
+            <field name="categ_id" ref="cim10_category_H35_3"/>
+            <field name="code">H35.3X-004</field>
+        </record>
+        <record id="cim10_item_H35_3X-005" model="oph.cim10">
+            <field name="name">Maculopathie toxique</field>
+            <field name="categ_id" ref="cim10_category_H35_3"/>
+            <field name="code">H35.3X-005</field>
+        </record>
+         <record id="cim10_item_H35_" model="oph.cim10">
+            <field name="name">Plis de la macula</field>
+            <field name="categ_id" ref="cim10_category_H35_3"/>
+            <field name="code">H35.3X-006</field>
+        </record>
+        <record id="cim10_item_H35_3X-007" model="oph.cim10">
+            <field name="name">Stries angioïdes de la macula</field>
+            <field name="categ_id" ref="cim10_category_H35_3"/>
+            <field name="code">H35.3X-007</field>
+        </record>
+        <record id="cim10_item_H35_3X-008" model="oph.cim10">
+            <field name="name">Trou de la macula</field>
+            <field name="categ_id" ref="cim10_category_H35_3"/>
+            <field name="code">H35.3X-008</field>
+        </record>
+        
+
+
+        <record id="cim10_item_H35_7X-001" model="oph.cim10">
+            <field name="name">Choriorétinopathie séreuse centrale</field>
+            <field name="categ_id" ref="cim10_category_H35_7"/>
+            <field name="code">H35.7X-001</field>
+        </record>
+        <record id="cim10_item_H35_7X-002" model="oph.cim10">
+            <field name="name">Décollement de l'épithélium pigmentaire rétinien</field>
+            <field name="categ_id" ref="cim10_category_H35_7"/>
+            <field name="code">H35.7X-002</field>
+        </record>
+        
+        <record id="cim10_item_H36_0" model="oph.cim10">
+            <field name="name">Rétinopathie diabétique (E10-E14+ avec le quatrième chiffre .3) </field>
+            <field name="categ_id" ref="cim10_category_H36_0"/>
+            <field name="description">- Anévrisme, anévrysme (anastomotique) (cirsoïde) (diffus) (faux) (fusiforme) (multiple) (sacculaire) (de) rétinien diabétique (E14.3+)
+- Anévrisme, anévrysme (anastomotique) (cirsoïde) (diffus) (faux) (fusiforme) (multiple) (sacculaire) (de) rétinien diabétique insulino-dépendant (E10.3+)
+- Anévrisme, anévrysme (anastomotique) (cirsoïde) (diffus) (faux) (fusiforme) (multiple) (sacculaire) (de) rétinien diabétique malnutrition (insulino-dépendant) (non-insulino-dépendant) (E12.3+)
+- Anévrisme, anévrysme (anastomotique) (cirsoïde) (diffus) (faux) (fusiforme) (multiple) (sacculaire) (de) rétinien diabétique non insulino-dépendant (E11.3+)
+- Anévrisme, anévrysme (anastomotique) (cirsoïde) (diffus) (faux) (fusiforme) (multiple) (sacculaire) (de) rétinien diabétique type précisé NCA (E13.3+)
+- Hémorragie (de) (due à) rétine (profonde) (superficielle) diabétique (type) (E14.3+)
+- Hémorragie (de) (due à) rétine (profonde) (superficielle) diabétique (type) insulino-dépendant (E10.3+)
+- Hémorragie (de) (due à) rétine (profonde) (superficielle) diabétique (type) malnutrition (insulino-dépendant) (non insulino-dépendant) (E12.3+)
+- Hémorragie (de) (due à) rétine (profonde) (superficielle) diabétique (type) non insulino-dépendant (E11.3+)
+- Hémorragie (de) (due à) rétine (profonde) (superficielle) diabétique (type) précisé NCA (E13.3+)
+- Micro-anévrisme rétinien diabétique (type) (E14.3+)
+- Micro-anévrisme rétinien diabétique (type) insulino-dépendant (E10.3+)
+- Micro-anévrisme rétinien diabétique (type) malnutrition (insulino-dépendant) (non insulino-dépendant) (E12.3+)
+- Micro-anévrisme rétinien diabétique (type) non insulino-dépendant (E11.3+)
+- Micro-anévrisme rétinien diabétique (type) précisé NCA (E13.3+)
+- Rétinite diabétique (type) (E14.3+)
+- Rétinite diabétique (type) insulino-dépendant (E10.3+)
+- Rétinite diabétique (type) malnutrition (insulino-dépendant) (non insulino-dépendant) (E12.3+)
+- Rétinite diabétique (type) non insulino-dépendant (E11.3+)
+- Rétinite diabétique (type) précisé NCA (E13.3+)
+- Rétinopathie (avec antécédents) (circinée) (de Coats) (exsudative) (hypertensive) (de) diabétique (proliférante) (type) (E14.3+)
+- Rétinopathie (avec antécédents) (circinée) (de Coats) (exsudative) (hypertensive) (de) diabétique (proliférante) (type) insulino-dépendant (E10.3+)
+- Rétinopathie (avec antécédents) (circinée) (de Coats) (exsudative) (hypertensive) (de) diabétique (proliférante) (type) malnutrition (insulino-dépendant) (non insulino-dépendant) (E12.3+)
+- Rétinopathie (avec antécédents) (circinée) (de Coats) (exsudative) (hypertensive) (de) diabétique (proliférante) (type) non insulino-dépendant (E11.3+)
+- Rétinopathie (avec antécédents) (circinée) (de Coats) (exsudative) (hypertensive) (de) diabétique (proliférante) (type) précisé NCA (E13.3+)
+</field>
+            <field name="code">H36.0</field>
+        </record>
+
     </data>
 </openerp>

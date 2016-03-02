@@ -245,7 +245,7 @@ class oph_bloc_agenda_line(osv.osv):
         return True
 
     def statechange_cancel(self, cr, uid, ids, context = None):
-        self.write(cr, uid, ids, {"state": "cancel","sequence":0}, context = context)
+        self.write(cr, uid, ids, {"state": "cancel", "sequence":0}, context = context)
         return True
 
     def statechange_close(self, cr, uid, ids, context = None):
@@ -371,6 +371,7 @@ class oph_bloc_agenda_line(osv.osv):
                 # 'operator_id':fields.many2one('res.users', 'Operator'),
                 'operator_id':fields.many2one('res.partner', 'Operator'),
                 'notification_time':fields.char('Notification Time', size = 8),
+                'cim10_id':fields.many2one('oph.cim10', string = "CIM10 codification", help = "CIM 10 codification",),
                 }
 
     _defaults = {

@@ -72,6 +72,29 @@ oph_cim10_category()
 class oph_cim10(orm.Model):
     _name = 'oph.cim10'
 
+    def name_get(self, cr, uid, ids, context = None):
+        """
+        Returns the preferred display value (text representation) 
+        for the records with the given ids. 
+        By default this will be the value of the "name" column, 
+        unless the model implements a custom behavior.
+        
+        @Return: type:list(tuple)
+        @Returns: list of pairs (id,text_repr) for all records with the given ids.
+        """
+        print "JE PASSE PAR NAME_GET de L'OBJET OPH.CIM10"
+        if context is None:
+            context = {}
+        if isinstance(ids, (int, long)):
+            ids = [ids]
+        res = []
+        for record in self.browse(cr, uid, ids, context = context):
+            name = record.name
+            # import pdb; pdb.set_trace()
+            if record.code:
+                name += ', ' + record.code
+            res.append((record.id, name))
+        return res
 
     def _get_image(self, cr, uid, ids, name, args, context = None):
         result = dict.fromkeys(ids, False)
@@ -81,6 +104,7 @@ class oph_cim10(orm.Model):
 
     def _set_image(self, cr, uid, id, name, value, args, context = None):
         return self.write(cr, uid, [id], {'image': tools.image_resize_image_big(value)}, context = context)
+
     _columns = {
               'name':fields.char('Name', size = 64, help = "Long name"),
               'code':fields.char('Code', size = 16, help = "Very short name"),
@@ -103,6 +127,7 @@ class oph_cim10(orm.Model):
                                              help = "Small-sized image of the product. It is automatically "\
                                                   "resized as a 64x64px image, with aspect ratio preserved. "\
                                                   "Use this field anywhere a small image is required."),
+                'agenda.bloc.line_ids':fields.one2many('oph.bloc.agenda.line', 'cim10_id', string = "CIM10 Codification", readonly = True),
                 }
 
 
