@@ -251,6 +251,40 @@
             <field name="object">TRUE</field>
             <field name="value" eval="'ir.actions.report.xml,' + str(ref('oph.memo_rdv_plus_id'))"/>
         </record>
+        
+        <!-- 8 MEDICATION REPORT LM-->
+        <record model="ir.actions.report.xml" id="medication_report_lm_id">
+            <field name="name">Medication Report LM</field>
+            <field name="type">ir.actions.report.xml</field>
+            <field name="model">crm.meeting</field>
+            <field name="report_name">Medication.Report.LM</field>
+            <field name="report_type">aeroo</field>
+            <field name="auto">TRUE</field>
+            <field name="report_rml">oph/report/odt/oph_meeting/Medication_Report_LM.odt</field>
+            <field name="parser_state">loc</field>
+            <field name="parser_loc">oph/report/parser.py</field>
+            <field name="tml_source">file</field>
+            <field name="in_format">oo-odt</field>
+            <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
+            <field name="styles_mode">specified</field>
+            <!-->
+            <field name="stylesheet_id" ref="stt_ordo_id"/>
+            <-->
+            <field name="attachment">'Medication'+'_'+object.partner_id.fullname+'_'+object.date+'.odt'</field>
+        </record>
+        <!-- button -->
+        <record model="ir.values" id="value_medication_report_lm_id">
+            <field name="name">Medication.Report.LM</field>
+            <field name="key">action</field>
+            <field name="key2">client_print_multi</field>
+            <field name="model">crm.meeting</field>
+            <field name="object">TRUE</field>
+            <field name="value" eval="'ir.actions.report.xml,' + str(ref('oph.medication_report_lm_id'))"/>
+        </record>
+
+
+
+
         <!-- END OF PRINT IN CRM_MEETING -->
         
         <!--MODELE FOR FORMULA PRESCRIPTION REPORT-->

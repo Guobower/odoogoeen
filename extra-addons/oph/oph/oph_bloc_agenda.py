@@ -76,11 +76,11 @@ class oph_procedure_type(orm.Model):
                 'name':fields.char('Name', size = 128, translate = True),
                 'shortname':fields.char('Short Name', size = 64, translate = True),
                 'code':fields.char('Code', size = 64,),
-                'dilatation':fields.selection(_get_yesorno, 'Dilatation',),
+                'dilatation':fields.selection([('yes', _('YES')), ('no', _('NO')), ], 'Dilatation',),
                 'iol_status':fields.boolean('IOL Status', Help = 'For an IOL during this type of procedure thick the boxe',),
                 'duration':fields.integer('Duration', help = 'Expected duration of procedure in minutes'),
                 'comment':fields.char('Comment', size = 128, help = 'Where you put all the stuff you need for the intervention'),
-                'line_ids':fields.one2many('oph.bloc.agenda.line', 'procedure_type_id', 'Lines',)
+                'line_ids':fields.one2many('oph.bloc.agenda.line', 'procedure_type_id', 'Lines',),
                 }
 
 class oph_inpatient_type(orm.Model):
@@ -201,11 +201,16 @@ class oph_bloc_agenda_line(osv.osv):
                 res[record.id] = wd
         return res
 
-    def _ods_get(self, cr, uid, context = None):
-        return [
-                ('OD', _('Right Eye')),
-                ('OS', _('Left Eye')),
-                ]
+    #===========================================================================
+    # sous forme de fonction
+    # cela n'est pas pris en compte pour la traduction.
+    # en tout cas je n'ai pas réussi
+    # def _ods_get(self, cr, uid, context = None):
+    #     return [
+    #             ('OD', _('Right Eye')),
+    #             ('OS', _('Left Eye')),
+    #             ]
+    #===========================================================================
 
     def _get_ane_type(self, cursor, user_id, context = None):
         return (
@@ -221,15 +226,17 @@ class oph_bloc_agenda_line(osv.osv):
                 ('EXT', 'Externe'),
                 )
 
-    def _get_status_bloc_agenda_line(self, cursor, user_id, context = None):
-        return (
-                ('draft', _('Draft')),
-                ('open', _('Open')),
-                ('confirm', _('Confirm')),
-                ('cancel', _('Cancel')),
-                ('close', _('Close')),
-                ('no_show', _('No Show')),
-                )
+    #===========================================================================
+    # def _get_status_bloc_agenda_line(self, cursor, user_id, context = None):
+    #     return (
+    #             ('draft', _('Draft')),
+    #             ('open', _('Open')),
+    #             ('confirm', _('Confirm')),
+    #             ('cancel', _('Cancel')),
+    #             ('close', _('Close')),
+    #             ('no_show', _('No Show')),
+    #             )
+    #===========================================================================
 
     def statechange_draft(self, cr, uid, ids, context = None):
         self.write(cr, uid, ids, {"state": "draft"}, context = context)
@@ -287,6 +294,7 @@ class oph_bloc_agenda_line(osv.osv):
                         'anesthesia_id':l.anesthesia_type_id.id,
                         'receiver_partner':True,
                         }
+            print "VALS_REPORTING: %s" % vals_reporting
             reporting_obj = self.pool.get('oph.reporting').create(cr, uid, vals_reporting, context = context)
         # return True
 
@@ -347,9 +355,15 @@ class oph_bloc_agenda_line(osv.osv):
                 'duration':fields.float('Duration',),
                 'start_time':fields.char('Horaire', size = 8),
                 'partner_id':fields.many2one('res.partner', 'Partner', required = True),
-                'state': fields.selection(_get_status_bloc_agenda_line, 'State', readonly = False),
+                'state': fields.selection([('draft', _('Draft')),
+                                                    ('open', _('Open')),
+                                                    ('confirm', _('Confirm')),
+                                                    ('cancel', _('Cancel')),
+                                                    ('close', _('Close')),
+                                                    ('no_show', _('No Show')), ], 'State', readonly = False),
                 'comment':fields.text('Comment'),
-                'ods':fields.selection(_ods_get, 'ODS', required = True,),
+                'ods':fields.selection([('OD', _('Right Eye')),
+                                         ('OS', _('Left Eye')), ], 'ODS', required = True,),
                 'snd_eye':fields.boolean('Second Eye'),
                 # 'ane_type':fields.selection(_get_ane_type, 'ANE', required = True,),
                 'anesthesia_type_id':fields.many2one('oph.anesthesia.type', 'Anesthesia Type'),

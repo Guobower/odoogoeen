@@ -32,8 +32,8 @@
                         <field name="payment_method"/>
                     </field>
                     <xpath expr="//button[@string='Validate']" position="after">
-                        <button name="invoice_check" states="draft" string="Check Payment" type="object" groups="base.group_user"/>
-                        <button name="invoice_cash" states="draft" string="Cash Payment" type="object" groups="base.group_user"/>
+                        <button name="invoice_check" states="draft" string="Check Payment" type="object" groups="base.group_user" invisible="1"/>
+                        <button name="invoice_cash" states="draft" string="Cash Payment" type="object" groups="base.group_user" invisible="1"/>
                     </xpath>
                
                     <xpath expr="//field[@name='invoice_line']" position="before">
@@ -62,6 +62,10 @@
             <field name="inherit_id" ref="account.view_account_invoice_filter"/>
             <field name="arch" type="xml">
                 <filter name="unpaid" position="after">
+                    <separator/>
+                    <filter string="CHECK" domain="[('payeur','=','Check')]"/>
+                    <filter string="CASH" domain="[('payeur','=','Cash')]"/>
+                    
                     <separator/>
                     <filter name="payeur" string="LM" domain="[('payeur','=','LM')]"/>
                     <filter name="payeur" string="CAFAT-Mut" domain="[('payeur','=','CAFAT Mut')]"/>

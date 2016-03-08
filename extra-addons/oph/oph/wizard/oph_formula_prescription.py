@@ -26,22 +26,31 @@ class oph_formula_prescription(osv.osv_memory):
     _name = "oph.formula.prescription"
     _description = "Formula report prescription"  # don't forget u for unicode char in the string value u"Rapport personnalisé"
 
-    def _get_sel_template(self, cr, uid, context = None):
-        return (
-                ('SV', _('Single Vision')),
-                ('SV-SG', _('Single Vision - Sun Glass')),
-                ('MF', _('Multifocal')),
-                ('MF-SG', _('Multifocal - Sun Glass')),
-                ('BF', _('Bi-Focal')),
-                ('BF-SG', _('Bi-Focal - Sun Glass')),
-                ('MF-SG-RG',_('MultiFocal-Sun Glass and Reading Glasses')),
-                ('RG', _('Reading Glasses')),
-                )
+    #===========================================================================
+    # def _get_sel_template(self, cr, uid, context = None):
+    #     return (
+    #             ('SV', _('Single Vision')),
+    #             ('SV-SG', _('Single Vision - Sun Glass')),
+    #             ('MF', _('Multifocal')),
+    #             ('MF-SG', _('Multifocal - Sun Glass')),
+    #             ('BF', _('Bi-Focal')),
+    #             ('BF-SG', _('Bi-Focal - Sun Glass')),
+    #             ('MF-SG-RG',_('MultiFocal-Sun Glass and Reading Glasses')),
+    #             ('RG', _('Reading Glasses')),
+    #             )
+    #===========================================================================
 
     _columns = {
         'name': fields.char('Name', size = 128, required = True),
         'date': fields.date('Prescription Date', required = True, help = "Date or the current day to print on report"),
-        'template': fields.selection(_get_sel_template, 'Template', help = "Select template"),
+        'template': fields.selection([('SV', _('Single Vision')),
+                                                ('SV-SG', _('Single Vision - Sun Glass')),
+                                                ('MF', _('Multifocal')),
+                                                ('MF-SG', _('Multifocal - Sun Glass')),
+                                                ('BF', _('Bi-Focal')),
+                                                ('BF-SG', _('Bi-Focal - Sun Glass')),
+                                                ('MF-SG-RG',_('MultiFocal-Sun Glass and Reading Glasses')),
+                                                ('RG', _('Reading Glasses')),], 'Template', help = "Select template"),
         }
     _defaults = {
         'name': 'Refraction',
