@@ -1136,10 +1136,6 @@
             <field name="name">Affections des muscles oculaires, des mouvements binoculaires, de l'accommodation et de la réfraction</field>
             <field name="code">H49-H52</field>
         </record>
-        
-
-
-
 
         <record id="cim10_category_H53_H54" model="oph.cim10.category">
             <field name="parent_id" ref="cim10_category_VII"/>
@@ -1151,10 +1147,6 @@
             <field name="name">Autres affections de l'oeil et de ses annexes</field>
             <field name="code">H55-H59</field>
         </record>
-
-
-
-
 
 
       <!--         CIM10 Items           -->
@@ -1384,6 +1376,152 @@ Aphakie (acquise)</field>
             <field name="categ_id" ref="cim10_category_H35_3"/>
             <field name="code">H34.8X-004</field>
         </record>
+        
+        <record id="cim10_item_H35_0" model="oph.cim10">
+            <field name="name">Autres rétinopathies et altérations vasculaires rétiniennes</field>
+            <field name="categ_id" ref="cim10_category_H35_8"/>
+            <field name="description">Altérations vasculaires de la rétine
+Gaine vasculaire - rétinien(ne)(s)
+Micro-anévrisme - rétinien(ne)(s)
+Néovascularisation - rétinien(ne)(s)
+Périvascularite - rétinien(ne)(s)
+Varices - rétinien(ne)(s)
+Vascularite - rétinien(ne)(s)
+Rétinopathie (avec) (de) SAI
+Rétinopathie (avec) (de) antécédents SAI
+Rétinopathie (avec) (de) Coats
+Rétinopathie (avec) (de) exsudative
+Rétinopathie (avec) (de) hypertensive
+Altération vasculaire rétine
+Anévrisme, anévrysme (anastomotique) (cirsoïde) (diffus) (faux) (fusiforme) (multiple) (sacculaire) (de) rétinien
+Angiopathie rétinienne
+Coats, maladie ou rétinite (exsudative) de
+Cyanose rétine
+Eales, maladie ou syndrome d'
+Endartérite (bactérienne) (infectieuse) (subaiguë) rétine
+Gaine vasculaire rétinienne
+Hypertension (artérielle) (bénigne) (essentielle) (idiopathique) (maligne) (primitive) (systémique) avec rétinopathie vasculaire
+Lésion (de) rétine vasculaire
+Lésion (de) vasculaire rétine
+Micro-anévrisme rétinien
+Néovascularisation rétinienne
+Périphlébite rétinienne
+Périphlébite vaisseaux rétiniens
+Périvasculite rétinienne
+Phlébite (infectieuse) (pyohémique) (suppurée) (veine) rétine
+Rétinopathie (avec antécédents) (circinée) (de Coats) (exsudative) (hypertensive) (de)
+Sclérose (de) rétine
+Sténose (cicatricielle) (de) artère NCA rétinienne (congénitale) acquise
+Varices (membres inférieurs) (rompues) (de) rétiniennes
+Vascularite, vasculite (diffuse) rétinienne
+            </field>
+            <field name="code">H35.0</field>
+        </record>
+        <record id="cim10_item_H35_0X-001" model="oph.cim10">
+            <field name="name">Altérations vasculaires de la rétineDégénérescence de Junius-Kuhnt</field>
+            <field name="categ_id" ref="cim10_category_H35_0"/>
+            <field name="code">H35.0X-001</field>
+        </record>
+        <record id="cim10_item_H35_0X-002" model="oph.cim10">
+            <field name="name">Gaine vasculaire rétinienne</field>
+            <field name="categ_id" ref="cim10_category_H35_0"/>
+            <field name="code">H35.0X-002</field>
+        </record>
+        <record id="cim10_item_H35_0X-003" model="oph.cim10">
+            <field name="name">Micro-anévrisme rétinien</field>
+            <field name="categ_id" ref="cim10_category_H35_0"/>
+            <field name="code">H35.0X-003</field>
+        </record>
+        <record id="cim10_item_H35_0X-004" model="oph.cim10">
+            <field name="name">Néovascularisation rétinienne</field>
+            <field name="categ_id" ref="cim10_category_H35_0"/>
+            <field name="code">H35.0X-004</field>
+        </record>
+        <record id="cim10_item_H35_0X-005" model="oph.cim10">
+            <field name="name">Périvascularite rétinienne</field>
+            <field name="categ_id" ref="cim10_category_H35_0"/>
+            <field name="code">H35.0X-005</field>
+        </record>
+        <record id="cim10_item_H35_0X-006" model="oph.cim10">
+            <field name="name">Rétinopathie</field>
+            <field name="categ_id" ref="cim10_category_H35_0"/>
+            <field name="code">H35.0X-006</field>
+        </record>
+        <record id="cim10_item_H35_0X-007" model="oph.cim10">
+            <field name="name">Rétinopathie avec antécédents</field>
+            <field name="categ_id" ref="cim10_category_H35_0"/>
+            <field name="code">H35.0X-007</field>
+        </record>
+        <record id="cim10_item_H35_0X-008" model="oph.cim10">
+            <field name="name">Rétinopathie de Coats</field>
+            <field name="categ_id" ref="cim10_category_H35_0"/>
+            <field name="code">H35.0X-008</field>
+        </record>
+        <record id="cim10_item_H35_0X-009" model="oph.cim10">
+            <field name="name">Rétinopathie exsudative</field>
+            <field name="categ_id" ref="cim10_category_H35_0"/>
+            <field name="code">H35.0X-009</field>
+        </record>
+        <record id="cim10_item_H35_0X-010" model="oph.cim10">
+            <field name="name">Rétinopathie hypertensive</field>
+            <field name="categ_id" ref="cim10_category_H35_0"/>
+            <field name="code">H35.0X-010</field>
+        </record>
+        <record id="cim10_item_H35_0X-011" model="oph.cim10">
+            <field name="name">Varices rétiniennes</field>
+            <field name="categ_id" ref="cim10_category_H35_0"/>
+            <field name="code">H35.0X-011</field>
+        </record>
+        <record id="cim10_item_H35_0X-012" model="oph.cim10">
+            <field name="name">Vascularite rétinienne</field>
+            <field name="categ_id" ref="cim10_category_H35_0"/>
+            <field name="code">H35.0X-012</field>
+        </record>
+        
+        <record id="cim10_item_H35_2" model="oph.cim10">
+            <field name="name">Autres rétinopathies proliférantes</field>
+            <field name="categ_id" ref="cim10_category_H35_2"/>
+            <field name="description">-Vitréo-rétinopathie proliférante
+-Rétinopathie (avec antécédents) (circinée) (de Coats) (exsudative) (hypertensive) (de) proliférante NCA
+            </field>
+            <field name="code">H35.2</field>
+        </record>
+        <record id="cim10_item_H35_2X-001" model="oph.cim10">
+            <field name="name">Vitréo-rétinopathie proliférante</field>
+            <field name="categ_id" ref="cim10_category_H35_2"/>
+            <field name="code">H35.2X-001</field>
+        </record>
+        
+        <record id="cim10_item_H35_3" model="oph.cim10">
+            <field name="name">Dégénérescence de la macula et du pôle postérieur</field>
+            <field name="categ_id" ref="cim10_category_H35_2"/>
+            <field name="description">Dégénérescence (de) Junius-Kuhnt
+Dégénérescence (de) maculaire sénile (atrophique) (exsudative)
+Druses (dégénératives) - de la macula
+Kyste - de la macula
+Plis - de la macula
+Stries angioïdes - de la macula
+Trou - de la macula
+Maculopathie toxique
+Atrophie (de) rétine dégénérative (de) macula
+Atrophie (de) rétine dégénérative (de) pôle postérieur
+Dégénérescence (de) macula (acquise) (atrophique) (disciforme) (exsudative) (sénile)
+Dégénérescence (de) oculaire maculaire
+Dégénérescence (de) pôle postérieur, oeil
+Dégénérescence (de) rétine (cystoïde) (en palissade) (entrecroisée) (microcystoïde) (pavimenteuse) (périphérique) (réticulaire) (sénile) Junius-Kuhnt
+Dégénérescence (de) rétine (cystoïde) (en palissade) (entrecroisée) (microcystoïde) (pavimenteuse) (périphérique) (réticulaire) (sénile) maculaire (atrophique) (disciforme) (exsudative) (toxique)
+Dégénérescence (de) rétine (cystoïde) (en palissade) (entrecroisée) (microcystoïde) (pavimenteuse) (périphérique) (réticulaire) (sénile) pôle postérieur
+Drusen, druses (de) macula (dégénératives)
+Hypertrophie (de) macula
+Junius-Kuhnt, dégénérescence de
+Kyste (colloïde) (muqueux) (séreux) (de) maculaire
+Plis (de) macula
+Rétinite disciforme
+Stries (de) angioïdes de la macula (rétine)
+Trou (de) macula
+            </field>
+            <field name="code">H35.3</field>
+        </record>
 
         <record id="cim10_item_H35_3X-001" model="oph.cim10">
             <field name="name">Dégénérescence de Junius-Kuhnt</field>
@@ -1427,8 +1565,37 @@ Aphakie (acquise)</field>
             <field name="categ_id" ref="cim10_category_H35_3"/>
             <field name="code">H35.3X-008</field>
         </record>
+
+
         
-        <record id="cim10_item_H35_7X-001" model="oph.cim10">
+        <record id="cim10_item_H35_6" model="oph.cim10">
+            <field name="name"> Hémorragie rétinienne</field>
+            <field name="categ_id" ref="cim10_category_H35_8"/>
+            <field name="description">Hémorragie (de) (due à) fond de l'oeil
+Hémorragie (de) (due à) prérétinienne (de cause non précisée)
+Hémorragie (de) (due à) rétine (profonde) (superficielle)
+Hémorragie (de) (due à) sous-rétinienne
+            </field>
+            <field name="code">H35.6</field>
+        </record>
+
+
+
+        
+        <record id="cim10_item_H35_7" model="oph.cim10">
+            <field name="name">Décollement des couches de la rétine</field>
+            <field name="categ_id" ref="cim10_category_H35_8"/>
+            <field name="description">-Choriorétinopathie séreuse centrale
+-Décollement de l'épithélium pigmentaire rétinien
+-Choriorétinite séreuse centrale
+-Décollement (de) couche pigmentaire rétinienne
+-Décollement (de) épithélium pigmentaire rétinien
+-Décollement (de) rétine (séreux) (sans déchirure) couche pigmentaire
+            </field>
+            <field name="code">H35.7</field>
+        </record>
+        
+       <record id="cim10_item_H35_7X-001" model="oph.cim10">
             <field name="name">Choriorétinopathie séreuse centrale</field>
             <field name="categ_id" ref="cim10_category_H35_7"/>
             <field name="code">H35.7X-001</field>
@@ -1438,10 +1605,28 @@ Aphakie (acquise)</field>
             <field name="categ_id" ref="cim10_category_H35_7"/>
             <field name="code">H35.7X-002</field>
         </record>
-        
+
+
+        <record id="cim10_item_H35_8" model="oph.cim10">
+            <field name="name">Autres affections rétiniennes précisées</field>
+            <field name="categ_id" ref="cim10_category_H35_8"/>
+            <field name="description">Affection (à) (de) rétinienne précisée NCA
+-Atrophie (de) rétine
+-Chalcose rétine
+-Congestion (chronique) (passive) (de) rétine
+-Dépôt (dans) (de) cholestérol dans rétine
+-Dépôt (dans) (de) rétine
+-Exsudat rétinien
+-Hyperémie (aiguë) (passive) (de) rétine
+-Oedème (de) (dû à) macula
+-Oedème (de) (dû à) rétine
+            </field>
+            <field name="code">H35.8</field>
+        </record>
+
 
         <record id="cim10_item_H36_0" model="oph.cim10">
-            <field name="name">Rétinopathie diabétique (E10-E14+ avec le quatrième chiffre .3) </field>
+            <field name="name">Rétinopathie diabétique (E10-E14+ avec le quatrième chiffre .3)</field>
             <field name="categ_id" ref="cim10_category_H36_0"/>
             <field name="description">- Anévrisme, anévrysme (anastomotique) (cirsoïde) (diffus) (faux) (fusiforme) (multiple) (sacculaire) (de) rétinien diabétique (E14.3+)
 - Anévrisme, anévrysme (anastomotique) (cirsoïde) (diffus) (faux) (fusiforme) (multiple) (sacculaire) (de) rétinien diabétique insulino-dépendant (E10.3+)
