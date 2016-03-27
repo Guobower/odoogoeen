@@ -73,7 +73,7 @@ Permet de faire pleins de choses absolument géniales
                 'data/anesthesia_type_data.xml',
                 'data/inpatient_type_data.xml',
                 'wizard/oph_etat_factory_view.xml',
-                'oph_request_view.xml',
+                #'oph_request_view.xml',
                 'oph_config_surgery_view.xml',
                 'data/oph_iol_type_data.xml',
                 'data/reporting_template_data.xml',
@@ -81,6 +81,7 @@ Permet de faire pleins de choses absolument géniales
                 'edi/request_action_data.xml',
                 'oph_cim10_view.xml',
                 'data/oph_cim10_data.xml',
+                'oph_request_view.xml',
         ],
     #===========================================================================
     # 'demo': [
