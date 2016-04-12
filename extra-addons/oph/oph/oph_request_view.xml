@@ -23,7 +23,7 @@
                     <sheet string="Request">
                         <group>
                             <field name="cim10_id"/>
-                            <field name="name" class="oe_inline"/>
+                            <field name="name" class="oe_inline" invisible="1"/>
                             <field string="Customer" name="partner_id" context="{'search_default_customer':1, 'show_address': 1}" on_change="on_change_oph_partner(partner_id,date_request)"
                                 options='{"always_reload": True}'
                                 domain="[('customer', '=', True)]"/>
