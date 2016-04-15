@@ -15,7 +15,8 @@ import oph_day_template
 import oph_day_template_agenda_factory
 #===============================================================================
 import oph_etat_factory
+import oph_appointment_memo
 # import oph_diabetic_report
-# 
+#
 #===============================================================================
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+    <!--  Appointment memo Wizard -->
+    <!-- so you can put the price for the next appointment -->
+
+        <record id="view_appointment_memo_factory" model="ir.ui.view">
+            <field name="name">Run Factory Memo</field>
+            <field name="model">oph.appointment.memo</field>
+            <!--<field name="type">form</field>-->
+            <field name="arch" type="xml">
+                <form string="Appointment Memo" version="7.0">
+                    <group>
+                        <field name="date"/>
+                        <field name="product_id"/>
+                        <!-- others fields -->
+                     </group>
+                     <footer>
+                        <button name="print_appointment_memo" string="Print Memo" class="oe_highlight" type="object"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+       <!-- ne permet pas de recuperer les active_ids car active_id n'est pas défini dans la vue view_ivt_prescription_wizard-->
+        <record id="action_appointment_memo_factory" model="ir.actions.act_window">
+            <field name="name">Oph Appointment Memo Factory</field>
+            <field name="res_model">oph.appointment.memo</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_appointment_memo_factory"/>
+            <!--<field name="context">{'active_ids':active_id}</field>-->
+            <!--<field name="context">{'active_ids':[active_id]}</field>-->
+            <field name="target">new</field>
+        </record>
+
+<!-- Action qui va permettre d'afficher le bouton "Print Appointment Memo" dans la tree view de crm.meeting -->        
+<act_window name="Print Appointment Memo"
+        res_model="oph.appointment.memo"
+        src_model="crm.meeting"
+        view_mode="form"
+        target="new"
+        key2="client_action_multi"
+        id="action_show_wizard_memo_factory"/>
+
+    </data>
+</openerp>
