@@ -29,7 +29,7 @@ class oph_appointment_memo(osv.osv_memory):
         data = self.read(cr, uid, ids, context = context)[0]
 
         context['date_report'] = data.get('date')
-#        context['molecule'] = data.get('molecule', '')[1]
+        context['product_id'] = data.get('product_id', '')[1]  # a verifier mais cela va servir pour le parser.py.
 #        context['indication'] = data.get('indication', '')[1]
         # import pdb;pdb.set_trace()
 

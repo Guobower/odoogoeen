@@ -61,6 +61,7 @@ class Parser(report_sxw.rml_parse):
             'only_time':self.get_only_time,
             'only_time1':self.get_only_time1,
             'only_time2':self.get_only_time2,
+            'product_name':self.get_product_name,
             # 'molecule':self._get_molecule,
             # 'indication':self._get_indication,
             # 'molecule1':self._get_molecule1,
@@ -96,7 +97,7 @@ class Parser(report_sxw.rml_parse):
         if context is None:
             context = {}
         context = self.context
-        import pdb;pdb.set_trace()
+        # import pdb;pdb.set_trace()
         return context.get('date_report', '')
 
     def _ref_statement(self, context = None):
@@ -216,17 +217,34 @@ class Parser(report_sxw.rml_parse):
         else:
             return True
 
+    def get_product_name(self, context = None):
+        print "JE PASSE PAR GET_PRODUCT_NAME"
+        if context is None:
+            context = {}
+        context = self.context
+        import pdb;pdb.set_trace()
+
+
+
     def _molecule(self, context = None):
         if context is None:
             context = {}
         context = self.context
+        import pdb;pdb.set_trace()
         return context.get('molecule', '')
 
     def _indication(self, context = None):
         if context is None:
             context = {}
         context = self.context
+        import pdb;pdb.set_trace()
         return context.get('indication', '')
+
+    def _product_id(self, context = None):
+        if context is None:
+            context = {}
+        context = self.context
+        return context.get('product_id', '')
 
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
