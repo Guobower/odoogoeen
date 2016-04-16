@@ -42,7 +42,7 @@ Permet de faire pleins de choses absolument géniales
                 'custom/oph_account_voucher_view.xml',
                 'custom/oph_crm_phonecall_view.xml',
                 'custom/oph_phonecall_view.xml',
-                # 'custom/oph_invoice_view.xml',
+                'custom/oph_product_product_view.xml',
                 'oph_prescription_view.xml',
                 'oph_instrumentation_view.xml',
                 'oph_measurement_view.xml',

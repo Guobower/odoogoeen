@@ -13,6 +13,7 @@ import oph_sale_order
 import oph_account_invoice
 import oph_account_voucher
 import oph_crm_phonecall
+import product_product
 #import oph_sale
 
 #import account_voucher
