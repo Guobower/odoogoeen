@@ -17,7 +17,7 @@ class oph_appointment_memo(osv.osv_memory):
                }
 
     def print_appointment_memo(self, cr, uid, ids, context = None):
-        print "JE PASSE PAR PRINY8APPOINTMENT8MEMO"
+        print "JE PASSE PAR PRINT_APPOINTMENT_MEMO"
         if context is None:
             context = {}
 
@@ -27,11 +27,13 @@ class oph_appointment_memo(osv.osv_memory):
             return {'type': 'ir.actions.act_window_close'}
 
         data = self.read(cr, uid, ids, context = context)[0]
-
+        des_memo=self.pool.get('product.product').browse(cr,uid,data.get('product_id')[0]).description
+        price=self.pool.get('product.product').browse(cr,uid,data.get('product_id')[0]).list_price
+        #import pdb;pdb.set_trace() 
         context['date_report'] = data.get('date')
         context['product_id'] = data.get('product_id', '')[1]  # a verifier mais cela va servir pour le parser.py.
-#        context['indication'] = data.get('indication', '')[1]
-        # import pdb;pdb.set_trace()
+        context['description'] = des_memo
+        context['price'] = price
 
         datas = {
            'ids':active_ids,
