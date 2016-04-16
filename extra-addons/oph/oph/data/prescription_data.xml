@@ -93,6 +93,7 @@
         <record id="ata0" model="oph.brandname">
             <field name="brandname_id" ref="inn4"/>
             <field name="name">ATARAX 25MG CPR</field>
+             <field name="ods_needed">False</field>
         </record>
  <!-- -->
         <record id="inn6" model="oph.inn">

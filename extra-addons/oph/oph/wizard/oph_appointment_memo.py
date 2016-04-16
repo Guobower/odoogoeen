@@ -27,13 +27,16 @@ class oph_appointment_memo(osv.osv_memory):
             return {'type': 'ir.actions.act_window_close'}
 
         data = self.read(cr, uid, ids, context = context)[0]
-        des_memo=self.pool.get('product.product').browse(cr,uid,data.get('product_id')[0]).description
-        price=self.pool.get('product.product').browse(cr,uid,data.get('product_id')[0]).list_price
+        prod=self.pool.get('product.product')
+        des_memo=prod.browse(cr,uid,data.get('product_id')[0]).description
+        price=prod.browse(cr,uid,data.get('product_id')[0]).list_price
+        dilatation=prod.browse(cr,uid,data.get('product_id')[0]).dilatation
         #import pdb;pdb.set_trace() 
         context['date_report'] = data.get('date')
         context['product_id'] = data.get('product_id', '')[1]  # a verifier mais cela va servir pour le parser.py.
         context['description'] = des_memo
         context['price'] = price
+        context['dilatation']=dilatation
 
         datas = {
            'ids':active_ids,

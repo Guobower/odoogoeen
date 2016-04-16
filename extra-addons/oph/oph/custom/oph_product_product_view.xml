@@ -12,12 +12,6 @@
                         <field name="dilatation" string="Dilatation"/>
                      </group>
                  </xpath>
-                 <!--
-
-                <field name="description" position="after">
-                    <field name="dilatation" string="Dilatation"/>
-                </field>        
-                -->
             </field>
        </record>
 
