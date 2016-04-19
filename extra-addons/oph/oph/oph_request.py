@@ -35,8 +35,8 @@ class oph_request(orm.Model):
         self.write(cr, uid, ids, {"state": "confirm"}, context = context)
         return True
 
-    def request_refused(self, cr,uid,ids,context=None):
-        self.write(cr,uid,ids,{"state":"refused"},context=None)
+    def request_refused(self, cr, uid, ids, context = None):
+        self.write(cr, uid, ids, {"state":"refused"}, context = None)
         return True
 
     def _state_get(self, cr, uid, context = None):
@@ -46,7 +46,7 @@ class oph_request(orm.Model):
                     ('confirm', 'Confirm'),
                     ('close', 'Close'),
                     ('cancel', 'Cancelled'),
-                    ('refused','Refused'),
+                    ('refused', 'Refused'),
                     ]
 
     def _priority_id_selection(self, cr, uid, context = None):
@@ -70,6 +70,7 @@ class oph_request(orm.Model):
                 'priority_id':fields.selection(_priority_id_selection, 'Priority'),
                 'sent':fields.boolean('Sent'),
                 'user_id': fields.many2one('res.users', 'Responsable', readonly = True, track_visibility = 'onchange', states = {'draft':[('readonly', False)]}),
+                'cim10_id':fields.many2one('oph.cim10', string = "CIM10 codification", help = 'CIM10 Codification'),
                 }
 
     _defaults = {

@@ -42,7 +42,7 @@ Permet de faire pleins de choses absolument géniales
                 'custom/oph_account_voucher_view.xml',
                 'custom/oph_crm_phonecall_view.xml',
                 'custom/oph_phonecall_view.xml',
-                # 'custom/oph_invoice_view.xml',
+                'custom/oph_product_product_view.xml',
                 'oph_prescription_view.xml',
                 'oph_instrumentation_view.xml',
                 'oph_measurement_view.xml',
@@ -73,7 +73,7 @@ Permet de faire pleins de choses absolument géniales
                 'data/anesthesia_type_data.xml',
                 'data/inpatient_type_data.xml',
                 'wizard/oph_etat_factory_view.xml',
-                'oph_request_view.xml',
+                # 'oph_request_view.xml',
                 'oph_config_surgery_view.xml',
                 'data/oph_iol_type_data.xml',
                 'data/reporting_template_data.xml',
@@ -81,6 +81,8 @@ Permet de faire pleins de choses absolument géniales
                 'edi/request_action_data.xml',
                 'oph_cim10_view.xml',
                 'data/oph_cim10_data.xml',
+                'oph_request_view.xml',
+                'wizard/oph_appointment_memo_view.xml',
         ],
     #===========================================================================
     # 'demo': [

@@ -54,8 +54,9 @@
             <field name="default_code">CS+MPC</field>
             <field name="uom_id" ref="product.product_uom_hour"/>
             <field name="uom_po_id" ref="product.product_uom_hour"/>
-            <field name="description">Acte de consultation</field>
+            <field name="description">Consultation</field>
             <field name="description_sale">Acte de consultation</field>
+            <field name="dilatation">False</field>
         </record>
         
         <!-- FO -->
@@ -70,6 +71,7 @@
             <field name="uom_po_id" ref="product.product_uom_hour"/>
             <field name="description">Fond d'oeil</field>
             <field name="description_sale">Examen de la retine patient dilate</field>
+            <field name="dilatation">True</field>
         </record>
         <record id="product_product_foret_id" model="product.product">
             <field name="name">FO+RET</field>
@@ -82,6 +84,7 @@
             <field name="uom_po_id" ref="product.product_uom_hour"/>
             <field name="description">Fond d'oeil et Rétinophotographie</field>
             <field name="description_sale">Fond d'oeil et Rétinophotographie</field>
+            <field name="dilatation">True</field>
         </record>
 
         <!-- OCTs-->
@@ -94,8 +97,9 @@
             <field name="default_code">K19+19/2</field>
             <field name="uom_id" ref="product.product_uom_hour"/>
             <field name="uom_po_id" ref="product.product_uom_hour"/>
-            <field name="description">Tomographie par cohérence optique ODG</field>
+            <field name="description">Tomographie par cohérence optique</field>
             <field name="description_sale">Tomographie par cohérence optique des deux yeux</field>
+            <field name="dilatation">True</field>
         </record>
         <record id="product_product_OCT_id" model="product.product">
             <field name="name">OCT [OD][OG] </field>
@@ -106,8 +110,9 @@
             <field name="default_code">K19</field>
             <field name="uom_id" ref="product.product_uom_hour"/>
             <field name="uom_po_id" ref="product.product_uom_hour"/>
-            <field name="description">Tomographie par cohérence optique OD ou OG</field>
+            <field name="description">Tomographie par cohérence optique</field>
             <field name="description_sale">Tomographie par cohérence optique OD ou OG</field>
+            <field name="dilatation">True</field>
         </record>
         <record id="product_product_OCTFO_id" model="product.product">
             <field name="name">OCT [OD][OG]+FO </field>
@@ -118,8 +123,9 @@
             <field name="default_code">K19+K11/2</field>
             <field name="uom_id" ref="product.product_uom_hour"/>
             <field name="uom_po_id" ref="product.product_uom_hour"/>
-            <field name="description">Tomographie par cohérence optique OD ou OG et FO </field>
+            <field name="description">Tomographie par cohérence optique et Fond d'oeil</field>
             <field name="description_sale">Tomographie par cohérence optique OD ou OG et Fond d'Oeil</field>
+            <field name="dilatation">True</field>
         </record>
         <record id="product_product_ivt_id" model="product.product">
             <field name="name">Injection Intra Vitrenne</field>
@@ -146,6 +152,7 @@
             <field name="uom_po_id" ref="product.product_uom_hour"/>
             <field name="description">Angiographie et rétinophotographie</field>
             <field name="description_sale">Angiographie numérisée et rétinophotographie </field>
+            <field name="dilatation">True</field>
         </record>
         <record id="product_product_af_id" model="product.product">
             <field name="name">Angiographie</field>
@@ -158,6 +165,7 @@
             <field name="uom_po_id" ref="product.product_uom_hour"/>
             <field name="description">Angiographie</field>
             <field name="description_sale">Angiographie numérisée</field>
+            <field name="dilatation">True</field>
         </record>
         <record id="product_product_afk35_id" model="product.product">
             <field name="name">Angiographie(K35)</field>
@@ -170,6 +178,7 @@
             <field name="uom_po_id" ref="product.product_uom_hour"/>
             <field name="description">Angiographie</field>
             <field name="description_sale">Angiographie numérisée</field>
+            <field name="dilatation">True</field>
         </record>
         
         <!--Retinophotography-->
@@ -182,8 +191,9 @@
             <field name="default_code">K9</field>
             <field name="uom_id" ref="product.product_uom_hour"/>
             <field name="uom_po_id" ref="product.product_uom_hour"/>
-            <field name="description">Rétinophotographie OD ou OG</field>
+            <field name="description">Rétinophotographie</field>
             <field name="description_sale">Rétinophotographie OD ou OG</field>
+            <field name="dilatation">True</field>
         </record>
     
         <!--capsulotomy-->
@@ -198,6 +208,7 @@
             <field name="uom_po_id" ref="product.product_uom_hour"/>
             <field name="description">Capsulotomie laser</field>
             <field name="description_sale">Capsulotomie laser</field>
+            <field name="dilatation">True</field>
         </record>
 
         <!--biométrie-->
@@ -210,8 +221,9 @@
             <field name="default_code">K19</field>
             <field name="uom_id" ref="product.product_uom_hour"/>
             <field name="uom_po_id" ref="product.product_uom_hour"/>
-            <field name="description">Biométrie OD ou OG</field>
+            <field name="description">Biométrie</field>
             <field name="description_sale">Biométrie OD ou OG</field>
+            <field name="dilatation">False</field>
         </record>
         <record id="product_product_bioodg_id" model="product.product">
             <field name="name">Bio ODG</field>
@@ -222,8 +234,9 @@
             <field name="default_code">K19+19/2</field>
             <field name="uom_id" ref="product.product_uom_hour"/>
             <field name="uom_po_id" ref="product.product_uom_hour"/>
-            <field name="description">Biométrie ODG</field>
+            <field name="description">Biométrie</field>
             <field name="description_sale">Biométrie des 2 yeux</field>
+            <field name="dilatation">False</field>
         </record>
         <record id="product_product_biofo_id" model="product.product">
             <field name="name">Bio [OD][OG] + FO</field>
@@ -234,8 +247,9 @@
             <field name="default_code">K19+11/2</field>
             <field name="uom_id" ref="product.product_uom_hour"/>
             <field name="uom_po_id" ref="product.product_uom_hour"/>
-            <field name="description">Biométrie OD ou OG et Fond d'oeil </field>
+            <field name="description">Biométrie et Fond d'oeil </field>
             <field name="description_sale">Biométrie [OD][OG] + FO</field>
+            <field name="dilatation">True</field>
         </record>
         
         <!-- Echography -->
@@ -248,8 +262,9 @@
             <field name="default_code">K19+11/2</field>
             <field name="uom_id" ref="product.product_uom_hour"/>
             <field name="uom_po_id" ref="product.product_uom_hour"/>
-            <field name="description">Echographie B OD ou OG et Fond d'oeil </field>
+            <field name="description">Echographie Oculaire et Fond d'oeil </field>
             <field name="description_sale">Echographie B [OD][OG] + FO</field>
+            <field name="dilatation">True</field>
         </record>
         <record id="product_product_echo_id" model="product.product">
             <field name="name">EchoB [OD][OG]</field>
@@ -260,8 +275,9 @@
             <field name="default_code">K19</field>
             <field name="uom_id" ref="product.product_uom_hour"/>
             <field name="uom_po_id" ref="product.product_uom_hour"/>
-            <field name="description">Echographie B OD ou OG</field>
+            <field name="description">Echographie Oculaire</field>
             <field name="description_sale">Echographie B [OD][OG]</field>
+            <field name="dilatation">False</field>
         </record>
         
         <!-- Laser retina-->
@@ -274,8 +290,9 @@
             <field name="default_code">KC60</field>
             <field name="uom_id" ref="product.product_uom_hour"/>
             <field name="uom_po_id" ref="product.product_uom_hour"/>
-            <field name="description">Laser maculaire OD ou OG</field>
+            <field name="description">Laser maculaire</field>
             <field name="description_sale">Laser maculaire OD ou OG</field>
+            <field name="dilatation">True</field>
         </record>
         <record id="product_product_laserret_id" model="product.product">
             <field name="name">Laser Rétine [OD][OG]</field>
@@ -286,8 +303,9 @@
             <field name="default_code">KC60</field>
             <field name="uom_id" ref="product.product_uom_hour"/>
             <field name="uom_po_id" ref="product.product_uom_hour"/>
-            <field name="description">Laser rétine OD ou OG</field>
+            <field name="description">Laser rétine</field>
             <field name="description_sale">Laser rétine OD ou OG</field>
+            <field name="dilatation">True</field>
         </record>
         <record id="product_product_laserretodg_id" model="product.product">
             <field name="name">Laser Rétine ODG</field>
@@ -298,8 +316,9 @@
             <field name="default_code">KC60+60/2</field>
             <field name="uom_id" ref="product.product_uom_hour"/>
             <field name="uom_po_id" ref="product.product_uom_hour"/>
-            <field name="description">Laser rétine ODG</field>
+            <field name="description">Laser rétine</field>
             <field name="description_sale">Laser rétine OD et OG</field>
+            <field name="dilatation">True</field>
         </record>
         
         <!-- IVT's -->
@@ -312,7 +331,7 @@
             <field name="default_code">KC40</field>
             <field name="uom_id" ref="product.product_uom_hour"/>
             <field name="uom_po_id" ref="product.product_uom_hour"/>
-            <field name="description">Injection intra-vitréenne OD et OG</field>
+            <field name="description">Injection intra-vitréenne</field>
             <field name="description_sale">Injection intra-vitréenne OD ou OG</field>
         </record>
         

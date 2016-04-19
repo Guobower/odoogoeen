@@ -126,6 +126,7 @@
                             <field name="dilatation"/>
                             <field name="ods"/>
                             <field name="snd_eye"/>
+                            <field name="cim10_id"/>
                             <field name="anesthesia_type_id" widget="selection"/>
                             <field name="inpatient_type_id" widget="selection"/>
                         </group>

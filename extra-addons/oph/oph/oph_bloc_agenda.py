@@ -385,6 +385,7 @@ class oph_bloc_agenda_line(osv.osv):
                 # 'operator_id':fields.many2one('res.users', 'Operator'),
                 'operator_id':fields.many2one('res.partner', 'Operator'),
                 'notification_time':fields.char('Notification Time', size = 8),
+                'cim10_id':fields.many2one('oph.cim10', string = "CIM10 codification", help = "CIM 10 codification",),
                 }
 
     _defaults = {
