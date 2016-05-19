@@ -56,10 +56,10 @@ class crm_meeting(orm.Model):
                             'meeting_id' : record.id, #TODO
                             'sph_od' : res[0]['sph_od'],
                             'cyl_od':res[0]['cyl_od'],
-                            'axe_od':res[0]['axe_od'],
+                            'axis_od':res[0]['axis_od'],
                             'sph_os' : res[1]['sph_os'],
                             'cyl_os':res[1]['cyl_os'],
-                            'axe_os':res[1]['axe_os'],
+                            'axis_os':res[1]['axis_os'],
                             }
             print 'vals : {}'.format(vals_measurement)
         oph_measurement_obj =  self.pool.get('oph.measurement').create(cr, uid, vals_measurement, context = context)
