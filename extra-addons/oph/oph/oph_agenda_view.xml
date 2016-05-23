@@ -42,6 +42,7 @@
                         <button string="LogSLE" name="%(oph.logsle_action_id)d" type="action" context="{'search_default_partner_id':partner_id}" groups="oph.sec_group_id"/>
                         <button string="Treatment" name="%(oph.medication_line_action_id)d" type="action" context="{'search_default_partner_id':partner_id}" groups="oph.sec_group_id"/>
                         <button string="Inject" name="selection_partner_id" type="object"/>
+                        <button string="RT5100" name="get_rt5100" type="object"/>
                         <!-- button to call the selection partner_id method that inject the partner_id in
                             the record -->
                         <button string="Prescriber" name="create_defaults_medication_lines" type="object" attrs="{'invisible':[('state','in',['cs','tech','draft','open','wait','cancel','no_show','busy'])]}" groups="oph.oph_group_id"/>

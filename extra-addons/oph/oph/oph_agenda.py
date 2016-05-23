@@ -7,7 +7,7 @@ import numpy as np
 import pytz
 import inspect
 import arrow
-
+import rt5100
 
 class oph_motive(orm.Model):
     """Motives for a crm.meeting"""
@@ -26,9 +26,50 @@ class crm_meeting(orm.Model):
     _description = "consultations meetings"
     _order = "date asc"
 
+    def get_rt5100(self,cr,uid,ids,context=None):
+        """Get the datas from the RT-5100
+        """
+        print 'IN GET_RT5100'
+        print 'context:{}'.format(context)
+        print "check I can import methods from rt5100"
+        print 'SCAdict:{}'.format(rt5100.SCAdict)
+        res=rt5100.get_values('F')
+        print 'res:{}'.format(res)
+        ##======
+#         Maintenant il faut que j'arrive à mettre ces données dans 
+#         la table oph.measurement
+#         les champs : sph_od, cyl_od, axe_od, sph_os, cyl_os, axe_os
+#         domain = [('type_id.code', '=', 'ref')])
+#         et le bon meeting_id
+        ##======
+        #let's create the datas that we want to write in oph.measurement table.
+        records=self.browse(cr,uid,ids,context)
+        for record in records:
+            print 'record.name:{}'.format(record.name)
+            print 'record.partner_id:{}'.format(record.partner_id)
+            print 'record.meeting_id:{}'.format(record.id)
+            vals_measurement = {
+                            #'type_id.code' : 'ref', #TODO
+                            'type_id' : 2, 
+                            'meeting_id' : record.id, #TODO
+                            'sph_od' : None, #res[0]['sph_od'],
+                            'cyl_od':None, #res[0]['cyl_od'],
+                            'axis_od':res[0]['axis_od'],
+                            'sph_os' : res[1]['sph_os'],
+                            'cyl_os':res[1]['cyl_os'],
+                            'axis_os':res[1]['axis_os'],
+                            }
+            print 'vals : {}'.format(vals_measurement)
+        oph_measurement_obj =  self.pool.get('oph.measurement').create(cr, uid, vals_measurement, context = context)
+        # il y a des problemes entre les valeurs de SCA récupérés et les selections pour les champs correspondant
+        #Il faut mapper les valeurs recupérer et les selection
+        # ou les traduire en selection possibles.
+        return True
+    
+
     def selection_partner_id(self, cr, uid, ids, context = None):
         """
-        Get the partner_id to write it in the crm.meeting record
+        Get the partner_id from the res.partner to write it in the crm.meeting record
         """
         res = {}
         fmt = 'YYYY-MM-DD HH:mm:ss'
