@@ -12,16 +12,21 @@ keysOR = ('sph_od', 'cyl_od', 'axis_od')
 keysOS = ('sph_os', 'cyl_os', 'axis_os')
 
 # coupures peut changer si le programme qui crée le log avec les donnees du RT-5100 change.
-coupures = [28, 30, 36, 42, 46]  # Les points de coupures semblent etre toujours les memes
-
+coupures = [28, 30, 36, 42, 45]  # Les points de coupures semblent etre toujours les memes
+# 28 coupe apres la date
+# 30 coupe les codes pour les datas
+# 36 coupe apres les datas sphere (6 bits)
+# 36+6=42 coupe apres les datas cylindre (6 bits)
+# 45 = 42 + 3 bits pour l'axe.
 
 # les données recherchées peuvent etre récupérée par l'index
-# S=morceaux[1] C=morceaux[2] A=Morceaux[3]
+# S=morceaux[2] C=morceaux[3] A=Morceaux[4]
+# eg morceaux[1:5] = ['FR', '- 0.25', '- 1.75', ' 90']
 
 def get_values(filter):
     """Return a dictionnary of the values
     
-        filter(str) : the letter from the interface manual rs-232 of RT-5100
+        filter(str) : the code letters from the interface manual rs-232 of RT-5100
         Il y a un probleme quand il n'y a aucune ligne qui correspond au filtre
         log_path : path to the file with the datas given by RT-5100 device
         
@@ -43,6 +48,7 @@ def get_values(filter):
             for line in file.readlines():
                 if line.find(filterR) != -1 or line.find(filterL) != -1:
                     morceaux = [line[i:j] for i, j in zip([0] + coupures, coupures + [None])]  # on coupe les lignes en morceaux qui isolent les champs.
+                    import pdb;pdb.set_trace()
                     values = morceaux[1:5]  # on élimine le champ date et on récupere que les champs datas.
                     print 'morceaux[1:5] : {}'.format(values)
                     # print '-' * 6
@@ -68,7 +74,10 @@ def get_values(filter):
     return res
 
 def trimspace(val):
+    """Trim the space between sign (+ or -) and first digit
+    """
     idx = 1
+    import pdb; pdb.set_trace()
     val = val.strip()
     if val[1] == ' ':
         res = val[:idx] + val[(idx + 1):]
