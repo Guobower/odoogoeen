@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
+from datetime import datetime, timedelta, date
 from openerp.osv import fields, osv, orm
 from openerp.tools.translate import _
-import time
-from datetime import datetime, timedelta, date
+import arrow
+import inspect
 import numpy as np
 import pytz
-import inspect
-import arrow
 import rt5100
+import time
 
 class oph_motive(orm.Model):
     """Motives for a crm.meeting"""
@@ -52,8 +52,8 @@ class crm_meeting(orm.Model):
                             #'type_id.code' : 'ref', #TODO
                             'type_id' : 2, 
                             'meeting_id' : record.id, #TODO
-                            'sph_od' : None, #res[0]['sph_od'],
-                            'cyl_od':None, #res[0]['cyl_od'],
+                            'sph_od' : res[0]['sph_od'],
+                            'cyl_od': res[0]['cyl_od'],
                             'axis_od':res[0]['axis_od'],
                             'sph_os' : res[1]['sph_os'],
                             'cyl_os':res[1]['cyl_os'],
@@ -61,9 +61,6 @@ class crm_meeting(orm.Model):
                             }
             print 'vals : {}'.format(vals_measurement)
         oph_measurement_obj =  self.pool.get('oph.measurement').create(cr, uid, vals_measurement, context = context)
-        # il y a des problemes entre les valeurs de SCA récupérés et les selections pour les champs correspondant
-        #Il faut mapper les valeurs recupérer et les selection
-        # ou les traduire en selection possibles.
         return True
     
 

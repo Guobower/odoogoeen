@@ -53,6 +53,13 @@ def trimspace_regex(val):
         val=val[:1]+val[2:]
     return val
 
+def set2none(val):
+    """Set val to None if val is equal to 0.00, 
+    """
+    regex=r'^0+\.0+$'
+    if re.search(regex,val,flags=0):
+        val=None
+    return val
 
 
 def get_values(filter):
@@ -67,7 +74,7 @@ def get_values(filter):
         morceaux : eg : ['2016-05-02T05:37:02.410503\t\x02', 'OR', '- 2.75', '  0.00', '  0', '\r\n']
         return : tuple .vals:({'cyl_od': '- 1.25', 'axe_od': '125', 'sph_od': '+ 5.50'}, {'sph_os': '+ 5.50', 'axe_os': '125', 'cyl_os': '- 1.25'})
     """
-    coupures = [28, 30, 36, 42, 45] 
+    coupures = [28, 30, 36, 42, 46] 
     filterR = filter+'R'
     filterL = filter+'L'
     log_path = os.path.join(os.path.expanduser('~'),'rt5100rs232','tmp.log')
@@ -87,6 +94,8 @@ def get_values(filter):
                     # morceaux[4] --> axes 6 bits datas
                     # morceaux[2:5] donne ['S','C','A']
                     # lets format the str to fit the odoo selection for SCA
+                    print 'morceaux:{}'.format(morceaux)
+                    print 'original values: {}'.format(values)
                     values=[val.strip() for val in values]
                     print 'values stripped:{}'.format(values)
                     values=[trimspace_regex(val) for val in values]
@@ -94,12 +103,17 @@ def get_values(filter):
                     values=[trimzero(val) for val in values]
                     print 'values trimzero:{}'.format(values)
                     print 'formated values:{}'.format(values)
-                    
+                    values=[set2none(val) for val in values]
+                    print 'values set to None: {}'.format(values)
                     if values[0] == filterR: # On filtre pour l'oeil droit
                         valuesOD=dict(zip(keysOR,values[1:]))
+                        if valuesOD['cyl_od'] == None:
+                            valuesOD['axis_od']=None
                         print 'valuesOD:{}'.format(valuesOD)
                     else:
                         valuesOS=dict(zip(keysOS,values[1:])) #on filtre pour l'oeil gauche
+                        if valuesOS['cyl_os'] == None:
+                            valuesOS['axis_os']=None
                         print 'valuesOS:{}'.format(valuesOS)
 
         except IOError, (error, strerror):
