@@ -33,8 +33,9 @@ class crm_meeting(orm.Model):
         print 'context:{}'.format(context)
         print "check I can import methods from rt5100"
         print 'SCAdict:{}'.format(rt5100.SCAdict)
-        res=rt5100.get_values('F')
-        print 'res:{}'.format(res)
+        
+        FinalSCA=rt5100.get_values('F')
+        FinalAdd = rt5100.get_values('A') 
         ##======
 #         Maintenant il faut que j'arrive à mettre ces données dans 
 #         la table oph.measurement
@@ -42,7 +43,7 @@ class crm_meeting(orm.Model):
 #         domain = [('type_id.code', '=', 'ref')])
 #         et le bon meeting_id
         ##======
-        #let's create the datas that we want to write in oph.measurement table.
+        #let's create the datas that we want to write in oph.measurement table.     
         records=self.browse(cr,uid,ids,context)
         for record in records:
             print 'record.name:{}'.format(record.name)
@@ -52,12 +53,12 @@ class crm_meeting(orm.Model):
                             #'type_id.code' : 'ref', #TODO
                             'type_id' : 2, 
                             'meeting_id' : record.id, #TODO
-                            'sph_od' : res[0]['sph_od'],
-                            'cyl_od': res[0]['cyl_od'],
-                            'axis_od':res[0]['axis_od'],
-                            'sph_os' : res[1]['sph_os'],
-                            'cyl_os':res[1]['cyl_os'],
-                            'axis_os':res[1]['axis_os'],
+                            'sph_od' : FinalSCA[0]['sph_od'],
+                            'cyl_od': FinalSCA[0]['cyl_od'],
+                            'axis_od':FinalSCA[0]['axis_od'],
+                            'sph_os' : FianlSCA[1]['sph_os'],
+                            'cyl_os':FinalSCA[1]['cyl_os'],
+                            'axis_os':FinalSCA[1]['axis_os'],
                             }
             print 'vals : {}'.format(vals_measurement)
         oph_measurement_obj =  self.pool.get('oph.measurement').create(cr, uid, vals_measurement, context = context)
