@@ -6,8 +6,8 @@ import arrow
 import inspect
 import numpy as np
 import pytz
-import rt5100
 import time
+import rt5100
 
 class oph_motive(orm.Model):
     """Motives for a crm.meeting"""
@@ -61,6 +61,9 @@ class crm_meeting(orm.Model):
                             }
             print 'vals : {}'.format(vals_measurement)
         oph_measurement_obj =  self.pool.get('oph.measurement').create(cr, uid, vals_measurement, context = context)
+        # il y a des problemes entre les valeurs de SCA récupérés et les selections pour les champs correspondant
+        #Il faut mapper les valeurs recupérer et les selection
+        # ou les traduire en selection possibles.
         return True
     
 
