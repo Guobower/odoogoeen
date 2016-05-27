@@ -32,32 +32,40 @@ class crm_meeting(orm.Model):
         print 'IN GET_RT5100'
         print 'context:{}'.format(context)
         print "check I can import methods from rt5100"
-        print 'SCAdict:{}'.format(rt5100.SCAdict)
+        print 'SCADict:{}'.format(rt.SCAdict)
         
-        finalDict = getandformat_values()
-        finalDict = rt.mergeandsubstitute(rt.map2odoofields(datas))
-        print "final dict is :  {}".format(datas)
+        finalDict = rt.getandformat_values()
+        finalDict = rt.mergeandsubstitute(rt.map2odoofields(finalDict))
+        print "final dict is :  {}".format(finalDict)
         
-        for va_type in datas.keys():
+        for va_type in finalDict.keys():
             records=self.browse(cr,uid,ids,context)
             for record in records:
                 print 'record.name:{}'.format(record.name)
                 print 'record.partner_id:{}'.format(record.partner_id)
                 print 'record.meeting_id:{}'.format(record.id)
-                vals_measurement = {
-                            #'type_id.code' : 'ref', #TODO
-                            'type_id' : 2, # always the same. Is for refraction.
-                            'meeting_id' : record.id, #TODO
-                            'sph_od' : finalDict[va_type]['sph_od'],
-                            'cyl_od': finalDict[va_type]['cyl_od'],
-                            'axis_od':finalDict[va_type]['axis_od'],
-                            'sph_os' : finalDict[va_type]['sph_os'],
-                            'cyl_os':finalDict[va_type]['cyl_os'],
-                            'axis_os':finalDict[va_type]['axis_os'],
-                            'va_type':va_type
-                            }
-                print 'vals : {}'.format(vals_measurement)
-                oph_measurement_obj =  self.pool.get('oph.measurement').create(cr, uid, vals_measurement, context = context)
+                val_measurement={'va_type':va_type,
+                                              'type_id':2,
+                                              'meeting_id':record.id,
+                                              }
+                for k,v in finalDict[va_type].items():
+                    val_measurement.update({k:v})
+                #===============================================================
+                # vals_measurement = {
+                #             #'type_id.code' : 'ref', #TODO
+                #             'type_id' : 2, # always the same. Is for refraction.
+                #             'meeting_id' : record.id, #TODO
+                #             'sph_od' : finalDict[va_type]['sph_od'],
+                #             'cyl_od': finalDict[va_type]['cyl_od'],
+                #             'axis_od':finalDict[va_type]['axis_od'],
+                #             'sph_os' : finalDict[va_type]['sph_os'],
+                #             'cyl_os':finalDict[va_type]['cyl_os'],
+                #             'axis_os':finalDict[va_type]['axis_os'],
+                #             'va_type':va_type
+                #             }
+                #===============================================================
+                print 'vals : {}'.format(val_measurement)
+                oph_measurement_obj =  self.pool.get('oph.measurement').create(cr, uid, val_measurement, context = context)
         return True
     
 

@@ -55,6 +55,14 @@ cuttingDict = { regexADD:cuttingADD,
                     regexSCA:cuttingSCA,
                   }
 
+def zero2none(val):
+    """Set val to None if val is 0.00, + 0.00, - 0.00
+    """
+    rx='[1-9]|[a-zA-Z]'
+    if not re.search(rx,val,flags=0):
+        val=None
+    return val
+
 def trimzero(val):
     """Trim zero value if there is one at the 2nd decimal
     needed if there is a selection fields with no zero at the 2nd decimal
@@ -120,6 +128,7 @@ def cutting(line, coupures):
     # print 'values:{0} ; morceaux:{1}'.format(values,morceaux)
     return values
 
+
 def getandformat_values(rxlist = [regexSCA, regexADD], log_path = os.path.expanduser('~') + '/rt5100rs232/tmp.log'):
     """ Get the values and format them ready to write in odoo
     
@@ -142,13 +151,21 @@ def getandformat_values(rxlist = [regexSCA, regexADD], log_path = os.path.expand
                     print 'cutting values: {}'.format(values)
                     values = [val.strip() for val in values]
                     values = [trimspace_regex(val) for val in values]
-                    print 'formated values: {}'.format(values)
+                    print 'formated trimspaced values: {}'.format(values)
+                    values = [zero2none(val) for val in values] 
+                    print 'zero2none: {}'.format(values)
+                    print'{}'.format(val)
+                    if re.search(rxlist[0],line,flags=0): # don't trimzero ADD values.
+                        values = [trimzero(val) for val in values]
+                        print 'trimzero: {}'.format(values)
                     res.append(values)
-                    print 'res:{}'.format(res)
+                    print 'append res:{}'.format(res)
+#                    values=[trimzero(val)  if re.search(rxlist[1],val,flags=0) else val for val in values  ] # Don't do that for ADD
+                    print '**res**:{}'.format(res)
             print '---END OF IF---'
         else: break
-    # print 'final res from getandformat_values : {}'.format(res)
     return res
+
 
 def mergeandsubstitute(res):
     """Merge the ADD dict into the SCA dict
