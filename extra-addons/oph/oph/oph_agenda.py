@@ -7,7 +7,7 @@ import inspect
 import numpy as np
 import pytz
 import time
-import rt5100
+import rt5100 as rt
 
 class oph_motive(orm.Model):
     """Motives for a crm.meeting"""
@@ -34,37 +34,30 @@ class crm_meeting(orm.Model):
         print "check I can import methods from rt5100"
         print 'SCAdict:{}'.format(rt5100.SCAdict)
         
-        FinalSCA=rt5100.get_values('F')
-        FinalAdd = rt5100.get_values('A') 
-        ##======
-#         Maintenant il faut que j'arrive à mettre ces données dans 
-#         la table oph.measurement
-#         les champs : sph_od, cyl_od, axe_od, sph_os, cyl_os, axe_os
-#         domain = [('type_id.code', '=', 'ref')])
-#         et le bon meeting_id
-        ##======
-        #let's create the datas that we want to write in oph.measurement table.     
-        records=self.browse(cr,uid,ids,context)
-        for record in records:
-            print 'record.name:{}'.format(record.name)
-            print 'record.partner_id:{}'.format(record.partner_id)
-            print 'record.meeting_id:{}'.format(record.id)
-            vals_measurement = {
+        finalDict = getandformat_values()
+        finalDict = rt.mergeandsubstitute(rt.map2odoofields(datas))
+        print "final dict is :  {}".format(datas)
+        
+        for va_type in datas.keys():
+            records=self.browse(cr,uid,ids,context)
+            for record in records:
+                print 'record.name:{}'.format(record.name)
+                print 'record.partner_id:{}'.format(record.partner_id)
+                print 'record.meeting_id:{}'.format(record.id)
+                vals_measurement = {
                             #'type_id.code' : 'ref', #TODO
-                            'type_id' : 2, 
+                            'type_id' : 2, # always the same. Is for refraction.
                             'meeting_id' : record.id, #TODO
-                            'sph_od' : FinalSCA[0]['sph_od'],
-                            'cyl_od': FinalSCA[0]['cyl_od'],
-                            'axis_od':FinalSCA[0]['axis_od'],
-                            'sph_os' : FianlSCA[1]['sph_os'],
-                            'cyl_os':FinalSCA[1]['cyl_os'],
-                            'axis_os':FinalSCA[1]['axis_os'],
+                            'sph_od' : finalDict[va_type]['sph_od'],
+                            'cyl_od': finalDict[va_type]['cyl_od'],
+                            'axis_od':finalDict[va_type]['axis_od'],
+                            'sph_os' : finalDict[va_type]['sph_os'],
+                            'cyl_os':finalDict[va_type]['cyl_os'],
+                            'axis_os':finalDict[va_type]['axis_os'],
+                            'va_type':va_type
                             }
-            print 'vals : {}'.format(vals_measurement)
-        oph_measurement_obj =  self.pool.get('oph.measurement').create(cr, uid, vals_measurement, context = context)
-        # il y a des problemes entre les valeurs de SCA récupérés et les selections pour les champs correspondant
-        #Il faut mapper les valeurs recupérer et les selection
-        # ou les traduire en selection possibles.
+                print 'vals : {}'.format(vals_measurement)
+                oph_measurement_obj =  self.pool.get('oph.measurement').create(cr, uid, vals_measurement, context = context)
         return True
     
 

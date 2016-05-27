@@ -2,33 +2,58 @@
 """
 TODO fix the problem for 0 sphere, cyl, axis
 """
-import re, os.path
+import re, os
 
-SCAdict={'f':('subjectdata','FarVisionSCA'),
-              'n':('subjectdata','NearVisionSCA'),
-              'F':('finalprescriptiondata','FarVisionSCA)'),
-              'N':('finalprescriptiondata','NearVisionSCA'),
-              'O':('ARdata','ObjectiveSCA'),
+# constants
+SCAdict = {'f':('subjectdata', 'FarVisionSCA'),
+              'n':('subjectdata', 'NearVisionSCA'),
+              'F':('finalprescriptiondata', 'FarVisionSCA)'),
+              'N':('finalprescriptiondata', 'NearVisionSCA'),
+              'O':('ARdata', 'ObjectiveSCA'),
                }
-keysOR = ('sph_od','cyl_od','axis_od')
-keysOS = ('sph_os','cyl_os','axis_os')
+#===============================================================================
+# keysSCAOR = ('sph_od', 'cyl_od', 'axe_od')
+# keysSCAOS = ('sph_os', 'cyl_os', 'axe_os')
+# keysADDOR = ('add_od')
+# keysADDOS = ('add_os')
+#===============================================================================
 
-coupures = [28, 30, 36, 42, 45] 
-# coupures peut changer si le programme qui crée le log avec les donnees du RT-5100 change.
-# 28 coupe apres la date
-# 30 coupe les codes pour les datas
-# 36 coupe apres les datas sphere (6 bits)
-# 36+6=42 coupe apres les datas cylindre (6 bits)
-# 45 = 42 + 3 bits pour l'axe.
+cuttingSCA = [0, 2, 8, 14, 17]
+cuttingADD = [0, 2, 8]
 
-# les données recherchées peuvent etre récupérée par l'index
-# S=morceaux[2] C=morceaux[3] A=Morceaux[4]
-# eg morceaux[1:5] = ['FR', '- 0.25', '- 1.75', ' 90']
-# Les points de coupures semblent etre toujours les memes
-# les données recherchées peuvent etre récupérée par l'index
-# S=morceaux[1] C=morceaux[2] A=Morceaux[3]
-#constant
+# dict use by merge and substitute method.
+mapvatype = {'a':'BCVA',
+                    'A':'Rx',
+                    'f':'BCVA',
+                    'F':'Rx',
+                    'n':'BCVA',
+                    'N': 'Rx',
+                    }
+# not used
+mappedvatype = {'BCVA':('a', 'f', 'n'),  # ceux sont les deux seuls valeurs qui ont besoins de SCA et ADD. Pour les verres portes ce n'est pas le RT5100 qui le donne.
+                         'Rx':('F', 'N', 'A')}
 
+#===============================================================================
+# Pour l'instant dans ODOO je n'utilise les valeurs de 'nN' qui est la formule SCA de pres (=avec l'ADD')
+#===============================================================================
+
+#===============================================================================
+# cuttingDict={  'a':[28,30,36], # a if for add. 28 cut the timpstamp, 30 the data type and R or L, 36 the value= '+' 'dizaine unité' 'dot' 'decimal1' 'decimal2'
+#                     'A':[28,30,36], # A for addition
+#                     'f':[28, 30, 36, 42, 45],
+#                     'F':[1,7,13,16],
+#                     'O':[1,7,13,16],
+#                     'n': [28, 30, 36, 42, 45],
+#                     'N': [28, 30, 36, 42, 45],
+#                     }
+#===============================================================================
+
+regexADD = r'[Aa][RL]'
+regexSCA = r'[OfFnN][RL]'
+
+cuttingDict = { regexADD:cuttingADD,
+                    regexSCA:cuttingSCA,
+                  }
 
 def trimzero(val):
     """Trim zero value if there is one at the 2nd decimal
@@ -43,8 +68,8 @@ def trimzero(val):
     res = val
     regex = r'\.\d0'
     if re.search(regex, val, flags = 0):
-        #match = re.search(regex, val, flags = 0)
-        #print 'match:{}'.format(match)
+        # match = re.search(regex, val, flags = 0)
+        # print 'match:{}'.format(match)
         if val[-1] == '0':
             res = val[:-1]
     return res
@@ -57,142 +82,176 @@ def trimspace_regex(val):
 
     return the trimed string
     """
-    regex=r'^[+-] ' # don't forget the space at the end of the regex
+    regex = r'^[+-] '  # don't forget the space at the end of the regex
     if re.search(regex, val, flags = 0):
-        #match = re.search(regex, val, flags = 0)
-        #print 'match:{}'.format(match)
-        val=val[:1]+val[2:]
+        # match = re.search(regex, val, flags = 0)
+        # print 'match:{}'.format(match)
+        val = val[:1] + val[2:]
     return val
 
-def set2none(val):
-    """Set val to None if val is equal to 0.00, 
-    """
-    regex=r'^0+\.0+$'
-    if re.search(regex,val,flags=0):
-        val=None
-    return val
-
-
-def get_values(filter):
-    """Return a dictionnary of the values
-        filter(str) : the letter from the interface manual rs-232 of RT-5100
-        Il y a un probleme quand il n'y a aucune ligne qui correspond au filtre
-        log_path : path to the file with the datas given by RT-5100 device
-        
-        values: eg : values:['OR', '- 2.75', '  0.00', '  0']
-        
-        morceaux : eg : ['2016-05-02T05:37:02.410503\t\x02', 'OR', '- 2.75', '  0.00', '  0', '\r\n']
-        return : tuple .vals:({'cyl_od': '- 1.25', 'axe_od': '125', 'sph_od': '+ 5.50'}, {'sph_os': '+ 5.50', 'axe_os': '125', 'cyl_os': '- 1.25'})
-    """
-    filterR = filter+'R'
-    filterL = filter+'L'
-    log_path = os.path.join(os.path.expanduser('~'),'rt5100rs232','tmp.log')
-    print 'log_path:{}'.format(log_path)
-
-    log_name = 'tmp.log'
-    log_path = os.path.join(os.path.expanduser('~'), 'rt5100rs232', log_name)
-
-    filterR = filter + 'R'
-    filterL = filter + 'L'
-
-    if filter not in ['f', 'n', 'F', 'N', 'O']:
-        print "print there is a problem with your filter:{}".format(filter)
-        print "{} is not a code for RT-5100 datas".format(filter)
-    else:
-        try:
-            file = open(log_path, 'r')
-            for line in file.readlines():
-                if line.find(filterR) != -1 or line.find(filterL) != -1:
-                    morceaux = [line[i:j] for i, j in zip([0] + coupures, coupures + [None])] # on coupe les lignes en morceaux qui isolent les champs.
-                    values=morceaux[1:5] # on élimine le champ date et on récupere que les champs datas.SCA dans une liste
-                    # morceaux[2] --> sph 6 bits datas
-                    # morceaux[3] --> cyl 6 bits datas
-                    # morceaux[4] --> axes 6 bits datas
-                    # morceaux[2:5] donne ['S','C','A']
-                    # lets format the str to fit the odoo selection for SCA
-                    print 'morceaux:{}'.format(morceaux)
-                    print 'original values: {}'.format(values)
-                    values=[val.strip() for val in values]
-                    print 'values stripped:{}'.format(values)
-                    values=[trimspace_regex(val) for val in values]
-                    print 'values trimspace:{}'.format(values)
-                    values=[trimzero(val) for val in values]
-                    print 'values trimzero:{}'.format(values)
-                    print 'formated values:{}'.format(values)
-                    values=[set2none(val) for val in values]
-                    print 'values set to None: {}'.format(values)
-                    if values[0] == filterR: # On filtre pour l'oeil droit
-                        valuesOD=dict(zip(keysOR,values[1:]))
-                        if valuesOD['cyl_od'] == None:
-                            valuesOD['axis_od']=None
-                        print 'valuesOD:{}'.format(valuesOD)
-                    else:
-                        valuesOS=dict(zip(keysOS,values[1:])) #on filtre pour l'oeil gauche
-                        if valuesOS['cyl_os'] == None:
-                            valuesOS['axis_os']=None
-                        print 'valuesOS:{}'.format(valuesOS)
-
-        except IOError, (error, strerror):
-            print 'In log_path: {}'.format(log_path)
-            print "I/O Error(%s): %s" % (error, strerror)
-
-    res=[valuesOD, valuesOS]
-    print 'res:{}'.format(res)
-    return res
-
-def trimspace(val):
-    """Trim the space between sign (+ or -) and first digit
-    """
-    idx = 1
-    import pdb; pdb.set_trace()
-    val = val.strip()
-    if val[1] == ' ':
-        res = val[:idx] + val[(idx + 1):]
-    else:
-        res = val
-    return res
-
-def trimzero(val):
-    res = val
-    regex = r'\.\d0'
-    if re.search(regex, val, flags = 0):
-        match = re.search(regex, val, flags = 0)
-        print 'match:{}'.format(match)
-        if val[-1] == '0':
-            res = val[:-1]
-    return res
-
-def main_trim(val):
-    """ Apply trimzero and trimspace
+def trim_timestamp(line, lenght = 28):
+    """Trim the timestamp
     
-        return: string the trimed val
+    because I don't need it and the timestamp is always the same lengh 
+    exept if you change the code in the getting program from the rt5100
+    
+    line : str line from the data file
+    lenght : int lenght of the timestamp
+    
+    return : str the line without the timestamp.
     """
-    print 'in main_trim val is {}'.format(val)
-    res = trimspace(trimzero(val))
-    print 'in main_trim res is {}'.format(res)
+    res = line[lenght:]
     return res
 
-def main_get(vals):
-    """Get the SCA values ready for ODOO
+def cutting(line, coupures):
+    """ Cut the line into a list fields of datas
     
-        vals tuple of dictionnaries from get values
-        
-        return: tuble of dictionnaryes of values trimed
+    line : str from the datas file fetched from rt5100
+    
+    coupures: list with size for cutting. depends on description of datas
+    
+    return: list of fields of datas 
+    eg return: values:['FR', '- 2.00', '  0.00', '  0']; ['AL', '+ 1.50']
+    the item can't be used like that in odoo database they must be formated.
+    You can use the return of this function in list comprehénsion to format the items
     """
-    for i in vals:
-        for k, v in i.iteritems():
-            i[k] = main_trim(v)
-    return vals
+    morceaux = [line[i:j] for i, j in zip([0] + coupures, coupures + [None])]  # on coupe les lignes en morceaux qui isolent les champs.
+    values = morceaux[1:-1]  # on élimine le champ date et on récupere que les champs datas.SCA dans une liste
+    # print 'values:{0} ; morceaux:{1}'.format(values,morceaux)
+    return values
+
+def getandformat_values(rxlist = [regexSCA, regexADD], log_path = os.path.expanduser('~') + '/rt5100rs232/tmp.log'):
+    """ Get the values and format them ready to write in odoo
+    
+    rxlist : list of regex from specification of datas RT5100
+    log_path: str path to file with datas from rt5100
+    
+    return : list of datas
+    eg: return [['FL', '+20.75', '-6.00'], ['FR', '+20.75', '-6.00']]
+    Those datas could be inserted in the database except that you need to map them to field names.
+    """
+    res = []
+    for line in reversed(open(log_path).readlines()):
+        if line.find('NIDEK') == -1:  # il n'y a pas le motif Nidek
+            print 'brut line:{}'.format(line)  # je manipule la chaine
+            line = trim_timestamp(line)
+            print'no timestamp line:{}'.format(line)
+            for rx in rxlist:
+                if re.search(rx, line, flags = 0):
+                    values = cutting(line, cuttingDict[rx])
+                    print 'cutting values: {}'.format(values)
+                    values = [val.strip() for val in values]
+                    values = [trimspace_regex(val) for val in values]
+                    print 'formated values: {}'.format(values)
+                    res.append(values)
+                    print 'res:{}'.format(res)
+            print '---END OF IF---'
+        else: break
+    # print 'final res from getandformat_values : {}'.format(res)
+    return res
+
+def mergeandsubstitute(res):
+    """Merge the ADD dict into the SCA dict
+    
+        val: dict comming from the maptoodoofieldV2
+        val: eg :{'A': {'add_od': '+9.00', 'add_os': '+9.00'}, 'a': {'add_od': '+5.00', 'add_os': '+5.00'}, 'F': {'sph_os': '+3.25', 'sph_od': '-0.75', 'cyl_od': '-3.00', 'axis_os': '100', 'axis_od': '150', 'cyl_os': '-7.75'}}
+        
+        return : dict {'Rx': {'sph_os': '+3.25', 'add_od': '+9.00', 'add_os': '+9.00', 'sph_od': '-0.75', 'cyl_od': '-3.00', 'axis_os': '100', 'axis_od': '150', 'cyl_os': '-7.75'}, 'BCVA': {'sph_os': '+10.50', 'add_od': '+5.00', 'add_os': '+5.00', 'sph_od': '+7.75', 'cyl_od': '-5.00', 'axis_os': '100', 'axis_od': '65', 'cyl_os': '-5.50'}}
+    """
+    for key in res.keys():
+        print 'key : {}'.format(key)
+        if key == 'A' :
+            if 'F' in res.keys():
+                res['F'].update(res[key])
+                res.pop(key)
+                res[mapvatype['F']]=res.pop('F')
+        if key == 'a':
+            if 'f' in res.keys():
+                res['f'].update(res[key])
+                res.pop(key)
+                res[mapvatype['f']]=res.pop('f')
+    return res
+
+def map2odoofields(values):
+    """Map datas to ODOO field names
+    
+    values list of datas from rt5100 after parsing
+    values eg: [['AL', '+6.50'], ['AR', '+1.50'], ['FL', '-2.00', '0.00', '0'], ['FR', '-2.00', '0.00', '9'], ['fL', '-3.00', '0.00', '0'], ['fR', '-3.00', '0.00', '0'],]
+    values is returned by getandformat_values function
+    """
+    print 'in maptofieldsV2'
+    res = {}
+    for item in values:  # 1ere pass on populate le dictionnary avec les clefs primaires : A, a , F, f....and empty dict
+#         print 'res {}'.format(res)
+#         print 'item:{}'.format(item)
+#         print 'item[0][0]: {}'.format(item[0][0])
+#         print 'item[0][1]:{}'.format(item[0][1])
+#         print 'item[1:]: {}'.format(item[1:])
+        res.update({item[0][0]:{}})
+#         print 'res after first pass : {}'.format(res)
+#         print '-' * 10
+#     print 'first pass finished. res is :{}'.format(res)
+    for item in values:  # on second : populate empty dict with datas.
+        if re.search(r'[aA]', item[0][0], flags = 0):  # on est dans les additions. On peut mapper avec les champs d'addition
+            if 'R' in item[0][1]:  # on est à droite
+                print 'R:{}'.format(res[item[0][0]])
+                res[item[0][0]].update({'add_od':item[1]})
+                print 'res after R:{}'.format(res)
+            if 'L' in item[0][1]:
+                print res[item[0][0]]
+                res[item[0][0]].update({'add_os':item[1]})
+        if re.search(r'[fFnN]', item[0], flags = 0):  # on est sur du SCA
+            if 'R' in item[0]:
+                res[item[0][0]].update({'sph_od':item[1],
+                                        'cyl_od':item[2],
+                                        'axis_od':item[3]
+                                         })
+            if 'L' in item[0]:
+                res[item[0][0]].update({'sph_os':item[1],
+                                        'cyl_os':item[2],
+                                        'axis_os':item[3]
+                                         })
+    return res
+
 
 if __name__ == '__main__':
-    vals = get_values("O")
-    print 'vals:{}'.format(vals)
-    print 'OD:{}'.format(vals[0])
-    print 'OG:{}'.format(vals[1])
-    print 'Now trim values'
-    print "main_get() : {}".format(main_get(vals))
-    #===========================================================================
-    # for i in SCAdict.keys():
-    #     print '='*10
-    #     get_values(i)
-    #===========================================================================
+
+    datas = getandformat_values()
+    print 'getandformat_values return :{}'.format(datas)
+
+    res = mergeandsubstitute(map2odoofields(datas))
+    print "map2odoofields(datasV2, ) : {}".format(res)
+
+#     res= mergeandsubstitute(res)
+#     print 'mergeandsubstitute return : {}'.format(res)
+
+
+
+
+
+
+
+
+
+
+    #===============================================================================
+# mapvatype = {'a':'BCVA',
+#                     'A':'Rx',
+#                     'f':'BCVA',
+#                     'F':'Rx',
+#                     'n':'BCVA',
+#                     'N': 'Rx',
+#                     }
+# mappedvatype = {'BCVA':('a', 'f', 'n'), 'Rx':('F', 'N', 'A')}
+#
+# for oldk in res.keys():  # mondict[newk]=mondict.pop([oldk])
+#     print oldk
+#     res[mapvatype[oldk]] = res.pop(oldk)
+#     print res
+#     print '---'
+# print 'new res is: {}'.format(res)
+
+# On ne peut pas simplementsubstituer les clefs 'A' 'a', 'f', 'n'.... avec les selections de odoo
+# Pour cela il faut rentrer les ADD dans les SCA et ce n'est pas simple
+# Essayons de rentrer le dictionnaire res dans les tables.
+#===============================================================================

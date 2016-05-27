@@ -231,7 +231,7 @@ class oph_measurement(orm.Model):
               'k2_os':fields.float('K2_OS', digits = (3, 2)),
               # -- visual acuity
               'va_type':fields.selection(_get_va_type, 'VA TYPE',),  # BVC, ...>
-              'va_tech':fields.many2one('oph.va.tech', 'Technique',),  # Cross cylinder, pifometre.
+              'va_tech':fields.many2one('oph.va.tech', 'Technique',),  # Cross cylinder, pifometre, brouillage, rouge-vert...
               'va_od':fields.selection(_get_va, 'VA_OD'),
               'qualif_od':fields.selection(_get_qualif, 'QUALIF_OD',),
               'va_os':fields.selection(_get_va, 'VA_OS'),
