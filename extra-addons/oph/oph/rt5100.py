@@ -28,6 +28,7 @@ mapvatype = {'a':'BCVA',
                     'F':'Rx',
                     'n':'BCVA',
                     'N': 'Rx',
+                    'O':'AR',
                     }
 # not used
 mappedvatype = {'BCVA':('a', 'f', 'n'),  # ceux sont les deux seuls valeurs qui ont besoins de SCA et ADD. Pour les verres portes ce n'est pas le RT5100 qui le donne.
@@ -143,37 +144,31 @@ def getandformat_values(rxlist = [regexSCA, regexADD], log_path = os.path.expand
     for line in reversed(open(log_path).readlines()):
         if line.find('NIDEK') == -1:  # il n'y a pas le motif Nidek
             print 'brut line:{}'.format(line)  # je manipule la chaine
-            line = trim_timestamp(line)
-            print'no timestamp line:{}'.format(line)
+            line = trim_timestamp(line) # cut timestamp from line
             for rx in rxlist:
                 if re.search(rx, line, flags = 0):
                     values = cutting(line, cuttingDict[rx])
-                    print 'cutting values: {}'.format(values)
                     values = [val.strip() for val in values]
                     values = [trimspace_regex(val) for val in values]
-                    print 'formated trimspaced values: {}'.format(values)
-                    values = [zero2none(val) for val in values] 
-                    print 'zero2none: {}'.format(values)
-                    print'{}'.format(val)
                     if re.search(rxlist[0],line,flags=0): # don't trimzero ADD values.
                         values = [trimzero(val) for val in values]
-                        print 'trimzero: {}'.format(values)
+                    values = [zero2none(val) for val in values]
+                    print 'None Values: {}'.format(values)
                     res.append(values)
                     print 'append res:{}'.format(res)
-#                    values=[trimzero(val)  if re.search(rxlist[1],val,flags=0) else val for val in values  ] # Don't do that for ADD
-                    print '**res**:{}'.format(res)
             print '---END OF IF---'
         else: break
     return res
 
 
-def mergeandsubstitute(res):
+def mergeADD2SCA(res):
     """Merge the ADD dict into the SCA dict
     
         val: dict comming from the maptoodoofieldV2
-        val: eg :{'A': {'add_od': '+9.00', 'add_os': '+9.00'}, 'a': {'add_od': '+5.00', 'add_os': '+5.00'}, 'F': {'sph_os': '+3.25', 'sph_od': '-0.75', 'cyl_od': '-3.00', 'axis_os': '100', 'axis_od': '150', 'cyl_os': '-7.75'}}
+        val: eg :
         
-        return : dict {'Rx': {'sph_os': '+3.25', 'add_od': '+9.00', 'add_os': '+9.00', 'sph_od': '-0.75', 'cyl_od': '-3.00', 'axis_os': '100', 'axis_od': '150', 'cyl_os': '-7.75'}, 'BCVA': {'sph_os': '+10.50', 'add_od': '+5.00', 'add_os': '+5.00', 'sph_od': '+7.75', 'cyl_od': '-5.00', 'axis_os': '100', 'axis_od': '65', 'cyl_os': '-5.50'}}
+        return : dict
+        return : eg : {'f': {'sph_os': '+10.0', 'add_od': '+1.00', 'add_os': '+1.00', 'sph_od': '+7.0', 'cyl_od': '-5.0', 'axis_os': '100', 'axis_od': '65', 'cyl_os': '-5.5'}, 'F': {'sph_os': '+3.0', 'add_od': None, 'add_os': '+2.00', 'sph_od': '-1.0', 'cyl_od': '-3.0', 'axis_os': '100', 'axis_od': '150', 'cyl_os': '-7.75'}} 
     """
     for key in res.keys():
         print 'key : {}'.format(key)
@@ -181,13 +176,46 @@ def mergeandsubstitute(res):
             if 'F' in res.keys():
                 res['F'].update(res[key])
                 res.pop(key)
-                res[mapvatype['F']]=res.pop('F')
+                #res[mapvatype['F']]=res.pop('F')
         if key == 'a':
             if 'f' in res.keys():
                 res['f'].update(res[key])
                 res.pop(key)
-                res[mapvatype['f']]=res.pop('f')
+                #res[mapvatype['f']]=res.pop('f')
     return res
+
+def substitute(res):
+    """Substitute keys to datas selection of va_type in Odoo
+    keys: f, F 
+    datas selections: BCVA, Rx, AR
+    Only the 'f' and 'F' , 'O' : respectively : BCVA,   Rx, AR  substitutions are implemented.
+    
+    res : dict
+    res: eg {'f': {'sph_os': '+10.0', 'add_od': '+1.00', 'add_os': '+1.00', 'sph_od': '+7.0', 'cyl_od': '-5.0', 'axis_os': '100', 'axis_od': '65', 'cyl_os': '-5.5'}, 'F': {'sph_os': '+3.0', 'add_od': None, 'add_os': '+2.00', 'sph_od': '-1.0', 'cyl_od': '-3.0', 'axis_os': '100', 'axis_od': '150', 'cyl_os': '-7.75'}}
+    return : dict  
+    return  : eg :{'Rx': {'sph_os': '+3.0', 'add_od': None, 'add_os': '+2.00', 'sph_od': '-1.0', 'cyl_od': '-3.0', 'axis_os': '100', 'axis_od': '150', 'cyl_os': '-7.75'}, 'BCVA': {'sph_os': '+10.0', 'add_od': '+1.00', 'add_os': '+1.00', 'sph_od': '+7.0', 'cyl_od': '-5.0', 'axis_os': '100', 'axis_od': '65', 'cyl_os': '-5.5'}}
+    """
+    if 'F' in res.keys():
+        res[mapvatype['F']]=res.pop('F')
+    if 'f' in res.keys():
+        res[mapvatype['f']]=res.pop('f')
+    if 'O' in res.keys():
+        res[mapvatype['O']]=res.pop('O')
+    return res
+
+#===============================================================================
+# def set2None(res):
+#     """Set to None the zero's datas
+#     """
+#     for v in res.values():
+#         print 'v:{}'.format(v)
+#         for v in v.values():
+#             print 'v:{}'.format(v)
+#             v = zero2none(v)
+#             print 'zero2none val:{}'.format(v)
+#     print 'res:{}'.format(res)
+#     return res
+#===============================================================================
 
 def map2odoofields(values):
     """Map datas to ODOO field names
@@ -195,8 +223,11 @@ def map2odoofields(values):
     values list of datas from rt5100 after parsing
     values eg: [['AL', '+6.50'], ['AR', '+1.50'], ['FL', '-2.00', '0.00', '0'], ['FR', '-2.00', '0.00', '9'], ['fL', '-3.00', '0.00', '0'], ['fR', '-3.00', '0.00', '0'],]
     values is returned by getandformat_values function
+    
+    return : dict
+    return eg: {'A': {'add_od': None, 'add_os': '+2.00'}, 'a': {'add_od': '+1.00', 'add_os': '+1.00'}, 'f': {'sph_os': '+10.0', 'sph_od': '+7.0', 'cyl_od': '-5.0', 'axis_os': '100', 'axis_od': '65', 'cyl_os': '-5.5'}, 'F': {'sph_os': '+3.0', 'sph_od': '-1.0', 'cyl_od': '-3.0', 'axis_os': '100', 'axis_od': '150', 'cyl_os': '-7.75'}}
     """
-    print 'in maptofieldsV2'
+    #print 'in maptofieldsV2'
     res = {}
     for item in values:  # 1ere pass on populate le dictionnary avec les clefs primaires : A, a , F, f....and empty dict
 #         print 'res {}'.format(res)
@@ -217,7 +248,7 @@ def map2odoofields(values):
             if 'L' in item[0][1]:
                 print res[item[0][0]]
                 res[item[0][0]].update({'add_os':item[1]})
-        if re.search(r'[fFnN]', item[0], flags = 0):  # on est sur du SCA
+        if re.search(r'[fFnNO]', item[0], flags = 0):  # on est sur du SCA
             if 'R' in item[0]:
                 res[item[0][0]].update({'sph_od':item[1],
                                         'cyl_od':item[2],
@@ -236,14 +267,15 @@ if __name__ == '__main__':
     datas = getandformat_values()
     print 'getandformat_values return :{}'.format(datas)
 
-    res = mergeandsubstitute(map2odoofields(datas))
-    print "map2odoofields(datasV2, ) : {}".format(res)
+    res = map2odoofields(datas)
+    print 'map2odoofields(datas): {}'.format(res)
+    
+    res = mergeADD2SCA(res)
+    print "mergeADD2SCA  : {}".format(res)
 
-#     res= mergeandsubstitute(res)
-#     print 'mergeandsubstitute return : {}'.format(res)
-
-
-
+    res= substitute(res)
+    print 'substitute return : {}'.format(res)
+    
 
 
 

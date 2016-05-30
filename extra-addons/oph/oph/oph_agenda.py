@@ -35,7 +35,14 @@ class crm_meeting(orm.Model):
         print 'SCADict:{}'.format(rt.SCAdict)
         
         finalDict = rt.getandformat_values()
-        finalDict = rt.mergeandsubstitute(rt.map2odoofields(finalDict))
+        print 'getandformat_value:{}'.format(finalDict)
+        finalDict = rt.map2odoofields(finalDict)
+        print 'map2odoofields: {}'.format(finalDict)
+        finalDict = rt.mergeADD2SCA(finalDict)
+        print 'mergeADD2SCA: {}'.format(finalDict)
+        finalDict = rt.substitute(finalDict)
+        print 'substitute: {}'.format(finalDict)
+        
         print "final dict is :  {}".format(finalDict)
         
         for va_type in finalDict.keys():
