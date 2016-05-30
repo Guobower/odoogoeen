@@ -26,29 +26,32 @@ class crm_meeting(orm.Model):
     _description = "consultations meetings"
     _order = "date asc"
 
-    def get_rt5100(self,cr,uid,ids,context=None):
+    def get_rt5100(self, cr, uid, ids, context = None):
         """Get the datas from the RT-5100
         """
         print 'IN GET_RT5100'
         print 'context:{}'.format(context)
         print "check I can import methods from rt5100"
         print 'SCADict:{}'.format(rt.SCAdict)
-        
+
         finalDict = rt.getandformat_values()
-        finalDict = rt.mergeandsubstitute(rt.map2odoofields(finalDict))
+        print "finalDict:{}".format(finalDict)
+        finalDict = rt.mergeADD2SCA(rt.map2odoofields(finalDict))
+        print 'FinalDict: {}'.format(finalDict)
+        finalDict = rt.substitute(finalDict)
         print "final dict is :  {}".format(finalDict)
-        
+
         for va_type in finalDict.keys():
-            records=self.browse(cr,uid,ids,context)
+            records = self.browse(cr, uid, ids, context)
             for record in records:
                 print 'record.name:{}'.format(record.name)
                 print 'record.partner_id:{}'.format(record.partner_id)
                 print 'record.meeting_id:{}'.format(record.id)
-                val_measurement={'va_type':va_type,
+                val_measurement = {'va_type':va_type,
                                               'type_id':2,
                                               'meeting_id':record.id,
                                               }
-                for k,v in finalDict[va_type].items():
+                for k, v in finalDict[va_type].items():
                     val_measurement.update({k:v})
                 #===============================================================
                 # vals_measurement = {
@@ -65,9 +68,9 @@ class crm_meeting(orm.Model):
                 #             }
                 #===============================================================
                 print 'vals : {}'.format(val_measurement)
-                oph_measurement_obj =  self.pool.get('oph.measurement').create(cr, uid, val_measurement, context = context)
+                oph_measurement_obj = self.pool.get('oph.measurement').create(cr, uid, val_measurement, context = context)
         return True
-    
+
 
     def selection_partner_id(self, cr, uid, ids, context = None):
         """
@@ -316,7 +319,7 @@ class crm_meeting(orm.Model):
                 'free':fields.boolean('Free', help = 'True if not invoiced'),  # for free consultation
                 'neuro':fields.text('Neuro Observation'),
                 'mh':fields.text('Medical History'),
-                #'allergia':fields.one2many('oph.allergen', 'meeting_id', 'Allergia'),
+                # 'allergia':fields.one2many('oph.allergen', 'meeting_id', 'Allergia'),
                 'pricelist':fields.related('partner_id', 'property_product_pricelist', type = 'many2one', relation = 'product.pricelist', string = 'Pricelist', store = False),
                 'given_date':fields.datetime('Given Date', help = 'Date when the appointement is given to the partner'),
                 }
@@ -341,5 +344,5 @@ class oph_measurement(orm.Model):
                 'motive':fields.related('meeting_id', 'motive', type = 'many2one', relation = 'oph.motive', store = True, string = "Motive"),
                 }
 # '
-             # 
+             #
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

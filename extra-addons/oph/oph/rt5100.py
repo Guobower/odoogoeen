@@ -58,9 +58,9 @@ cuttingDict = { regexADD:cuttingADD,
 def zero2none(val):
     """Set val to None if val is 0.00, + 0.00, - 0.00
     """
-    rx='[1-9]|[a-zA-Z]'
-    if not re.search(rx,val,flags=0):
-        val=None
+    rx = '[1-9]|[a-zA-Z]'
+    if not re.search(rx, val, flags = 0):
+        val = None
     return val
 
 def trimzero(val):
@@ -152,10 +152,10 @@ def getandformat_values(rxlist = [regexSCA, regexADD], log_path = os.path.expand
                     values = [val.strip() for val in values]
                     values = [trimspace_regex(val) for val in values]
                     print 'formated trimspaced values: {}'.format(values)
-                    values = [zero2none(val) for val in values] 
+                    values = [zero2none(val) for val in values]
                     print 'zero2none: {}'.format(values)
                     print'{}'.format(val)
-                    if re.search(rxlist[0],line,flags=0): # don't trimzero ADD values.
+                    if re.search(rxlist[0], line, flags = 0):  # don't trimzero ADD values.
                         values = [trimzero(val) for val in values]
                         print 'trimzero: {}'.format(values)
                     res.append(values)
@@ -167,26 +167,44 @@ def getandformat_values(rxlist = [regexSCA, regexADD], log_path = os.path.expand
     return res
 
 
-def mergeandsubstitute(res):
+def mergeADD2SCA(res):
     """Merge the ADD dict into the SCA dict
     
-        val: dict comming from the maptoodoofieldV2
-        val: eg :{'A': {'add_od': '+9.00', 'add_os': '+9.00'}, 'a': {'add_od': '+5.00', 'add_os': '+5.00'}, 'F': {'sph_os': '+3.25', 'sph_od': '-0.75', 'cyl_od': '-3.00', 'axis_os': '100', 'axis_od': '150', 'cyl_os': '-7.75'}}
+        res: dict comming from the maptoodoofieldV2
+        res: eg :{'A': {'add_od': '+9.00', 'add_os': '+9.00'}, 'a': {'add_od': '+5.00', 'add_os': '+5.00'}, 'F': {'sph_os': '+3.25', 'sph_od': '-0.75', 'cyl_od': '-3.00', 'axis_os': '100', 'axis_od': '150', 'cyl_os': '-7.75'}}
         
-        return : dict {'Rx': {'sph_os': '+3.25', 'add_od': '+9.00', 'add_os': '+9.00', 'sph_od': '-0.75', 'cyl_od': '-3.00', 'axis_os': '100', 'axis_od': '150', 'cyl_os': '-7.75'}, 'BCVA': {'sph_os': '+10.50', 'add_od': '+5.00', 'add_os': '+5.00', 'sph_od': '+7.75', 'cyl_od': '-5.00', 'axis_os': '100', 'axis_od': '65', 'cyl_os': '-5.50'}}
+        return : dict {'F': {'sph_os': '+3.25', 'add_od': '+9.00', 'add_os': '+9.00', 'sph_od': '-0.75', 'cyl_od': '-3.00', 'axis_os': '100', 'axis_od': '150', 'cyl_os': '-7.75'}, 'f': {'sph_os': '+10.50', 'add_od': '+5.00', 'add_os': '+5.00', 'sph_od': '+7.75', 'cyl_od': '-5.00', 'axis_os': '100', 'axis_od': '65', 'cyl_os': '-5.50'}}
     """
+    print 'passing in MERGEANDSUBSTITUTE'
     for key in res.keys():
         print 'key : {}'.format(key)
         if key == 'A' :
             if 'F' in res.keys():
+                print "before update:{}".format(res)
                 res['F'].update(res[key])
+                print 'after update: {}'.format(res)
                 res.pop(key)
-                res[mapvatype['F']]=res.pop('F')
+                print 'after pop:{}'.format(res)
+                # res[mapvatype['F']] = res.pop('F')
         if key == 'a':
             if 'f' in res.keys():
                 res['f'].update(res[key])
                 res.pop(key)
-                res[mapvatype['f']]=res.pop('f')
+                # res[mapvatype['f']] = res.pop('f')
+    return res
+
+def substitute(res):
+    """Substitute keys (f,F,N,n)with selection values from Odoo
+    
+    res : dict return by mergeADD2SCA
+    
+    return : dict 
+    return eg: 
+    """
+
+    for key in res.keys():
+        res[mapvatype[key]] = res.pop[key]
+    print 'in substitute return : {}'.format(res)
     return res
 
 def map2odoofields(values):
