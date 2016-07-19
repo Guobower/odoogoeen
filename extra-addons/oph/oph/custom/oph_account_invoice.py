@@ -19,6 +19,7 @@ class account_invoice(orm.Model):
             ('LM', 'Longue Maladie'),
             ('SUD', 'AMG Sud'),
             ('NORD', 'AMG Nord'),
+            ('Waiting', 'Waiting for payment'),
             ('ILES', 'AMG Iles'),
             ('AT', 'Accidents de travail'),
             ('SMIT', 'SMIT'),
@@ -28,7 +29,7 @@ class account_invoice(orm.Model):
             ('CAFAT Mut', 'CAFAT Mutuelle'), ], 'Payeur'),  # required=True),
         'ref_statement': fields.char('Statement Ref', size = 32, help = 'Reference of the statement for bank reconcilation'),
         'date_acte':fields.date('Appointment Date'),
-        'payment_method':fields.char('Payment Method', size=16, help= 'Payment method to help tracking paiement'),
+        'payment_method':fields.char('Payment Method', size = 16, help = 'Payment method to help tracking paiement'),
         }
 
     def invoice_pay_customer(self, cr, uid, ids, context = None):
