@@ -3,38 +3,69 @@
 TODO fix the problem for 0 sphere, cyl, axis
 """
 import re, os
+import logging
+
+_logger = logging.getLogger(__name__)
 
 # constants
 SCAdict = {'f':('subjectdata', 'FarVisionSCA'),
-              'n':('subjectdata', 'NearVisionSCA'),
-              'F':('finalprescriptiondata', 'FarVisionSCA)'),
-              'N':('finalprescriptiondata', 'NearVisionSCA'),
-              'O':('ARdata', 'ObjectiveSCA'),
+           'n':('subjectdata', 'NearVisionSCA'),
+           'F':('finalprescriptiondata', 'FarVisionSCA)'),
+           'N':('finalprescriptiondata', 'NearVisionSCA'),
+           'O':('ARdata', 'ObjectiveSCA'),
                }
-#===============================================================================
-# keysSCAOR = ('sph_od', 'cyl_od', 'axe_od')
-# keysSCAOS = ('sph_os', 'cyl_os', 'axe_os')
-# keysADDOR = ('add_od')
-# keysADDOS = ('add_os')
-#===============================================================================
 
 cuttingSCA = [0, 2, 8, 14, 17]
 cuttingADD = [0, 2, 8]
+cuttingVA = [0, 2, 7]
 
 # dict use by merge and substitute method.
+# keys ('a','A','f','F','n','N') are the first character that code the line of the
+# output file from rt5100
+
+# RT datas after a line @RT before an other @:
+# AR datas (autorefractometer datas)
+#     O objective SCA
+#     V corrected visual acuity
+#     U corrected visual acuity extended format
+
+# After à @RM before an other @
+# Unaided visual acuity datas
+#    W unaided visual acuity
+#    M unaided visual acuity extended format
+
+# Final prescription datas : F, N,  A, V
+#     F: far vision SCA datas
+#     N: near vision SCA datas
+#     A: ADD
+#     V: Visual acuity
+#     U: visual acuity with extended format
+#
+# Subjective datas
+#     f : far vision SCA
+#     n : near vision SCA
+#     a : ADD
+#     v : visual acuity
+#     u : visual acuity extended format
+
+# for the left and right,  rt5100 append "L" or "R" to this letter.
+# eg vL visual acuity for left eye.
+# for binoculare rt5100 append the character "B":
+# eg  UB for
+
 mapvatype = {'a':'BCVA',
-                    'A':'Rx',
-                    'f':'BCVA',
-                    'F':'Rx',
-                    'n':'BCVA',
-                    'N': 'Rx',
-                    }
+             'A':'Rx',
+             'f':'BCVA',
+             'F':'Rx',
+             'n':'BCVA',
+             'N': 'Rx',
+              }
 # not used
 mappedvatype = {'BCVA':('a', 'f', 'n'),  # ceux sont les deux seuls valeurs qui ont besoins de SCA et ADD. Pour les verres portes ce n'est pas le RT5100 qui le donne.
-                         'Rx':('F', 'N', 'A')}
+                'Rx':('F', 'N', 'A')}
 
 #===============================================================================
-# Pour l'instant dans ODOO je n'utilise les valeurs de 'nN' qui est la formule SCA de pres (=avec l'ADD')
+# Pour l'instant dans ODOO je n'utilise pas  les valeurs de 'nN' qui est la formule SCA de pres (=avec l'ADD')
 #===============================================================================
 
 #===============================================================================
@@ -48,11 +79,15 @@ mappedvatype = {'BCVA':('a', 'f', 'n'),  # ceux sont les deux seuls valeurs qui 
 #                     }
 #===============================================================================
 
-regexADD = r'[Aa][RL]'
-regexSCA = r'[OfFnN][RL]'
+regexADD = r'[Aa][RL]'  # regex to get the line with ADD datas
+regexSCA = r'[OfFnN][RL]'  # regex tp get the line with SCA datas.
+regexVA = r'[VUWMvu][RLB]'  # regex to catch datas for VA
 
+
+# map regex and the way to cut the line to get the datas
 cuttingDict = { regexADD:cuttingADD,
-                    regexSCA:cuttingSCA,
+                regexSCA:cuttingSCA,
+                regexVA:cuttingVA,
                   }
 
 def zero2none(val):
@@ -129,7 +164,7 @@ def cutting(line, coupures):
     return values
 
 
-def getandformat_values(rxlist = [regexSCA, regexADD], log_path = os.path.expanduser('~') + '/rt5100rs232/tmp.log'):
+def getandformat_values(rxlist = [regexSCA, regexADD, regexVA], log_path = os.path.expanduser('~') + '/rt5100rs232/tmp.log'):
     """ Get the values and format them ready to write in odoo
     
     rxlist : list of regex from specification of datas RT5100
@@ -142,19 +177,19 @@ def getandformat_values(rxlist = [regexSCA, regexADD], log_path = os.path.expand
     res = []
     for line in reversed(open(log_path).readlines()):
         if line.find('NIDEK') == -1:  # il n'y a pas le motif Nidek
-            print 'brut line:{}'.format(line)  # je manipule la chaine
+            _logger.info('brut line:%s', line)
             line = trim_timestamp(line)
-            print'no timestamp line:{}'.format(line)
+            _logger.info('no timestamp line: %s', line)
             for rx in rxlist:
                 if re.search(rx, line, flags = 0):
                     values = cutting(line, cuttingDict[rx])
-                    print 'cutting values: {}'.format(values)
+                    _logger.info('cutting values: %s', values)
                     values = [val.strip() for val in values]
                     values = [trimspace_regex(val) for val in values]
-                    print 'formated trimspaced values: {}'.format(values)
+                    _logger.info('formated trimspaced values: %s', values)
                     values = [zero2none(val) for val in values]
-                    print 'zero2none: {}'.format(values)
-                    print'{}'.format(val)
+                    _logger.info('zero2none: %s', values)
+                    _logger.info('%s', val)
                     if re.search(rxlist[0], line, flags = 0):  # don't trimzero ADD values.
                         values = [trimzero(val) for val in values]
                         print 'trimzero: {}'.format(values)
@@ -162,7 +197,7 @@ def getandformat_values(rxlist = [regexSCA, regexADD], log_path = os.path.expand
                     print 'append res:{}'.format(res)
 #                    values=[trimzero(val)  if re.search(rxlist[1],val,flags=0) else val for val in values  ] # Don't do that for ADD
                     print '**res**:{}'.format(res)
-            print '---END OF IF---'
+            _logger.info('---END OF IF---')
         else: break
     return res
 

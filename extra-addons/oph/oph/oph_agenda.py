@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import logging
 from datetime import datetime, timedelta, date
 from openerp.osv import fields, osv, orm
 from openerp.tools.translate import _
@@ -8,6 +9,8 @@ import numpy as np
 import pytz
 import time
 import rt5100 as rt
+
+_logger = logging.getLogger(__name__)
 
 class oph_motive(orm.Model):
     """Motives for a crm.meeting"""
@@ -29,13 +32,13 @@ class crm_meeting(orm.Model):
     def get_rt5100(self, cr, uid, ids, context = None):
         """Get the datas from the RT-5100
         """
-        print 'IN GET_RT5100'
-        print 'context:{}'.format(context)
-        print "check I can import methods from rt5100"
-        print 'SCADict:{}'.format(rt.SCAdict)
+        _logger.info("in ge_rt5100 method of class crm.meeting")
+        _logger.info('context:{}')
+        _logger.info("check I can import methods from rt5100")
+        _logger.info('SCADict:%s' % (rt.SCAdict,))
 
         finalDict = rt.getandformat_values()
-        print "finalDict:{}".format(finalDict)
+        _logger.info("finalDict:%s", finalDict)
         finalDict = rt.mergeADD2SCA(rt.map2odoofields(finalDict))
         print 'FinalDict: {}'.format(finalDict)
         finalDict = rt.substitute(finalDict)
