@@ -34,7 +34,7 @@ class crm_meeting(orm.Model):
         """
         _logger.info("in ge_rt5100 method of class crm.meeting")
         _logger.info('context:{}')
-        _logger.info("check I can import methods from rt5100")
+        _logger.info("check that I can import methods from rt5100")
         _logger.info('SCADict:%s' % (rt.SCAdict,))
 
         finalDict = rt.getandformat_values()

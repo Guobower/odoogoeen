@@ -9,10 +9,10 @@ _logger = logging.getLogger(__name__)
 
 # constants
 SCAdict = {'f':('subjectdata', 'FarVisionSCA'),
-           'n':('subjectdata', 'NearVisionSCA'),
-           'F':('finalprescriptiondata', 'FarVisionSCA)'),
-           'N':('finalprescriptiondata', 'NearVisionSCA'),
-           'O':('ARdata', 'ObjectiveSCA'),
+                'n':('subjectdata', 'NearVisionSCA'),
+                'F':('finalprescriptiondata', 'FarVisionSCA)'),
+                'N':('finalprescriptiondata', 'NearVisionSCA'),
+                'O':('ARdata', 'ObjectiveSCA'),
                }
 
 cuttingSCA = [0, 2, 8, 14, 17]
@@ -53,7 +53,8 @@ cuttingVA = [0, 2, 7]
 # for binoculare rt5100 append the character "B":
 # eg  UB for
 
-mapvatype = {'a':'BCVA',
+mapvatype = {
+             'a':'BCVA',
              'A':'Rx',
              'f':'BCVA',
              'F':'Rx',
@@ -61,12 +62,10 @@ mapvatype = {'a':'BCVA',
              'N': 'Rx',
               }
 # not used
-mappedvatype = {'BCVA':('a', 'f', 'n'),  # ceux sont les deux seuls valeurs qui ont besoins de SCA et ADD. Pour les verres portes ce n'est pas le RT5100 qui le donne.
-                'Rx':('F', 'N', 'A')}
-
-#===============================================================================
-# Pour l'instant dans ODOO je n'utilise pas  les valeurs de 'nN' qui est la formule SCA de pres (=avec l'ADD')
-#===============================================================================
+mappedvatype = {
+                'BCVA':('a', 'f', 'n'),  # ceux sont les deux seuls valeurs qui ont besoins de SCA et ADD. Pour les verres portes ce n'est pas le RT5100 qui le donne.
+                'Rx':('F', 'N', 'A')
+                }
 
 #===============================================================================
 # cuttingDict={  'a':[28,30,36], # a if for add. 28 cut the timpstamp, 30 the data type and R or L, 36 the value= '+' 'dizaine unité' 'dot' 'decimal1' 'decimal2'
@@ -192,13 +191,14 @@ def getandformat_values(rxlist = [regexSCA, regexADD, regexVA], log_path = os.pa
                     _logger.info('%s', val)
                     if re.search(rxlist[0], line, flags = 0):  # don't trimzero ADD values.
                         values = [trimzero(val) for val in values]
-                        print 'trimzero: {}'.format(values)
+                        _logger.info('trimzero: %s',values)
                     res.append(values)
-                    print 'append res:{}'.format(res)
+                    _logger.info('append res: %s',res)
 #                    values=[trimzero(val)  if re.search(rxlist[1],val,flags=0) else val for val in values  ] # Don't do that for ADD
-                    print '**res**:{}'.format(res)
+                    _logger.info( '**res**: %s',res)
             _logger.info('---END OF IF---')
         else: break
+    _logger.info('getandformatvalues method return:%s',res)
     return res
 
 
@@ -289,8 +289,8 @@ if __name__ == '__main__':
     datas = getandformat_values()
     print 'getandformat_values return :{}'.format(datas)
 
-    res = mergeandsubstitute(map2odoofields(datas))
-    print "map2odoofields(datasV2, ) : {}".format(res)
+#     res = mergeandsubstitute(map2odoofields(datas))
+#     print "map2odoofields(datasV2, ) : {}".format(res)
 
 #     res= mergeandsubstitute(res)
 #     print 'mergeandsubstitute return : {}'.format(res)
