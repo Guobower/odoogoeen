@@ -204,12 +204,15 @@ def getandformat_values(rxlist = [regexSCA, regexADD, regexVA], log_path = os.pa
 def mergeADD2SCA(res):
     """Merge the ADD dict into the SCA dict
     
-        res: dict coming from the maptoodoofieldV2
+        res: dict coming from the map2odoofield method
         res: eg :{'A': {'add_od': '+9.00', 'add_os': '+9.00'}, 'a': {'add_od': '+5.00', 'add_os': '+5.00'}, 'F': {'sph_os': '+3.25', 'sph_od': '-0.75', 'cyl_od': '-3.00', 'axis_os': '100', 'axis_od': '150', 'cyl_os': '-7.75'}}
         
         return : dict {'F': {'sph_os': '+3.25', 'add_od': '+9.00', 'add_os': '+9.00', 'sph_od': '-0.75', 'cyl_od': '-3.00', 'axis_os': '100', 'axis_od': '150', 'cyl_os': '-7.75'}, 'f': {'sph_os': '+10.50', 'add_od': '+5.00', 'add_os': '+5.00', 'sph_od': '+7.75', 'cyl_od': '-5.00', 'axis_os': '100', 'axis_od': '65', 'cyl_os': '-5.50'}}
     """
-    print 'passing in MERGEANDSUBSTITUTE'
+
+    _logger.info('passing in MERGEANDSUBSTITUTE')
+    _logger.info('res.keys():%s', res.keys())
+
     for key in res.keys():
         print 'key : {}'.format(key)
         if key == 'A' :
@@ -235,10 +238,13 @@ def substitute(res):
     return : dict 
     return eg: 
     """
+    _logger.info('in substitute method')
+    _logger.info('res is:%s', res)
+    _logger.info('res.keys:%s', res.keys())
 
     for key in res.keys():
         res[mapvatype[key]] = res.pop[key]
-    print 'in substitute return : {}'.format(res)
+    _logger.info('in substitute return :%s', res)
     return res
 
 def map2odoofields(values):
@@ -255,6 +261,7 @@ def map2odoofields(values):
         _logger.info('first pass res is:%s', res)
     for item in values:  # on second : populate empty dict with datas.
         _logger.info('item is:%s', item)
+
         if re.search(r'[aA]', item[0][0], flags = 0):  # on est dans les additions. On peut mapper avec les champs d'addition
             if 'R' in item[0][1]:  # on est à droite
                 print 'R:{}'.format(res[item[0][0]])
@@ -263,7 +270,8 @@ def map2odoofields(values):
             if 'L' in item[0][1]:
                 print res[item[0][0]]
                 res[item[0][0]].update({'add_os':item[1]})
-        if re.search(r'[fFnN]', item[0], flags = 0):  # on est sur du SCA
+
+        if re.search(r'[fFnNO]', item[0], flags = 0):  # on est sur du SCA
             if 'R' in item[0]:
                 res[item[0][0]].update({'sph_od':item[1],
                                         'cyl_od':item[2],
@@ -275,10 +283,21 @@ def map2odoofields(values):
                                         'axis_os':item[3]
                                          })
 
+        if re.search(r'[uUM]', item[0], flags = 0):  # extended visual acuity
+            if 'R' in item[0]:  # on est à droite
+                res[item[0][0]].update({'va_or_extended':item[1]})
+            if 'L' in item[0]:  # on est à gauche
+                res[item[0][0]].update({'va_ol_extended':item[1]})
+            if 'B' in item[0]:  # on est en binoculaire
+                res[item[0][0]].update({'va_bin_extended':item[1]})
 
-
-
-
+        if re.search(r'[VvW]', item[0], flags = 0):  # non extended visual acuity
+            if 'R' in item[0]:  # on est à droite
+                res[item[0][0]].update({'va_or':item[1]})
+            if 'L' in item[0]:  # on est à gauche
+                res[item[0][0]].update({'va_ol':item[1]})
+            if 'B' in item[0]:  # on est en binoculaire
+                res[item[0][0]].update({'va_bin':item[1]})
 
     _logger.info('res is: %s', res)
     return res
