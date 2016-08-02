@@ -117,7 +117,7 @@ class oph_measurement(orm.Model):
                             ('BCVA', _('BCVA')),  # best corrected visual acuity
                             ('MAVC sous cycloplegique', 'MAVC sous cycloplegique'),
                             ('Rx', _('Refraction prescription')),  # refraction prescrite
-                            ('AR',_('AutoRefractometer')),
+                            ('AR', _('AutoRefractometer')),
                             )
         return va_type_selection
 
@@ -238,10 +238,18 @@ class oph_measurement(orm.Model):
               'qualif_os':fields.selection(_get_qualif, 'Qualif_OS'),
               'nv_od':fields.selection(_get_nearva, 'NV_OD'),
               'nv_os':fields.selection(_get_nearva, 'NV_OS'),
+              # -- visual acuity
+              'va_or':fields.char('VA OR', size = 5),
+              'va_ol':fields.char('VA OR', size = 5),
+              'va_or_extended':fields.char('VA OR', size = 7),
+              'va_ol_extended':fields.char('VA OR', size = 7),
+              # -- binocular visual acuity
+              'va_bin':fields.char('Binocular VA', size = 5),
+              'va_bin_extended':fields.char('Binocular VA', size = 7),
               # --- metamorphopsia
               'm_od':fields.selection(_get_meta, 'METAMORPHOPSIA_OD',),
               'm_os':fields.selection(_get_meta, 'METAMORPHOPSIA_OS',),
-              # -- refraction
+              # -- refraction -- far SCA and ADD
               'sph_od':fields.selection(_get_sph, 'SPH_OD',),
               'cyl_od':fields.selection(_get_cyl, 'CYL_OD',),
               'axis_od':fields.selection(_get_axis, 'AXIS_OD',),
@@ -250,10 +258,18 @@ class oph_measurement(orm.Model):
               'sph_os':fields.selection(_get_sph, 'SPH_OS',),
               'cyl_os':fields.selection(_get_cyl, 'CYL_OS',),
               'axis_os':fields.selection(_get_axis, 'AXIS_OS',),
+              # -- near SCA refraction
+              'sph_near_or':fields.char('Near Sphere', size = 6),
+              'cyl_near_or':fields.char('Near Cylinder', size = 6),
+              'axis_near_or':fields.char('Near Axis', size = 3),
+              'sph_near_os':fields.char('Near Sphere', size = 6),
+              'cyl_near_os':fields.char('Near Cylinder', size = 6),
+              'axis_near_os':fields.char('Near Axis', size = 3),
               # -- for formula prescription only
               # rp (reading prescription) = sph + add
               'rp_od':fields.char('Reading Pres', size = 8),
               'rp_os':fields.char('Reading Pres', size = 8),
+
               # -- slit lamp exam
               'as_od':fields.text('AS_OD'),
               'ps_od':fields.text('PS_OD'),

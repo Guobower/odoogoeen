@@ -62,7 +62,7 @@ mapvatype = {'a':'BCVA',
               }
 # not used
 mappedvatype = {'BCVA':('a', 'f', 'n'),  # ceux sont les deux seuls valeurs qui ont besoins de SCA et ADD. Pour les verres portes ce n'est pas le RT5100 qui le donne.
-                'Rx':('F', 'N', 'A')}
+                'Rx':('F', 'N', 'A')}  # Rx stand for prescription
 
 #===============================================================================
 # Pour l'instant dans ODOO je n'utilise pas  les valeurs de 'nN' qui est la formule SCA de pres (=avec l'ADD')
@@ -187,16 +187,15 @@ def getandformat_values(rxlist = [regexSCA, regexADD, regexVA], log_path = os.pa
                     values = [val.strip() for val in values]
                     values = [trimspace_regex(val) for val in values]
                     _logger.info('formated trimspaced values: %s', values)
-                    values = [zero2none(val) for val in values]
-                    _logger.info('zero2none: %s', values)
-                    _logger.info('%s', val)
+                    # values = [zero2none(val) for val in values]
+                    _logger.info('val:%s', val)
+                    _logger.info('type(val):%s', type(val))
                     if re.search(rxlist[0], line, flags = 0):  # don't trimzero ADD values.
                         values = [trimzero(val) for val in values]
-                        print 'trimzero: {}'.format(values)
+                        _logger.info('trimzero: %s', values)
                     res.append(values)
-                    print 'append res:{}'.format(res)
 #                    values=[trimzero(val)  if re.search(rxlist[1],val,flags=0) else val for val in values  ] # Don't do that for ADD
-                    print '**res**:{}'.format(res)
+                    _logger.info('** return res**:%s', res)
             _logger.info('---END OF IF---')
         else: break
     return res
@@ -205,7 +204,7 @@ def getandformat_values(rxlist = [regexSCA, regexADD, regexVA], log_path = os.pa
 def mergeADD2SCA(res):
     """Merge the ADD dict into the SCA dict
     
-        res: dict comming from the maptoodoofieldV2
+        res: dict coming from the maptoodoofieldV2
         res: eg :{'A': {'add_od': '+9.00', 'add_os': '+9.00'}, 'a': {'add_od': '+5.00', 'add_os': '+5.00'}, 'F': {'sph_os': '+3.25', 'sph_od': '-0.75', 'cyl_od': '-3.00', 'axis_os': '100', 'axis_od': '150', 'cyl_os': '-7.75'}}
         
         return : dict {'F': {'sph_os': '+3.25', 'add_od': '+9.00', 'add_os': '+9.00', 'sph_od': '-0.75', 'cyl_od': '-3.00', 'axis_os': '100', 'axis_od': '150', 'cyl_os': '-7.75'}, 'f': {'sph_os': '+10.50', 'add_od': '+5.00', 'add_os': '+5.00', 'sph_od': '+7.75', 'cyl_od': '-5.00', 'axis_os': '100', 'axis_od': '65', 'cyl_os': '-5.50'}}
@@ -249,19 +248,13 @@ def map2odoofields(values):
     values eg: [['AL', '+6.50'], ['AR', '+1.50'], ['FL', '-2.00', '0.00', '0'], ['FR', '-2.00', '0.00', '9'], ['fL', '-3.00', '0.00', '0'], ['fR', '-3.00', '0.00', '0'],]
     values is returned by getandformat_values function
     """
-    print 'in maptofieldsV2'
+    _logger.info('in map2fields')
     res = {}
     for item in values:  # 1ere pass on populate le dictionnary avec les clefs primaires : A, a , F, f....and empty dict
-#         print 'res {}'.format(res)
-#         print 'item:{}'.format(item)
-#         print 'item[0][0]: {}'.format(item[0][0])
-#         print 'item[0][1]:{}'.format(item[0][1])
-#         print 'item[1:]: {}'.format(item[1:])
         res.update({item[0][0]:{}})
-#         print 'res after first pass : {}'.format(res)
-#         print '-' * 10
-#     print 'first pass finished. res is :{}'.format(res)
+        _logger.info('first pass res is:%s', res)
     for item in values:  # on second : populate empty dict with datas.
+        _logger.info('item is:%s', item)
         if re.search(r'[aA]', item[0][0], flags = 0):  # on est dans les additions. On peut mapper avec les champs d'addition
             if 'R' in item[0][1]:  # on est à droite
                 print 'R:{}'.format(res[item[0][0]])
@@ -281,6 +274,13 @@ def map2odoofields(values):
                                         'cyl_os':item[2],
                                         'axis_os':item[3]
                                          })
+
+
+
+
+
+
+    _logger.info('res is: %s', res)
     return res
 
 
