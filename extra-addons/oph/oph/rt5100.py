@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-TODO fix the problem for 0 sphere, cyl, axis
+TODO
 """
 import re, os
 import logging
