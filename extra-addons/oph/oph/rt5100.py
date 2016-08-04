@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-TODO fix the problem for 0 sphere, cyl, axis
+TODO
 """
 import re, os
 import logging
@@ -62,10 +62,13 @@ mapvatype = {
              'N': 'Rx',
               }
 # not used
-mappedvatype = {
-                'BCVA':('a', 'f', 'n'),  # ceux sont les deux seuls valeurs qui ont besoins de SCA et ADD. Pour les verres portes ce n'est pas le RT5100 qui le donne.
-                'Rx':('F', 'N', 'A')
-                }
+
+mappedvatype = {'BCVA':('a', 'f', 'n'),  # ceux sont les deux seuls valeurs qui ont besoins de SCA et ADD. Pour les verres portes ce n'est pas le RT5100 qui le donne.
+                'Rx':('F', 'N', 'A')}  # Rx stand for prescription
+
+#===============================================================================
+# Pour l'instant dans ODOO je n'utilise pas  les valeurs de 'nN' qui est la formule SCA de pres (=avec l'ADD')
+#===============================================================================
 
 #===============================================================================
 # cuttingDict={  'a':[28,30,36], # a if for add. 28 cut the timpstamp, 30 the data type and R or L, 36 the value= '+' 'dizaine unité' 'dot' 'decimal1' 'decimal2'
@@ -186,16 +189,21 @@ def getandformat_values(rxlist = [regexSCA, regexADD, regexVA], log_path = os.pa
                     values = [val.strip() for val in values]
                     values = [trimspace_regex(val) for val in values]
                     _logger.info('formated trimspaced values: %s', values)
-                    values = [zero2none(val) for val in values]
-                    _logger.info('zero2none: %s', values)
-                    _logger.info('%s', val)
+                    # values = [zero2none(val) for val in values]
+                    _logger.info('val:%s', val)
+                    _logger.info('type(val):%s', type(val))
                     if re.search(rxlist[0], line, flags = 0):  # don't trimzero ADD values.
                         values = [trimzero(val) for val in values]
-                        _logger.info('trimzero: %s',values)
+
+                    _logger.info('trimzero: %s',values)
                     res.append(values)
                     _logger.info('append res: %s',res)
 #                    values=[trimzero(val)  if re.search(rxlist[1],val,flags=0) else val for val in values  ] # Don't do that for ADD
                     _logger.info( '**res**: %s',res)
+                    _logger.info('trimzero: %s', values)
+                    res.append(values)
+#                    values=[trimzero(val)  if re.search(rxlist[1],val,flags=0) else val for val in values  ] # Don't do that for ADD
+                    _logger.info('** return res**:%s', res)
             _logger.info('---END OF IF---')
         else: break
     _logger.info('getandformatvalues method return:%s',res)
@@ -205,12 +213,15 @@ def getandformat_values(rxlist = [regexSCA, regexADD, regexVA], log_path = os.pa
 def mergeADD2SCA(res):
     """Merge the ADD dict into the SCA dict
     
-        res: dict comming from the maptoodoofieldV2
+        res: dict coming from the map2odoofield method
         res: eg :{'A': {'add_od': '+9.00', 'add_os': '+9.00'}, 'a': {'add_od': '+5.00', 'add_os': '+5.00'}, 'F': {'sph_os': '+3.25', 'sph_od': '-0.75', 'cyl_od': '-3.00', 'axis_os': '100', 'axis_od': '150', 'cyl_os': '-7.75'}}
         
         return : dict {'F': {'sph_os': '+3.25', 'add_od': '+9.00', 'add_os': '+9.00', 'sph_od': '-0.75', 'cyl_od': '-3.00', 'axis_os': '100', 'axis_od': '150', 'cyl_os': '-7.75'}, 'f': {'sph_os': '+10.50', 'add_od': '+5.00', 'add_os': '+5.00', 'sph_od': '+7.75', 'cyl_od': '-5.00', 'axis_os': '100', 'axis_od': '65', 'cyl_os': '-5.50'}}
     """
-    print 'passing in MERGEANDSUBSTITUTE'
+
+    _logger.info('passing in MERGEANDSUBSTITUTE')
+    _logger.info('res.keys():%s', res.keys())
+
     for key in res.keys():
         print 'key : {}'.format(key)
         if key == 'A' :
@@ -236,10 +247,13 @@ def substitute(res):
     return : dict 
     return eg: 
     """
+    _logger.info('in substitute method')
+    _logger.info('res is:%s', res)
+    _logger.info('res.keys:%s', res.keys())
 
     for key in res.keys():
         res[mapvatype[key]] = res.pop[key]
-    print 'in substitute return : {}'.format(res)
+    _logger.info('in substitute return :%s', res)
     return res
 
 def map2odoofields(values):
@@ -249,19 +263,14 @@ def map2odoofields(values):
     values eg: [['AL', '+6.50'], ['AR', '+1.50'], ['FL', '-2.00', '0.00', '0'], ['FR', '-2.00', '0.00', '9'], ['fL', '-3.00', '0.00', '0'], ['fR', '-3.00', '0.00', '0'],]
     values is returned by getandformat_values function
     """
-    print 'in maptofieldsV2'
+    _logger.info('in map2fields')
     res = {}
     for item in values:  # 1ere pass on populate le dictionnary avec les clefs primaires : A, a , F, f....and empty dict
-#         print 'res {}'.format(res)
-#         print 'item:{}'.format(item)
-#         print 'item[0][0]: {}'.format(item[0][0])
-#         print 'item[0][1]:{}'.format(item[0][1])
-#         print 'item[1:]: {}'.format(item[1:])
         res.update({item[0][0]:{}})
-#         print 'res after first pass : {}'.format(res)
-#         print '-' * 10
-#     print 'first pass finished. res is :{}'.format(res)
+        _logger.info('first pass res is:%s', res)
     for item in values:  # on second : populate empty dict with datas.
+        _logger.info('item is:%s', item)
+
         if re.search(r'[aA]', item[0][0], flags = 0):  # on est dans les additions. On peut mapper avec les champs d'addition
             if 'R' in item[0][1]:  # on est à droite
                 print 'R:{}'.format(res[item[0][0]])
@@ -270,7 +279,8 @@ def map2odoofields(values):
             if 'L' in item[0][1]:
                 print res[item[0][0]]
                 res[item[0][0]].update({'add_os':item[1]})
-        if re.search(r'[fFnN]', item[0], flags = 0):  # on est sur du SCA
+
+        if re.search(r'[fFnNO]', item[0], flags = 0):  # on est sur du SCA
             if 'R' in item[0]:
                 res[item[0][0]].update({'sph_od':item[1],
                                         'cyl_od':item[2],
@@ -281,6 +291,24 @@ def map2odoofields(values):
                                         'cyl_os':item[2],
                                         'axis_os':item[3]
                                          })
+
+        if re.search(r'[uUM]', item[0], flags = 0):  # extended visual acuity
+            if 'R' in item[0]:  # on est à droite
+                res[item[0][0]].update({'va_or_extended':item[1]})
+            if 'L' in item[0]:  # on est à gauche
+                res[item[0][0]].update({'va_ol_extended':item[1]})
+            if 'B' in item[0]:  # on est en binoculaire
+                res[item[0][0]].update({'va_bin_extended':item[1]})
+
+        if re.search(r'[VvW]', item[0], flags = 0):  # non extended visual acuity
+            if 'R' in item[0]:  # on est à droite
+                res[item[0][0]].update({'va_or':item[1]})
+            if 'L' in item[0]:  # on est à gauche
+                res[item[0][0]].update({'va_ol':item[1]})
+            if 'B' in item[0]:  # on est en binoculaire
+                res[item[0][0]].update({'va_bin':item[1]})
+
+    _logger.info('res is: %s', res)
     return res
 
 

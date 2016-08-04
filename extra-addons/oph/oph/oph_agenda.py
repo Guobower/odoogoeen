@@ -48,17 +48,23 @@ class crm_meeting(orm.Model):
         """Get the datas from the RT-5100
         
         """
+<<<<<<< HEAD
         _logger.info("in ge_rt5100 method of class crm.meeting")
         _logger.info('context:{}')
         _logger.info("check that I can import methods from rt5100")
+=======
+        _logger.info("in get_rt5100 method of class crm.meeting")
+        _logger.info('context:%s', context)
+        _logger.info("check I can import methods from rt5100")
+>>>>>>> e26758b8fb4de340613623b2c84954c7fb0ead02
         _logger.info('SCADict:%s' % (rt.SCAdict,))
 
         finalDict = rt.getandformat_values()
         _logger.info("finalDict:%s", finalDict)
         finalDict = rt.mergeADD2SCA(rt.map2odoofields(finalDict))
-        print 'FinalDict: {}'.format(finalDict)
+        _logger.info('finalDict: %s', finalDict)
         finalDict = rt.substitute(finalDict)
-        print "final dict is :  {}".format(finalDict)
+        _logger.info('final dict is: %s', finalDict)
 
         for va_type in finalDict.keys():
             records = self.browse(cr, uid, ids, context)
