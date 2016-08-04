@@ -48,23 +48,17 @@ class crm_meeting(orm.Model):
         """Get the datas from the RT-5100
         
         """
-<<<<<<< HEAD
-        _logger.info("in ge_rt5100 method of class crm.meeting")
-        _logger.info('context:{}')
-        _logger.info("check that I can import methods from rt5100")
-=======
+
         _logger.info("in get_rt5100 method of class crm.meeting")
         _logger.info('context:%s', context)
         _logger.info("check I can import methods from rt5100")
->>>>>>> e26758b8fb4de340613623b2c84954c7fb0ead02
         _logger.info('SCADict:%s' % (rt.SCAdict,))
 
         finalDict = rt.getandformat_values()
-        _logger.info("finalDict:%s", finalDict)
-        finalDict = rt.mergeADD2SCA(rt.map2odoofields(finalDict))
-        _logger.info('finalDict: %s', finalDict)
-        finalDict = rt.substitute(finalDict)
-        _logger.info('final dict is: %s', finalDict)
+        _logger.info("getandformat finalDict:%s", finalDict)
+        finalDict = rt.map2odoofields(finalDict)
+        _logger.info('map2odoofields finalDictt: %s', finalDict)
+        
 
         for va_type in finalDict.keys():
             records = self.browse(cr, uid, ids, context)
@@ -76,8 +70,10 @@ class crm_meeting(orm.Model):
                                               'type_id':2,                          # 2 is the ID for all about refraction and visual acuity.
                                               'meeting_id':record.id,
                                               }
-                for k, v in finalDict[va_type].items():
-                    val_measurement.update({k:v})
+                _logger.info('finalDict[va_type]:%s',finalDict[va_type])
+                for item in finalDict[va_type]:
+                    val_measurement.update(makeSCAdict(item))
+                    _logger.info('val_measurement:%s', val_measurement)
                 #===============================================================
                 # vals_measurement = {
                 #             #'type_id.code' : 'ref', #TODO
@@ -92,7 +88,6 @@ class crm_meeting(orm.Model):
                 #             'va_type':va_type
                 #             }
                 #===============================================================
-                print 'vals : {}'.format(val_measurement)
                 oph_measurement_obj = self.pool.get('oph.measurement').create(cr, uid, val_measurement, context = context)
         return True
 
