@@ -28,9 +28,25 @@ class crm_meeting(orm.Model):
     _inherit = "crm.meeting"
     _description = "consultations meetings"
     _order = "date asc"
-
+    
     def get_rt5100(self, cr, uid, ids, context = None):
         """Get the datas from the RT-5100
+        
+        """
+        _logger.info("in ge_rt5100 method of class crm.meeting")
+        _logger.info('context:{}')
+        _logger.info("check that I can import methods from rt5100")
+        _logger.info('SCADict:%s' % (rt.SCAdict,))
+
+        finalDict = rt.getandformat_values()
+        _logger.info("finalDict:%s", finalDict)
+        
+        
+        
+        
+    def get_rt5100_old(self, cr, uid, ids, context = None):
+        """Get the datas from the RT-5100
+        
         """
         _logger.info("in ge_rt5100 method of class crm.meeting")
         _logger.info('context:{}')
@@ -51,7 +67,7 @@ class crm_meeting(orm.Model):
                 print 'record.partner_id:{}'.format(record.partner_id)
                 print 'record.meeting_id:{}'.format(record.id)
                 val_measurement = {'va_type':va_type,
-                                              'type_id':2,
+                                              'type_id':2,                          # 2 is the ID for all about refraction and visual acuity.
                                               'meeting_id':record.id,
                                               }
                 for k, v in finalDict[va_type].items():

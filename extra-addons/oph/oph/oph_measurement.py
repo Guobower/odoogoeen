@@ -113,7 +113,7 @@ class oph_measurement(orm.Model):
     def _get_va_type(self, cr, uid, context = None):
         va_type_selection = (
                             ('UCVA', _('UCVA')),  # uncorrected visual acuity
-                            ('CVA', _('CVA')),
+                            ('CVA', _('CVA')), # corrected visual acuity
                             ('BCVA', _('BCVA')),  # best corrected visual acuity
                             ('MAVC sous cycloplegique', 'MAVC sous cycloplegique'),
                             ('Rx', _('Refraction prescription')),  # refraction prescrite
