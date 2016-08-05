@@ -268,6 +268,24 @@ def map2odoofields_old(values):
     _logger.info('res is: %s', res)
     return res
 
+def converttuple(val):
+    """"
+    @arg : val is a list
+    eg ['add_od', '+3.75']
+    
+    @return : same list but with a tuple
+     eg [('add_od', '+3.75')]
+    
+    usufull when i want to make a dict : dict (list)
+    """
+    
+    val1=[]
+    val1.append(val)
+    res=[tuple(i) for i in val1]
+    return res
+
+
+
 def makeSCAdict(val):
     """make a SCA dict
     
@@ -286,12 +304,27 @@ def makeSCAdict(val):
     if val[0] == 'sca_os':
         res = zip(sca_os, val[1:])
     else:
-        print 'return:{}'.format(val)
-        return val
-    print 'makeSCAdict return res;{}'.format(res)
+        res = converttuple(val)
+    _logger.info('makeSCAdict return:%s', res)
     return res
 
 
+
+def converttuple(val):
+    """"
+    @arg : val is a list
+    eg ['add_od', '+3.75']
+    
+    @return : same list but with a tuple
+     eg [('add_od', '+3.75')]
+    
+    usufull when i want to make a dict : dict (list)
+    """
+    
+    val1=[]
+    val1.append(val)
+    res=[tuple(i) for i in val1]
+    return res
 
 
 def map2odoofields(raw):
