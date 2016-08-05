@@ -28,7 +28,7 @@ class crm_meeting(orm.Model):
     _inherit = "crm.meeting"
     _description = "consultations meetings"
     _order = "date asc"
-    
+
     def get_rt5100(self, cr, uid, ids, context = None):
         """Get the datas from the RT-5100
         
@@ -40,10 +40,12 @@ class crm_meeting(orm.Model):
 
         finalDict = rt.getandformat_values()
         _logger.info("finalDict:%s", finalDict)
-        
-        
-        
-        
+        finalDict = rt.map2odoofields(finalDict)
+        _logger.info("finalDict:%s", finalDict)
+
+
+
+
     def get_rt5100_old(self, cr, uid, ids, context = None):
         """Get the datas from the RT-5100
         
@@ -58,7 +60,7 @@ class crm_meeting(orm.Model):
         _logger.info("getandformat finalDict:%s", finalDict)
         finalDict = rt.map2odoofields(finalDict)
         _logger.info('map2odoofields finalDictt: %s', finalDict)
-        
+
 
         for va_type in finalDict.keys():
             records = self.browse(cr, uid, ids, context)
@@ -67,10 +69,10 @@ class crm_meeting(orm.Model):
                 print 'record.partner_id:{}'.format(record.partner_id)
                 print 'record.meeting_id:{}'.format(record.id)
                 val_measurement = {'va_type':va_type,
-                                              'type_id':2,                          # 2 is the ID for all about refraction and visual acuity.
+                                              'type_id':2,  # 2 is the ID for all about refraction and visual acuity.
                                               'meeting_id':record.id,
                                               }
-                _logger.info('finalDict[va_type]:%s',finalDict[va_type])
+                _logger.info('finalDict[va_type]:%s', finalDict[va_type])
                 for item in finalDict[va_type]:
                     val_measurement.update(makeSCAdict(item))
                     _logger.info('val_measurement:%s', val_measurement)
