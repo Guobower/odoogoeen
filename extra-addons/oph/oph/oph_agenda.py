@@ -43,8 +43,32 @@ class crm_meeting(orm.Model):
         finalDict = rt.map2odoofields(finalDict)
         _logger.info("finalDict:%s", finalDict)
 
+        for va_type in finalDict.keys():
+            records = self.browse(cr, uid, ids, context)
+            for record in records:
+                _logger.info('record.name:%s', record.name)
+                _logger.info('record.partner_id:%s', record.partner_id)
+                _logger.info('record.meeting_id:%s', record.id)
+                val_measurement = {'va_type':va_type,
+                                   'type_id':2,  # 2 is the ID for all about refraction and visual acuity.
+                                   'meeting_id':record.id,
+                                   }
+                _logger.info('val_measurement:%s', val_measurement)
+                _logger.info('finalDict[va_type]:%s', finalDict[va_type])
+                for i in finalDict[va_type]:
+                    _logger.info('i:%s', i)
+                    i = rt.makeSCAdict(i)
+                    _logger.info('after makeSCAdict:%s', i)
+                    _logger.info('i, len(i):%s, %s', i, len(i))
+                    _logger.info('type(i):%s', type(i))
+                    if len(i) == 2:
+                        i = dict([i])
+                    else:
+                        i = dict(i)
 
-
+                    val_measurement.update(i)
+                    _logger.info('val_measurenent:%s', val_measurement)
+        return True
 
     def get_rt5100_old(self, cr, uid, ids, context = None):
         """Get the datas from the RT-5100
@@ -69,9 +93,10 @@ class crm_meeting(orm.Model):
                 print 'record.partner_id:{}'.format(record.partner_id)
                 print 'record.meeting_id:{}'.format(record.id)
                 val_measurement = {'va_type':va_type,
-                                              'type_id':2,  # 2 is the ID for all about refraction and visual acuity.
-                                              'meeting_id':record.id,
-                                              }
+                                   'type_id':2,  # 2 is the ID for all about refraction and visual acuity.
+                                   'meeting_id':record.id,
+                                   }
+                _logger.info('val_measurement:%s', val_measurement)
                 _logger.info('finalDict[va_type]:%s', finalDict[va_type])
                 for item in finalDict[va_type]:
                     val_measurement.update(makeSCAdict(item))

@@ -277,19 +277,22 @@ def makeSCAdict(val):
     @return: list 
     eg: [['sph_os','+16.0'],['cyl_os','-4.75'],['axis_os', '130']]
     """
-    sca_or=['sph_od','cyl_od','axis_od']
-    sca_os=['sph_os','cyl_os','axis_os']
-    res=[]
+    sca_or = ['sph_od', 'cyl_od', 'axis_od']
+    sca_os = ['sph_os', 'cyl_os', 'axis_os']
+    res = []
     print 'val is:{}'.format(val)
     if val[0] == 'sca_or':
-        res=zip(sca_or,val[1:])
+        res = zip(sca_or, val[1:])
     if val[0] == 'sca_os':
-        res=zip(sca_os,val[1:])
+        res = zip(sca_os, val[1:])
     else:
         print 'return:{}'.format(val)
         return val
     print 'makeSCAdict return res;{}'.format(res)
     return res
+
+
+
 
 def map2odoofields(raw):
     """Map datas to ODOO field names
@@ -396,66 +399,66 @@ def getandformat_values(rxlist = [regexSCA, regexADD, regexVA], log_path = os.pa
     res = {}
     val1 = []
     first = []
-    for line in reversed(open(log_path).readlines()):# read each line starting by the end
+    for line in reversed(open(log_path).readlines()):  # read each line starting by the end
         if line.find('NIDEK') == -1:  # Tant que je ne trouve pas le motif 'NIDEK' je traite la ligne.
             logging.info('brut line:%s', line)
-            
+
             if line.find('@RT') != -1:  # la ligne est un @RT.
                 logging.info('find an @RT')
-                logging.info('res:%s',res)
-                logging.info('val1:%s',val1)
-                first=[item[0][0] for item in val1]
-                mystring="".join(first)
+                logging.info('res:%s', res)
+                logging.info('val1:%s', val1)
+                first = [item[0][0] for item in val1]
+                mystring = "".join(first)
                 logging.info('mystring:%s', mystring)
                 logging.info('type mystring:%s', type(mystring))
-                
+
                 # je test l'existence de M et W. M,W is for 'UCVA'
                 if mystring.find('MW') != -1:
                     va_type = 'UCVA'
                     first = []
                     res[va_type] = val1
                     logging.info('set val to an empty list')
-                    val1=[]
+                    val1 = []
                     logging.info('res:%s', res)
 #              # je teste si mystring est upper and not 'M' or 'W'
                 if mystring.isupper()and mystring.find('MW') == -1:
                     va_type = 'Rx'
                     first = []
                     logging.info('va_type:%s', va_type)
-                    logging.info('val1:%s',val1)
+                    logging.info('val1:%s', val1)
                     res[va_type] = val1
                     logging.info('set val to an empty list')
-                    val1=[]
+                    val1 = []
                     logging.info('res:%s', res)
-                    
+
                 if mystring.islower() and mystring.find('MW') == -1:
                     va_type = 'BCVA'
                     logging.info('va_type:%s', va_type)
                     res[va_type] = val1
                     logging.info('set val to an empty list')
-                    val1=[]
+                    val1 = []
                     logging.info('res:%s', res)
 
-            if line.find('@RM') != -1: # sous @RM c'est toujours  'va_type' = 'AR'
+            if line.find('@RM') != -1:  # sous @RM c'est toujours  'va_type' = 'AR'
                 logging.info('find an @RM')
                 va_type = 'AR'
                 res[va_type] = val1
                 logging.info('set val to an empty list')
-                val1=[]
+                val1 = []
                 logging.info('res:%s', res)
                 val1 = []
 
-            if line.find('@LM') != -1:# les lignes sous '@LM' c'est toujours 'CVA'
+            if line.find('@LM') != -1:  # les lignes sous '@LM' c'est toujours 'CVA'
                 logging.info('find an @LM')
                 va_type = 'CVA'
                 res[va_type] = val1
                 logging.info('set val to an empty list')
-                val1=[]
+                val1 = []
                 logging.info('res:%s', res)
 
-            line = trim_timestamp(line) # delete the timestamp
+            line = trim_timestamp(line)  # delete the timestamp
             logging.info('no timestamp line: %s', line)
-            for rx in rxlist: # boucle on rxlist to cut the line at the right place.
+            for rx in rxlist:  # boucle on rxlist to cut the line at the right place.
                 if re.search(rx, line, flags = 0):
                     values = cutting(line, cuttingDict[rx])
                     logging.info('cutting values: %s', values)
@@ -468,7 +471,7 @@ def getandformat_values(rxlist = [regexSCA, regexADD, regexVA], log_path = os.pa
                     values = [zero2none(val) for val in values]
                     logging.info('zero2none: %s', values)
                     val1.append(values)
-                    logging.info('**val1**: %s',val1)
+                    logging.info('**val1**: %s', val1)
             logging.info('---END OF IF---')
         else: break
     logging.info('getandformatvalues method return:%s', res)
