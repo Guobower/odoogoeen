@@ -143,6 +143,7 @@ def converttuple(val):
      eg [('add_od', '+3.75')]
     
     usufull when i want to make a dict : dict (list)
+    I use it when I create a record.
     """
     
     val1=[]
@@ -150,7 +151,7 @@ def converttuple(val):
     res=[tuple(i) for i in val1]
     return res
 
-def getandformat_values(rxlist = [regexSCA, regexADD, regexVA], log_path = os.path.expanduser('~') + '/rt5100rs232/tmp.log.1'):
+def getandformat_values(rxlist = [regexSCA, regexADD, regexVA], log_path = os.path.expanduser('~') + '/rt5100rs232/tmp.log'):
     """ Get the values from rt5100 log file  and format them 
     
     rxlist : list of regex from specification of datas RT5100
@@ -267,13 +268,23 @@ def makeSCAdict(val):
     eg:['va_ol_extended', '1.0'],
     """
     sca_or=['sph_od','cyl_od','axis_od']
+    sca_near_or=['sph_near_or','cyl_near_or','axis_near_or']
     sca_os=['sph_os','cyl_os','axis_os']
+    sca_near_os=['sph_near_os','cyl_near_os','axis_near_os']
+    
     res=[]
+    
     print 'val is:{}'.format(val)
+    
     if val[0] == 'sca_or':
         res=zip(sca_or,val[1:])
     elif val[0] == 'sca_os':
         res=zip(sca_os,val[1:])
+    elif  val[0] == 'sca_near_or':
+        res=zip(sca_near_or,val[1:])
+    elif  val[0] == 'sca_near_os':
+        res=zip(sca_near_os,val[1:])
+           
     else:
         res=converttuple(val)
         
@@ -295,7 +306,12 @@ def map2fields(raw):
     CVA [['UB', '<0.04'], ['VB', '<0.04'], ['UL', '0.4'], ['VL', '0.4'], ['UR', '0.8'], ['VR', '0.8'], ['AL', '+1.50'], ['AR', '+1.50'], ['L', '+2.0', '-4.0', '25'], ['R', '+2.25', '-2.75', '120']]
    
    @return:
-   eg 
+   eg {
+   'UCVA': [['va_bin_extended', '1.25'], ['va_bin', '1.25'], ['va_ol_extended', '0.63'], ['va_ol', '0.63'], ['va_or_extended', '0.1'], ['va_or', '0.1']], 
+   'Rx': [['va_bin_extended', '0.32'], ['va_bin', '0.32'], ['va_ol_extended', '0.32'], ['va_ol', '0.32'], ['va_or_extended', '0.25'], ['va_or', '0.25'], ['add_os', '+0.50'], ['add_od', '+1.75'], ['sca_near_os', '+16.5', '-4.75', '130'], ['sca_os', '+16.0', '-4.75', '130'], ['sca_near_or', '+13.5', '-3.5', '175'], ['sca_or', '+11.75', '-3.5', '175']], 
+   'BCVA': [['va_bin_extended', '1.6'], ['va_bin', '1.6'], ['va_ol_extended', '2.0'], ['va_ol', '2.0'], ['va_or_extended', '0.32'], ['va_or', '0.32'], ['add_os', '+2.50'], ['add_od', '+2.50'], ['sca_os', '-1.25', '-5.25', '130'], ['sca_or', '+5.25', '-8.75', '175']],
+   'AR': [['va_bin_extended', '<0.04'], ['va_bin', '<0.04'], ['va_ol_extended', '0.8'], ['va_ol', '0.8'], ['va_or_extended', '0.4'], ['va_or', '0.4'], ['sca_os', '-0.5', '-6.75', '25'], ['sca_or', '+6.0', '-6.25', '175']], 
+   'CVA': [['va_bin_extended', '<0.04'], ['va_bin', '<0.04'], ['va_ol_extended', '0.4'], ['va_ol', '0.4'], ['va_or_extended', '0.8'], ['va_or', '0.8'], ['add_os', '+1.50'], ['add_od', '+1.50'], ['sca_os', '+2.0', '-4.0', '25'], ['sca_or', '+2.25', '-2.75', '120']]}
     """
 
     res = {}
@@ -346,6 +362,7 @@ def map2fields(raw):
                 item[0] = re.sub(k, v, item[0])  # je substitue le codage du RT5100 par les fields name
             list_int.append(item)
         res[key] = list_int
+    print "map2fields return:{}".format(res)
     return res
 
 def map2odoofields():
