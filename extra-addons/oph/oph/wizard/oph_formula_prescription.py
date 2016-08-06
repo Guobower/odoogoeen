@@ -50,8 +50,9 @@ class oph_formula_prescription(osv.osv_memory):
                                                 ('BF', _('Bi-Focal')),
                                                 ('BF-SG', _('Bi-Focal - Sun Glass')),
                                                 ('MF-SG-RG',_('MultiFocal-Sun Glass and Reading Glasses')),
-                                                ('RG', _('Reading Glasses')),], 'Template', help = "Select template"),
-        }
+                                                ('RG', _('Reading Glasses')),
+                                                ('NVR',_('Near Vision Glasses')),], 'Template', help = "Select template"),
+                }
     _defaults = {
         'name': 'Refraction',
         'date': lambda *a: time.strftime('%Y-%m-%d'),
@@ -99,7 +100,9 @@ class oph_formula_prescription(osv.osv_memory):
            modele = 'reading.report'
         elif template == "MF-SG-RG":
             modele = 'multifocal.sunglasses.reading.report'
-
+        elif template=='NVR':
+            modele = 'near.vision.report'
+            
         meeting_obj = self.pool.get('crm.meeting')
         # import pudb;pudb.set_trace()
         data = meeting_obj.read(cr, uid, active_ids[0], context = context)

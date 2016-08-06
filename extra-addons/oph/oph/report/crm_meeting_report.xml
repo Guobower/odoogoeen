@@ -470,6 +470,31 @@
             <field name="stylesheet_id" ref="stt_ordo_id"/>
             <field name="attachment">'MultiandReading'+'_'+object.partner_id.fullname+'_'+object.date+'.odt'</field>
         </record>
+        <!--  8 - new model Multifocal and Sunglasses and Reading glasses -->
+        
+        <!--  9 - new model  Reading glasses with rtR100 datas-->
+        <record model="ir.actions.report.xml" id="report_near_vision">
+            <field name="name">Near Vision Glasses</field>
+            <field name="type">ir.actions.report.xml</field>
+            <field name="model">crm.meeting</field>
+            <field name="report_name">near.vision.report</field>
+            <field name="report_type">aeroo</field>
+            <field name="auto">TRUE</field>
+            <field name="report_rml">oph/report/odt/oph_meeting/Near_Vision_Glasses.odt</field>
+            <!-- <field name="parser_state">default</field>-->
+            <!-- parser state = default, loc, def-->
+            <field name="parser_state">loc</field>
+            <field name="parser_loc">oph/report/parser.py</field>
+            <field name="tml_source">file</field>
+            <!--  choix database, file, parser de template source-->
+            <field name="in_format">oo-odt</field>
+            <!-- choix de template Mime-type dans configuration-Technical-aero-report-Reports-->
+            <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
+            <field name="styles_mode">specified</field>
+            <field name="stylesheet_id" ref="stt_ordo_id"/>
+            <field name="attachment">object.partner_id.fullname+'_'+'Reading'+'_'+object.date+'.odt'</field>
+        </record>
+
         <!-- END OF MODELS FOR FORMULA PRESCRIPTION -->
         
         <!-- MODEL FOR EVASAN-->

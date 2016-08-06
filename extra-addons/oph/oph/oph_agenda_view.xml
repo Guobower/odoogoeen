@@ -119,28 +119,22 @@
                     <page string="Refraction" attrs="{'invisible':[('state','in',['draft','open','wait','busy'])]}" groups="oph.sec_group_id">
                         <field name="refraction_ids" widget="one2many" mode="tree" context="{'measurement_type':'ref'}">
                             <tree string="Visual Acuity">
-                                <button string="Set RxP" name="mavc2cp" icon="gtk-jump-to" type="object" attrs="{'invisible':[('va_type','=','Rx')]}"/>
+                                <button string="Set RxP" name="mavc2cp" icon="gtk-jump-to" type="object" attrs="{'invisible':['|',('va_type','=','UCVA'),('va_type','=','Rx')]}"/>
                                 <field name="type_id" invisible="1"/>
                                 <field name="name" invisible="1"/>
                                 <field name="va_type"/>
+                                <field name="va_or"/>
                                 <field name="va_od"/>
-                                <field name="qualif_od" string="Q_OD"/>
-                                <field name="sph_od" on_change="on_change_sph(sph_od)"/>
+                                <field name="sph_od" />
                                 <field name="cyl_od"/>
                                 <field name="axis_od"/>
-                                <field name="nv_od" on_change="on_change_nv(nv_od)"/>
-                                <field name="add_od" on_change="on_change_add(add_od)"/>
-                                <field name="m_od" string="M_OD" on_change="on_change_m(m_od)"/>
-                                <field name="rp_od" invisible="0" readonly="True"/>
+                                <field name="add_od"/>
+                                <field name="va_ol"/>
                                 <field name="va_os"/>
-                                <field name="qualif_os" string="Q_OS"/>
                                 <field name="sph_os"/>
                                 <field name="cyl_os"/>
                                 <field name="axis_os"/>
-                                <field name="nv_os"/>
                                 <field name="add_os"/>
-                                <field name="m_os" string="M_OS"/>
-                                <field name="rp_os" invisible="0"/>
                             </tree>
                             <form string="Refraction Plus" version="7.0">
                                 <group string="Infos">
@@ -162,18 +156,20 @@
                                     <field name="add_os" class="oe_inline"/>
                               </group>
                               <group col="4" string="Visual Acuity">
-                                    <field name="va_od" class="oe_inline" on_change="on_change_va(va_od)"/>
+                                    <field name="va_or" class="oe_inline"/>
+                                    <field name="va_ol" class="oe_inline"/>
+                                    <field name="va_od" class="oe_inline"/>
                                     <field name="va_os" class="oe_inline"/>
-                                    <field name="qualif_od" string="Q_OD" class="oe_inline"/>
-                                    <field name="qualif_os" string="Q_OS" class="oe_inline"/>
-                                    <field name="m_od" string="M_OD" class="oe_inline" on_change="on_change_m(m_od)"/>
-                                     <field name="m_os" string="M_OS" class="oe_inline"/>
-                                     <field name="nv_od" class="oe_inline" on_change="on_change_nv(nv_od)"/>
-                                     <field name="nv_os" class="oe_inline"/>
+                                    <field name='nv_od' class="oe_inline"/>
+                                    <field name='nv_os' class="oe_inline"/>
+                                    <field name="m_od" string="M_OD" class="oe_inline"/>
+                                    <field name="m_os" string="M_OS" class="oe_inline"/>
+                                    
                                 </group>
                             </form>
                         </field>
                     </page>
+
 
                     <page string="Slit Lamp Exam" attrs="{'invisible':[('state','in',['draft','open','wait','busy'])]}" groups="oph.sec_group_id">
                         <field name="sle_ids" widget="one2many" mode="tree" context="{'measurement_type':'sle'}">
@@ -259,21 +255,6 @@
                         </field>
                     </page>
 
-<!--
-                    <page string="Reporting">
-                        <field name="reporting_line_ids">
-                            <tree string="Reporting">
-                                <field name="type"/>
-                                <field name="name"/>
-                                <field name="meeting_id" invisible="1"/>
-                                <field name="partner_id"/>
-                                <field name="date"/>
-                                <field name="state"/>
-                            </tree>
-                        </field>
-                    </page>
-                    
--->                    
                     <page string="Neuro" attrs="{'invisible':[('state','in',['draft','open','wait','busy'])]}" groups="oph.sec_group_id">
                         <label for="neuro" string="observation neurologique"/>
                         <field name="neuro"/> 

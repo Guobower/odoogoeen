@@ -176,7 +176,6 @@ class res_partner(osv.osv):
         @Return: type:list(tuple)
         @Returns: list of pairs (id,text_repr) for all records with the given ids.
         """
-        print "JE PASSE PAR NAME_GET "
         if context is None:
             context = {}
         if isinstance(ids, (int, long)):
