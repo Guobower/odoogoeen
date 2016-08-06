@@ -293,6 +293,7 @@ def makeSCAdict(val):
 
 def convert_cylindrical_notation( sph, cyl, ax):
     """
+    Thanks to Philipp Klaus
     This function converts between
     minus-cylinder <-> plus-cylinder notation
     and is useful to understand variations
