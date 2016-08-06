@@ -36,12 +36,11 @@ class crm_meeting(orm.Model):
         _logger.info("in ge_rt5100 method of class crm.meeting")
         _logger.info('context:{}')
         _logger.info("check that I can import methods from rt5100")
-        _logger.info('SCADict:%s' % (rt.SCAdict,))
+        _logger.info('cuttingDict:%s' % (rt.cuttingDict,))
 
-        finalDict = rt.getandformat_values()
+        finalDict = rt.map2odoofields()
         _logger.info("finalDict:%s", finalDict)
-        finalDict = rt.map2odoofields(finalDict)
-        _logger.info("finalDict:%s", finalDict)
+        #
 
         for va_type in finalDict.keys():
             records = self.browse(cr, uid, ids, context)
@@ -57,66 +56,12 @@ class crm_meeting(orm.Model):
                 _logger.info('finalDict[va_type]:%s', finalDict[va_type])
                 for i in finalDict[va_type]:
                     _logger.info('i:%s', i)
-                    i = rt.makeSCAdict(i)
-                    _logger.info('after makeSCAdict:%s', i)
-                    _logger.info('i, len(i):%s, %s', i, len(i))
-                    _logger.info('type(i):%s', type(i))
-                    if len(i) == 2:
-                        i = dict([i])
-                    else:
-                        i = dict(i)
-
                     val_measurement.update(i)
-                    _logger.info('val_measurenent:%s', val_measurement)
-        return True
-
-    def get_rt5100_old(self, cr, uid, ids, context = None):
-        """Get the datas from the RT-5100
-        
-        """
-
-        _logger.info("in get_rt5100 method of class crm.meeting")
-        _logger.info('context:%s', context)
-        _logger.info("check I can import methods from rt5100")
-        _logger.info('SCADict:%s' % (rt.SCAdict,))
-
-        finalDict = rt.getandformat_values()
-        _logger.info("getandformat finalDict:%s", finalDict)
-        finalDict = rt.map2odoofields(finalDict)
-        _logger.info('map2odoofields finalDictt: %s', finalDict)
-
-
-        for va_type in finalDict.keys():
-            records = self.browse(cr, uid, ids, context)
-            for record in records:
-                print 'record.name:{}'.format(record.name)
-                print 'record.partner_id:{}'.format(record.partner_id)
-                print 'record.meeting_id:{}'.format(record.id)
-                val_measurement = {'va_type':va_type,
-                                   'type_id':2,  # 2 is the ID for all about refraction and visual acuity.
-                                   'meeting_id':record.id,
-                                   }
-                _logger.info('val_measurement:%s', val_measurement)
-                _logger.info('finalDict[va_type]:%s', finalDict[va_type])
-                for item in finalDict[va_type]:
-                    val_measurement.update(makeSCAdict(item))
                     _logger.info('val_measurement:%s', val_measurement)
-                #===============================================================
-                # vals_measurement = {
-                #             #'type_id.code' : 'ref', #TODO
-                #             'type_id' : 2, # always the same. Is for refraction.
-                #             'meeting_id' : record.id, #TODO
-                #             'sph_od' : finalDict[va_type]['sph_od'],
-                #             'cyl_od': finalDict[va_type]['cyl_od'],
-                #             'axis_od':finalDict[va_type]['axis_od'],
-                #             'sph_os' : finalDict[va_type]['sph_os'],
-                #             'cyl_os':finalDict[va_type]['cyl_os'],
-                #             'axis_os':finalDict[va_type]['axis_os'],
-                #             'va_type':va_type
-                #             }
-                #===============================================================
-                oph_measurement_obj = self.pool.get('oph.measurement').create(cr, uid, val_measurement, context = context)
+                _logger.info('val_measurement:%s', val_measurement)
+                oph_measurement_obj = self.pool.get('oph.measurement').create(cr, uid, val_measurement, context = context)       
         return True
+
 
 
     def selection_partner_id(self, cr, uid, ids, context = None):

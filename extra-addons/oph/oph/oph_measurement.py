@@ -185,7 +185,7 @@ class oph_measurement(orm.Model):
                 ]
 
     def _get_add(self, cr, uid, context = None):
-        add = (('+0.5', '0.5'),
+        add = (('+0.50', '0.50'),
              ('+0.75', '0.75'),
              ('+1.00', '1.00'),
              ('+1.25', '1.25'),
