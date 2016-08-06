@@ -291,7 +291,17 @@ def makeSCAdict(val):
     _logger.info('makeSCAdict return res;%s',res)
     return res
 
-
+def convert_cylindrical_notation( sph, cyl, ax):
+    """
+    This function converts between
+    minus-cylinder <-> plus-cylinder notation
+    and is useful to understand variations
+    in eyeglass prescription writings.
+    """
+    sph_prime =  sph + cyl
+    cyl_prime = -cyl
+    ax_prime  =  (ax + 90) % 180
+    return (sph_prime, cyl_prime, ax_prime)
 
 def map2fields(raw):
     """Map datas to ODOO field names
@@ -378,26 +388,6 @@ def map2odoofields():
 
 if __name__ == '__main__':
 
-    logging.basicConfig(format = '%(asctime)s %(message)s', datefmt = '%m/%d/%Y %I:%M:%S /', level = logging.INFO)
+    result = convert_cylindrical_notation(16,-2,120)
+    print result
     
-    datas = map2odoofields()
-    print "map2odoofields return"
-    pprint.pprint(datas)
-#     print 'map2odoofields() return'
-#     pprint.pprint(datas) 
-
-#     datas = getandformat_values()
-#     print 'getandformat_values return :{}'.format(datas)
-# 
-# #     datas = {'UCVA': [['MB', '1.25'], ['WB', '1.25'], ['ML', '0.63'], ['WL', '0.63'], ['MR', '0.1'], ['WR', '0.1']], 'AR': [['UB', '<0.04'], ['VB', '<0.04'], ['UL', '0.8'], ['VL', '0.8'], ['UR', '0.4'], ['VR', '0.4'], ['OL', '-0.5', '-6.75', '25'], ['OR', '+6.0', '-6.25', '175']], 'Rx': [['UB', '0.32'], ['VB', '0.32'], ['UL', '0.32'], ['VL', '0.32'], ['UR', '0.25'], ['VR', '0.25'], ['AL', '+4.50'], ['AR', '+3.75'], ['FL', '+16.0', '-4.75', '130'], ['FR', '+11.75', '-3.5', '175']], 'BCVA': [['uB', '1.6'], ['vB', '1.6'], ['uL', '2.0'], ['vL', '2.0'], ['uR', '0.32'], ['vR', '0.32'], ['aL', '+3.50'], ['aR', '+3.50'], ['fL', '-1.25', '-5.25', '130'], ['fR', '+5.25', '-8.75', '175']], 'CVA': [['UB', '<0.04'], ['VB', '<0.04'], ['UL', '0.4'], ['VL', '0.4'], ['UR', '0.8'], ['VR', '0.8'], ['AL', '+1.50'], ['AR', '+1.50'], ['L', '+2.0', '-4.0', '25'], ['R', '+2.25', '-2.75', '120']]}
-# #  
-#     datas = map2fields(datas)
-#     print "map2odoofields return:"
-#     pprint.pprint(datas) 
-#     
-#     print "-=-"* 10
-#     print 'test makeSCAdict'
-#     for values in datas.values():
-#         datas=[makeSCAdict(val) for val in values]
-#     print "makeSCAdict return:"
-#     pprint.pprint(datas) 
