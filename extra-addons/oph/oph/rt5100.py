@@ -45,13 +45,15 @@ cuttingVA = [0, 2, 7]
 # eg  UB for
 
 regexADD = r'[Aa][RL]'  # regex to get the line with ADD datas
-regexSCA = r'[OfFnN ][RL]'  # regex tp get the line with SCA datas.
+regexSCA_FAR = r'[OfF][RL]'  # regex tp get the line with SCA far vision datas.
+regexSCA_NEAR = r'[Nn][rl]'
 regexVA = r'[VUWMvu][RLB]'  # regex to catch datas for VA
 
 # map regex and the way to cut the line to get the datas
-cuttingDict = { 
+cuttingDict = {
                regexADD:cuttingADD,
-               regexSCA:cuttingSCA,
+               regexSCA_FAR:cuttingSCA,
+               regexSCA_NEAR:cuttingSCA,
                regexVA:cuttingVA,
                   }
 
@@ -145,13 +147,13 @@ def converttuple(val):
     usufull when i want to make a dict : dict (list)
     I use it when I create a record.
     """
-    
-    val1=[]
+
+    val1 = []
     val1.append(val)
-    res=[tuple(i) for i in val1]
+    res = [tuple(i) for i in val1]
     return res
 
-def getandformat_values(rxlist = [regexSCA, regexADD, regexVA], log_path = os.path.expanduser('~') + '/rt5100rs232/tmp.log'):
+def getandformat_values(rxlist = [regexSCA_FAR, regexSCA_NEAR, regexADD, regexVA], log_path = os.path.expanduser('~') + '/rt5100rs232/tmp.log'):
     """ Get the values from rt5100 log file  and format them 
     
     rxlist : list of regex from specification of datas RT5100
@@ -173,67 +175,67 @@ def getandformat_values(rxlist = [regexSCA, regexADD, regexVA], log_path = os.pa
     res = {}
     val1 = []
     first = []
-    for line in reversed(open(log_path).readlines()):# read each line starting by the end
+    for line in reversed(open(log_path).readlines()):  # read each line starting by the end
         if line.find('NIDEK') == -1:  # Tant que je ne trouve pas le motif 'NIDEK' je traite la ligne.
             _logger.info('brut line:%s', line)
-            
+
             if line.find('@RT') != -1:  # la ligne est un @RT.
                 _logger.info('find an @RT')
-                _logger.info('res:%s',res)
-                _logger.info('val1:%s',val1)
-                first=[item[0][0] for item in val1]
-                mystring="".join(first)
+                _logger.info('res:%s', res)
+                _logger.info('val1:%s', val1)
+                first = [item[0][0] for item in val1]
+                mystring = "".join(first)
                 _logger.info('mystring:%s', mystring)
                 _logger.info('type mystring:%s', type(mystring))
-                
+
                 # je test l'existence de M et W. M,W is for 'UCVA'
                 if mystring.find('MW') != -1:
                     va_type = 'UCVA'
                     first = []
                     res[va_type] = val1
                     _logger.info('set val to an empty list')
-                    val1=[]
+                    val1 = []
                     _logger.info('res:%s', res)
 #              # je teste si mystring est upper and not 'M' or 'W'
-                if mystring.isupper()and mystring.find('MW') == -1:
+                if mystring.isupper()and mystring.find('MW') == -1:  # mystring.find('MW') == -1 il n'y a pas MW dans la string
                     va_type = 'Rx'
                     first = []
                     _logger.info('va_type:%s', va_type)
-                    _logger.info('val1:%s',val1)
+                    _logger.info('val1:%s', val1)
                     res[va_type] = val1
                     _logger.info('set val to an empty list')
-                    val1=[]
+                    val1 = []
                     _logger.info('res:%s', res)
-                    
+
                 if mystring.islower() and mystring.find('MW') == -1:
                     va_type = 'BCVA'
                     _logger.info('va_type:%s', va_type)
                     res[va_type] = val1
                     _logger.info('set val to an empty list')
-                    val1=[]
+                    val1 = []
                     _logger.info('res:%s', res)
-            
 
-            if line.find('@RM') != -1: # sous @RM c'est toujours  'va_type' = 'AR'
+
+            if line.find('@RM') != -1:  # sous @RM c'est toujours  'va_type' = 'AR'
                 _logger.info('find an @RM')
                 va_type = 'AR'
                 res[va_type] = val1
                 _logger.info('set val to an empty list')
-                val1=[]
+                val1 = []
                 _logger.info('res:%s', res)
                 val1 = []
 
-            if line.find('@LM') != -1:# les lignes sous '@LM' c'est toujours 'CVA'
+            if line.find('@LM') != -1:  # les lignes sous '@LM' c'est toujours 'CVA'
                 _logger.info('find an @LM')
                 va_type = 'CVA'
                 res[va_type] = val1
                 _logger.info('set val to an empty list')
-                val1=[]
+                val1 = []
                 _logger.info('res:%s', res)
 
-            line = trim_timestamp(line) # delete the timestamp
+            line = trim_timestamp(line)  # delete the timestamp
             _logger.info('no timestamp line: %s', line)
-            for rx in rxlist: # boucle on rxlist to cut the line at the right place.
+            for rx in rxlist:  # boucle on rxlist to cut the line at the right place.
                 if re.search(rx, line, flags = 0):
                     values = cutting(line, cuttingDict[rx])
                     _logger.info('cutting values: %s', values)
@@ -246,7 +248,7 @@ def getandformat_values(rxlist = [regexSCA, regexADD, regexVA], log_path = os.pa
                     values = [zero2none(val) for val in values]
                     _logger.info('zero2none: %s', values)
                     val1.append(values)
-                    _logger.info('**val1**: %s',val1)
+                    _logger.info('**val1**: %s', val1)
             _logger.info('---END OF IF---')
         else: break
     _logger.info('getandformatvalues method return:%s', res)
@@ -267,31 +269,31 @@ def makeSCAdict(val):
     eg: [['sph_os','+16.0'],['cyl_os','-4.75'],['axis_os', '130']]
     eg:['va_ol_extended', '1.0'],
     """
-    sca_or=['sph_od','cyl_od','axis_od']
-    sca_near_or=['sph_near_or','cyl_near_or','axis_near_or']
-    sca_os=['sph_os','cyl_os','axis_os']
-    sca_near_os=['sph_near_os','cyl_near_os','axis_near_os']
-    
-    res=[]
-    
+    sca_or = ['sph_od', 'cyl_od', 'axis_od']
+    sca_near_or = ['sph_near_or', 'cyl_near_or', 'axis_near_or']
+    sca_os = ['sph_os', 'cyl_os', 'axis_os']
+    sca_near_os = ['sph_near_os', 'cyl_near_os', 'axis_near_os']
+
+    res = []
+
     print 'val is:{}'.format(val)
-    
+
     if val[0] == 'sca_or':
-        res=zip(sca_or,val[1:])
+        res = zip(sca_or, val[1:])
     elif val[0] == 'sca_os':
-        res=zip(sca_os,val[1:])
+        res = zip(sca_os, val[1:])
     elif  val[0] == 'sca_near_or':
-        res=zip(sca_near_or,val[1:])
+        res = zip(sca_near_or, val[1:])
     elif  val[0] == 'sca_near_os':
-        res=zip(sca_near_os,val[1:])
-           
+        res = zip(sca_near_os, val[1:])
+
     else:
-        res=converttuple(val)
-        
-    _logger.info('makeSCAdict return res;%s',res)
+        res = converttuple(val)
+
+    _logger.info('makeSCAdict return res;%s', res)
     return res
 
-def convert_cylindrical_notation( sph, cyl, ax):
+def convert_cylindrical_notation(sph, cyl, ax):
     """
     Thanks to Philipp Klaus
     This function converts between
@@ -299,9 +301,9 @@ def convert_cylindrical_notation( sph, cyl, ax):
     and is useful to understand variations
     in eyeglass prescription writings.
     """
-    sph_prime =  sph + cyl
+    sph_prime = sph + cyl
     cyl_prime = -cyl
-    ax_prime  =  (ax + 90) % 180
+    ax_prime = (ax + 90) % 180
     return (sph_prime, cyl_prime, ax_prime)
 
 def map2fields(raw):
@@ -344,9 +346,9 @@ def map2fields(raw):
     sca_or = re.compile('(^R|OR|fR|FR)')
     sca_os = re.compile('(^L|OL|fL|FL)')
 
-    sca_near_or = re.compile('(nR|NR)')
-    sca_near_os = re.compile('(nL|NL)')
-    
+    sca_near_or = re.compile('(nr|Nr)')
+    sca_near_os = re.compile('(nl|Nl)')
+
     mapregex = {
             va_or:'va_or',
             va_ol:'va_ol',
@@ -377,18 +379,17 @@ def map2fields(raw):
     return res
 
 def map2odoofields():
-    datas=getandformat_values()
-    datas=map2fields(datas)
+    datas = getandformat_values()
+    datas = map2fields(datas)
     for key in datas.keys():
-        print 'key, datas[key]:{},{}'.format(key,datas[key])
-        vals=[makeSCAdict(val) for val in datas[key]]
-        datas[key]=vals
-       
+        print 'key, datas[key]:{},{}'.format(key, datas[key])
+        vals = [makeSCAdict(val) for val in datas[key]]
+        datas[key] = vals
+
     return datas
 
 
 if __name__ == '__main__':
 
-    result = convert_cylindrical_notation(16,-2,120)
+    result = convert_cylindrical_notation(16, -2, 120)
     print result
-    
