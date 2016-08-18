@@ -30,7 +30,7 @@
                     <notebook colspan="4">
                         <page string="Bloc Agenda Lines">
                             <field name="line_ids">
-                                <tree string="Bloc Agenda Line" editable="bottom">
+                                <tree string="Bloc Agenda Line" editable="bottom" colors="black:state=='close';blue:state=='confirm';grey:state in ('cancel','no_show');red:state in ('open','draft')">
                                     <!-- editable="bottom" ne marche pas bien j'enleve -->
                                     <field name="state" readonly="1"/>
                                     <field name="sequence"/>
@@ -68,7 +68,7 @@
             <field name="model">oph.bloc.agenda</field>
             <field name="priority" eval="2"/>
             <field name="arch" type="xml">
-                <tree string="Bloc Agenda">
+                <tree string="Bloc Agenda" >
                     <field name="name"/>
                     <field name="wd"/>
                     <field name="line_ids"/>
@@ -164,7 +164,7 @@
             <field name="model">oph.bloc.agenda.line</field>
             <field name="priority" eval="2"/>
             <field name="arch" type="xml">
-                <tree string="Bloc Agenda Line" colors="red:state=='open';blue:state=='open';black:state=='close';grey:state=='cancel'">
+                <tree string="Bloc Agenda Line" colors="black:state=='close';blue:state=='confirm';grey:state in ('cancel','no_show');red:state in ('open','draft')">
                     <field name="state"/>
                     <field name="sequence" invisible="0"/>
                     <field name="name" invisible="1"/>
