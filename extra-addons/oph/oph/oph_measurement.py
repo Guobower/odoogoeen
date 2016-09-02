@@ -113,7 +113,7 @@ class oph_measurement(orm.Model):
     def _get_va_type(self, cr, uid, context = None):
         va_type_selection = (
                             ('UCVA', _('UCVA')),  # uncorrected visual acuity
-                            ('CVA', _('CVA')), # corrected visual acuity
+                            ('CVA', _('CVA')),  # corrected visual acuity
                             ('BCVA', _('BCVA')),  # best corrected visual acuity
                             ('MAVC sous cycloplegique', 'MAVC sous cycloplegique'),
                             ('Rx', _('Refraction prescription')),  # refraction prescrite
@@ -240,9 +240,9 @@ class oph_measurement(orm.Model):
               'nv_os':fields.selection(_get_nearva, 'NV_OS'),
               # -- visual acuity
               'va_or':fields.char('VA OR', size = 5),
-              'va_ol':fields.char('VA OR', size = 5),
+              'va_ol':fields.char('VA OL', size = 5),
               'va_or_extended':fields.char('VA OR', size = 7),
-              'va_ol_extended':fields.char('VA OR', size = 7),
+              'va_ol_extended':fields.char('VA OL', size = 7),
               # -- binocular visual acuity
               'va_bin':fields.char('Binocular VA', size = 5),
               'va_bin_extended':fields.char('Binocular VA', size = 7),
