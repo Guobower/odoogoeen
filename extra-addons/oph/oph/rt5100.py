@@ -346,6 +346,8 @@ def map2fields(raw):
     sca_or = re.compile('(^R|OR|fR|FR)')
     sca_os = re.compile('(^L|OL|fL|FL)')
 
+    # those code below are never send by the RT5100 Nidek
+    # couldn't find out why
     sca_near_or = re.compile('(nr|Nr)')
     sca_near_os = re.compile('(nl|Nl)')
 
@@ -363,6 +365,7 @@ def map2fields(raw):
 #
             sca_or :'sca_or',
             sca_os : 'sca_os',
+
             sca_near_or:'sca_near_or',
             sca_near_os :'sca_near_os',
             }
@@ -375,14 +378,14 @@ def map2fields(raw):
                 item[0] = re.sub(k, v, item[0])  # je substitue le codage du RT5100 par les fields name
             list_int.append(item)
         res[key] = list_int
-    print "map2fields return:{}".format(res)
+    _logger.info("map2fields return:%s", res)
     return res
 
 def map2odoofields():
     datas = getandformat_values()
     datas = map2fields(datas)
     for key in datas.keys():
-        print 'key, datas[key]:{},{}'.format(key, datas[key])
+        _logger.info('key, datas[key]:%s, %s' % (key, datas[key]))
         vals = [makeSCAdict(val) for val in datas[key]]
         datas[key] = vals
 
