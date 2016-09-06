@@ -25,7 +25,7 @@
                     <field name="k2_od" invisible="not context.get('measurement_type', False) == 'ker'"/>
                     <field name="va_type" invisible="not context.get('measurement_type', False) == 'ref'"/>
                     <field name="va_or" invisible="not context.get('measurement_type', False) == 'ref'"/>
-                    <!--<field name="va_od" invisible="context.get('measurement_type', False) in ['cp']"/>-->
+                    <field name="va_od" invisible="context.get('measurement_type', False) in ['cp']"/>
                     <field name="sph_od" invisible="not context.get('measurement_type', False) == 'ref'"/>
                     <field name="cyl_od" invisible="not context.get('measurement_type', False) == 'ref'"/>
                     <field name="axis_od" invisible="not context.get('measurement_type', False) == 'ref'"/>
@@ -33,6 +33,7 @@
                     <field name="add_od" invisible="not context.get('measurement_type', False) == 'ref'"/>
                     <field name="m_od" string="Meta_OD" invisible="not context.get('measurement_type', False) == 'ref'"/>
                     <field name="va_ol" invisible="not context.get('measurement_type', False) == 'ref'"/>
+                    <field name="va_os" invisible="not context.get('measurement_type', False) == 'ref'"/>
                     <field name="sph_os" invisible="not context.get('measurement_type', False) == 'ref'"/>
                     <field name="cyl_os" invisible="not context.get('measurement_type', False) == 'ref'"/>
                     <field name="axis_os" invisible="not context.get('measurement_type', False) == 'ref'"/>

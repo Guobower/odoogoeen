@@ -63,6 +63,7 @@ class oph_measurement(orm.Model):
     _order = "date"
 
     def on_change_va(self, cr, uid, ids, va_od, context = None):
+        """Copy the right to left value"""
         return {'value':{'va_os':va_od}
                 }
 
@@ -259,12 +260,15 @@ class oph_measurement(orm.Model):
               'cyl_os':fields.selection(_get_cyl, 'CYL_OS',),
               'axis_os':fields.selection(_get_axis, 'AXIS_OS',),
               # -- near SCA refraction
-              'sph_near_or':fields.char('Near Sphere', size = 6),
-              'cyl_near_or':fields.char('Near Cylinder', size = 6),
-              'axis_near_or':fields.char('Near Axis', size = 3),
-              'sph_near_os':fields.char('Near Sphere', size = 6),
-              'cyl_near_os':fields.char('Near Cylinder', size = 6),
-              'axis_near_os':fields.char('Near Axis', size = 3),
+              # MAlheureuselent ces champS _near_ ne sont pas envoyés par le RT5100
+              # dommage cela aurait été tres pratique.
+#               'sph_near_or':fields.char('Near Sphere', size = 6),
+#               'cyl_near_or':fields.char('Near Cylinder', size = 6),
+#               'axis_near_or':fields.char('Near Axis', size = 3),
+#               'sph_near_os':fields.char('Near Sphere', size = 6),
+#               'cyl_near_os':fields.char('Near Cylinder', size = 6),
+#               'axis_near_os':fields.char('Near Axis', size = 3),
+              'sph_near_or':fields
               # -- for formula prescription only
               # rp (reading prescription) = sph + add
               'rp_od':fields.char('Reading Pres', size = 8),
