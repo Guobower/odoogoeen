@@ -49,10 +49,16 @@ class oph_formula_prescription(osv.osv_memory):
                                                 ('MF-SG', _('Multifocal - Sun Glass')),
                                                 ('BF', _('Bi-Focal')),
                                                 ('BF-SG', _('Bi-Focal - Sun Glass')),
+<<<<<<< HEAD
                                                 ('MF-SG-RG',_('MultiFocal-Sun Glass and Reading Glasses')),
                                                 ('RG', _('Reading Glasses')),
                                                 ('NVR',_('Near Vision Glasses')),], 'Template', help = "Select template"),
                 }
+=======
+                                                ('MF-SG-RG', _('MultiFocal-Sun Glass and Reading Glasses')),
+                                                ('RG', _('Reading Glasses')), ], 'Template', help = "Select template"),
+        }
+>>>>>>> newcolor
     _defaults = {
         'name': 'Refraction',
         'date': lambda *a: time.strftime('%Y-%m-%d'),
@@ -82,7 +88,7 @@ class oph_formula_prescription(osv.osv_memory):
         #=======================================================================
         template = data['template']
         modele = 'single.vision.report'  # modele par defaut
-        # choix du template pour le report etat factory
+        # choix du template pour le report formula prescription
         # modele == field name='report_name' du record des reports aeroo.
         if template == 'SV':
             modele = 'single.vision.report'

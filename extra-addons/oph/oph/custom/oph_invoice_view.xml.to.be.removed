@@ -3,6 +3,7 @@
     <data>
 
         <!-- CUSTOM INVOICE TREE VIEW -->
+        <!-- je me demande si cette vue est  bien appelée. A verifier dans le openerp -->
         <record id="oph_invoice_tree" model="ir.ui.view">
             <field name="name">oph.account.invoice.tree</field>
             <field name="model">account.invoice</field>
@@ -14,10 +15,16 @@
                         <field name="date_acte"/>
                         <field name="payeur"/>
                         <field name="ref_statement"/>
+                        <field name="comment"/>
                     </field>
+                    <field name="origin" position="attributes">
+                        <attribute name="invisible">True</attribute>
+                    </field>
+                    
                 </data>
             </field>
         </record>
+
 
         <!-- CUSTOM INVOICE FORM VIEW -->
         <record id="oph_invoice_form" model="ir.ui.view">
