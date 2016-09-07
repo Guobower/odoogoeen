@@ -129,12 +129,14 @@
                                 <field name="cyl_od"/>
                                 <field name="axis_od"/>
                                 <field name="add_od"/>
+                                <field name="sph_near_or"/>
                                 <field name="va_ol"/>
                                 <field name="va_os"/>
                                 <field name="sph_os"/>
                                 <field name="cyl_os"/>
                                 <field name="axis_os"/>
                                 <field name="add_os"/>
+                                <field name="sph_near_os"/>
                             </tree>
                             <form string="Refraction Plus" version="7.0">
                                 <group string="Infos">

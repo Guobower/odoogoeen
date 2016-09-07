@@ -306,6 +306,11 @@ def convert_cylindrical_notation(sph, cyl, ax):
     ax_prime = (ax + 90) % 180
     return (sph_prime, cyl_prime, ax_prime)
 
+def compute_near_sph(sph, add):
+    """compute sph for near vision"""
+    sph_near = sph + add
+    return sph_near
+
 def map2fields(raw):
     """Map datas to ODOO field names
     
@@ -366,13 +371,14 @@ def map2fields(raw):
             sca_or :'sca_or',
             sca_os : 'sca_os',
 
-            sca_near_or:'sca_near_or',
-            sca_near_os :'sca_near_os',
+            # sca_near_or:'sca_near_or',
+            # sca_near_os :'sca_near_os',
             }
 
     # substitute characters coding rt5100 by model fields name
     for key in raw.keys():  # j'itere sur chaque key de raw datas. J'obtiens une liste de liste
         list_int = []
+        _logger.info("key of raw is:%s", key)
         for item in raw[key]:  # J'itere sur chaque item de la liste. item contient les datas.
             for k, v in mapregex.iteritems():
                 item[0] = re.sub(k, v, item[0])  # je substitue le codage du RT5100 par les fields name

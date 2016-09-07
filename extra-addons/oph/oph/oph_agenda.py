@@ -54,12 +54,56 @@ class crm_meeting(orm.Model):
                                    }
                 _logger.info('val_measurement:%s', val_measurement)
                 _logger.info('finalDict[va_type]:%s', finalDict[va_type])
+
                 for i in finalDict[va_type]:
                     _logger.info('i:%s', i)
                     val_measurement.update(i)
                     _logger.info('val_measurement:%s', val_measurement)
-                _logger.info('val_measurement:%s', val_measurement)
-                oph_measurement_obj = self.pool.get('oph.measurement').create(cr, uid, val_measurement, context = context)       
+                _logger.info('val_measurement before near vision values:%s', val_measurement)
+
+                # compute the field sph_near_vision, cyl_near_vision, axis_near_vision
+                # and add those new values in FinalDict
+                # for va_type == Rx
+                if va_type == 'Rx':
+                    _logger.info('va_type:%s', va_type)
+                    if val_measurement.get('cyl_od') is not None:
+                        val_measurement.update({'cyl_near_or':val_measurement.get('cyl_od')})
+                    if val_measurement.get('axis_od') is not None:
+                        val_measurement.update({'axis_near_or':val_measurement.get('axis_od')})
+                    if val_measurement.get('cyl_os') is not None:
+                        val_measurement.update({'cyl_near_os':val_measurement.get('cyl_os')})
+                    if val_measurement.get('axis_os') is not None:
+                        val_measurement.update({'axis_near_os':val_measurement.get('axis_os')})
+                    # compute sph_near
+                    # OR
+                    if val_measurement.get('add_od')is not None:
+                        if val_measurement.get('sph_od') is not None:
+                            _logger.info("val_measurement.get('sph_od') is:%s", val_measurement.get('sph_od'))
+                            sph_near = float(val_measurement.get('add_od')) + float(val_measurement.get('sph_od'))
+                            if sph_near < 0:
+                                sph_near = str(sph_near)
+                            else:
+                                sph_near = '+' + str(sph_near)
+                        else:
+                            sph_near = str(val_measurement.get('add_od'))
+                        val_measurement.update({'sph_near_or':sph_near})
+                    # OG
+                    if val_measurement.get('add_os'):
+                        if val_measurement.get('sph_os'):
+                            sph_near = float(val_measurement.get('add_os')) + float(val_measurement.get('sph_os'))
+                            if sph_near < 0:
+                                sph_near = str(sph_near)
+                            else:
+                                sph_near = '+' + str(sph_near)
+                        else:
+                            sph_near = str(val_measurement.get('add_os'))
+                        val_measurement.update({'sph_near_os':sph_near})
+
+                _logger.info('val_measurement with near vision values:%s', val_measurement)
+
+
+
+                oph_measurement_obj = self.pool.get('oph.measurement').create(cr, uid, val_measurement, context = context)
         return True
 
 

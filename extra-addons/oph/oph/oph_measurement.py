@@ -263,10 +263,10 @@ class oph_measurement(orm.Model):
               # MAlheureuselent ces champS _near_ ne sont pas envoyés par le RT5100
               # dommage cela aurait été tres pratique.
               # On les calcula dans le code de rt5100
-              'sph_near_or':fields.char('Near Sphere', size = 6),
+              'sph_near_or':fields.char('SPH_NEAR OR', size = 6),
               'cyl_near_or':fields.char('Near Cylinder', size = 6),
               'axis_near_or':fields.char('Near Axis', size = 3),
-              'sph_near_os':fields.char('Near Sphere', size = 6),
+              'sph_near_os':fields.char('SPH_NEAR OS', size = 6),
               'cyl_near_os':fields.char('Near Cylinder', size = 6),
               'axis_near_os':fields.char('Near Axis', size = 3),
 
