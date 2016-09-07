@@ -148,14 +148,16 @@
                                 <group col="4" string="Refraction">
                                      <h1 colspan="2">OD</h1>
                                      <h1 colspan="2">OG</h1>
-                                    <field name="sph_od" class="oe_inline" on_change="on_change_sph(sph_od)"/>
-                                    <field name="sph_os" class="oe_inline"/>
-                                    <field name="cyl_od" class="oe_inline" on_change="on_change_cyl(cyl_od)"/>
+                                    <field name="sph_od" class="oe_inline" on_change="on_change_near_or(sph_od,add_od)"/>
+                                    <field name="sph_os" class="oe_inline" on_change="on_change_near_os(sph_os,add_os)"/>
+                                    <field name="cyl_od" class="oe_inline"/>
                                     <field name="cyl_os" class="oe_inline"/>
-                                    <field name="axis_od" class="oe_inline" on_change="on_change_axis(axis_od)"/>
+                                    <field name="axis_od" class="oe_inline"/>
                                     <field name="axis_os" class="oe_inline"/>
-                                    <field name="add_od" class="oe_inline" on_change="on_change_add(add_od)"/>
-                                    <field name="add_os" class="oe_inline"/>
+                                    <field name="add_od" class="oe_inline" on_change="on_change_near_or(sph_od,add_od)"/>
+                                    <field name="add_os" class="oe_inline" on_change="on_change_near_os(sph_od,add_od)"/>
+                                    <field name="sph_near_or" class="oe_inline" invisible="1"/>
+                                    <field name="sph_near_os" class="oe_inline" invisible="1"/>
                               </group>
                               <group col="4" string="Visual Acuity">
                                     <field name="va_or" class="oe_inline"/>

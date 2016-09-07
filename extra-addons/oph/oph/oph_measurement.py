@@ -1,10 +1,13 @@
 # -*- coding: utf-8 -*-
+import logging
 from openerp.osv import fields, osv, orm
 from openerp.tools.translate import _
 import time
 from datetime import datetime
 import settings
 from decimal import Decimal
+
+_logger = logging.getLogger(__name__)
 
 # #-- objects intermédiaires
 # #-- configurable.
@@ -61,7 +64,48 @@ class oph_todolist_tag(orm.Model):
 class oph_measurement(orm.Model):
     _name = "oph.measurement"
     _order = "date"
-
+    
+    def compute_near_sph(self, sph,add):
+        """ compute sph_near = sph + add
+        usefull for reading prescription only
+        """
+        if sph is False: # sph is False or None means plan, 0
+            sph = 0
+        else:
+            sph = float(sph)
+        if add is False:
+            add = 0
+        else:
+            add = float(add)
+        #compute sph_near
+        sph_near = sph + add
+        #Convert to string and Add  sign + if positif
+        if sph_near > 0:
+            sph_near='+'+str(sph_near)
+        else:
+            sph_near=str(sph_near)
+        _logger.info('sph_near:%s and type(sph_near) is:%s' % (sph_near, type(sph_near)))
+        return sph_near
+    
+    def  on_change_near_or(self,cr,uid,ids,sph,add, context=None):
+        """On_change method for sph and add to compute sph_near vision
+        for Right Eye
+        """
+        res={
+             'value':{'sph_near_or':self.compute_near_sph(sph,add)}
+             }
+        return res
+    
+    def  on_change_near_os(self,cr,uid,ids,sph,add, context=None):
+        """On_change method for sph and add to compute sph_near vision
+        for Left Eye
+        """
+        res={
+             'value':{'sph_near_os':self.compute_near_sph(sph,add)}
+             }
+        return res
+        
+    
     def on_change_va(self, cr, uid, ids, va_od, context = None):
         """Copy the right to left value"""
         return {'value':{'va_os':va_od}
