@@ -14,8 +14,10 @@ class account_invoice(orm.Model):
 
     _columns = {
         'payeur': fields.selection([
+            ('TMP', 'TEMP'),
             ('Check', 'CHECK'),
             ('Cash', 'CASH'),
+            ('NotPaid', 'No Paid Yet'),
             ('LM', 'Longue Maladie'),
             ('SUD', 'AMG Sud'),
             ('NORD', 'AMG Nord'),
