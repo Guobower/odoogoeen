@@ -8,6 +8,28 @@ import logging
 
 _logger = logging.getLogger( __name__ )
 
+# log path to file with datas
+# on the remote host
+# is define in listener_rt5100 
+# outputfile
+# log_path = '/home/lof/rt5100rs232/tmp.log'
+log_path = '/home/lof/tmp.log'
+# # Connect to remote host to fetch rt5100 datas
+ssh_client = paramiko.SSHClient()
+# # Autoaccept unknown inbound host keys
+# # do this if you trust the remote machine
+ssh_client.set_missing_host_key_policy( paramiko.AutoAddPolicy() )
+
+try:
+    ssh_client.connect( '192.168.1.209',
+                                username = 'lof',
+                                password = 'lof' )
+except paramiko.SSHException:
+    print "connection failed"
+    quit()
+sftp_client = ssh_client.open_sftp()
+
+
 
 cuttingSCA = [0, 2, 8, 14, 17]
 cuttingADD = [0, 2, 8]
@@ -157,7 +179,7 @@ def converttuple( val ):
     return res
 
 
-def getandformat_values( rxlist = [regexSCA_FAR, regexSCA_NEAR, regexADD, regexVA], log_path = os.path.expanduser( '~' ) + '/rt5100rs232/tmp.log' ):
+def getandformat_values( rxlist = [regexSCA_FAR, regexSCA_NEAR, regexADD, regexVA] ):
     """ Get the values from rt5100 log file  and format them 
     
     rxlist : list of regex from specification of datas RT5100
@@ -176,10 +198,11 @@ def getandformat_values( rxlist = [regexSCA_FAR, regexSCA_NEAR, regexADD, regexV
     map2odoofields method and converttotuple will do that  
     """
     _logger.info( 'in getandformat_values' )
+    sftp_file = sftp_client.open( log_path )
     res = {}
     val1 = []
     first = []
-    for line in reversed( open( log_path ).readlines() ):  # read each line starting by the end
+    for line in reversed( sftp_file.readlines() ):  # read each line starting by the end
         if line.find( 'NIDEK' ) == -1:  # Tant que je ne trouve pas le motif 'NIDEK' je traite la ligne.
             _logger.info( 'brut line:%s', line )
 
@@ -256,8 +279,10 @@ def getandformat_values( rxlist = [regexSCA_FAR, regexSCA_NEAR, regexADD, regexV
             _logger.info( '---END OF IF---' )
         else: break
     _logger.info( 'getandformatvalues method return:%s', res )
-    for k, v in res.iteritems():
-        print k, v
+    #===========================================================================
+    # for k, v in res.iteritems():
+    #     print k, v
+    #===========================================================================
     return res
 
 
