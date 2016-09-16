@@ -279,6 +279,8 @@ def getandformat_values( rxlist = [regexSCA_FAR, regexSCA_NEAR, regexADD, regexV
             _logger.info( '---END OF IF---' )
         else: break
     _logger.info( 'getandformatvalues method return:%s', res )
+    sftp_file.close()
+    _logger.info( 'closing the sftp file connection' )
     #===========================================================================
     # for k, v in res.iteritems():
     #     print k, v
