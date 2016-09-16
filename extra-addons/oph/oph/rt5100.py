@@ -13,7 +13,7 @@ _logger = logging.getLogger( __name__ )
 # is define in listener_rt5100 
 # outputfile
 # log_path = '/home/lof/rt5100rs232/tmp.log'
-log_path = '/home/lof/tmp.log'
+log_path = '/home/listener/rt5100rs232/tmp.log'
 # # Connect to remote host to fetch rt5100 datas
 ssh_client = paramiko.SSHClient()
 # # Autoaccept unknown inbound host keys
@@ -21,9 +21,9 @@ ssh_client = paramiko.SSHClient()
 ssh_client.set_missing_host_key_policy( paramiko.AutoAddPolicy() )
 
 try:
-    ssh_client.connect( '192.168.1.209',
-                                username = 'lof',
-                                password = 'lof' )
+    ssh_client.connect( '192.168.1.226',
+                                username = 'listener',
+                                password = 'rt5100' )
 except paramiko.SSHException:
     print "connection failed"
     quit()
