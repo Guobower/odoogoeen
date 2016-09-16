@@ -157,7 +157,7 @@ def converttuple( val ):
     return res
 
 
-def getandformat_values( rxlist = [regexSCA_FAR, regexSCA_NEAR, regexADD, regexVA] ):
+def getandformat_values( rxlist = [regexSCA_FAR, regexSCA_NEAR, regexADD, regexVA], log_path = os.path.expanduser( '~' ) + '/rt5100rs232/tmp.log' ):
     """ Get the values from rt5100 log file  and format them 
     
     rxlist : list of regex from specification of datas RT5100
@@ -179,7 +179,7 @@ def getandformat_values( rxlist = [regexSCA_FAR, regexSCA_NEAR, regexADD, regexV
     res = {}
     val1 = []
     first = []
-    for line in reversed(.readlines() ):  # read each line starting by the end
+    for line in reversed( open( log_path ).readlines() ):  # read each line starting by the end
         if line.find( 'NIDEK' ) == -1:  # Tant que je ne trouve pas le motif 'NIDEK' je traite la ligne.
             _logger.info( 'brut line:%s', line )
 
