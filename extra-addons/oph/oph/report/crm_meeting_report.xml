@@ -582,5 +582,35 @@
             <field name="value" eval="'ir.actions.report.xml,' + str(ref('oph.report_evasan2_id'))"/>
         </record>
         <!-- END MODEL FOR EVASAN-->
+        <!-- Model for bon de transport -->
+        <record model="ir.actions.report.xml" id="report_bontransport1_id">
+            <field name="name">TRANSPORT1</field>
+            <field name="type">ir.actions.report.xml</field>
+            <field name="model">crm.meeting</field>
+            <field name="report_name">transport.report1</field>
+            <field name="report_type">aeroo</field>
+            <field name="auto">TRUE</field>
+            <field name="report_rml">oph/report/odt/oph_meeting/BonTransport.odt</field>
+            <!-- <field name="parser_state">default</field>-->
+            <!-- parser state = default, loc, def-->
+            <field name="parser_state">loc</field>
+            <field name="parser_loc">oph/report/parser.py</field>
+            <field name="tml_source">file</field>
+            <!--  choix database, file, parser de template source-->
+            <field name="in_format">oo-odt</field>
+            <!-- choix de template Mime-type dans configuration-Technical-aero-report-Reports-->
+            <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
+            <field name="attachment">'BonTransport'+'_'+object.partner_id.fullname+'_'+object.date+'.odt'</field>
+        </record>
+        <!-- button -->
+        <record model="ir.values" id="value_evasan2_id">
+            <field name="name">transport.report1</field>
+            <field name="key">action</field>
+            <field name="key2">client_print_multi</field>
+            <field name="model">crm.meeting</field>
+            <field name="object">TRUE</field>
+            <field name="value" eval="'ir.actions.report.xml,' + str(ref('oph.report_bontransport1_id'))"/>
+        </record>
+        <!-- END Model for bon de transport -->
     </data>
 </openerp>
