@@ -20,8 +20,10 @@ ssh_client = paramiko.SSHClient()
 # # do this if you trust the remote machine
 ssh_client.set_missing_host_key_policy( paramiko.AutoAddPolicy() )
 
+# # client IP
+IP_client = '192.168.2.130' 
 try:
-    ssh_client.connect( '192.168.1.226',
+    ssh_client.connect( IP_client,  # hackme for new install
                                 username = 'listener',
                                 password = 'rt5100' )
 except paramiko.SSHException:
