@@ -3529,7 +3529,11 @@ se configure l'adress ip du raspberry. Mettre en static
 \label{sec:dyndns}
 Il vaut mieux mettre tous les PC en static inet address
 la regle de nat est :
-
+Protocol: TCP+UDP
+External port: 443
+Internal IP address: 192.168.2.110 (ip du serveur ODOO)
+Internal port (optional): 0-65535 on laisse vide.
+ 
 
 
 \end{document}
