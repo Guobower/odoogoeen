@@ -6,7 +6,7 @@ import re, os
 import paramiko
 import logging
 
-_logger = logging.getLogger( __name__ )
+_logger = logging.getLogger(__name__)
 
 # log path to file with datas
 # on the remote host
@@ -18,15 +18,22 @@ log_path = '/home/pi/tmp.log'  # hackme
 ssh_client = paramiko.SSHClient()
 # # Autoaccept unknown inbound host keys
 # # do this if you trust the remote machine
-ssh_client.set_missing_host_key_policy( paramiko.AutoAddPolicy() )
+ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
 
 # # client IP
-IP_client = '192.168.2.130' 
+IP_client = '192.168.2.130'
 try:
 
-    ssh_client.connect( IP_client,  # hackme for new install
+    ssh_client.connect(IP_client,  # hackme for new install
                                 username = 'listener',
-                                password = 'rt5100' )
+                                password = 'rt5100')
+
+#===============================================================================
+# on ODOO server it should be
+# ssh_client.connect('192.168.2.130',  # hackme
+#                                  username = 'pi',
+#                                  password = 'rt5100')
+#===============================================================================
 
 except paramiko.SSHException:
     print "connection failed"
@@ -86,20 +93,20 @@ cuttingDict = {
                regexVA:cuttingVA,
                   }
 
-def zero2none( val ):
+def zero2none(val):
     """Set val to None if val is 0.00, + 0.00, - 0.00
     """
-    _logger.info( 'in zero2none' )
+    _logger.info('in zero2none')
 
     rx = '[1-9]|[a-zA-Z]'
-    if not re.search( rx, val, flags = 0 ):  # si je n'ai que des zero alors set val to none
+    if not re.search(rx, val, flags = 0):  # si je n'ai que des zero alors set val to none
         val = None
 
-    _logger.info( 'return val : %s', val )
+    _logger.info('return val : %s', val)
 
     return val
 
-def trimzero( val ):
+def trimzero(val):
     """Trim zero value if there is one at the 2nd decimal
     needed if there is a selection fields with no zero at the 2nd decimal
     in Odoo
@@ -109,17 +116,17 @@ def trimzero( val ):
     example: '+ 2.20' return '+ 2.2'
     example: '100' return '100'
     """
-    _logger.info( 'in trimzero' )
+    _logger.info('in trimzero')
     res = val
-    _logger.info( 'val:%s', val )
+    _logger.info('val:%s', val)
     regex = r'\.\d0'
-    if re.search( regex, val, flags = 0 ):
+    if re.search(regex, val, flags = 0):
         if val[-1] == '0':
             res = val[:-1]
-    _logger.info( 'return res: %s', res )
+    _logger.info('return res: %s', res)
     return res
 
-def trimspace_regex( val ):
+def trimspace_regex(val):
     """Trim the space after sign +/- if there is one in val
     val : string from rt-5100
     eg val = '+ 2,00'  --> return '+2.00'
@@ -127,15 +134,15 @@ def trimspace_regex( val ):
 
     return the trimed string
     """
-    _logger.info( 'in trimspace_regex' )
+    _logger.info('in trimspace_regex')
 
     regex = r'^[+-] '  # don't forget the space at the end of the regex
-    if re.search( regex, val, flags = 0 ):
+    if re.search(regex, val, flags = 0):
         val = val[:1] + val[2:]
-    _logger.info( 'return val:%s', val )
+    _logger.info('return val:%s', val)
     return val
 
-def trim_timestamp( line, lenght = 28 ):
+def trim_timestamp(line, lenght = 28):
     """Trim the timestamp
     
     because I don't need it and the timestamp is always the same lengh 
@@ -149,7 +156,7 @@ def trim_timestamp( line, lenght = 28 ):
     res = line[lenght:]
     return res
 
-def cutting( line, coupures ):
+def cutting(line, coupures):
     """ Cut the line into a list fields of datas
     
     line : str from the datas file fetched from rt5100
@@ -161,11 +168,11 @@ def cutting( line, coupures ):
     the item can't be used like that in odoo database they must be formated.
     You can use the return of this function in list comprehénsion to format the items
     """
-    morceaux = [line[i:j] for i, j in zip( [0] + coupures, coupures + [None] )]  # on coupe les lignes en morceaux qui isolent les champs.
+    morceaux = [line[i:j] for i, j in zip([0] + coupures, coupures + [None])]  # on coupe les lignes en morceaux qui isolent les champs.
     values = morceaux[1:-1]  # on élimine le champ date et on récupere que les champs datas.SCA dans une liste
     return values
 
-def converttuple( val ):
+def converttuple(val):
     """"
     @arg : val is a list
     eg ['add_od', '+3.75']
@@ -178,12 +185,12 @@ def converttuple( val ):
     """
 
     val1 = []
-    val1.append( val )
-    res = [tuple( i ) for i in val1]
+    val1.append(val)
+    res = [tuple(i) for i in val1]
     return res
 
 
-def getandformat_values( rxlist = [regexSCA_FAR, regexSCA_NEAR, regexADD, regexVA] ):
+def getandformat_values(rxlist = [regexSCA_FAR, regexSCA_NEAR, regexADD, regexVA]):
     """ Get the values from rt5100 log file  and format them 
     
     rxlist : list of regex from specification of datas RT5100
@@ -201,90 +208,90 @@ def getandformat_values( rxlist = [regexSCA_FAR, regexSCA_NEAR, regexADD, regexV
     and items of the list converted to tuple for built in method dict.
     map2odoofields method and converttotuple will do that  
     """
-    _logger.info( 'in getandformat_values' )
-    sftp_file = sftp_client.open( log_path )
+    _logger.info('in getandformat_values')
+    sftp_file = sftp_client.open(log_path)
     res = {}
     val1 = []
     first = []
-    for line in reversed( sftp_file.readlines() ):  # read each line starting by the end
-        if line.find( 'NIDEK' ) == -1:  # Tant que je ne trouve pas le motif 'NIDEK' je traite la ligne.
-            _logger.info( 'brut line:%s', line )
+    for line in reversed(sftp_file.readlines()):  # read each line starting by the end
+        if line.find('NIDEK') == -1:  # Tant que je ne trouve pas le motif 'NIDEK' je traite la ligne.
+            _logger.info('brut line:%s', line)
 
-            if line.find( '@RT' ) != -1:  # la ligne est un @RT.
-                _logger.info( 'find an @RT' )
-                _logger.info( 'res:%s', res )
-                _logger.info( 'val1:%s', val1 )
+            if line.find('@RT') != -1:  # la ligne est un @RT.
+                _logger.info('find an @RT')
+                _logger.info('res:%s', res)
+                _logger.info('val1:%s', val1)
                 first = [item[0][0] for item in val1]
-                mystring = "".join( first )
-                _logger.info( 'mystring:%s', mystring )
-                _logger.info( 'type mystring:%s', type( mystring ) )
+                mystring = "".join(first)
+                _logger.info('mystring:%s', mystring)
+                _logger.info('type mystring:%s', type(mystring))
 
                 # je test l'existence de M et W. M,W is for 'UCVA'
-                if mystring.find( 'MW' ) != -1:
+                if mystring.find('MW') != -1:
                     va_type = 'UCVA'
                     first = []
                     res[va_type] = val1
-                    _logger.info( 'set val to an empty list' )
+                    _logger.info('set val to an empty list')
                     val1 = []
-                    _logger.info( 'res:%s', res )
+                    _logger.info('res:%s', res)
 #              # je teste si mystring est upper and not 'M' or 'W'
-                if mystring.isupper()and mystring.find( 'MW' ) == -1:  # mystring.find('MW') == -1 il n'y a pas MW dans la string
+                if mystring.isupper()and mystring.find('MW') == -1:  # mystring.find('MW') == -1 il n'y a pas MW dans la string
                     va_type = 'Rx'
                     first = []
-                    _logger.info( 'va_type:%s', va_type )
-                    _logger.info( 'val1:%s', val1 )
+                    _logger.info('va_type:%s', va_type)
+                    _logger.info('val1:%s', val1)
                     res[va_type] = val1
-                    _logger.info( 'set val to an empty list' )
+                    _logger.info('set val to an empty list')
                     val1 = []
-                    _logger.info( 'res:%s', res )
+                    _logger.info('res:%s', res)
 
-                if mystring.islower() and mystring.find( 'MW' ) == -1:
+                if mystring.islower() and mystring.find('MW') == -1:
                     va_type = 'BCVA'
-                    _logger.info( 'va_type:%s', va_type )
+                    _logger.info('va_type:%s', va_type)
                     res[va_type] = val1
-                    _logger.info( 'set val to an empty list' )
+                    _logger.info('set val to an empty list')
                     val1 = []
-                    _logger.info( 'res:%s', res )
+                    _logger.info('res:%s', res)
 
 
-            if line.find( '@RM' ) != -1:  # sous @RM c'est toujours  'va_type' = 'AR'
-                _logger.info( 'find an @RM' )
+            if line.find('@RM') != -1:  # sous @RM c'est toujours  'va_type' = 'AR'
+                _logger.info('find an @RM')
                 va_type = 'AR'
                 res[va_type] = val1
-                _logger.info( 'set val to an empty list' )
+                _logger.info('set val to an empty list')
                 val1 = []
-                _logger.info( 'res:%s', res )
+                _logger.info('res:%s', res)
                 val1 = []
 
-            if line.find( '@LM' ) != -1:  # les lignes sous '@LM' c'est toujours 'CVA'
-                _logger.info( 'find an @LM' )
+            if line.find('@LM') != -1:  # les lignes sous '@LM' c'est toujours 'CVA'
+                _logger.info('find an @LM')
                 va_type = 'CVA'
                 res[va_type] = val1
-                _logger.info( 'set val to an empty list' )
+                _logger.info('set val to an empty list')
                 val1 = []
-                _logger.info( 'res:%s', res )
+                _logger.info('res:%s', res)
 
-            line = trim_timestamp( line )  # delete the timestamp
-            _logger.info( 'no timestamp line: %s', line )
+            line = trim_timestamp(line)  # delete the timestamp
+            _logger.info('no timestamp line: %s', line)
             for rx in rxlist:  # boucle on rxlist to cut the line at the right place.
-                if re.search( rx, line, flags = 0 ):
-                    values = cutting( line, cuttingDict[rx] )
-                    _logger.info( 'cutting values: %s', values )
+                if re.search(rx, line, flags = 0):
+                    values = cutting(line, cuttingDict[rx])
+                    _logger.info('cutting values: %s', values)
                     values = [val.strip() for val in values]
-                    values = [trimspace_regex( val ) for val in values]
-                    _logger.info( 'formated trimspaced values: %s', values )
-                    if re.search( rxlist[0], line, flags = 0 ):  # don't trimzero ADD values.
-                        values = [trimzero( val ) for val in values]
-                        _logger.info( 'trimzero: %s', values )
-                    values = [zero2none( val ) for val in values]
-                    _logger.info( 'zero2none: %s', values )
-                    val1.append( values )
-                    _logger.info( '**val1**: %s', val1 )
-            _logger.info( '---END OF IF---' )
+                    values = [trimspace_regex(val) for val in values]
+                    _logger.info('formated trimspaced values: %s', values)
+                    if re.search(rxlist[0], line, flags = 0):  # don't trimzero ADD values.
+                        values = [trimzero(val) for val in values]
+                        _logger.info('trimzero: %s', values)
+                    values = [zero2none(val) for val in values]
+                    _logger.info('zero2none: %s', values)
+                    val1.append(values)
+                    _logger.info('**val1**: %s', val1)
+            _logger.info('---END OF IF---')
         else: break
-    _logger.info( 'getandformatvalues method return:%s', res )
+    _logger.info('getandformatvalues method return:%s', res)
     sftp_file.close()
-    _logger.info( 'closing the sftp file connection' )
+    _logger.info('closing the sftp file connection')
     #===========================================================================
     # for k, v in res.iteritems():
     #     print k, v
@@ -293,7 +300,7 @@ def getandformat_values( rxlist = [regexSCA_FAR, regexSCA_NEAR, regexADD, regexV
 
 
 
-def makeSCAdict( val ):
+def makeSCAdict(val):
     """make a SCA dict
     
     @arg: val is a list of values 
@@ -311,24 +318,24 @@ def makeSCAdict( val ):
 
     res = []
 
-    print 'val is:{}'.format( val )
+    print 'val is:{}'.format(val)
 
     if val[0] == 'sca_or':
-        res = zip( sca_or, val[1:] )
+        res = zip(sca_or, val[1:])
     elif val[0] == 'sca_os':
-        res = zip( sca_os, val[1:] )
+        res = zip(sca_os, val[1:])
     elif  val[0] == 'sca_near_or':
-        res = zip( sca_near_or, val[1:] )
+        res = zip(sca_near_or, val[1:])
     elif  val[0] == 'sca_near_os':
-        res = zip( sca_near_os, val[1:] )
+        res = zip(sca_near_os, val[1:])
 
     else:
-        res = converttuple( val )
+        res = converttuple(val)
 
-    _logger.info( 'makeSCAdict return res;%s', res )
+    _logger.info('makeSCAdict return res;%s', res)
     return res
 
-def convert_cylindrical_notation( sph, cyl, ax ):
+def convert_cylindrical_notation(sph, cyl, ax):
     """
     Thanks to Philipp Klaus
     This function converts between
@@ -338,15 +345,15 @@ def convert_cylindrical_notation( sph, cyl, ax ):
     """
     sph_prime = sph + cyl
     cyl_prime = -cyl
-    ax_prime = ( ax + 90 ) % 180
-    return ( sph_prime, cyl_prime, ax_prime )
+    ax_prime = (ax + 90) % 180
+    return (sph_prime, cyl_prime, ax_prime)
 
-def compute_near_sph( sph, add ):
+def compute_near_sph(sph, add):
     """compute sph for near vision"""
     sph_near = sph + add
     return sph_near
 
-def map2fields( raw ):
+def map2fields(raw):
     """Map datas to ODOO field names
     
     @arg: raw dict of  datas return by getandformat_values method
@@ -371,25 +378,25 @@ def map2fields( raw ):
     list_int = []
 
     # use a correspondance table between model fieds and rt5100 character coding
-    va_or = re.compile( '(VR|WR|vR)' )
-    va_ol = re.compile( '(VL|WL|vL)' )
+    va_or = re.compile('(VR|WR|vR)')
+    va_ol = re.compile('(VL|WL|vL)')
 
-    va_or_extended = re.compile( '(MR|UR|uR)' )
-    va_ol_extended = re.compile( '(ML|UL|uL)' )
+    va_or_extended = re.compile('(MR|UR|uR)')
+    va_ol_extended = re.compile('(ML|UL|uL)')
 
-    va_bin = re.compile( '(WB|vB|VB)' )
-    va_bin_extended = re.compile( '(MB|UB|uB)' )
+    va_bin = re.compile('(WB|vB|VB)')
+    va_bin_extended = re.compile('(MB|UB|uB)')
 
-    add_od = re.compile( '(aR|AR)' )
-    add_os = re.compile( '(aL|AL)' )
+    add_od = re.compile('(aR|AR)')
+    add_os = re.compile('(aL|AL)')
 
-    sca_or = re.compile( '(^R|OR|fR|FR)' )
-    sca_os = re.compile( '(^L|OL|fL|FL)' )
+    sca_or = re.compile('(^R|OR|fR|FR)')
+    sca_os = re.compile('(^L|OL|fL|FL)')
 
     # those code below are never send by the RT5100 Nidek
     # couldn't find out why
-    sca_near_or = re.compile( '(nr|Nr)' )
-    sca_near_os = re.compile( '(nl|Nl)' )
+    sca_near_or = re.compile('(nr|Nr)')
+    sca_near_os = re.compile('(nl|Nl)')
 
     mapregex = {
             va_or:'va_or',
@@ -413,21 +420,21 @@ def map2fields( raw ):
     # substitute characters coding rt5100 by model fields name
     for key in raw.keys():  # j'itere sur chaque key de raw datas. J'obtiens une liste de liste
         list_int = []
-        _logger.info( "key of raw is:%s", key )
+        _logger.info("key of raw is:%s", key)
         for item in raw[key]:  # J'itere sur chaque item de la liste. item contient les datas.
             for k, v in mapregex.iteritems():
-                item[0] = re.sub( k, v, item[0] )  # je substitue le codage du RT5100 par les fields name
-            list_int.append( item )
+                item[0] = re.sub(k, v, item[0])  # je substitue le codage du RT5100 par les fields name
+            list_int.append(item)
         res[key] = list_int
-    _logger.info( "map2fields return:%s", res )
+    _logger.info("map2fields return:%s", res)
     return res
 
 def map2odoofields():
     datas = getandformat_values()
-    datas = map2fields( datas )
+    datas = map2fields(datas)
     for key in datas.keys():
-        _logger.info( 'key, datas[key]:%s, %s' % ( key, datas[key] ) )
-        vals = [makeSCAdict( val ) for val in datas[key]]
+        _logger.info('key, datas[key]:%s, %s' % (key, datas[key]))
+        vals = [makeSCAdict(val) for val in datas[key]]
         datas[key] = vals
 
     return datas
@@ -435,5 +442,5 @@ def map2odoofields():
 
 if __name__ == '__main__':
 
-    result = convert_cylindrical_notation( 16, -2, 120 )
+    result = convert_cylindrical_notation(16, -2, 120)
     print result
