@@ -53,17 +53,29 @@ class crm_meeting(orm.Model):
                                    'meeting_id':record.id,
                                    }
                 _logger.info('val_measurement:%s', val_measurement)
-                _logger.info('LOOK AT :finalDict[va_type]:%s', finalDict[va_type])
+                _logger.info('finalDict[va_type]:%s', finalDict[va_type])
 
                 for i in finalDict[va_type]:
-                    _logger.info('LOOK AT i:%s', i)
+                    _logger.info('i:%s', i)
                     val_measurement.update(i)
                     _logger.info('val_measurement:%s', val_measurement)
-                _logger.info('val_measurement before near vision values:%s', val_measurement)
+                
+                
+                # fix axis set to None for axix = 0°
+                    # set axis back to 0 when cyl is not None
+                    #OR
+                    _logger.info('In the fix for OR')           
+                    if val_measurement.get('cyl_od') is not None and val_measurement.get('axis_od') is None:
+                        val_measurement.update({'axis_od':'0'})
+                    #OS
+                    _logger.info('In the fix for OS')
+                    if val_measurement.get('cyl_os') is not None and val_measurement.get('axis_os') is None:
+                        val_measurement.update({'axis_os':'0'})
 
                 # compute the field sph_near_vision, cyl_near_vision, axis_near_vision
                 # and add those new values in FinalDict
                 # for va_type == Rx
+                _logger.info('val_measurement before near vision values:%s', val_measurement)
                 if va_type == 'Rx':
                     _logger.info('va_type:%s', va_type)
                     if val_measurement.get('cyl_od') is not None:
@@ -75,14 +87,7 @@ class crm_meeting(orm.Model):
                     if val_measurement.get('axis_os') is not None:
                         val_measurement.update({'axis_near_os':val_measurement.get('axis_os')})
                     
-                    # fix axis set to None for axix = 0°
-                    # set axis back to 0 when cyl is not None
-                    #OR
-                    if val_measurement.get('cyl_od') is not None and val_measurement.get('axis_od') is None:
-                        val_measurement.update({'axis_od':'0'})
-                    #OS
-                    if val_measurement.get('cyl_os') is not None and val_measurement.get('axis_os') is None:
-                        val_measurement.update({'axis_os':'0'})
+                    
                         
                     # compute sph_near
                     # OR
