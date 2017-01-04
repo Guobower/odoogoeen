@@ -2439,7 +2439,10 @@ Le mieux c'est d'aller avec gwenview sur oph\_openerp/openerp-web/addons/web/sta
 \section{Report Aeroo}
 \label{sec:aeroo_report}
 
-
+\subsection{Rajout d'un champ dans le modele}
+Insert -> Fields -> Others - Functions - Input Field 
+dans reference le code du champ
+ 
 \subsection{Comment faire pour que le report aeroo créé soit enregistré en attachment?}
 \label{sec:report2attachment}
 Settings - Technical - Aeroo - Report - Selection du report qui t'intéresse, dans sa form view Attachments Save as Attachment Prefix mettre : (object.state in ('open','paid')) and ('AT'+(object.number or '').replace('/','')+'.pdf'). J'ai pas bien compris mais bon. En plus il y le +'.pdf' mais si c'est pas un pdf on fait comment? Donc TODO.

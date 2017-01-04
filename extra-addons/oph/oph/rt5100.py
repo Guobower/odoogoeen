@@ -23,13 +23,13 @@ ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
 # # client IP
 # hackme with the IP of the raspberry
 # at work
-IP_client='192.168.1.100'
-#IP_client = '192.168.2.130'
+# IP_client='192.168.1.100'
+IP_client = '192.168.2.130'
 
 try:
 
     ssh_client.connect(IP_client,  # hackme for new install
-                                username = 'listener',
+                                username = 'pi',
                                 password = 'rt5100')
 
 #===============================================================================
