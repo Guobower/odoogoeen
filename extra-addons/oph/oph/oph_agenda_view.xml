@@ -308,7 +308,7 @@
 
         <!-- TREE VIEW FOR CRM MEETING (=OPH AGENDA) -->
         <record model="ir.ui.view" id="agenda_oph_tree_view_id1">
-            <field name="name">oph.agenda.form.view</field>
+            <field name="name">oph.agenda.tree.view</field>
             <field name="model">crm.meeting</field>
             <field name="inherit_id" ref="base_calendar.view_crm_meeting_tree"/>
             <field name="arch" type="xml">

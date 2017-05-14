@@ -30,8 +30,8 @@
                     <notebook colspan="4">
                         <page string="Bloc Agenda Lines">
                             <field name="line_ids">
-                                <tree string="Bloc Agenda Line" editable="bottom" colors="black:state=='close';blue:state=='confirm';grey:state in ('cancel','no_show');red:state in ('open','draft')">
-                                    <!-- editable="bottom" ne marche pas bien j'enleve -->
+                                <tree string="Bloc Agenda Line" editable="top" colors="black:state=='close';blue:state=='confirm';grey:state in ('cancel','no_show');red:state in ('open','draft')">
+                                    <!-- editable="bottom" pour ne pas avoir l'affichage de la bloc agenda line en form -->
                                     <field name="state" readonly="1"/>
                                     <field name="sequence"/>
                                     <field name="wd"/>

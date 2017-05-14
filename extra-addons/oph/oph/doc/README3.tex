@@ -3456,11 +3456,17 @@ Dans un fichier XML on va mettre les choses suivantes:
 
 \subsection{Email to bloc operatoire}
 \label{sec:emailbloc}
+connection en admin (peut etre ca marche en 'lfs'?)
 
-Technical -> Automated action -  je trouve le mail pour le chef de bloc. 
 Technical  -> Actions -> Server Actions je trouve le mail pour le bloc.
 
-
+Technical -> Automated action -  je trouve le mail pour le chef de bloc. 
+'Rule Name': ce que l'on veut
+'Related document model': oph.bloc.agenda
+onglet'condition': aucune
+onglet 'Actions':
+'set responsable': vide 'add followers': vide
+'servers actions to run' : add les actions définis dans 'Technical / Actions / server Action'
 
 \section{Sauvegarde de la base de donnée}
 \label{sec:save_db}
