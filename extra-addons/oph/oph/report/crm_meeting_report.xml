@@ -46,7 +46,7 @@
             <field name="in_format">oo-odt</field>
             <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
             <field name="styles_mode">specified</field>
-            <field name="stylesheet_id" ref="stt_ordo_id"/>
+            <field name="stylesheet_id" ref="stt_courrier1_smallfont_id"/>
             <field name="attachment">'Prescription'+'_'+object.partner_id.fullname+'_'+object.date+'.odt'</field>
         </record>
         <!-- button -->
@@ -74,7 +74,7 @@
             <field name="in_format">oo-odt</field>
             <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
             <field name="styles_mode">specified</field>
-            <field name="stylesheet_id" ref="stt_ordo_id"/>
+            <field name="stylesheet_id" ref="stt_courrier1_smallfont_id"/>
             <field name="attachment">object.partner_id.fullname+'_'+'Rx'+'_'+object.date+'.odt'</field>
         </record>
         <!-- button -->
@@ -102,7 +102,7 @@
             <field name="in_format">oo-odt</field>
             <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
             <field name="styles_mode">specified</field>
-            <field name="stylesheet_id" ref="stt_ordo_id"/>
+            <field name="stylesheet_id" ref="stt_courrier1_smallfont_id"/>
             <field name="attachment">object.partner_id.fullname+'_'+'Cx'+'_'+object.date+'.odt'</field>
         </record>
         <!-- button -->
@@ -131,7 +131,7 @@
             <field name="in_format">oo-odt</field>
             <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
             <field name="styles_mode">specified</field>
-            <field name="stylesheet_id" ref="stt_ordo_id"/>
+            <field name="stylesheet_id" ref="stt_courrier1_smallfont_id"/>
             <field name="attachment">'Medication'+'_'+object.partner_id.fullname+'_'+object.date+'.odt'</field>
         </record>
         <!-- button -->
@@ -144,115 +144,7 @@
             <field name="value" eval="'ir.actions.report.xml,' + str(ref('oph.medication_report_id'))"/>
         </record>
         
-         <!-- 6 ATENDENCE CERTIFICATE -->
-        <record model="ir.actions.report.xml" id="certif_presence_id">
-            <field name="name">Certificat Presence</field>
-            <field name="model">crm.meeting</field>
-            <field name="report_name">Certificat.Presence</field>
-            <field name="report_type">aeroo</field>
-            <field name="auto">TRUE</field>
-            <field name="report_rml">oph/report/odt/oph_meeting/Certificat_Presence.odt</field>
-            <field name="parser_state">loc</field>
-            <field name="parser_loc">oph/report/parser.py</field>
-            <field name="tml_source">file</field>
-            <field name="in_format">oo-odt</field>
-            <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
-            <field name="styles_mode">specified</field>
-            <field name="stylesheet_id" ref="stt_ordo_id"/>
-            <field name="attachment">'Certificat presence'+'_'+object.partner_id.fullname+'_'+object.date+'.odt'</field>
-        </record>
-        <!-- button -->
-        <record model="ir.values" id="value_certif_presence_id">
-            <field name="name">Certificat.Presence</field>
-            <field name="key">action</field>
-            <field name="key2">client_print_multi</field>
-            <field name="model">crm.meeting</field>
-            <field name="object">TRUE</field>
-            <field name="value" eval="'ir.actions.report.xml,' + str(ref('oph.certif_presence_id'))"/>
-        </record>
-        
-        <!-- 5 DILATATION CERTIFICATE -->
-        <record model="ir.actions.report.xml" id="certif_dil_id">
-            <field name="name">Certificat Dilatation</field>
-            <field name="model">crm.meeting</field>
-            <field name="report_name">Certificat Dilatation</field>
-            <field name="report_type">aeroo</field>
-            <field name="auto">TRUE</field>
-            <field name="report_rml">oph/report/odt/oph_meeting/Certificat_Dilatation.odt</field>
-            <field name="parser_state">loc</field>
-            <field name="parser_loc">oph/report/parser.py</field>
-            <field name="tml_source">file</field>
-            <field name="in_format">oo-odt</field>
-            <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
-            <field name="styles_mode">specified</field>
-            <field name="stylesheet_id" ref="stt_ordo_id"/>
-            <field name="attachment">'Certificat dilatation'+'_'+object.partner_id.fullname+'_'+object.date+'.odt'</field>
-        </record>
-        <!-- button -->
-        <record model="ir.values" id="value_certif_dil_id">
-            <field name="name">Certificat Presence</field>
-            <field name="key">action</field>
-            <field name="key2">client_print_multi</field>
-            <field name="model">crm.meeting</field>
-            <field name="object">TRUE</field>
-            <field name="value" eval="'ir.actions.report.xml,' + str(ref('oph.certif_dil_id'))"/>
-        </record>
-        
-        <!-- 6 MEMO RDV -->
-        <record model="ir.actions.report.xml" id="memo_rdv_id">
-            <field name="name">Memo de rendez vous</field>
-            <field name="model">crm.meeting</field>
-            <field name="report_name">Memo RDV</field>
-            <field name="report_type">aeroo</field>
-            <field name="auto">TRUE</field>
-            <field name="report_rml">oph/report/odt/oph_meeting/Memo_RDV.odt</field>
-            <field name="parser_state">loc</field>
-            <field name="parser_loc">oph/report/parser.py</field>
-            <field name="tml_source">file</field>
-            <field name="in_format">oo-odt</field>
-            <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
-            <field name="styles_mode">specified</field>
-            <field name="stylesheet_id" ref="stt_ordo_id"/>
-            <field name="attachment">'Memo'+'_'+object.partner_id.fullname+'_'+object.date+'.odt'</field>
-        </record>
-        <!-- button -->
-        <record model="ir.values" id="value_memo_rdv_id">
-            <field name="name">Memo RDV</field>
-            <field name="key">action</field>
-            <field name="key2">client_print_multi</field>
-            <field name="model">crm.meeting</field>
-            <field name="object">TRUE</field>
-            <field name="value" eval="'ir.actions.report.xml,' + str(ref('oph.memo_rdv_id'))"/>
-        </record>
-        
-        <!-- 7 MEMO RDV PLUS-->
-        <record model="ir.actions.report.xml" id="memo_rdv_plus_id">
-            <field name="name">Memo de rendez vous Plus</field>
-            <field name="model">crm.meeting</field>
-            <field name="report_name">Memo RDV Plus</field>
-            <field name="report_type">aeroo</field>
-            <field name="auto">TRUE</field>
-            <field name="report_rml">oph/report/odt/oph_meeting/Memo_RDV_Plus.odt</field>
-            <field name="parser_state">loc</field>
-            <field name="parser_loc">oph/report/parser.py</field>
-            <field name="tml_source">file</field>
-            <field name="in_format">oo-odt</field>
-            <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
-            <field name="styles_mode">specified</field>
-            <field name="stylesheet_id" ref="stt_ordo_id"/>
-            <field name="attachment">'Memo'+'_'+object.partner_id.fullname+'_'+object.date+'.odt'</field>
-        </record>
-        <!-- button -->
-        <record model="ir.values" id="value_memo_rdv_plus_id">
-            <field name="name">Memo RDV Plus</field>
-            <field name="key">action</field>
-            <field name="key2">client_print_multi</field>
-            <field name="model">crm.meeting</field>
-            <field name="object">TRUE</field>
-            <field name="value" eval="'ir.actions.report.xml,' + str(ref('oph.memo_rdv_plus_id'))"/>
-        </record>
-        
-        <!-- 8 MEDICATION REPORT LM-->
+        <!-- 6 MEDICATION REPORT LM-->
         <record model="ir.actions.report.xml" id="medication_report_lm_id">
             <field name="name">Medication Report LM</field>
             <field name="type">ir.actions.report.xml</field>
@@ -268,7 +160,7 @@
             <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
             <field name="styles_mode">specified</field>
             <!-->
-            <field name="stylesheet_id" ref="stt_ordo_id"/>
+            <field name="stylesheet_id" ref="stt_courrier1_smallfont_id"/>
             <-->
             <field name="attachment">'Medication'+'_'+object.partner_id.fullname+'_'+object.date+'.odt'</field>
         </record>
@@ -281,7 +173,117 @@
             <field name="object">TRUE</field>
             <field name="value" eval="'ir.actions.report.xml,' + str(ref('oph.medication_report_lm_id'))"/>
         </record>
-
+        
+        
+         <!-- 7 ATENDENCE CERTIFICATE -->
+        <record model="ir.actions.report.xml" id="certif_presence_id">
+            <field name="name">Certificat Presence</field>
+            <field name="model">crm.meeting</field>
+            <field name="report_name">Certificat.Presence</field>
+            <field name="report_type">aeroo</field>
+            <field name="auto">TRUE</field>
+            <field name="report_rml">oph/report/odt/oph_meeting/Certificat_Presence.odt</field>
+            <field name="parser_state">loc</field>
+            <field name="parser_loc">oph/report/parser.py</field>
+            <field name="tml_source">file</field>
+            <field name="in_format">oo-odt</field>
+            <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
+            <field name="styles_mode">specified</field>
+            <field name="stylesheet_id" ref="stt_courrier1_smallfont_id"/>
+            <field name="attachment">'Certificat presence'+'_'+object.partner_id.fullname+'_'+object.date+'.odt'</field>
+        </record>
+        <!-- button -->
+        <record model="ir.values" id="value_certif_presence_id">
+            <field name="name">Certificat.Presence</field>
+            <field name="key">action</field>
+            <field name="key2">client_print_multi</field>
+            <field name="model">crm.meeting</field>
+            <field name="object">TRUE</field>
+            <field name="value" eval="'ir.actions.report.xml,' + str(ref('oph.certif_presence_id'))"/>
+        </record>
+        
+        <!-- 8 DILATATION CERTIFICATE -->
+        <record model="ir.actions.report.xml" id="certif_dil_id">
+            <field name="name">Certificat Dilatation</field>
+            <field name="model">crm.meeting</field>
+            <field name="report_name">Certificat Dilatation</field>
+            <field name="report_type">aeroo</field>
+            <field name="auto">TRUE</field>
+            <field name="report_rml">oph/report/odt/oph_meeting/Certificat_Dilatation.odt</field>
+            <field name="parser_state">loc</field>
+            <field name="parser_loc">oph/report/parser.py</field>
+            <field name="tml_source">file</field>
+            <field name="in_format">oo-odt</field>
+            <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
+            <field name="styles_mode">specified</field>
+            <field name="stylesheet_id" ref="stt_courrier1_smallfont_id"/>
+            <field name="attachment">'Certificat dilatation'+'_'+object.partner_id.fullname+'_'+object.date+'.odt'</field>
+        </record>
+        <!-- button -->
+        <record model="ir.values" id="value_certif_dil_id">
+            <field name="name">Certificat Presence</field>
+            <field name="key">action</field>
+            <field name="key2">client_print_multi</field>
+            <field name="model">crm.meeting</field>
+            <field name="object">TRUE</field>
+            <field name="value" eval="'ir.actions.report.xml,' + str(ref('oph.certif_dil_id'))"/>
+        </record>
+        
+        <!-- 9 MEMO RDV -->
+        <record model="ir.actions.report.xml" id="memo_rdv_id">
+            <field name="name">Memo de rendez vous</field>
+            <field name="model">crm.meeting</field>
+            <field name="report_name">Memo RDV</field>
+            <field name="report_type">aeroo</field>
+            <field name="auto">TRUE</field>
+            <field name="report_rml">oph/report/odt/oph_meeting/Memo_RDV.odt</field>
+            <field name="parser_state">loc</field>
+            <field name="parser_loc">oph/report/parser.py</field>
+            <field name="tml_source">file</field>
+            <field name="in_format">oo-odt</field>
+            <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
+            <field name="styles_mode">specified</field>
+            <field name="stylesheet_id" ref="stt_courrier1_smallfont_id"/>
+            <field name="attachment">'Memo'+'_'+object.partner_id.fullname+'_'+object.date+'.odt'</field>
+        </record>
+        <!-- button -->
+        <record model="ir.values" id="value_memo_rdv_id">
+            <field name="name">Memo RDV</field>
+            <field name="key">action</field>
+            <field name="key2">client_print_multi</field>
+            <field name="model">crm.meeting</field>
+            <field name="object">TRUE</field>
+            <field name="value" eval="'ir.actions.report.xml,' + str(ref('oph.memo_rdv_id'))"/>
+        </record>
+        
+        <!-- 10 MEMO RDV PLUS-->
+        <record model="ir.actions.report.xml" id="memo_rdv_plus_id">
+            <field name="name">Memo de rendez vous Plus</field>
+            <field name="model">crm.meeting</field>
+            <field name="report_name">Memo RDV Plus</field>
+            <field name="report_type">aeroo</field>
+            <field name="auto">TRUE</field>
+            <field name="report_rml">oph/report/odt/oph_meeting/Memo_RDV_Plus.odt</field>
+            <field name="parser_state">loc</field>
+            <field name="parser_loc">oph/report/parser.py</field>
+            <field name="tml_source">file</field>
+            <field name="in_format">oo-odt</field>
+            <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
+            <field name="styles_mode">specified</field>
+            <field name="stylesheet_id" ref="stt_courrier1_smallfont_id"/>
+            <field name="attachment">'Memo'+'_'+object.partner_id.fullname+'_'+object.date+'.odt'</field>
+        </record>
+        <!-- button -->
+        <record model="ir.values" id="value_memo_rdv_plus_id">
+            <field name="name">Memo RDV Plus</field>
+            <field name="key">action</field>
+            <field name="key2">client_print_multi</field>
+            <field name="model">crm.meeting</field>
+            <field name="object">TRUE</field>
+            <field name="value" eval="'ir.actions.report.xml,' + str(ref('oph.memo_rdv_plus_id'))"/>
+        </record>
+        
+        
         <!-- END OF PRINT IN CRM_MEETING -->
         
         <!--  PRINT MEMO FROM APPOINTMENT MEMO FACTORY -->
@@ -330,7 +332,7 @@
             <!-- choix de template Mime-type dans configuration-Technical-aero-report-Reports-->
             <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
             <field name="styles_mode">specified</field>
-            <field name="stylesheet_id" ref="stt_ordo_id"/>
+            <field name="stylesheet_id" ref="stt_courrier1_smallfont_id"/>
             <!-- choix du format d'edition/impression -->
             <field name="attachment">'Single'+'_'+object.partner_id.fullname+'_'+object.date+'.odt'</field>
         </record>
@@ -353,7 +355,7 @@
             <!-- choix de template Mime-type dans configuration-Technical-aero-report-Reports-->
             <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
             <field name="styles_mode">specified</field>
-            <field name="stylesheet_id" ref="stt_ordo_id"/>
+            <field name="stylesheet_id" ref="stt_courrier1_smallfont_id"/>
             <!-- choix du format d'edition/impression -->
             <field name="attachment">'Single'+'_'+object.partner_id.fullname+'_'+object.date+'.odt'</field>
         </record>
@@ -376,7 +378,7 @@
             <!-- choix de template Mime-type dans configuration-Technical-aero-report-Reports-->
             <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
             <field name="styles_mode">specified</field>
-            <field name="stylesheet_id" ref="stt_ordo_id"/>
+            <field name="stylesheet_id" ref="stt_courrier1_smallfont_id"/>
             <!-- choix du format d'edition/impression -->
             <field name="attachment">'Multifocal'+'_'+object.partner_id.fullname+'_'+object.date+'.odt'</field>
         </record>
@@ -399,7 +401,7 @@
             <!-- choix de template Mime-type dans configuration-Technical-aero-report-Reports-->
             <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
             <field name="styles_mode">specified</field>
-            <field name="stylesheet_id" ref="stt_ordo_id"/>
+            <field name="stylesheet_id" ref="stt_courrier1_smallfont_id"/>
             <!-- choix du format d'edition/impression -->
             <field name="attachment">'Multifocal'+'_'+object.partner_id.fullname+'_'+object.date+'.odt'</field>
         </record>
@@ -422,7 +424,7 @@
             <!-- choix de template Mime-type dans configuration-Technical-aero-report-Reports-->
             <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
             <field name="styles_mode">specified</field>
-            <field name="stylesheet_id" ref="stt_ordo_id"/>
+            <field name="stylesheet_id" ref="stt_courrier1_smallfont_id"/>
             <!-- choix du format d'edition/impression -->
             <field name="attachment">'Bifocal'+'_'+object.partner_id.fullname+'_'+object.date+'.odt'</field>
         </record>
@@ -446,7 +448,7 @@
             <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
             <!-- choix du format d'edition/impression -->
             <field name="styles_mode">specified</field>
-            <field name="stylesheet_id" ref="stt_ordo_id"/>
+            <field name="stylesheet_id" ref="stt_courrier1_smallfont_id"/>
             <field name="attachment">'Bifocal'+'_'+object.partner_id.fullname+'_'+object.date+'.odt'</field>
         </record>
         <!--  6 - modele Reading glasses -->
@@ -468,7 +470,7 @@
             <!-- choix de template Mime-type dans configuration-Technical-aero-report-Reports-->
             <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
             <field name="styles_mode">specified</field>
-            <field name="stylesheet_id" ref="stt_ordo_id"/>
+            <field name="stylesheet_id" ref="stt_courrier1_smallfont_id"/>
             <field name="attachment">'Reading'+'_'+object.partner_id.fullname+'_'+object.date+'.odt'</field>
         </record>
         <!--  7 - modele modele Multifocal and Sunglasses and Reading glasses -->
@@ -490,7 +492,7 @@
             <!-- choix de template Mime-type dans configuration-Technical-aero-report-Reports-->
             <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
             <field name="styles_mode">specified</field>
-            <field name="stylesheet_id" ref="stt_ordo_id"/>
+            <field name="stylesheet_id" ref="stt_courrier1_smallfont_id"/>
             <field name="attachment">'MultiandReading'+'_'+object.partner_id.fullname+'_'+object.date+'.odt'</field>
         </record>
         <!--  8 - new model Multifocal and Sunglasses and Reading glasses -->
@@ -514,7 +516,7 @@
             <!-- choix de template Mime-type dans configuration-Technical-aero-report-Reports-->
             <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
             <field name="styles_mode">specified</field>
-            <field name="stylesheet_id" ref="stt_ordo_id"/>
+            <field name="stylesheet_id" ref="stt_courrier1_smallfont_id"/>
             <field name="attachment">object.partner_id.fullname+'_'+'Reading'+'_'+object.date+'.odt'</field>
         </record>
 
@@ -539,7 +541,7 @@
             <!-- choix de template Mime-type dans configuration-Technical-aero-report-Reports-->
             <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
             <field name="styles_mode">specified</field>
-            <field name="stylesheet_id" ref="stt_ordo_id"/>
+            <field name="stylesheet_id" ref="stt_courrier1_smallfont_id"/>
             <field name="attachment">'EVASAN'+'_'+object.partner_id.fullname+'_'+object.date+'.odt'</field>
         </record>
         <!-- button -->
