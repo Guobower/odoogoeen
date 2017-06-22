@@ -99,12 +99,9 @@
                             pourquoi ces deux boutons foutent le boxon dans la vue
                             -->
                         <button name="statechange_noshow" states="draft,open,confirm" type="object" string="No Show" class="oe_highlight"/> 
-
                         <button string="LogConsultation" name="%(logconsultation_act)d" type="action" context="{'search_default_partner_id':partner_id}"/>
                         <button string="LogReports" name="%(oph.reporting_action_id)d" type="action" context="{'search_default_partner_id':partner_id}"/>
                         <field name="state" widget="statusbar" statusbar_visible="draft,open,confirm,cancel,close" statusbar_colors='{"draft":"blue","open":"blue","cancel":"red","confirm":"red","close":"blue"}'/>
-                        <!-- la status s'affiche mais pas de changement de couleur -->
-                        
                     </header>
                     <sheet string="Bloc Agenda Line">
                         <group>
