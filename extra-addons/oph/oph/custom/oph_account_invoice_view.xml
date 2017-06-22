@@ -30,6 +30,7 @@
             <field name="inherit_id" ref="account.invoice_form"/>
             <field name="arch" type="xml"> 
                 <data>
+                	
                    
                     <field name="partner_id" position="after">
                         <field name="ref_statement" attrs="{'readonly':[('state','in',('draft','proforma','proforma2','paid','cancelled',))]}"/>

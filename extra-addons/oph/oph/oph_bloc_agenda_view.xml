@@ -99,11 +99,9 @@
                             pourquoi ces deux boutons foutent le boxon dans la vue
                             -->
                         <button name="statechange_noshow" states="draft,open,confirm" type="object" string="No Show" class="oe_highlight"/> 
-
                         <button string="LogConsultation" name="%(logconsultation_act)d" type="action" context="{'search_default_partner_id':partner_id}"/>
+                        <button string="LogReports" name="%(oph.reporting_action_id)d" type="action" context="{'search_default_partner_id':partner_id}"/>
                         <field name="state" widget="statusbar" statusbar_visible="draft,open,confirm,cancel,close" statusbar_colors='{"draft":"blue","open":"blue","cancel":"red","confirm":"red","close":"blue"}'/>
-                        <!-- la status s'affiche mais pas de changement de couleur -->
-                        
                     </header>
                     <sheet string="Bloc Agenda Line">
                         <group>
@@ -266,7 +264,7 @@
             <field name="target">current</field>
         </record>
         
-        <!-- INHERIT CRM MEETING VIEW TO ADD BUTTON LOGBLOCLINE -->
+        <!-- ADD BUTTON LOGBLOCLINE and LOGINVOICES IN CRM MEETING VIEW  -->
         <record model="ir.ui.view" id="crm_meeting_form_w_logblocline_id">
             <field name="name">crm.meeting.w.logblocline</field>
             <field name="model">crm.meeting</field>
@@ -274,12 +272,15 @@
             <field name="arch" type="xml">
                 <data>
                     <xpath expr="//button[@name='%(logconsultation_act)d']" position="after">
-                        <button string="LogBlocLine" name="%(logblocline_action_id)d" type="action" context="{'search_default_partner_id':partner_id}"/>               
+                        <button string="LogBlocLine" name="%(logblocline_action_id)d" type="action" context="{'search_default_partner_id':partner_id}"/>
+                    </xpath>
+                    <xpath expr="//button[@string='Prescription Maker']" position="after">
+                        <button string="LogInvoices" name="%(account.action_invoice_tree)d" type="action" context="{'search_default_partner_id':partner_id}"/>
                     </xpath>
                 </data>        
             </field>    
         </record>
-
+		
         <!-- ADD BUTTON  LOGCONSULTATION AND LOGBLOCLINE IN RES_PARTNER VIEW -->
          <record model="ir.ui.view" id="oph_view_partner_form4">
             <field name="name">oph.partner.form.newbuttons</field>
@@ -293,8 +294,6 @@
                 </data>
             </field>
          </record>
-
-
 
     </data>
 </openerp>
