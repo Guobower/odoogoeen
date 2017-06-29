@@ -2,18 +2,20 @@
 
 Formula prescription - autres options s'affiche dans la tree view de crm.meeting. C'est pas utile.
 
-Mettre en place un bouton dans la form vue de refraction pour délier la copie automatique des données de l'od sur l'og.
+Mettre en place un bouton dans la form vue de refraction pour d��lier la copie automatique des donn��es de l'od sur l'og.
 
 
 Faire un lien entre l'account_invoice et crm.meeting. (one2many)
 
-Pour voir gérer le paiement des factures par lot
+Pour voir g��rer le paiement des factures par lot
+
+bouton logreport dans la vue oph.agenda.line 
 
 Pour le backup:
 1/ faire un baremetal de l'install actuel du serveur. 
-2/ mettre à jour le repository sur cette copie ou sur une copie de la copie.
+2/ mettre �� jour le repository sur cette copie ou sur une copie de la copie.
 3/lancer le script d'update.
-4/supposont que la base de donnée soit morte faire
+4/supposont que la base de donn��e soit morte faire
 dropdb goeen001 la base active.
  pg_restore -C -d postgres goeen.bck.dump
  ou goeen.bck.dump est le dernier dump
