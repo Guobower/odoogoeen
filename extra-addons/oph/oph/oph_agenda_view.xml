@@ -78,6 +78,7 @@
                 <field name="description" position="after">
                     <field name="pricelist"/>
                 </field>
+                <!--  TONOMETRY -->
                 <page string="Invitations" position="after">
                     <page string="Tonometry" attrs="{'invisible':[('state','in',['draft','open','wait','busy'])]}" groups="oph.sec_group_id">
                         <field name="tono_ids" widget="one2many" mode="tree" context="{'measurement_type':'tono'}">
@@ -115,7 +116,7 @@
                             </tree>
                         </field>
                     </page>
-
+					<!-- REFRACTION -->
                     <page string="Refraction" attrs="{'invisible':[('state','in',['draft','open','wait','busy'])]}" groups="oph.sec_group_id">
                         <field name="refraction_ids" widget="one2many" mode="tree" context="{'measurement_type':'ref'}">
                             <tree string="Visual Acuity">

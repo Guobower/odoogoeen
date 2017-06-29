@@ -37,9 +37,8 @@
                                     <field name="wd"/>
                                     <field name="partner_id" domain="[('customer','=',True)]"/>
                                     <field name="start_time"/>
-                                    <field name="duration" widget="float_time" sum="Total"/>
-                                    <!--<field name="duration_procedure"/>-->
                                     <field name="procedure_type_id" widget="selection" on_change="onchange_set_duration(procedure_type_id,dilatation,context)"/>
+                                    <field name="duration" widget="float_time" sum="Total"/>
                                     <field name="dilatation"/>
                                     <field name="gauge_id"/>
                                     <field name="ods"/>
@@ -101,9 +100,9 @@
                         <button name="statechange_noshow" states="draft,open,confirm" type="object" string="No Show" class="oe_highlight"/> 
 
                         <button string="LogConsultation" name="%(logconsultation_act)d" type="action" context="{'search_default_partner_id':partner_id}"/>
+                        <button string="LogReports" name="%(oph.reporting_action_id)d" type="action" context="{'search_default_partner_id':partner_id}"/>
                         <field name="state" widget="statusbar" statusbar_visible="draft,open,confirm,cancel,close" statusbar_colors='{"draft":"blue","open":"blue","cancel":"red","confirm":"red","close":"blue"}'/>
                         <!-- la status s'affiche mais pas de changement de couleur -->
-                        
                     </header>
                     <sheet string="Bloc Agenda Line">
                         <group>
@@ -115,13 +114,12 @@
                             <field name="notification_time"/>
                             <field name="name" invisible="1"/>
                             <field name="start_time" string="Horaire"/>
-                            <field name="duration"/>
-                            <!--<field name="duration_procedure"/>-->
                         </group>
 
                         <group>
                             <field name="partner_id" domain="[('customer','=',True)]"/>
                             <field name="procedure_type_id" widget="selection" on_change="onchange_set_duration(procedure_type_id,dilatation)"/>
+                            <field name="duration"/>
                             <field name="gauge_id"/>
                             <field name="dilatation"/>
                             <field name="ods"/>

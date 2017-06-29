@@ -90,9 +90,10 @@ class oph_measurement(orm.Model):
     def  on_change_near_or(self,cr,uid,ids,sph,add, context=None):
         """On_change method for sph and add to compute sph_near vision
         for Right Eye
+        and copy the value of add_or to add_os
         """
         res={
-             'value':{'sph_near_or':self.compute_near_sph(sph,add)}
+             'value':{'sph_near_or':self.compute_near_sph(sph,add), 'add_os':add}
              }
         return res
     
@@ -112,10 +113,14 @@ class oph_measurement(orm.Model):
                 }
 
     def on_change_add(self, cr, uid, ids, add_od, context = None):
+        """Copy the right value to the left value add
+        """
         return {'value':{'add_os':add_od}
                 }
 
     def on_change_nv(self, cr, uid, ids, nv_od, context = None):
+        """Copy the right value to the left value nv (near vision)
+        """
         return {'value':{'nv_os':nv_od}
                 }
 
