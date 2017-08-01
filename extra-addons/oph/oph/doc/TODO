@@ -6,8 +6,9 @@
 [ ] Pour voir gérer le paiement des factures par lot
 [ ] pouvoir imprimer automatiquement un memo de RDV des que l'on donne un RDV
 [ ] Gerer le nom de la machine et de la technique dans les CR. 
-
-
+[ ] Rajouter un champ datetime pour savoir quand la personne a annulé.
+[ ] Tampons pour les CR, les medications, les biology report, 
+[ ]
 Pour le backup:
 1/ faire un baremetal de l'install actuel du serveur. 
 2/ mettre à jour le repository sur cette copie ou sur une copie de la copie.
