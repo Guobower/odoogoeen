@@ -23,9 +23,9 @@ ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
 # # client IP
 # hackme with the IP of the raspberry
 # at home
-# IP_client='192.168.1.100'
+IP_client='192.168.1.50'
 # at la potiniere
-IP_client = '192.168.1.130'
+#IP_client = '192.168.1.130'
 
 try:
 
