@@ -218,17 +218,14 @@ Atropine collyre 1%. Sterdex. Pansement. Coque
 Anesthésie topique par Tétracaïne.
 Désinfection cutanée et des culs de sac à la Bétadine 5%
 Temps de contact 2 minutes
-Pose du champ opératoire troué 
-Isolement des cils par stéristrip
+Pose du champ opératoire troué. Isolement des cils par stéristrip
 Pose d'un blépharostat de Kratz
 Incision conjonctivale inférieure aux ciseaux droits.
 Injection de 2.5ml de Carbocaïne 2% à la canule à sous ténonienne
 Réalisation d'une paracenthése sur le méridien de 2h à la pique 20G.
 Injection de visqueux en chambre antérieure.
 Lavage du visqueux en chambre antérieure à la Charleux.
-Hydrosuture de l'incision principale.
-Injection de Cefuroxime 0.1ml en chambre antérieure.
-La contre-incision est autoétanche.
+Injection de Cefuroxime 0.1ml en chambre antérieure
 Ablation du blepharostat. Ablation du champ opératoire.
 Sterdex. Coque
             </field>
@@ -571,7 +568,7 @@ Pilocarpine collyre. Sterdex. Pansement. Coque
         </record>
 
 <!-- REPORTING IVT FORTUM - VANCO  -->
-        <record id="temp_rep_1" model="oph.reporting.template">
+        <record id="temp_rep_22" model="oph.reporting.template">
             <field name="name">INJECTION INTRAVITRÉENNE FORTUM-VANCO</field>
             <field name="short_name">IVT FORTUM/VANCO</field>
             <field name="type">ORR</field>
@@ -586,10 +583,11 @@ Rinçage par une goutte de Bétadine 5%
 Ablation du champ opératoire Sterdex
             </field>
         </record>
+        
 <!-- REPORTING IVT FORTUM - VANCO - TRIAM -->
-        <record id="temp_rep_1" model="oph.reporting.template">
-            <field name="name">INJECTION INTRAVITRÉENNE FORTUM-VANCO</field>
-            <field name="short_name">IVT FORTUM/VANCO</field>
+        <record id="temp_rep_23" model="oph.reporting.template">
+            <field name="name">INJECTION INTRAVITRÉENNE FORTUM-VANCO-TRIAM</field>
+            <field name="short_name">IVT FORTUM/VANCO/TRIAM</field>
             <field name="type">ORR</field>
             <field name="text_body">
 Anesthésie topique par Tétracaine. 
@@ -656,6 +654,9 @@ Ablation du champ opératoire Sterdex
         </record>
         <record id="indic_id16" model="oph.indication">
             <field name="name">Glaucome néovasculaire</field>
+        </record>
+        <record id="indic_id17" model="oph.indication">
+            <field name="name">Endophtalmie postopératoire</field>
         </record>
 
         <!-- GAUGE DATAS -->
