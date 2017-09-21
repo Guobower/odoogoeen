@@ -67,6 +67,7 @@
                     <group attrs="{'invisible':[('type','=','DIAB')]}">
                         <field name="template_id" domain="[('type','=',type)]"/>
                         <field name="text_body"/>
+                        <field name="comment"/>
                     </group>
                     <separator colspan="2"/>
                     <group attrs="{'invisible':[('type','!=','Laser')]}">

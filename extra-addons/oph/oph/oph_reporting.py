@@ -227,6 +227,8 @@ class oph_reporting(orm.Model):
               'rnfl_os':fields.text('ONrnfl_OS'),
               'ccoct_or':fields.text('CC OR'),
               'ccoct_os':fields.text('CC OS'),
+              # for OR
+              'comment':field.text('Comment', help = "Useful for some reminder"),
                             }
 
     _defaults = {
