@@ -316,6 +316,32 @@
             <field name="name">Autres affections du cristallin</field>
             <field name="code">H27</field>
         </record>
+        <record id="cim10_category_H27_0" model="oph.cim10.category">
+            <field name="parent_id" ref="cim10_category_H27"/>
+            <field name="name">Aphakia</field>
+            <field name="code">H27.0</field>
+            <field name="description">Aphakia (absence of lens of eye)
+            </field>
+        </record>
+        <record id="cim10_category_H27_1" model="oph.cim10.category">
+            <field name="parent_id" ref="cim10_category_H27"/>
+            <field name="name">Dislocation of lens</field>
+            <field name="code">H27.0</field>
+            <field name="description"></field>
+        </record>
+        <record id="cim10_category_H27_8" model="oph.cim10.category">
+            <field name="parent_id" ref="cim10_category_H27"/>
+            <field name="name">Other specified disorders of lens</field>
+            <field name="code">H27.8</field>
+        </record>
+        <record id="cim10_category_H27_9" model="oph.cim10.category">
+            <field name="parent_id" ref="cim10_category_H27"/>
+            <field name="name">Unspecified disorder of lens</field>
+            <field name="code">H27.9</field>
+        </record>
+        
+        
+        
         <record id="cim10_category_H28" model="oph.cim10.category">
             <field name="parent_id" ref="cim10_category_H25_H28"/>
             <field name="name">Cataracte et autres affections du cristallin au cours de maladies classées ailleurs</field>
@@ -618,7 +644,7 @@
         </record>
 
         <record id="cim10_category_H35_0" model="oph.cim10.category">
-            <field name="parent_id" ref="cim10_category_H30"/>
+            <field name="parent_id" ref="cim10_category_H35"/>
             <field name="name">Autres rétinopathies et altérations vasculaires rétiniennes</field>
             <field name="code">H35.0</field>
             <field name="description">-Altérations vasculaires de la rétine
@@ -705,6 +731,15 @@
 - Trou (de) macula
             </field>
         </record>
+
+<record id="cim10_category_H35_379" model="oph.cim10.category">
+            <field name="parent_id" ref="cim10_category_H35"/>
+            <field name="name">Dégénérescence de la macula et du pôle postérieur</field>
+            <field name="code">H35.379</field>
+            <field name="description">- Puckering of macula, unspecified eye
+            </field>
+        </record>
+
         
         <record id="cim10_category_H35_4" model="oph.cim10.category">
             <field name="parent_id" ref="cim10_category_H35"/>
@@ -1266,7 +1301,11 @@
             <field name="comment">Absence (complète ou partielle) (de) cristallin (acquise)
 Aphakie (acquise)</field>
         </record>
-
+		<record id="cim10_item_H27-1" model="oph.cim10">
+            <field name="name">Dislocation of lens</field>
+            <field name="categ_id" ref="cim10_category_H27"/>
+            <field name="code">H27-1</field>
+        </record>
         <record id="cim10_item_H30_0X-001" model="oph.cim10">
             <field name="name">Choroïdite en foyer</field>
             <field name="categ_id" ref="cim10_category_H30_0"/>
