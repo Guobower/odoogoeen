@@ -228,7 +228,7 @@ class oph_reporting(orm.Model):
               'ccoct_or':fields.text('CC OR'),
               'ccoct_os':fields.text('CC OS'),
               # for OR
-              'comment':field.text('Comment', help = "Useful for some reminder"),
+              'comment':fields.text('Comment', help = "Useful for some reminder"),
                             }
 
     _defaults = {
