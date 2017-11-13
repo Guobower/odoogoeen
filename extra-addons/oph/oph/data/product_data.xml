@@ -42,6 +42,13 @@
             <field name="parent_id" ref="product.product_category_all"/>
             <field name="name">Surgery</field>
         </record>
+        
+        <record id="product_category_orthop_id" model="product.category">
+            <field name="parent_id" ref="product.product_category_all"/>
+            <field name="name">Orthoptics</field>
+            <!--  pour eviter d'avoir la taxe <field name="property_account_income_categ">1826</field> -->
+            <!--  c'est pas grave on le fera dans odoo -->
+        </record>
 
         <!--      Resource: product.product  -->
         <!-- CS -->
@@ -349,5 +356,19 @@
             <field name="description_sale">Corps étranger cornée</field>
         </record>
 
+		<!--  opthoptics product -->
+		<record id="product_product_cv_id" model="product.product">
+            <field name="name">Champ Visuel</field>
+            <field name="categ_id" ref="product_category_orthop_id"/>
+            <field name="standard_price">6110</field>
+            <field name="list_price">6110</field>
+            <field name="type">service</field>
+            <field name="default_code">AMY 10.3</field>
+            <field name="uom_id" ref="product.product_uom_hour"/>
+            <field name="uom_po_id" ref="product.product_uom_hour"/>
+            <field name="description">Périmétrie réalisée avec mesure de seuil</field>
+            <field name="description_sale">Périmétrie réalisée avec mesure de seuil</field>
+            
+        </record>
     </data>
 </openerp>
