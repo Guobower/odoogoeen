@@ -1134,6 +1134,57 @@
             <field name="name">Affections du globe oculaire</field>
             <field name="code">H44</field>
         </record>
+        <record id="cim10_category_H44_2" model="oph.cim10.category">
+            <field name="parent_id" ref="cim10_category_H44"/>
+            <field name="name">Myopie dégénérative</field>
+            <field name="code">H44.2xx</field>
+            <field name="description">
+    Choriorétinite avec myopie progressive
+    Fuchs taches noires de (myopiques)
+    Myopie (axiale) (congénitale) (due à une augmentation de courbure ou de réfraction du cristallin) (progressive) dégénérative
+    Myopie (axiale) (congénitale) (due à une augmentation de courbure ou de réfraction du cristallin) (progressive) maligne
+            </field>
+        </record>
+    	<record id="cim10_category_H44_2A" model="oph.cim10">
+    		<field name="categ_id" ref="cim10_category_H44_2"/>
+            <field name="name">Choroidal neovascularisation</field>
+            <field name="code">H44.2A</field>
+            <field name="description">
+    Choroidal neovascularisation
+            </field>
+        </record>
+    	<record id="cim10_category_H44_2B" model="oph.cim10">
+    		<field name="categ_id" ref="cim10_category_H44_2"/>
+            <field name="name">Macular Hole</field>
+            <field name="code">H44.2B</field>
+            <field name="description">
+    Macular hole
+            </field>
+        </record>
+        <record id="cim10_category_H44_2C" model="oph.cim10">
+            <field name="categ_id" ref="cim10_category_H44_2"/>
+            <field name="name">Retinal detachment</field>
+            <field name="code">H44.2C</field>
+            <field name="description">
+    Retinal detachment
+            </field>
+        </record>
+        <record id="cim10_category_H44_2D" model="oph.cim10">
+            <field name="categ_id" ref="cim10_category_H44_2"/>
+            <field name="name">Foveoschisis</field>
+            <field name="code">H44.2D</field>
+            <field name="description">
+    Foveoschisis
+            </field>
+        </record>
+        <record id="cim10_category_H44_2E" model="oph.cim10">
+        	<field name="categ_id" ref="cim10_category_H44_2"/>
+            <field name="name">Other maculopathy</field>
+            <field name="code">H44.2E</field>
+            <field name="description">
+    Other maculopathy
+            </field>
+        </record>
         
         <record id="cim10_category_H45" model="oph.cim10.category">
             <field name="parent_id" ref="cim10_category_H43_H45"/>
