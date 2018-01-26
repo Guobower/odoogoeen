@@ -22,6 +22,11 @@
             <field name="name">MA60AC</field>
             <field name="manufactor">ALCON</field>
         </record>
+	<record model="oph.iol.type" id="iol_tftn60">
+            <field name="code">TFTN60</field>
+            <field name="name">TFTN60</field>
+            <field name="manufactor">ALCON</field>
+        </record>
 <!-- IOL.TYPE -->
     </data>
 </openerp>
