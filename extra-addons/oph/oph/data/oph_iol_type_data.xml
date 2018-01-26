@@ -26,6 +26,7 @@
             <field name="code">TFTN60</field>
             <field name="name">TFTN60</field>
             <field name="manufactor">ALCON</field>
+            <field name="comment">Panoptix multifocal toric</field>
         </record>
 <!-- IOL.TYPE -->
     </data>
