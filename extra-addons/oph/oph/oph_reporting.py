@@ -230,6 +230,7 @@ class oph_reporting(orm.Model):
               'anesthesia_id':fields.many2one('oph.anesthesia.type', 'Anesthesia'),
               'post_op_treatement':fields.text('Post Operatoire Treatement'),
               'positionnement':fields.text('Positionnement'),
+              'operating_machine_id': fields.many2one('product.product', 'Operation machine', select=2),
               'vitreotome_machine':fields.text('Vitreotome mention'),
               'tech_op_phako':fields.text('Tech op phako', help='Tech op phako information'),
                             }
