@@ -99,7 +99,7 @@
                     </group>
                     <separator colspan="2"/>
                     <group>
-                            <field name="operating_machine_id" string="Machine" domain="[('product_tmpl_id.sale_ok','=','False')]"/>
+                            <field name="operating_machine_id" string="Machine"/> <!--   domain="[('product_tmpl_id.sale_ok','=','False')]"/>-->
                         <field name="iol_type" class="oe_inline" attrs="{'invisible':[('type','!=','ORR')]}"/>
                         <field name="iol_power" class="oe_inline" attrs="{'invisible':[('type','!=','ORR')]}"/>
                     </group>
