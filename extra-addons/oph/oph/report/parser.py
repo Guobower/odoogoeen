@@ -68,23 +68,28 @@ class Parser(report_sxw.rml_parse):
             # 'ref_statement':self._ref_statement,
         })
     def arrow_today(self):
+        """
+        return a string 
+        ex: u'31-12-2018'
+        """
         fmt = 'DD-MM-YYYY'
         return arrow.now().format(fmt)
 
     def arrow_today_timestamp(self):
         """with this method 
-        you get timestamp in UTC
+        you get timestamp in local zone
         """
         fmt = 'DD-MM-YYYY HH:mm'
         return arrow.now().format(fmt)
 
     def arrow_today_timestamp2(self, context=None):
         # FIX the format of date print in report
+        
         if context is None:
             context = {}
         context = self.context
         fmt = 'DD-MM-YYYY HH:mm'
-        aware = arrow.now().replace(tzinfo=pytz.UTC)
+        aware = arrow.now().replace(tzinfo=pytz.UTC)  # doesn't chanfe time and date but only the TZ. strange.
         # localized = aware.astimezone(pytz.timezone(context.get('tz'))) you get a datetime.datetime object
         localized = aware.to(pytz.timezone(context.get('tz')))
         # print "****context.get('tz'):%s" % (context.get('tz'),)
