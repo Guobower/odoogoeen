@@ -58,6 +58,7 @@ class Parser(report_sxw.rml_parse):
             'rebate':self.rebate,
             'total':self.total,
             'total_chq':self.total_chq,
+            'meeting_date':self.get_meeting_date,
             'only_time':self.get_only_time,
             'only_time1':self.get_only_time1,
             'only_time2':self.get_only_time2,
@@ -156,6 +157,25 @@ class Parser(report_sxw.rml_parse):
         context = self.context
         context['total'] = context.get('subtotal') - context.get('rebate')
         return context.get('total')
+    
+    def get_meeting_date(self, context=None):
+        if context is None:
+            context = {}
+        context = self.context
+        temp = self.pool.get(context.get('active_model')).browse(self.cr, self.uid, context.get('active_ids'))
+        for rec in temp:
+            context['meeting_date'] = rec.date
+        unaware = datetime.strptime(context['meeting_date'], '%Y-%m-%d')
+        aware = unaware.replace(tzinfo=pytz.UTC)
+        localized = aware.astimezone(pytz.timezone(context.get('tz')))
+        # import pdb;pdb.set_trace()
+        loc = locale.getlocale()
+        locale.setlocale(locale.LC_ALL, 'fr_FR.UTF-8')  # marche pas apres avoir fait un
+        # dpkg-reconfigure locales
+        label = ustr(localized.strftime("%A %d %B %Y")) 
+        context['meeting_date'] = label
+        return context.get('meeting_date', '')
+        
 
     def get_only_time(self, context=None):
         if context is None:
