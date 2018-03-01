@@ -165,15 +165,8 @@ class Parser(report_sxw.rml_parse):
         temp = self.pool.get(context.get('active_model')).browse(self.cr, self.uid, context.get('active_ids'))
         for rec in temp:
             context['meeting_date'] = rec.date
-        import pdb;pdb.set_trace()
-        unaware = datetime.strptime(context['meeting_date'], '%Y-%m-%d')
-        aware = unaware.replace(tzinfo=pytz.UTC)
-        localized = aware.astimezone(pytz.timezone(context.get('tz')))
-        # import pdb;pdb.set_trace()
-        loc = locale.getlocale()
-        locale.setlocale(locale.LC_ALL, 'fr_FR.UTF-8')  # marche pas apres avoir fait un
-        # dpkg-reconfigure locales
-        label = ustr(localized.strftime("%A %d %B %Y")) 
+        arw = arrow.get(rec.date, 'YYYY-MM-DD HH:mm:ss').to('Pacific/Noumea')
+        label = arw.format('DD-MM-YYYY')
         context['meeting_date'] = label
         return context.get('meeting_date', '')
         
