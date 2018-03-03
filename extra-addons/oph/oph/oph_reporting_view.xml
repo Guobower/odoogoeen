@@ -51,6 +51,7 @@
                         <field name="date" invisible="1"/>
                         <field name="appointment" invisible="0"/>
                         <field name="local_day" invisible="0"/>
+                         <field name="datewotime" invisible="0"/>
                     </group>
                     <separator colspan="2"/>
                     <group>
