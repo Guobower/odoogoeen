@@ -155,6 +155,9 @@ class oph_reporting(orm.Model):
               'meeting_id':fields.many2one('crm.meeting', 'Meeting', select=True),
               'partner_id':fields.related("meeting_id", "partner_id", type="many2one", relation="res.partner", string="Partner", store=True, readonly=True,),
               'date':fields.related('meeting_id', 'date', type='date', string='Consultation Date', store=True),
+              # field 'date' above is pretty bad. Doesn't  convert correctly to local time.
+              # and it lost the utc time so you can do nothing to get the local time.
+              'appointment':fields.related('meeting_id', 'date', type='datetime', string='Consultation Date', store=True),
               'header_id':fields.many2one('oph.reporting.template', string='Header', domain=[('type', '=', 'H')], help="Header for OR report"),
              
               'template_id':fields.many2one('oph.reporting.template', 'Reporting Template', select=True),

@@ -165,7 +165,8 @@ class Parser(report_sxw.rml_parse):
         temp = self.pool.get(context.get('active_model')).browse(self.cr, self.uid, context.get('active_ids'))
         for rec in temp:
             context['meeting_date'] = rec.date
-        arw = arrow.get(rec.date, 'YYYY-MM-DD HH:mm:ss').to('Pacific/Noumea')
+        # arw = arrow.get(rec.date, 'YYYY-MM-DD HH:mm:ss').to('Pacific/Noumea')
+        arw = arrow.get(rec.date, 'YYYY-MM-DD HH:mm:ss').to(contex.get('tz'), 'Pacific/Noumea')
         label = arw.format('DD-MM-YYYY')
         context['meeting_date'] = label
         return context.get('meeting_date', '')
