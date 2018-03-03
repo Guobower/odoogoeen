@@ -151,7 +151,7 @@ class oph_reporting(orm.Model):
     
     def _format_appointment(self, cr, uid, ids, field_name, args, context=None):
         res = {}
-        import pdb;pdb.set_trace()
+       # import pdb;pdb.set_trace()
         for rec in self.browse(cr, uid, ids, context=None):
             dbdateutc = rec.meeting_id.date
             if dbdateutc is not None:
