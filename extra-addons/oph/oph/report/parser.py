@@ -157,7 +157,7 @@ class Parser(report_sxw.rml_parse):
         context = self.context
         context['total'] = context.get('subtotal') - context.get('rebate')
         return context.get('total')
-    
+        
     def get_meeting_date(self, context=None):
         if context is None:
             context = {}
@@ -173,7 +173,6 @@ class Parser(report_sxw.rml_parse):
         context['meeting_date'] = label
         return context.get('meeting_date', '')
         
-
     def get_only_time(self, context=None):
         if context is None:
             context = {}
