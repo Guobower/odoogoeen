@@ -172,6 +172,7 @@ class oph_reporting(orm.Model):
               'appointment':fields.related('meeting_id', 'date', type='datetime', string='Consultation Date', store=True),
               # but i don't need a timestamp just the day date
               'local_day':fields.function(_format_appointment, type='char', string='local day', store=True, method=True),
+              'datewotime':fields.related('meeting_id', 'datewotime', type='datetime', string='Consultation Date', store=True),
               'header_id':fields.many2one('oph.reporting.template', string='Header', domain=[('type', '=', 'H')], help="Header for OR report"),
              
               'template_id':fields.many2one('oph.reporting.template', 'Reporting Template', select=True),
