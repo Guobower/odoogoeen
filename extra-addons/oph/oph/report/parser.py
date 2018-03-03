@@ -162,6 +162,7 @@ class Parser(report_sxw.rml_parse):
         if context is None:
             context = {}
         context = self.context
+        import pdb;pdb.set_trace()
         temp = self.pool.get(context.get('active_model')).browse(self.cr, self.uid, context.get('active_ids'))
         for rec in temp:
             context['meeting_date'] = rec.date
