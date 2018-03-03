@@ -13,7 +13,9 @@
                     <field name="name"/>
                     <field name="partner_id"/>
                     <field name="meeting_id"/>
-                    <field name="date"/>
+                    <field name="date" invisible="1"/>
+                    <field name="appointment" invisible="0"/>
+                    <field name="local_day" invisible="0"/>
                     <field name="dictate_wpatient"/>
                     <field name="receiver_id"/>
                     <field name="cc_ids" invisible="1"/>
@@ -45,7 +47,7 @@
                         <field name="name" class="oe_inline"/>
                         <field name="partner_id" class="oe_inline"/>
                         <field name="meeting_id" class="oe_inline"/>
-                        <field name="date" invisible="0"/>
+                        <field name="date" invisible="1"/>
                         <field name="appointment" invisible="0"/>
                         <field name="local_day" invisible="0"/>
                     </group>

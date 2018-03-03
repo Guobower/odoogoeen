@@ -169,7 +169,7 @@ class oph_reporting(orm.Model):
               'date':fields.related('meeting_id', 'date', type='date', string='Consultation Date', store=True),
               # field 'date' above is pretty bad. Doesn't  convert correctly to local time.
               # and it lost the utc time so you can do nothing to get the local time.
-              'appointment':fields.related('meeting_id', 'date', type='datetime', string='Consultation', store=True),
+              'appointment':fields.related('meeting_id', 'date', type='datetime', string='Consultation Date', store=True),
               # but i don't need a timestamp just the day date
               'local_day':fields.function(_format_appointment, type='char', string='local day', store=True, method=True),
               'header_id':fields.many2one('oph.reporting.template', string='Header', domain=[('type', '=', 'H')], help="Header for OR report"),
