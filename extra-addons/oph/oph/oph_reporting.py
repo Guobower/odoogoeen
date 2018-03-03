@@ -156,7 +156,7 @@ class oph_reporting(orm.Model):
             dbdateutc = rec.meeting_id.date
             if dbdateutc is not None:
                 localday = arrow.get(dbdateutc, 'YYYY-MM-DD HH:mm:ss').to('Pacific/Noumea')
-                res[rec.id] = localday
+                res[rec.id] = localday.format('DD-MM-YYYY')
             else:
                 res[rec.id] = None
         return res
