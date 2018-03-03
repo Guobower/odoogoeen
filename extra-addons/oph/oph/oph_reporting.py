@@ -149,13 +149,16 @@ class oph_reporting(orm.Model):
             self.write(cr, uid, report.id, {'text_body':template_rec.get('text_body', '')}, context=context)
         return True
     
-    def _format_appointment(self, cr, uid, ids, fieds_name, arfs, contex=None):
+    def _format_appointment(self, cr, uid, ids, field_name, args, context=None):
         res = {}
         import pdb;pdb.set_trace()
         for rec in self.browse(cr, uid, ids, context=None):
             dbdateutc = rec.meeting_id.date
-            localday = arrow.get(dbdateutc, 'YYYY-MM-DD HH:mm:ss').to('Pacific/Noumea')
-            res[rec.id] = localday
+            if dbdateutc is not None:
+                localday = arrow.get(dbdateutc, 'YYYY-MM-DD HH:mm:ss').to('Pacific/Noumea')
+                res[rec.id] = localday
+            else:
+                res[rec.id] = None
         return res
     
     _columns = {
