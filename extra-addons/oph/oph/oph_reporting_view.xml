@@ -47,6 +47,7 @@
                         <field name="meeting_id" class="oe_inline"/>
                         <field name="date" invisible="0"/>
                         <field name="appointment" invisible="0"/>
+                        <field name="local_day" invisible="0"/>
                     </group>
                     <separator colspan="2"/>
                     <group>

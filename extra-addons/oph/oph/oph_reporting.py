@@ -148,7 +148,16 @@ class oph_reporting(orm.Model):
             template_rec = template_obj.read(cr, uid, report.template_id.id, ['text_body', ], context=context)
             self.write(cr, uid, report.id, {'text_body':template_rec.get('text_body', '')}, context=context)
         return True
-
+    
+    def _format_appointment(self, cr, uid, ids, fieds_name, arfs, contex=None):
+        res = {}
+        import pdb;pdb.set_trace()
+        for rec in self.browse(cr, uid, ids, context=None):
+            dbdateutc = rec.meeting_id.date
+            localday = arrow.get(dbdateutc, 'YYYY-MM-DD HH:mm:ss').to('Pacific/Noumea')
+            res[rec.id] = localday
+        return res
+    
     _columns = {
               'name':fields.char('Name', size=128, help="Name report"),
               'type':fields.selection(_type_get, 'Type'),
@@ -157,7 +166,9 @@ class oph_reporting(orm.Model):
               'date':fields.related('meeting_id', 'date', type='date', string='Consultation Date', store=True),
               # field 'date' above is pretty bad. Doesn't  convert correctly to local time.
               # and it lost the utc time so you can do nothing to get the local time.
-              'appointment':fields.related('meeting_id', 'date', type='datetime', string='Consultation Date', store=True),
+              'appointment':fields.related('meeting_id', 'date', type='datetime', string='Consultation', store=True),
+              # but i don't need a timestamp just the day date
+              'local_day':fields.function(_format_appointment, type='char', string='local day', store=True, method=True),
               'header_id':fields.many2one('oph.reporting.template', string='Header', domain=[('type', '=', 'H')], help="Header for OR report"),
              
               'template_id':fields.many2one('oph.reporting.template', 'Reporting Template', select=True),
