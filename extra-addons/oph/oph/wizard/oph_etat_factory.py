@@ -35,7 +35,9 @@ class oph_etat_factory(osv.osv_memory):
                                       ('SUD', 'AMG SUD'),
                                       ('ILES', 'AMG ILES'),
                                       ('AT', 'Accident de Travail'),
-                                      ('SMIT', 'SMIT')),
+                                      ('SMIT', 'SMIT'),
+                                      ('CSSR', 'CSSR'),
+                                      ),
                                       "Template", help = 'Choix du modele de report'),
       }
     _defaults = {
@@ -80,6 +82,8 @@ class oph_etat_factory(osv.osv_memory):
            modele = 'account.invoice.at'
         elif template == 'NORD':
            modele = 'account.invoice.nord'
+        elif template == 'CSSR':
+            modele = 'account.invoice.cssr'
 
         invoice_obj = self.pool.get('account.invoice')
         data = invoice_obj.read(cr, uid, active_ids[0], context = context)
