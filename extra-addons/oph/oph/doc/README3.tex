@@ -3533,6 +3533,17 @@ plaignait pas de ne pas avoir de connection avec le Raspberry. Est ce que c'est
 parce que je l'ai allumé et que la connection était ok et que ensuite j'ai
 éteinds le raspberry et que donc le odoo de développement lui va s'en plaindre.
 
+\section{Comment à la création d'un record faire d'autres actions}
+surcharger la fonction create.\\
+Voir le code dans oph_reporting.py
+
+    def create(self, cr, uid, data, context=None):
+        if data['receiver_partner'] is True:
+            receiver = self.pool.get('crm.meeting').browse(cr, uid, data['meeting_id']).partner_id.id
+            data['receiver_id'] = receiver
+        result = super(oph_reporting, self).create(cr, uid, data, context=context)
+        return result
+
 \section{dyndns, dynamic dns}
 \label{sec:dyndns}
 Il vaut mieux mettre tous les PC en static inet address

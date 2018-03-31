@@ -42,6 +42,11 @@
             <field name="parent_id" ref="product.product_category_all"/>
             <field name="name">Surgery</field>
         </record>
+        
+        <record id="product_category_post_surg_id" model="product.category">
+            <field name="parent_id" ref="product_category_surg_id"/>
+            <field name="name">Posterior Surgery</field>
+        </record>
 
         <!--      Resource: product.product  -->
         <!-- CS -->
@@ -348,6 +353,35 @@
             <field name="description">Corps étranger cornée</field>
             <field name="description_sale">Corps étranger cornée</field>
         </record>
-
+        
+        <!--  Surgery product -->
+            <!--  Posterior surgery -->
+                <!--  Vitrectomy simplex -->
+        <record id="product_product_vit_simplex_id" model="product.product">
+            <field name="name">Vitrectomie simple</field>
+            <field name="categ_id" ref="product_category_post_surg_id"/>
+            <field name="standard_price">66300</field>
+            <field name="list_price">66300</field>
+            <field name="type">service</field>
+            <field name="default_code">KC130</field>
+            <field name="uom_id" ref="product.product_uom_hour"/>
+            <field name="uom_po_id" ref="product.product_uom_hour"/>
+            <field name="description">Vitrectomie simple</field>
+            <field name="description_sale">Vitrectomie simple</field>
+        </record>
+                <!--  Vitrectomy pour décollement de rétine limité à un quadrant -->
+        <record id="product_product_vit_DR_1q_id" model="product.product">
+            <field name="name">Vitrectomie DR 1 quadrant</field>
+            <field name="categ_id" ref="product_category_post_surg_id"/>
+            <field name="standard_price">66300</field>
+            <field name="list_price">66300</field>
+            <field name="type">service</field>
+            <field name="default_code">KC130</field>
+            <field name="uom_id" ref="product.product_uom_hour"/>
+            <field name="uom_po_id" ref="product.product_uom_hour"/>
+            <field name="description">Vitrectomie pour décollement de rétine limité à un quadrant</field>
+            <field name="description_sale">Vitrectomie pour décollement de rétine limité à un quadrant</field>
+        </record>
+        
     </data>
 </openerp>
