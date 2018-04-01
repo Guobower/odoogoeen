@@ -111,6 +111,66 @@ class oph_bloc_agenda(osv.osv):
     #     return False
     #===========================================================================
 
+    def create(self, cr, uid, data, context = None):
+        """
+        Je veux créer un agenda slot avec les caracteristiques du crénaux de bloc 
+        lorsque je crée un creneau de bloc.
+        Comme cela dans calendrier j'ai un vision plus globale 
+        
+        data = {'comment': False, 'name': '2018-04-02', 'end_date': '2018-04-02 22:54:29', 'active': 1, 'line_ids': [], 'partner_id': False, 'start_date': '2018-04-01 21:54:25'}
+context = {'lang': 'fr_FR', 'action': True, 'tz': 'Pacific/Noumea', 'uid': 3}
+il faudrait mettre un statut differant des autres comme cela j'aurai une couleur différente dans le calendrier.
+Il faudrait travailler sur les datetime pour 
+
+        """
+#
+#         if data['receiver_partner'] is True:
+#             receiver = self.pool.get('crm.meeting').browse(cr, uid, data['meeting_id']).partner_id.id
+#             data['receiver_id'] = receiver
+        # agenda = self.pool.get('crm.meeting')
+
+        # create a meeting when creating a bloc agenda
+
+        vals_meeting = {
+                        'name':'CRENEAU',
+                        # 'motive_comment':l.procedure_type_id.name + ' ' + l.ods.upper(),  # Doesn't work.
+                        'partner_id':data['partner_id'],
+                        'datewotime':data['name'],
+                        'date':data['start_date'],
+                        'date_deadline':data['name'],
+                        'state':'done',
+                        'tag':'office',
+                        'duration':4,
+                  }
+        crm_meeting_obj = self.pool.get('crm.meeting').create(cr, uid, vals_meeting, context = context)
+
+        # import pdb;pdb.set_trace()
+        result = super(oph_bloc_agenda, self).create(cr, uid, data, context = context)
+        return result
+
+    def delete(self, cr, uid, context = None):
+        """
+        qd je supprime un creneau de bloc il faut supprimer le creneau dans le crm.meeting correspondant
+        
+        cette methode n'est pas appelée qd je supprime un crenaux de bloc.
+        """
+        import pdb;pdb.set_trace()
+
+    def unlink(self, cr, uid, ids, context = None):
+        """
+        qd je supprime un creneau de bloc il faut supprimer le creneau dans le crm.meeting correspondant
+        
+        C'est la bonne méthode
+         args
+self = <openerp.addons.oph.oph_bloc_agenda.oph_bloc_agenda object at 0x7f01940c1610>
+cr = <openerp.sql_db.Cursor object at 0x7f018ae76090>
+uid = 3
+ids = [197]
+context = {'lang': 'fr_FR', 'tz': 'Pacific/Noumea', 'uid': 3}
+
+        """
+        import pdb;pdb.set_trace()
+
     def _get_wdandmonth2(self, cr, uid, ids, field_name, arg, context = {}):
         """
         will get the week day in text (eg: friday, saturday,...)
