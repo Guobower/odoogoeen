@@ -230,7 +230,7 @@
         <!-- END VIEW -->
 
         <!-- VIEWS HONORIFIC -->
-        <!-- TREE VIEW -->
+        <!-- TREE VIEW HONORIFIC -->
         <record model="ir.ui.view" id="honorific_tree_view_id">
             <field name="name">honorific.tree</field>
             <field name="model">oph.honorific</field>
@@ -243,7 +243,7 @@
                 </tree>
             </field>
         </record>
-        <!-- FORM VIEW -->
+        <!-- FORM VIEW HONORIFIC -->
         <record model="ir.ui.view" id="honorific_form_view_id">
             <field name="name">honorific.form</field>
             <field name="model">oph.honorific</field>
