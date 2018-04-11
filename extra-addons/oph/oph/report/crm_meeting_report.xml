@@ -243,7 +243,7 @@
             <field name="in_format">oo-odt</field>
             <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
             <field name="styles_mode">specified</field>
-            <field name="stylesheet_id" ref="stt_courrier1_smallfont_id"/>
+            <field name="stylesheet_id" ref="stt_courrier1_smallfont_nopagnumber_id"/>
             <field name="attachment">'Memo'+'_'+object.partner_id.fullname+'_'+object.date+'.odt'</field>
         </record>
         <!-- button -->
@@ -270,7 +270,7 @@
             <field name="in_format">oo-odt</field>
             <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
             <field name="styles_mode">specified</field>
-            <field name="stylesheet_id" ref="stt_courrier1_smallfont_id"/>
+            <field name="stylesheet_id" ref="stt_courrier1_smallfont_nopagnumber_id"/>
             <field name="attachment">'Memo'+'_'+object.partner_id.fullname+'_'+object.date+'.odt'</field>
         </record>
         <!-- button -->
