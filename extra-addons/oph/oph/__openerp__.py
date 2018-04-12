@@ -77,7 +77,7 @@ Permet de faire pleins de choses absolument géniales
                 'oph_config_surgery_view.xml',
                 'data/oph_iol_type_data.xml',
                 'data/reporting_template_data.xml',
-                'report/examination_report.xml',
+               # 'report/examination_report.xml' file deleted,
                 'edi/request_action_data.xml',
                 'oph_cim10_view.xml',
                 'data/oph_cim10_data.xml',
