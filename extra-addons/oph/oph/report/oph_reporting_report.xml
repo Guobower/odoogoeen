@@ -19,7 +19,7 @@
             <!-- choix de template Mime-type dans configuration-Technical-aero-report-Reports-->
             <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
             <field name="styles_mode">specified</field>
-            <field name="stylesheet_id" ref="stt_courrier_id"/>
+            <field name="stylesheet_id" ref="stt_entete_cab_pagenumber_id"/>
         </record>
         <!-- button -->
         <record model="ir.values" id="value_gen_report_id">
@@ -49,7 +49,7 @@
             <!-- choix de template Mime-type dans configuration-Technical-aero-report-Reports-->
             <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
             <field name="styles_mode">specified</field>
-            <field name="stylesheet_id" ref="stt_courrier_id"/>
+            <field name="stylesheet_id" ref="stt_entete_cab_nopagenumber_id"/>
             <field name="attachment">object.partner_id.fullname+'_OR_Report_'+object.date+'.odt'</field>
             
         </record>
@@ -81,7 +81,7 @@
             <!-- choix de template Mime-type dans configuration-Technical-aero-report-Reports-->
             <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
             <field name="styles_mode">specified</field>
-            <field name="stylesheet_id" ref="stt_courrier_id"/>
+            <field name="stylesheet_id" ref="stt_entete_cab_pagenumber_id"/>
             <field name="attachment">object.partner_id.fullname+'_PKE_ICP_REPORT_'+object.date+'.odt'</field>
         </record>
         <!-- button -->
@@ -111,7 +111,7 @@
             <!-- choix de template Mime-type dans configuration-Technical-aero-report-Reports-->
             <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
             <field name="styles_mode">specified</field>
-            <field name="stylesheet_id" ref="stt_courrier1_id"/>
+            <field name="stylesheet_id" ref="stt_entete_cab_pagenumber_id"/>
             <field name="attachment">object.partner_id.fullname+'_Report_TO_'+object.receiver_id.name+'_'+object.date+'.odt'</field>
         </record>
         <!-- button -->
@@ -141,7 +141,7 @@
             <!-- choix de template Mime-type dans configuration-Technical-aero-report-Reports-->
             <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
             <field name="styles_mode">specified</field>
-            <field name="stylesheet_id" ref="stt_courrier1_smallfont_id"/>
+            <field name="stylesheet_id" ref="stt_entete_cab_pagenumber_id"/>
             <field name="attachment">object.partner_id.fullname+'_Report_TO_'+object.receiver_id.name+object.date+'.odt'</field>
         </record>
         <!-- button -->
@@ -171,7 +171,7 @@
             <!-- choix de template Mime-type dans configuration-Technical-aero-report-Reports-->
             <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
             <field name="styles_mode">specified</field>
-            <field name="stylesheet_id" ref="stt_courrier1_smallfont_id"/>
+            <field name="stylesheet_id" ref="stt_entete_cab_pagenumber_id"/>
             <field name="attachment">object.partner_id.fullname+'_'+'Diabetic Report'+'_TO_'+object.receiver_id.name+'_'+object.date+'.odt'</field>
             
         </record>
@@ -202,7 +202,7 @@
             <!-- choix de template Mime-type dans configuration-Technical-aero-report-Reports-->
             <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
             <field name="styles_mode">specified</field>
-            <field name="stylesheet_id" ref="stt_courrier_id"/>
+            <field name="stylesheet_id" ref="stt_entete_cab_pagenumber_id"/>
         </record>
         <!-- button -->
         <record model="ir.values" id="value_using_template_report_id">
@@ -231,7 +231,7 @@
             <!-- choix de template Mime-type dans configuration-Technical-aero-report-Reports-->
             <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
             <field name="styles_mode">specified</field>
-            <field name="stylesheet_id" ref="stt_courrier1_smallfont_id"/>
+            <field name="stylesheet_id" ref="stt_entete_cab_pagenumber_id"/>
             <field name="attachment">object.partner_id.fullname+'_OCT_Report_TO_'+object.receiver_id.name+'_'+object.date+'.odt'</field>
         </record>
         <!-- button -->
@@ -260,7 +260,7 @@
             <!-- choix de template Mime-type dans configuration-Technical-aero-report-Reports-->
             <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
             <field name="styles_mode">specified</field>
-            <field name="stylesheet_id" ref="stt_courrier1_id"/>
+            <field name="stylesheet_id" ref="stt_entete_cab_pagenumber_id"/>
             <field name="attachment">object.partner_id.fullname+'_Laser_Report_TO_'+object.receiver_id.name+'_'+object.date+'.odt'</field>
         </record>
         <!-- button -->
@@ -290,7 +290,7 @@
             <!-- choix de template Mime-type dans configuration-Technical-aero-report-Reports-->
             <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
             <field name="styles_mode">specified</field>
-            <field name="stylesheet_id" ref="stt_courrier1_smallfont_id"/>
+            <field name="stylesheet_id" ref="stt_entete_cab_pagenumber_id"/>
             <field name="attachment">object.partner_id.fullname+'_'+'CCPatient'+'_'+object.date+'.odt'</field>
         </record>
         <!-- button -->
@@ -320,7 +320,7 @@
             <!-- choix de template Mime-type dans configuration-Technical-aero-report-Reports-->
             <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
             <field name="styles_mode">specified</field>
-            <field name="stylesheet_id" ref="stt_courrier1_smallfont_id"/>
+            <field name="stylesheet_id" ref="stt_entete_cab_pagenumber_id"/>
             <field name="attachment">object.partner_id.fullname+'_AF_Report_TO_'+object.receiver_id.name+'_'+object.date+'.odt'</field>
         </record>
         <record model="ir.values" id="value_fa_report_id">
@@ -349,7 +349,7 @@
             <!-- choix de template Mime-type dans configuration-Technical-aero-report-Reports-->
             <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
             <field name="styles_mode">specified</field>
-            <field name="stylesheet_id" ref="stt_courrier1_smallfont_id"/>
+            <field name="stylesheet_id" ref="stt_entete_cab_pagenumber_id"/>
             <field name="attachment">object.partner_id.fullname+'_OCT_Report_TO_'+object.receiver_id.name+'_'+object.date+'.odt'</field>
         </record>
         <!-- button -->

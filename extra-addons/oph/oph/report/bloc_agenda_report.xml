@@ -25,7 +25,7 @@
             <!-- choix de template Mime-type dans configuration-Technical-aero-report-Reports-->
             <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
             <field name="styles_mode">specified</field>
-            <field name="stylesheet_id" ref="stt_planningOR_id"/>
+            <field name="stylesheet_id" ref="stt_header_simple_dyn_id"/>
             <!-- choix du format d'edition/impression -->
         </record>
         <!-- declaration du button -->
@@ -91,7 +91,7 @@
             <field name="in_format">oo-odt</field>
             <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
             <field name="styles_mode">specified</field>
-            <field name="stylesheet_id" ref="stt_liaisonBDC_id"/>
+            <field name="stylesheet_id" ref="stt_header_simple_dyn_id"/>
             <field name="attachment">object.partner_id.fullname+'_'+'LiaisonBDC'+'_'+object.bloc_agenda_id.name+'.odt'</field>
         </record>
         <!--button-->
@@ -120,7 +120,7 @@
             <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
             <!--
             <field name="styles_mode">specified</field>
-            <field name="stylesheet_id" ref="stt_liaisonBDC_id"/>
+            <field name="stylesheet_id" ref="stt_header_simple_dyn_id"/>
             -->
             <field name="attachment">object.partner_id.fullname+'_'+'LiaisonPO'+'_'+object.bloc_agenda_id.name+'.odt'</field>
         </record>
@@ -149,7 +149,7 @@
             <field name="in_format">oo-odt</field>
             <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
             <field name="styles_mode">specified</field>
-            <field name="stylesheet_id" ref="stt_ordo_id"/>
+            <field name="stylesheet_id" ref="stt_entete_cab_nopagenumber_id"/>
             <field name="attachment">object.partner_id.fullname+'_'+'PresOR'+'_'+object.bloc_agenda_id.name+'.odt'</field>
         </record>
         <!--button-->
@@ -180,7 +180,7 @@
             <!-- choix de template Mime-type dans configuration-Technical-aero-report-Reports-->
             <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
             <field name="styles_mode">specified</field>
-            <field name="stylesheet_id" ref="stt_courrier_id"/>
+            <field name="stylesheet_id" ref="stt_entete_cab_pagenumber_id"/>
         </record>
         <!-- button -->
         <record model="ir.values" id="value_cardio_report_id">
