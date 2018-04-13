@@ -156,7 +156,7 @@
             <field name="value" eval="'ir.actions.report.xml,' + str(ref('oph.diab_report_id'))"/>
         </record>
 
-        <!-- 8 OCT REPORT -->
+        <!-- OCT REPORT -->
         <record model="ir.actions.report.xml" id="oct_report_id">
             <field name="name">OCT Reporting</field>
             <field name="type">ir.actions.report.xml</field>
