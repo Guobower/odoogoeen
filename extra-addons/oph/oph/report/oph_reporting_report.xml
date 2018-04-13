@@ -2,7 +2,7 @@
 <data noupdate="0">
 <!-- THE ONE IN OPH.REPORTING -->
         <!-- object oph.reporting -->
-        <!-- 1 GENERAL REPORT -->
+        <!--GENERAL REPORT -->
         <record model="ir.actions.report.xml" id="general_report_id">
             <field name="name">General Report</field>
             <field name="type">ir.actions.report.xml</field>
@@ -31,7 +31,7 @@
             <field name="value" eval="'ir.actions.report.xml,' + str(ref('oph.general_report_id'))"/>
         </record>
         
-        <!-- 2 OR REPORT -->
+        <!--OR REPORT -->
         <record model="ir.actions.report.xml" id="or_report_id">
             <field name="name">Operating Room Report</field>
             <field name="type">ir.actions.report.xml</field>
@@ -63,7 +63,7 @@
             <field name="value" eval="'ir.actions.report.xml,' + str(ref('oph.or_report_id'))"/>
         </record>
 
-        <!-- 3 PKE ICP REPORT -->
+        <!--PKE ICP REPORT -->
         <record model="ir.actions.report.xml" id="pke_icp_report_id">
             <field name="name">PKE ICP Report</field>
             <field name="type">ir.actions.report.xml</field>
@@ -94,39 +94,10 @@
             <field name="value" eval="'ir.actions.report.xml,' + str(ref('oph.pke_icp_report_id'))"/>
         </record>
 
-        <!-- 4 PLAIN REPORT -->
-        <record model="ir.actions.report.xml" id="plain_report_id">
-            <field name="name">Plain Report</field>
-            <field name="type">ir.actions.report.xml</field>
-            <field name="model">oph.reporting</field>
-            <field name="report_name">plain.report</field>
-            <field name="report_type">aeroo</field>
-            <field name="auto">TRUE</field>
-            <field name="report_rml">oph/report/odt/oph_reporting/Plain_Report.odt</field>
-            <field name="parser_state">loc</field>
-            <field name="parser_loc">oph/report/parser.py</field>
-            <field name="tml_source">file</field>
-            <!--  choix database, file, parser de template source-->
-            <field name="in_format">oo-odt</field>
-            <!-- choix de template Mime-type dans configuration-Technical-aero-report-Reports-->
-            <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
-            <field name="styles_mode">specified</field>
-            <field name="stylesheet_id" ref="stt_entete_cab_pagenumber_id"/>
-            <field name="attachment">object.partner_id.fullname+'_Report_TO_'+object.receiver_id.name+'_'+object.date+'.odt'</field>
-        </record>
-        <!-- button -->
-        <record model="ir.values" id="value_plain_report_id">
-            <field name="name">Plain.Report</field>
-            <field name="key">action</field>
-            <field name="key2">client_print_multi</field>
-            <field name="model">oph.reporting</field>
-            <field name="object">TRUE</field>
-            <field name="value" eval="'ir.actions.report.xml,' + str(ref('oph.plain_report_id'))"/>
-        </record>
-
-        <!-- 5 PLAIN REPORT SMALL FONT HEADER-->
+        
+        <!--PLAIN REPORT -->
         <record model="ir.actions.report.xml" id="plain_report_smallfont_id">
-            <field name="name">Plain Report Small Font</field>
+            <field name="name">Plain Report</field>
             <field name="type">ir.actions.report.xml</field>
             <field name="model">oph.reporting</field>
             <field name="report_name">plain.report.smallfont</field>
@@ -154,7 +125,7 @@
             <field name="value" eval="'ir.actions.report.xml,' + str(ref('oph.plain_report_smallfont_id'))"/>
         </record>
 
-        <!-- 6 DIABETIC REPORTING -->
+        <!--DIABETIC REPORTING -->
         <record model="ir.actions.report.xml" id="diab_report_id">
             <field name="name">Diabetic Reporting</field>
             <field name="type">ir.actions.report.xml</field>
@@ -185,35 +156,6 @@
             <field name="value" eval="'ir.actions.report.xml,' + str(ref('oph.diab_report_id'))"/>
         </record>
 
-        <!-- 7 USING TEMPLATE  REPORT -->
-        <record model="ir.actions.report.xml" id="using_template_report_id">
-            <field name="name">Using Template Reporting</field>
-            <field name="type">ir.actions.report.xml</field>
-            <field name="model">oph.reporting</field>
-            <field name="report_name">using.template.reporting</field>
-            <field name="report_type">aeroo</field>
-            <field name="auto">TRUE</field>
-            <field name="report_rml">oph/report/odt/oph_reporting/Using_Template_Reporting.odt</field>
-            <field name="parser_state">loc</field>
-            <field name="parser_loc">oph/report/parser.py</field>
-            <field name="tml_source">file</field>
-            <!--  choix database, file, parser de template source-->
-            <field name="in_format">oo-odt</field>
-            <!-- choix de template Mime-type dans configuration-Technical-aero-report-Reports-->
-            <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
-            <field name="styles_mode">specified</field>
-            <field name="stylesheet_id" ref="stt_entete_cab_pagenumber_id"/>
-        </record>
-        <!-- button -->
-        <record model="ir.values" id="value_using_template_report_id">
-            <field name="name">using.template.reporting</field>
-            <field name="key">action</field>
-            <field name="key2">client_print_multi</field>
-            <field name="model">oph.reporting</field>
-            <field name="object">TRUE</field>
-            <field name="value" eval="'ir.actions.report.xml,' + str(ref('oph.using_template_report_id'))"/>
-        </record>
-        
         <!-- 8 OCT REPORT -->
         <record model="ir.actions.report.xml" id="oct_report_id">
             <field name="name">OCT Reporting</field>
@@ -244,7 +186,7 @@
             <field name="value" eval="'ir.actions.report.xml,' + str(ref('oph.oct_report_id'))"/>
         </record>
         
-        <!-- 9 LASER REPORTING -->
+        <!--LASER REPORTING -->
         <record model="ir.actions.report.xml" id="laser_report_id">
             <field name="name">Laser Report</field>
             <field name="type">ir.actions.report.xml</field>
@@ -273,7 +215,7 @@
             <field name="value" eval="'ir.actions.report.xml,' + str(ref('oph.laser_report_id'))"/>
         </record>
 
-        <!-- 10 COPY PATIENT -->
+        <!--COPY PATIENT -->
         <record model="ir.actions.report.xml" id="copy_report_id">
             <field name="name">Copy Patient Report</field>
             <field name="type">ir.actions.report.xml</field>
@@ -303,7 +245,7 @@
             <field name="value" eval="'ir.actions.report.xml,' + str(ref('oph.copy_report_id'))"/>
         </record>
         
-        <!-- 11 FA REPORT -->
+        <!-- FA REPORT -->
         <record model="ir.actions.report.xml" id="fa_report_id">
             <field name="name">Fluoresceine Angiography Report</field>
             <field name="type">ir.actions.report.xml</field>
@@ -332,7 +274,7 @@
             <field name="value" eval="'ir.actions.report.xml,' + str(ref('oph.fa_report_id'))"/>
         </record>
         
-         <!-- 12 OCT REPORT -->
+         <!--OCT REPORT -->
         <record model="ir.actions.report.xml" id="oct_report2_id">
             <field name="name">OCT Report</field>
             <field name="type">ir.actions.report.xml</field>
