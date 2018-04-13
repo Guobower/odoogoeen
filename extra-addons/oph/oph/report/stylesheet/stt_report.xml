@@ -369,7 +369,7 @@ AAAAAAB/IQAATUVUQS1JTkYvbWFuaWZlc3QueG1sUEsFBgAAAAARABEAcAQAAN4iAAAAAA==
 
 <!--  STYLESHEET FOR ETAT DYNAMIC HEADER BANK REF-->
 <record model="report.stylesheets" id="stt_etat_id">
-            <field name="name">STT for Planning OR</field>
+            <field name="name">STT for Etat</field>
             <field name="report_styles">UEsDBBQAAAgAAPV8jUxexjIMJwAAACcAAAAIAAAAbWltZXR5cGVhcHBsaWNhdGlvbi92bmQub2Fz
 aXMub3BlbmRvY3VtZW50LnRleHRQSwMEFAAACAAA9XyNTBg5H+BhBwAAYQcAABgAAABUaHVtYm5h
 aWxzL3RodW1ibmFpbC5wbmeJUE5HDQoaCgAAAA1JSERSAAAAtQAAAQAIAwAAAML9x+kAAABXUExU
