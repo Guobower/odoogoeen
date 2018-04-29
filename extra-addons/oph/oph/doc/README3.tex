@@ -2130,12 +2130,10 @@ cr.execute("""SELECT ...
 \end{verbatim}
 
 \section{addition d'une nouvelle stylesheet}
-Quelle galere  
-Une fois que l'on a créé le record dans stt_report.xml pas moyen que odoo le
-récupere dans sa base de données. j'ai essayé de tous les effacer, de faire un
-update sur le module oph pas moyen.
-J'ai essayé d'effacer tous les odoo report et j'ai planté la database. J'ai du
-en restore une nouvelle. 
+On crée un odt avec le style que l'on veut.
+On fait un base64 sur ce fichier et le resultat de ce base64 on le colle dans un
+fichier xml pour l'objet model=report.stylesheets.
+donc c'est assez lourd pour faire des tests.
 \section{Comment faire pour avoir l'entete uniquement sur la premiere page ?TODO}
 \label{sec:first_page_header}
 
@@ -2973,15 +2971,121 @@ Sales - Configuration - Account
 
 account code : 706 001
 account name : Prestations de services chirurgie
-parent: 70 pour savoir si on a bien chosit un compte de la bonne company clic sur le drapeau à droite de l'input box
-internal type : regular
+parent: 70 pour savoir si on a bien choisit un compte de la bonne company clic
+sur le drapeau à droite de l'input box internal type : regular
 account type : income 
 company: choisir chirurgie. 
 default taxes: supprimer
 Dans le formulaire de création de l'account il y a le champ "default tax" qu'il faut vider pour éviter d'avoir une valeur de taxe qui s'affiche dans l'invoice line quand on fait une invoice line.
 
+\subsection{ le probleme des taxes}
+probleme des 10\% de reversement à la clinique et aux AMG
+
+Créon un compte 706001 pour comptabiliser l'activité de chirurgie. 
+Accounting / Configuration / accounts / accounts  / create
+\begin{itemize}
+  \item account code and name : 706001 Prestation de services - Chirurgie
+  \item parent 70 ventes de produits fabriqués - Prestations de service -
+  Marchandises
+  \item internal type regular
+  \item Account type : income
+  \item default taxe : empty ?
+\end{itemize}
+
+d'apres :
+https://www.zefyr.net/blog/comptabilisation-des-retrocessions-dhonoraires/
+les redevances du aux cliniques s'apparantant à un loyer sont à mettre dans le
+compte 613200 
+
+Créons donc un compte 613201 Redevance Clinique. 
+Parent : 613 Locations 
+Internal type : regular
+Account Type : expence
+Default taxe ? 
+
+Je voudrais qu'a chaque fois que je facture un acte de chirurgie je  credite
+ce compte.613201
 
 
+Créons une taxe :
+Taxe name : redevance clinique - \10%
+tax code RC-10
+tax definition
+Taxe type percentage 0.1 non il faut mettre -1
+Tax included in price no
+invoices
+invoice tax account : 613201 Redevance Clinique - 10%
+Account Base Code ?
+Base Code sign 1.000 ? 
+Account Tax code : ?
+Tax code sign 1.000 ?
+
+La taxe est crée elle est liée au compte 613201 
+
+Creons un produit de chirurgie qui est liée à cette taxe.  
+Prenons vitrectomie simple pour commencer 
+\begin{itemize}
+  \item product name 
+  \item Category
+  \item can be sold yes
+  \item information
+    \begin{itemize}
+        \item Product type : service 
+        \item internal reference
+        \item Sale price 
+    \end{itemize}
+    \item Accounting 
+        \begin{itemize}
+            \item Income account c'est là que je mets le compte 70 pour la
+            chirurgie mais je le mets au niveau de la catégorie de produit. Mais
+            au niveau de la catégorie de produit cela n'a pas marché.
+            \item customer taxes c'est là que je mets la taxe : RC-10
+        \end{itemize} 
+    \end{itemize}
+  
+On voit les sommes dans les différents comptes dans : Accounts / configuration /
+accounts 
+
+On crée notre premiere facture de chirurgie. 
+Sales / Quotations /  Create 
+Quand je fais Save il fait le calcul avec untaxed amount 66300 XPF Taxes 6630
+XPF Total 72930 XPF. 
+Donc dans la taxe je passe Base Code sign à -1 cela ne change rien toujours une
+taxe positive
+Donc dans la taxe je passe Base Code sign à -1 et Tax Code sign cela ne change
+rien toujours une taxe positive
+Donc on met un pourcentage négatif. là c'est bon
+
+Tant que l'on a pas validé la facture il ne se passe rien sur les compte de la
+taxe 613 et le compte 706.
+On valide. Le compte 613 est credite. Rien ne se passe sur le compte 706. 
+ compte
+ 
+ Je fais le paiement et je vois que Paid amount est le prix du produit moins la
+ taxe. 
+ 
+ En 706 il ne s'est rien passé. Donc je vais mettre dans le produit le champ 
+Je vois que pour les produits (sale / Products / products ) on a l'onglet Accounting / income où on peut configurer account customer taxes expense account / supplier taxes.
+Que font ces taxes?
+Pour cela créons une catégorie. Sales / configuration /Products / product
+categories.
+ On voit que dans la catégorie on peut renseigner 
+ Account Properties
+income account 707100 Marchandise et expence account 607100 Marchandise
+Créons un compte pour la chirurgie du segment postérieure. dans accounting /
+configuration / accounts / create 
+account code and Name 706001 - Chirurgie
+parent 70 vente de produit fabriqué Prestation de service marchandises
+internal type : regular
+Account Type : income
+Default taxes : ?
+
+/subsubsection{les taxes}
+se configurent dans Acount / configuration / taxes 
+
+Pour les AMG comme c'est dans les produits que l'on configure les taxes je ne
+vais pas pouvoir utiliser une taxe pour mettre en place la ristourne de 10\% à
+moins de faire des produit pour les cafat mut et des produits pour less AMG. 
 
 \end{document}
 
