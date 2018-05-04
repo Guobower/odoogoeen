@@ -192,7 +192,7 @@ class oph_bloc_agenda_line(osv.osv):
         if context is None:
             context = {}
         records = self.browse(cr, uid, ids, context)
-        import pudb;pudb.set_trace()
+        import pdb;pdb.set_trace()
 
     def _get_wdandmonth(self, cr, uid, ids, field_name, arg, context={}):
         """
