@@ -182,7 +182,7 @@ class oph_bloc_agenda_line(osv.osv):
     TODO
     """
     _name = "oph.bloc.agenda.line"
-    _order = "sequence"
+    _order = "date,sequence"
 
     def _get_date(self, cr, uid, ids, field_name, arg, context={}):
         """
