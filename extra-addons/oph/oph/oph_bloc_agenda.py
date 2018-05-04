@@ -184,7 +184,7 @@ class oph_bloc_agenda_line(osv.osv):
     _name = "oph.bloc.agenda.line"
     _order = "sequence"
 
-    def _get_date(self, cr, uid, field_name, arg, context={}):
+    def _get_date(self, cr, uid, ids, field_name, arg, context={}):
         """
         To get the date and use it for order and sort
         """
