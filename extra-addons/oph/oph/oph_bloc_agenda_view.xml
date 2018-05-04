@@ -21,7 +21,6 @@
                             <field name="start_date" readonly="False"/>
                             <field name="end_date" readonly="False"/>
                             <field name="active"/>
-                            <field name="date"/>
                         </group>
                         <group>
                             <field name="comment"/>
@@ -109,6 +108,7 @@
                         <group>
                             <field name="wd" invisible="1"/>
                             <field name="bloc_agenda_id"/>
+                            <field name="date"/>
                         </group>
                         <group>
                             <field name="sequence"/>
