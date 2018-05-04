@@ -227,7 +227,7 @@ class oph_bloc_agenda_line(osv.osv):
             ids = [ids]
         res = []
         for record in self.browse(cr, uid, ids, context=context):
-            name = record.name
+            # name = record.name
             from pdb import set_trace;set_trace()
 #             if record.firstname:
 #                 name += ', ' + record.firstname
