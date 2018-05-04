@@ -211,6 +211,42 @@ class oph_bloc_agenda_line(osv.osv):
     #             ('OS', _('Left Eye')),
     #             ]
     #===========================================================================
+    def name_get(self, cr, uid, ids, context=None):
+        """
+        Returns the preferred display value (text representation) 
+        for the records with the given ids. 
+        By default this will be the value of the "name" column, 
+        unless the model implements a custom behavior.
+        
+        @Return: type:list(tuple)
+        @Returns: list of pairs (id,text_repr) for all records with the given ids.
+        """
+        if context is None:
+            context = {}
+        if isinstance(ids, (int, long)):
+            ids = [ids]
+        res = []
+        for record in self.browse(cr, uid, ids, context=context):
+            name = record.name
+            from pdb import set_trace;set_trace()
+#             if record.firstname:
+#                 name += ', ' + record.firstname
+#             if record.dob:
+#                 name += ', (' + str(record.dob) + ')'
+#             if record.parent_id:
+#                 name = "%s (%s)" % (name, record.parent_id.name)
+#             if context.get('show_address'):
+#                 name = name + "\n" + self._display_address(cr, uid, record, without_company = True, context = context)
+#                 name = name.replace('\n\n', '\n')
+#                 name = name.replace('\n\n', '\n')
+#             if context.get('show_email') and record.email:
+#                 name = "%s <%s>" % (name, record.email)
+#             if record.age:
+#                 name += ' / (' + str(record.age) + ')'
+#             if record.gender:
+#                 name += '(' + record.gender + ')'
+#             res.append((record.id, name))
+        return res
 
     def _get_ane_type(self, cursor, user_id, context=None):
         return (
