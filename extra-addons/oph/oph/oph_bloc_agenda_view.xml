@@ -84,6 +84,7 @@
         <!-- FORM VIEW FOR OPH.BLOC.AGENDA.LINE -->
         <record model="ir.ui.view" id="view_bloc_agenda_line_form_id">
             <field name="name">Bloc Agenda Line</field>
+            <field name="date">Date</field>
             <field name="model">oph.bloc.agenda.line</field>
             <field name="priority" eval="2"/>
             <field name="arch" type="xml">
