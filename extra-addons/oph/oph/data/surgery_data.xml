@@ -128,7 +128,7 @@
         <record model="oph.procedure.type" id="procedure_impsec">
             <field name="name">Implantation secondaire</field>
             <field name="code">IMPSEC</field>
-            <field name="dilatation">yes</field>
+            <field name="dilatation">no</field>
             <field name="iol_status" eval="True"/>
             <field name="duration">45</field>
             <field name="comment">un commentaire</field>
