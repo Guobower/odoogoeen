@@ -145,7 +145,7 @@
                             <field name="ane_comment"/>
                         </group>   
                         <group string="RDV NEXT OR">
-                            <field name="bloc_agenda_line_id" domain="['|',('partner_id','=',partner_id),('state,'=','draft'),('state,'=','open'),('state,'=','confirm')]" widget="many2one"/>
+                            <field name="bloc_agenda_line_id" domain="[('partner_id','=',partner_id),('state,'=','draft'),('state,'=','open'),('state,'=','confirm')]" widget="many2one"/>
                         </group>                    
                         <!--<group attrs="{'invisible':['|','|','|',('state','=','draft'),('state','=','open'),('state','=','no_show'),('state','=','cancel')]}" string="CR hostpit">-->
                         <group attrs="{'invisible':[('state','not in',['confirm','close'])]}" string="CR hostpit">
