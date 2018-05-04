@@ -231,7 +231,7 @@ class oph_bloc_agenda_line(osv.osv):
                 name = record.bloc_agenda_id.wd
             if record.bloc_agenda_id.partner_id.fullname:
                 name += record.bloc_agenda_id.partner_id.
-            from pdb import set_trace;set_trace()
+        from pdb import set_trace;set_trace()
 #             if record.firstname:
 #                 name += ', ' + record.firstname
 #             if record.dob:
