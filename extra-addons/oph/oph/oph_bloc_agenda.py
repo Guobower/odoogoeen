@@ -136,6 +136,7 @@ class oph_bloc_agenda(osv.osv):
         """
         To humanize the date format
         Using the arrow python module.
+        Get the date convert it to arrow and format it to readable human.
         """
         print "CONTEXT:%s" % (context,)
         res = {}
@@ -183,10 +184,21 @@ class oph_bloc_agenda_line(osv.osv):
     _name = "oph.bloc.agenda.line"
     _order = "sequence"
 
+    def get_date(self, cr, uid, field_name, arg, context={}):
+        """
+        To get the date and use it for order and sort
+        """
+        res = {}
+        if context is None:
+            context = {}
+        records = self.browse(cr, uid, ids, context)
+        import pudb;pudb.set_trace()
+
     def _get_wdandmonth(self, cr, uid, ids, field_name, arg, context={}):
         """
         To humanize the date format
         Using the arrow python module.
+        Get the date value of oph.
         """
         res = {}
         if context is None:
@@ -389,6 +401,7 @@ class oph_bloc_agenda_line(osv.osv):
 
     _columns = {
                 'name':fields.char('Id', size=8,),
+                'date':fields.function(_get_date, method=True, type='date', string='Date', store=True),
                 'wd':fields.function(_get_wdandmonth, method=True, type='char', string='Weekday', store=False),
                 'sequence':fields.integer('Sequence'),
                 'duration':fields.float('Duration',),
