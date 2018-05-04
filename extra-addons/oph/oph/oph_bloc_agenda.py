@@ -227,8 +227,9 @@ class oph_bloc_agenda_line(osv.osv):
             ids = [ids]
         res = []
         for record in self.browse(cr, uid, ids, context=context):
-            # name = record.name
-            from pdb import set_trace;set_trace()
+            if record.bloc_agenda_id.wd:
+                name = record.bloc_agenda_id.wd
+            # from pdb import set_trace;set_trace()
 #             if record.firstname:
 #                 name += ', ' + record.firstname
 #             if record.dob:
@@ -245,7 +246,7 @@ class oph_bloc_agenda_line(osv.osv):
 #                 name += ' / (' + str(record.age) + ')'
 #             if record.gender:
 #                 name += '(' + record.gender + ')'
-#             res.append((record.id, name))
+            res.append((record.id, name))
         return res
 
     def _get_ane_type(self, cursor, user_id, context=None):
