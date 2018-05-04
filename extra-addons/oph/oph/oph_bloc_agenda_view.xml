@@ -143,7 +143,10 @@
                         <group string="RDV ANE Info">
                             <field name="ane_appointment"/>
                             <field name="ane_comment"/>
-                        </group>                        
+                        </group>   
+                        <group string="RDV NEXT OR">
+                            <field name="bloc_agenda_line_id"/>
+                        </group>                    
                         <!--<group attrs="{'invisible':['|','|','|',('state','=','draft'),('state','=','open'),('state','=','no_show'),('state','=','cancel')]}" string="CR hostpit">-->
                         <group attrs="{'invisible':[('state','not in',['confirm','close'])]}" string="CR hostpit">
                             <field name="po_meeting_id" domain="[('partner_id','=',partner_id)]" widget="many2one"/>
