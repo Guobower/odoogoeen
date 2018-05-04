@@ -192,7 +192,20 @@ class oph_bloc_agenda_line(osv.osv):
         if context is None:
             context = {}
         records = self.browse(cr, uid, ids, context)
-        import pdb;pdb.set_trace()
+        for record in records:
+            
+        # date est de type datetime.date
+        # records pointe vers oph.bloc.agenda.line
+        # on obtient la date du oph_bloc_agenda avec
+        # for record in records:
+        # record.bloc_agenda_id.start_date
+        # qui est de type string en utc. Il faut la transformer en ?
+        # on a aussi record.bloc_agenda_id.name qui donne une str YYYY-MM-DD
+            res[record.id] = record.bloc_agenda_id.name
+            # là c'est pas en date type pas sur que cela marche.
+        return res
+    
+    #    import pdb;pdb.set_trace()
 
     def _get_wdandmonth(self, cr, uid, ids, field_name, arg, context={}):
         """
