@@ -106,9 +106,9 @@
                     </header>
                     <sheet string="Bloc Agenda Line">
                         <group>
+                            <field name="date"/>
                             <field name="wd" invisible="1"/>
                             <field name="bloc_agenda_id"/>
-                            <field name="date"/>
                         </group>
                         <group>
                             <field name="sequence"/>
