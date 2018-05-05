@@ -104,6 +104,35 @@
             <field name="value" eval="'ir.actions.report.xml,' + str(ref('oph.fiche_liaison_bdc_id'))"/>
         </record>
 
+        <!-- ORDO OR -->
+         <record model="ir.actions.report.xml" id="prescription_or_id">
+            <field name="name">Precription OR</field>
+            <field name="type">ir.actions.report.xml</field>
+            <field name="model">oph.bloc.agenda.line</field>
+            <field name="report_name">Precription.OR</field>
+            <field name="report_type">aeroo</field>
+            <field name="auto">True</field>
+            <field name="report_rml">oph/report/odt/oph_bloc_agenda/Prescription_OR.odt</field>
+            <field name="parser_state">loc</field>
+            <field name="parser_loc">oph/report/parser.py</field>
+            <field name="tml_source">file</field>
+            <field name="in_format">oo-odt</field>
+            <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
+            <field name="styles_mode">specified</field>
+            <field name="stylesheet_id" ref="stt_entete_cab_nopagenumber_id"/>
+            <field name="attachment">object.partner_id.fullname+'_'+'PresOR'+'_'+object.bloc_agenda_id.name+'.odt'</field>
+        </record>
+        <!--button-->
+        <record model="ir.values" id="value_prescription_or_id">
+            <field name="name">Precription.OR</field>
+            <field name="key">action</field>
+            <field name="key2">client_print_multi</field>
+            <field name="model">oph.bloc.agenda.line</field>
+            <field name="object">TRUE</field>
+            <field name="value" eval="'ir.actions.report.xml,' + str(ref('oph.prescription_or_id'))"/>
+        </record>
+        <!-- END ORDO OR -->
+        
         <!-- FICHE DE LIASON PO IMMEDIAT -->
          <record model="ir.actions.report.xml" id="fiche_liaison_po_id">
             <field name="name">Fiche Liaison PO</field>
@@ -133,35 +162,6 @@
             <field name="object">TRUE</field>
             <field name="value" eval="'ir.actions.report.xml,' + str(ref('oph.fiche_liaison_po_id'))"/>
         </record>
-        
-        <!-- ORDO OR -->
-         <record model="ir.actions.report.xml" id="prescription_or_id">
-            <field name="name">Precription OR</field>
-            <field name="type">ir.actions.report.xml</field>
-            <field name="model">oph.bloc.agenda.line</field>
-            <field name="report_name">Precription.OR</field>
-            <field name="report_type">aeroo</field>
-            <field name="auto">True</field>
-            <field name="report_rml">oph/report/odt/oph_bloc_agenda/Prescription_OR.odt</field>
-            <field name="parser_state">loc</field>
-            <field name="parser_loc">oph/report/parser.py</field>
-            <field name="tml_source">file</field>
-            <field name="in_format">oo-odt</field>
-            <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"></field>
-            <field name="styles_mode">specified</field>
-            <field name="stylesheet_id" ref="stt_entete_cab_nopagenumber_id"/>
-            <field name="attachment">object.partner_id.fullname+'_'+'PresOR'+'_'+object.bloc_agenda_id.name+'.odt'</field>
-        </record>
-        <!--button-->
-        <record model="ir.values" id="value_prescription_or_id">
-            <field name="name">Precription.OR</field>
-            <field name="key">action</field>
-            <field name="key2">client_print_multi</field>
-            <field name="model">oph.bloc.agenda.line</field>
-            <field name="object">TRUE</field>
-            <field name="value" eval="'ir.actions.report.xml,' + str(ref('oph.prescription_or_id'))"/>
-        </record>
-        <!-- END ORDO OR -->
  
         <!--  CARDIO REPORTING -->
         <record model="ir.actions.report.xml" id="cardio_report_id">
@@ -275,7 +275,3 @@
         </record>
     </data>
 </openerp>
-
-
-
-<!-- -->
