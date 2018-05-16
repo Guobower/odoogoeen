@@ -426,7 +426,7 @@ class oph_bloc_agenda_line(osv.osv):
                                                     ('cancel', _('Cancel')),
                                                     ('close', _('Close')),
                                                     ('no_show', _('No Show')), ], 'State', readonly=False),
-                'comment':fields.text('Comment'),
+                'comment':fields.text('Comment', help="Comments"),
                 'ods':fields.selection([('OD', _('Right Eye')),
                                          ('OS', _('Left Eye')), ], 'ODS', required=True,),
                 'snd_eye':fields.boolean('Second Eye'),
