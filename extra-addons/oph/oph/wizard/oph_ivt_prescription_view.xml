@@ -3,7 +3,6 @@
     <data>
 
     <!--  IVT prescription Wizard -->
-
         <record id="view_ivt_prescription_wizard" model="ir.ui.view">
             <field name="name">Run IVT Prescription</field>
             <field name="model">oph.ivt.prescription</field>
@@ -15,14 +14,14 @@
                         <field name="date"/>
                         <field name="indication"/>
                         <!--
-                        
-                        <field name="molecule"/>
                         <field name="molecule1"/>
                         -->
                         <!-- others fields -->
                      </group>
                      <footer>
                         <button name="print_ivt_prescription" string="Print IVT Prescription" class="oe_highlight" type="object"/>
+                        or
+                        <button name="print_ivt_prescription_pdf" string="Print IVT Prescription PDF" class="oe_highlight" type="object"/>
                         or
                         <button string="Cancel" class="oe_link" special="cancel"/>
                     </footer>
@@ -42,7 +41,7 @@
             <field name="target">new</field>
         </record>
 
-<!-- Action qui va permettre d'afficher le bouton "Run Etat Factory" dans la tree view de account.invoice -->        
+<!-- Action qui va permettre d'afficher le bouton "Run IVT Prescription" dans la form view de oph.bloc.agenda.line -->        
 <act_window name="Run IVT Prescription"
         res_model="oph.ivt.prescription"
         src_model="oph.bloc.agenda.line"
