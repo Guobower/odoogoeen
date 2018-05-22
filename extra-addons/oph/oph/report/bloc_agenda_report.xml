@@ -257,13 +257,14 @@
             <field name="parser_loc">oph/report/parser.py</field>
             <field name="tml_source">file</field>
             <field name="in_format">oo-odt</field>
-            <field name="out_format" eval="ref('report_aeroo_ooo.report_mimetypes_pdf_odt')" />
+            <field name="out_format" model="report.mimetypes" ref="report_aeroo_ooo.report_mimetypes_pdf_odt" />
             <!-- 
             <field name="styles_mode">specified</field>
             <field name="stylesheet_id" ref="stt_entete_cab_nopagenumber_id"/>
              -->
-            <!-- <field name="attachment">object.partner_id.fullname+'_Request Bizone_'+object.date_request+'.pdf'</field> -->
+            <field name="attachment">'IVT_'+'object.partner_id.fullname'+'object.bloc_agenda_id.name'+'.pdf'</field> -->
         </record>
+        
         <!--  END ORDO IVT PDF    -->
         
         <!-- PLANNING APPOINTMENT-->
