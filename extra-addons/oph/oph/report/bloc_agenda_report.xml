@@ -245,7 +245,7 @@
         <!--  There is no button because we triger this report by a wizard -->
         <!--  END ORDO IVT -->
         <!--  ORDO IVT PDF    -->
-        <record model="ir.actions.report.xml" id="request_bizone_pdf_id">
+        <record model="ir.actions.report.xml" id="ordo_ivt_pdf_id">
             <field name="name">IVT Prescripion PDF</field>
             <field name="type">ir.actions.report.xml</field>
             <field name="model">oph.bloc.agenda.line</field>
