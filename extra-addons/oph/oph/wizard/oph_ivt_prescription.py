@@ -1,7 +1,10 @@
 # -*- coding: utf-8 -*-
 import time
+import logging
 from openerp.osv import osv, fields
 from openerp.tools.translate import _
+
+_logger = logging.getLogger(__name__)
 
 class oph_ivt_prescription(osv.osv_memory):
     _name = "oph.ivt.prescription"
@@ -50,6 +53,7 @@ class oph_ivt_prescription(osv.osv_memory):
             }
         
     def print_ivt_prescription_pdf(self, cr, uid, ids, context=None):
+        _logger.info('In print_ivt_prescription_pdf method')
         if context is None:
             context = {}
 

@@ -257,7 +257,7 @@
             <field name="parser_loc">oph/report/parser.py</field>
             <field name="tml_source">file</field>
             <field name="in_format">oo-odt</field>
-            <field name="out_format" model="report.mimetypes" ref="report_aeroo_ooo.report_mimetypes_pdf_odt"/>
+            <field name="out_format" eval="ref('report_aeroo_ooo.report_mimetypes_pdf_odt')" />
             <!-- 
             <field name="styles_mode">specified</field>
             <field name="stylesheet_id" ref="stt_entete_cab_nopagenumber_id"/>
