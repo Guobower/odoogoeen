@@ -264,6 +264,16 @@
              -->
             <field name="attachment">'IVT_'+'object.partner_id.fullname'+'object.bloc_agenda_id.name'+'.pdf'</field> -->
         </record>
+            <!-- button -->
+            <!-- j'essaie des boutons car avec juste le wizard je n'arrive pas à avoir un pdf -->
+        <record model="ir.values" id="value_ordo_ivt_pdf_id">
+            <field name="name">oph.ivt.prescription.pdf</field>
+            <field name="key">action</field>
+            <field name="key2">client_print_multi</field>
+            <field name="model">oph.bloc.agenda.line</field>
+            <field name="object">TRUE</field>
+            <field name="value" eval="'ir.actions.report.xml,' + str(ref('oph.ordo_ivt_pdf_id'))"/>
+        </record>
         
         <!--  END ORDO IVT PDF    -->
         
