@@ -245,6 +245,7 @@
         <!--  There is no button because we triger this report by a wizard -->
         <!--  END ORDO IVT -->
         <!--  ORDO IVT PDF    -->
+        <!--
         <record model="ir.actions.report.xml" id="ordo_ivt_pdf_id">
             <field name="name">IVT Prescripion PDF</field>
             <field name="type">ir.actions.report.xml</field>
@@ -259,12 +260,16 @@
             <field name="in_format">oo-odt</field>
             <field name="out_format" model="report.mimetypes" ref="report_aeroo_ooo.report_mimetypes_pdf_odt">
             </field>
+            -->
             <!-- 
             <field name="styles_mode">specified</field>
             <field name="stylesheet_id" ref="stt_entete_cab_nopagenumber_id"/>
              -->
+             <!--
             <field name="attachment">'IVT_'+'object.partner_id.fullname'+'object.bloc_agenda_id.name'+'.pdf'</field> -->
-        </record>
+        <!--  </record>
+        -->
+        
             <!-- button -->
             <!-- j'essaie des boutons car avec juste le wizard je n'arrive pas à avoir un pdf -->
             <!--  
