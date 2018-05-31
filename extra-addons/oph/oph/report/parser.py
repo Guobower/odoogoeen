@@ -62,6 +62,7 @@ class Parser(report_sxw.rml_parse):
             'only_time':self.get_only_time,
             'only_time1':self.get_only_time1,
             'only_time2':self.get_only_time2,
+            'only_time3':self.get_only_time3,
            # 'product_name':self.get_product_name,
             # 'molecule':self._get_molecule,
             # 'indication':self._get_indication,
@@ -83,14 +84,14 @@ class Parser(report_sxw.rml_parse):
         fmt = 'DD-MM-YYYY HH:mm'
         return arrow.now().format(fmt)
 
-    def arrow_today_timestamp2(self, context=None):
+    def arrow_today_timestamp2(self, context = None):
         # FIX the format of date print in report
-        
+
         if context is None:
             context = {}
         context = self.context
         fmt = 'DD-MM-YYYY HH:mm'
-        aware = arrow.now().replace(tzinfo=pytz.UTC)  # doesn't chanfe time and date but only the TZ. strange.
+        aware = arrow.now().replace(tzinfo = pytz.UTC)  # doesn't chanfe time and date but only the TZ. strange.
         # localized = aware.astimezone(pytz.timezone(context.get('tz'))) you get a datetime.datetime object
         localized = aware.to(pytz.timezone(context.get('tz')))
         # print "****context.get('tz'):%s" % (context.get('tz'),)
@@ -99,32 +100,32 @@ class Parser(report_sxw.rml_parse):
     def printed_date(self):
         return datetime.now().strftime("%y-%m-%d")
 
-    def _date_report(self, context=None):
+    def _date_report(self, context = None):
         if context is None:
             context = {}
         context = self.context
         import pdb;pdb.set_trace()
         return context.get('date_report', '')
 
-    def _ref_statement(self, context=None):
+    def _ref_statement(self, context = None):
         if context is None:
             context = {}
         context = self.context
         return context.get('ref_statement', '')
 
-    def _val_hba1c(self, context=None):
+    def _val_hba1c(self, context = None):
         if context is None:
             context = {}
         context = self.context
         return context.get('hba1c', "Je n'ai pas retrouve")
 
-    def _receiver(self, context=None):
+    def _receiver(self, context = None):
         if context is None:
             context = {}
         context = self.context
         return context.get('receiver')
 
-    def subtotal(self, context=None):
+    def subtotal(self, context = None):
         print "PASSING SUBTOTAL"
         if context is None:
             context = {}
@@ -137,7 +138,7 @@ class Parser(report_sxw.rml_parse):
         context['subtotal'] = res.get('subtotal')
         return context.get('subtotal')
 
-    def total_chq(self, context=None):
+    def total_chq(self, context = None):
         if context is None:
             context = {}
         context = self.context
@@ -148,17 +149,17 @@ class Parser(report_sxw.rml_parse):
         context['subtotal'] = res.get('subtotal')
         return context.get('subtotal')
 
-    def rebate(self, context=None):
+    def rebate(self, context = None):
         context = self.context
         context['rebate'] = context.get('subtotal') * 0.1
         return context.get('rebate')
 
-    def total(self, context=None):
+    def total(self, context = None):
         context = self.context
         context['total'] = context.get('subtotal') - context.get('rebate')
         return context.get('total')
-    
-    def get_meeting_date(self, context=None):
+
+    def get_meeting_date(self, context = None):
         if context is None:
             context = {}
         context = self.context
@@ -170,9 +171,9 @@ class Parser(report_sxw.rml_parse):
         label = arw.format('DD-MM-YYYY')
         context['meeting_date'] = label
         return context.get('meeting_date', '')
-        
 
-    def get_only_time(self, context=None):
+
+    def get_only_time(self, context = None):
         if context is None:
             context = {}
         context = self.context
@@ -180,7 +181,7 @@ class Parser(report_sxw.rml_parse):
         for rec in temp:
             context['only_time'] = rec.date
         unaware = datetime.strptime(context['only_time'], '%Y-%m-%d %H:%M:%S')
-        aware = unaware.replace(tzinfo=pytz.UTC)
+        aware = unaware.replace(tzinfo = pytz.UTC)
         localized = aware.astimezone(pytz.timezone(context.get('tz')))
         # import pdb;pdb.set_trace()
         loc = locale.getlocale()
@@ -191,7 +192,7 @@ class Parser(report_sxw.rml_parse):
         context['only_time'] = label
         return context.get('only_time', '')
 
-    def get_only_time1(self, context=None):
+    def get_only_time1(self, context = None):
         """
         Humanize date for oph_bloc_agenda_line object
         for PO appointment
@@ -204,7 +205,7 @@ class Parser(report_sxw.rml_parse):
             context['only_time1'] = rec.po_meeting_id.date
         if context['only_time1']:
             unaware = datetime.strptime(context['only_time1'], '%Y-%m-%d %H:%M:%S')
-            aware = unaware.replace(tzinfo=pytz.UTC)
+            aware = unaware.replace(tzinfo = pytz.UTC)
             localized = aware.astimezone(pytz.timezone(context.get('tz')))
             loc = locale.getlocale()
             locale.setlocale(locale.LC_ALL, 'fr_FR.UTF-8')
@@ -214,7 +215,7 @@ class Parser(report_sxw.rml_parse):
         else:
             return True
 
-    def get_only_time2(self, context=None):
+    def get_only_time2(self, context = None):
         """
         Humanize date for oph_bloc_agenda_line object
         for PO appointment
@@ -227,7 +228,7 @@ class Parser(report_sxw.rml_parse):
             context['only_time2'] = rec.ane_appointment
         if context['only_time2']:
             unaware = datetime.strptime(context['only_time2'], '%Y-%m-%d %H:%M:%S')
-            aware = unaware.replace(tzinfo=pytz.UTC)
+            aware = unaware.replace(tzinfo = pytz.UTC)
             localized = aware.astimezone(pytz.timezone(context.get('tz')))
             loc = locale.getlocale()
             locale.setlocale(locale.LC_ALL, 'fr_FR.UTF-8')
@@ -237,7 +238,30 @@ class Parser(report_sxw.rml_parse):
         else:
             return True
 
-    def get_product_name(self, context=None):
+    def get_only_time3(self, context = None):
+        """
+        Humanize date for oph_bloc_agenda_line object
+        for Pre OP appointment
+        """
+        if context is None:
+            context = {}
+        context = self.context
+        temp = self.pool.get('crm.meeting').browse(self.cr, self.uid, context.get('active_ids'))
+        for rec in temp:
+            context['only_time3'] = rec.date
+        if context['only_time3']:
+            unaware = datetime.strptime(context['only_time3'], '%Y-%m-%d %H:%M:%S')
+            aware = unaware.replace(tzinfo = pytz.UTC)
+            localized = aware.astimezone(pytz.timezone(context.get('tz')))
+            loc = locale.getlocale()
+            locale.setlocale(locale.LC_ALL, 'fr_FR.UTF-8')
+            label = ustr(localized.strftime("%A %d %B %Y")) + ' ' + u'à' + ' ' + ustr(localized.strftime("%H H %M"))
+            context['only_time3'] = label
+            return context.get('only_time3', '')
+        else:
+            return True
+
+    def get_product_name(self, context = None):
         print "JE PASSE PAR GET_PRODUCT_NAME"
         if context is None:
             context = {}
@@ -246,14 +270,14 @@ class Parser(report_sxw.rml_parse):
 
 
 
-    def _molecule(self, context=None):
+    def _molecule(self, context = None):
         if context is None:
             context = {}
         context = self.context
         import pdb;pdb.set_trace()
         return context.get('molecule', '')
 
-    def _indication(self, context=None):
+    def _indication(self, context = None):
         if context is None:
             context = {}
         context = self.context

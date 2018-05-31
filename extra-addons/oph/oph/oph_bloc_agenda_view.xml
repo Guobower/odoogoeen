@@ -142,19 +142,35 @@
                             <field name="ic"/>
                         </group>
                         <field name="comment"/>
-                        <group string="RDV ANE Info">
-                            <field name="ane_appointment"/>
-                            <field name="ane_comment"/>
-                        </group>   
-                        <group string="RDV NEXT OR">
-                            <field name="bloc_agenda_line_id" domain="[('partner_id','=',partner_id),('state','in',['confirm','draft','open'])]" widget="many2one"/>
-                        </group>                    
+                        
                         <!--<group attrs="{'invisible':['|','|','|',('state','=','draft'),('state','=','open'),('state','=','no_show'),('state','=','cancel')]}" string="CR hostpit">-->
-                        <group attrs="{'invisible':[('state','not in',['confirm','close'])]}" string="CR hostpit">
-                            <field name="po_meeting_id" domain="[('partner_id','=',partner_id)]" widget="many2one"/>
-                            <field name="indication_id"/>
-                            <field name="operator_id"/>
-                        </group>
+                        
+                        
+                        <notebook>
+                            <page string="Pre OP appointment">
+                                <group>
+                                <field name="preop_meeting_id" domain="[('partner_id','=',partner_id)]"/>
+                                </group>
+                            </page>
+                            <page string="RDV ANE INFO">
+                                <group string="RDV ANE Info">
+                                    <field name="ane_appointment"/>
+                                    <field name="ane_comment"/>
+                                </group>   
+                            </page>
+                            <page string="RDV NEXT OR">
+                                <group string="RDV NEXT OR">
+                                    <field name="bloc_agenda_line_id" domain="[('partner_id','=',partner_id),('state','in',['confirm','draft','open'])]" widget="many2one"/>
+                                </group>       
+                            </page>
+                            <page string="POST OR Appointment">
+                                <group attrs="{'invisible':[('state','not in',['confirm','close'])]}" string="CR hostpit">
+                                    <field name="po_meeting_id" domain="[('partner_id','=',partner_id)]" widget="many2one"/>
+                                    <field name="indication_id"/>
+                                    <field name="operator_id"/>
+                                </group>
+                            </page>
+                        </notebook>
                     </sheet>
                 </form>
             </field>
