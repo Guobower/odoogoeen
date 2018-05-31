@@ -250,7 +250,7 @@ class Parser(report_sxw.rml_parse):
         temp = self.pool.get(context.get('active_model')).browse(self.cr, self.uid, context.get('active_ids'))
         for rec in temp:
             import pdb;pdb.set_trace()
-            context['only_time3'] = rec.prep_meeting_id.date
+            context['only_time3'] = rec.preop_meeting_id.date
         if context['only_time3']:
             unaware = datetime.strptime(context['only_time3'], '%Y-%m-%d %H:%M:%S')
             aware = unaware.replace(tzinfo=pytz.UTC)
@@ -269,8 +269,6 @@ class Parser(report_sxw.rml_parse):
             context = {}
         context = self.context
         import pdb;pdb.set_trace()
-
-
 
     def _molecule(self, context=None):
         if context is None:
