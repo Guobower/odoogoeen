@@ -534,7 +534,7 @@
             <field name="name">Acute Retinal Necrosis</field>
         </record>
         <record id="path4_line0" model="oph.medication.line.template">
-            <field name="pathology_id" ref="path2"/>
+            <field name="pathology_id" ref="path4"/>
             <field name="name">ID6</field>
             <field name="brandname_id" ref="cla0"/>
             <field name="poso">1g 3 fois par jour pour 10 jours</field>
@@ -650,6 +650,7 @@
         <record id="path10" model="oph.pathology">
             <field name="name">Post segment postérieur</field>
         </record>
+        <!-- Mydriaticum -->
         <record id="path10_line0" model="oph.medication.line.template">
             <field name="pathology_id" ref="path10"/>
             <field name="name">ID0</field>
@@ -657,6 +658,7 @@
             <field name="poso">1 gtte matin et soir</field>
             <field name="duration">pour 5 jours</field>
         </record>
+        <!-- Tobradex -->
         <record id="path10_line1" model="oph.medication.line.template">
             <field name="pathology_id" ref="path10"/>
             <field name="name">ID1</field>
@@ -664,6 +666,7 @@
             <field name="poso">1 gtte 3 fois par jour</field>
             <field name="duration">pour 1 mois</field>
         </record>
+        <!-- Sterdex -->
         <record id="path10_line2" model="oph.medication.line.template">
             <field name="pathology_id" ref="path10"/>
             <field name="name">ID2</field>
@@ -671,6 +674,7 @@
             <field name="poso">1 application le soir au coucher</field>
             <field name="duration">pour 15 jours</field>
         </record>
+        <!-- xalacom -->
         <record id="path10_line3" model="oph.medication.line.template">
             <field name="pathology_id" ref="path10"/>
             <field name="name">ID3</field>
@@ -678,6 +682,7 @@
             <field name="poso">1 gtte matin et soir</field>
             <field name="duration">pour 10 jours</field>
         </record>
+        <!-- diamox -->
         <record id="path10_line4" model="oph.medication.line.template">
             <field name="pathology_id" ref="path10"/>
             <field name="name">ID4</field>
@@ -685,6 +690,7 @@
             <field name="poso">1 cp matin, midi et soir</field>
             <field name="duration">pour 5 jours</field>
         </record>
+        <!-- Diffu K -->
         <record id="path10_line5" model="oph.medication.line.template">
             <field name="pathology_id" ref="path10"/>
             <field name="name">ID5</field>
@@ -692,18 +698,95 @@
             <field name="poso">1 cp par jour</field>
             <field name="duration">pour 5 jours</field>
         </record>
+        <!-- compresses -->
         <record id="path10_line6" model="oph.medication.line.template">
             <field name="pathology_id" ref="path10"/>
             <field name="name">ID6</field>
             <field name="brandname_id" ref="comp0"/>
             <field name="poso">50U</field>
         </record>
+        <!-- solute isotonique -->
         <record id="path10_line6" model="oph.medication.line.template">
             <field name="pathology_id" ref="path10"/>
             <field name="name">ID7</field>
             <field name="brandname_id" ref="soliso0"/>
             <field name="poso">Lavage oculaire, matin et soir si sécrétions.</field>
         </record>
+        
+  <!-- Post SP si désepithélialisation -->
+        <record id="path10" model="oph.pathology">
+            <field name="name">Post segment postérieur</field>
+        </record>
+        <!-- Cellusvisc -->
+        <record id="path10_line0" model="oph.medication.line.template">
+            <field name="pathology_id" ref="path10"/>
+            <field name="name">ID0</field>
+            <field name="brandname_id" ref="cell0"/>
+            <field name="poso">1 gtte 6 fois par jour</field>
+            <field name="duration">pour 1 mois</field>
+        </record>
+        <!-- Mydriaticum -->
+        <record id="path10_line1" model="oph.medication.line.template">
+            <field name="pathology_id" ref="path10"/>
+            <field name="name">ID1</field>
+            <field name="brandname_id" ref="myd0"/>
+            <field name="poso">1 gtte matin et soir</field>
+            <field name="duration">pour 5 jours</field>
+        </record>
+        <!-- Tobradex -->
+        <record id="path10_line2" model="oph.medication.line.template">
+            <field name="pathology_id" ref="path10"/>
+            <field name="name">ID2</field>
+            <field name="brandname_id" ref="tob0"/>
+            <field name="poso"> A commencer. 1 gtte 3 fois par jour.</field>
+            <field name="duration">pour 1 mois</field>
+        </record>
+        <!-- Sterdex -->
+        <record id="path10_line3" model="oph.medication.line.template">
+            <field name="pathology_id" ref="path10"/>
+            <field name="name">ID3</field>
+            <field name="brandname_id" ref="ster0"/>
+            <field name="poso">A commencer. 1 application le soir au coucher</field>
+            <field name="duration">pour 15 jours</field>
+        </record>
+        <!-- xalacom -->
+        <record id="path10_line4" model="oph.medication.line.template">
+            <field name="pathology_id" ref="path10"/>
+            <field name="name">ID4</field>
+            <field name="brandname_id" ref="xal0"/>
+            <field name="poso">1 gtte matin et soir</field>
+            <field name="duration">pour 10 jours</field>
+        </record>
+        <!-- diamox -->
+        <record id="path10_line5" model="oph.medication.line.template">
+            <field name="pathology_id" ref="path10"/>
+            <field name="name">ID5</field>
+            <field name="brandname_id" ref="diam0"/>
+            <field name="poso">1 cp matin, midi et soir</field>
+            <field name="duration">pour 5 jours</field>
+        </record>
+        <!-- Diffu K -->
+        <record id="path10_line6" model="oph.medication.line.template">
+            <field name="pathology_id" ref="path10"/>
+            <field name="name">ID6</field>
+            <field name="brandname_id" ref="difk0"/>
+            <field name="poso">1 cp par jour</field>
+            <field name="duration">pour 5 jours</field>
+        </record>
+        <!-- compresses -->
+        <record id="path10_line7" model="oph.medication.line.template">
+            <field name="pathology_id" ref="path10"/>
+            <field name="name">ID7</field>
+            <field name="brandname_id" ref="comp0"/>
+            <field name="poso">50U</field>
+        </record>
+        <!-- solute isotonique -->
+        <record id="path10_line8" model="oph.medication.line.template">
+            <field name="pathology_id" ref="path10"/>
+            <field name="name">ID8</field>
+            <field name="brandname_id" ref="soliso0"/>
+            <field name="poso">Lavage oculaire, matin et soir si sécrétions.</field>
+        </record>      
 
         <!-- Sd SEC -->
         <record id="path11" model="oph.pathology">
@@ -796,15 +879,15 @@
             <field name="pathology_id" ref="path17"/>
             <field name="name">ID0</field>
             <field name="comment">
-            SOINS DE PAUPIERE. 
-            Eau chaude et gant de toilette
-            Attention à ne pas se bruler les paupières
-            pendant 20 minutes montre en main
-            puis massage des paupières du haut vers le bas en paupière supérieure et du bas vers le haut en paupière inférieure.
-            
-            2X par jour
-            pour 2 mois 
-            il est important de poursuivre les soins de paupière même si la symptomatologie s'améliore.
+SOINS DE PAUPIERE. 
+Eau chaude et gant de toilette
+Attention à ne pas se bruler les paupières
+pendant 20 minutes montre en main
+puis massage des paupières du haut vers le bas en paupière supérieure et du bas vers le haut en paupière inférieure.
+           
+2X par jour
+pour 2 mois 
+il est important de poursuivre les soins de paupière même si la symptomatologie s'améliore.
             </field>
         </record>
         
