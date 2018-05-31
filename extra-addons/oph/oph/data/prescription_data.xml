@@ -715,7 +715,7 @@
         
   <!-- Post SP si désepithélialisation -->
         <record id="path19" model="oph.pathology">
-            <field name="name">Post segment postérieur</field>
+            <field name="name">Post segment postérieur Si désépithélialisation</field>
         </record>
         <!-- Cellusvisc -->
         <record id="path19_line0" model="oph.medication.line.template">

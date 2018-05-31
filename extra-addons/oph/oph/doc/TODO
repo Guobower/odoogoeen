@@ -3,12 +3,12 @@
 [ ] Formula prescription - autres options s'affiche dans la tree view de crm.meeting. C'est pas utile.
 [X] Mettre en place un bouton dans la form vue de refraction pour délier la copie automatique des données de l'od sur l'og.
 [ ] Faire un lien entre l'account_invoice et crm.meeting. (one2many)
-[ ] Pour voir gérer le paiement des factures par lot
+[ ] Pouvoir gérer le paiement des factures par lot
 [ ] pouvoir imprimer automatiquement un memo de RDV des que l'on donne un RDV
 [ ] Gerer le nom de la machine et de la technique dans les CR. 
 [ ] Rajouter un champ datetime pour savoir quand la personne a annulé.
 [ ] Tampons pour les CR, les medications, les biology report, 
-[ ]
+[ ] 
 Pour le backup:
 1/ faire un baremetal de l'install actuel du serveur. 
 2/ mettre à jour le repository sur cette copie ou sur une copie de la copie.
