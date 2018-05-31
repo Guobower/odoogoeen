@@ -714,11 +714,11 @@
         </record>
         
   <!-- Post SP si désepithélialisation -->
-        <record id="path10" model="oph.pathology">
+        <record id="path18" model="oph.pathology">
             <field name="name">Post segment postérieur</field>
         </record>
         <!-- Cellusvisc -->
-        <record id="path10_line0" model="oph.medication.line.template">
+        <record id="path18_line0" model="oph.medication.line.template">
             <field name="pathology_id" ref="path10"/>
             <field name="name">ID0</field>
             <field name="brandname_id" ref="cell0"/>
@@ -726,7 +726,7 @@
             <field name="duration">pour 1 mois</field>
         </record>
         <!-- Mydriaticum -->
-        <record id="path10_line1" model="oph.medication.line.template">
+        <record id="path18_line1" model="oph.medication.line.template">
             <field name="pathology_id" ref="path10"/>
             <field name="name">ID1</field>
             <field name="brandname_id" ref="myd0"/>
@@ -734,7 +734,7 @@
             <field name="duration">pour 5 jours</field>
         </record>
         <!-- Tobradex -->
-        <record id="path10_line2" model="oph.medication.line.template">
+        <record id="path18_line2" model="oph.medication.line.template">
             <field name="pathology_id" ref="path10"/>
             <field name="name">ID2</field>
             <field name="brandname_id" ref="tob0"/>
@@ -742,7 +742,7 @@
             <field name="duration">pour 1 mois</field>
         </record>
         <!-- Sterdex -->
-        <record id="path10_line3" model="oph.medication.line.template">
+        <record id="path18_line3" model="oph.medication.line.template">
             <field name="pathology_id" ref="path10"/>
             <field name="name">ID3</field>
             <field name="brandname_id" ref="ster0"/>
@@ -750,7 +750,7 @@
             <field name="duration">pour 15 jours</field>
         </record>
         <!-- xalacom -->
-        <record id="path10_line4" model="oph.medication.line.template">
+        <record id="path18_line4" model="oph.medication.line.template">
             <field name="pathology_id" ref="path10"/>
             <field name="name">ID4</field>
             <field name="brandname_id" ref="xal0"/>
@@ -758,7 +758,7 @@
             <field name="duration">pour 10 jours</field>
         </record>
         <!-- diamox -->
-        <record id="path10_line5" model="oph.medication.line.template">
+        <record id="path19_line5" model="oph.medication.line.template">
             <field name="pathology_id" ref="path10"/>
             <field name="name">ID5</field>
             <field name="brandname_id" ref="diam0"/>
@@ -766,7 +766,7 @@
             <field name="duration">pour 5 jours</field>
         </record>
         <!-- Diffu K -->
-        <record id="path10_line6" model="oph.medication.line.template">
+        <record id="path19_line6" model="oph.medication.line.template">
             <field name="pathology_id" ref="path10"/>
             <field name="name">ID6</field>
             <field name="brandname_id" ref="difk0"/>
@@ -774,14 +774,14 @@
             <field name="duration">pour 5 jours</field>
         </record>
         <!-- compresses -->
-        <record id="path10_line7" model="oph.medication.line.template">
+        <record id="path19_line7" model="oph.medication.line.template">
             <field name="pathology_id" ref="path10"/>
             <field name="name">ID7</field>
             <field name="brandname_id" ref="comp0"/>
             <field name="poso">50U</field>
         </record>
         <!-- solute isotonique -->
-        <record id="path10_line8" model="oph.medication.line.template">
+        <record id="path19_line8" model="oph.medication.line.template">
             <field name="pathology_id" ref="path10"/>
             <field name="name">ID8</field>
             <field name="brandname_id" ref="soliso0"/>
