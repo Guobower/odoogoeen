@@ -246,9 +246,10 @@ class Parser(report_sxw.rml_parse):
         if context is None:
             context = {}
         context = self.context
-        temp = self.pool.get('crm.meeting').browse(self.cr, self.uid, context.get('active_ids'))
+        import pdb;pdb.set_trace()
+        temp = self.pool.get(context.get('active_model')).browse(self.cr, self.uid, context.get('active_ids'))
         for rec in temp:
-            context['only_time3'] = rec.date
+            context['only_time3'] = rec.prep_meeting_id.date
         if context['only_time3']:
             unaware = datetime.strptime(context['only_time3'], '%Y-%m-%d %H:%M:%S')
             aware = unaware.replace(tzinfo = pytz.UTC)
