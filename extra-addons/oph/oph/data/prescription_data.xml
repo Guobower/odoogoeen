@@ -714,11 +714,11 @@
         </record>
         
   <!-- Post SP si désepithélialisation -->
-        <record id="path18" model="oph.pathology">
+        <record id="path19" model="oph.pathology">
             <field name="name">Post segment postérieur</field>
         </record>
         <!-- Cellusvisc -->
-        <record id="path18_line0" model="oph.medication.line.template">
+        <record id="path19_line0" model="oph.medication.line.template">
             <field name="pathology_id" ref="path10"/>
             <field name="name">ID0</field>
             <field name="brandname_id" ref="cell0"/>
@@ -726,7 +726,7 @@
             <field name="duration">pour 1 mois</field>
         </record>
         <!-- Mydriaticum -->
-        <record id="path18_line1" model="oph.medication.line.template">
+        <record id="path19_line1" model="oph.medication.line.template">
             <field name="pathology_id" ref="path10"/>
             <field name="name">ID1</field>
             <field name="brandname_id" ref="myd0"/>
@@ -734,7 +734,7 @@
             <field name="duration">pour 5 jours</field>
         </record>
         <!-- Tobradex -->
-        <record id="path18_line2" model="oph.medication.line.template">
+        <record id="path19_line2" model="oph.medication.line.template">
             <field name="pathology_id" ref="path10"/>
             <field name="name">ID2</field>
             <field name="brandname_id" ref="tob0"/>
@@ -742,7 +742,7 @@
             <field name="duration">pour 1 mois</field>
         </record>
         <!-- Sterdex -->
-        <record id="path18_line3" model="oph.medication.line.template">
+        <record id="path19_line3" model="oph.medication.line.template">
             <field name="pathology_id" ref="path10"/>
             <field name="name">ID3</field>
             <field name="brandname_id" ref="ster0"/>
@@ -750,7 +750,7 @@
             <field name="duration">pour 15 jours</field>
         </record>
         <!-- xalacom -->
-        <record id="path18_line4" model="oph.medication.line.template">
+        <record id="path19_line4" model="oph.medication.line.template">
             <field name="pathology_id" ref="path10"/>
             <field name="name">ID4</field>
             <field name="brandname_id" ref="xal0"/>
