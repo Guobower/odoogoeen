@@ -432,6 +432,15 @@
             <field name="name">CORTANCYL 1MG CPR</field>
             <field name="ivt">False</field>
         </record>
+	<!-- -->
+	<record id="inn29" model="oph.inn">
+            <field name="name">ciclosporin</field>
+        </record>
+        <record id="iker" model="oph.brandname">
+            <field name="brandname_id" ref="inn29"/>
+            <field name="name">IKERVIS 1MG/ML COLLYRE UNIDOSE 0,3ML</field>
+            <field name="ods_needed">True</field>
+        </record>
 <!--  END ? -->
 
 

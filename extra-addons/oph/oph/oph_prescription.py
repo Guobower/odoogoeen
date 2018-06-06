@@ -22,7 +22,7 @@ class exam(orm.Model):
               'type':fields.selection([('Bio', _('Biology')),
                                                 ('Rx', _('Radiology')),
                                                 ('Cx', _('Cardiology')),
-                                                ('Oph', _('Ophthalmology')),], 'Type', size = 8),
+                                                ('Oph', _('Ophthalmology')), ], 'Type', size = 8),
               'name':fields.char('Name', size = 64),
               'code':fields.char('Code', size = 16),
               'comment':fields.text('Comment'),
@@ -46,6 +46,7 @@ class oph_brandname(orm.Model):
              'line_ids':fields.one2many('oph_medication_line', 'brandname_id', 'Lines'),
              'ivt':fields.boolean('For IVT', help = 'To be injected in vitreous'),
              'ods_needed':fields.boolean('ODS Needed', help = 'Need to specify ODS in prescription'),
+             'comment':fields.text('Comment'),
              }
 
 class oph_inn(orm.Model):
@@ -90,7 +91,7 @@ class oph_medication_line(orm.Model):
                 'duration':fields.char('Duration', size = 64),
                 'ods':fields.selection([('od', _('Right Eye')),
                                                 ('os', _('Left Eye')),
-                                                ('ods', _('Right and Left Eye')),], 'ODS', required = False,),
+                                                ('ods', _('Right and Left Eye')), ], 'ODS', required = False,),
                 'comment':fields.text('Comment'),
                 'date':fields.related('meeting_id', 'date', type = 'date', string = 'Consultation Date', store = True),
                 'partner_id':fields.related("meeting_id", "partner_id", type = "many2one", relation = "res.partner", string = "Partner", store = True, readonly = True,),
@@ -117,7 +118,7 @@ class pathology(orm.Model):
               'comment':fields.text('Comment', help = 'Used to add some informations on the prescription report'),
               'ods':fields.selection([('od', _('Right Eye')),
                                             ('os', _('Left Eye')),
-                                            ('ods', _('Right and Left Eye')),], 'ODS', required = False,),
+                                            ('ods', _('Right and Left Eye')), ], 'ODS', required = False,),
               }
 
 class oph_medication_line_template(orm.Model):
@@ -141,7 +142,7 @@ class oph_medication_line_template(orm.Model):
                 'duration':fields.char('Duration', size = 64),
                 'ods':fields.selection([('od', _('Right Eye')),
                                                 ('os', _('Left Eye')),
-                                                ('ods', _('Right and Left Eye')),], 'ODS', required = False,),  # Pas utile dans le template car sera a definir au niveau crm.meeting
+                                                ('ods', _('Right and Left Eye')), ], 'ODS', required = False,),  # Pas utile dans le template car sera a definir au niveau crm.meeting
                 'comment':fields.text('Comment'),
                 'pathology_id': fields.many2one('oph.pathology', 'Pathology', required = False),  # True pose problem
               }
@@ -174,7 +175,7 @@ class oph_protocole_line_template(orm.Model):
                 'exam_id':fields.many2one('oph.exam', 'Exam'),
                 'ods':fields.selection([('od', _('Right Eye')),
                                                 ('os', _('Left Eye')),
-                                                ('ods', _('Right and Left Eye')),], 'ODG', required = False,),  # Pas utile dans le template car sera a definir au niveau crm.meeting
+                                                ('ods', _('Right and Left Eye')), ], 'ODG', required = False,),  # Pas utile dans le template car sera a definir au niveau crm.meeting
                 'comment':fields.text('Comment'),
                 'protocole_id': fields.many2one('oph.protocole', 'Protocole', required = False),  # True pose problem
               }
@@ -196,7 +197,7 @@ class oph_protocole_line(orm.Model):
                 'meeting_id':fields.many2one('crm.meeting', 'CRM MEETING'),
                 'ods':fields.selection([('od', _('Right Eye')),
                                                 ('os', _('Left Eye')),
-                                                ('ods', _('Right and Left Eye')),], 'ODS', required = False,),
+                                                ('ods', _('Right and Left Eye')), ], 'ODS', required = False,),
                 'comment':fields.text('Comment'),
                 'date':fields.related('meeting_id', 'date', type = 'date', string = 'Consultation Date', store = True),
                 'exam_id':fields.many2one('oph.exam', 'Exam'),
@@ -256,7 +257,7 @@ class crm_meeting(orm.Model):
     _columns = {
                  'ods':fields.selection([('od', _('Right Eye')),
                                                 ('os', _('Left Eye')),
-                                                ('ods', _('Right and Left Eye')),], 'ODS', required = False,),
+                                                ('ods', _('Right and Left Eye')), ], 'ODS', required = False,),
                  'medication_line_ids':fields.one2many('oph.medication.line', 'meeting_id', 'Medication Line'),
                  'pathology_ids':fields.many2many('oph.pathology', 'oph_pathology_meeting_rel', 'meeting_id', 'pathology_id', 'Pathology Line'),
                  # Trying to improve the protocole process

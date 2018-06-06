@@ -97,6 +97,7 @@
                 <form string="Type">
                     <field name="name" on_change="onchange_name(name,context)"/>
                     <field name="galenique"/>
+                    <field name="comment"/>
                     <field name="brandname_id" required="True"/>
                     <field name="ivt"/>
                 </form>
