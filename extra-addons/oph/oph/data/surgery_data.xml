@@ -55,6 +55,7 @@
         <record id="indic_id16" model="oph.indication">
             <field name="name">Glaucome néovasculaire</field>
         </record>
+        <!-- END INDICATIONS -->
 
         <!-- GAUGE DATAS -->
         <record id="gauge-id1" model="oph.gauge">
@@ -206,7 +207,7 @@
             <field name="comment">Pack Total Plus 25G/BIOM</field>
         </record>
         
-        <record model="oph.procedure.type" id="procedure_ablahs">
+        <record model="oph.procedure.type" id="procedure_v3vcercl">
             <field name="name">V3V + CERCLAGE + EL + HS ou GAZ</field>
             <field name="code">V3VCERC</field>
             <field name="dilatation">yes</field>
@@ -232,6 +233,14 @@
             <field name="duration">90</field>
             <field name="comment">Boite rétine et phragmatome</field>
         </record>
+
+	<record model="oph.procedure.type" id="procedure_hsca">
+	    <field name="name">ABLATION SILICONE EN CA</field>
+	    <field name="code">HSCA</field>
+	    <field name="dilatation">no</field>
+	    <field name="duration">45</field>
+	    <field name="comment">Champ rétine, boite cataracte, ne pas dilater</field>	
+	</record>
 
 <!-- IOL.TYPE -->
         <record model="oph.iol.type" id="iol_sn60wf">
