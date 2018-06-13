@@ -433,7 +433,7 @@
             <field name="ivt">False</field>
         </record>
 	<!-- -->
-	<record id="inn29" model="oph.inn">
+	    <record id="inn29" model="oph.inn">
             <field name="name">ciclosporin</field>
         </record>
         <record id="iker" model="oph.brandname">
