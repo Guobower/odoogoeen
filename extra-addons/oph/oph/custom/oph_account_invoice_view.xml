@@ -21,7 +21,7 @@
                     <field name="origin" position="replace"/>
                     <field name="number" position="replace"/>
                     <field name="state" position="after">
-                        <button string="Cash" name="invoice_cash" states="draft" icon="STOCK-SPEEL-CHECK" type="object"/>
+                        <button string="Check" name="invoice_cash" states="draft" icon="terp-crm" type="object"/>
                         <button string="Cash" name="invoice_check" states="draft" icon="terp-stage" type="object"/>
                     </field>
                 </data>
