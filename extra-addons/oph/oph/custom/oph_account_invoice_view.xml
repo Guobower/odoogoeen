@@ -16,7 +16,7 @@
                         <field name="ref_statement"/>
                         <field name="comment"/>
                     </field>
-                    <field name="date_invoice" position="replace"/>
+                    <!--  <field name="date_invoice" position="replace"/> -->
                     <field name="date_due" position="replace"/>
                     <field name="origin" position="replace"/>
                     <field name="number" position="replace"/>
