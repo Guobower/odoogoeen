@@ -16,9 +16,14 @@
                         <field name="ref_statement"/>
                         <field name="comment"/>
                     </field>
+                    <!--  <field name="date_invoice" position="replace"/> -->
                     <field name="date_due" position="replace"/>
                     <field name="origin" position="replace"/>
                     <field name="number" position="replace"/>
+                    <field name="state" position="after">
+                        <button string="Check" name="invoice_check" states="draft" icon="terp-crm" type="object"/>
+                        <button string="Cash" name="invoice_cash" states="draft" icon="terp-stage" type="object"/>
+                    </field>
                 </data>
             </field>
         </record>
@@ -30,8 +35,6 @@
             <field name="inherit_id" ref="account.invoice_form"/>
             <field name="arch" type="xml"> 
                 <data>
-                	
-                   
                     <field name="partner_id" position="after">
                         <field name="ref_statement" attrs="{'readonly':[('state','in',('draft','proforma','proforma2','paid','cancelled',))]}"/>
                         <field name="payment_method"/>
