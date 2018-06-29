@@ -2475,6 +2475,7 @@ Setting - Technical - Parameters - System Parameters - Create
 \item[Value] file:///filestore
 \end{description}
 
+Auparavant il faudra avoir activé les caractéristiques techniques pour accéder à ce menu. et il faut aussi être administrateur pour activer le bouton ajout. 
 Cela permet de stocker les documents dans le systeme de fichier sous :
  ~/oph\_openerp/openobject-server/openerp/filestore/oph1311/
 
@@ -2491,6 +2492,41 @@ Est-ce que l'on peut faire un ir\_config\_paramater\_date.xml avec un record
     <field name="value">file:///filestore</field>
 </record>
 \end{minted}
+
+\subsection{démystification du stockage des pieces jointes}
+Il ne faut effectivement pas stocker les pieces jointes en base de données. Elle va grossir trop vite.
+Voir ci-dessus pour l'activer en systeme de fichier.
+Pour retrouver les fichiers on voit dans le code openerp/addons/base/ir/ir_attachment.py que la valeur apres le file; est ajouté apres un root_path. Et on ne peut pas définir un dossier en dehors du root_path.
+pour obtenir ce root_path
+cd /leserverodoo
+python pour avoir une console
+>>>import openerp
+>>>openerp.tools.config['root_path']
+
+On se retrouve donc avec un système de fichier dans le code ce qui n'est pas tres pratique avec git pour les mises à jour.
+On peut utiliser un lien symbolique:
+ln -s /var/mesattachements root_path/filestore
+
+On crée notre symlink
+mkdir /var/odooattachement
+chown odoouser:odoouser /var/odooattachment
+ln -s /var/odooattachment /home/lfs/odoogoeen/openerp/filestoretest
+on bascule tous les attachement sur /var/odooattchment avec un rsync-copy openerp/filestore/* /var/odooattachment/
+on fait la modification dans Settings/Technical/Parameters/System parameter on change filestore en filestoretest.
+on redemarre le server.
+Et si tout se passe bien d'ici quelques temps on pourra faire un rm -rf /openerp/filestore. 
+
+\subsubsection{Comment on fait la bascule des files attachments}
+sur un pc qui ping le 10.66.0.250 faire:\
+rsync-copy lof@10.66.0.250:/home/lof/ODOO/odoogoeen/openerp/filestore ./
+puis 
+ssh lof@IPserver
+rsync-move user@ip:/home/user/tempo/filestore/*
+root@IPserver;/var/odooattachment/ sudo chown odoo:odoo 
+
+
+
+
 
 \subsection{document\_ftp}
 \label{sec:document_ftp}
